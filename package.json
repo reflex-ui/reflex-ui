@@ -6,7 +6,7 @@
     "web": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "ios": "react-native run-ios",
-    "android": "react-native run-android",
+    "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug && cd ../ && node node_modules/react-native/local-cli/cli.js start",
     "test": "jest --coverage",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "rebuild": "rm -rf ios; rm -rf android; react-native upgrade; rm -f .babelrc; rm -f .buckconfig; rm -f .flowconfig; rm -f .watchmanconfig; rm -f .gitattributes;"
@@ -15,7 +15,9 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-native": "0.56.0",
+    "react-native-navigation": "^2.0.2461",
     "react-native-web": "^0.8.8",
+    "react-router-dom": "^4.3.1",
     "react-scripts-ts": "^2.16.0"
   },
   "devDependencies": {
