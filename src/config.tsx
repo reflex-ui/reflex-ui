@@ -7,13 +7,13 @@ interface IConfig {
   };
 }
 
-const Config: IConfig = {
+const config: IConfig = {
   app: {
-    name: "example"
+    name: 'example',
   },
   web: {
-    root: "root"
-  }
+    root: 'root',
+  },
 };
 
-export default Config;
+export default config;

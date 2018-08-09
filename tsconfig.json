@@ -1,13 +1,20 @@
 {
   "compilerOptions": {
-    "module": "esnext",
-    "target": "es5",
+    "strict": true,
     "baseUrl": ".",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "target": "es5",
     "lib": ["es6", "dom"],
     "sourceMap": true,
     "allowJs": true,
+    "checkJs": true,
     "jsx": "react",
-    "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": true,
     "skipLibCheck": true
   },
   "include": ["src/**/*"],

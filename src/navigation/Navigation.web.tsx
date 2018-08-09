@@ -1,20 +1,21 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
-import { Router, Route, Switch, Redirect } from 'react-router-dom';
-import createHistory from 'history/createBrowserHistory';
+import { Text, View } from 'react-native';
 
-const navigator = createHistory();
+import createBrowserHistory from 'history/createBrowserHistory';
+import { Redirect, Route, Router, Switch } from 'react-router-dom';
 
-const WelcomeSignedOutScreen = () => (
+const navigator = createBrowserHistory();
+
+const welcomeSignedOutScreen = () => (
   <View>
-    <Text>WelcomeSignedOutScreen</Text>
+    <Text>WelcomeSignedOutScreen 123</Text>
   </View>
 );
 
-export default (): React.ReactElement<{}> => (
+export default () => (
   <Router history={navigator}>
     <Switch>
-      <Route exact path="/welcome" component={WelcomeSignedOutScreen} />
+      <Route exact path="/welcome" component={welcomeSignedOutScreen} />
       <Redirect from="/*" to="/welcome" />
     </Switch>
   </Router>

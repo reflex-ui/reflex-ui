@@ -1,13 +1,13 @@
 // app entry
-import { Platform, AppRegistry } from "react-native";
-import { isWeb } from "./infra/platform";
-import Config from "./commons/Config";
-import App from "./App";
+import { AppRegistry } from 'react-native';
+import App from './App';
+import config from './config';
+import { isWeb } from './infra/platform';
 
 if (isWeb) {
   // register the app
-  AppRegistry.registerComponent(Config.app.name, () => App);
-  AppRegistry.runApplication(Config.app.name, {
-    rootTag: document.getElementById(Config.web.root)
+  AppRegistry.registerComponent(config.app.name, () => App);
+  AppRegistry.runApplication(config.app.name, {
+    rootTag: document.getElementById(config.web.root),
   });
 }

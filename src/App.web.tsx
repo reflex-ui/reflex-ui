@@ -1,4 +1,4 @@
-import * as React from "react";
-import Navigation from './navigation/Navigation.web';
+import * as React from 'react';
+import NavigationWeb from './navigation/Navigation.web';
 
-export default (): React.ReactElement<{}> => Navigation();
+export default (): React.ReactElement<{}> => NavigationWeb();
