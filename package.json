@@ -12,21 +12,21 @@
     "rebuild": "rm -rf ios; rm -rf android; react-native upgrade; rm -f .babelrc; rm -f .buckconfig; rm -f .flowconfig; rm -f .watchmanconfig; rm -f .gitattributes;"
   },
   "dependencies": {
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
     "react-native": "0.56.0",
     "react-native-navigation": "^2.0.2461",
-    "react-native-web": "^0.8.8",
+    "react-native-web": "^0.8.9",
     "react-router-dom": "^4.3.1",
-    "react-scripts-ts": "^2.16.0"
+    "react-scripts-ts": "^2.17.0"
   },
   "devDependencies": {
     "@types/history": "^4.7.0",
     "@types/jest": "^23.3.0",
-    "@types/react": "^16.4.6",
-    "@types/react-native": "^0.56.3",
+    "@types/react": "^16.4.9",
+    "@types/react-native": "^0.56.6",
     "@types/react-router-dom": "^4.3.0",
-    "@types/react-test-renderer": "^16.0.1",
+    "@types/react-test-renderer": "^16.0.2",
     "babel-jest": "23.4.0",
     "babel-preset-react-native": "4.0.0",
     "jest": "23.4.1",
@@ -39,7 +39,8 @@
     "tslint": "^5.11.0",
     "tslint-config-airbnb": "^5.9.2",
     "tslint-config-prettier": "^1.14.0",
-    "typescript": "^2.9.2"
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.0.1"
   },
   "babel": {
     "presets": [

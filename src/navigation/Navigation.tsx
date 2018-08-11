@@ -1,17 +1,11 @@
-import * as React from 'react';
-import { Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
-const welcomeSignedOutScreen = () => (
-  <View style={{ backgroundColor: 'white' }}>
-    <Text>WelcomeSignedOutScreen YEP! 123</Text>
-  </View>
-);
+import { WelcomeSignedOutScreen } from '../application/welcome';
 
 const registerScreens = () => {
   Navigation.registerComponent(
     'navigation.24beeps.WelcomeSignedOutScreen',
-    () => welcomeSignedOutScreen,
+    () => WelcomeSignedOutScreen,
   );
 };
 

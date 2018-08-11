@@ -1,3 +1,13 @@
 {
-  "extends": ["tslint:recommended", "tslint-config-prettier", "tslint-config-airbnb"]
+  "extends": [
+    "tslint:recommended",
+    "tslint-config-prettier",
+    "tslint-config-airbnb",
+    "tslint-react"
+  ],
+  "rules": {
+    "jsx-boolean-value": false,
+    "jsx-no-multiline-js": false,
+    "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case"]
+  }
 }
