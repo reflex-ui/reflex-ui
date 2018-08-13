@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
-import LabelButton, { ILabelButtonProps, ILabelButtonStyle } from './LabelButton';
+import LabelButton, {
+  ILabelButtonProps,
+  ILabelButtonStyle,
+} from './LabelButton';
 
 enum Size {
   XSMALL,
@@ -17,7 +20,11 @@ interface ILabelButtonStyleProps {
   size?: Size;
 }
 
-const getStyle = ({ fullWidth, outlined, primary }: ILabelButtonStyleProps): ILabelButtonStyle =>
+const getStyle = ({
+  fullWidth,
+  outlined,
+  primary,
+}: ILabelButtonStyleProps): ILabelButtonStyle =>
   StyleSheet.create<ILabelButtonStyle>({
     button: {
       backgroundColor: primary ? 'blue' : 'white',
@@ -33,7 +40,7 @@ const getStyle = ({ fullWidth, outlined, primary }: ILabelButtonStyleProps): ILa
     },
   });
 
-const button: React.SFC<ILabelButtonStyleProps & ILabelButtonProps> = ({
+const Button: React.SFC<ILabelButtonStyleProps & ILabelButtonProps> = ({
   fullWidth,
   outlined,
   primary,
@@ -51,4 +58,4 @@ const button: React.SFC<ILabelButtonStyleProps & ILabelButtonProps> = ({
   />
 );
 
-export default button;
+export default Button;

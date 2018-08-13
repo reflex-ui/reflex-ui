@@ -8,18 +8,11 @@ import {
   ViewStyle,
 } from 'react-native';
 
-// export type IGetTextStyle = (props: ILabelButtonProps) => TextStyle;
-// export type IGetViewStyle = (props: ILabelButtonProps) => ViewStyle;
-
 export interface ILabelButtonStyle {
   button: ViewStyle;
   container: ViewStyle;
   label: TextStyle;
 }
-
-// export type IGetLabelButtonStyle = (props: ILabelButtonProps) => ILabelButtonStyle;
-
-// const emptyGetTextStyle: IGetLabelButtonStyle = (): ILabelButtonStyle => ({ label: {} });
 
 export interface ILabelButtonProps extends TouchableOpacityProps {
   children?: React.ReactNode;
@@ -29,7 +22,7 @@ export interface ILabelButtonProps extends TouchableOpacityProps {
   rightIcon?: JSX.Element;
 }
 
-const button: React.SFC<ILabelButtonProps> = ({
+const Button: React.SFC<ILabelButtonProps> = ({
   children,
   customStyle = { button: {}, container: {}, label: {} },
   leftIcon,
@@ -38,7 +31,11 @@ const button: React.SFC<ILabelButtonProps> = ({
   ...buttonProps // tslint:disable-line:trailing-comma
 }: ILabelButtonProps): JSX.Element => (
   <View style={customStyle.container}>
-    <TouchableOpacity onPress={onPress} style={customStyle.button} {...buttonProps}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={customStyle.button}
+      {...buttonProps}
+    >
       {leftIcon}
       {children && <Text style={customStyle.label}>{children}</Text>}
       {rightIcon}
@@ -46,6 +43,6 @@ const button: React.SFC<ILabelButtonProps> = ({
   </View>
 );
 
-button.displayName = 'LabelButton';
+Button.displayName = 'LabelButton';
 
-export default button;
+export default Button;

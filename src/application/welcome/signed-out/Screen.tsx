@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 
 import { LabelButton } from '../../../ui/shared/widgets';
 
-export default () => (
+const Screen: React.SFC = (): JSX.Element => (
   <View>
     <Text>WelcomeSignedOutScreen 1234567</Text>
     <LabelButton outlined onPress={() => null}>
@@ -11,3 +11,5 @@ export default () => (
     </LabelButton>
   </View>
 );
+
+export default Screen;

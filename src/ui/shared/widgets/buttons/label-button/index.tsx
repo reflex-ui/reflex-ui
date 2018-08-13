@@ -1,3 +1,5 @@
-import styles from './styles';
+import LabelButton from './LabelButton';
+import StyledLabelButton from './StyledLabelButton';
 
-export { styles as LabelButton };
+export { LabelButton as RawLabelButton };
+export { StyledLabelButton as LabelButton };
