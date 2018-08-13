@@ -2,8 +2,8 @@ import * as React from 'react';
 import {
   Text,
   TextStyle,
-  TouchableOpacity,
-  TouchableOpacityProps,
+  TouchableWithoutFeedback,
+  TouchableWithoutFeedbackProps,
   View,
   ViewStyle,
 } from 'react-native';
@@ -14,13 +14,16 @@ export interface ILabelButtonStyle {
   label: TextStyle;
 }
 
-export interface ILabelButtonProps extends TouchableOpacityProps {
+export interface ILabelButtonProps extends TouchableWithoutFeedbackProps {
   children?: React.ReactNode;
   customStyle?: ILabelButtonStyle;
   leftIcon?: JSX.Element;
   onPress: () => any;
   rightIcon?: JSX.Element;
 }
+
+// tslint:disable-next-line:no-console
+// const onMouseOver = () => console.log('LabelButton().onMouseOver()');
 
 const Button: React.SFC<ILabelButtonProps> = ({
   children,
@@ -31,15 +34,13 @@ const Button: React.SFC<ILabelButtonProps> = ({
   ...buttonProps // tslint:disable-line:trailing-comma
 }: ILabelButtonProps): JSX.Element => (
   <View style={customStyle.container}>
-    <TouchableOpacity
-      onPress={onPress}
-      style={customStyle.button}
-      {...buttonProps}
-    >
-      {leftIcon}
-      {children && <Text style={customStyle.label}>{children}</Text>}
-      {rightIcon}
-    </TouchableOpacity>
+    <TouchableWithoutFeedback {...buttonProps}>
+      <View style={customStyle.button}>
+        {leftIcon}
+        {children && <Text style={customStyle.label}>{children}</Text>}
+        {rightIcon}
+      </View>
+    </TouchableWithoutFeedback>
   </View>
 );
 

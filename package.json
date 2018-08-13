@@ -9,7 +9,8 @@
     "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug && cd ../ && node node_modules/react-native/local-cli/cli.js start",
     "test": "jest --coverage",
     "lint": "tslint -p tsconfig.json -c tslint.json",
-    "rebuild": "rm -rf ios; rm -rf android; react-native upgrade; rm -f .babelrc; rm -f .buckconfig; rm -f .flowconfig; rm -f .watchmanconfig; rm -f .gitattributes;"
+    "rebuild": "rm -rf ios; rm -rf android; react-native upgrade; rm -f .babelrc; rm -f .buckconfig; rm -f .flowconfig; rm -f .watchmanconfig; rm -f .gitattributes;",
+    "postinstall": "node ./scripts/react-native-web-tsd.js"
   },
   "dependencies": {
     "react": "^16.4.2",

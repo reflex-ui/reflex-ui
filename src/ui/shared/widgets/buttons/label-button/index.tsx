@@ -1,5 +1,14 @@
 import LabelButton from './LabelButton';
-import StyledLabelButton from './StyledLabelButton';
+import StyledLabelButton, {
+  IStyledLabelButton,
+  StyledLabelButtonProps,
+} from './StyledLabelButton';
+
+import { withMouseEvents } from '../../../styles';
+
+const EnhancedStyledLabelButton: IStyledLabelButton = withMouseEvents<
+  StyledLabelButtonProps
+>(StyledLabelButton);
 
 export { LabelButton as RawLabelButton };
-export { StyledLabelButton as LabelButton };
+export { EnhancedStyledLabelButton as LabelButton };
