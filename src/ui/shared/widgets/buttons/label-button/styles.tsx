@@ -33,13 +33,13 @@ const getStyle = ({ fullWidth, outlined, primary }: ILabelButtonStyleProps): ILa
     },
   });
 
-export default ({
+const button: React.SFC<ILabelButtonStyleProps & ILabelButtonProps> = ({
   fullWidth,
   outlined,
   primary,
   size,
   ...other // tslint:disable-line:trailing-comma
-}: ILabelButtonStyleProps & ILabelButtonProps): any => (
+}: ILabelButtonStyleProps & ILabelButtonProps): JSX.Element => (
   <LabelButton
     {...other}
     customStyle={getStyle({
@@ -50,3 +50,5 @@ export default ({
     })}
   />
 );
+
+export default button;

@@ -22,21 +22,21 @@ export interface ILabelButtonStyle {
 // const emptyGetTextStyle: IGetLabelButtonStyle = (): ILabelButtonStyle => ({ label: {} });
 
 export interface ILabelButtonProps extends TouchableOpacityProps {
-  children?: string;
+  children?: React.ReactNode;
   customStyle?: ILabelButtonStyle;
   leftIcon?: JSX.Element;
   onPress: () => any;
   rightIcon?: JSX.Element;
 }
 
-export default ({
+const button: React.SFC<ILabelButtonProps> = ({
   children,
   customStyle = { button: {}, container: {}, label: {} },
   leftIcon,
   onPress,
   rightIcon,
   ...buttonProps // tslint:disable-line:trailing-comma
-}: ILabelButtonProps) => (
+}: ILabelButtonProps): JSX.Element => (
   <View style={customStyle.container}>
     <TouchableOpacity onPress={onPress} style={customStyle.button} {...buttonProps}>
       {leftIcon}
@@ -45,3 +45,7 @@ export default ({
     </TouchableOpacity>
   </View>
 );
+
+button.displayName = 'LabelButton';
+
+export default button;
