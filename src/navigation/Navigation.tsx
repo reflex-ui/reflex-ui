@@ -1,11 +1,12 @@
 import { Navigation } from 'react-native-navigation';
 
+import { withAppLogic } from '../application/shared';
 import { WelcomeSignedOutScreen } from '../application/welcome';
 
 const registerScreens = () => {
   Navigation.registerComponent(
     'navigation.24beeps.WelcomeSignedOutScreen',
-    () => WelcomeSignedOutScreen,
+    () => withAppLogic(WelcomeSignedOutScreen),
   );
 };
 

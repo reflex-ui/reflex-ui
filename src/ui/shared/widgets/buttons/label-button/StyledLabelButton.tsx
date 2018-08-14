@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TextStyle } from 'react-native';
+
+import { ITheme, ThemeContext } from '../../../styles';
 import LabelButton, {
   ILabelButtonProps,
   ILabelButtonStyle,
@@ -8,6 +10,15 @@ import LabelButton, {
 export type StyledLabelButtonProps = ILabelButtonStyleProps & ILabelButtonProps;
 
 export type IStyledLabelButton = React.ComponentType<StyledLabelButtonProps>;
+
+enum ColorTheme {
+  PRIMARY_DARK,
+  PRIMARY_LIGHT,
+  PRIMARY_NORMAL,
+  SECONDAY_DARK,
+  SECONDAY_LIGHT,
+  SECONDAY_NORMAL,
+}
 
 enum Size {
   XSMALL,
@@ -25,27 +36,33 @@ export enum Variant {
 }
 
 interface ILabelButtonStyleProps {
+  colorTheme?: ColorTheme;
   fullWidth?: boolean;
   isHovering?: boolean;
   isPressing?: boolean;
-  primary?: boolean;
   size?: Size;
   variant?: Variant;
 }
 
+interface IThemed {
+  theme: ITheme;
+}
+
 type IGetBackgroundColor = (
   props: {
+    colorTheme: ColorTheme;
     isHovering?: boolean;
     isPressing?: boolean;
-    primary?: boolean;
+    theme: ITheme;
     variant: Variant;
   },
 ) => string;
 
 const getBackgroundColor: IGetBackgroundColor = ({
+  colorTheme,
   isHovering,
   isPressing,
-  primary,
+  theme,
   variant,
 }): string => {
   // tslint:disable-next-line:no-console
@@ -61,9 +78,73 @@ const getBackgroundColor: IGetBackgroundColor = ({
   if (variant === Variant.DEFAULT || variant === Variant.OUTLINED) {
     return 'transparent';
   }
-  if (isPressing) return primary ? 'green' : 'red';
-  if (isHovering) return primary ? 'orange' : 'black';
-  return primary ? 'yellow' : '#6200ee';
+  // if (isPressing) return primary ? 'green' : 'red';
+  // if (isHovering) return primary ? 'orange' : 'black';
+  return getThemeColor({ colorTheme, theme });
+};
+
+type IGetLabelStyle = (
+  props: {
+    colorTheme: ColorTheme;
+    theme: ITheme;
+    variant: Variant;
+  },
+) => TextStyle;
+
+const getLabelStyle: IGetLabelStyle = ({
+  colorTheme,
+  theme,
+  variant,
+}): TextStyle => {
+  const onColor: boolean =
+    variant === Variant.CONTAINED || variant === Variant.CONTAINED_RAISED
+      ? true
+      : false;
+
+  return {
+    color: getThemeColor({ colorTheme, onColor, theme }),
+  };
+};
+
+type IGetThemeColor = (
+  props: {
+    colorTheme: ColorTheme;
+    onColor?: boolean;
+    theme: ITheme;
+  },
+) => string;
+
+const getThemeColor: IGetThemeColor = ({
+  colorTheme,
+  onColor,
+  theme,
+}): string => {
+  switch (colorTheme) {
+    case ColorTheme.PRIMARY_DARK:
+      return onColor
+        ? theme.palette.primary.dark.onColor
+        : theme.palette.primary.dark.color;
+    case ColorTheme.PRIMARY_LIGHT:
+      return onColor
+        ? theme.palette.primary.light.onColor
+        : theme.palette.primary.light.color;
+    case ColorTheme.PRIMARY_NORMAL:
+      return onColor
+        ? theme.palette.primary.normal.onColor
+        : theme.palette.primary.normal.color;
+    case ColorTheme.SECONDAY_DARK:
+      return onColor
+        ? theme.palette.secondary.dark.onColor
+        : theme.palette.secondary.dark.color;
+    case ColorTheme.SECONDAY_LIGHT:
+      return onColor
+        ? theme.palette.secondary.light.onColor
+        : theme.palette.secondary.light.color;
+    case ColorTheme.SECONDAY_NORMAL:
+      return onColor
+        ? theme.palette.secondary.normal.onColor
+        : theme.palette.secondary.normal.color;
+  }
 };
 
 interface IBorderStyle {
@@ -72,9 +153,15 @@ interface IBorderStyle {
   borderWidth?: number;
 }
 
-type IGetBorderStyle = (props: { variant: Variant }) => IBorderStyle;
+type IGetBorderStyle = (
+  props: { colorTheme: ColorTheme; theme: ITheme; variant: Variant },
+) => IBorderStyle;
 
-const getBorderStyle: IGetBorderStyle = ({ variant }): IBorderStyle => {
+const getBorderStyle: IGetBorderStyle = ({
+  colorTheme,
+  theme,
+  variant,
+}): IBorderStyle => {
   // tslint:disable-next-line:no-console
   console.log('StyledLabelButton.getBorderStyle() - variant: ', variant);
 
@@ -85,8 +172,8 @@ const getBorderStyle: IGetBorderStyle = ({ variant }): IBorderStyle => {
   if (variant === Variant.OUTLINED) {
     style = {
       ...style,
-      borderColor: 'red',
-      borderWidth: 1,
+      borderColor: getThemeColor({ colorTheme, theme }),
+      borderWidth: 2,
     };
   }
 
@@ -164,24 +251,26 @@ const getWidthHeightStyle: IGetWidthHeightStyle = ({
 };
 
 const getStyle = ({
+  colorTheme = ColorTheme.PRIMARY_NORMAL,
   fullWidth,
   isHovering,
   isPressing,
-  primary,
   size = Size.MEDIUM,
+  theme,
   variant = Variant.DEFAULT,
-}: ILabelButtonStyleProps): ILabelButtonStyle =>
+}: ILabelButtonStyleProps & IThemed): ILabelButtonStyle =>
   StyleSheet.create<ILabelButtonStyle>({
     button: {
       alignItems: 'center',
       backgroundColor: getBackgroundColor({
+        colorTheme,
         isHovering,
         isPressing,
-        primary,
+        theme,
         variant,
       }),
       flexDirection: fullWidth ? 'column' : 'row',
-      ...getBorderStyle({ variant }),
+      ...getBorderStyle({ colorTheme, theme, variant }),
       ...getMarginPaddingStyle({ variant }),
       ...getWidthHeightStyle({ size }),
       justifyContent: 'center',
@@ -190,30 +279,35 @@ const getStyle = ({
       flexDirection: fullWidth ? 'column' : 'row',
     },
     label: {
-      color: 'green',
+      ...getLabelStyle({ colorTheme, theme, variant }),
     },
   });
 
 const Button: IStyledLabelButton = ({
+  colorTheme,
   fullWidth,
   isHovering,
   isPressing,
-  primary,
   size,
   variant,
   ...other // tslint:disable-line:trailing-comma
 }: StyledLabelButtonProps): JSX.Element => (
-  <LabelButton
-    {...other}
-    customStyle={getStyle({
-      fullWidth,
-      isHovering,
-      isPressing,
-      primary,
-      size,
-      variant,
-    })}
-  />
+  <ThemeContext.Consumer>
+    {theme => (
+      <LabelButton
+        {...other}
+        customStyle={getStyle({
+          colorTheme,
+          fullWidth,
+          isHovering,
+          isPressing,
+          size,
+          theme,
+          variant,
+        })}
+      />
+    )}
+  </ThemeContext.Consumer>
 );
 
 export default Button;
