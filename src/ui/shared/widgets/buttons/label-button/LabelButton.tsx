@@ -22,9 +22,6 @@ export interface ILabelButtonProps extends TouchableWithoutFeedbackProps {
   rightIcon?: JSX.Element;
 }
 
-// tslint:disable-next-line:no-console
-// const onMouseOver = () => console.log('LabelButton().onMouseOver()');
-
 const Button: React.SFC<ILabelButtonProps> = ({
   children,
   customStyle = { button: {}, container: {}, label: {} },

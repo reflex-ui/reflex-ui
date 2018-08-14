@@ -1,14 +1,43 @@
 import * as React from 'react';
 import { Text, View } from 'react-native';
 
-import { LabelButton } from '../../../ui/shared/widgets';
+import { RowView } from '../../../ui/shared/layout';
+import { LabelButton, LabelButtonVariant } from '../../../ui/shared/widgets';
 
 const Screen: React.SFC = (): JSX.Element => (
   <View>
     <Text>WelcomeSignedOutScreen 1234567</Text>
-    <LabelButton outlined onPress={() => alert('onPress')}>
-      Sign In
-    </LabelButton>
+    <RowView>
+      <LabelButton onPress={() => alert('onPress')}>Sign In</LabelButton>
+      <LabelButton
+        fullWidth
+        onPress={() => alert('onPress')}
+        variant={LabelButtonVariant.CONTAINED}
+      >
+        Sign In
+      </LabelButton>
+      <LabelButton
+        onPress={() => alert('onPress')}
+        variant={LabelButtonVariant.CONTAINED_RAISED}
+      >
+        Sign In
+      </LabelButton>
+      <LabelButton
+        onPress={() => alert('onPress')}
+        variant={LabelButtonVariant.OUTLINED}
+      >
+        Sign In
+      </LabelButton>
+    </RowView>
+    <RowView>
+      <LabelButton
+        fullWidth
+        onPress={() => alert('onPress')}
+        variant={LabelButtonVariant.CONTAINED}
+      >
+        Sign Out
+      </LabelButton>
+    </RowView>
   </View>
 );
 

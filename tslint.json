@@ -10,6 +10,18 @@
     "jsx-no-lambda": false,
     "jsx-no-multiline-js": false,
     "max-line-length": [true, 80],
+    "no-shadowed-variable": [
+      true,
+      {
+        "class": true,
+        "enum": true,
+        "function": true,
+        "interface": false,
+        "namespace": true,
+        "typeAlias": false,
+        "typeParameter": false
+      }
+    ],
     "semicolon": [true, "always", "ignore-bound-class-methods"],
     "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case"]
   }
