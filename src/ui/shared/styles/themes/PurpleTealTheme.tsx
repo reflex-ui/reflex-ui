@@ -55,7 +55,8 @@ const PurpleTealTheme: ITheme = {
         onColor: '#ffffff',
       },
       normal: {
-        color: 'rgba(98,0,238,1)',
+        color: '#6200ee',
+        // color: 'rgb(98,0,238)',
         onColor: '#ffffff',
       },
     },

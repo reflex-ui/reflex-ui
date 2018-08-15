@@ -2,7 +2,12 @@ import * as Color from 'color';
 import * as React from 'react';
 import { Platform, StyleSheet, TextStyle } from 'react-native';
 
-import { ITheme, ThemeContext } from '../../../styles';
+import {
+  FontWeight,
+  getFontWeight,
+  ITheme,
+  ThemeContext,
+} from '../../../styles';
 import LabelButton, {
   ILabelButtonProps,
   ILabelButtonStyle,
@@ -73,7 +78,13 @@ const getBackgroundColor: IGetBackgroundColor = ({
   // tslint:disable-next-line:no-console
   console.log('StyledLabelButton.getBackgroundColor() - state: ', state);
 
-  const bgColor: Color = Color(getThemeColor({ colorTheme, theme }));
+  // tslint:disable-next-line:no-console
+  console.log('StyledLabelButton.getBackgroundColor() - variant: ', variant);
+
+  // tslint:disable-next-line:no-console
+  console.log('StyledLabelButton.getBackgroundColor() - Color: ', Color);
+
+  const bgColor: Color = Color.rgb(getThemeColor({ colorTheme, theme }));
 
   // tslint:disable-next-line:no-console
   console.log(
@@ -118,15 +129,6 @@ const getBackgroundColor: IGetBackgroundColor = ({
     default:
       return bgColor.hex();
   }
-
-  /*
-  if (variant === Variant.DEFAULT || variant === Variant.OUTLINED) {
-    return 'transparent';
-  }
-  */
-  // if (isPressing) return primary ? 'green' : 'red';
-  // if (isHovering) return primary ? 'orange' : 'black';
-  // return getThemeColor({ colorTheme, theme });
 };
 
 type IGetLabelStyle = (
@@ -150,13 +152,12 @@ const getLabelStyle: IGetLabelStyle = ({
   return {
     color: getThemeColor({ colorTheme, onColor, theme }),
     fontSize: 14,
-    fontWeight: '500',
+    fontWeight: getFontWeight(FontWeight.WEIGHT_NORMAL),
     textTransform: 'uppercase',
     ...Platform.select({
       web: {
         MozOsxFontSmoothing: 'grayscale',
         WebkitFontSmoothing: 'antialiased',
-        appearance: 'none',
         userSelect: 'none',
       },
     }),

@@ -81,8 +81,6 @@ if (!raw.includes('REACT-NATIVE-WEB TYPINGS')) {
 
       export interface TextStyle {
           /** @platform web */
-          appearance?: string;
-          /** @platform web */
           fontFeatureSettings?: string;
           /** @platform web */
           MozOsxFontSmoothing?: string;
