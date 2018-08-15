@@ -152,7 +152,7 @@ const getLabelStyle: IGetLabelStyle = ({
   return {
     color: getThemeColor({ colorTheme, onColor, theme }),
     fontSize: 14,
-    fontWeight: getFontWeight(FontWeight.WEIGHT_NORMAL),
+    fontWeight: getFontWeight(FontWeight.WEIGHT_REGULAR),
     textTransform: 'uppercase',
     ...Platform.select({
       web: {
