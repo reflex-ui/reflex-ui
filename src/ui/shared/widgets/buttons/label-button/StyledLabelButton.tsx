@@ -1,3 +1,4 @@
+import * as Color from 'color';
 import * as React from 'react';
 import { Platform, StyleSheet, TextStyle } from 'react-native';
 
@@ -72,12 +73,60 @@ const getBackgroundColor: IGetBackgroundColor = ({
   // tslint:disable-next-line:no-console
   console.log('StyledLabelButton.getBackgroundColor() - state: ', state);
 
+  const bgColor: Color = Color(getThemeColor({ colorTheme, theme }));
+
+  // tslint:disable-next-line:no-console
+  console.log(
+    'StyledLabelButton.getBackgroundColor() - bgColor.hex(): ',
+    bgColor.hex(),
+  );
+
+  // tslint:disable-next-line:no-console
+  console.log(
+    'StyledLabelButton.getBackgroundColor() - bgColor.lighten(0).hex(): ',
+    bgColor.lighten(0).hex(),
+  );
+
+  // tslint:disable-next-line:no-console
+  console.log(
+    'StyledLabelButton.getBackgroundColor() - bgColor.lighten(.2).hex(): ',
+    bgColor.lighten(0.2).hex(),
+  );
+
+  // tslint:disable-next-line:no-console
+  console.log(
+    'StyledLabelButton.getBackgroundColor() - bgColor.fade(.2).toString(): ',
+    bgColor.fade(0.2).toString(),
+  );
+
+  if (variant === Variant.DEFAULT || variant === Variant.OUTLINED) {
+    switch (state) {
+      case ButtonState.HOVERED:
+        return bgColor.fade(0.94).toString();
+      case ButtonState.PRESSED:
+        return bgColor.fade(0.81).toString();
+      default:
+        return 'transparent';
+    }
+  }
+
+  switch (state) {
+    case ButtonState.HOVERED:
+      return bgColor.lighten(0.12).toString();
+    case ButtonState.PRESSED:
+      return bgColor.lighten(0.6).toString();
+    default:
+      return bgColor.hex();
+  }
+
+  /*
   if (variant === Variant.DEFAULT || variant === Variant.OUTLINED) {
     return 'transparent';
   }
+  */
   // if (isPressing) return primary ? 'green' : 'red';
   // if (isHovering) return primary ? 'orange' : 'black';
-  return getThemeColor({ colorTheme, theme });
+  // return getThemeColor({ colorTheme, theme });
 };
 
 type IGetLabelStyle = (
@@ -100,6 +149,17 @@ const getLabelStyle: IGetLabelStyle = ({
 
   return {
     color: getThemeColor({ colorTheme, onColor, theme }),
+    fontSize: 14,
+    fontWeight: '500',
+    textTransform: 'uppercase',
+    ...Platform.select({
+      web: {
+        MozOsxFontSmoothing: 'grayscale',
+        WebkitFontSmoothing: 'antialiased',
+        appearance: 'none',
+        userSelect: 'none',
+      },
+    }),
   };
 };
 
@@ -163,7 +223,7 @@ const getBorderStyle: IGetBorderStyle = ({
   console.log('StyledLabelButton.getBorderStyle() - variant: ', variant);
 
   let style: IBorderStyle = {
-    borderRadius: 4,
+    borderRadius: 2,
   };
 
   if (variant === Variant.OUTLINED) {

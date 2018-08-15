@@ -36,15 +36,15 @@ if (!raw.includes('REACT-NATIVE-WEB TYPINGS')) {
       //
       //////////////////////////////////////////////////////////////////////////
       export interface ImageProperties {
-          /** 
-           * When false, the image will not be draggable 
+          /**
+           * When false, the image will not be draggable
            * @platform web
            */
           draggable?: boolean;
       }
-      
+
       export interface TextInputProperties {
-          /** 
+          /**
            * Indicates whether the value of the control can be automatically completed by the browser
            * @platform web
            */
@@ -57,31 +57,35 @@ if (!raw.includes('REACT-NATIVE-WEB TYPINGS')) {
       }
 
       export interface SwitchProperties {
-          /** 
-           * The color of the thumb grip when the switch is turned on. 
+          /**
+           * The color of the thumb grip when the switch is turned on.
            * @platform web
            */
           activeThumbColor?: string;
-          /** 
-           * The color of the track when the switch is turned on.  
+          /**
+           * The color of the track when the switch is turned on.
            * @platform web
            */
           activeTrackColor?: string;
-          /** 
-           * The color of the thumb grip when the switch is turned off. 
+          /**
+           * The color of the thumb grip when the switch is turned off.
            * @platform web
            */
           thumbColor?: string;
-          /** 
+          /**
            * The color of the track when the switch is turned off.
            * @platform web
            */
           trackColor?: string;
       }
-      
+
       export interface TextStyle {
           /** @platform web */
+          appearance?: string;
+          /** @platform web */
           fontFeatureSettings?: string;
+          /** @platform web */
+          MozOsxFontSmoothing?: string;
           /** @platform web */
           textIndent?: string;
           /** @platform web */
@@ -93,14 +97,16 @@ if (!raw.includes('REACT-NATIVE-WEB TYPINGS')) {
           /** @platform web */
           unicodeBidi?: string;
           /** @platform web */
+          WebkitFontSmoothing?: string;
+          /** @platform web */
           wordWrap?: string;
-          /** 
-           * TextInput only! 
-           * @platform web 
+          /**
+           * TextInput only!
+           * @platform web
            */
           resize?: string;
       }
-      
+
       export interface ViewStyle {
           /** @platform web */
           animationDelay?: string;
@@ -205,44 +211,44 @@ if (!raw.includes('REACT-NATIVE-WEB TYPINGS')) {
           /** @platform web */
           willChange?: string;
       }
-      
+
       export interface TextProperties {
-          /** 
-           * Allows assistive technologies to present and support interaction with the view in a manner that is consistent with user expectations for similar views of that type. For example, marking a touchable view with an accessibilityRole of button. For compatibility with React Native accessibilityTraits and accessibilityComponentType are mapped to accessibilityRole. (This is implemented using ARIA roles.) 
+          /**
+           * Allows assistive technologies to present and support interaction with the view in a manner that is consistent with user expectations for similar views of that type. For example, marking a touchable view with an accessibilityRole of button. For compatibility with React Native accessibilityTraits and accessibilityComponentType are mapped to accessibilityRole. (This is implemented using ARIA roles.)
            * @platform web
            */
           accessibilityRole?: 'button' | 'heading' | 'label' | 'link' | 'listitem';
       }
-      
-      
+
+
       export interface CheckBoxProps extends ViewProperties {
-          /** 
-           * Invoked with the event when the value changes. 
+          /**
+           * Invoked with the event when the value changes.
            * @platform web
            */
           onChange?: Function;
-          /** 
-           * Invoked with the new value when the value changes. 
+          /**
+           * Invoked with the new value when the value changes.
            * @platform web
            */
           onValueChange?: Function;
-          /** 
-           * The value of the checkbox. If \`true\` the checkbox will be checked. 
+          /**
+           * The value of the checkbox. If \`true\` the checkbox will be checked.
            * @platform web
            */
           value?: boolean;
-          /** 
-           * If true, the user won't be able to interact with the checkbox. 
+          /**
+           * If true, the user won't be able to interact with the checkbox.
            * @platform web
            */
           disabled?: boolean;
-          /** 
+          /**
            * Customize the color of the checkbox.
-           * @platform web  
+           * @platform web
            */
           color?: string;
       }
-      
+
       export interface CheckBoxStatic extends React.ComponentClass<CheckBoxProps> {}
       export type CheckBox = CheckBoxStatic;
   `,
