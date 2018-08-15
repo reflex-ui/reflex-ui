@@ -6,6 +6,7 @@
     "tslint-react"
   ],
   "rules": {
+    "array-type": [false],
     "jsx-boolean-value": false,
     "jsx-no-lambda": false,
     "jsx-no-multiline-js": false,

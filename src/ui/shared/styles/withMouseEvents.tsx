@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ButtonState } from '../widgets/buttons/label-button/StyledLabelButton';
 
 interface IState {
   isHovering: boolean;
@@ -24,10 +25,18 @@ const withMouseEvents = <P extends any>(
           onMouseLeave={this.onMouseLeave}
           onPressIn={this.onPressIn}
           onPressOut={this.onPressOut}
+          state={this.getButtonState()}
           {...this.props}
         />
       );
     }
+
+    private getButtonState = (): ButtonState => {
+      if (this.props.disabled) return ButtonState.DISABLED;
+      if (this.state.isPressing) return ButtonState.PRESSED;
+      if (this.state.isHovering) return ButtonState.HOVERED;
+      return ButtonState.NORMAL;
+    };
 
     private onMouseEnter = (): void => {
       if (this.state.isHovering) return;

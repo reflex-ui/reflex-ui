@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, TextStyle } from 'react-native';
+import { Platform, StyleSheet, TextStyle } from 'react-native';
 
 import { ITheme, ThemeContext } from '../../../styles';
 import LabelButton, {
@@ -10,6 +10,13 @@ import LabelButton, {
 export type StyledLabelButtonProps = ILabelButtonStyleProps & ILabelButtonProps;
 
 export type IStyledLabelButton = React.ComponentType<StyledLabelButtonProps>;
+
+export enum ButtonState {
+  DISABLED,
+  NORMAL,
+  HOVERED,
+  PRESSED,
+}
 
 enum ColorTheme {
   PRIMARY_DARK,
@@ -38,9 +45,8 @@ export enum Variant {
 interface ILabelButtonStyleProps {
   colorTheme?: ColorTheme;
   fullWidth?: boolean;
-  isHovering?: boolean;
-  isPressing?: boolean;
   size?: Size;
+  state?: ButtonState;
   variant?: Variant;
 }
 
@@ -51,8 +57,7 @@ interface IThemed {
 type IGetBackgroundColor = (
   props: {
     colorTheme: ColorTheme;
-    isHovering?: boolean;
-    isPressing?: boolean;
+    state: ButtonState;
     theme: ITheme;
     variant: Variant;
   },
@@ -60,21 +65,13 @@ type IGetBackgroundColor = (
 
 const getBackgroundColor: IGetBackgroundColor = ({
   colorTheme,
-  isHovering,
-  isPressing,
+  state,
   theme,
   variant,
 }): string => {
   // tslint:disable-next-line:no-console
-  console.log(
-    'StyledLabelButton.getBackgroundColor() - isHovering: ',
-    isHovering,
-  );
-  // tslint:disable-next-line:no-console
-  console.log(
-    'StyledLabelButton.getBackgroundColor() - isPressing: ',
-    isPressing,
-  );
+  console.log('StyledLabelButton.getBackgroundColor() - state: ', state);
+
   if (variant === Variant.DEFAULT || variant === Variant.OUTLINED) {
     return 'transparent';
   }
@@ -180,6 +177,98 @@ const getBorderStyle: IGetBorderStyle = ({
   return style;
 };
 
+interface IBoxShadowStyle {
+  boxShadow?: string;
+  elevation?: number;
+  shadowColor?: string;
+  shadowOffset?: { width: number; height: number };
+  shadowOpacity?: number;
+  shadowRadius?: number;
+}
+
+type IGetBoxShadowStyle = (
+  props: { state: ButtonState; variant: Variant },
+) => IBoxShadowStyle;
+
+const getBoxShadowStyle: IGetBoxShadowStyle = ({
+  state,
+  variant,
+}): IBoxShadowStyle => {
+  if (
+    variant === Variant.CONTAINED ||
+    variant === Variant.DEFAULT ||
+    variant === Variant.OUTLINED
+  ) {
+    return {};
+  }
+
+  const androidShadows: number[] = [];
+  androidShadows[ButtonState.DISABLED] = 0;
+  androidShadows[ButtonState.NORMAL] = 2;
+  /*
+   * No hover state on native Android.
+   */
+  // androidShadows[ButtonState.HOVERED] = 0;
+  /**/
+  androidShadows[ButtonState.PRESSED] = 8;
+
+  const iosShadows: {}[] = [];
+  iosShadows[ButtonState.DISABLED] = {};
+  iosShadows[ButtonState.NORMAL] = {
+    shadowColor: '#000000',
+    shadowOffset: { height: 1.6 },
+    shadowOpacity: 0.2,
+    shadowRadius: 1,
+  };
+  /*
+   * No hover state on native iOS.
+   */
+  // iosShadows[ButtonState.HOVERED] = {};
+  /**/
+  iosShadows[ButtonState.PRESSED] = {
+    shadowColor: '#000000',
+    shadowOffset: { height: 5 },
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+  };
+
+  const webShadows: string[] = [];
+  webShadows[ButtonState.DISABLED] = '0 0 0 0 rgba(0,0,0,0)';
+  webShadows[ButtonState.NORMAL] = `0 3px 1px -2px rgba(0,0,0,.2),
+    0 2px 2px 0 rgba(0,0,0,.14),
+    0 1px 5px 0 rgba(0,0,0,.12)`;
+  webShadows[ButtonState.HOVERED] = `0px 2px 4px -1px rgba(0,0,0,.2),
+  0px 4px 5px 0px rgba(0,0,0,.14),
+  0px 1px 10px 0px rgba(0,0,0,.12)`;
+  webShadows[ButtonState.PRESSED] = `0px 5px 5px -3px rgba(0,0,0,.2),
+  0px 8px 10px 1px rgba(0,0,0,.14),
+  0px 3px 14px 2px rgba(0,0,0,.12)`;
+
+  const style = Platform.select({
+    android: {
+      elevation: androidShadows[state],
+    },
+    ios: { ...iosShadows[state] },
+    web: {
+      boxShadow: webShadows[state],
+    },
+  });
+
+  // alert(`getBoxShadowStyle() - style.elevation: ${style.elevation}`);
+  // tslint:disable-next-line:no-console
+  console.log('getBoxShadowStyle() - style: ', style);
+
+  return Platform.select({
+    android: {
+      elevation: androidShadows[state],
+    },
+    ios: { ...iosShadows[state] },
+    web: {
+      boxShadow: webShadows[state],
+    },
+  });
+};
+
 interface IMarginPaddingStyle {
   marginHorizontal?: number;
   marginVertical?: number;
@@ -253,9 +342,8 @@ const getWidthHeightStyle: IGetWidthHeightStyle = ({
 const getStyle = ({
   colorTheme = ColorTheme.PRIMARY_NORMAL,
   fullWidth,
-  isHovering,
-  isPressing,
   size = Size.MEDIUM,
+  state = ButtonState.NORMAL,
   theme,
   variant = Variant.DEFAULT,
 }: ILabelButtonStyleProps & IThemed): ILabelButtonStyle =>
@@ -264,13 +352,13 @@ const getStyle = ({
       alignItems: 'center',
       backgroundColor: getBackgroundColor({
         colorTheme,
-        isHovering,
-        isPressing,
+        state,
         theme,
         variant,
       }),
       flexDirection: fullWidth ? 'column' : 'row',
       ...getBorderStyle({ colorTheme, theme, variant }),
+      ...getBoxShadowStyle({ state, variant }),
       ...getMarginPaddingStyle({ variant }),
       ...getWidthHeightStyle({ size }),
       justifyContent: 'center',
@@ -286,9 +374,8 @@ const getStyle = ({
 const Button: IStyledLabelButton = ({
   colorTheme,
   fullWidth,
-  isHovering,
-  isPressing,
   size,
+  state,
   variant,
   ...other // tslint:disable-line:trailing-comma
 }: StyledLabelButtonProps): JSX.Element => (
@@ -299,9 +386,8 @@ const Button: IStyledLabelButton = ({
         customStyle={getStyle({
           colorTheme,
           fullWidth,
-          isHovering,
-          isPressing,
           size,
+          state,
           theme,
           variant,
         })}
