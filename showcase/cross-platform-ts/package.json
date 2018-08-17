@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "web": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "ios": "react-native run-ios",
+    "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug && cd ../ && node node_modules/react-native/local-cli/cli.js start --port 8082",
+    "test": "jest --coverage",
+    "lint": "tslint -p tsconfig.json -c tslint.json",
+    "rebuild": "rm -rf ios; rm -rf android; react-native upgrade; rm -f .babelrc; rm -f .buckconfig; rm -f .flowconfig; rm -f .watchmanconfig; rm -f .gitattributes;",
+    "postinstall": "node ./scripts/react-native-web-tsd.js"
+  },
+  "dependencies": {
+    "react-platform-material-design": "^0.1.0",
+    "react-native-navigation": "^2.0.2461",
+    "react-router-dom": "^4.3.1",
+    "react-scripts-ts": "^2.17.0"
+  }
+}

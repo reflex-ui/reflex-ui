@@ -1,0 +1,37 @@
+{
+  "name": "react-platform-material-design",
+  "description": "Cross-Platform React Native & Web components for iOS, Android & Web based on Google's Material Design.",
+  "author": {
+    "name": "Flavio Silva",
+    "email": "flsilva7@gmail.com",
+    "url": "http://flsilva.com/"
+  },
+  "version": "0.1.0",
+  "private": false,
+  "keywords": [
+    "react",
+    "react-dom",
+    "react-native",
+    "react-native-web",
+    "react-platform",
+    "material-design",
+    "cross-platform",
+    "ui-components",
+    "user-interface"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flsilva/react-platform-material-design.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flsilva/react-platform-material-design.git/issues"
+  },
+  "homepage": "https://github.com/flsilva/react-platform-material-design",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "color": "^3.0.0"
+  }
+}
