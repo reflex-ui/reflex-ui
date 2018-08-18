@@ -31,7 +31,15 @@
   "publishConfig": {
     "access": "public"
   },
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "dependencies": {
     "color": "^3.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-native": "0.56.0",
+    "react-native-web": "^0.8.9"
   }
 }

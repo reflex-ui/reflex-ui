@@ -17,6 +17,13 @@
     "removeComments": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["coverage", "node_modules"]
+  "exclude": [
+    "**/node_modules/*",
+    "**/build/*",
+    "**/scripts/*",
+    "**/acceptance-tests/*",
+    "**/webpack/*",
+    "**/jest/*",
+    "**/setupTests.ts"
+  ]
 }
