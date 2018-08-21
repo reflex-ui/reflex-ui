@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "strict": true,
-    "baseUrl": ".",
     "module": "esnext",
     "moduleResolution": "node",
     "target": "es5",
@@ -18,12 +17,9 @@
     "skipLibCheck": true
   },
   "exclude": [
-    "**/node_modules/*",
     "**/build/*",
-    "**/scripts/*",
-    "**/acceptance-tests/*",
-    "**/webpack/*",
-    "**/jest/*",
-    "**/setupTests.ts"
+    "**/coverage/*",
+    "**/node_modules/*",
+    "**/scripts/*"
   ]
 }

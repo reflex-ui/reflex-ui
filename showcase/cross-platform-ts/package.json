@@ -7,7 +7,7 @@
     "web": "react-app-rewired start --scripts-version react-scripts-ts",
     "build": "react-app-rewired build --scripts-version react-scripts-ts",
     "ios": "react-native run-ios",
-    "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug && cd ../ && node node_modules/react-native/local-cli/cli.js start --port 8082",
+    "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug && cd ../../../ && node node_modules/react-native/local-cli/cli.js start --config ../../../../showcase/cross-platform-ts/rn-cli.config.js --reset-cache --port 8082",
     "test": "react-app-rewired test --scripts-version react-scripts-ts --env=jsdom",
     "eject": "react-scripts-ts eject",
     "lint": "tslint -p tsconfig.json -c tslint.json",
