@@ -1,6 +1,5 @@
 import * as React from 'react';
-
-import { PurpleTealTheme, ThemeContext } from '../../ui/shared/styles';
+import { PurpleTealTheme, ThemeContext } from 'react-platform-material-design';
 
 export type IWithMouseEvents = <P>(
   WrappedComponent: React.ComponentType<P>,

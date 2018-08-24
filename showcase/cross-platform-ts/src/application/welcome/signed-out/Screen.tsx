@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { Text, View } from 'react-native';
-import { test } from 'react-platform-material-design';
-
-import { RowView } from '../../../ui/shared/layout';
-import { LabelButton, LabelButtonVariant } from '../../../ui/shared/widgets';
-
-test('Hi');
+import {
+  LabelButton,
+  LabelButtonVariant,
+  RowView,
+} from 'react-platform-material-design';
 
 const Screen: React.SFC = (): JSX.Element => (
   <View>
