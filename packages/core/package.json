@@ -32,10 +32,16 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
+  "main": "build/dist/index.js",
+  "types": "build/dist/index.d.ts",
+  "files": [
+    "build/dist"
+  ],
   "dependencies": {
     "color": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/color": "^3.0.0"
   },
   "peerDependencies": {
     "react": "^16.4.2",

@@ -10,10 +10,10 @@
     "showcase/*"
   ],
   "scripts": {
-    "postinstall": "node ./scripts/react-native-web-tsd.js"
+    "postinstall": "node ./scripts/react-native-web-tsd.js",
+    "start": "tsc -w -p packages/core/tsconfig.json"
   },
   "devDependencies": {
-    "@types/color": "^3.0.0",
     "@types/history": "^4.7.0",
     "@types/jest": "^23.3.1",
     "@types/react": "^16.4.11",
