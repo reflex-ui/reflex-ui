@@ -12,7 +12,6 @@ const Screen: React.SFC = (): JSX.Element => (
     <RowView>
       <LabelButton onPress={() => alert('onPress')}>Sign In</LabelButton>
       <LabelButton
-        fullWidth
         onPress={() => alert('onPress')}
         variant={LabelButtonVariant.CONTAINED}
       >
@@ -31,6 +30,15 @@ const Screen: React.SFC = (): JSX.Element => (
         Sign In
       </LabelButton>
     </RowView>
+    <View>
+      <LabelButton
+        fullWidth
+        onPress={() => alert('onPress')}
+        variant={LabelButtonVariant.CONTAINED}
+      >
+        Sign Out
+      </LabelButton>
+    </View>
     <RowView>
       <LabelButton
         fullWidth

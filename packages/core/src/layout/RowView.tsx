@@ -9,7 +9,7 @@ export interface IContainerStyle {
   container: ViewStyle;
 }
 
-const styles: IContainerStyle = StyleSheet.create({
+const styles: IContainerStyle = StyleSheet.create<IContainerStyle>({
   container: {
     flexDirection: 'row',
     flexWrap: 'wrap',

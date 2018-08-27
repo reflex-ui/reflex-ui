@@ -9,9 +9,9 @@ import {
 } from 'react-native';
 
 export interface ILabelButtonStyle {
-  button: ViewStyle;
-  container: ViewStyle;
+  innerContainer: ViewStyle;
   label: TextStyle;
+  outerContainer: ViewStyle;
 }
 
 export interface ILabelButtonProps extends TouchableWithoutFeedbackProps {
@@ -24,15 +24,15 @@ export interface ILabelButtonProps extends TouchableWithoutFeedbackProps {
 
 const Button: React.SFC<ILabelButtonProps> = ({
   children,
-  customStyle = { button: {}, container: {}, label: {} },
+  customStyle = { innerContainer: {}, label: {}, outerContainer: {} },
   leftIcon,
   onPress,
   rightIcon,
   ...buttonProps // tslint:disable-line:trailing-comma
 }: ILabelButtonProps): JSX.Element => (
-  <View style={customStyle.container}>
+  <View style={customStyle.outerContainer}>
     <TouchableWithoutFeedback {...buttonProps}>
-      <View style={customStyle.button}>
+      <View style={customStyle.innerContainer}>
         {leftIcon}
         {children && <Text style={customStyle.label}>{children}</Text>}
         {rightIcon}

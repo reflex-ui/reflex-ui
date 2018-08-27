@@ -2,12 +2,7 @@ import * as Color from 'color';
 import * as React from 'react';
 import { Platform, StyleSheet, TextStyle } from 'react-native';
 
-import {
-  FontWeight,
-  getFontWeight,
-  ITheme,
-  ThemeContext,
-} from '../../../styles';
+import { ITheme, ThemeContext } from '../../../styles';
 import LabelButton, {
   ILabelButtonProps,
   ILabelButtonStyle,
@@ -24,21 +19,21 @@ export enum ButtonState {
   PRESSED,
 }
 
-enum ColorTheme {
+enum ColorVariant {
   PRIMARY_DARK,
   PRIMARY_LIGHT,
   PRIMARY_NORMAL,
-  SECONDAY_DARK,
-  SECONDAY_LIGHT,
-  SECONDAY_NORMAL,
+  SECONDARY_DARK,
+  SECONDARY_LIGHT,
+  SECONDARY_NORMAL,
 }
 
 enum Size {
-  XSMALL,
-  SMALL,
-  MEDIUM,
-  LARGE,
-  XLARGE,
+  XSMALL = 'xsmall',
+  SMALL = 'small',
+  REGULAR = 'regular',
+  LARGE = 'large',
+  XLARGE = 'xlarge',
 }
 
 export enum Variant {
@@ -49,7 +44,7 @@ export enum Variant {
 }
 
 interface ILabelButtonStyleProps {
-  colorTheme?: ColorTheme;
+  colorVariant?: ColorVariant;
   fullWidth?: boolean;
   size?: Size;
   state?: ButtonState;
@@ -62,7 +57,7 @@ interface IThemed {
 
 type IGetBackgroundColor = (
   props: {
-    colorTheme: ColorTheme;
+    colorVariant: ColorVariant;
     state: ButtonState;
     theme: ITheme;
     variant: Variant;
@@ -70,7 +65,7 @@ type IGetBackgroundColor = (
 ) => string;
 
 const getBackgroundColor: IGetBackgroundColor = ({
-  colorTheme,
+  colorVariant,
   state,
   theme,
   variant,
@@ -84,7 +79,7 @@ const getBackgroundColor: IGetBackgroundColor = ({
   // tslint:disable-next-line:no-console
   console.log('StyledLabelButton.getBackgroundColor() - Color: ', Color);
 
-  const bgColor: Color = Color.rgb(getThemeColor({ colorTheme, theme }));
+  const bgColor: Color = Color.rgb(getThemedColor({ colorVariant, theme }));
 
   // tslint:disable-next-line:no-console
   console.log(
@@ -133,14 +128,16 @@ const getBackgroundColor: IGetBackgroundColor = ({
 
 type IGetLabelStyle = (
   props: {
-    colorTheme: ColorTheme;
+    colorVariant: ColorVariant;
+    size: Size;
     theme: ITheme;
     variant: Variant;
   },
 ) => TextStyle;
 
 const getLabelStyle: IGetLabelStyle = ({
-  colorTheme,
+  colorVariant,
+  size,
   theme,
   variant,
 }): TextStyle => {
@@ -150,10 +147,12 @@ const getLabelStyle: IGetLabelStyle = ({
       : false;
 
   return {
-    color: getThemeColor({ colorTheme, onColor, theme }),
-    fontSize: 14,
-    fontWeight: getFontWeight(FontWeight.WEIGHT_REGULAR),
-    textTransform: 'uppercase',
+    color: getThemedColor({ colorVariant, onColor, theme }),
+    fontFamily: theme.components.button[size].label.fontFamily,
+    fontSize: theme.components.button[size].label.fontSize,
+    fontWeight: theme.components.button[size].label.fontWeight,
+    letterSpacing: theme.components.button[size].label.letterSpacing,
+    textTransform: theme.components.button[size].label.textTransform,
     ...Platform.select({
       web: {
         MozOsxFontSmoothing: 'grayscale',
@@ -164,41 +163,41 @@ const getLabelStyle: IGetLabelStyle = ({
   };
 };
 
-type IGetThemeColor = (
+type IGetThemedColor = (
   props: {
-    colorTheme: ColorTheme;
+    colorVariant: ColorVariant;
     onColor?: boolean;
     theme: ITheme;
   },
 ) => string;
 
-const getThemeColor: IGetThemeColor = ({
-  colorTheme,
+const getThemedColor: IGetThemedColor = ({
+  colorVariant,
   onColor,
   theme,
 }): string => {
-  switch (colorTheme) {
-    case ColorTheme.PRIMARY_DARK:
+  switch (colorVariant) {
+    case ColorVariant.PRIMARY_DARK:
       return onColor
         ? theme.palette.primary.dark.onColor
         : theme.palette.primary.dark.color;
-    case ColorTheme.PRIMARY_LIGHT:
+    case ColorVariant.PRIMARY_LIGHT:
       return onColor
         ? theme.palette.primary.light.onColor
         : theme.palette.primary.light.color;
-    case ColorTheme.PRIMARY_NORMAL:
+    case ColorVariant.PRIMARY_NORMAL:
       return onColor
         ? theme.palette.primary.normal.onColor
         : theme.palette.primary.normal.color;
-    case ColorTheme.SECONDAY_DARK:
+    case ColorVariant.SECONDARY_DARK:
       return onColor
         ? theme.palette.secondary.dark.onColor
         : theme.palette.secondary.dark.color;
-    case ColorTheme.SECONDAY_LIGHT:
+    case ColorVariant.SECONDARY_LIGHT:
       return onColor
         ? theme.palette.secondary.light.onColor
         : theme.palette.secondary.light.color;
-    case ColorTheme.SECONDAY_NORMAL:
+    case ColorVariant.SECONDARY_NORMAL:
       return onColor
         ? theme.palette.secondary.normal.onColor
         : theme.palette.secondary.normal.color;
@@ -212,11 +211,11 @@ interface IBorderStyle {
 }
 
 type IGetBorderStyle = (
-  props: { colorTheme: ColorTheme; theme: ITheme; variant: Variant },
+  props: { colorVariant: ColorVariant; theme: ITheme; variant: Variant },
 ) => IBorderStyle;
 
 const getBorderStyle: IGetBorderStyle = ({
-  colorTheme,
+  colorVariant,
   theme,
   variant,
 }): IBorderStyle => {
@@ -230,7 +229,7 @@ const getBorderStyle: IGetBorderStyle = ({
   if (variant === Variant.OUTLINED) {
     style = {
       ...style,
-      borderColor: getThemeColor({ colorTheme, theme }),
+      borderColor: getThemedColor({ colorVariant, theme }),
       borderWidth: 2,
     };
   }
@@ -391,7 +390,7 @@ const getWidthHeightStyle: IGetWidthHeightStyle = ({
       return { height: 28, minWidth: 58 };
     case Size.SMALL:
       return { height: 32, minWidth: 64 };
-    case Size.MEDIUM:
+    case Size.REGULAR:
       return { height: 36, minWidth: 64 };
     case Size.LARGE:
       return { height: 40, minWidth: 64 };
@@ -401,39 +400,40 @@ const getWidthHeightStyle: IGetWidthHeightStyle = ({
 };
 
 const getStyle = ({
-  colorTheme = ColorTheme.PRIMARY_NORMAL,
+  colorVariant = ColorVariant.PRIMARY_NORMAL,
   fullWidth,
-  size = Size.MEDIUM,
+  size = Size.REGULAR,
   state = ButtonState.NORMAL,
   theme,
   variant = Variant.DEFAULT,
 }: ILabelButtonStyleProps & IThemed): ILabelButtonStyle =>
   StyleSheet.create<ILabelButtonStyle>({
-    button: {
+    innerContainer: {
       alignItems: 'center',
       backgroundColor: getBackgroundColor({
-        colorTheme,
+        colorVariant,
         state,
         theme,
         variant,
       }),
       flexDirection: fullWidth ? 'column' : 'row',
-      ...getBorderStyle({ colorTheme, theme, variant }),
+      ...getBorderStyle({ colorVariant, theme, variant }),
       ...getBoxShadowStyle({ state, variant }),
       ...getMarginPaddingStyle({ variant }),
       ...getWidthHeightStyle({ size }),
       justifyContent: 'center',
     },
-    container: {
-      flexDirection: fullWidth ? 'column' : 'row',
-    },
     label: {
-      ...getLabelStyle({ colorTheme, theme, variant }),
+      ...getLabelStyle({ colorVariant, size, theme, variant }),
+    },
+    outerContainer: {
+      flexDirection: fullWidth ? 'column' : 'row',
+      flexGrow: fullWidth ? 1 : undefined,
     },
   });
 
 const Button: IStyledLabelButton = ({
-  colorTheme,
+  colorVariant,
   fullWidth,
   size,
   state,
@@ -445,7 +445,7 @@ const Button: IStyledLabelButton = ({
       <LabelButton
         {...other}
         customStyle={getStyle({
-          colorTheme,
+          colorVariant,
           fullWidth,
           size,
           state,
