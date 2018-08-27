@@ -45,7 +45,7 @@ const Screen: React.SFC = (): JSX.Element => (
         onPress={() => alert('onPress')}
         variant={LabelButtonVariant.CONTAINED}
       >
-        sign out
+        Sign Out
       </LabelButton>
     </RowView>
   </View>

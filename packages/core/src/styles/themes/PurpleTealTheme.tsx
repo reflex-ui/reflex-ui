@@ -1,5 +1,5 @@
 import { FontWeight, FontWeightValues, getFontWeight } from '../';
-import { TextTransformation } from '../../';
+import { TextTransformation } from '../../widgets/TextTransformation';
 
 export interface IThemePaletteColor {
   readonly color: string;
@@ -86,7 +86,7 @@ const PurpleTealTheme: ITheme = {
           fontSize: 15,
           fontWeight: getFontWeight(FontWeight.MEDIUM),
           letterSpacing: 1,
-          textTransform: 'uppercase',
+          textTransform: TextTransformation.UPPERCASE,
         },
       },
       regular: {
@@ -95,7 +95,7 @@ const PurpleTealTheme: ITheme = {
           fontSize: 14,
           fontWeight: getFontWeight(FontWeight.MEDIUM),
           letterSpacing: 0.75,
-          textTransform: 'uppercase',
+          textTransform: TextTransformation.UPPERCASE,
         },
       },
       small: {
@@ -104,7 +104,7 @@ const PurpleTealTheme: ITheme = {
           fontSize: 13,
           fontWeight: getFontWeight(FontWeight.MEDIUM),
           letterSpacing: 0.5,
-          textTransform: 'uppercase',
+          textTransform: TextTransformation.UPPERCASE,
         },
       },
       xlarge: {
@@ -113,7 +113,7 @@ const PurpleTealTheme: ITheme = {
           fontSize: 16,
           fontWeight: getFontWeight(FontWeight.MEDIUM),
           letterSpacing: 1.25,
-          textTransform: 'uppercase',
+          textTransform: TextTransformation.UPPERCASE,
         },
       },
       xsmall: {
@@ -122,7 +122,7 @@ const PurpleTealTheme: ITheme = {
           fontSize: 12,
           fontWeight: getFontWeight(FontWeight.MEDIUM),
           letterSpacing: 0.25,
-          textTransform: 'uppercase',
+          textTransform: TextTransformation.UPPERCASE,
         },
       },
     },
@@ -174,7 +174,7 @@ const PurpleTealTheme: ITheme = {
         fontSize: 10,
         fontWeight: getFontWeight(FontWeight.REGULAR),
         letterSpacing: 1.5,
-        textTransform: 'uppercase',
+        textTransform: TextTransformation.UPPERCASE,
       },
       paragraph1: {
         fontFamily: getFontFamily(),

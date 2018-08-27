@@ -409,17 +409,17 @@ type ITransformText = (
 
 const transformText: ITransformText = ({
   text,
-  transformation = 'none',
+  transformation = TextTransformation.NONE,
 }): string => {
   switch (transformation) {
-    case 'capitalize':
+    case TextTransformation.CAPITALIZE:
       return text.replace(
         /\w\S*/g,
         w => w.charAt(0).toUpperCase() + w.substr(1).toLowerCase(),
       );
-    case 'lowercase':
+    case TextTransformation.LOWERCASE:
       return text.toLowerCase();
-    case 'uppercase':
+    case TextTransformation.UPPERCASE:
       return text.toUpperCase();
     default:
       return text;
