@@ -13,6 +13,12 @@ const Screen: React.SFC = (): JSX.Element => (
       <LabelButton onPress={() => alert('onPress')}>Sign In</LabelButton>
       <LabelButton
         onPress={() => alert('onPress')}
+        variant={LabelButtonVariant.OUTLINED}
+      >
+        Sign In
+      </LabelButton>
+      <LabelButton
+        onPress={() => alert('onPress')}
         variant={LabelButtonVariant.CONTAINED}
       >
         Sign In
@@ -20,12 +26,6 @@ const Screen: React.SFC = (): JSX.Element => (
       <LabelButton
         onPress={() => alert('onPress')}
         variant={LabelButtonVariant.CONTAINED_RAISED}
-      >
-        Sign In
-      </LabelButton>
-      <LabelButton
-        onPress={() => alert('onPress')}
-        variant={LabelButtonVariant.OUTLINED}
       >
         Sign In
       </LabelButton>
@@ -45,7 +45,7 @@ const Screen: React.SFC = (): JSX.Element => (
         onPress={() => alert('onPress')}
         variant={LabelButtonVariant.CONTAINED}
       >
-        Sign Out
+        sign out
       </LabelButton>
     </RowView>
   </View>

@@ -1,4 +1,5 @@
 import { FontWeight, FontWeightValues, getFontWeight } from '../';
+import { TextTransformation } from '../../';
 
 export interface IThemePaletteColor {
   readonly color: string;
@@ -20,7 +21,7 @@ export interface ITypographyElement {
   readonly marginTop?: number;
   readonly paddingBottom?: number;
   readonly paddingTop?: number;
-  readonly textTransform?: string;
+  readonly textTransform?: TextTransformation;
 }
 
 export interface ITypographyComponents {

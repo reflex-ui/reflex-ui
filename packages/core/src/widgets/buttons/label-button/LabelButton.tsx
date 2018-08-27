@@ -14,27 +14,34 @@ export interface ILabelButtonStyle {
   outerContainer: ViewStyle;
 }
 
-export interface ILabelButtonProps extends TouchableWithoutFeedbackProps {
+export interface ILabelButtonStyleAndChildren {
   children?: React.ReactNode;
-  customStyle?: ILabelButtonStyle;
+  styles: ILabelButtonStyle;
+}
+
+export interface ILabelButtonProps extends TouchableWithoutFeedbackProps {
+  customStyle?: ILabelButtonStyleAndChildren;
   leftIcon?: JSX.Element;
   onPress: () => any;
   rightIcon?: JSX.Element;
 }
 
 const Button: React.SFC<ILabelButtonProps> = ({
-  children,
-  customStyle = { innerContainer: {}, label: {}, outerContainer: {} },
+  customStyle = {
+    styles: { innerContainer: {}, label: {}, outerContainer: {} },
+  },
   leftIcon,
   onPress,
   rightIcon,
   ...buttonProps // tslint:disable-line:trailing-comma
 }: ILabelButtonProps): JSX.Element => (
-  <View style={customStyle.outerContainer}>
+  <View style={customStyle.styles.outerContainer}>
     <TouchableWithoutFeedback {...buttonProps}>
-      <View style={customStyle.innerContainer}>
+      <View style={customStyle.styles.innerContainer}>
         {leftIcon}
-        {children && <Text style={customStyle.label}>{children}</Text>}
+        {customStyle.children && (
+          <Text style={customStyle.styles.label}>{customStyle.children}</Text>
+        )}
         {rightIcon}
       </View>
     </TouchableWithoutFeedback>

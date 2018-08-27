@@ -3,9 +3,12 @@ import * as React from 'react';
 import { Platform, StyleSheet, TextStyle } from 'react-native';
 
 import { ITheme, ThemeContext } from '../../../styles';
+import { isAndroid } from '../../../utils';
+import { TextTransformation } from '../../TextTransformation';
 import LabelButton, {
   ILabelButtonProps,
   ILabelButtonStyle,
+  ILabelButtonStyleAndChildren,
 } from './LabelButton';
 
 export type StyledLabelButtonProps = ILabelButtonStyleProps & ILabelButtonProps;
@@ -44,6 +47,7 @@ export enum Variant {
 }
 
 interface ILabelButtonStyleProps {
+  children?: React.ReactNode;
   colorVariant?: ColorVariant;
   fullWidth?: boolean;
   size?: Size;
@@ -399,15 +403,71 @@ const getWidthHeightStyle: IGetWidthHeightStyle = ({
   }
 };
 
-const getStyle = ({
+type ITransformText = (
+  props: { text: string; transformation?: TextTransformation },
+) => string;
+
+const transformText: ITransformText = ({
+  text,
+  transformation = 'none',
+}): string => {
+  switch (transformation) {
+    case 'capitalize':
+      return text.replace(
+        /\w\S*/g,
+        w => w.charAt(0).toUpperCase() + w.substr(1).toLowerCase(),
+      );
+    case 'lowercase':
+      return text.toLowerCase();
+    case 'uppercase':
+      return text.toUpperCase();
+    default:
+      return text;
+  }
+};
+
+type IGetStyledChildren = (
+  props: { children: React.ReactNode; size: Size; theme: ITheme },
+) => React.ReactNode;
+
+const getStyledChildren: IGetStyledChildren = ({
+  children,
+  size,
+  theme,
+}): React.ReactNode =>
+  // prettier-ignore
+  typeof children === 'string' && isAndroid
+    ? transformText({
+      text: children,
+      transformation: theme.components.button[size].label.textTransform,
+    })
+    : children;
+
+/*
+type IGetStyle = (props: { children: React.ReactNode,
+  colorVariant: ColorVariant,
+  fullWidth: boolean,
+  size: Size,
+  state: ButtonState,
+  theme: ITheme,
+  variant: Variant }) => IWidthHeightStyle;
+*/
+
+type IGetStyle = (
+  props: ILabelButtonStyleProps & IThemed,
+) => ILabelButtonStyleAndChildren;
+
+const getStyle: IGetStyle = ({
+  children,
   colorVariant = ColorVariant.PRIMARY_NORMAL,
   fullWidth,
   size = Size.REGULAR,
   state = ButtonState.NORMAL,
   theme,
   variant = Variant.DEFAULT,
-}: ILabelButtonStyleProps & IThemed): ILabelButtonStyle =>
-  StyleSheet.create<ILabelButtonStyle>({
+}: ILabelButtonStyleProps & IThemed): ILabelButtonStyleAndChildren => ({
+  children: getStyledChildren({ children, size, theme }),
+  styles: StyleSheet.create<ILabelButtonStyle>({
     innerContainer: {
       alignItems: 'center',
       backgroundColor: getBackgroundColor({
@@ -430,9 +490,11 @@ const getStyle = ({
       flexDirection: fullWidth ? 'column' : 'row',
       flexGrow: fullWidth ? 1 : undefined,
     },
-  });
+  }),
+});
 
 const Button: IStyledLabelButton = ({
+  children,
   colorVariant,
   fullWidth,
   size,
@@ -445,6 +507,7 @@ const Button: IStyledLabelButton = ({
       <LabelButton
         {...other}
         customStyle={getStyle({
+          children,
           colorVariant,
           fullWidth,
           size,
