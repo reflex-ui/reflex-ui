@@ -39,7 +39,15 @@ export interface ITypographyComponents {
   readonly subtitle2: ITypographyElement;
 }
 
+export interface IButtonInnerContainer {
+  readonly height?: number;
+  readonly minHeight?: number;
+  readonly minWidth?: number;
+  readonly width?: number;
+}
+
 export interface IButtonTheme {
+  readonly innerContainer: IButtonInnerContainer;
   readonly label: ITypographyElement;
 }
 
@@ -81,6 +89,10 @@ const PurpleTealTheme: ITheme = {
   components: {
     button: {
       large: {
+        innerContainer: {
+          height: 40,
+          minWidth: 64,
+        },
         label: {
           fontFamily: getFontFamily(),
           fontSize: 15,
@@ -90,6 +102,10 @@ const PurpleTealTheme: ITheme = {
         },
       },
       regular: {
+        innerContainer: {
+          height: 36,
+          minWidth: 64,
+        },
         label: {
           fontFamily: getFontFamily(),
           fontSize: 14,
@@ -99,6 +115,10 @@ const PurpleTealTheme: ITheme = {
         },
       },
       small: {
+        innerContainer: {
+          height: 32,
+          minWidth: 64,
+        },
         label: {
           fontFamily: getFontFamily(),
           fontSize: 13,
@@ -108,6 +128,10 @@ const PurpleTealTheme: ITheme = {
         },
       },
       xlarge: {
+        innerContainer: {
+          height: 44,
+          minWidth: 70,
+        },
         label: {
           fontFamily: getFontFamily(),
           fontSize: 16,
@@ -117,6 +141,10 @@ const PurpleTealTheme: ITheme = {
         },
       },
       xsmall: {
+        innerContainer: {
+          height: 28,
+          minWidth: 58,
+        },
         label: {
           fontFamily: getFontFamily(),
           fontSize: 12,

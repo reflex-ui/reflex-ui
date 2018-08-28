@@ -4,6 +4,7 @@ import { Platform, StyleSheet, TextStyle } from 'react-native';
 
 import { ITheme, ThemeContext } from '../../../styles';
 import { isAndroid } from '../../../utils';
+import { Size } from '../../Size';
 import { TextTransformation } from '../../TextTransformation';
 import LabelButton, {
   ILabelButtonProps,
@@ -29,14 +30,6 @@ enum ColorVariant {
   SECONDARY_DARK,
   SECONDARY_LIGHT,
   SECONDARY_NORMAL,
-}
-
-enum Size {
-  XSMALL = 'xsmall',
-  SMALL = 'small',
-  REGULAR = 'regular',
-  LARGE = 'large',
-  XLARGE = 'xlarge',
 }
 
 export enum Variant {
@@ -374,34 +367,21 @@ const getMarginPaddingStyle: IGetMarginPaddingStyle = ({
   return style;
 };
 
-interface IWidthHeightStyle {
+interface ISizeStyle {
   height?: number;
   minHeight?: number;
   minWidth?: number;
   width?: number;
 }
 
-type IGetWidthHeightStyle = (props: { size: Size }) => IWidthHeightStyle;
+type IGetSizeStyle = (props: { size: Size; theme: ITheme }) => ISizeStyle;
 
-const getWidthHeightStyle: IGetWidthHeightStyle = ({
-  size,
-}): IWidthHeightStyle => {
-  // tslint:disable-next-line:no-console
-  console.log('StyledLabelButton.getWidthHeightStyle() - size: ', size);
-
-  switch (size) {
-    case Size.XSMALL:
-      return { height: 28, minWidth: 58 };
-    case Size.SMALL:
-      return { height: 32, minWidth: 64 };
-    case Size.REGULAR:
-      return { height: 36, minWidth: 64 };
-    case Size.LARGE:
-      return { height: 40, minWidth: 64 };
-    case Size.XLARGE:
-      return { height: 44, minWidth: 70 };
-  }
-};
+const getSizeStyle: IGetSizeStyle = ({ size, theme }): ISizeStyle => ({
+  height: theme.components.button[size].innerContainer.height,
+  minHeight: theme.components.button[size].innerContainer.minHeight,
+  minWidth: theme.components.button[size].innerContainer.minWidth,
+  width: theme.components.button[size].innerContainer.width,
+});
 
 type ITransformText = (
   props: { text: string; transformation?: TextTransformation },
@@ -443,16 +423,6 @@ const getStyledChildren: IGetStyledChildren = ({
     })
     : children;
 
-/*
-type IGetStyle = (props: { children: React.ReactNode,
-  colorVariant: ColorVariant,
-  fullWidth: boolean,
-  size: Size,
-  state: ButtonState,
-  theme: ITheme,
-  variant: Variant }) => IWidthHeightStyle;
-*/
-
 type IGetStyle = (
   props: ILabelButtonStyleProps & IThemed,
 ) => ILabelButtonStyleAndChildren;
@@ -480,7 +450,7 @@ const getStyle: IGetStyle = ({
       ...getBorderStyle({ colorVariant, theme, variant }),
       ...getBoxShadowStyle({ state, variant }),
       ...getMarginPaddingStyle({ variant }),
-      ...getWidthHeightStyle({ size }),
+      ...getSizeStyle({ size, theme }),
       justifyContent: 'center',
     },
     label: {
