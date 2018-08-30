@@ -2,9 +2,7 @@ export {
   default as withMouseEvents,
   IWithMouseEvents,
 } from './withMouseEvents';
-export {
-  default as getFontWeight,
-  FontWeight,
-  FontWeightValues,
-} from './getFontWeight';
+export * from './FontWeight';
+export * from './FontWeightValues';
+export { default as getFontWeight } from './getFontWeight';
 export * from './themes';

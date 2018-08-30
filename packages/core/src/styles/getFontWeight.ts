@@ -1,24 +1,6 @@
 import { isAndroid, isIOS } from '../utils';
-
-export enum FontWeight {
-  LIGHT,
-  REGULAR,
-  MEDIUM,
-  BOLD,
-}
-
-export type FontWeightValues =
-  | 'normal'
-  | 'bold'
-  | '100'
-  | '200'
-  | '300'
-  | '400'
-  | '500'
-  | '600'
-  | '700'
-  | '800'
-  | '900';
+import { FontWeight } from './FontWeight';
+import { FontWeightValues } from './FontWeightValues';
 
 const androidWeight: FontWeightValues[] = [];
 androidWeight[FontWeight.LIGHT] = '300';

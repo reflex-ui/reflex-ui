@@ -37,6 +37,32 @@ const Screen: React.SFC = (): JSX.Element => (
       </LabelButton>
     </RowView>
     <RowView>
+      <LabelButton onPress={() => null} size={Size.XSMALL}>
+        Ok
+      </LabelButton>
+      <LabelButton
+        onPress={() => alert('onPress')}
+        size={Size.XSMALL}
+        variant={LabelButtonVariant.OUTLINED}
+      >
+        Ok
+      </LabelButton>
+      <LabelButton
+        onPress={() => alert('onPress')}
+        size={Size.XSMALL}
+        variant={LabelButtonVariant.CONTAINED}
+      >
+        Ok
+      </LabelButton>
+      <LabelButton
+        onPress={() => alert('onPress')}
+        size={Size.XSMALL}
+        variant={LabelButtonVariant.CONTAINED_RAISED}
+      >
+        Ok
+      </LabelButton>
+    </RowView>
+    <RowView>
       <LabelButton onPress={() => null} size={Size.SMALL}>
         Sign In
       </LabelButton>
@@ -63,6 +89,32 @@ const Screen: React.SFC = (): JSX.Element => (
       </LabelButton>
     </RowView>
     <RowView>
+      <LabelButton onPress={() => null} size={Size.SMALL}>
+        Ok
+      </LabelButton>
+      <LabelButton
+        onPress={() => alert('onPress')}
+        size={Size.SMALL}
+        variant={LabelButtonVariant.OUTLINED}
+      >
+        Ok
+      </LabelButton>
+      <LabelButton
+        onPress={() => alert('onPress')}
+        size={Size.SMALL}
+        variant={LabelButtonVariant.CONTAINED}
+      >
+        Ok
+      </LabelButton>
+      <LabelButton
+        onPress={() => alert('onPress')}
+        size={Size.SMALL}
+        variant={LabelButtonVariant.CONTAINED_RAISED}
+      >
+        Ok
+      </LabelButton>
+    </RowView>
+    <RowView>
       <LabelButton onPress={() => null}>Sign In</LabelButton>
       <LabelButton
         onPress={() => alert('onPress')}
@@ -81,6 +133,27 @@ const Screen: React.SFC = (): JSX.Element => (
         variant={LabelButtonVariant.CONTAINED_RAISED}
       >
         Sign In
+      </LabelButton>
+    </RowView>
+    <RowView>
+      <LabelButton onPress={() => null}>Ok</LabelButton>
+      <LabelButton
+        onPress={() => alert('onPress')}
+        variant={LabelButtonVariant.OUTLINED}
+      >
+        Ok
+      </LabelButton>
+      <LabelButton
+        onPress={() => alert('onPress')}
+        variant={LabelButtonVariant.CONTAINED}
+      >
+        Ok
+      </LabelButton>
+      <LabelButton
+        onPress={() => alert('onPress')}
+        variant={LabelButtonVariant.CONTAINED_RAISED}
+      >
+        Ok
       </LabelButton>
     </RowView>
     <RowView>
@@ -110,6 +183,32 @@ const Screen: React.SFC = (): JSX.Element => (
       </LabelButton>
     </RowView>
     <RowView>
+      <LabelButton onPress={() => null} size={Size.LARGE}>
+        Ok
+      </LabelButton>
+      <LabelButton
+        onPress={() => alert('onPress')}
+        size={Size.LARGE}
+        variant={LabelButtonVariant.OUTLINED}
+      >
+        Ok
+      </LabelButton>
+      <LabelButton
+        onPress={() => alert('onPress')}
+        size={Size.LARGE}
+        variant={LabelButtonVariant.CONTAINED}
+      >
+        Ok
+      </LabelButton>
+      <LabelButton
+        onPress={() => alert('onPress')}
+        size={Size.LARGE}
+        variant={LabelButtonVariant.CONTAINED_RAISED}
+      >
+        Ok
+      </LabelButton>
+    </RowView>
+    <RowView>
       <LabelButton onPress={() => null} size={Size.XLARGE}>
         Sign In
       </LabelButton>
@@ -133,6 +232,32 @@ const Screen: React.SFC = (): JSX.Element => (
         variant={LabelButtonVariant.CONTAINED_RAISED}
       >
         Sign In
+      </LabelButton>
+    </RowView>
+    <RowView>
+      <LabelButton onPress={() => null} size={Size.XLARGE}>
+        Ok
+      </LabelButton>
+      <LabelButton
+        onPress={() => alert('onPress')}
+        size={Size.XLARGE}
+        variant={LabelButtonVariant.OUTLINED}
+      >
+        Ok
+      </LabelButton>
+      <LabelButton
+        onPress={() => alert('onPress')}
+        size={Size.XLARGE}
+        variant={LabelButtonVariant.CONTAINED}
+      >
+        Ok
+      </LabelButton>
+      <LabelButton
+        onPress={() => alert('onPress')}
+        size={Size.XLARGE}
+        variant={LabelButtonVariant.CONTAINED_RAISED}
+      >
+        Ok
       </LabelButton>
     </RowView>
     <View>
