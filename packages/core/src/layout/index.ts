@@ -1,1 +1,1 @@
-export { default as RowView } from './RowView';
+export * from './RowView';

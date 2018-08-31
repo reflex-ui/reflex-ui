@@ -7,7 +7,7 @@ import {
   Size,
 } from 'react-platform-material-design';
 
-const Screen: React.SFC = (): JSX.Element => (
+export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
     <Text>WelcomeSignedOutScreen 1234567</Text>
     <RowView>
@@ -281,5 +281,3 @@ const Screen: React.SFC = (): JSX.Element => (
     </RowView>
   </ScrollView>
 );
-
-export default Screen;

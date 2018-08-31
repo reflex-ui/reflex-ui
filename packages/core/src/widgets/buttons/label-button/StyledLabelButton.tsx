@@ -13,7 +13,8 @@ import {
 } from '../../../styles/themes/PurpleTealTheme';
 import { isAndroid } from '../../../utils';
 import { Size } from '../../Size';
-import LabelButton, {
+import {
+  Button,
   ILabelButtonProps,
   ILabelButtonStyle,
   ILabelButtonStyleAndChildren,
@@ -184,11 +185,11 @@ const getLabelStyles: IGetLabelStyles = (
   };
 };
 
-type ITransformText = (
+type TransformText = (
   props: { text: string; transformation?: string },
 ) => string;
 
-const transformText: ITransformText = ({
+const transformText: TransformText = ({
   text,
   transformation = 'none',
 }): string => {
@@ -267,7 +268,7 @@ const getStyle: IGetStyle = ({
   }),
 });
 
-const Button: IStyledLabelButton = ({
+export const ThemedButton: IStyledLabelButton = ({
   children,
   colorVariant,
   fullWidth,
@@ -278,7 +279,7 @@ const Button: IStyledLabelButton = ({
 }: StyledLabelButtonProps): JSX.Element => (
   <ThemeContext.Consumer>
     {theme => (
-      <LabelButton
+      <Button
         {...other}
         customStyle={getStyle({
           children,
@@ -293,5 +294,3 @@ const Button: IStyledLabelButton = ({
     )}
   </ThemeContext.Consumer>
 );
-
-export default Button;

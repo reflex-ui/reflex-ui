@@ -22,11 +22,11 @@ export interface ILabelButtonStyleAndChildren {
 export interface ILabelButtonProps extends TouchableWithoutFeedbackProps {
   customStyle?: ILabelButtonStyleAndChildren;
   leftIcon?: JSX.Element;
-  onPress: () => any;
+  // onPress: () => any;
   rightIcon?: JSX.Element;
 }
 
-const Button: React.SFC<ILabelButtonProps> = ({
+export const Button: React.SFC<ILabelButtonProps> = ({
   customStyle = {
     styles: { innerContainer: {}, label: {}, outerContainer: {} },
   },
@@ -49,5 +49,3 @@ const Button: React.SFC<ILabelButtonProps> = ({
 );
 
 Button.displayName = 'LabelButton';
-
-export default Button;

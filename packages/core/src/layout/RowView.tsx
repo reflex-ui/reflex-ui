@@ -16,8 +16,6 @@ const styles: IContainerStyle = StyleSheet.create<IContainerStyle>({
   },
 });
 
-const RowView: React.SFC<ViewProps> = ({ children, style }) => (
+export const RowView: React.SFC<ViewProps> = ({ children, style }) => (
   <View style={[styles.container, style]}>{children}</View>
 );
-
-export default RowView;

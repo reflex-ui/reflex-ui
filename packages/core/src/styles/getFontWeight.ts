@@ -20,10 +20,8 @@ webWeight[FontWeight.REGULAR] = '500';
 webWeight[FontWeight.MEDIUM] = '700';
 webWeight[FontWeight.BOLD] = '900';
 
-const getFontWeight = (weight: FontWeight): FontWeightValues => {
+export const getFontWeight = (weight: FontWeight): FontWeightValues => {
   if (isAndroid) return androidWeight[weight];
   if (isIOS) return iosWeight[weight];
   return webWeight[weight];
 };
-
-export default getFontWeight;

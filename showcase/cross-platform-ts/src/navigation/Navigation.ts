@@ -10,7 +10,7 @@ const registerScreens = () => {
   );
 };
 
-export default () => {
+export const AppNavigation = () => {
   registerScreens();
 
   Navigation.events().registerAppLaunchedListener(() => {

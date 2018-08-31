@@ -1,3 +1,3 @@
-import Navigation from './navigation/Navigation';
-export default () => null;
-Navigation();
+import { AppNavigation } from './navigation/Navigation';
+export const App = () => null;
+AppNavigation();

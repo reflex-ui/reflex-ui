@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { withAppLogic } from './application/shared';
-import NavigationWeb from './navigation/Navigation.web';
+import { AppNavigation } from './navigation/Navigation.web';
 
-const App = withAppLogic(NavigationWeb);
-export default () => <App />;
+const WithAppLogic = withAppLogic(AppNavigation);
+export const App = () => <WithAppLogic />;

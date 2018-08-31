@@ -9,7 +9,7 @@ import {
 import { TextTransformation } from '../../widgets/TextTransformation';
 import { FontWeight } from '../FontWeight';
 import { FontWeightValues } from '../FontWeightValues';
-import getFontWeight from '../getFontWeight';
+import { getFontWeight } from '../getFontWeight';
 import { ButtonState } from './ButtonState';
 import { ColorVariant } from './ColorVariant';
 
@@ -168,7 +168,7 @@ interface IThemePalette {
   readonly surface: IThemePaletteColor;
 }
 
-interface ITheme {
+export interface ITheme {
   readonly components: IComponents;
   readonly palette: IThemePalette;
 }
@@ -217,6 +217,10 @@ const getThemedColor: IGetThemedColor = ({
       return onColor
         ? theme.palette.secondary.normal.onColor
         : theme.palette.secondary.normal.color;
+    default:
+      return onColor
+        ? theme.palette.primary.light.onColor
+        : theme.palette.primary.light.color;
   }
 };
 
@@ -1092,7 +1096,7 @@ const buttonTheme: IButtonVariantThemeProps = {
   },
 };
 
-const PurpleTealTheme: ITheme = {
+export const PurpleTealTheme: ITheme = {
   components: {
     button: merge<{}, IButtonVariantTheme, IButtonVariantThemeProps>(
       {},
@@ -1103,5 +1107,3 @@ const PurpleTealTheme: ITheme = {
   },
   palette: themePalette,
 };
-
-export default PurpleTealTheme;

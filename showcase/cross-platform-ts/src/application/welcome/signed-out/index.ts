@@ -1,1 +1,1 @@
-export { default as WelcomeSignedOutScreen } from './Screen';
+export * from './Screen';

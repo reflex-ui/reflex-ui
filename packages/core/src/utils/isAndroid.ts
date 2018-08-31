@@ -1,3 +1,3 @@
 import { Platform } from 'react-native';
 
-export default Platform.OS === 'android';
+export const isAndroid = Platform.OS === 'android';

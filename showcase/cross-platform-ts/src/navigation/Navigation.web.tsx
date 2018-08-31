@@ -3,9 +3,10 @@ import * as React from 'react';
 import { Redirect, Route, Router, Switch } from 'react-router-dom';
 
 import { WelcomeSignedOutScreen } from '../application/welcome';
+
 const navigator = createBrowserHistory();
 
-export default () => (
+export const AppNavigation: React.SFC = () => (
   <Router history={navigator}>
     <Switch>
       <Route exact path="/welcome" component={WelcomeSignedOutScreen} />

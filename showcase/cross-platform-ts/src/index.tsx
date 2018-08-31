@@ -2,8 +2,8 @@
 import { AppRegistry } from 'react-native';
 import { isWeb } from 'react-platform-material-design';
 
-import App from './App';
-import config from './config';
+import { App } from './App';
+import { config } from './config';
 
 if (isWeb) {
   // register the app

@@ -6,11 +6,39 @@
     "tslint-react"
   ],
   "rules": {
+    "arrow-return-shorthand": true,
     "array-type": [false],
+    "ban": [true,
+      {"name": "parseInt", "message": "tsstyle#type-coercion"},
+      {"name": "parseFloat", "message": "tsstyle#type-coercion"},
+      {"name": "Array", "message": "tsstyle#array-constructor"}
+    ],
+    "ban-types": [true,
+      ["Object", "Use {} instead."],
+      ["String", "Use 'string' instead."],
+      ["Number", "Use 'number' instead."],
+      ["Boolean", "Use 'boolean' instead."]
+    ],
+    "class-name": true,
+    "curly": [true, "ignore-same-line"],
+    "forin": true,
+    "jsdoc-format": true,
     "jsx-boolean-value": false,
     "jsx-no-lambda": false,
     "jsx-no-multiline-js": false,
+    "label-position": true,
     "max-line-length": [true, 80],
+    "new-parens": true,
+    "no-angle-bracket-type-assertion": true,
+    "no-any": true,
+    "no-arg": true,
+    "no-conditional-assignment": true,
+    "no-construct": true,
+    "no-debugger": true,
+    "no-default-export": true,
+    "no-duplicate-variable": [true, "check-parameters"],
+    "no-namespace": [true, "allow-declarations"],
+    "no-reference": true,
     "no-shadowed-variable": [
       true,
       {
@@ -23,7 +51,16 @@
         "typeParameter": false
       }
     ],
+    "no-string-throw": true,
+    "no-unused-expression": true,
+    "no-var-keyword": true,
+    "object-literal-shorthand": true,
+    "only-arrow-functions": [true, "allow-declarations", "allow-named-functions"],
+    "prefer-const": true,
     "semicolon": [true, "always", "ignore-bound-class-methods"],
+    "switch-default": true,
+    "triple-equals": [true, "allow-null-check", "allow-undefined-check"],
+    "use-isnan": true,
     "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case"]
   }
 }

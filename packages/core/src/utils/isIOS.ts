@@ -1,3 +1,3 @@
 import { Platform } from 'react-native';
 
-export default Platform.OS === 'ios';
+export const isIOS = Platform.OS === 'ios';

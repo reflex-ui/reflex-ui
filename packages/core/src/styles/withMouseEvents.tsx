@@ -1,26 +1,34 @@
 import * as React from 'react';
+import { GestureResponderEvent } from 'react-native';
 import { ButtonState } from './themes';
+
+interface IProps {
+  disabled?: boolean;
+  onMouseEnter?: React.MouseEventHandler;
+  onMouseLeave?: React.MouseEventHandler;
+  onPressIn?: (event: GestureResponderEvent) => void;
+  onPressOut?: (event: GestureResponderEvent) => void;
+  state?: ButtonState;
+}
 
 interface IState {
   isHovering: boolean;
   isPressing: boolean;
 }
 
-export type IWithMouseEvents = <P>(
+export type IWithMouseEvents = <P extends IProps>(
   WrappedComponent: React.ComponentType<P>,
 ) => React.ComponentType<P>;
 
-const withMouseEvents = <P extends any>(
+export const withMouseEvents: IWithMouseEvents = <P extends IProps>(
   WrappedComponent: React.ComponentType<P>,
-): React.ComponentType<P> =>
+) =>
   class MouseEventsToProps extends React.Component<P, IState> {
     public readonly state: IState = { isHovering: false, isPressing: false };
 
     public render(): JSX.Element {
       return (
         <WrappedComponent
-          isHovering={this.state.isHovering}
-          isPressing={this.state.isPressing}
           onMouseEnter={this.onMouseEnter}
           onMouseLeave={this.onMouseLeave}
           onPressIn={this.onPressIn}
@@ -66,5 +74,3 @@ const withMouseEvents = <P extends any>(
       this.setState({ isPressing: false });
     };
   };
-
-export default withMouseEvents;

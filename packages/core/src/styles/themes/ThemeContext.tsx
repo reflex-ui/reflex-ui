@@ -1,4 +1,4 @@
 import * as React from 'react';
-import PurpleTealTheme from './PurpleTealTheme';
+import { PurpleTealTheme } from './PurpleTealTheme';
 
-export default React.createContext(PurpleTealTheme);
+export const ThemeContext = React.createContext(PurpleTealTheme);

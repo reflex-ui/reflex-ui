@@ -1,3 +1,3 @@
 import { Platform } from 'react-native';
 
-export default Platform.OS === 'web';
+export const isWeb = Platform.OS === 'web';

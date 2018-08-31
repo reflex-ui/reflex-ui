@@ -1,16 +1,10 @@
-import LabelButton from './LabelButton';
-import StyledLabelButton, {
-  IStyledLabelButton,
-  StyledLabelButtonProps,
-  Variant,
-} from './StyledLabelButton';
+import { Button } from './LabelButton';
+import { IStyledLabelButton, ThemedButton, Variant } from './StyledLabelButton';
 
 import { withMouseEvents } from '../../../styles';
 
-const EnhancedStyledLabelButton: IStyledLabelButton = withMouseEvents<
-  StyledLabelButtonProps
->(StyledLabelButton);
+const EnhancedButton: IStyledLabelButton = withMouseEvents(ThemedButton);
 
-export { LabelButton as RawLabelButton };
-export { EnhancedStyledLabelButton as LabelButton };
+export { Button as RawLabelButton };
+export { EnhancedButton as LabelButton };
 export { Variant as LabelButtonVariant };
