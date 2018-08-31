@@ -8,25 +8,24 @@ import {
   ViewStyle,
 } from 'react-native';
 
-export interface ILabelButtonStyle {
+export interface ButtonStyle {
   innerContainer: ViewStyle;
   label: TextStyle;
   outerContainer: ViewStyle;
 }
 
-export interface ILabelButtonStyleAndChildren {
+export interface ButtonStyleAndChildren {
   children?: React.ReactNode;
-  styles: ILabelButtonStyle;
+  styles: ButtonStyle;
 }
 
-export interface ILabelButtonProps extends TouchableWithoutFeedbackProps {
-  customStyle?: ILabelButtonStyleAndChildren;
+export interface ButtonProps extends TouchableWithoutFeedbackProps {
+  customStyle?: ButtonStyleAndChildren;
   leftIcon?: JSX.Element;
-  // onPress: () => any;
   rightIcon?: JSX.Element;
 }
 
-export const Button: React.SFC<ILabelButtonProps> = ({
+export const Button: React.SFC<ButtonProps> = ({
   customStyle = {
     styles: { innerContainer: {}, label: {}, outerContainer: {} },
   },
@@ -34,7 +33,7 @@ export const Button: React.SFC<ILabelButtonProps> = ({
   onPress,
   rightIcon,
   ...buttonProps // tslint:disable-line:trailing-comma
-}: ILabelButtonProps): JSX.Element => (
+}: ButtonProps): JSX.Element => (
   <View style={customStyle.styles.outerContainer}>
     <TouchableWithoutFeedback {...buttonProps}>
       <View style={customStyle.styles.innerContainer}>
@@ -48,4 +47,4 @@ export const Button: React.SFC<ILabelButtonProps> = ({
   </View>
 );
 
-Button.displayName = 'LabelButton';
+Button.displayName = 'Button';

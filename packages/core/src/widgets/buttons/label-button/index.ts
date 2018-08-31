@@ -1,9 +1,9 @@
 import { Button } from './LabelButton';
-import { IStyledLabelButton, ThemedButton, Variant } from './StyledLabelButton';
+import { ThemedButton, Variant } from './StyledLabelButton';
 
-import { withMouseEvents } from '../../../styles';
+import { createWithInteractivityState } from '../../../interactivity';
 
-const EnhancedButton: IStyledLabelButton = withMouseEvents(ThemedButton);
+const EnhancedButton = createWithInteractivityState(ThemedButton);
 
 export { Button as RawLabelButton };
 export { EnhancedButton as LabelButton };

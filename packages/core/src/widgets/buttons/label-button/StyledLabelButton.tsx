@@ -1,28 +1,33 @@
 import * as React from 'react';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
+import { InteractivityState } from '../../../interactivity';
+import { ColorVariant, Theme, ThemeContext } from '../../../styles';
 import {
-  ButtonState,
-  ColorVariant,
-  ITheme,
-  ThemeContext,
-} from '../../../styles';
-import {
-  IButtonContainerStyles,
-  IButtonLabelStyles,
+  ButtonContainerStyles,
+  ButtonLabelStyles,
 } from '../../../styles/themes/PurpleTealTheme';
 import { isAndroid } from '../../../utils';
 import { Size } from '../../Size';
 import {
   Button,
-  ILabelButtonProps,
-  ILabelButtonStyle,
-  ILabelButtonStyleAndChildren,
+  ButtonProps,
+  ButtonStyle,
+  ButtonStyleAndChildren,
 } from './LabelButton';
 
-export type StyledLabelButtonProps = ILabelButtonStyleProps & ILabelButtonProps;
+export interface StyledButtonProps extends ButtonProps {
+  children?: React.ReactNode;
+  colorVariant?: ColorVariant;
+  fullWidth?: boolean;
+  interactivityState?: InteractivityState;
+  size?: Size;
+  variant?: Variant;
+}
 
-export type IStyledLabelButton = React.ComponentType<StyledLabelButtonProps>;
+// export type StyledButtonProps = ButtonStyleProps & ButtonProps;
+
+export type StyledButton = React.ComponentType<StyledButtonProps>;
 
 export enum Variant {
   CONTAINED = 'contained',
@@ -31,29 +36,18 @@ export enum Variant {
   OUTLINED = 'outlined',
 }
 
-interface ILabelButtonStyleProps {
-  children?: React.ReactNode;
-  colorVariant?: ColorVariant;
-  fullWidth?: boolean;
-  size?: Size;
-  state?: ButtonState;
-  variant?: Variant;
+interface Themed {
+  theme: Theme;
 }
 
-interface IThemed {
-  theme: ITheme;
-}
+export interface ThemedStyledButtonProps extends StyledButtonProps, Themed {}
 
-export interface IThemedLabelButtonStyleProps
-  extends ILabelButtonStyleProps,
-    IThemed {}
-
-type IGetInnerContainerStylesFromTheme = (
-  containerStyles: IButtonContainerStyles,
-  props: IThemedLabelButtonStyleProps,
+type GetInnerContainerStylesFromTheme = (
+  containerStyles: ButtonContainerStyles,
+  props: ThemedStyledButtonProps,
 ) => ViewStyle;
 
-const getInnerContainerStylesFromTheme: IGetInnerContainerStylesFromTheme = (
+const getInnerContainerStylesFromTheme: GetInnerContainerStylesFromTheme = (
   containerStyles,
   props,
 ): ViewStyle => ({
@@ -62,15 +56,14 @@ const getInnerContainerStylesFromTheme: IGetInnerContainerStylesFromTheme = (
   ...containerStyles.getDynamicCustomStyles(props),
 });
 
-type IGetInnerContainerStyles = (
-  props: IThemedLabelButtonStyleProps,
-) => ViewStyle;
+type GetInnerContainerStyles = (props: ThemedStyledButtonProps) => ViewStyle;
 
-const getInnerContainerStyles: IGetInnerContainerStyles = (
-  props: IThemedLabelButtonStyleProps,
+const getInnerContainerStyles: GetInnerContainerStyles = (
+  props: ThemedStyledButtonProps,
 ): TextStyle => {
   const size: Size = props.size || Size.REGULAR;
-  const state: ButtonState = props.state || ButtonState.REGULAR;
+  const state: InteractivityState =
+    props.interactivityState || InteractivityState.REGULAR;
   const variant: Variant = props.variant || Variant.DEFAULT;
 
   return {
@@ -118,12 +111,12 @@ const getInnerContainerStyles: IGetInnerContainerStyles = (
   };
 };
 
-type IGetLabelButtonStylesFromTheme = (
-  labelStyles: IButtonLabelStyles,
-  props: IThemedLabelButtonStyleProps,
+type GetLabelButtonStylesFromTheme = (
+  labelStyles: ButtonLabelStyles,
+  props: ThemedStyledButtonProps,
 ) => TextStyle;
 
-const getLabelButtonStylesFromTheme: IGetLabelButtonStylesFromTheme = (
+const getLabelButtonStylesFromTheme: GetLabelButtonStylesFromTheme = (
   labelStyles,
   props,
 ): TextStyle => ({
@@ -132,13 +125,14 @@ const getLabelButtonStylesFromTheme: IGetLabelButtonStylesFromTheme = (
   ...labelStyles.getDynamicCustomStyles(props),
 });
 
-type IGetLabelStyles = (props: IThemedLabelButtonStyleProps) => TextStyle;
+type GetLabelStyles = (props: ThemedStyledButtonProps) => TextStyle;
 
-const getLabelStyles: IGetLabelStyles = (
-  props: IThemedLabelButtonStyleProps,
+const getLabelStyles: GetLabelStyles = (
+  props: ThemedStyledButtonProps,
 ): TextStyle => {
   const size: Size = props.size || Size.REGULAR;
-  const state: ButtonState = props.state || ButtonState.REGULAR;
+  const state: InteractivityState =
+    props.interactivityState || InteractivityState.REGULAR;
   const variant: Variant = props.variant || Variant.DEFAULT;
 
   return {
@@ -208,11 +202,11 @@ const transformText: TransformText = ({
   }
 };
 
-type IGetStyledChildren = (
-  props: { children: React.ReactNode; size: Size; theme: ITheme },
+type GetStyledChildren = (
+  props: { children: React.ReactNode; size: Size; theme: Theme },
 ) => React.ReactNode;
 
-const getStyledChildren: IGetStyledChildren = ({ children }): React.ReactNode =>
+const getStyledChildren: GetStyledChildren = ({ children }): React.ReactNode =>
   // prettier-ignore
   typeof children === 'string' && isAndroid
     ? transformText({
@@ -224,28 +218,26 @@ const getStyledChildren: IGetStyledChildren = ({ children }): React.ReactNode =>
     })
     : children;
 
-type IGetStyle = (
-  props: IThemedLabelButtonStyleProps,
-) => ILabelButtonStyleAndChildren;
+type GetStyle = (props: ThemedStyledButtonProps) => ButtonStyleAndChildren;
 
-const getStyle: IGetStyle = ({
+const getStyle: GetStyle = ({
   children,
   colorVariant = ColorVariant.PRIMARY_NORMAL,
   fullWidth,
   size = Size.REGULAR,
-  state = ButtonState.REGULAR,
+  interactivityState = InteractivityState.REGULAR,
   theme,
   variant = Variant.DEFAULT,
-}: IThemedLabelButtonStyleProps): ILabelButtonStyleAndChildren => ({
+}: ThemedStyledButtonProps): ButtonStyleAndChildren => ({
   children: getStyledChildren({ children, size, theme }),
-  styles: StyleSheet.create<ILabelButtonStyle>({
+  styles: StyleSheet.create<ButtonStyle>({
     innerContainer: {
       ...getInnerContainerStyles({
         children,
         colorVariant,
         fullWidth,
+        interactivityState,
         size,
-        state,
         theme,
         variant,
       }),
@@ -255,8 +247,8 @@ const getStyle: IGetStyle = ({
         children,
         colorVariant,
         fullWidth,
+        interactivityState,
         size,
-        state,
         theme,
         variant,
       }),
@@ -268,15 +260,15 @@ const getStyle: IGetStyle = ({
   }),
 });
 
-export const ThemedButton: IStyledLabelButton = ({
+export const ThemedButton: StyledButton = ({
   children,
   colorVariant,
   fullWidth,
+  interactivityState,
   size,
-  state,
   variant,
   ...other // tslint:disable-line:trailing-comma
-}: StyledLabelButtonProps): JSX.Element => (
+}: StyledButtonProps): JSX.Element => (
   <ThemeContext.Consumer>
     {theme => (
       <Button
@@ -285,8 +277,8 @@ export const ThemedButton: IStyledLabelButton = ({
           children,
           colorVariant,
           fullWidth,
+          interactivityState,
           size,
-          state,
           theme,
           variant,
         })}

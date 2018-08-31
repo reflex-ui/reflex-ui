@@ -1,49 +1,40 @@
 import * as React from 'react';
-import { GestureResponderEvent } from 'react-native';
-import { ButtonState } from './themes';
 
-interface IProps {
-  disabled?: boolean;
-  onMouseEnter?: React.MouseEventHandler;
-  onMouseLeave?: React.MouseEventHandler;
-  onPressIn?: (event: GestureResponderEvent) => void;
-  onPressOut?: (event: GestureResponderEvent) => void;
-  state?: ButtonState;
-}
+import { InteractiveComponent } from './InteractiveComponent';
+import { InteractivityState } from './InteractivityState';
+import { WithInteractivityStateFactory } from './WithInteractivityStateFactory';
 
-interface IState {
+interface State {
   isHovering: boolean;
   isPressing: boolean;
 }
 
-export type IWithMouseEvents = <P extends IProps>(
-  WrappedComponent: React.ComponentType<P>,
-) => React.ComponentType<P>;
-
-export const withMouseEvents: IWithMouseEvents = <P extends IProps>(
+export const createWithInteractivityState: WithInteractivityStateFactory = <
+  P extends InteractiveComponent
+>(
   WrappedComponent: React.ComponentType<P>,
 ) =>
-  class MouseEventsToProps extends React.Component<P, IState> {
-    public readonly state: IState = { isHovering: false, isPressing: false };
+  class WithInteractivityState extends React.Component<P, State> {
+    public readonly state: State = { isHovering: false, isPressing: false };
 
     public render(): JSX.Element {
       return (
         <WrappedComponent
+          interactivityState={this.getInteractivityState()}
           onMouseEnter={this.onMouseEnter}
           onMouseLeave={this.onMouseLeave}
           onPressIn={this.onPressIn}
           onPressOut={this.onPressOut}
-          state={this.getButtonState()}
           {...this.props}
         />
       );
     }
 
-    private getButtonState = (): ButtonState => {
-      if (this.props.disabled) return ButtonState.DISABLED;
-      if (this.state.isPressing) return ButtonState.PRESSED;
-      if (this.state.isHovering) return ButtonState.HOVERED;
-      return ButtonState.REGULAR;
+    private getInteractivityState = (): InteractivityState => {
+      if (this.props.disabled) return InteractivityState.DISABLED;
+      if (this.state.isPressing) return InteractivityState.PRESSED;
+      if (this.state.isHovering) return InteractivityState.HOVERED;
+      return InteractivityState.REGULAR;
     };
 
     private onMouseEnter = (): void => {

@@ -1,4 +1,4 @@
-export enum ButtonState {
+export enum InteractivityState {
   DISABLED = 'disabled',
   HOVERED = 'hovered',
   PRESSED = 'pressed',

@@ -8,12 +8,14 @@
   "rules": {
     "arrow-return-shorthand": true,
     "array-type": [false],
-    "ban": [true,
-      {"name": "parseInt", "message": "tsstyle#type-coercion"},
-      {"name": "parseFloat", "message": "tsstyle#type-coercion"},
-      {"name": "Array", "message": "tsstyle#array-constructor"}
+    "ban": [
+      true,
+      { "name": "parseInt", "message": "tsstyle#type-coercion" },
+      { "name": "parseFloat", "message": "tsstyle#type-coercion" },
+      { "name": "Array", "message": "tsstyle#array-constructor" }
     ],
-    "ban-types": [true,
+    "ban-types": [
+      true,
       ["Object", "Use {} instead."],
       ["String", "Use 'string' instead."],
       ["Number", "Use 'number' instead."],
@@ -22,6 +24,7 @@
     "class-name": true,
     "curly": [true, "ignore-same-line"],
     "forin": true,
+    "interface-name": [true, "never-prefix"],
     "jsdoc-format": true,
     "jsx-boolean-value": false,
     "jsx-no-lambda": false,
@@ -55,7 +58,11 @@
     "no-unused-expression": true,
     "no-var-keyword": true,
     "object-literal-shorthand": true,
-    "only-arrow-functions": [true, "allow-declarations", "allow-named-functions"],
+    "only-arrow-functions": [
+      true,
+      "allow-declarations",
+      "allow-named-functions"
+    ],
     "prefer-const": true,
     "semicolon": [true, "always", "ignore-bound-class-methods"],
     "switch-default": true,

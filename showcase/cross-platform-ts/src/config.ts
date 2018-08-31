@@ -1,4 +1,4 @@
-interface IConfig {
+interface Config {
   app: {
     name: string;
   };
@@ -7,7 +7,7 @@ interface IConfig {
   };
 }
 
-export const config: IConfig = {
+export const config: Config = {
   app: {
     name: 'example',
   },

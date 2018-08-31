@@ -15,6 +15,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         Sign In
       </LabelButton>
       <LabelButton
+        disabled
         onPress={() => alert('onPress')}
         size={Size.XSMALL}
         variant={LabelButtonVariant.OUTLINED}
