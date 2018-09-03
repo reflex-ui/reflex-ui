@@ -42,12 +42,12 @@ interface Themed {
 
 export interface ThemedStyledButtonProps extends StyledButtonProps, Themed {}
 
-type GetInnerContainerStylesFromTheme = (
+type GetContainerStylesFromTheme = (
   containerStyles: ButtonContainerStyles,
   props: ThemedStyledButtonProps,
 ) => ViewStyle;
 
-const getInnerContainerStylesFromTheme: GetInnerContainerStylesFromTheme = (
+const getContainerStylesFromTheme: GetContainerStylesFromTheme = (
   containerStyles,
   props,
 ): ViewStyle => ({
@@ -56,9 +56,9 @@ const getInnerContainerStylesFromTheme: GetInnerContainerStylesFromTheme = (
   ...containerStyles.getDynamicCustomStyles(props),
 });
 
-type GetInnerContainerStyles = (props: ThemedStyledButtonProps) => ViewStyle;
+type GetContainerStyles = (props: ThemedStyledButtonProps) => ViewStyle;
 
-const getInnerContainerStyles: GetInnerContainerStyles = (
+const getInnerContainerStyles: GetContainerStyles = (
   props: ThemedStyledButtonProps,
 ): TextStyle => {
   const size: Size = props.size || Size.REGULAR;
@@ -68,44 +68,97 @@ const getInnerContainerStyles: GetInnerContainerStyles = (
 
   return {
     /* allVariants && allSizes && allStates */
-    ...getInnerContainerStylesFromTheme(
+    ...getContainerStylesFromTheme(
       props.theme.components.button.allVariants.allSizes.allStates
         .innerContainer,
       props,
     ),
     /* allVariants && allSizes && state */
-    ...getInnerContainerStylesFromTheme(
+    ...getContainerStylesFromTheme(
       props.theme.components.button.allVariants.allSizes[state].innerContainer,
       props,
     ),
     /* allVariants && size && allStates */
-    ...getInnerContainerStylesFromTheme(
+    ...getContainerStylesFromTheme(
       props.theme.components.button.allVariants[size].allStates.innerContainer,
       props,
     ),
     /* allVariants && size && state */
-    ...getInnerContainerStylesFromTheme(
+    ...getContainerStylesFromTheme(
       props.theme.components.button.allVariants[size][state].innerContainer,
       props,
     ),
     /* variant && allSizes && allStates */
-    ...getInnerContainerStylesFromTheme(
+    ...getContainerStylesFromTheme(
       props.theme.components.button[variant].allSizes.allStates.innerContainer,
       props,
     ),
     /* variant && allSizes && state */
-    ...getInnerContainerStylesFromTheme(
+    ...getContainerStylesFromTheme(
       props.theme.components.button[variant].allSizes[state].innerContainer,
       props,
     ),
     /* variant && size && allStates */
-    ...getInnerContainerStylesFromTheme(
+    ...getContainerStylesFromTheme(
       props.theme.components.button[variant][size].allStates.innerContainer,
       props,
     ),
     /* variant && size && state */
-    ...getInnerContainerStylesFromTheme(
+    ...getContainerStylesFromTheme(
       props.theme.components.button[variant][size][state].innerContainer,
+      props,
+    ),
+  };
+};
+
+const getOuterContainerStyles: GetContainerStyles = (
+  props: ThemedStyledButtonProps,
+): TextStyle => {
+  const size: Size = props.size || Size.REGULAR;
+  const state: InteractivityState =
+    props.interactivityState || InteractivityState.ENABLED;
+  const variant: Variant = props.variant || Variant.DEFAULT;
+
+  return {
+    /* allVariants && allSizes && allStates */
+    ...getContainerStylesFromTheme(
+      props.theme.components.button.allVariants.allSizes.allStates
+        .outerContainer,
+      props,
+    ),
+    /* allVariants && allSizes && state */
+    ...getContainerStylesFromTheme(
+      props.theme.components.button.allVariants.allSizes[state].outerContainer,
+      props,
+    ),
+    /* allVariants && size && allStates */
+    ...getContainerStylesFromTheme(
+      props.theme.components.button.allVariants[size].allStates.outerContainer,
+      props,
+    ),
+    /* allVariants && size && state */
+    ...getContainerStylesFromTheme(
+      props.theme.components.button.allVariants[size][state].outerContainer,
+      props,
+    ),
+    /* variant && allSizes && allStates */
+    ...getContainerStylesFromTheme(
+      props.theme.components.button[variant].allSizes.allStates.outerContainer,
+      props,
+    ),
+    /* variant && allSizes && state */
+    ...getContainerStylesFromTheme(
+      props.theme.components.button[variant].allSizes[state].outerContainer,
+      props,
+    ),
+    /* variant && size && allStates */
+    ...getContainerStylesFromTheme(
+      props.theme.components.button[variant][size].allStates.outerContainer,
+      props,
+    ),
+    /* variant && size && state */
+    ...getContainerStylesFromTheme(
+      props.theme.components.button[variant][size][state].outerContainer,
       props,
     ),
   };
@@ -254,8 +307,15 @@ const getStyle: GetStyle = ({
       }),
     },
     outerContainer: {
-      flexDirection: fullWidth ? 'column' : 'row',
-      flexGrow: fullWidth ? 1 : undefined,
+      ...getOuterContainerStyles({
+        children,
+        colorVariant,
+        fullWidth,
+        interactivityState,
+        size,
+        theme,
+        variant,
+      }),
     },
   }),
 });

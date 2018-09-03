@@ -28,7 +28,9 @@ export interface TextInputProperties {
     autoComplete?: string;
 }
 
-export interface TouchableWithoutFeedbackProps {
+export interface TouchableWithoutFeedbackProps<T> {
+    onBlur?: React.FocusEventHandler<T>;
+    onFocus?: React.FocusEventHandler<T>;
     onMouseEnter?: React.MouseEventHandler<T>;
     onMouseLeave?: React.MouseEventHandler<T>;
 }
@@ -283,7 +285,7 @@ modulesDirs.concat(workspacePackages).forEach(e => {
    * @see https://github.com/DefinitelyTyped/DefinitelyTyped/issues/15960
    * @see https://gist.github.com/rawrmaan/be47e71bd0df3f7493ead6cefd6b400c
    */
-   fs.writeFileSync(
+  fs.writeFileSync(
     rnTsdFile,
     raw
       .toString()

@@ -67,51 +67,53 @@ type GetButtonLabelDynamicStyles = (
   props: ThemedStyledButtonProps,
 ) => TextStyle;
 
-/* BEGIN BUTTON PROPS */
+/* BEGIN OPTIONAL BUTTON STUFF */
 
-interface ButtonContainerStylesProps {
+interface OptionalButtonContainerStyles {
   readonly getDynamicCustomStyles?: GetButtonContainerDynamicStyles;
   readonly getDynamicStyles?: GetButtonContainerDynamicStyles;
   readonly styles?: ViewStyle;
 }
 
-interface ButtonLabelStylesProps {
+interface OptionalButtonLabelStyles {
   readonly getDynamicCustomStyles?: GetButtonLabelDynamicStyles;
   readonly getDynamicStyles?: GetButtonLabelDynamicStyles;
   readonly styles?: TextStyle;
 }
 
-interface ButtonThemeProps {
-  readonly innerContainer?: ButtonContainerStylesProps;
-  readonly label?: ButtonLabelStylesProps;
+interface OptionalButtonTheme {
+  readonly innerContainer?: OptionalButtonContainerStyles;
+  readonly label?: OptionalButtonLabelStyles;
+  readonly outerContainer?: OptionalButtonContainerStyles;
 }
 
-interface ButtonStateThemeProps {
-  readonly allStates?: ButtonThemeProps;
-  readonly disabled?: ButtonThemeProps;
-  readonly enabled?: ButtonThemeProps;
-  readonly hovered?: ButtonThemeProps;
-  readonly pressed?: ButtonThemeProps;
+interface OptionalButtonStateTheme {
+  readonly allStates?: OptionalButtonTheme;
+  readonly disabled?: OptionalButtonTheme;
+  readonly enabled?: OptionalButtonTheme;
+  readonly focused?: OptionalButtonTheme;
+  readonly hovered?: OptionalButtonTheme;
+  readonly pressed?: OptionalButtonTheme;
 }
 
-interface SizedButtonThemeProps {
-  readonly allSizes?: ButtonStateThemeProps;
-  readonly xsmall?: ButtonStateThemeProps;
-  readonly small?: ButtonStateThemeProps;
-  readonly regular?: ButtonStateThemeProps;
-  readonly large?: ButtonStateThemeProps;
-  readonly xlarge?: ButtonStateThemeProps;
+interface OptionalSizedButtonTheme {
+  readonly allSizes?: OptionalButtonStateTheme;
+  readonly xsmall?: OptionalButtonStateTheme;
+  readonly small?: OptionalButtonStateTheme;
+  readonly regular?: OptionalButtonStateTheme;
+  readonly large?: OptionalButtonStateTheme;
+  readonly xlarge?: OptionalButtonStateTheme;
 }
 
-interface ButtonVariantThemeProps {
-  readonly allVariants?: SizedButtonThemeProps;
-  readonly contained?: SizedButtonThemeProps;
-  readonly containedRaised?: SizedButtonThemeProps;
-  readonly default?: SizedButtonThemeProps;
-  readonly outlined?: SizedButtonThemeProps;
+interface OptionalButtonVariantTheme {
+  readonly allVariants?: OptionalSizedButtonTheme;
+  readonly contained?: OptionalSizedButtonTheme;
+  readonly containedRaised?: OptionalSizedButtonTheme;
+  readonly default?: OptionalSizedButtonTheme;
+  readonly outlined?: OptionalSizedButtonTheme;
 }
 
-/* END BUTTON PROPS */
+/* END OPTIONAL BUTTON STUFF */
 
 export interface ButtonContainerStyles {
   readonly getDynamicCustomStyles: GetButtonContainerDynamicStyles;
@@ -128,12 +130,14 @@ export interface ButtonLabelStyles {
 interface ButtonTheme {
   readonly innerContainer: ButtonContainerStyles;
   readonly label: ButtonLabelStyles;
+  readonly outerContainer: ButtonContainerStyles;
 }
 
 interface ButtonStateTheme {
   readonly allStates: ButtonTheme;
   readonly disabled: ButtonTheme;
   readonly enabled: ButtonTheme;
+  readonly focused: ButtonTheme;
   readonly hovered: ButtonTheme;
   readonly pressed: ButtonTheme;
 }
@@ -236,6 +240,7 @@ const getButtonContainerStyles: IGetButtonContainerStyles = ({
   fullWidth,
 }) => ({
   flexDirection: fullWidth ? 'column' : 'row',
+  flexGrow: fullWidth ? 1 : undefined,
 });
 
 const getOutlinedContainerCommonStyles: IGetButtonContainerStyles = ({
@@ -250,6 +255,22 @@ const getDisabledContainedContainerStyles: IGetButtonContainerStyles = ({
   theme,
 }) => ({
   backgroundColor: getThemedColor({ colorVariant, theme }),
+});
+
+const getEnabledContainedContainerStyles: IGetButtonContainerStyles = ({
+  colorVariant,
+  theme,
+}) => ({
+  backgroundColor: getThemedColor({ colorVariant, theme }),
+});
+
+const getFocusedContainedContainerStyles: IGetButtonContainerStyles = ({
+  colorVariant,
+  theme,
+}) => ({
+  backgroundColor: Color.rgb(getThemedColor({ colorVariant, theme }))
+    .lighten(0.35)
+    .toString(),
 });
 
 const getHoveredContainedContainerStyles: IGetButtonContainerStyles = ({
@@ -270,16 +291,10 @@ const getPressedContainedContainerStyles: IGetButtonContainerStyles = ({
     .toString(),
 });
 
-const getRegularContainedContainerStyles: IGetButtonContainerStyles = ({
-  colorVariant,
-  theme,
-}) => ({
-  backgroundColor: getThemedColor({ colorVariant, theme }),
-});
-
 const androidShadows: { [key: string]: number } = {};
 androidShadows[InteractivityState.DISABLED] = 0;
 androidShadows[InteractivityState.ENABLED] = 2;
+androidShadows[InteractivityState.FOCUSED] = 4;
 /*
  * No hover state on native Android.
  */
@@ -294,6 +309,12 @@ iosShadows[InteractivityState.ENABLED] = {
   shadowOffset: { height: 1.6, width: 0 },
   shadowOpacity: 0.2,
   shadowRadius: 1,
+};
+iosShadows[InteractivityState.FOCUSED] = {
+  shadowColor: '#000000',
+  shadowOffset: { height: 3.4, width: 0 },
+  shadowOpacity: 0.2,
+  shadowRadius: 3,
 };
 /*
  * No hover state on native iOS.
@@ -315,6 +336,7 @@ webShadows[InteractivityState.ENABLED] = `0 3px 1px -2px rgba(0,0,0,.2),
 webShadows[InteractivityState.HOVERED] = `0px 2px 4px -1px rgba(0,0,0,.2),
   0px 4px 5px 0px rgba(0,0,0,.14),
   0px 1px 10px 0px rgba(0,0,0,.12)`;
+webShadows[InteractivityState.FOCUSED] = webShadows[InteractivityState.HOVERED];
 webShadows[InteractivityState.PRESSED] = `0px 5px 5px -3px rgba(0,0,0,.2),
   0px 8px 10px 1px rgba(0,0,0,.14),
   0px 3px 14px 2px rgba(0,0,0,.12)`;
@@ -342,6 +364,24 @@ const getDisabledContainedRaisedContainerStyles: IGetButtonContainerStyles = ({
   ...getContainerElevationStyles({ interactivityState, theme }),
 });
 
+const getEnabledContainedRaisedContainerStyles: IGetButtonContainerStyles = ({
+  colorVariant,
+  interactivityState = InteractivityState.ENABLED,
+  theme,
+}) => ({
+  ...getEnabledContainedContainerStyles({ colorVariant, theme }),
+  ...getContainerElevationStyles({ interactivityState, theme }),
+});
+
+const getFocusedContainedRaisedContainerStyles: IGetButtonContainerStyles = ({
+  colorVariant,
+  interactivityState = InteractivityState.ENABLED,
+  theme,
+}) => ({
+  ...getFocusedContainedContainerStyles({ colorVariant, theme }),
+  ...getContainerElevationStyles({ interactivityState, theme }),
+});
+
 const getHoveredContainedRaisedContainerStyles: IGetButtonContainerStyles = ({
   colorVariant,
   interactivityState = InteractivityState.ENABLED,
@@ -360,17 +400,21 @@ const getPressedContainedRaisedContainerStyles: IGetButtonContainerStyles = ({
   ...getContainerElevationStyles({ interactivityState, theme }),
 });
 
-const getRegularContainedRaisedContainerStyles: IGetButtonContainerStyles = ({
-  colorVariant,
-  interactivityState = InteractivityState.ENABLED,
-  theme,
-}) => ({
-  ...getRegularContainedContainerStyles({ colorVariant, theme }),
-  ...getContainerElevationStyles({ interactivityState, theme }),
-});
-
 const getDisabledDefaultContainerStyles: IGetButtonContainerStyles = () => ({
   backgroundColor: 'transparent',
+});
+
+const getEnabledDefaultContainerStyles: IGetButtonContainerStyles = () => ({
+  backgroundColor: 'transparent',
+});
+
+const getFocusedDefaultContainerStyles: IGetButtonContainerStyles = ({
+  colorVariant,
+  theme,
+}) => ({
+  backgroundColor: Color.rgb(getThemedColor({ colorVariant, theme }))
+    .fade(0.89)
+    .toString(),
 });
 
 const getHoveredDefaultContainerStyles: IGetButtonContainerStyles = ({
@@ -391,14 +435,23 @@ const getPressedDefaultContainerStyles: IGetButtonContainerStyles = ({
     .toString(),
 });
 
-const getRegularDefaultContainerStyles: IGetButtonContainerStyles = () => ({
-  backgroundColor: 'transparent',
-});
-
 const getDisabledOutlinedContainerStyles: IGetButtonContainerStyles = (
   props: ThemedStyledButtonProps,
 ) => ({
   ...getDisabledDefaultContainerStyles(props),
+});
+
+const getEnabledOutlinedContainerStyles: IGetButtonContainerStyles = (
+  props: ThemedStyledButtonProps,
+) => ({
+  ...getEnabledDefaultContainerStyles(props),
+});
+
+const getFocusedOutlinedContainerStyles: IGetButtonContainerStyles = ({
+  colorVariant,
+  theme,
+}) => ({
+  ...getFocusedDefaultContainerStyles({ colorVariant, theme }),
 });
 
 const getHoveredOutlinedContainerStyles: IGetButtonContainerStyles = ({
@@ -413,12 +466,6 @@ const getPressedOutlinedContainerStyles: IGetButtonContainerStyles = ({
   theme,
 }) => ({
   ...getPressedDefaultContainerStyles({ colorVariant, theme }),
-});
-
-const getRegularOutlinedContainerStyles: IGetButtonContainerStyles = (
-  props: ThemedStyledButtonProps,
-) => ({
-  ...getRegularDefaultContainerStyles(props),
 });
 
 const getContainedLabelStyles: IGetButtonLabelStyles = ({
@@ -458,12 +505,18 @@ const emptyButtonTheme: ButtonTheme = {
     getDynamicStyles: () => ({}),
     styles: {},
   },
+  outerContainer: {
+    getDynamicCustomStyles: () => ({}),
+    getDynamicStyles: () => ({}),
+    styles: {},
+  },
 };
 
 const emptyButtonStateTheme: ButtonStateTheme = {
   allStates: emptyButtonTheme,
   disabled: emptyButtonTheme,
   enabled: emptyButtonTheme,
+  focused: emptyButtonTheme,
   hovered: emptyButtonTheme,
   pressed: emptyButtonTheme,
 };
@@ -605,7 +658,7 @@ const themePalette: ThemePalette = {
   },
 };
 
-const buttonTheme: ButtonVariantThemeProps = {
+const buttonTheme: OptionalButtonVariantTheme = {
   allVariants: {
     allSizes: {
       allStates: {
@@ -614,6 +667,7 @@ const buttonTheme: ButtonVariantThemeProps = {
           styles: {
             alignItems: 'center',
             justifyContent: 'center',
+            outline: 'none',
           },
         },
         label: {
@@ -629,6 +683,9 @@ const buttonTheme: ButtonVariantThemeProps = {
               },
             }),
           },
+        },
+        outerContainer: {
+          getDynamicStyles: getButtonContainerStyles,
         },
       },
     },
@@ -722,7 +779,12 @@ const buttonTheme: ButtonVariantThemeProps = {
       },
       enabled: {
         innerContainer: {
-          getDynamicStyles: getRegularContainedContainerStyles,
+          getDynamicStyles: getEnabledContainedContainerStyles,
+        },
+      },
+      focused: {
+        innerContainer: {
+          getDynamicStyles: getFocusedContainedContainerStyles,
         },
       },
       hovered: {
@@ -816,7 +878,12 @@ const buttonTheme: ButtonVariantThemeProps = {
       },
       enabled: {
         innerContainer: {
-          getDynamicStyles: getRegularContainedRaisedContainerStyles,
+          getDynamicStyles: getEnabledContainedRaisedContainerStyles,
+        },
+      },
+      focused: {
+        innerContainer: {
+          getDynamicStyles: getFocusedContainedRaisedContainerStyles,
         },
       },
       hovered: {
@@ -910,7 +977,12 @@ const buttonTheme: ButtonVariantThemeProps = {
       },
       enabled: {
         innerContainer: {
-          getDynamicStyles: getRegularDefaultContainerStyles,
+          getDynamicStyles: getEnabledDefaultContainerStyles,
+        },
+      },
+      focused: {
+        innerContainer: {
+          getDynamicStyles: getFocusedDefaultContainerStyles,
         },
       },
       hovered: {
@@ -1007,7 +1079,12 @@ const buttonTheme: ButtonVariantThemeProps = {
       },
       enabled: {
         innerContainer: {
-          getDynamicStyles: getRegularOutlinedContainerStyles,
+          getDynamicStyles: getEnabledOutlinedContainerStyles,
+        },
+      },
+      focused: {
+        innerContainer: {
+          getDynamicStyles: getFocusedOutlinedContainerStyles,
         },
       },
       hovered: {
@@ -1096,7 +1173,7 @@ const buttonTheme: ButtonVariantThemeProps = {
 
 export const PurpleTealTheme: Theme = {
   components: {
-    button: merge<{}, ButtonVariantTheme, ButtonVariantThemeProps>(
+    button: merge<{}, ButtonVariantTheme, OptionalButtonVariantTheme>(
       {},
       emptyButtonVariantTheme,
       buttonTheme,
