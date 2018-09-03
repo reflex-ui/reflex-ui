@@ -34,7 +34,7 @@ export const createWithInteractivityState: WithInteractivityStateFactory = <
       if (this.props.disabled) return InteractivityState.DISABLED;
       if (this.state.isPressing) return InteractivityState.PRESSED;
       if (this.state.isHovering) return InteractivityState.HOVERED;
-      return InteractivityState.REGULAR;
+      return InteractivityState.ENABLED;
     };
 
     private onMouseEnter = (): void => {

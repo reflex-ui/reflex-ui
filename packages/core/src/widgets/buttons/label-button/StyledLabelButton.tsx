@@ -63,7 +63,7 @@ const getInnerContainerStyles: GetInnerContainerStyles = (
 ): TextStyle => {
   const size: Size = props.size || Size.REGULAR;
   const state: InteractivityState =
-    props.interactivityState || InteractivityState.REGULAR;
+    props.interactivityState || InteractivityState.ENABLED;
   const variant: Variant = props.variant || Variant.DEFAULT;
 
   return {
@@ -132,7 +132,7 @@ const getLabelStyles: GetLabelStyles = (
 ): TextStyle => {
   const size: Size = props.size || Size.REGULAR;
   const state: InteractivityState =
-    props.interactivityState || InteractivityState.REGULAR;
+    props.interactivityState || InteractivityState.ENABLED;
   const variant: Variant = props.variant || Variant.DEFAULT;
 
   return {
@@ -225,7 +225,7 @@ const getStyle: GetStyle = ({
   colorVariant = ColorVariant.PRIMARY_NORMAL,
   fullWidth,
   size = Size.REGULAR,
-  interactivityState = InteractivityState.REGULAR,
+  interactivityState = InteractivityState.ENABLED,
   theme,
   variant = Variant.DEFAULT,
 }: ThemedStyledButtonProps): ButtonStyleAndChildren => ({

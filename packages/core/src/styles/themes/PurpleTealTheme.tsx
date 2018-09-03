@@ -89,9 +89,9 @@ interface ButtonThemeProps {
 interface ButtonStateThemeProps {
   readonly allStates?: ButtonThemeProps;
   readonly disabled?: ButtonThemeProps;
+  readonly enabled?: ButtonThemeProps;
   readonly hovered?: ButtonThemeProps;
   readonly pressed?: ButtonThemeProps;
-  readonly regular?: ButtonThemeProps;
 }
 
 interface SizedButtonThemeProps {
@@ -133,9 +133,9 @@ interface ButtonTheme {
 interface ButtonStateTheme {
   readonly allStates: ButtonTheme;
   readonly disabled: ButtonTheme;
+  readonly enabled: ButtonTheme;
   readonly hovered: ButtonTheme;
   readonly pressed: ButtonTheme;
-  readonly regular: ButtonTheme;
 }
 
 interface SizedButtonTheme {
@@ -279,7 +279,7 @@ const getRegularContainedContainerStyles: IGetButtonContainerStyles = ({
 
 const androidShadows: { [key: string]: number } = {};
 androidShadows[InteractivityState.DISABLED] = 0;
-androidShadows[InteractivityState.REGULAR] = 2;
+androidShadows[InteractivityState.ENABLED] = 2;
 /*
  * No hover state on native Android.
  */
@@ -289,7 +289,7 @@ androidShadows[InteractivityState.PRESSED] = 8;
 
 const iosShadows: { [key: string]: ViewStyle } = {};
 iosShadows[InteractivityState.DISABLED] = {};
-iosShadows[InteractivityState.REGULAR] = {
+iosShadows[InteractivityState.ENABLED] = {
   shadowColor: '#000000',
   shadowOffset: { height: 1.6, width: 0 },
   shadowOpacity: 0.2,
@@ -309,7 +309,7 @@ iosShadows[InteractivityState.PRESSED] = {
 
 const webShadows: { [key: string]: string } = {};
 webShadows[InteractivityState.DISABLED] = '0 0 0 0 rgba(0,0,0,0)';
-webShadows[InteractivityState.REGULAR] = `0 3px 1px -2px rgba(0,0,0,.2),
+webShadows[InteractivityState.ENABLED] = `0 3px 1px -2px rgba(0,0,0,.2),
   0 2px 2px 0 rgba(0,0,0,.14),
   0 1px 5px 0 rgba(0,0,0,.12)`;
 webShadows[InteractivityState.HOVERED] = `0px 2px 4px -1px rgba(0,0,0,.2),
@@ -320,7 +320,7 @@ webShadows[InteractivityState.PRESSED] = `0px 5px 5px -3px rgba(0,0,0,.2),
   0px 3px 14px 2px rgba(0,0,0,.12)`;
 
 const getContainerElevationStyles: IGetButtonContainerStyles = ({
-  interactivityState = InteractivityState.REGULAR,
+  interactivityState = InteractivityState.ENABLED,
 }) => ({
   ...Platform.select({
     android: {
@@ -335,7 +335,7 @@ const getContainerElevationStyles: IGetButtonContainerStyles = ({
 
 const getDisabledContainedRaisedContainerStyles: IGetButtonContainerStyles = ({
   colorVariant,
-  interactivityState = InteractivityState.REGULAR,
+  interactivityState = InteractivityState.ENABLED,
   theme,
 }) => ({
   ...getDisabledContainedContainerStyles({ colorVariant, theme }),
@@ -344,7 +344,7 @@ const getDisabledContainedRaisedContainerStyles: IGetButtonContainerStyles = ({
 
 const getHoveredContainedRaisedContainerStyles: IGetButtonContainerStyles = ({
   colorVariant,
-  interactivityState = InteractivityState.REGULAR,
+  interactivityState = InteractivityState.ENABLED,
   theme,
 }) => ({
   ...getHoveredContainedContainerStyles({ colorVariant, theme }),
@@ -353,7 +353,7 @@ const getHoveredContainedRaisedContainerStyles: IGetButtonContainerStyles = ({
 
 const getPressedContainedRaisedContainerStyles: IGetButtonContainerStyles = ({
   colorVariant,
-  interactivityState = InteractivityState.REGULAR,
+  interactivityState = InteractivityState.ENABLED,
   theme,
 }) => ({
   ...getPressedContainedContainerStyles({ colorVariant, theme }),
@@ -362,7 +362,7 @@ const getPressedContainedRaisedContainerStyles: IGetButtonContainerStyles = ({
 
 const getRegularContainedRaisedContainerStyles: IGetButtonContainerStyles = ({
   colorVariant,
-  interactivityState = InteractivityState.REGULAR,
+  interactivityState = InteractivityState.ENABLED,
   theme,
 }) => ({
   ...getRegularContainedContainerStyles({ colorVariant, theme }),
@@ -463,9 +463,9 @@ const emptyButtonTheme: ButtonTheme = {
 const emptyButtonStateTheme: ButtonStateTheme = {
   allStates: emptyButtonTheme,
   disabled: emptyButtonTheme,
+  enabled: emptyButtonTheme,
   hovered: emptyButtonTheme,
   pressed: emptyButtonTheme,
-  regular: emptyButtonTheme,
 };
 
 const emptySizedButtonTheme: SizedButtonTheme = {
@@ -720,6 +720,11 @@ const buttonTheme: ButtonVariantThemeProps = {
           getDynamicStyles: getDisabledContainedContainerStyles,
         },
       },
+      enabled: {
+        innerContainer: {
+          getDynamicStyles: getRegularContainedContainerStyles,
+        },
+      },
       hovered: {
         innerContainer: {
           getDynamicStyles: getHoveredContainedContainerStyles,
@@ -728,11 +733,6 @@ const buttonTheme: ButtonVariantThemeProps = {
       pressed: {
         innerContainer: {
           getDynamicStyles: getPressedContainedContainerStyles,
-        },
-      },
-      regular: {
-        innerContainer: {
-          getDynamicStyles: getRegularContainedContainerStyles,
         },
       },
     },
@@ -814,6 +814,11 @@ const buttonTheme: ButtonVariantThemeProps = {
           getDynamicStyles: getDisabledContainedRaisedContainerStyles,
         },
       },
+      enabled: {
+        innerContainer: {
+          getDynamicStyles: getRegularContainedRaisedContainerStyles,
+        },
+      },
       hovered: {
         innerContainer: {
           getDynamicStyles: getHoveredContainedRaisedContainerStyles,
@@ -822,11 +827,6 @@ const buttonTheme: ButtonVariantThemeProps = {
       pressed: {
         innerContainer: {
           getDynamicStyles: getPressedContainedRaisedContainerStyles,
-        },
-      },
-      regular: {
-        innerContainer: {
-          getDynamicStyles: getRegularContainedRaisedContainerStyles,
         },
       },
     },
@@ -908,6 +908,11 @@ const buttonTheme: ButtonVariantThemeProps = {
           getDynamicStyles: getDisabledDefaultContainerStyles,
         },
       },
+      enabled: {
+        innerContainer: {
+          getDynamicStyles: getRegularDefaultContainerStyles,
+        },
+      },
       hovered: {
         innerContainer: {
           getDynamicStyles: getHoveredDefaultContainerStyles,
@@ -916,11 +921,6 @@ const buttonTheme: ButtonVariantThemeProps = {
       pressed: {
         innerContainer: {
           getDynamicStyles: getPressedDefaultContainerStyles,
-        },
-      },
-      regular: {
-        innerContainer: {
-          getDynamicStyles: getRegularDefaultContainerStyles,
         },
       },
     },
@@ -1005,6 +1005,11 @@ const buttonTheme: ButtonVariantThemeProps = {
           getDynamicStyles: getDisabledOutlinedContainerStyles,
         },
       },
+      enabled: {
+        innerContainer: {
+          getDynamicStyles: getRegularOutlinedContainerStyles,
+        },
+      },
       hovered: {
         innerContainer: {
           getDynamicStyles: getHoveredOutlinedContainerStyles,
@@ -1013,11 +1018,6 @@ const buttonTheme: ButtonVariantThemeProps = {
       pressed: {
         innerContainer: {
           getDynamicStyles: getPressedOutlinedContainerStyles,
-        },
-      },
-      regular: {
-        innerContainer: {
-          getDynamicStyles: getRegularOutlinedContainerStyles,
         },
       },
     },
