@@ -1,10 +1,13 @@
-import { Button } from './LabelButton';
-import { ThemedButton, Variant } from './StyledLabelButton';
+import * as React from 'react';
 
 import { createWithInteractivityState } from '../../../interactivity';
+// import { Button } from './LabelButton';
+import { DefaultButtonProps, ThemedButton, Variant } from './StyledLabelButton';
 
-const EnhancedButton = createWithInteractivityState(ThemedButton);
+const LabelButton: React.ComponentType<
+  DefaultButtonProps
+> = createWithInteractivityState(ThemedButton);
 
-export { Button as RawLabelButton };
-export { EnhancedButton as LabelButton };
+// export { Button as RawLabelButton };
+export { LabelButton };
 export { Variant as LabelButtonVariant };

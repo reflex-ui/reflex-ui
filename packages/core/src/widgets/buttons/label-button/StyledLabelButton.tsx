@@ -1,33 +1,83 @@
 import * as React from 'react';
-import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import {
+  // StyleSheet,
+  // Text,
+  TextStyle,
+  // TouchableWithoutFeedback,
+  TouchableWithoutFeedbackProps,
+  // View,
+  ViewStyle,
+} from 'react-native';
 
-import { InteractivityState } from '../../../interactivity';
+import { InteractivityEvent, InteractivityState } from '../../../interactivity';
 import { ColorVariant, Theme, ThemeContext } from '../../../styles';
 import {
-  ButtonContainerStyles,
-  ButtonLabelStyles,
+  ButtonComponent,
+  ButtonContainer,
+  TextComponent,
 } from '../../../styles/themes/PurpleTealTheme';
-import { isAndroid } from '../../../utils';
+// import { isAndroid } from '../../../utils';
 import { Size } from '../../Size';
+/*
 import {
-  Button,
   ButtonProps,
   ButtonStyle,
   ButtonStyleAndChildren,
 } from './LabelButton';
+*/
 
-export interface StyledButtonProps extends ButtonProps {
+export interface ButtonStyles {
+  innerContainer: ViewStyle;
+  label: TextStyle;
+  outerContainer: ViewStyle;
+}
+
+export interface VisualButtonProps {
+  children?: React.ReactNode;
+  colorVariant: ColorVariant;
+  customStyle?: ButtonStyles;
+  fullWidth: boolean;
+  interactivityEvent?: InteractivityEvent;
+  interactivityState: InteractivityState;
+  leftIcon?: JSX.Element;
+  rightIcon?: JSX.Element;
+  size: Size;
+  variant: Variant;
+}
+
+export interface DefaultVisualButtonProps {
   children?: React.ReactNode;
   colorVariant?: ColorVariant;
+  customStyle?: ButtonStyles;
   fullWidth?: boolean;
+  interactivityEvent?: InteractivityEvent;
   interactivityState?: InteractivityState;
+  leftIcon?: JSX.Element;
+  rightIcon?: JSX.Element;
   size?: Size;
   variant?: Variant;
 }
 
-// export type StyledButtonProps = ButtonStyleProps & ButtonProps;
+export interface Themed {
+  theme: Theme;
+}
 
-export type StyledButton = React.ComponentType<StyledButtonProps>;
+export interface ThemedVisualButtonProps extends VisualButtonProps, Themed {}
+
+export interface ButtonProps
+  extends VisualButtonProps,
+    TouchableWithoutFeedbackProps {}
+
+export interface DefaultButtonProps
+  extends DefaultVisualButtonProps,
+    TouchableWithoutFeedbackProps {}
+
+/*
+export interface StyledButtonProps
+  extends StyledButtonContainerProps,
+    ButtonProps {}
+*/
+// export type StyledButtonProps = ButtonStyleProps & ButtonProps;
 
 export enum Variant {
   CONTAINED = 'contained',
@@ -36,207 +86,19 @@ export enum Variant {
   OUTLINED = 'outlined',
 }
 
-interface Themed {
-  theme: Theme;
-}
+export interface ThemedStyledButtonProps extends ButtonProps, Themed {}
 
-export interface ThemedStyledButtonProps extends StyledButtonProps, Themed {}
+export interface DefaultThemedStyledButtonProps
+  extends DefaultButtonProps,
+    Themed {}
 
-type GetContainerStylesFromTheme = (
-  containerStyles: ButtonContainerStyles,
-  props: ThemedStyledButtonProps,
-) => ViewStyle;
-
-const getContainerStylesFromTheme: GetContainerStylesFromTheme = (
-  containerStyles,
-  props,
-): ViewStyle => ({
-  ...containerStyles.styles,
-  ...containerStyles.getDynamicStyles(props),
-  ...containerStyles.getDynamicCustomStyles(props),
-});
-
-type GetContainerStyles = (props: ThemedStyledButtonProps) => ViewStyle;
-
-const getInnerContainerStyles: GetContainerStyles = (
-  props: ThemedStyledButtonProps,
-): TextStyle => {
-  const size: Size = props.size || Size.REGULAR;
-  const state: InteractivityState =
-    props.interactivityState || InteractivityState.ENABLED;
-  const variant: Variant = props.variant || Variant.DEFAULT;
-
-  return {
-    /* allVariants && allSizes && allStates */
-    ...getContainerStylesFromTheme(
-      props.theme.components.button.allVariants.allSizes.allStates
-        .innerContainer,
-      props,
-    ),
-    /* allVariants && allSizes && state */
-    ...getContainerStylesFromTheme(
-      props.theme.components.button.allVariants.allSizes[state].innerContainer,
-      props,
-    ),
-    /* allVariants && size && allStates */
-    ...getContainerStylesFromTheme(
-      props.theme.components.button.allVariants[size].allStates.innerContainer,
-      props,
-    ),
-    /* allVariants && size && state */
-    ...getContainerStylesFromTheme(
-      props.theme.components.button.allVariants[size][state].innerContainer,
-      props,
-    ),
-    /* variant && allSizes && allStates */
-    ...getContainerStylesFromTheme(
-      props.theme.components.button[variant].allSizes.allStates.innerContainer,
-      props,
-    ),
-    /* variant && allSizes && state */
-    ...getContainerStylesFromTheme(
-      props.theme.components.button[variant].allSizes[state].innerContainer,
-      props,
-    ),
-    /* variant && size && allStates */
-    ...getContainerStylesFromTheme(
-      props.theme.components.button[variant][size].allStates.innerContainer,
-      props,
-    ),
-    /* variant && size && state */
-    ...getContainerStylesFromTheme(
-      props.theme.components.button[variant][size][state].innerContainer,
-      props,
-    ),
-  };
-};
-
-const getOuterContainerStyles: GetContainerStyles = (
-  props: ThemedStyledButtonProps,
-): TextStyle => {
-  const size: Size = props.size || Size.REGULAR;
-  const state: InteractivityState =
-    props.interactivityState || InteractivityState.ENABLED;
-  const variant: Variant = props.variant || Variant.DEFAULT;
-
-  return {
-    /* allVariants && allSizes && allStates */
-    ...getContainerStylesFromTheme(
-      props.theme.components.button.allVariants.allSizes.allStates
-        .outerContainer,
-      props,
-    ),
-    /* allVariants && allSizes && state */
-    ...getContainerStylesFromTheme(
-      props.theme.components.button.allVariants.allSizes[state].outerContainer,
-      props,
-    ),
-    /* allVariants && size && allStates */
-    ...getContainerStylesFromTheme(
-      props.theme.components.button.allVariants[size].allStates.outerContainer,
-      props,
-    ),
-    /* allVariants && size && state */
-    ...getContainerStylesFromTheme(
-      props.theme.components.button.allVariants[size][state].outerContainer,
-      props,
-    ),
-    /* variant && allSizes && allStates */
-    ...getContainerStylesFromTheme(
-      props.theme.components.button[variant].allSizes.allStates.outerContainer,
-      props,
-    ),
-    /* variant && allSizes && state */
-    ...getContainerStylesFromTheme(
-      props.theme.components.button[variant].allSizes[state].outerContainer,
-      props,
-    ),
-    /* variant && size && allStates */
-    ...getContainerStylesFromTheme(
-      props.theme.components.button[variant][size].allStates.outerContainer,
-      props,
-    ),
-    /* variant && size && state */
-    ...getContainerStylesFromTheme(
-      props.theme.components.button[variant][size][state].outerContainer,
-      props,
-    ),
-  };
-};
-
-type GetLabelButtonStylesFromTheme = (
-  labelStyles: ButtonLabelStyles,
-  props: ThemedStyledButtonProps,
-) => TextStyle;
-
-const getLabelButtonStylesFromTheme: GetLabelButtonStylesFromTheme = (
-  labelStyles,
-  props,
-): TextStyle => ({
-  ...labelStyles.styles,
-  ...labelStyles.getDynamicStyles(props),
-  ...labelStyles.getDynamicCustomStyles(props),
-});
-
-type GetLabelStyles = (props: ThemedStyledButtonProps) => TextStyle;
-
-const getLabelStyles: GetLabelStyles = (
-  props: ThemedStyledButtonProps,
-): TextStyle => {
-  const size: Size = props.size || Size.REGULAR;
-  const state: InteractivityState =
-    props.interactivityState || InteractivityState.ENABLED;
-  const variant: Variant = props.variant || Variant.DEFAULT;
-
-  return {
-    /* allVariants && allSizes && allStates */
-    ...getLabelButtonStylesFromTheme(
-      props.theme.components.button.allVariants.allSizes.allStates.label,
-      props,
-    ),
-    /* allVariants && allSizes && state */
-    ...getLabelButtonStylesFromTheme(
-      props.theme.components.button.allVariants.allSizes[state].label,
-      props,
-    ),
-    /* allVariants && size && allStates */
-    ...getLabelButtonStylesFromTheme(
-      props.theme.components.button.allVariants[size].allStates.label,
-      props,
-    ),
-    /* allVariants && size && state */
-    ...getLabelButtonStylesFromTheme(
-      props.theme.components.button.allVariants[size][state].label,
-      props,
-    ),
-    /* variant && allSizes && allStates */
-    ...getLabelButtonStylesFromTheme(
-      props.theme.components.button[variant].allSizes.allStates.label,
-      props,
-    ),
-    /* variant && allSizes && state */
-    ...getLabelButtonStylesFromTheme(
-      props.theme.components.button[variant].allSizes[state].label,
-      props,
-    ),
-    /* variant && size && allStates */
-    ...getLabelButtonStylesFromTheme(
-      props.theme.components.button[variant][size].allStates.label,
-      props,
-    ),
-    /* variant && size && state */
-    ...getLabelButtonStylesFromTheme(
-      props.theme.components.button[variant][size][state].label,
-      props,
-    ),
-  };
-};
+// export type StyledButton = React.ComponentType<ButtonProps>;
 
 type TransformText = (
   props: { text: string; transformation?: string },
 ) => string;
 
-const transformText: TransformText = ({
+export const transformText: TransformText = ({
   text,
   transformation = 'none',
 }): string => {
@@ -254,7 +116,7 @@ const transformText: TransformText = ({
       return text;
   }
 };
-
+/*
 type GetStyledChildren = (
   props: { children: React.ReactNode; size: Size; theme: Theme },
 ) => React.ReactNode;
@@ -267,7 +129,8 @@ const getStyledChildren: GetStyledChildren = ({ children }): React.ReactNode =>
       // TODO: implement this retrieving data from theme.
       transformation: 'uppercase',
       // tslint:disable-next-line
-      // transformation: theme.components.button[size].common.label.textTransform,
+      // transformation: theme.components.button[size].common.label
+        .textTransform,
     })
     : children;
 
@@ -319,20 +182,223 @@ const getStyle: GetStyle = ({
     },
   }),
 });
+*/
+/*
+const getChildrenContainer = ({
+  children,
+  colorVariant,
+  fullWidth,
+  interactivityState,
+  size,
+  theme,
+  variant = Variant.DEFAULT,
+}: ThemedStyledButtonProps) =>
+  theme.components.button[variant].childrenContainerFactory({
+    children,
+    colorVariant,
+    fullWidth,
+    interactivityState,
+    size,
+    theme,
+    variant,
+  });
+*/
+/*
+export type WithTheme = <P extends Themed>(
+  WrappedComponent: React.ComponentType<P>,
+) => React.ComponentType<P>;
 
+const withTheme: WithTheme = <P extends Themed>(
+  WrappedComponent: React.ComponentType<P>,
+) => (props: P) => (
+  <ThemeContext.Consumer>
+    {theme => <WrappedComponent {...props} theme={theme} />}
+  </ThemeContext.Consumer>
+);
+*/
+interface ThemedButtonState {
+  readonly Button: ButtonComponent;
+  readonly InnerContainer: ButtonContainer;
+  readonly Text: TextComponent;
+}
+
+interface VisualAndButtonProps {
+  readonly button: TouchableWithoutFeedbackProps;
+  readonly visual: ThemedVisualButtonProps;
+}
+
+class ThemedButton extends React.Component<
+  ThemedStyledButtonProps,
+  ThemedButtonState
+> {
+  constructor(props: ThemedStyledButtonProps) {
+    super(props);
+    // tslint:disable-next-line:no-console
+    console.log('ThemedButton.constructor() - props: ', props);
+
+    // prettier-ignore
+    const {
+      Button,
+      InnerContainer,
+      Text,
+    } = props.theme.components.button[props.variant];
+
+    this.state = {
+      Button,
+      InnerContainer,
+      Text,
+    };
+  }
+
+  public render() {
+    const { children } = this.props;
+    const { Button, InnerContainer } = this.state;
+    const visualAndButtonProps = this.getVisualAndButtonProps();
+
+    // tslint:disable-next-line:no-console
+    // console.log('ThemedButton.render() - Button: ', Button);
+
+    // tslint:disable-next-line:no-console
+    console.log(
+      'ThemedButton.render() - visualAndButtonProps: ',
+      visualAndButtonProps,
+    );
+
+    return (
+      <Button {...visualAndButtonProps.button}>
+        <InnerContainer {...visualAndButtonProps.visual}>
+          {children &&
+            this.getChildrenComponent(children, visualAndButtonProps.visual)}
+        </InnerContainer>
+      </Button>
+    );
+    /*
+    return (
+      <Button {...visualAndButtonProps.button}>
+        <InnerContainer {...visualAndButtonProps.visual}>
+          {children &&
+            this.getChildrenComponent(children, visualAndButtonProps.visual)}
+        </InnerContainer>
+      </Button>
+    );
+    */
+  }
+
+  /*
+  private onPress() {
+    // tslint:disable-next-line:no-console
+    console.log('ThemedButton().onPress()');
+  }
+  */
+
+  private getChildrenComponent(
+    children: React.ReactNode,
+    visual: ThemedVisualButtonProps,
+  ): JSX.Element | React.ReactNode {
+    const { Text } = this.state;
+
+    if (
+      typeof children === 'string' ||
+      typeof children === 'number' ||
+      typeof children === 'boolean'
+    ) {
+      return <Text {...visual}>{children}</Text>;
+    }
+
+    return children;
+  }
+
+  private getVisualAndButtonProps(): VisualAndButtonProps {
+    const {
+      children,
+      colorVariant,
+      customStyle,
+      fullWidth,
+      interactivityEvent,
+      interactivityState,
+      leftIcon,
+      rightIcon,
+      size,
+      theme,
+      variant,
+      ...buttonProps
+    } = this.props;
+
+    return {
+      button: buttonProps,
+      visual: {
+        children,
+        colorVariant,
+        customStyle,
+        fullWidth,
+        interactivityEvent,
+        interactivityState,
+        leftIcon,
+        rightIcon,
+        size,
+        theme,
+        variant,
+      },
+    };
+  }
+}
+
+// tslint:disable-next-line:max-classes-per-file
+class DefaultLabelButton extends React.Component<DefaultButtonProps> {
+  public render() {
+    return (
+      // prettier-ignore
+      <ThemeContext.Consumer>
+        {(theme) => {
+          const defaultProps: ThemedVisualButtonProps = {
+            colorVariant: ColorVariant.PRIMARY_NORMAL,
+            fullWidth: false,
+            interactivityState: InteractivityState.ENABLED,
+            size: Size.REGULAR,
+            // tslint:disable-next-line:object-shorthand-properties-first
+            theme,
+            variant: Variant.DEFAULT,
+          };
+
+          return <ThemedButton {...defaultProps} {...this.props} />;
+        }}
+      </ThemeContext.Consumer>
+    );
+  }
+}
+
+// const ThemedButtonWithTheme = withTheme(DefaultLabelButton);
+export { DefaultLabelButton as ThemedButton };
+
+/*
+const ThemedButtonWithTheme = withTheme(ThemedButton);
+
+export { ThemedButtonWithTheme as ThemedButton };
+*/
+
+/*
 export const ThemedButton: StyledButton = ({
   children,
   colorVariant,
   fullWidth,
   interactivityState,
   size,
-  variant,
+  variant = Variant.DEFAULT,
   ...other // tslint:disable-line:trailing-comma
 }: StyledButtonProps): JSX.Element => (
   <ThemeContext.Consumer>
     {theme => (
       <Button
         {...other}
+        ChildrenContainer={getChildrenContainer({
+          children,
+          colorVariant,
+          fullWidth,
+          interactivityState,
+          size,
+          theme,
+          variant,
+        })}
         customStyle={getStyle({
           children,
           colorVariant,
@@ -346,3 +412,4 @@ export const ThemedButton: StyledButton = ({
     )}
   </ThemeContext.Consumer>
 );
+*/

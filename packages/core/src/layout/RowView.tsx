@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { StyleSheet, View, ViewProps, ViewStyle } from 'react-native';
 
-export interface ISimpleViewProps {
+export interface SimpleViewProps {
   container: ViewStyle;
 }
 
-export interface IContainerStyle {
+export interface ContainerStyle {
   container: ViewStyle;
 }
 
-const styles: IContainerStyle = StyleSheet.create<IContainerStyle>({
+const styles: ContainerStyle = StyleSheet.create<ContainerStyle>({
   container: {
     flexDirection: 'row',
     flexWrap: 'wrap',

@@ -1,3 +1,4 @@
+/*
 import * as React from 'react';
 import {
   Text,
@@ -5,6 +6,7 @@ import {
   TouchableWithoutFeedback,
   TouchableWithoutFeedbackProps,
   View,
+  ViewProps,
   ViewStyle,
 } from 'react-native';
 
@@ -20,12 +22,25 @@ export interface ButtonStyleAndChildren {
 }
 
 export interface ButtonProps extends TouchableWithoutFeedbackProps {
+  ChildrenContainer?: React.ComponentType<{}>;
   customStyle?: ButtonStyleAndChildren;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
 }
 
+const DefaultChildrenContainer: React.SFC<ViewProps> = () => {
+  // tslint:disable-next-line:no-console
+  console.log('DefaultChildrenContainer');
+  // return <React.Fragment>{children}</React.Fragment>;
+  return (
+    <View>
+      <Text>HELLOOOO</Text>
+    </View>
+  );
+};
+
 export const Button: React.SFC<ButtonProps> = ({
+  ChildrenContainer = DefaultChildrenContainer,
   customStyle = {
     styles: { innerContainer: {}, label: {}, outerContainer: {} },
   },
@@ -37,14 +52,17 @@ export const Button: React.SFC<ButtonProps> = ({
   <View style={customStyle.styles.outerContainer}>
     <TouchableWithoutFeedback {...buttonProps}>
       <View style={customStyle.styles.innerContainer}>
-        {leftIcon}
-        {customStyle.children && (
-          <Text style={customStyle.styles.label}>{customStyle.children}</Text>
-        )}
-        {rightIcon}
+        <ChildrenContainer>
+          {leftIcon}
+          {customStyle.children && (
+            <Text style={customStyle.styles.label}>{customStyle.children}</Text>
+          )}
+          {rightIcon}
+        </ChildrenContainer>
       </View>
     </TouchableWithoutFeedback>
   </View>
 );
 
 Button.displayName = 'Button';
+*/

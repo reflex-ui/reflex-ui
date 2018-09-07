@@ -1,36 +1,56 @@
 import * as React from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, Text } from 'react-native';
 import {
   LabelButton,
   LabelButtonVariant,
   RowView,
-  Size,
+  // Size,
 } from 'react-platform-material-design';
+
+const onButtonPress = () => {
+  // tslint:disable-next-line:no-console
+  console.log('WelcomeSignedOutScreen().onButtonPress()');
+};
 
 export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
     <Text>WelcomeSignedOutScreen 1234567</Text>
     <RowView>
-      <LabelButton onPress={() => null} size={Size.XSMALL}>
+      <LabelButton
+        onPress={onButtonPress}
+        variant={LabelButtonVariant.CONTAINED}
+      >
+        Sign In
+      </LabelButton>
+    </RowView>
+  </ScrollView>
+);
+
+/*
+export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
+  <ScrollView>
+    <Text>WelcomeSignedOutScreen 1234567</Text>
+    <RowView>
+      <LabelButton onPress={onButtonPress} size={Size.XSMALL}>
         Sign In
       </LabelButton>
       <LabelButton
         disabled
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         size={Size.XSMALL}
         variant={LabelButtonVariant.OUTLINED}
       >
         Sign In
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         size={Size.XSMALL}
         variant={LabelButtonVariant.CONTAINED}
       >
         Sign In
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         size={Size.XSMALL}
         variant={LabelButtonVariant.CONTAINED_RAISED}
       >
@@ -42,21 +62,21 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         Ok
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         size={Size.XSMALL}
         variant={LabelButtonVariant.OUTLINED}
       >
         Ok
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         size={Size.XSMALL}
         variant={LabelButtonVariant.CONTAINED}
       >
         Ok
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         size={Size.XSMALL}
         variant={LabelButtonVariant.CONTAINED_RAISED}
       >
@@ -68,21 +88,21 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         Sign In
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         size={Size.SMALL}
         variant={LabelButtonVariant.OUTLINED}
       >
         Sign In
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         size={Size.SMALL}
         variant={LabelButtonVariant.CONTAINED}
       >
         Sign In
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         size={Size.SMALL}
         variant={LabelButtonVariant.CONTAINED_RAISED}
       >
@@ -94,21 +114,21 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         Ok
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         size={Size.SMALL}
         variant={LabelButtonVariant.OUTLINED}
       >
         Ok
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         size={Size.SMALL}
         variant={LabelButtonVariant.CONTAINED}
       >
         Ok
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         size={Size.SMALL}
         variant={LabelButtonVariant.CONTAINED_RAISED}
       >
@@ -118,19 +138,19 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <LabelButton onPress={() => null}>Sign In</LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         variant={LabelButtonVariant.OUTLINED}
       >
         Sign In
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         variant={LabelButtonVariant.CONTAINED}
       >
         Sign In
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         variant={LabelButtonVariant.CONTAINED_RAISED}
       >
         Sign In
@@ -139,19 +159,19 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <LabelButton onPress={() => null}>Ok</LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         variant={LabelButtonVariant.OUTLINED}
       >
         Ok
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         variant={LabelButtonVariant.CONTAINED}
       >
         Ok
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         variant={LabelButtonVariant.CONTAINED_RAISED}
       >
         Ok
@@ -162,21 +182,21 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         Sign In
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         size={Size.LARGE}
         variant={LabelButtonVariant.OUTLINED}
       >
         Sign In
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         size={Size.LARGE}
         variant={LabelButtonVariant.CONTAINED}
       >
         Sign In
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         size={Size.LARGE}
         variant={LabelButtonVariant.CONTAINED_RAISED}
       >
@@ -188,21 +208,21 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         Ok
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         size={Size.LARGE}
         variant={LabelButtonVariant.OUTLINED}
       >
         Ok
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         size={Size.LARGE}
         variant={LabelButtonVariant.CONTAINED}
       >
         Ok
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         size={Size.LARGE}
         variant={LabelButtonVariant.CONTAINED_RAISED}
       >
@@ -214,21 +234,21 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         Sign In
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         size={Size.XLARGE}
         variant={LabelButtonVariant.OUTLINED}
       >
         Sign In
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         size={Size.XLARGE}
         variant={LabelButtonVariant.CONTAINED}
       >
         Sign In
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         size={Size.XLARGE}
         variant={LabelButtonVariant.CONTAINED_RAISED}
       >
@@ -240,21 +260,21 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         Ok
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         size={Size.XLARGE}
         variant={LabelButtonVariant.OUTLINED}
       >
         Ok
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         size={Size.XLARGE}
         variant={LabelButtonVariant.CONTAINED}
       >
         Ok
       </LabelButton>
       <LabelButton
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         size={Size.XLARGE}
         variant={LabelButtonVariant.CONTAINED_RAISED}
       >
@@ -264,7 +284,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <View>
       <LabelButton
         fullWidth
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         variant={LabelButtonVariant.CONTAINED}
       >
         Sign Out
@@ -273,7 +293,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <LabelButton
         fullWidth
-        onPress={() => alert('onPress')}
+        onPress={onButtonPress}
         size={Size.XLARGE}
         variant={LabelButtonVariant.CONTAINED}
       >
@@ -282,3 +302,4 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
   </ScrollView>
 );
+*/

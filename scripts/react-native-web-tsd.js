@@ -28,11 +28,11 @@ export interface TextInputProperties {
     autoComplete?: string;
 }
 
-export interface TouchableWithoutFeedbackProps<T> {
-    onBlur?: React.FocusEventHandler<T>;
-    onFocus?: React.FocusEventHandler<T>;
-    onMouseEnter?: React.MouseEventHandler<T>;
-    onMouseLeave?: React.MouseEventHandler<T>;
+export interface TouchableWithoutFeedbackProps {
+    onBlur?: React.FocusEventHandler<{}>;
+    onFocus?: React.FocusEventHandler<{}>;
+    onMouseEnter?: React.MouseEventHandler<{}>;
+    onMouseLeave?: React.MouseEventHandler<{}>;
 }
 
 export interface SwitchProperties {

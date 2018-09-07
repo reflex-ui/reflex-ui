@@ -1,11 +1,28 @@
 import * as Color from 'color';
+import delay from 'delay';
 import merge from 'lodash/merge';
-import { Platform, TextStyle, ViewStyle } from 'react-native';
+import * as React from 'react';
+import {
+  GestureResponderEvent,
+  LayoutChangeEvent,
+  Platform,
+  StyleSheet,
+  Text,
+  TextStyle,
+  TouchableWithoutFeedback,
+  TouchableWithoutFeedbackProps,
+  View,
+  ViewStyle,
+} from 'react-native';
+import { Keyframes } from 'react-spring';
+// @ts-ignore
+import { Easing, TimingAnimation } from 'react-spring/dist/addons';
 
 import { InteractivityState } from '../../interactivity/InteractivityState';
+import { Size } from '../../widgets';
 // prettier-ignore
 import {
-  ThemedStyledButtonProps,
+  ThemedVisualButtonProps, Variant,
 } from '../../widgets/buttons/label-button/StyledLabelButton';
 import { TextTransformation } from '../../widgets/TextTransformation';
 import { FontWeight } from '../FontWeight';
@@ -60,12 +77,25 @@ interface IButtonInnerContainer {
 */
 
 type GetButtonContainerDynamicStyles = (
-  props: ThemedStyledButtonProps,
+  props: ThemedVisualButtonProps,
 ) => ViewStyle;
 
 type GetButtonLabelDynamicStyles = (
-  props: ThemedStyledButtonProps,
+  props: ThemedVisualButtonProps,
 ) => TextStyle;
+/*
+type StyledContainerFactory = (
+  props: ThemedVisualButtonProps,
+) => React.ComponentType<{}>;
+*/
+
+export type ButtonContainer = React.ComponentType<ThemedVisualButtonProps>;
+
+export type ButtonComponent = React.ComponentType<
+  TouchableWithoutFeedbackProps
+>;
+
+export type TextComponent = React.ComponentType<ThemedVisualButtonProps>;
 
 /* BEGIN OPTIONAL BUTTON STUFF */
 
@@ -98,11 +128,14 @@ interface OptionalButtonStateTheme {
 
 interface OptionalSizedButtonTheme {
   readonly allSizes?: OptionalButtonStateTheme;
-  readonly xsmall?: OptionalButtonStateTheme;
-  readonly small?: OptionalButtonStateTheme;
-  readonly regular?: OptionalButtonStateTheme;
+  readonly Button?: ButtonComponent;
+  readonly InnerContainer?: ButtonContainer;
   readonly large?: OptionalButtonStateTheme;
+  readonly regular?: OptionalButtonStateTheme;
+  readonly small?: OptionalButtonStateTheme;
+  readonly Text?: TextComponent;
   readonly xlarge?: OptionalButtonStateTheme;
+  readonly xsmall?: OptionalButtonStateTheme;
 }
 
 interface OptionalButtonVariantTheme {
@@ -144,11 +177,14 @@ interface ButtonStateTheme {
 
 interface SizedButtonTheme {
   readonly allSizes: ButtonStateTheme;
-  readonly xsmall: ButtonStateTheme;
-  readonly small: ButtonStateTheme;
-  readonly regular: ButtonStateTheme;
+  readonly Button: ButtonComponent;
+  readonly InnerContainer: ButtonContainer;
   readonly large: ButtonStateTheme;
+  readonly regular: ButtonStateTheme;
+  readonly small: ButtonStateTheme;
+  readonly Text: TextComponent;
   readonly xlarge: ButtonStateTheme;
+  readonly xsmall: ButtonStateTheme;
 }
 
 interface ButtonVariantTheme {
@@ -232,9 +268,9 @@ type IGetFontFamily = () => string;
 
 const getFontFamily: IGetFontFamily = (): string => 'System';
 
-type IGetButtonContainerStyles = (props: ThemedStyledButtonProps) => ViewStyle;
+type IGetButtonContainerStyles = (props: ThemedVisualButtonProps) => ViewStyle;
 
-type IGetButtonLabelStyles = (props: ThemedStyledButtonProps) => TextStyle;
+type IGetButtonLabelStyles = (props: ThemedVisualButtonProps) => TextStyle;
 
 const getButtonContainerStyles: IGetButtonContainerStyles = ({
   fullWidth,
@@ -281,7 +317,7 @@ const getHoveredContainedContainerStyles: IGetButtonContainerStyles = ({
     .lighten(0.12)
     .toString(),
 });
-
+/*
 const getPressedContainedContainerStyles: IGetButtonContainerStyles = ({
   colorVariant,
   theme,
@@ -289,6 +325,12 @@ const getPressedContainedContainerStyles: IGetButtonContainerStyles = ({
   backgroundColor: Color.rgb(getThemedColor({ colorVariant, theme }))
     .lighten(0.6)
     .toString(),
+});
+*/
+
+// tslint:disable-next-line:max-line-length
+const getPressedContainedContainerStyles: IGetButtonContainerStyles = props => ({
+  ...getHoveredContainedContainerStyles(props),
 });
 
 const androidShadows: { [key: string]: number } = {};
@@ -355,49 +397,34 @@ const getContainerElevationStyles: IGetButtonContainerStyles = ({
   }),
 });
 
-const getDisabledContainedRaisedContainerStyles: IGetButtonContainerStyles = ({
-  colorVariant,
-  interactivityState = InteractivityState.ENABLED,
-  theme,
-}) => ({
-  ...getDisabledContainedContainerStyles({ colorVariant, theme }),
-  ...getContainerElevationStyles({ interactivityState, theme }),
+// tslint:disable-next-line:max-line-length
+const getDisabledContainedRaisedContainerStyles: IGetButtonContainerStyles = props => ({
+  ...getDisabledContainedContainerStyles(props),
+  ...getContainerElevationStyles(props),
 });
 
-const getEnabledContainedRaisedContainerStyles: IGetButtonContainerStyles = ({
-  colorVariant,
-  interactivityState = InteractivityState.ENABLED,
-  theme,
-}) => ({
-  ...getEnabledContainedContainerStyles({ colorVariant, theme }),
-  ...getContainerElevationStyles({ interactivityState, theme }),
+// tslint:disable-next-line:max-line-length
+const getEnabledContainedRaisedContainerStyles: IGetButtonContainerStyles = props => ({
+  ...getEnabledContainedContainerStyles(props),
+  ...getContainerElevationStyles(props),
 });
 
-const getFocusedContainedRaisedContainerStyles: IGetButtonContainerStyles = ({
-  colorVariant,
-  interactivityState = InteractivityState.ENABLED,
-  theme,
-}) => ({
-  ...getFocusedContainedContainerStyles({ colorVariant, theme }),
-  ...getContainerElevationStyles({ interactivityState, theme }),
+// tslint:disable-next-line:max-line-length
+const getFocusedContainedRaisedContainerStyles: IGetButtonContainerStyles = props => ({
+  ...getFocusedContainedContainerStyles(props),
+  ...getContainerElevationStyles(props),
 });
 
-const getHoveredContainedRaisedContainerStyles: IGetButtonContainerStyles = ({
-  colorVariant,
-  interactivityState = InteractivityState.ENABLED,
-  theme,
-}) => ({
-  ...getHoveredContainedContainerStyles({ colorVariant, theme }),
-  ...getContainerElevationStyles({ interactivityState, theme }),
+// tslint:disable-next-line:max-line-length
+const getHoveredContainedRaisedContainerStyles: IGetButtonContainerStyles = props => ({
+  ...getHoveredContainedContainerStyles(props),
+  ...getContainerElevationStyles(props),
 });
 
-const getPressedContainedRaisedContainerStyles: IGetButtonContainerStyles = ({
-  colorVariant,
-  interactivityState = InteractivityState.ENABLED,
-  theme,
-}) => ({
-  ...getPressedContainedContainerStyles({ colorVariant, theme }),
-  ...getContainerElevationStyles({ interactivityState, theme }),
+// tslint:disable-next-line:max-line-length
+const getPressedContainedRaisedContainerStyles: IGetButtonContainerStyles = props => ({
+  ...getPressedContainedContainerStyles(props),
+  ...getContainerElevationStyles(props),
 });
 
 const getDisabledDefaultContainerStyles: IGetButtonContainerStyles = () => ({
@@ -436,36 +463,27 @@ const getPressedDefaultContainerStyles: IGetButtonContainerStyles = ({
 });
 
 const getDisabledOutlinedContainerStyles: IGetButtonContainerStyles = (
-  props: ThemedStyledButtonProps,
+  props: ThemedVisualButtonProps,
 ) => ({
   ...getDisabledDefaultContainerStyles(props),
 });
 
 const getEnabledOutlinedContainerStyles: IGetButtonContainerStyles = (
-  props: ThemedStyledButtonProps,
+  props: ThemedVisualButtonProps,
 ) => ({
   ...getEnabledDefaultContainerStyles(props),
 });
 
-const getFocusedOutlinedContainerStyles: IGetButtonContainerStyles = ({
-  colorVariant,
-  theme,
-}) => ({
-  ...getFocusedDefaultContainerStyles({ colorVariant, theme }),
+const getFocusedOutlinedContainerStyles: IGetButtonContainerStyles = props => ({
+  ...getFocusedDefaultContainerStyles(props),
 });
 
-const getHoveredOutlinedContainerStyles: IGetButtonContainerStyles = ({
-  colorVariant,
-  theme,
-}) => ({
-  ...getHoveredDefaultContainerStyles({ colorVariant, theme }),
+const getHoveredOutlinedContainerStyles: IGetButtonContainerStyles = props => ({
+  ...getHoveredDefaultContainerStyles(props),
 });
 
-const getPressedOutlinedContainerStyles: IGetButtonContainerStyles = ({
-  colorVariant,
-  theme,
-}) => ({
-  ...getPressedDefaultContainerStyles({ colorVariant, theme }),
+const getPressedOutlinedContainerStyles: IGetButtonContainerStyles = props => ({
+  ...getPressedDefaultContainerStyles(props),
 });
 
 const getContainedLabelStyles: IGetButtonLabelStyles = ({
@@ -476,7 +494,7 @@ const getContainedLabelStyles: IGetButtonLabelStyles = ({
 });
 
 const getContainedRaisedLabelStyles: IGetButtonLabelStyles = (
-  props: ThemedStyledButtonProps,
+  props: ThemedVisualButtonProps,
 ) => ({
   ...getContainedLabelStyles(props),
 });
@@ -489,10 +507,792 @@ const getDefaultLabelStyles: IGetButtonLabelStyles = ({
 });
 
 const getOutlinedLabelStyles: IGetButtonLabelStyles = (
-  props: ThemedStyledButtonProps,
+  props: ThemedVisualButtonProps,
 ) => ({
   ...getDefaultLabelStyles(props),
 });
+
+/*
+const DefaultChildrenContainer: StyledContainerFactory = () => ({
+  children,
+}) => {
+  // tslint:disable-next-line:no-console
+  console.log('PurpleTealTheme.DefaultChildrenContainerX()');
+  return <React.Fragment>{children}</React.Fragment>;
+};
+
+const RippleContainerFactory: StyledContainerFactory = (
+  buttonProps: ThemedVisualButtonProps,
+) =>
+  class RippleContainer extends React.Component {
+    public static getDerivedStateFromProps(props, state: RippleContainerState) {
+      if (state.isAnimating) return state;
+
+      const newState: RippleContainerState = {
+        ...state,
+
+      };
+
+      return newState;
+    }
+
+    public readonly state: RippleContainerState = {
+      isAnimating: false,
+    };
+
+    public render() {
+      const to =
+        buttonProps.interactivityState === InteractivityState.PRESSED
+          ? { scale: 1 }
+          : { scale: 0.001 };
+
+      return (
+        <Spring from={{ scale: 0.01 }} to={to}>
+          {styles => {
+            const transformStyles = {
+              transform: [{ scale: (styles as { scale: number }).scale }],
+            };
+
+            return (
+              <React.Fragment>
+                <View style={getDefaultRippleStyles().container}>
+                  <View
+                    style={[getDefaultRippleStyles().ripple, transformStyles]}
+                  />
+                </View>
+                {this.props.children}
+              </React.Fragment>
+            );
+          }}
+        </Spring>
+      );
+    }
+  };
+*/
+
+/*
+const RippleContainerFactory: StyledContainerFactory = (
+  props: ThemedVisualButtonProps,
+) =>
+  class RippleContainer extends React.Component {
+    public readonly state: RippleContainerState = {
+      isAnimating: false,
+    };
+
+    public render() {
+      if (props.interactivityState === InteractivityState.PRESSED) {
+        return (
+          <Spring
+            from={{ scale: 0.01 }}
+            to={{ scale: 1 }}
+            render={this.renderContainer}
+          />
+        );
+      }
+
+      return this.props.children;
+    }
+
+    private renderContainer = ({
+      children,
+      ...styles
+    }: {
+      children?: React.ReactNode;
+      scale: number;
+    }): JSX.Element => {
+      // tslint:disable-next-line:no-console
+      console.log('RippleContainer.renderContainer() - styles: ', styles);
+
+      const transformStyles = {
+        transform: [{ scale: (styles as { scale: number }).scale }],
+      };
+
+      return (
+        <React.Fragment>
+          <View style={getDefaultRippleStyles().container}>
+            <View style={[getDefaultRippleStyles().ripple, transformStyles]} />
+          </View>
+          {this.props.children}
+        </React.Fragment>
+      );
+    };
+  };
+*/
+/*
+const RippleContainerFactory: StyledContainerFactory = (
+  props: ThemedVisualButtonProps,
+) => ({ children }) => {
+  const to =
+    props.interactivityState === InteractivityState.PRESSED
+      ? { scale: 1 }
+      : { scale: 0.001 };
+  return (
+    <Spring from={{ scale: 0.001 }} to={to}>
+      {styles => {
+        // tslint:disable-next-line:no-console
+        console.log(
+          'RippleContainerFactory - styles.scale: ',
+          (styles as { scale: number }).scale,
+        );
+
+        const transformStyles = {
+          transform: [{ scale: (styles as { scale: number }).scale }],
+        };
+
+        // const transformStyles = {
+        //  opacity: (styles as { scale: number }).scale,
+        // };
+
+        return (
+          <React.Fragment>
+            <View style={getDefaultRippleStyles().container}>
+              <View
+                style={[getDefaultRippleStyles().ripple, transformStyles]}
+              />
+            </View>
+            {children}
+          </React.Fragment>
+        );
+      }}
+    </Spring>
+  );
+};
+*/
+
+type GetLabelButtonStylesFromTheme = (
+  labelStyles: ButtonLabelStyles,
+  props: ThemedVisualButtonProps,
+) => TextStyle;
+
+const getLabelButtonStylesFromTheme: GetLabelButtonStylesFromTheme = (
+  labelStyles,
+  props,
+): TextStyle => ({
+  ...labelStyles.styles,
+  ...labelStyles.getDynamicStyles(props),
+  ...labelStyles.getDynamicCustomStyles(props),
+});
+
+type GetLabelStyleProps = (props: ThemedVisualButtonProps) => TextStyle;
+
+export const getLabelStyleProps: GetLabelStyleProps = (
+  props: ThemedVisualButtonProps,
+): TextStyle => {
+  const size: Size = props.size || Size.REGULAR;
+  const state: InteractivityState =
+    props.interactivityState || InteractivityState.ENABLED;
+  const variant: Variant = props.variant || Variant.DEFAULT;
+
+  return {
+    /* allVariants && allSizes && allStates */
+    ...getLabelButtonStylesFromTheme(
+      props.theme.components.button.allVariants.allSizes.allStates.label,
+      props,
+    ),
+    /* allVariants && allSizes && state */
+    ...getLabelButtonStylesFromTheme(
+      props.theme.components.button.allVariants.allSizes[state].label,
+      props,
+    ),
+    /* allVariants && size && allStates */
+    ...getLabelButtonStylesFromTheme(
+      props.theme.components.button.allVariants[size].allStates.label,
+      props,
+    ),
+    /* allVariants && size && state */
+    ...getLabelButtonStylesFromTheme(
+      props.theme.components.button.allVariants[size][state].label,
+      props,
+    ),
+    /* variant && allSizes && allStates */
+    ...getLabelButtonStylesFromTheme(
+      props.theme.components.button[variant].allSizes.allStates.label,
+      props,
+    ),
+    /* variant && allSizes && state */
+    ...getLabelButtonStylesFromTheme(
+      props.theme.components.button[variant].allSizes[state].label,
+      props,
+    ),
+    /* variant && size && allStates */
+    ...getLabelButtonStylesFromTheme(
+      props.theme.components.button[variant][size].allStates.label,
+      props,
+    ),
+    /* variant && size && state */
+    ...getLabelButtonStylesFromTheme(
+      props.theme.components.button[variant][size][state].label,
+      props,
+    ),
+  };
+};
+
+interface TextStyleSheet {
+  text: TextStyle;
+}
+
+type GetTextStyleSheet = (props: ThemedVisualButtonProps) => TextStyleSheet;
+
+export const getLabelStyle: GetTextStyleSheet = props =>
+  StyleSheet.create<TextStyleSheet>({
+    text: getLabelStyleProps(props),
+  });
+
+type GetContainerStylesFromTheme = (
+  containerStyles: ButtonContainerStyles,
+  props: ThemedVisualButtonProps,
+) => ViewStyle;
+
+const getContainerStylesFromTheme: GetContainerStylesFromTheme = (
+  containerStyles,
+  props,
+): ViewStyle => ({
+  ...containerStyles.styles,
+  ...containerStyles.getDynamicStyles(props),
+  ...containerStyles.getDynamicCustomStyles(props),
+});
+
+type GetContainerStyleProps = (props: ThemedVisualButtonProps) => ViewStyle;
+
+export const getInnerContainerStyleProps: GetContainerStyleProps = (
+  props: ThemedVisualButtonProps,
+): ViewStyle => {
+  const size: Size = props.size || Size.REGULAR;
+  const state: InteractivityState =
+    props.interactivityState || InteractivityState.ENABLED;
+  const variant: Variant = props.variant || Variant.DEFAULT;
+
+  return {
+    /* allVariants && allSizes && allStates */
+    ...getContainerStylesFromTheme(
+      props.theme.components.button.allVariants.allSizes.allStates
+        .innerContainer,
+      props,
+    ),
+    /* allVariants && allSizes && state */
+    ...getContainerStylesFromTheme(
+      props.theme.components.button.allVariants.allSizes[state].innerContainer,
+      props,
+    ),
+    /* allVariants && size && allStates */
+    ...getContainerStylesFromTheme(
+      props.theme.components.button.allVariants[size].allStates.innerContainer,
+      props,
+    ),
+    /* allVariants && size && state */
+    ...getContainerStylesFromTheme(
+      props.theme.components.button.allVariants[size][state].innerContainer,
+      props,
+    ),
+    /* variant && allSizes && allStates */
+    ...getContainerStylesFromTheme(
+      props.theme.components.button[variant].allSizes.allStates.innerContainer,
+      props,
+    ),
+    /* variant && allSizes && state */
+    ...getContainerStylesFromTheme(
+      props.theme.components.button[variant].allSizes[state].innerContainer,
+      props,
+    ),
+    /* variant && size && allStates */
+    ...getContainerStylesFromTheme(
+      props.theme.components.button[variant][size].allStates.innerContainer,
+      props,
+    ),
+    /* variant && size && state */
+    ...getContainerStylesFromTheme(
+      props.theme.components.button[variant][size][state].innerContainer,
+      props,
+    ),
+  };
+};
+
+interface ContainerStyle {
+  container: ViewStyle;
+}
+
+type GetContainerStyle = (props: ThemedVisualButtonProps) => ContainerStyle;
+
+export const getInnerContainerStyle: GetContainerStyle = props =>
+  StyleSheet.create<ContainerStyle>({
+    container: getInnerContainerStyleProps(props),
+  });
+
+export const getOuterContainerStyleProps: GetContainerStyleProps = (
+  props: ThemedVisualButtonProps,
+): ViewStyle => {
+  const size: Size = props.size || Size.REGULAR;
+  const state: InteractivityState =
+    props.interactivityState || InteractivityState.ENABLED;
+  const variant: Variant = props.variant || Variant.DEFAULT;
+
+  return {
+    /* allVariants && allSizes && allStates */
+    ...getContainerStylesFromTheme(
+      props.theme.components.button.allVariants.allSizes.allStates
+        .outerContainer,
+      props,
+    ),
+    /* allVariants && allSizes && state */
+    ...getContainerStylesFromTheme(
+      props.theme.components.button.allVariants.allSizes[state].outerContainer,
+      props,
+    ),
+    /* allVariants && size && allStates */
+    ...getContainerStylesFromTheme(
+      props.theme.components.button.allVariants[size].allStates.outerContainer,
+      props,
+    ),
+    /* allVariants && size && state */
+    ...getContainerStylesFromTheme(
+      props.theme.components.button.allVariants[size][state].outerContainer,
+      props,
+    ),
+    /* variant && allSizes && allStates */
+    ...getContainerStylesFromTheme(
+      props.theme.components.button[variant].allSizes.allStates.outerContainer,
+      props,
+    ),
+    /* variant && allSizes && state */
+    ...getContainerStylesFromTheme(
+      props.theme.components.button[variant].allSizes[state].outerContainer,
+      props,
+    ),
+    /* variant && size && allStates */
+    ...getContainerStylesFromTheme(
+      props.theme.components.button[variant][size].allStates.outerContainer,
+      props,
+    ),
+    /* variant && size && state */
+    ...getContainerStylesFromTheme(
+      props.theme.components.button[variant][size][state].outerContainer,
+      props,
+    ),
+  };
+};
+
+const DefaultInnerContainer: ButtonContainer = ({
+  children,
+  colorVariant,
+  customStyle,
+  fullWidth,
+  interactivityState,
+  leftIcon,
+  rightIcon,
+  size,
+  theme,
+  variant,
+  /*
+   * This is necessary to fix this issue with TouchableWithoutFeedback:
+   * https://github.com/facebook/react-native/issues/1352
+   * It's still an issue. Ref:
+   * https://github.com/facebook/react-native/issues/10180
+   */
+  ...buttonProps
+}: /**/
+ThemedVisualButtonProps) => {
+  // tslint:disable-next-line:no-console
+  // console.log('DefaultInnerContainer() - props: ', props);
+  const style = getInnerContainerStyle({
+    children,
+    colorVariant,
+    customStyle,
+    fullWidth,
+    interactivityState,
+    leftIcon,
+    rightIcon,
+    size,
+    theme,
+    variant,
+  });
+  return (
+    <View {...buttonProps} style={style.container}>
+      {children}
+    </View>
+  );
+};
+
+const DefaultButton: ButtonComponent = TouchableWithoutFeedback;
+
+/*
+const DefaultButton: ButtonComponent = (
+  props: TouchableWithoutFeedbackProps & { children?: React.ReactNode },
+) => <TouchableWithoutFeedback>{props.children}</TouchableWithoutFeedback>;
+*/
+
+/*
+const DefaultButton: ButtonComponent = (
+  props: TouchableWithoutFeedbackProps,
+) => {
+  // tslint:disable-next-line:no-console
+  console.log('DefaultButton() - props: ', props);
+  return <TouchableWithoutFeedback {...props} />;
+};
+*/
+
+const DefaultText: TextComponent = (props: ThemedVisualButtonProps) => {
+  const style = getLabelStyle(props);
+  return <Text style={style.text}>{props.children}</Text>;
+};
+
+interface RippleStyles {
+  container: ViewStyle;
+  ripple: ViewStyle;
+}
+
+interface RipplePosition {
+  left?: number;
+  top?: number;
+}
+
+interface RippleContainerState {
+  readonly diameter: number;
+  readonly isHiding: boolean;
+  readonly isShowing: boolean;
+  readonly isShowingComplete: boolean;
+  readonly ripplePosition: RipplePosition;
+}
+
+export type WithRippleEffect = <P extends ThemedVisualButtonProps>(
+  WrappedComponent: React.ComponentType<P>,
+) => React.ComponentType<P>;
+
+const withRippleEffect: WithRippleEffect = <P extends ThemedVisualButtonProps>(
+  WrappedComponent: React.ComponentType<P>,
+) =>
+  class RippledComponent extends React.Component<P> {
+    public static getDerivedStateFromProps(
+      props: P,
+      state: RippleContainerState,
+    ) {
+      let newState = { ...state };
+
+      if (props.interactivityState === InteractivityState.PRESSED) {
+        newState = {
+          ...newState,
+          ripplePosition: RippledComponent.getRipplePosition(props, state),
+        };
+      }
+
+      if (
+        state.isShowing ||
+        (props.interactivityState === InteractivityState.PRESSED &&
+          !state.isShowingComplete)
+      ) {
+        return {
+          ...newState,
+          isShowing: true,
+        };
+      }
+
+      if (
+        props.interactivityState !== InteractivityState.PRESSED &&
+        state.isShowingComplete
+      ) {
+        return {
+          ...newState,
+          isShowing: false,
+          isShowingComplete: false,
+        };
+      }
+
+      return newState;
+    }
+
+    public static getRipplePosition(
+      props: P,
+      state: RippleContainerState,
+    ): RipplePosition {
+      const ripplePosition: { left?: number; top?: number } = {};
+
+      // tslint:disable-next-line:no-console
+      console.log(
+        'RippledComponent.render() - this.props.interactivityEvent: ',
+        props.interactivityEvent,
+      );
+
+      if (props.interactivityState === InteractivityState.PRESSED) {
+        let px = 0;
+        let py = 0;
+
+        if (props.interactivityEvent) {
+          px = (props.interactivityEvent as GestureResponderEvent).nativeEvent
+            .locationX;
+          py = (props.interactivityEvent as GestureResponderEvent).nativeEvent
+            .locationY;
+        }
+
+        const { diameter } = state;
+        ripplePosition.left = px - diameter / 2;
+        ripplePosition.top = py - diameter / 2;
+      }
+
+      return ripplePosition;
+    }
+
+    public maxDiameter: number = 200;
+    public rippleAnimation: {};
+    public rippleStyles: RippleStyles;
+
+    public readonly state: RippleContainerState = {
+      diameter: this.maxDiameter,
+      isHiding: false,
+      isShowing: false,
+      isShowingComplete: false,
+      ripplePosition: {},
+    };
+
+    public constructor(props: P) {
+      super(props);
+
+      this.rippleStyles = this.getDefaultRippleStyles();
+
+      this.rippleAnimation = Keyframes.Spring({
+        // @ts-ignore
+        pressin: async call => {
+          // tslint:disable-next-line:no-console
+          console.log('RippledComponent.Keyframes.Spring.pressin()');
+          call({
+            config: { tension: 200, friction: 20 },
+            // config: { duration: 2000, easing: Easing.linear },
+            // from: { opacity: 0, scale: 0.001 },
+            from: {
+              // config: { duration: 2000, easing: Easing.linear },
+              opacity: 0,
+              scale: 0.001,
+            },
+            to: { opacity: 1, scale: 1 },
+          });
+          // await call({ from: { opacity: 1 }, to: { opacity: 0 } });
+          await delay(300);
+          if (this.state.isShowing) this.motionComplete();
+        },
+        // @ts-ignore
+        pressout: async call => {
+          // tslint:disable-next-line:no-console
+          console.log('RippledComponent.Keyframes.Spring.pressout()');
+          await call({ to: { opacity: 0 } });
+          await call({ to: { scale: 0 } });
+          // if (this.state.isHiding) this.hidingComplete();
+        },
+      });
+    }
+
+    public onLayoutChanged = (event: LayoutChangeEvent) => {
+      // tslint:disable-next-line:no-console
+      console.log('RippledComponent.onLayoutChanged() - event: ', event);
+
+      const { height, width } = event.nativeEvent.layout;
+      const diameter = Math.ceil(Math.sqrt(width * width + height * height));
+
+      this.setState(
+        {
+          diameter: Math.min(diameter, this.maxDiameter),
+        },
+        this.setRippleStyles,
+      );
+    };
+
+    public render() {
+      const state =
+        this.state.isShowing ||
+        this.props.interactivityState === InteractivityState.PRESSED
+          ? 'pressin'
+          : 'pressout';
+
+      // tslint:disable-next-line:no-console
+      console.log(
+        `RippledComponent.render() - isShowing: ${
+          this.state.isShowing
+        } | state: ${state}`,
+      );
+
+      const { children, ...otherProps } = this.props as ThemedVisualButtonProps;
+      const RippleAnimation = this.rippleAnimation;
+
+      /*
+      const ripplePosition: { left?: number; top?: number } = {};
+
+      // tslint:disable-next-line:no-console
+      console.log(
+        'RippledComponent.render() - this.props.interactivityEvent: ',
+        this.props.interactivityEvent,
+      );
+
+      if (this.props.interactivityState === InteractivityState.PRESSED) {
+        let px = 0;
+        let py = 0;
+
+        if (this.props.interactivityEvent) {
+          px = (this.props.interactivityEvent as GestureResponderEvent)
+            .nativeEvent.locationX;
+          py = (this.props.interactivityEvent as GestureResponderEvent)
+            .nativeEvent.locationY;
+        }
+
+        const { diameter } = this.state;
+        ripplePosition.left = px - diameter / 2;
+        ripplePosition.top = py - diameter / 2;
+      }
+      */
+
+      // tslint:disable-next-line:no-console
+      console.log(
+        'RippledComponent.render() - ripplePosition: ',
+        this.state.ripplePosition,
+      );
+
+      return (
+        // @ts-ignore
+        // impl={TimingAnimation}
+        // config={{ duration: 1000, easing: Easing.linear }}
+        /*
+        <RippleAnimation
+          impl={TimingAnimation}
+          config={{ duration: 2000, easing: Easing.linear }}
+          state={state}
+        >
+        */
+        // @ts-ignore
+        <RippleAnimation state={state}>
+          {(styles: { opacity: number; scale: number }) => {
+            // tslint:disable-next-line:no-console
+            /*
+            console.log(
+              'RippledComponent.RippleAnimation() - styles: ',
+              styles,
+            );
+            */
+
+            const motionStyles = {
+              opacity: styles.opacity,
+              transform: [{ scale: styles.scale }],
+            };
+
+            return (
+              <WrappedComponent {...otherProps}>
+                <React.Fragment>
+                  <View
+                    onLayout={this.onLayoutChanged}
+                    style={this.rippleStyles.container}
+                  >
+                    <View
+                      style={[
+                        this.rippleStyles.ripple,
+                        { ...this.state.ripplePosition, ...motionStyles },
+                      ]}
+                    />
+                  </View>
+                </React.Fragment>
+                {children}
+              </WrappedComponent>
+            );
+          }}
+        </RippleAnimation>
+      );
+    }
+
+    private getDefaultRippleStyles = () => {
+      const { colorVariant, theme } = this.props;
+      const { diameter } = this.state;
+
+      return StyleSheet.create<RippleStyles>({
+        container: {
+          ...StyleSheet.absoluteFillObject,
+          overflow: 'hidden',
+        },
+        ripple: {
+          // backgroundColor: 'red',
+          backgroundColor: Color.rgb(getThemedColor({ colorVariant, theme }))
+            .lighten(0.6)
+            .toString(),
+          borderRadius: diameter / 2,
+          height: diameter,
+          left: 0,
+          // opacity: 0.01,
+          position: 'absolute',
+          top: 0,
+          // transform: [{ scale: 2 }],
+          width: diameter,
+        },
+      });
+    };
+
+    private motionComplete() {
+      // tslint:disable-next-line:no-console
+      console.log('RippledComponent.motionComplete()');
+      const isShowingComplete =
+        this.props.interactivityState === InteractivityState.PRESSED
+          ? true
+          : false;
+
+      this.setState({ isShowingComplete, isShowing: false });
+    }
+
+    private setRippleStyles() {
+      this.rippleStyles = this.getDefaultRippleStyles();
+    }
+
+    /*
+    public render() {
+      const to = this.state.isShowing ? { scale: 1 } : { scale: 0.001 };
+
+      return (
+        <Keyframes
+          native
+          // @ts-ignore
+          script={async next => {
+            while (true) {
+              await next(Spring, {
+                from: { scale: 0.01 },
+                // tslint:disable-next-line:object-shorthand-properties-first
+                to,
+              });
+            }
+          }}
+        >
+          {(motion: ViewStyle) => (
+            <React.Fragment>
+              <View style={getDefaultRippleStyles().container}>
+                <View
+                  style={[getDefaultRippleStyles().ripple, { ...motion }]}
+                />
+              </View>
+              <WrappedComponent {...this.props} />
+            </React.Fragment>
+          )}
+        </Keyframes>
+      );
+    }
+    */
+
+    /*
+    public render() {
+      const to = this.state.isShowing ? { scale: 1 } : { scale: 0.001 };
+
+      return (
+        <Spring from={{ scale: 0.01 }} to={to}>
+          {styles => {
+            const transformStyles = {
+              transform: [{ scale: (styles as { scale: number }).scale }],
+            };
+
+            return (
+              <React.Fragment>
+                <View style={getDefaultRippleStyles().container}>
+                  <View
+                    style={[getDefaultRippleStyles().ripple, transformStyles]}
+                  />
+                </View>
+                <WrappedComponent {...this.props} />
+              </React.Fragment>
+            );
+          }}
+        </Spring>
+      );
+    }
+    */
+  };
 
 const emptyButtonTheme: ButtonTheme = {
   innerContainer: {
@@ -522,6 +1322,9 @@ const emptyButtonStateTheme: ButtonStateTheme = {
 };
 
 const emptySizedButtonTheme: SizedButtonTheme = {
+  Button: DefaultButton,
+  InnerContainer: DefaultInnerContainer,
+  Text: DefaultText,
   allSizes: emptyButtonStateTheme,
   large: emptyButtonStateTheme,
   regular: emptyButtonStateTheme,
@@ -667,13 +1470,19 @@ const buttonTheme: OptionalButtonVariantTheme = {
           styles: {
             alignItems: 'center',
             justifyContent: 'center',
-            outline: 'none',
+            ...Platform.select({
+              web: {
+                cursor: 'pointer',
+                outline: 'none',
+              },
+            }),
           },
         },
         label: {
           styles: {
             fontFamily: getFontFamily(),
             fontWeight: getFontWeight(FontWeight.MEDIUM),
+            position: 'relative',
             textTransform: 'uppercase',
             ...Platform.select({
               web: {
@@ -686,6 +1495,17 @@ const buttonTheme: OptionalButtonVariantTheme = {
         },
         outerContainer: {
           getDynamicStyles: getButtonContainerStyles,
+        },
+      },
+      disabled: {
+        innerContainer: {
+          styles: {
+            ...Platform.select({
+              web: {
+                cursor: 'not-allowed',
+              },
+            }),
+          },
         },
       },
     },
@@ -766,6 +1586,7 @@ const buttonTheme: OptionalButtonVariantTheme = {
     },
   },
   contained: {
+    InnerContainer: withRippleEffect(DefaultInnerContainer),
     allSizes: {
       allStates: {
         label: {
@@ -1171,13 +1992,15 @@ const buttonTheme: OptionalButtonVariantTheme = {
   },
 };
 
+const mergedButtonTheme: ButtonVariantTheme = merge<
+  {},
+  ButtonVariantTheme,
+  OptionalButtonVariantTheme
+>({}, emptyButtonVariantTheme, buttonTheme);
+
 export const PurpleTealTheme: Theme = {
   components: {
-    button: merge<{}, ButtonVariantTheme, OptionalButtonVariantTheme>(
-      {},
-      emptyButtonVariantTheme,
-      buttonTheme,
-    ),
+    button: mergedButtonTheme,
     typography: typographyComponentsTheme,
   },
   palette: themePalette,

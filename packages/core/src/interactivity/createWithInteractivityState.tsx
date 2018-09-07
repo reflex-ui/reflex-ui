@@ -1,11 +1,14 @@
 import * as React from 'react';
+import { GestureResponderEvent } from 'react-native';
 
 import { isWeb } from '../utils';
+import { InteractivityEvent } from './InteractivityEvent';
 import { InteractivityProps } from './InteractivityProps';
 import { InteractivityState } from './InteractivityState';
 import { WithInteractivityStateFactory } from './WithInteractivityStateFactory';
 
 interface State {
+  interactivityEvent?: InteractivityEvent;
   isFocusing: boolean;
   isHovering: boolean;
   isPressing: boolean;
@@ -18,6 +21,7 @@ export const createWithInteractivityState: WithInteractivityStateFactory = <
 ) =>
   class WithInteractivityState extends React.Component<P, State> {
     public readonly state: State = {
+      interactivityEvent: undefined,
       isFocusing: false,
       isHovering: false,
       isPressing: false,
@@ -35,6 +39,7 @@ export const createWithInteractivityState: WithInteractivityStateFactory = <
 
       return (
         <WrappedComponent
+          interactivityEvent={this.state.interactivityEvent}
           interactivityState={this.getInteractivityState()}
           {...interactiveProps}
           {...this.props}
@@ -54,41 +59,41 @@ export const createWithInteractivityState: WithInteractivityStateFactory = <
       if (!this.state.isFocusing) return;
       // tslint:disable-next-line:no-console
       console.log('WithInteractivityState().onBlur');
-      this.setState({ isFocusing: false });
+      this.setState({ interactivityEvent: undefined, isFocusing: false });
     };
 
-    private onFocus = (): void => {
+    private onFocus = (event: React.FocusEvent): void => {
       if (this.state.isFocusing || this.state.isPressing) return;
       // tslint:disable-next-line:no-console
       console.log('WithInteractivityState().onFocus');
-      this.setState({ isFocusing: true });
+      this.setState({ interactivityEvent: event, isFocusing: true });
     };
 
-    private onMouseEnter = (): void => {
+    private onMouseEnter = (event: React.MouseEvent): void => {
       if (this.state.isHovering) return;
       // tslint:disable-next-line:no-console
       console.log('WithInteractivityState().onMouseEnter');
-      this.setState({ isHovering: true });
+      this.setState({ interactivityEvent: event, isHovering: true });
     };
 
     private onMouseLeave = (): void => {
       if (!this.state.isHovering) return;
       // tslint:disable-next-line:no-console
       console.log('WithInteractivityState().onMouseLeave');
-      this.setState({ isHovering: false });
+      this.setState({ interactivityEvent: undefined, isHovering: false });
     };
 
-    private onPressIn = (): void => {
+    private onPressIn = (event: GestureResponderEvent): void => {
       if (this.state.isPressing) return;
       // tslint:disable-next-line:no-console
       console.log('WithInteractivityState().onPressIn');
-      this.setState({ isPressing: true });
+      this.setState({ interactivityEvent: event, isPressing: true });
     };
 
     private onPressOut = (): void => {
       if (!this.state.isPressing) return;
       // tslint:disable-next-line:no-console
       console.log('WithInteractivityState().onPressOut');
-      this.setState({ isPressing: false });
+      this.setState({ interactivityEvent: undefined, isPressing: false });
     };
   };
