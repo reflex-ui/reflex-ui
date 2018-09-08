@@ -1,10 +1,7 @@
 import * as Color from 'color';
-import delay from 'delay';
 import merge from 'lodash/merge';
 import * as React from 'react';
 import {
-  GestureResponderEvent,
-  LayoutChangeEvent,
   Platform,
   StyleSheet,
   Text,
@@ -12,11 +9,9 @@ import {
   TouchableWithoutFeedback,
   TouchableWithoutFeedbackProps,
   View,
+  ViewProps,
   ViewStyle,
 } from 'react-native';
-import { Keyframes } from 'react-spring';
-// @ts-ignore
-import { Easing, TimingAnimation } from 'react-spring/dist/addons';
 
 import { InteractivityState } from '../../interactivity/InteractivityState';
 import { Size } from '../../widgets';
@@ -28,7 +23,8 @@ import { TextTransformation } from '../../widgets/TextTransformation';
 import { FontWeight } from '../FontWeight';
 import { FontWeightValues } from '../FontWeightValues';
 import { getFontWeight } from '../getFontWeight';
-import { ColorVariant } from './ColorVariant';
+import { getThemedColor } from './getThemedColor';
+import { withRippleEffect } from './withRippleEffect';
 
 interface ThemePaletteColor {
   readonly color: string;
@@ -89,7 +85,9 @@ type StyledContainerFactory = (
 ) => React.ComponentType<{}>;
 */
 
-export type ButtonContainer = React.ComponentType<ThemedVisualButtonProps>;
+export type ButtonContainerProps = ThemedVisualButtonProps & ViewProps;
+
+export type ButtonContainer = React.ComponentType<ButtonContainerProps>;
 
 export type ButtonComponent = React.ComponentType<
   TouchableWithoutFeedbackProps
@@ -218,51 +216,6 @@ interface IThemeCollection {
   readonly [name: string]: Theme;
 }
 */
-
-type IGetThemedColor = (
-  props: {
-    colorVariant?: ColorVariant;
-    onColor?: boolean;
-    theme: Theme;
-  },
-) => string;
-
-const getThemedColor: IGetThemedColor = ({
-  colorVariant = ColorVariant.PRIMARY_NORMAL,
-  onColor,
-  theme,
-}): string => {
-  switch (colorVariant) {
-    case ColorVariant.PRIMARY_DARK:
-      return onColor
-        ? theme.palette.primary.dark.onColor
-        : theme.palette.primary.dark.color;
-    case ColorVariant.PRIMARY_LIGHT:
-      return onColor
-        ? theme.palette.primary.light.onColor
-        : theme.palette.primary.light.color;
-    case ColorVariant.PRIMARY_NORMAL:
-      return onColor
-        ? theme.palette.primary.normal.onColor
-        : theme.palette.primary.normal.color;
-    case ColorVariant.SECONDARY_DARK:
-      return onColor
-        ? theme.palette.secondary.dark.onColor
-        : theme.palette.secondary.dark.color;
-    case ColorVariant.SECONDARY_LIGHT:
-      return onColor
-        ? theme.palette.secondary.light.onColor
-        : theme.palette.secondary.light.color;
-    case ColorVariant.SECONDARY_NORMAL:
-      return onColor
-        ? theme.palette.secondary.normal.onColor
-        : theme.palette.secondary.normal.color;
-    default:
-      return onColor
-        ? theme.palette.primary.light.onColor
-        : theme.palette.primary.light.color;
-  }
-};
 
 type IGetFontFamily = () => string;
 
@@ -906,7 +859,7 @@ ThemedVisualButtonProps) => {
     variant,
   });
   return (
-    <View {...buttonProps} style={style.container}>
+    <View {...buttonProps} pointerEvents="box-only" style={style.container}>
       {children}
     </View>
   );
@@ -934,365 +887,6 @@ const DefaultText: TextComponent = (props: ThemedVisualButtonProps) => {
   const style = getLabelStyle(props);
   return <Text style={style.text}>{props.children}</Text>;
 };
-
-interface RippleStyles {
-  container: ViewStyle;
-  ripple: ViewStyle;
-}
-
-interface RipplePosition {
-  left?: number;
-  top?: number;
-}
-
-interface RippleContainerState {
-  readonly diameter: number;
-  readonly isHiding: boolean;
-  readonly isShowing: boolean;
-  readonly isShowingComplete: boolean;
-  readonly ripplePosition: RipplePosition;
-}
-
-export type WithRippleEffect = <P extends ThemedVisualButtonProps>(
-  WrappedComponent: React.ComponentType<P>,
-) => React.ComponentType<P>;
-
-const withRippleEffect: WithRippleEffect = <P extends ThemedVisualButtonProps>(
-  WrappedComponent: React.ComponentType<P>,
-) =>
-  class RippledComponent extends React.Component<P> {
-    public static getDerivedStateFromProps(
-      props: P,
-      state: RippleContainerState,
-    ) {
-      let newState = { ...state };
-
-      if (props.interactivityState === InteractivityState.PRESSED) {
-        newState = {
-          ...newState,
-          ripplePosition: RippledComponent.getRipplePosition(props, state),
-        };
-      }
-
-      if (
-        state.isShowing ||
-        (props.interactivityState === InteractivityState.PRESSED &&
-          !state.isShowingComplete)
-      ) {
-        return {
-          ...newState,
-          isShowing: true,
-        };
-      }
-
-      if (
-        props.interactivityState !== InteractivityState.PRESSED &&
-        state.isShowingComplete
-      ) {
-        return {
-          ...newState,
-          isShowing: false,
-          isShowingComplete: false,
-        };
-      }
-
-      return newState;
-    }
-
-    public static getRipplePosition(
-      props: P,
-      state: RippleContainerState,
-    ): RipplePosition {
-      const ripplePosition: { left?: number; top?: number } = {};
-
-      // tslint:disable-next-line:no-console
-      console.log(
-        'RippledComponent.render() - this.props.interactivityEvent: ',
-        props.interactivityEvent,
-      );
-
-      if (props.interactivityState === InteractivityState.PRESSED) {
-        let px = 0;
-        let py = 0;
-
-        if (props.interactivityEvent) {
-          px = (props.interactivityEvent as GestureResponderEvent).nativeEvent
-            .locationX;
-          py = (props.interactivityEvent as GestureResponderEvent).nativeEvent
-            .locationY;
-        }
-
-        const { diameter } = state;
-        ripplePosition.left = px - diameter / 2;
-        ripplePosition.top = py - diameter / 2;
-      }
-
-      return ripplePosition;
-    }
-
-    public maxDiameter: number = 200;
-    public rippleAnimation: {};
-    public rippleStyles: RippleStyles;
-
-    public readonly state: RippleContainerState = {
-      diameter: this.maxDiameter,
-      isHiding: false,
-      isShowing: false,
-      isShowingComplete: false,
-      ripplePosition: {},
-    };
-
-    public constructor(props: P) {
-      super(props);
-
-      this.rippleStyles = this.getDefaultRippleStyles();
-
-      this.rippleAnimation = Keyframes.Spring({
-        // @ts-ignore
-        pressin: async call => {
-          // tslint:disable-next-line:no-console
-          console.log('RippledComponent.Keyframes.Spring.pressin()');
-          call({
-            config: { tension: 200, friction: 20 },
-            // config: { duration: 2000, easing: Easing.linear },
-            // from: { opacity: 0, scale: 0.001 },
-            from: {
-              // config: { duration: 2000, easing: Easing.linear },
-              opacity: 0,
-              scale: 0.001,
-            },
-            to: { opacity: 1, scale: 1 },
-          });
-          // await call({ from: { opacity: 1 }, to: { opacity: 0 } });
-          await delay(300);
-          if (this.state.isShowing) this.motionComplete();
-        },
-        // @ts-ignore
-        pressout: async call => {
-          // tslint:disable-next-line:no-console
-          console.log('RippledComponent.Keyframes.Spring.pressout()');
-          await call({ to: { opacity: 0 } });
-          await call({ to: { scale: 0 } });
-          // if (this.state.isHiding) this.hidingComplete();
-        },
-      });
-    }
-
-    public onLayoutChanged = (event: LayoutChangeEvent) => {
-      // tslint:disable-next-line:no-console
-      console.log('RippledComponent.onLayoutChanged() - event: ', event);
-
-      const { height, width } = event.nativeEvent.layout;
-      const diameter = Math.ceil(Math.sqrt(width * width + height * height));
-
-      this.setState(
-        {
-          diameter: Math.min(diameter, this.maxDiameter),
-        },
-        this.setRippleStyles,
-      );
-    };
-
-    public render() {
-      const state =
-        this.state.isShowing ||
-        this.props.interactivityState === InteractivityState.PRESSED
-          ? 'pressin'
-          : 'pressout';
-
-      // tslint:disable-next-line:no-console
-      console.log(
-        `RippledComponent.render() - isShowing: ${
-          this.state.isShowing
-        } | state: ${state}`,
-      );
-
-      const { children, ...otherProps } = this.props as ThemedVisualButtonProps;
-      const RippleAnimation = this.rippleAnimation;
-
-      /*
-      const ripplePosition: { left?: number; top?: number } = {};
-
-      // tslint:disable-next-line:no-console
-      console.log(
-        'RippledComponent.render() - this.props.interactivityEvent: ',
-        this.props.interactivityEvent,
-      );
-
-      if (this.props.interactivityState === InteractivityState.PRESSED) {
-        let px = 0;
-        let py = 0;
-
-        if (this.props.interactivityEvent) {
-          px = (this.props.interactivityEvent as GestureResponderEvent)
-            .nativeEvent.locationX;
-          py = (this.props.interactivityEvent as GestureResponderEvent)
-            .nativeEvent.locationY;
-        }
-
-        const { diameter } = this.state;
-        ripplePosition.left = px - diameter / 2;
-        ripplePosition.top = py - diameter / 2;
-      }
-      */
-
-      // tslint:disable-next-line:no-console
-      console.log(
-        'RippledComponent.render() - ripplePosition: ',
-        this.state.ripplePosition,
-      );
-
-      return (
-        // @ts-ignore
-        // impl={TimingAnimation}
-        // config={{ duration: 1000, easing: Easing.linear }}
-        /*
-        <RippleAnimation
-          impl={TimingAnimation}
-          config={{ duration: 2000, easing: Easing.linear }}
-          state={state}
-        >
-        */
-        // @ts-ignore
-        <RippleAnimation state={state}>
-          {(styles: { opacity: number; scale: number }) => {
-            // tslint:disable-next-line:no-console
-            /*
-            console.log(
-              'RippledComponent.RippleAnimation() - styles: ',
-              styles,
-            );
-            */
-
-            const motionStyles = {
-              opacity: styles.opacity,
-              transform: [{ scale: styles.scale }],
-            };
-
-            return (
-              <WrappedComponent {...otherProps}>
-                <React.Fragment>
-                  <View
-                    onLayout={this.onLayoutChanged}
-                    style={this.rippleStyles.container}
-                  >
-                    <View
-                      style={[
-                        this.rippleStyles.ripple,
-                        { ...this.state.ripplePosition, ...motionStyles },
-                      ]}
-                    />
-                  </View>
-                </React.Fragment>
-                {children}
-              </WrappedComponent>
-            );
-          }}
-        </RippleAnimation>
-      );
-    }
-
-    private getDefaultRippleStyles = () => {
-      const { colorVariant, theme } = this.props;
-      const { diameter } = this.state;
-
-      return StyleSheet.create<RippleStyles>({
-        container: {
-          ...StyleSheet.absoluteFillObject,
-          overflow: 'hidden',
-        },
-        ripple: {
-          // backgroundColor: 'red',
-          backgroundColor: Color.rgb(getThemedColor({ colorVariant, theme }))
-            .lighten(0.6)
-            .toString(),
-          borderRadius: diameter / 2,
-          height: diameter,
-          left: 0,
-          // opacity: 0.01,
-          position: 'absolute',
-          top: 0,
-          // transform: [{ scale: 2 }],
-          width: diameter,
-        },
-      });
-    };
-
-    private motionComplete() {
-      // tslint:disable-next-line:no-console
-      console.log('RippledComponent.motionComplete()');
-      const isShowingComplete =
-        this.props.interactivityState === InteractivityState.PRESSED
-          ? true
-          : false;
-
-      this.setState({ isShowingComplete, isShowing: false });
-    }
-
-    private setRippleStyles() {
-      this.rippleStyles = this.getDefaultRippleStyles();
-    }
-
-    /*
-    public render() {
-      const to = this.state.isShowing ? { scale: 1 } : { scale: 0.001 };
-
-      return (
-        <Keyframes
-          native
-          // @ts-ignore
-          script={async next => {
-            while (true) {
-              await next(Spring, {
-                from: { scale: 0.01 },
-                // tslint:disable-next-line:object-shorthand-properties-first
-                to,
-              });
-            }
-          }}
-        >
-          {(motion: ViewStyle) => (
-            <React.Fragment>
-              <View style={getDefaultRippleStyles().container}>
-                <View
-                  style={[getDefaultRippleStyles().ripple, { ...motion }]}
-                />
-              </View>
-              <WrappedComponent {...this.props} />
-            </React.Fragment>
-          )}
-        </Keyframes>
-      );
-    }
-    */
-
-    /*
-    public render() {
-      const to = this.state.isShowing ? { scale: 1 } : { scale: 0.001 };
-
-      return (
-        <Spring from={{ scale: 0.01 }} to={to}>
-          {styles => {
-            const transformStyles = {
-              transform: [{ scale: (styles as { scale: number }).scale }],
-            };
-
-            return (
-              <React.Fragment>
-                <View style={getDefaultRippleStyles().container}>
-                  <View
-                    style={[getDefaultRippleStyles().ripple, transformStyles]}
-                  />
-                </View>
-                <WrappedComponent {...this.props} />
-              </React.Fragment>
-            );
-          }}
-        </Spring>
-      );
-    }
-    */
-  };
 
 const emptyButtonTheme: ButtonTheme = {
   innerContainer: {
