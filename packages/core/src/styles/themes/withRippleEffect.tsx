@@ -104,7 +104,7 @@ export const withRippleEffect: WithRippleEffect = (
           // tslint:disable-next-line:no-console
           // console.log('RippledComponent.Keyframes.Spring.pressin()');
           call({
-            config: { tension: 200, friction: 17 },
+            config: { tension: 150, friction: 20 },
             // config: { duration: 2000, easing: Easing.linear },
             // from: { opacity: 0, scale: 0.001 },
             from: {
@@ -316,7 +316,7 @@ export const withRippleEffect: WithRippleEffect = (
 
       if (this.props.interactivityEvent) {
         const dist = Math.round(Math.sqrt(Math.pow(px - diameter / 2, 2)));
-        const increaseRate = (dist * 1) / (diameter / 2) + 1;
+        const increaseRate = (dist * 1) / (diameter / 2) + 1.1;
 
         // tslint:disable-next-line:no-console
         /*
