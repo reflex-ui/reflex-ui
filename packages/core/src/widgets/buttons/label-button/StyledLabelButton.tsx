@@ -234,7 +234,7 @@ class ThemedButton extends React.Component<
   constructor(props: ThemedStyledButtonProps) {
     super(props);
     // tslint:disable-next-line:no-console
-    console.log('ThemedButton.constructor() - props: ', props);
+    // console.log('ThemedButton.constructor() - props: ', props);
 
     // prettier-ignore
     const {
@@ -255,15 +255,6 @@ class ThemedButton extends React.Component<
     const { Button, InnerContainer } = this.state;
     const visualAndButtonProps = this.getVisualAndButtonProps();
 
-    // tslint:disable-next-line:no-console
-    // console.log('ThemedButton.render() - Button: ', Button);
-
-    // tslint:disable-next-line:no-console
-    console.log(
-      'ThemedButton.render() - visualAndButtonProps: ',
-      visualAndButtonProps,
-    );
-
     return (
       <Button {...visualAndButtonProps.button}>
         <InnerContainer {...visualAndButtonProps.visual}>
@@ -272,16 +263,6 @@ class ThemedButton extends React.Component<
         </InnerContainer>
       </Button>
     );
-    /*
-    return (
-      <Button {...visualAndButtonProps.button}>
-        <InnerContainer {...visualAndButtonProps.visual}>
-          {children &&
-            this.getChildrenComponent(children, visualAndButtonProps.visual)}
-        </InnerContainer>
-      </Button>
-    );
-    */
   }
 
   /*

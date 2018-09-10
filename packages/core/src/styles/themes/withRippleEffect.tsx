@@ -8,7 +8,9 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import { Keyframes } from 'react-spring';
+// @ts-ignore Could not find a declaration file for module'
+import { animated, Keyframes } from 'react-spring/dist/native';
+
 import { InteractivityState } from '../../interactivity/InteractivityState';
 // prettier-ignore
 import {
@@ -16,7 +18,6 @@ import {
 } from '../../widgets/buttons/label-button/StyledLabelButton';
 import { getThemedColor } from './getThemedColor';
 import { ButtonContainer, ButtonContainerProps } from './PurpleTealTheme';
-
 interface RippleStyles {
   container: ViewStyle;
   ripple: ViewStyle;
@@ -73,8 +74,11 @@ export const withRippleEffect: WithRippleEffect = (
       return state;
     }
 
+    // tslint:disable-next-line:no-any
+    public animatedView: any;
     public maxDiameter: number = 200;
-    public rippleAnimation: {};
+    // tslint:disable-next-line:no-any
+    public rippleAnimation: (props: {}) => Keyframes<any, any>;
     public ripplePosition: RipplePosition;
     public rippleStyles: RippleStyles;
 
@@ -89,6 +93,7 @@ export const withRippleEffect: WithRippleEffect = (
     public constructor(props: ButtonContainerProps) {
       super(props);
 
+      this.animatedView = animated(View);
       this.ripplePosition = { diameter: 0, left: 0, top: 0 };
       this.rippleStyles = { container: {}, ripple: {} };
       // this.rippleStyles = this.getDefaultRippleStyles();
@@ -97,7 +102,7 @@ export const withRippleEffect: WithRippleEffect = (
         // @ts-ignore
         pressin: async call => {
           // tslint:disable-next-line:no-console
-          console.log('RippledComponent.Keyframes.Spring.pressin()');
+          // console.log('RippledComponent.Keyframes.Spring.pressin()');
           call({
             config: { tension: 200, friction: 17 },
             // config: { duration: 2000, easing: Easing.linear },
@@ -116,9 +121,9 @@ export const withRippleEffect: WithRippleEffect = (
         // @ts-ignore
         pressout: async call => {
           // tslint:disable-next-line:no-console
-          console.log('RippledComponent.Keyframes.Spring.pressout()');
+          // console.log('RippledComponent.Keyframes.Spring.pressout()');
           call({ config: { tension: 75, friction: 20 }, to: { opacity: 0 } });
-          await delay(225);
+          await delay(250);
           await call({
             config: { tension: 300, friction: 20 },
             to: { scale: 0 },
@@ -132,10 +137,12 @@ export const withRippleEffect: WithRippleEffect = (
       const { height, width } = event.nativeEvent.layout;
 
       // tslint:disable-next-line:no-console
+      /*
       console.log(
         'RippledComponent.onLayoutChanged() - event.nativeEvent: ',
         event.nativeEvent,
       );
+      */
 
       this.setState({ height, width });
     };
@@ -148,11 +155,13 @@ export const withRippleEffect: WithRippleEffect = (
           : 'pressout';
 
       // tslint:disable-next-line:no-console
+      /*
       console.log(
         `RippledComponent.render() - isShowing: ${
           this.state.isShowing
         } | state: ${state}`,
       );
+      */
 
       const { children, ...otherProps } = this.props as ThemedVisualButtonProps;
       const RippleAnimation = this.rippleAnimation;
@@ -164,57 +173,68 @@ export const withRippleEffect: WithRippleEffect = (
       ) {
         this.ripplePosition = this.getRipplePosition();
         this.rippleStyles = this.getDefaultRippleStyles();
+        // tslint:disable-next-line:no-console
+        /*
+        console.log(
+          'RippledComponent.render() - getDefaultRippleStyles: ',
+          this.rippleStyles,
+        );
+        */
       }
 
       // tslint:disable-next-line:no-console
+      /*
       console.log(
         'RippledComponent.render() - ripplePosition: ',
         this.ripplePosition,
       );
+      */
+      // tslint:disable-next-line:no-console
+      /*
+      console.log(
+        'RippledComponent.render() - this.rippleStyles.ripple: ',
+        this.rippleStyles.ripple,
+      );
+      */
+
+      const AnimatedView = this.animatedView;
 
       return (
-        // @ts-ignore
-        <RippleAnimation state={state}>
-          {(styles: { opacity: number; scale: number }) => {
-            /*
-            // tslint:disable-next-line:no-console
-            console.log(
-              'RippledComponent.render() - styles.scale: ',
-              styles.scale,
-            );
-            */
+        <WrappedComponent {...otherProps} onLayout={this.onLayoutChanged}>
+          <React.Fragment>
+            <View style={this.rippleStyles.container}>
+              <RippleAnimation native state={state}>
+                {(styles: { opacity: number; scale: number }) => {
+                  // tslint:disable-next-line:no-console
+                  // console.log('RippledComponent.render() styles: ', styles);
 
-            const motionStyles = {
-              opacity: styles.opacity,
-              transform: [{ scale: styles.scale || 0 }],
-              // transform: [{ scale: 0.884897214307278111 }],
-            };
-
-            return (
-              <WrappedComponent {...otherProps} onLayout={this.onLayoutChanged}>
-                <React.Fragment>
-                  <View style={this.rippleStyles.container}>
-                    <View
-                      style={[
-                        this.rippleStyles.ripple,
-                        {
+                  const motionStyles = {
+                    opacity: styles.opacity,
+                    transform: [{ scale: styles.scale || 0 }],
+                    // transform: [{ scale: 0.884897214307278111 }],
+                  };
+                  return (
+                    <AnimatedView
+                      style={{
+                        ...this.rippleStyles.ripple,
+                        ...{
                           left: this.ripplePosition.left,
                           top: this.ripplePosition.top,
                           ...motionStyles,
                         },
-                      ]}
+                      }}
                     />
-                  </View>
-                </React.Fragment>
-                {children}
-              </WrappedComponent>
-            );
-          }}
-        </RippleAnimation>
+                  );
+                }}
+              </RippleAnimation>
+            </View>
+          </React.Fragment>
+          {children}
+        </WrappedComponent>
       );
     }
 
-    private getDefaultRippleStyles = () => {
+    private getDefaultRippleStyles = (): RippleStyles => {
       const { colorVariant, theme } = this.props;
       // const { diameter } = this.state;
       const { diameter } = this.ripplePosition;
@@ -248,7 +268,8 @@ export const withRippleEffect: WithRippleEffect = (
       }
       */
 
-      return StyleSheet.create<RippleStyles>({
+      // return StyleSheet.create<RippleStyles>({
+      return {
         container: {
           ...StyleSheet.absoluteFillObject,
           overflow: 'hidden',
@@ -260,22 +281,24 @@ export const withRippleEffect: WithRippleEffect = (
             .toString(),
           borderRadius: diameter / 2,
           height: diameter,
-          left: 0,
+          // left: 0,
           // opacity: 0.01,
           position: 'absolute',
-          top: 0,
+          // top: 0,
           // transform: [{ scale: 2 }],
           width: diameter,
         },
-      });
+      };
     };
 
     private getRipplePosition(): RipplePosition {
       // tslint:disable-next-line:no-console
+      /*
       console.log(
         'RippledComponent.getRipplePosition() - interactivityEvent: ',
         this.props.interactivityEvent,
       );
+      */
 
       let px = 0;
       let py = 0;
@@ -296,20 +319,24 @@ export const withRippleEffect: WithRippleEffect = (
         const increaseRate = (dist * 1) / (diameter / 2) + 1;
 
         // tslint:disable-next-line:no-console
+        /*
         console.log(
           `RippledComponent.getDefaultRippleStyles() -
           dist: ${dist} |
           increaseRate: ${increaseRate} |
           diameter: ${diameter}`,
         );
+        */
 
         diameter *= increaseRate;
 
         // tslint:disable-next-line:no-console
+        /*
         console.log(
           'RippledComponent.getDefaultRippleStyles() - NEW DIAMETER: ',
           diameter,
         );
+        */
       }
 
       const left = px - diameter / 2;
@@ -318,6 +345,7 @@ export const withRippleEffect: WithRippleEffect = (
       // const top = py;
 
       // tslint:disable-next-line:no-console
+      /*
       console.log(
         `RippledComponent.render() - diameter: ${diameter} |
         px: ${px} |
@@ -325,13 +353,14 @@ export const withRippleEffect: WithRippleEffect = (
         left: ${left} |
         top: ${top}`,
       );
+      */
 
       return { diameter, left, top };
     }
 
     private hidingComplete() {
       // tslint:disable-next-line:no-console
-      console.log('RippledComponent.hidingComplete()');
+      // console.log('RippledComponent.hidingComplete()');
 
       this.ripplePosition = {
         diameter: this.ripplePosition.diameter,
@@ -344,7 +373,7 @@ export const withRippleEffect: WithRippleEffect = (
 
     private motionComplete() {
       // tslint:disable-next-line:no-console
-      console.log('RippledComponent.motionComplete()');
+      // console.log('RippledComponent.motionComplete()');
 
       const isShowingComplete =
         this.props.interactivityState === InteractivityState.PRESSED
