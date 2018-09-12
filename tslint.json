@@ -58,6 +58,7 @@
     "no-unused-expression": true,
     "no-var-keyword": true,
     "object-literal-shorthand": true,
+    "object-shorthand-properties-first": false,
     "only-arrow-functions": [
       true,
       "allow-declarations",
