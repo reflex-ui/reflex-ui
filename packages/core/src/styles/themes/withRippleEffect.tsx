@@ -18,6 +18,7 @@ import {
 } from '../../widgets/buttons/label-button/StyledLabelButton';
 import { getThemedColor } from './getThemedColor';
 import { ButtonContainer, ButtonContainerProps } from './PurpleTealTheme';
+
 interface RippleStyles {
   container: ViewStyle;
   ripple: ViewStyle;
@@ -31,9 +32,9 @@ interface RipplePosition {
 
 interface RippleContainerState {
   readonly height: number;
-  readonly isHiding: boolean;
-  readonly isShowing: boolean;
-  readonly isShowingComplete: boolean;
+  readonly isAnimatingPressIn: boolean;
+  readonly isAnimatingPressInComplete: boolean;
+  readonly isAnimatingPressOut: boolean;
   readonly width: number;
 }
 
@@ -50,24 +51,24 @@ export const withRippleEffect: WithRippleEffect = (
       state: RippleContainerState,
     ) {
       if (
-        state.isShowing ||
+        state.isAnimatingPressIn ||
         (props.interactivityState === InteractivityState.PRESSED &&
-          !state.isShowingComplete)
+          !state.isAnimatingPressInComplete)
       ) {
         return {
           ...state,
-          isShowing: true,
+          isAnimatingPressIn: true,
         };
       }
 
       if (
         props.interactivityState !== InteractivityState.PRESSED &&
-        state.isShowingComplete
+        state.isAnimatingPressInComplete
       ) {
         return {
           ...state,
-          isShowing: false,
-          isShowingComplete: false,
+          isAnimatingPressIn: false,
+          isAnimatingPressInComplete: false,
         };
       }
 
@@ -84,9 +85,9 @@ export const withRippleEffect: WithRippleEffect = (
 
     public readonly state: RippleContainerState = {
       height: 40,
-      isHiding: false,
-      isShowing: false,
-      isShowingComplete: false,
+      isAnimatingPressIn: false,
+      isAnimatingPressInComplete: false,
+      isAnimatingPressOut: false,
       width: 100,
     };
 
@@ -116,7 +117,7 @@ export const withRippleEffect: WithRippleEffect = (
           });
           // await call({ from: { opacity: 1 }, to: { opacity: 0 } });
           await delay(250);
-          if (this.state.isShowing) this.motionComplete();
+          if (this.state.isAnimatingPressIn) this.pressInAnimationComplete();
         },
         // @ts-ignore
         pressout: async call => {
@@ -128,7 +129,7 @@ export const withRippleEffect: WithRippleEffect = (
             config: { tension: 300, friction: 20 },
             to: { scale: 0 },
           });
-          if (this.state.isHiding) this.hidingComplete();
+          if (this.state.isAnimatingPressOut) this.pressOutAnimationComplete();
         },
       });
     }
@@ -149,7 +150,7 @@ export const withRippleEffect: WithRippleEffect = (
 
     public render() {
       const state =
-        this.state.isShowing ||
+        this.state.isAnimatingPressIn ||
         this.props.interactivityState === InteractivityState.PRESSED
           ? 'pressin'
           : 'pressout';
@@ -157,8 +158,8 @@ export const withRippleEffect: WithRippleEffect = (
       // tslint:disable-next-line:no-console
       /*
       console.log(
-        `RippledComponent.render() - isShowing: ${
-          this.state.isShowing
+        `RippledComponent.render() - isAnimatingPressIn: ${
+          this.state.isAnimatingPressIn
         } | state: ${state}`,
       );
       */
@@ -168,8 +169,8 @@ export const withRippleEffect: WithRippleEffect = (
 
       if (
         this.props.interactivityState === InteractivityState.PRESSED &&
-        !this.state.isHiding &&
-        (!this.state.isShowing || this.ripplePosition.top === 0)
+        !this.state.isAnimatingPressOut &&
+        (!this.state.isAnimatingPressIn || this.ripplePosition.top === 0)
       ) {
         this.ripplePosition = this.getRipplePosition();
         this.rippleStyles = this.getDefaultRippleStyles();
@@ -358,9 +359,9 @@ export const withRippleEffect: WithRippleEffect = (
       return { diameter, left, top };
     }
 
-    private hidingComplete() {
+    private pressOutAnimationComplete() {
       // tslint:disable-next-line:no-console
-      // console.log('RippledComponent.hidingComplete()');
+      // console.log('RippledComponent.pressOutAnimationComplete()');
 
       this.ripplePosition = {
         diameter: this.ripplePosition.diameter,
@@ -368,18 +369,22 @@ export const withRippleEffect: WithRippleEffect = (
         top: 0,
       };
 
-      this.setState({ isHiding: false });
+      this.setState({ isAnimatingPressOut: false });
     }
 
-    private motionComplete() {
+    private pressInAnimationComplete() {
       // tslint:disable-next-line:no-console
-      // console.log('RippledComponent.motionComplete()');
+      // console.log('RippledComponent.pressInAnimationComplete()');
 
-      const isShowingComplete =
+      const isAnimatingPressInComplete =
         this.props.interactivityState === InteractivityState.PRESSED
           ? true
           : false;
 
-      this.setState({ isShowingComplete, isHiding: true, isShowing: false });
+      this.setState({
+        isAnimatingPressIn: false,
+        isAnimatingPressInComplete,
+        isAnimatingPressOut: true,
+      });
     }
   };
