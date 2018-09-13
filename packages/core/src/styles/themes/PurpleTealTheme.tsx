@@ -24,6 +24,7 @@ import { FontWeight } from '../FontWeight';
 import { FontWeightValues } from '../FontWeightValues';
 import { getFontWeight } from '../getFontWeight';
 import { getThemedColor } from './getThemedColor';
+import { withRaiseEffect } from './withRaiseEffect';
 import { withRippleEffect } from './withRippleEffect';
 
 interface ThemePaletteColor {
@@ -286,98 +287,34 @@ const getPressedContainedContainerStyles: IGetButtonContainerStyles = props => (
   ...getHoveredContainedContainerStyles(props),
 });
 
-const androidShadows: { [key: string]: number } = {};
-androidShadows[InteractivityState.DISABLED] = 0;
-androidShadows[InteractivityState.ENABLED] = 2;
-androidShadows[InteractivityState.FOCUSED] = 4;
-/*
- * No hover state on native Android.
- */
-// androidShadows[InteractivityState.HOVERED] = 0;
-/**/
-androidShadows[InteractivityState.PRESSED] = 8;
-
-const iosShadows: { [key: string]: ViewStyle } = {};
-iosShadows[InteractivityState.DISABLED] = {};
-iosShadows[InteractivityState.ENABLED] = {
-  shadowColor: '#000000',
-  shadowOffset: { height: 1.6, width: 0 },
-  shadowOpacity: 0.2,
-  shadowRadius: 1,
-};
-iosShadows[InteractivityState.FOCUSED] = {
-  shadowColor: '#000000',
-  shadowOffset: { height: 3.4, width: 0 },
-  shadowOpacity: 0.2,
-  shadowRadius: 3,
-};
-/*
- * No hover state on native iOS.
- */
-// iosShadows[InteractivityState.HOVERED] = {};
-/**/
-iosShadows[InteractivityState.PRESSED] = {
-  shadowColor: '#000000',
-  shadowOffset: { height: 5, width: 0 },
-  shadowOpacity: 0.2,
-  shadowRadius: 5,
-};
-
-const webShadows: { [key: string]: string } = {};
-webShadows[InteractivityState.DISABLED] = '0 0 0 0 rgba(0,0,0,0)';
-webShadows[InteractivityState.ENABLED] = `0 3px 1px -2px rgba(0,0,0,.2),
-  0 2px 2px 0 rgba(0,0,0,.14),
-  0 1px 5px 0 rgba(0,0,0,.12)`;
-webShadows[InteractivityState.HOVERED] = `0px 2px 4px -1px rgba(0,0,0,.2),
-  0px 4px 5px 0px rgba(0,0,0,.14),
-  0px 1px 10px 0px rgba(0,0,0,.12)`;
-webShadows[InteractivityState.FOCUSED] = webShadows[InteractivityState.HOVERED];
-webShadows[InteractivityState.PRESSED] = `0px 5px 5px -3px rgba(0,0,0,.2),
-  0px 8px 10px 1px rgba(0,0,0,.14),
-  0px 3px 14px 2px rgba(0,0,0,.12)`;
-
-const getContainerElevationStyles: IGetButtonContainerStyles = ({
-  interactivityState = InteractivityState.ENABLED,
-}) => ({
-  ...Platform.select({
-    android: {
-      elevation: androidShadows[interactivityState],
-    },
-    ios: { ...iosShadows[interactivityState] },
-    web: {
-      boxShadow: webShadows[interactivityState],
-    },
-  }),
-});
-
 // tslint:disable-next-line:max-line-length
 const getDisabledContainedRaisedContainerStyles: IGetButtonContainerStyles = props => ({
   ...getDisabledContainedContainerStyles(props),
-  ...getContainerElevationStyles(props),
+  // ...getContainerElevationStyles(props),
 });
 
 // tslint:disable-next-line:max-line-length
 const getEnabledContainedRaisedContainerStyles: IGetButtonContainerStyles = props => ({
   ...getEnabledContainedContainerStyles(props),
-  ...getContainerElevationStyles(props),
+  // ...getContainerElevationStyles(props),
 });
 
 // tslint:disable-next-line:max-line-length
 const getFocusedContainedRaisedContainerStyles: IGetButtonContainerStyles = props => ({
   ...getFocusedContainedContainerStyles(props),
-  ...getContainerElevationStyles(props),
+  // ...getContainerElevationStyles(props),
 });
 
 // tslint:disable-next-line:max-line-length
 const getHoveredContainedRaisedContainerStyles: IGetButtonContainerStyles = props => ({
   ...getHoveredContainedContainerStyles(props),
-  ...getContainerElevationStyles(props),
+  // ...getContainerElevationStyles(props),
 });
 
 // tslint:disable-next-line:max-line-length
 const getPressedContainedRaisedContainerStyles: IGetButtonContainerStyles = props => ({
   ...getPressedContainedContainerStyles(props),
-  ...getContainerElevationStyles(props),
+  // ...getContainerElevationStyles(props),
 });
 
 const getDisabledDefaultContainerStyles: IGetButtonContainerStyles = () => ({
@@ -464,153 +401,6 @@ const getOutlinedLabelStyles: IGetButtonLabelStyles = (
 ) => ({
   ...getDefaultLabelStyles(props),
 });
-
-/*
-const DefaultChildrenContainer: StyledContainerFactory = () => ({
-  children,
-}) => {
-  // tslint:disable-next-line:no-console
-  console.log('PurpleTealTheme.DefaultChildrenContainerX()');
-  return <React.Fragment>{children}</React.Fragment>;
-};
-
-const RippleContainerFactory: StyledContainerFactory = (
-  buttonProps: ThemedVisualButtonProps,
-) =>
-  class RippleContainer extends React.Component {
-    public static getDerivedStateFromProps(props, state: RippleContainerState) {
-      if (state.isAnimating) return state;
-
-      const newState: RippleContainerState = {
-        ...state,
-
-      };
-
-      return newState;
-    }
-
-    public readonly state: RippleContainerState = {
-      isAnimating: false,
-    };
-
-    public render() {
-      const to =
-        buttonProps.interactivityState === InteractivityState.PRESSED
-          ? { scale: 1 }
-          : { scale: 0.001 };
-
-      return (
-        <Spring from={{ scale: 0.01 }} to={to}>
-          {styles => {
-            const transformStyles = {
-              transform: [{ scale: (styles as { scale: number }).scale }],
-            };
-
-            return (
-              <React.Fragment>
-                <View style={getDefaultRippleStyles().container}>
-                  <View
-                    style={[getDefaultRippleStyles().ripple, transformStyles]}
-                  />
-                </View>
-                {this.props.children}
-              </React.Fragment>
-            );
-          }}
-        </Spring>
-      );
-    }
-  };
-*/
-
-/*
-const RippleContainerFactory: StyledContainerFactory = (
-  props: ThemedVisualButtonProps,
-) =>
-  class RippleContainer extends React.Component {
-    public readonly state: RippleContainerState = {
-      isAnimating: false,
-    };
-
-    public render() {
-      if (props.interactivityState === InteractivityState.PRESSED) {
-        return (
-          <Spring
-            from={{ scale: 0.01 }}
-            to={{ scale: 1 }}
-            render={this.renderContainer}
-          />
-        );
-      }
-
-      return this.props.children;
-    }
-
-    private renderContainer = ({
-      children,
-      ...styles
-    }: {
-      children?: React.ReactNode;
-      scale: number;
-    }): JSX.Element => {
-      // tslint:disable-next-line:no-console
-      console.log('RippleContainer.renderContainer() - styles: ', styles);
-
-      const transformStyles = {
-        transform: [{ scale: (styles as { scale: number }).scale }],
-      };
-
-      return (
-        <React.Fragment>
-          <View style={getDefaultRippleStyles().container}>
-            <View style={[getDefaultRippleStyles().ripple, transformStyles]} />
-          </View>
-          {this.props.children}
-        </React.Fragment>
-      );
-    };
-  };
-*/
-/*
-const RippleContainerFactory: StyledContainerFactory = (
-  props: ThemedVisualButtonProps,
-) => ({ children }) => {
-  const to =
-    props.interactivityState === InteractivityState.PRESSED
-      ? { scale: 1 }
-      : { scale: 0.001 };
-  return (
-    <Spring from={{ scale: 0.001 }} to={to}>
-      {styles => {
-        // tslint:disable-next-line:no-console
-        console.log(
-          'RippleContainerFactory - styles.scale: ',
-          (styles as { scale: number }).scale,
-        );
-
-        const transformStyles = {
-          transform: [{ scale: (styles as { scale: number }).scale }],
-        };
-
-        // const transformStyles = {
-        //  opacity: (styles as { scale: number }).scale,
-        // };
-
-        return (
-          <React.Fragment>
-            <View style={getDefaultRippleStyles().container}>
-              <View
-                style={[getDefaultRippleStyles().ripple, transformStyles]}
-              />
-            </View>
-            {children}
-          </React.Fragment>
-        );
-      }}
-    </Spring>
-  );
-};
-*/
 
 type GetLabelButtonStylesFromTheme = (
   labelStyles: ButtonLabelStyles,
@@ -866,22 +656,6 @@ ThemedVisualButtonProps) => {
 };
 
 const DefaultButton: ButtonComponent = TouchableWithoutFeedback;
-
-/*
-const DefaultButton: ButtonComponent = (
-  props: TouchableWithoutFeedbackProps & { children?: React.ReactNode },
-) => <TouchableWithoutFeedback>{props.children}</TouchableWithoutFeedback>;
-*/
-
-/*
-const DefaultButton: ButtonComponent = (
-  props: TouchableWithoutFeedbackProps,
-) => {
-  // tslint:disable-next-line:no-console
-  console.log('DefaultButton() - props: ', props);
-  return <TouchableWithoutFeedback {...props} />;
-};
-*/
 
 const DefaultText: TextComponent = (props: ThemedVisualButtonProps) => {
   const style = getLabelStyle(props);
@@ -1280,6 +1054,7 @@ const buttonTheme: OptionalButtonVariantTheme = {
     },
   },
   containedRaised: {
+    InnerContainer: withRippleEffect(withRaiseEffect(DefaultInnerContainer)),
     allSizes: {
       allStates: {
         label: {

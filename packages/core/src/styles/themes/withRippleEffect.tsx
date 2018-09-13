@@ -186,10 +186,12 @@ export const withRippleEffect: WithRippleEffect = (
       state: RippledComponentState,
     ) {
       // tslint:disable-next-line:no-console
+      /*
       console.log(
         'RippledComponent.getDerivedStateFromProps() - state: ',
         state,
       );
+      */
 
       const { interactivityEvent, interactivityState } = props;
       const {
@@ -257,6 +259,7 @@ export const withRippleEffect: WithRippleEffect = (
       this.animatedView = animated(View);
       this.rippleAnimation = Keyframes.Spring({
         // @ts-ignore
+        // tslint:disable-next-line:ter-arrow-parens
         pressin: async call => {
           // tslint:disable-next-line:no-console
           // console.log('RippledComponent.Keyframes.Spring.pressin()');
@@ -276,6 +279,7 @@ export const withRippleEffect: WithRippleEffect = (
           if (this.state.isAnimatingPressIn) this.pressInAnimationComplete();
         },
         // @ts-ignore
+        // tslint:disable-next-line:ter-arrow-parens
         pressout: async call => {
           // tslint:disable-next-line:no-console
           // console.log('RippledComponent.Keyframes.Spring.pressout()');
@@ -291,13 +295,16 @@ export const withRippleEffect: WithRippleEffect = (
     }
 
     public onLayoutChanged = (event: LayoutChangeEvent) => {
+      // tslint:disable-next-line:no-console
+      console.log('RippledComponent.onLayoutChanged() - event: ', event);
+
       const { height, width } = event.nativeEvent.layout;
       this.setState({ height, width });
     };
 
     public render() {
       // tslint:disable-next-line:no-console
-      console.log('RippledComponent.render() - state: ', this.state);
+      // console.log('RippledComponent.render() - state: ', this.state);
 
       const { children, ...otherProps } = this.props as ThemedVisualButtonProps;
       const RippleAnimation = this.rippleAnimation;
@@ -337,14 +344,14 @@ export const withRippleEffect: WithRippleEffect = (
 
     private pressOutAnimationComplete() {
       // tslint:disable-next-line:no-console
-      console.log('RippledComponent.pressOutAnimationComplete()');
+      // console.log('RippledComponent.pressOutAnimationComplete()');
 
       this.setState({ isAnimatingPressOut: false });
     }
 
     private pressInAnimationComplete() {
       // tslint:disable-next-line:no-console
-      console.log('RippledComponent.pressInAnimationComplete()');
+      // console.log('RippledComponent.pressInAnimationComplete()');
 
       this.setState({
         isAnimatingPressIn: false,

@@ -18,10 +18,13 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <LabelButton
         onPress={onButtonPress}
-        variant={LabelButtonVariant.CONTAINED}
+        variant={LabelButtonVariant.CONTAINED_RAISED}
       >
         Sign In
       </LabelButton>
+    </RowView>
+    <RowView>
+      <Text>Lorem</Text>
     </RowView>
   </ScrollView>
 );
