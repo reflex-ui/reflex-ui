@@ -12,19 +12,13 @@ import {
 import { InteractivityEvent, InteractivityState } from '../../../interactivity';
 import { ColorVariant, Theme, ThemeContext } from '../../../styles';
 import {
-  ButtonComponent,
   ButtonContainer,
+  getInnerContainerStyle,
+  getLabelStyle,
   TextComponent,
+  TouchableComponent,
 } from '../../../styles/themes/PurpleTealTheme';
-// import { isAndroid } from '../../../utils';
 import { Size } from '../../Size';
-/*
-import {
-  ButtonProps,
-  ButtonStyle,
-  ButtonStyleAndChildren,
-} from './LabelButton';
-*/
 
 export interface ButtonStyles {
   innerContainer: ViewStyle;
@@ -217,9 +211,9 @@ const withTheme: WithTheme = <P extends Themed>(
 );
 */
 interface ThemedButtonState {
-  readonly Button: ButtonComponent;
   readonly InnerContainer: ButtonContainer;
   readonly Text: TextComponent;
+  readonly Touchable: TouchableComponent;
 }
 
 interface VisualAndButtonProps {
@@ -238,30 +232,37 @@ class ThemedButton extends React.Component<
 
     // prettier-ignore
     const {
-      Button,
       InnerContainer,
       Text,
+      Touchable,
     } = props.theme.components.button[props.variant];
 
     this.state = {
-      Button,
       InnerContainer,
       Text,
+      Touchable,
     };
   }
 
   public render() {
     const { children } = this.props;
-    const { Button, InnerContainer } = this.state;
+    const { InnerContainer, Touchable } = this.state;
     const visualAndButtonProps = this.getVisualAndButtonProps();
 
+    const innerContainerStyles = getInnerContainerStyle(
+      visualAndButtonProps.visual,
+    );
+
     return (
-      <Button {...visualAndButtonProps.button}>
-        <InnerContainer {...visualAndButtonProps.visual}>
+      <Touchable {...visualAndButtonProps.button}>
+        <InnerContainer
+          style={innerContainerStyles.container}
+          {...visualAndButtonProps.visual}
+        >
           {children &&
             this.getChildrenComponent(children, visualAndButtonProps.visual)}
         </InnerContainer>
-      </Button>
+      </Touchable>
     );
   }
 
@@ -283,7 +284,13 @@ class ThemedButton extends React.Component<
       typeof children === 'number' ||
       typeof children === 'boolean'
     ) {
-      return <Text {...visual}>{children}</Text>;
+      const textStyles = getLabelStyle(visual);
+
+      return (
+        <Text style={textStyles.text} {...visual}>
+          {children}
+        </Text>
+      );
     }
 
     return children;

@@ -13,11 +13,7 @@ import {
 // import { ColorVariant } from './ColorVariant';
 import { getElevationStyles } from './getElevationStyles';
 // import { getThemedColor } from './getThemedColor';
-import {
-  ButtonContainer,
-  ButtonContainerProps,
-  getInnerContainerStyleProps,
-} from './PurpleTealTheme';
+import { ButtonContainer, ButtonContainerProps } from './PurpleTealTheme';
 
 interface RaiseStyles {
   container: ViewStyle;
@@ -53,7 +49,6 @@ const createStaticRaiseStyles: StaticRaiseStylesCreator = backgroundColor => ({
 });
 
 interface MotionRaiseStylesCreatorData {
-  // readonly color: string;
   readonly interactivityState: InteractivityState;
 }
 
@@ -62,7 +57,6 @@ type MotionRaiseStylesCreator = (
 ) => ViewStyle;
 
 const createMotionRaiseStyles: MotionRaiseStylesCreator = ({
-  // color,
   interactivityState,
 }) => {
   const styles = getElevationStyles({
@@ -96,14 +90,19 @@ export const withRaiseEffect: WithRaiseEffect = (
         state,
       );
 
+      // tslint:disable-next-line:no-console
+      console.log(
+        'RaisedComponent.getDerivedStateFromProps() - props: ',
+        props,
+      );
+
       const { interactivityState } = props;
       const { animationKeyframe, isAnimating } = state;
 
-      const backgroundColor = getInnerContainerStyleProps(props)
-        .backgroundColor;
-      const staticRaiseStyles = createStaticRaiseStyles(
-        backgroundColor || '#000000',
-      );
+      const backgroundColor =
+        StyleSheet.flatten(props.style).backgroundColor || '#ffffff';
+
+      const staticRaiseStyles = createStaticRaiseStyles(backgroundColor);
 
       if (
         interactivityState === InteractivityState.DISABLED &&

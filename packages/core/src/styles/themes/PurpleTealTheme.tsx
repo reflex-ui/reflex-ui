@@ -3,8 +3,11 @@ import merge from 'lodash/merge';
 import * as React from 'react';
 import {
   Platform,
+  RegisteredStyle,
+  // StyleProp,
   StyleSheet,
   Text,
+  TextProps,
   TextStyle,
   TouchableWithoutFeedback,
   TouchableWithoutFeedbackProps,
@@ -88,13 +91,15 @@ type StyledContainerFactory = (
 
 export type ButtonContainerProps = ThemedVisualButtonProps & ViewProps;
 
+export type ButtonTextProps = ThemedVisualButtonProps & TextProps;
+
 export type ButtonContainer = React.ComponentType<ButtonContainerProps>;
 
-export type ButtonComponent = React.ComponentType<
+export type TouchableComponent = React.ComponentType<
   TouchableWithoutFeedbackProps
 >;
 
-export type TextComponent = React.ComponentType<ThemedVisualButtonProps>;
+export type TextComponent = React.ComponentType<ButtonTextProps>;
 
 /* BEGIN OPTIONAL BUTTON STUFF */
 
@@ -127,12 +132,12 @@ interface OptionalButtonStateTheme {
 
 interface OptionalSizedButtonTheme {
   readonly allSizes?: OptionalButtonStateTheme;
-  readonly Button?: ButtonComponent;
   readonly InnerContainer?: ButtonContainer;
   readonly large?: OptionalButtonStateTheme;
   readonly regular?: OptionalButtonStateTheme;
   readonly small?: OptionalButtonStateTheme;
   readonly Text?: TextComponent;
+  readonly Touchable?: TouchableComponent;
   readonly xlarge?: OptionalButtonStateTheme;
   readonly xsmall?: OptionalButtonStateTheme;
 }
@@ -176,12 +181,12 @@ interface ButtonStateTheme {
 
 interface SizedButtonTheme {
   readonly allSizes: ButtonStateTheme;
-  readonly Button: ButtonComponent;
   readonly InnerContainer: ButtonContainer;
   readonly large: ButtonStateTheme;
   readonly regular: ButtonStateTheme;
   readonly small: ButtonStateTheme;
   readonly Text: TextComponent;
+  readonly Touchable: TouchableComponent;
   readonly xlarge: ButtonStateTheme;
   readonly xsmall: ButtonStateTheme;
 }
@@ -470,14 +475,16 @@ export const getLabelStyleProps: GetLabelStyleProps = (
   };
 };
 
-interface TextStyleSheet {
+interface TextStyleObj {
   text: TextStyle;
 }
 
-type GetTextStyleSheet = (props: ThemedVisualButtonProps) => TextStyleSheet;
+type GetTextStyleObj = (
+  props: ThemedVisualButtonProps,
+) => { text: RegisteredStyle<TextStyle> };
 
-export const getLabelStyle: GetTextStyleSheet = props =>
-  StyleSheet.create<TextStyleSheet>({
+export const getLabelStyle: GetTextStyleObj = props =>
+  StyleSheet.create<TextStyleObj>({
     text: getLabelStyleProps(props),
   });
 
@@ -554,7 +561,9 @@ interface ContainerStyle {
   container: ViewStyle;
 }
 
-type GetContainerStyle = (props: ThemedVisualButtonProps) => ContainerStyle;
+type GetContainerStyle = (
+  props: ThemedVisualButtonProps,
+) => { container: RegisteredStyle<ViewStyle> };
 
 export const getInnerContainerStyle: GetContainerStyle = props =>
   StyleSheet.create<ContainerStyle>({
@@ -633,34 +642,17 @@ const DefaultInnerContainer: ButtonContainer = ({
    */
   ...buttonProps
 }: /**/
-ThemedVisualButtonProps) => {
-  // tslint:disable-next-line:no-console
-  // console.log('DefaultInnerContainer() - props: ', props);
-  const style = getInnerContainerStyle({
-    children,
-    colorVariant,
-    customStyle,
-    fullWidth,
-    interactivityState,
-    leftIcon,
-    rightIcon,
-    size,
-    theme,
-    variant,
-  });
-  return (
-    <View {...buttonProps} pointerEvents="box-only" style={style.container}>
-      {children}
-    </View>
-  );
-};
+ThemedVisualButtonProps) => (
+  <View {...buttonProps} pointerEvents="box-only">
+    {children}
+  </View>
+);
 
-const DefaultButton: ButtonComponent = TouchableWithoutFeedback;
+const DefaultButton: TouchableComponent = TouchableWithoutFeedback;
 
-const DefaultText: TextComponent = (props: ThemedVisualButtonProps) => {
-  const style = getLabelStyle(props);
-  return <Text style={style.text}>{props.children}</Text>;
-};
+const DefaultText: TextComponent = (props: ButtonTextProps) => (
+  <Text style={props.style}>{props.children}</Text>
+);
 
 const emptyButtonTheme: ButtonTheme = {
   innerContainer: {
@@ -690,9 +682,9 @@ const emptyButtonStateTheme: ButtonStateTheme = {
 };
 
 const emptySizedButtonTheme: SizedButtonTheme = {
-  Button: DefaultButton,
   InnerContainer: DefaultInnerContainer,
   Text: DefaultText,
+  Touchable: DefaultButton,
   allSizes: emptyButtonStateTheme,
   large: emptyButtonStateTheme,
   regular: emptyButtonStateTheme,
