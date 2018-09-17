@@ -12,16 +12,16 @@ import {
 import { InteractivityEvent, InteractivityState } from '../../../interactivity';
 import { ColorVariant, Theme, ThemeContext } from '../../../styles';
 import {
-  ButtonContainer,
-  getInnerContainerStyle,
-  getLabelStyle,
-  TextComponent,
-  TouchableComponent,
+  ButtonText,
+  ButtonView,
+  getRegisteredTextStyle,
+  getRegisteredViewStyle,
+  Touchable,
 } from '../../../styles/themes/PurpleTealTheme';
 import { Size } from '../../Size';
 
 export interface ButtonStyles {
-  innerContainer: ViewStyle;
+  view: ViewStyle;
   label: TextStyle;
   outerContainer: ViewStyle;
 }
@@ -68,7 +68,7 @@ export interface DefaultButtonProps
 
 /*
 export interface StyledButtonProps
-  extends StyledButtonContainerProps,
+  extends StyledButtonViewProps,
     ButtonProps {}
 */
 // export type StyledButtonProps = ButtonStyleProps & ButtonProps;
@@ -141,7 +141,7 @@ const getStyle: GetStyle = ({
 }: ThemedStyledButtonProps): ButtonStyleAndChildren => ({
   children: getStyledChildren({ children, size, theme }),
   styles: StyleSheet.create<ButtonStyle>({
-    innerContainer: {
+    view: {
       ...getInnerContainerStyles({
         children,
         colorVariant,
@@ -211,9 +211,9 @@ const withTheme: WithTheme = <P extends Themed>(
 );
 */
 interface ThemedButtonState {
-  readonly InnerContainer: ButtonContainer;
-  readonly Text: TextComponent;
-  readonly Touchable: TouchableComponent;
+  readonly Text: ButtonText;
+  readonly Touchable: Touchable<TouchableWithoutFeedbackProps>;
+  readonly View: ButtonView;
 }
 
 interface VisualAndButtonProps {
@@ -232,36 +232,33 @@ class ThemedButton extends React.Component<
 
     // prettier-ignore
     const {
-      InnerContainer,
       Text,
+      // tslint:disable-next-line:no-shadowed-variable
       Touchable,
+      View,
     } = props.theme.components.button[props.variant];
 
     this.state = {
-      InnerContainer,
       Text,
       Touchable,
+      View,
     };
   }
 
   public render() {
     const { children } = this.props;
-    const { InnerContainer, Touchable } = this.state;
+    // tslint:disable-next-line:no-shadowed-variable
+    const { Touchable, View } = this.state;
     const visualAndButtonProps = this.getVisualAndButtonProps();
 
-    const innerContainerStyles = getInnerContainerStyle(
-      visualAndButtonProps.visual,
-    );
+    const viewStyle = getRegisteredViewStyle(visualAndButtonProps.visual);
 
     return (
       <Touchable {...visualAndButtonProps.button}>
-        <InnerContainer
-          style={innerContainerStyles.container}
-          {...visualAndButtonProps.visual}
-        >
+        <View style={viewStyle.view} {...visualAndButtonProps.visual}>
           {children &&
             this.getChildrenComponent(children, visualAndButtonProps.visual)}
-        </InnerContainer>
+        </View>
       </Touchable>
     );
   }
@@ -284,10 +281,10 @@ class ThemedButton extends React.Component<
       typeof children === 'number' ||
       typeof children === 'boolean'
     ) {
-      const textStyles = getLabelStyle(visual);
+      const textStyle = getRegisteredTextStyle(visual);
 
       return (
-        <Text style={textStyles.text} {...visual}>
+        <Text style={textStyle.text} {...visual}>
           {children}
         </Text>
       );

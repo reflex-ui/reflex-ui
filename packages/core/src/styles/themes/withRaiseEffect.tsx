@@ -13,7 +13,7 @@ import {
 // import { ColorVariant } from './ColorVariant';
 import { getElevationStyles } from './getElevationStyles';
 // import { getThemedColor } from './getThemedColor';
-import { ButtonContainer, ButtonContainerProps } from './PurpleTealTheme';
+import { ButtonView, ButtonViewProps } from './PurpleTealTheme';
 
 interface RaiseStyles {
   container: ViewStyle;
@@ -72,16 +72,14 @@ const createMotionRaiseStyles: MotionRaiseStylesCreator = ({
   return styles;
 };
 
-export type WithRaiseEffect = (
-  WrappedComponent: ButtonContainer,
-) => ButtonContainer;
+export type WithRaiseEffect = (WrappedComponent: ButtonView) => ButtonView;
 
 export const withRaiseEffect: WithRaiseEffect = (
-  WrappedComponent: ButtonContainer,
+  WrappedComponent: ButtonView,
 ) =>
-  class RaisedComponent extends React.Component<ButtonContainerProps> {
+  class RaisedComponent extends React.Component<ButtonViewProps> {
     public static getDerivedStateFromProps(
-      props: ButtonContainerProps,
+      props: ButtonViewProps,
       state: RaisedComponentState,
     ) {
       // tslint:disable-next-line:no-console
@@ -183,7 +181,7 @@ export const withRaiseEffect: WithRaiseEffect = (
       staticRaiseStyles: { container: {}, shadow: {} },
     };
 
-    public constructor(props: ButtonContainerProps) {
+    public constructor(props: ButtonViewProps) {
       super(props);
 
       // tslint:disable-next-line:no-console

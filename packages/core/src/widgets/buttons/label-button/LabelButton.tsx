@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 export interface ButtonStyle {
-  innerContainer: ViewStyle;
+  view: ViewStyle;
   label: TextStyle;
   outerContainer: ViewStyle;
 }
@@ -42,7 +42,7 @@ const DefaultChildrenContainer: React.SFC<ViewProps> = () => {
 export const Button: React.SFC<ButtonProps> = ({
   ChildrenContainer = DefaultChildrenContainer,
   customStyle = {
-    styles: { innerContainer: {}, label: {}, outerContainer: {} },
+    styles: { view: {}, label: {}, outerContainer: {} },
   },
   leftIcon,
   onPress,
@@ -51,7 +51,7 @@ export const Button: React.SFC<ButtonProps> = ({
 }: ButtonProps): JSX.Element => (
   <View style={customStyle.styles.outerContainer}>
     <TouchableWithoutFeedback {...buttonProps}>
-      <View style={customStyle.styles.innerContainer}>
+      <View style={customStyle.styles.view}>
         <ChildrenContainer>
           {leftIcon}
           {customStyle.children && (

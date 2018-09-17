@@ -18,11 +18,7 @@ import {
 } from '../../widgets/buttons/label-button/StyledLabelButton';
 import { ColorVariant } from './ColorVariant';
 import { getThemedColor } from './getThemedColor';
-import {
-  ButtonContainer,
-  ButtonContainerProps,
-  Theme,
-} from './PurpleTealTheme';
+import { ButtonView, ButtonViewProps, Theme } from './PurpleTealTheme';
 
 interface RippleStyles {
   container: ViewStyle;
@@ -173,16 +169,14 @@ const createComponentRippleStyles: ComponentRippleStylesCreator = ({
   return createRippleStyles({ color, diameter, position });
 };
 
-export type WithRippleEffect = (
-  WrappedComponent: ButtonContainer,
-) => ButtonContainer;
+export type WithRippleEffect = (WrappedComponent: ButtonView) => ButtonView;
 
 export const withRippleEffect: WithRippleEffect = (
-  WrappedComponent: ButtonContainer,
+  WrappedComponent: ButtonView,
 ) =>
-  class RippledComponent extends React.Component<ButtonContainerProps> {
+  class RippledComponent extends React.Component<ButtonViewProps> {
     public static getDerivedStateFromProps(
-      props: ButtonContainerProps,
+      props: ButtonViewProps,
       state: RippledComponentState,
     ) {
       // tslint:disable-next-line:no-console
@@ -253,7 +247,7 @@ export const withRippleEffect: WithRippleEffect = (
       width: 100,
     };
 
-    public constructor(props: ButtonContainerProps) {
+    public constructor(props: ButtonViewProps) {
       super(props);
 
       this.animatedView = animated(View);
