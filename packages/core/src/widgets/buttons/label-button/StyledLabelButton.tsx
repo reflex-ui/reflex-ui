@@ -216,9 +216,9 @@ interface ThemedButtonState {
   readonly View: ButtonView;
 }
 
-interface VisualAndButtonProps {
-  readonly button: TouchableWithoutFeedbackProps;
-  readonly visual: ThemedVisualButtonProps;
+interface ViewAndTouchableProps {
+  readonly touchable: TouchableWithoutFeedbackProps;
+  readonly view: ThemedVisualButtonProps;
 }
 
 class ThemedButton extends React.Component<
@@ -251,13 +251,13 @@ class ThemedButton extends React.Component<
     const { Touchable, View } = this.state;
     const visualAndButtonProps = this.getVisualAndButtonProps();
 
-    const viewStyle = getRegisteredViewStyle(visualAndButtonProps.visual);
+    const viewStyle = getRegisteredViewStyle(visualAndButtonProps.view);
 
     return (
-      <Touchable {...visualAndButtonProps.button}>
-        <View style={viewStyle.view} {...visualAndButtonProps.visual}>
+      <Touchable {...visualAndButtonProps.touchable}>
+        <View style={viewStyle.view} {...visualAndButtonProps.view}>
           {children &&
-            this.getChildrenComponent(children, visualAndButtonProps.visual)}
+            this.getChildrenComponent(children, visualAndButtonProps.view)}
         </View>
       </Touchable>
     );
@@ -293,7 +293,7 @@ class ThemedButton extends React.Component<
     return children;
   }
 
-  private getVisualAndButtonProps(): VisualAndButtonProps {
+  private getVisualAndButtonProps(): ViewAndTouchableProps {
     const {
       children,
       colorVariant,
@@ -310,8 +310,8 @@ class ThemedButton extends React.Component<
     } = this.props;
 
     return {
-      button: buttonProps,
-      visual: {
+      touchable: buttonProps,
+      view: {
         children,
         colorVariant,
         customStyle,

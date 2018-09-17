@@ -27,15 +27,23 @@ import { getThemedColor } from './getThemedColor';
 import { withRaiseEffect } from './withRaiseEffect';
 import { withRippleEffect } from './withRippleEffect';
 
-interface ThemePaletteColor {
+interface PaletteColor {
   readonly color: string;
   readonly onColor: string;
 }
 
-interface ThemePaletteColorVariant {
-  readonly dark: ThemePaletteColor;
-  readonly light: ThemePaletteColor;
-  readonly normal: ThemePaletteColor;
+interface PaletteColorVariant {
+  readonly dark: PaletteColor;
+  readonly light: PaletteColor;
+  readonly normal: PaletteColor;
+}
+
+interface ThemePalette {
+  readonly background: PaletteColor;
+  readonly error: PaletteColor;
+  readonly primary: PaletteColorVariant;
+  readonly secondary: PaletteColorVariant;
+  readonly surface: PaletteColor;
 }
 
 interface TypographyComponents {
@@ -55,7 +63,23 @@ interface TypographyComponents {
 
 type ViewStyleGetter<P> = (props: P) => ViewStyle;
 
+type RegisteredViewStyleGetter<P> = (
+  props: P,
+) => { view: RegisteredStyle<ViewStyle> };
+
+interface ViewStyleObj {
+  view: ViewStyle;
+}
+
 type TextStyleGetter<P> = (props: P) => TextStyle;
+
+interface TextStyleObj {
+  text: TextStyle;
+}
+
+type RegisteredTextStyleGetter<P> = (
+  props: P,
+) => { text: RegisteredStyle<TextStyle> };
 
 export type ButtonViewProps = ThemedVisualButtonProps & ViewProps;
 
@@ -72,15 +96,15 @@ export type ButtonText = React.ComponentType<ButtonTextProps>;
 /* BEGIN OPTIONAL BUTTON STUFF */
 
 interface OptionalViewTheme<P> {
-  readonly getDynamicCustomStyles?: ViewStyleGetter<P>;
-  readonly getDynamicStyles?: ViewStyleGetter<P>;
-  readonly styles?: ViewStyle;
+  readonly getDynamicCustomStyle?: ViewStyleGetter<P>;
+  readonly getDynamicStyle?: ViewStyleGetter<P>;
+  readonly style?: ViewStyle;
 }
 
 interface OptionalTextTheme<P> {
-  readonly getDynamicCustomStyles?: TextStyleGetter<P>;
-  readonly getDynamicStyles?: TextStyleGetter<P>;
-  readonly styles?: TextStyle;
+  readonly getDynamicCustomStyle?: TextStyleGetter<P>;
+  readonly getDynamicStyle?: TextStyleGetter<P>;
+  readonly style?: TextStyle;
 }
 
 interface OptionalButtonTheme {
@@ -120,15 +144,15 @@ interface OptionalButtonVariantTheme {
 /* END OPTIONAL BUTTON STUFF */
 
 export interface ViewTheme<P> {
-  readonly getDynamicCustomStyles: ViewStyleGetter<P>;
-  readonly getDynamicStyles: ViewStyleGetter<P>;
-  readonly styles: ViewStyle;
+  readonly getDynamicCustomStyle: ViewStyleGetter<P>;
+  readonly getDynamicStyle: ViewStyleGetter<P>;
+  readonly style: ViewStyle;
 }
 
 export interface TextTheme<P> {
-  readonly getDynamicCustomStyles: TextStyleGetter<P>;
-  readonly getDynamicStyles: TextStyleGetter<P>;
-  readonly styles: TextStyle;
+  readonly getDynamicCustomStyle: TextStyleGetter<P>;
+  readonly getDynamicStyle: TextStyleGetter<P>;
+  readonly style: TextStyle;
 }
 
 interface ButtonTheme {
@@ -170,14 +194,6 @@ interface ThemeComponents {
   readonly typography: TypographyComponents;
 }
 
-interface ThemePalette {
-  readonly background: ThemePaletteColor;
-  readonly error: ThemePaletteColor;
-  readonly primary: ThemePaletteColorVariant;
-  readonly secondary: ThemePaletteColorVariant;
-  readonly surface: ThemePaletteColor;
-}
-
 export interface Theme {
   readonly components: ThemeComponents;
   readonly palette: ThemePalette;
@@ -193,32 +209,32 @@ type FontFamilyGetter = () => string;
 
 const getFontFamily: FontFamilyGetter = (): string => 'System';
 
-const getViewTheme: ViewStyleGetter<ThemedVisualButtonProps> = ({
+const getButtonViewStyle: ViewStyleGetter<ThemedVisualButtonProps> = ({
   fullWidth,
 }) => ({
   flexDirection: fullWidth ? 'column' : 'row',
   flexGrow: fullWidth ? 1 : undefined,
 });
 
-const getOutlinedContainerCommonStyles: ViewStyleGetter<
+const getOutlinedContainerCommonStyle: ViewStyleGetter<
   ThemedVisualButtonProps
 > = ({ colorVariant, theme }): ViewStyle => ({
   borderColor: getThemedColor({ colorVariant, theme }),
 });
 
-const getDisabledContainedContainerStyles: ViewStyleGetter<
+const getDisabledContainedContainerStyle: ViewStyleGetter<
   ThemedVisualButtonProps
 > = ({ colorVariant, theme }) => ({
   backgroundColor: getThemedColor({ colorVariant, theme }),
 });
 
-const getEnabledContainedContainerStyles: ViewStyleGetter<
+const getEnabledContainedContainerStyle: ViewStyleGetter<
   ThemedVisualButtonProps
 > = ({ colorVariant, theme }) => ({
   backgroundColor: getThemedColor({ colorVariant, theme }),
 });
 
-const getFocusedContainedContainerStyles: ViewStyleGetter<
+const getFocusedContainedContainerStyle: ViewStyleGetter<
   ThemedVisualButtonProps
 > = ({ colorVariant, theme }) => ({
   backgroundColor: Color.rgb(getThemedColor({ colorVariant, theme }))
@@ -226,7 +242,7 @@ const getFocusedContainedContainerStyles: ViewStyleGetter<
     .toString(),
 });
 
-const getHoveredContainedContainerStyles: ViewStyleGetter<
+const getHoveredContainedContainerStyle: ViewStyleGetter<
   ThemedVisualButtonProps
 > = ({ colorVariant, theme }) => ({
   backgroundColor: Color.rgb(getThemedColor({ colorVariant, theme }))
@@ -234,7 +250,7 @@ const getHoveredContainedContainerStyles: ViewStyleGetter<
     .toString(),
 });
 /*
-const getPressedContainedContainerStyles: ViewStyleGetter = ({
+const getPressedContainedContainerStyle: ViewStyleGetter = ({
   colorVariant,
   theme,
 }) => ({
@@ -245,65 +261,65 @@ const getPressedContainedContainerStyles: ViewStyleGetter = ({
 */
 
 // tslint:disable-next-line:max-line-length
-const getPressedContainedContainerStyles: ViewStyleGetter<
+const getPressedContainedContainerStyle: ViewStyleGetter<
   ThemedVisualButtonProps
 > = props => ({
-  ...getHoveredContainedContainerStyles(props),
+  ...getHoveredContainedContainerStyle(props),
 });
 
 // tslint:disable-next-line:max-line-length
-const getDisabledContainedRaisedContainerStyles: ViewStyleGetter<
+const getDisabledContainedRaisedContainerStyle: ViewStyleGetter<
   ThemedVisualButtonProps
 > = props => ({
-  ...getDisabledContainedContainerStyles(props),
-  // ...getContainerElevationStyles(props),
+  ...getDisabledContainedContainerStyle(props),
+  // ...getContainerElevationStyle(props),
 });
 
 // tslint:disable-next-line:max-line-length
-const getEnabledContainedRaisedContainerStyles: ViewStyleGetter<
+const getEnabledContainedRaisedContainerStyle: ViewStyleGetter<
   ThemedVisualButtonProps
 > = props => ({
-  ...getEnabledContainedContainerStyles(props),
-  // ...getContainerElevationStyles(props),
+  ...getEnabledContainedContainerStyle(props),
+  // ...getContainerElevationStyle(props),
 });
 
 // tslint:disable-next-line:max-line-length
-const getFocusedContainedRaisedContainerStyles: ViewStyleGetter<
+const getFocusedContainedRaisedContainerStyle: ViewStyleGetter<
   ThemedVisualButtonProps
 > = props => ({
-  ...getFocusedContainedContainerStyles(props),
-  // ...getContainerElevationStyles(props),
+  ...getFocusedContainedContainerStyle(props),
+  // ...getContainerElevationStyle(props),
 });
 
 // tslint:disable-next-line:max-line-length
-const getHoveredContainedRaisedContainerStyles: ViewStyleGetter<
+const getHoveredContainedRaisedContainerStyle: ViewStyleGetter<
   ThemedVisualButtonProps
 > = props => ({
-  ...getHoveredContainedContainerStyles(props),
-  // ...getContainerElevationStyles(props),
+  ...getHoveredContainedContainerStyle(props),
+  // ...getContainerElevationStyle(props),
 });
 
 // tslint:disable-next-line:max-line-length
-const getPressedContainedRaisedContainerStyles: ViewStyleGetter<
+const getPressedContainedRaisedContainerStyle: ViewStyleGetter<
   ThemedVisualButtonProps
 > = props => ({
-  ...getPressedContainedContainerStyles(props),
-  // ...getContainerElevationStyles(props),
+  ...getPressedContainedContainerStyle(props),
+  // ...getContainerElevationStyle(props),
 });
 
-const getDisabledDefaultContainerStyles: ViewStyleGetter<
+const getDisabledDefaultContainerStyle: ViewStyleGetter<
   ThemedVisualButtonProps
 > = () => ({
   backgroundColor: 'transparent',
 });
 
-const getEnabledDefaultContainerStyles: ViewStyleGetter<
+const getEnabledDefaultContainerStyle: ViewStyleGetter<
   ThemedVisualButtonProps
 > = () => ({
   backgroundColor: 'transparent',
 });
 
-const getFocusedDefaultContainerStyles: ViewStyleGetter<
+const getFocusedDefaultContainerStyle: ViewStyleGetter<
   ThemedVisualButtonProps
 > = ({ colorVariant, theme }) => ({
   backgroundColor: Color.rgb(getThemedColor({ colorVariant, theme }))
@@ -311,7 +327,7 @@ const getFocusedDefaultContainerStyles: ViewStyleGetter<
     .toString(),
 });
 
-const getHoveredDefaultContainerStyles: ViewStyleGetter<
+const getHoveredDefaultContainerStyle: ViewStyleGetter<
   ThemedVisualButtonProps
 > = ({ colorVariant, theme }) => ({
   backgroundColor: Color.rgb(getThemedColor({ colorVariant, theme }))
@@ -319,7 +335,7 @@ const getHoveredDefaultContainerStyles: ViewStyleGetter<
     .toString(),
 });
 
-const getPressedDefaultContainerStyles: ViewStyleGetter<
+const getPressedDefaultContainerStyle: ViewStyleGetter<
   ThemedVisualButtonProps
 > = ({ colorVariant, theme }) => ({
   backgroundColor: Color.rgb(getThemedColor({ colorVariant, theme }))
@@ -327,60 +343,60 @@ const getPressedDefaultContainerStyles: ViewStyleGetter<
     .toString(),
 });
 
-const getDisabledOutlinedContainerStyles: ViewStyleGetter<
+const getDisabledOutlinedContainerStyle: ViewStyleGetter<
   ThemedVisualButtonProps
 > = (props: ThemedVisualButtonProps) => ({
-  ...getDisabledDefaultContainerStyles(props),
+  ...getDisabledDefaultContainerStyle(props),
 });
 
-const getEnabledOutlinedContainerStyles: ViewStyleGetter<
+const getEnabledOutlinedContainerStyle: ViewStyleGetter<
   ThemedVisualButtonProps
 > = (props: ThemedVisualButtonProps) => ({
-  ...getEnabledDefaultContainerStyles(props),
+  ...getEnabledDefaultContainerStyle(props),
 });
 
-const getFocusedOutlinedContainerStyles: ViewStyleGetter<
+const getFocusedOutlinedContainerStyle: ViewStyleGetter<
   ThemedVisualButtonProps
 > = props => ({
-  ...getFocusedDefaultContainerStyles(props),
+  ...getFocusedDefaultContainerStyle(props),
 });
 
-const getHoveredOutlinedContainerStyles: ViewStyleGetter<
+const getHoveredOutlinedContainerStyle: ViewStyleGetter<
   ThemedVisualButtonProps
 > = props => ({
-  ...getHoveredDefaultContainerStyles(props),
+  ...getHoveredDefaultContainerStyle(props),
 });
 
-const getPressedOutlinedContainerStyles: ViewStyleGetter<
+const getPressedOutlinedContainerStyle: ViewStyleGetter<
   ThemedVisualButtonProps
 > = props => ({
-  ...getPressedDefaultContainerStyles(props),
+  ...getPressedDefaultContainerStyle(props),
 });
 
-const getContainedLabelStyles: TextStyleGetter<ThemedVisualButtonProps> = ({
+const getContainedLabelStyle: TextStyleGetter<ThemedVisualButtonProps> = ({
   colorVariant,
   theme,
 }) => ({
   color: getThemedColor({ colorVariant, theme, onColor: true }),
 });
 
-const getContainedRaisedLabelStyles: TextStyleGetter<
-  ThemedVisualButtonProps
-> = (props: ThemedVisualButtonProps) => ({
-  ...getContainedLabelStyles(props),
+const getContainedRaisedLabelStyle: TextStyleGetter<ThemedVisualButtonProps> = (
+  props: ThemedVisualButtonProps,
+) => ({
+  ...getContainedLabelStyle(props),
 });
 
-const getDefaultLabelStyles: TextStyleGetter<ThemedVisualButtonProps> = ({
+const getDefaultLabelStyle: TextStyleGetter<ThemedVisualButtonProps> = ({
   colorVariant,
   theme,
 }) => ({
   color: getThemedColor({ colorVariant, theme, onColor: false }),
 });
 
-const getOutlinedLabelStyles: TextStyleGetter<ThemedVisualButtonProps> = (
+const getOutlinedLabelStyle: TextStyleGetter<ThemedVisualButtonProps> = (
   props: ThemedVisualButtonProps,
 ) => ({
-  ...getDefaultLabelStyles(props),
+  ...getDefaultLabelStyle(props),
 });
 
 type TextStyleFromThemeGetter<TextThemeProps> = (
@@ -391,9 +407,9 @@ type TextStyleFromThemeGetter<TextThemeProps> = (
 const getTextButtonStyleFromTheme: TextStyleFromThemeGetter<
   ThemedVisualButtonProps
 > = (textTheme, props): TextStyle => ({
-  ...textTheme.styles,
-  ...textTheme.getDynamicStyles(props),
-  ...textTheme.getDynamicCustomStyles(props),
+  ...textTheme.style,
+  ...textTheme.getDynamicStyle(props),
+  ...textTheme.getDynamicCustomStyle(props),
 });
 
 export const getTextStyle: TextStyleGetter<ThemedVisualButtonProps> = (
@@ -447,14 +463,6 @@ export const getTextStyle: TextStyleGetter<ThemedVisualButtonProps> = (
   };
 };
 
-interface TextStyleObj {
-  text: TextStyle;
-}
-
-type RegisteredTextStyleGetter<P> = (
-  props: P,
-) => { text: RegisteredStyle<TextStyle> };
-
 export const getRegisteredTextStyle: RegisteredTextStyleGetter<
   ThemedVisualButtonProps
 > = props =>
@@ -470,9 +478,9 @@ type ViewStyleFromThemeGetter<ViewThemeProps> = (
 const getViewStyleFromTheme: ViewStyleFromThemeGetter<
   ThemedVisualButtonProps
 > = (viewTheme, props): ViewStyle => ({
-  ...viewTheme.styles,
-  ...viewTheme.getDynamicStyles(props),
-  ...viewTheme.getDynamicCustomStyles(props),
+  ...viewTheme.style,
+  ...viewTheme.getDynamicStyle(props),
+  ...viewTheme.getDynamicCustomStyle(props),
 });
 
 export const getViewStyle: ViewStyleGetter<ThemedVisualButtonProps> = (
@@ -526,14 +534,6 @@ export const getViewStyle: ViewStyleGetter<ThemedVisualButtonProps> = (
   };
 };
 
-type RegisteredViewStyleGetter<P> = (
-  props: P,
-) => { view: RegisteredStyle<ViewStyle> };
-
-interface ViewStyleObj {
-  view: ViewStyle;
-}
-
 export const getRegisteredViewStyle: RegisteredViewStyleGetter<
   ThemedVisualButtonProps
 > = props =>
@@ -576,14 +576,14 @@ const DefaultText: ButtonText = (props: ButtonTextProps) => (
 
 const emptyButtonTheme: ButtonTheme = {
   text: {
-    getDynamicCustomStyles: () => ({}),
-    getDynamicStyles: () => ({}),
-    styles: {},
+    getDynamicCustomStyle: () => ({}),
+    getDynamicStyle: () => ({}),
+    style: {},
   },
   view: {
-    getDynamicCustomStyles: () => ({}),
-    getDynamicStyles: () => ({}),
-    styles: {},
+    getDynamicCustomStyle: () => ({}),
+    getDynamicStyle: () => ({}),
+    style: {},
   },
 };
 
@@ -741,7 +741,7 @@ const buttonTheme: OptionalButtonVariantTheme = {
     allSizes: {
       allStates: {
         text: {
-          styles: {
+          style: {
             fontFamily: getFontFamily(),
             fontWeight: getFontWeight(FontWeight.MEDIUM),
             position: 'relative',
@@ -756,8 +756,8 @@ const buttonTheme: OptionalButtonVariantTheme = {
           },
         },
         view: {
-          getDynamicStyles: getViewTheme,
-          styles: {
+          getDynamicStyle: getButtonViewStyle,
+          style: {
             alignItems: 'center',
             justifyContent: 'center',
             ...Platform.select({
@@ -771,7 +771,7 @@ const buttonTheme: OptionalButtonVariantTheme = {
       },
       disabled: {
         view: {
-          styles: {
+          style: {
             ...Platform.select({
               web: {
                 cursor: 'not-allowed',
@@ -784,13 +784,13 @@ const buttonTheme: OptionalButtonVariantTheme = {
     large: {
       allStates: {
         text: {
-          styles: {
+          style: {
             fontSize: 15,
             letterSpacing: 1,
           },
         },
         view: {
-          styles: {
+          style: {
             borderRadius: 2,
           },
         },
@@ -799,13 +799,13 @@ const buttonTheme: OptionalButtonVariantTheme = {
     regular: {
       allStates: {
         text: {
-          styles: {
+          style: {
             fontSize: 14,
             letterSpacing: 0.75,
           },
         },
         view: {
-          styles: {
+          style: {
             borderRadius: 2,
           },
         },
@@ -814,13 +814,13 @@ const buttonTheme: OptionalButtonVariantTheme = {
     small: {
       allStates: {
         text: {
-          styles: {
+          style: {
             fontSize: 13,
             letterSpacing: 0.5,
           },
         },
         view: {
-          styles: {
+          style: {
             borderRadius: 2,
           },
         },
@@ -829,13 +829,13 @@ const buttonTheme: OptionalButtonVariantTheme = {
     xlarge: {
       allStates: {
         text: {
-          styles: {
+          style: {
             fontSize: 16,
             letterSpacing: 1.25,
           },
         },
         view: {
-          styles: {
+          style: {
             borderRadius: 4,
           },
         },
@@ -844,13 +844,13 @@ const buttonTheme: OptionalButtonVariantTheme = {
     xsmall: {
       allStates: {
         text: {
-          styles: {
+          style: {
             fontSize: 12,
             letterSpacing: 0.25,
           },
         },
         view: {
-          styles: {
+          style: {
             borderRadius: 2,
           },
         },
@@ -862,39 +862,39 @@ const buttonTheme: OptionalButtonVariantTheme = {
     allSizes: {
       allStates: {
         text: {
-          getDynamicStyles: getContainedLabelStyles,
+          getDynamicStyle: getContainedLabelStyle,
         },
       },
       disabled: {
         view: {
-          getDynamicStyles: getDisabledContainedContainerStyles,
+          getDynamicStyle: getDisabledContainedContainerStyle,
         },
       },
       enabled: {
         view: {
-          getDynamicStyles: getEnabledContainedContainerStyles,
+          getDynamicStyle: getEnabledContainedContainerStyle,
         },
       },
       focused: {
         view: {
-          getDynamicStyles: getFocusedContainedContainerStyles,
+          getDynamicStyle: getFocusedContainedContainerStyle,
         },
       },
       hovered: {
         view: {
-          getDynamicStyles: getHoveredContainedContainerStyles,
+          getDynamicStyle: getHoveredContainedContainerStyle,
         },
       },
       pressed: {
         view: {
-          getDynamicStyles: getPressedContainedContainerStyles,
+          getDynamicStyle: getPressedContainedContainerStyle,
         },
       },
     },
     large: {
       allStates: {
         view: {
-          styles: {
+          style: {
             height: 40,
             marginHorizontal: 16,
             marginVertical: 8,
@@ -907,7 +907,7 @@ const buttonTheme: OptionalButtonVariantTheme = {
     regular: {
       allStates: {
         view: {
-          styles: {
+          style: {
             height: 36,
             marginHorizontal: 16,
             marginVertical: 8,
@@ -920,7 +920,7 @@ const buttonTheme: OptionalButtonVariantTheme = {
     small: {
       allStates: {
         view: {
-          styles: {
+          style: {
             height: 32,
             marginHorizontal: 16,
             marginVertical: 8,
@@ -933,7 +933,7 @@ const buttonTheme: OptionalButtonVariantTheme = {
     xlarge: {
       allStates: {
         view: {
-          styles: {
+          style: {
             height: 48,
             marginHorizontal: 16,
             marginVertical: 8,
@@ -946,7 +946,7 @@ const buttonTheme: OptionalButtonVariantTheme = {
     xsmall: {
       allStates: {
         view: {
-          styles: {
+          style: {
             height: 28,
             marginHorizontal: 8,
             marginVertical: 4,
@@ -962,39 +962,39 @@ const buttonTheme: OptionalButtonVariantTheme = {
     allSizes: {
       allStates: {
         text: {
-          getDynamicStyles: getContainedRaisedLabelStyles,
+          getDynamicStyle: getContainedRaisedLabelStyle,
         },
       },
       disabled: {
         view: {
-          getDynamicStyles: getDisabledContainedRaisedContainerStyles,
+          getDynamicStyle: getDisabledContainedRaisedContainerStyle,
         },
       },
       enabled: {
         view: {
-          getDynamicStyles: getEnabledContainedRaisedContainerStyles,
+          getDynamicStyle: getEnabledContainedRaisedContainerStyle,
         },
       },
       focused: {
         view: {
-          getDynamicStyles: getFocusedContainedRaisedContainerStyles,
+          getDynamicStyle: getFocusedContainedRaisedContainerStyle,
         },
       },
       hovered: {
         view: {
-          getDynamicStyles: getHoveredContainedRaisedContainerStyles,
+          getDynamicStyle: getHoveredContainedRaisedContainerStyle,
         },
       },
       pressed: {
         view: {
-          getDynamicStyles: getPressedContainedRaisedContainerStyles,
+          getDynamicStyle: getPressedContainedRaisedContainerStyle,
         },
       },
     },
     large: {
       allStates: {
         view: {
-          styles: {
+          style: {
             height: 40,
             marginHorizontal: 16,
             marginVertical: 8,
@@ -1007,7 +1007,7 @@ const buttonTheme: OptionalButtonVariantTheme = {
     regular: {
       allStates: {
         view: {
-          styles: {
+          style: {
             height: 36,
             marginHorizontal: 16,
             marginVertical: 8,
@@ -1020,7 +1020,7 @@ const buttonTheme: OptionalButtonVariantTheme = {
     small: {
       allStates: {
         view: {
-          styles: {
+          style: {
             height: 32,
             marginHorizontal: 16,
             marginVertical: 8,
@@ -1033,7 +1033,7 @@ const buttonTheme: OptionalButtonVariantTheme = {
     xlarge: {
       allStates: {
         view: {
-          styles: {
+          style: {
             height: 48,
             marginHorizontal: 16,
             marginVertical: 8,
@@ -1046,7 +1046,7 @@ const buttonTheme: OptionalButtonVariantTheme = {
     xsmall: {
       allStates: {
         view: {
-          styles: {
+          style: {
             height: 28,
             marginHorizontal: 8,
             marginVertical: 4,
@@ -1061,39 +1061,39 @@ const buttonTheme: OptionalButtonVariantTheme = {
     allSizes: {
       allStates: {
         text: {
-          getDynamicStyles: getDefaultLabelStyles,
+          getDynamicStyle: getDefaultLabelStyle,
         },
       },
       disabled: {
         view: {
-          getDynamicStyles: getDisabledDefaultContainerStyles,
+          getDynamicStyle: getDisabledDefaultContainerStyle,
         },
       },
       enabled: {
         view: {
-          getDynamicStyles: getEnabledDefaultContainerStyles,
+          getDynamicStyle: getEnabledDefaultContainerStyle,
         },
       },
       focused: {
         view: {
-          getDynamicStyles: getFocusedDefaultContainerStyles,
+          getDynamicStyle: getFocusedDefaultContainerStyle,
         },
       },
       hovered: {
         view: {
-          getDynamicStyles: getHoveredDefaultContainerStyles,
+          getDynamicStyle: getHoveredDefaultContainerStyle,
         },
       },
       pressed: {
         view: {
-          getDynamicStyles: getPressedDefaultContainerStyles,
+          getDynamicStyle: getPressedDefaultContainerStyle,
         },
       },
     },
     large: {
       allStates: {
         view: {
-          styles: {
+          style: {
             height: 40,
             marginHorizontal: 16,
             marginVertical: 8,
@@ -1106,7 +1106,7 @@ const buttonTheme: OptionalButtonVariantTheme = {
     regular: {
       allStates: {
         view: {
-          styles: {
+          style: {
             height: 36,
             marginHorizontal: 16,
             marginVertical: 8,
@@ -1119,7 +1119,7 @@ const buttonTheme: OptionalButtonVariantTheme = {
     small: {
       allStates: {
         view: {
-          styles: {
+          style: {
             height: 32,
             marginHorizontal: 16,
             marginVertical: 8,
@@ -1132,7 +1132,7 @@ const buttonTheme: OptionalButtonVariantTheme = {
     xlarge: {
       allStates: {
         view: {
-          styles: {
+          style: {
             height: 48,
             marginHorizontal: 16,
             marginVertical: 8,
@@ -1145,7 +1145,7 @@ const buttonTheme: OptionalButtonVariantTheme = {
     xsmall: {
       allStates: {
         view: {
-          styles: {
+          style: {
             height: 28,
             marginHorizontal: 8,
             marginVertical: 4,
@@ -1160,42 +1160,42 @@ const buttonTheme: OptionalButtonVariantTheme = {
     allSizes: {
       allStates: {
         text: {
-          getDynamicStyles: getOutlinedLabelStyles,
+          getDynamicStyle: getOutlinedLabelStyle,
         },
         view: {
-          getDynamicStyles: getOutlinedContainerCommonStyles,
+          getDynamicStyle: getOutlinedContainerCommonStyle,
         },
       },
       disabled: {
         view: {
-          getDynamicStyles: getDisabledOutlinedContainerStyles,
+          getDynamicStyle: getDisabledOutlinedContainerStyle,
         },
       },
       enabled: {
         view: {
-          getDynamicStyles: getEnabledOutlinedContainerStyles,
+          getDynamicStyle: getEnabledOutlinedContainerStyle,
         },
       },
       focused: {
         view: {
-          getDynamicStyles: getFocusedOutlinedContainerStyles,
+          getDynamicStyle: getFocusedOutlinedContainerStyle,
         },
       },
       hovered: {
         view: {
-          getDynamicStyles: getHoveredOutlinedContainerStyles,
+          getDynamicStyle: getHoveredOutlinedContainerStyle,
         },
       },
       pressed: {
         view: {
-          getDynamicStyles: getPressedOutlinedContainerStyles,
+          getDynamicStyle: getPressedOutlinedContainerStyle,
         },
       },
     },
     large: {
       allStates: {
         view: {
-          styles: {
+          style: {
             borderWidth: 2,
             height: 40,
             marginHorizontal: 16,
@@ -1209,7 +1209,7 @@ const buttonTheme: OptionalButtonVariantTheme = {
     regular: {
       allStates: {
         view: {
-          styles: {
+          style: {
             borderWidth: 2,
             height: 36,
             marginHorizontal: 16,
@@ -1223,7 +1223,7 @@ const buttonTheme: OptionalButtonVariantTheme = {
     small: {
       allStates: {
         view: {
-          styles: {
+          style: {
             borderWidth: 2,
             height: 32,
             marginHorizontal: 16,
@@ -1237,7 +1237,7 @@ const buttonTheme: OptionalButtonVariantTheme = {
     xlarge: {
       allStates: {
         view: {
-          styles: {
+          style: {
             borderWidth: 3,
             height: 48,
             marginHorizontal: 16,
@@ -1251,7 +1251,7 @@ const buttonTheme: OptionalButtonVariantTheme = {
     xsmall: {
       allStates: {
         view: {
-          styles: {
+          style: {
             borderWidth: 1,
             height: 28,
             marginHorizontal: 8,
