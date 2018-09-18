@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  StyleSheet,
   TextStyle,
   TouchableWithoutFeedbackProps,
   ViewStyle,
@@ -18,6 +19,7 @@ import {
   getRegisteredViewStyle,
   Touchable,
 } from '../../../styles/themes/PurpleTealTheme';
+import { isAndroid } from '../../../utils';
 import { Size } from '../../Size';
 
 export interface ButtonStyles {
@@ -66,11 +68,11 @@ export enum Variant {
   OUTLINED = 'outlined',
 }
 
-type TransformText = (
+type TextTransformer = (
   props: { text: string; transformation?: string },
 ) => string;
 
-export const transformText: TransformText = ({
+export const transformText: TextTransformer = ({
   text,
   transformation = 'none',
 }): string => {
@@ -88,115 +90,64 @@ export const transformText: TransformText = ({
       return text;
   }
 };
-/*
-type GetStyledChildren = (
-  props: { children: React.ReactNode; size: Size; theme: Theme },
-) => React.ReactNode;
 
-const getStyledChildren: GetStyledChildren = ({ children }): React.ReactNode =>
-  // prettier-ignore
-  typeof children === 'string' && isAndroid
-    ? transformText({
-      text: children,
-      // TODO: implement this retrieving data from theme.
-      transformation: 'uppercase',
-      // tslint:disable-next-line
-      // transformation: theme.components.button[size].common.label
-        .textTransform,
-    })
-    : children;
-
-type GetStyle = (props: ThemedButtonProps) => ButtonStyleAndChildren;
-
-const getStyle: GetStyle = ({
-  children,
-  colorVariant = ColorVariant.PRIMARY_NORMAL,
-  fullWidth,
-  size = Size.REGULAR,
-  interactivityState = InteractivityState.ENABLED,
-  theme,
-  variant = Variant.DEFAULT,
-}: ThemedButtonProps): ButtonStyleAndChildren => ({
-  children: getStyledChildren({ children, size, theme }),
-  styles: StyleSheet.create<ButtonStyle>({
-    view: {
-      ...getInnerContainerStyles({
-        children,
-        colorVariant,
-        fullWidth,
-        interactivityState,
-        size,
-        theme,
-        variant,
-      }),
-    },
-    label: {
-      ...getLabelStyles({
-        children,
-        colorVariant,
-        fullWidth,
-        interactivityState,
-        size,
-        theme,
-        variant,
-      }),
-    },
-    outerContainer: {
-      ...getOuterContainerStyles({
-        children,
-        colorVariant,
-        fullWidth,
-        interactivityState,
-        size,
-        theme,
-        variant,
-      }),
-    },
-  }),
-});
-*/
-/*
-const getChildrenContainer = ({
-  children,
-  colorVariant,
-  fullWidth,
-  interactivityState,
-  size,
-  theme,
-  variant = Variant.DEFAULT,
-}: ThemedButtonProps) =>
-  theme.components.button[variant].childrenContainerFactory({
+const extractSpecialButtonProps = (
+  props: SpecialButtonProps,
+): SpecialButtonProps => {
+  const {
     children,
     colorVariant,
+    customStyle,
     fullWidth,
+    interactivityEvent,
     interactivityState,
+    leftIcon,
+    rightIcon,
     size,
     theme,
     variant,
-  });
-*/
-/*
-export type WithTheme = <P extends Themed>(
-  WrappedComponent: React.ComponentType<P>,
-) => React.ComponentType<P>;
+  } = props;
 
-const withTheme: WithTheme = <P extends Themed>(
-  WrappedComponent: React.ComponentType<P>,
-) => (props: P) => (
-  <ThemeContext.Consumer>
-    {theme => <WrappedComponent {...props} theme={theme} />}
-  </ThemeContext.Consumer>
-);
-*/
+  return {
+    children,
+    colorVariant,
+    customStyle,
+    fullWidth,
+    interactivityEvent,
+    interactivityState,
+    leftIcon,
+    rightIcon,
+    size,
+    theme,
+    variant,
+  };
+};
+
+const extractTouchableProps = (
+  props: ButtonProps,
+): TouchableWithoutFeedbackProps => {
+  const {
+    children,
+    colorVariant,
+    customStyle,
+    fullWidth,
+    interactivityEvent,
+    interactivityState,
+    leftIcon,
+    rightIcon,
+    size,
+    theme,
+    variant,
+    ...touchableProps
+  } = props;
+
+  return touchableProps;
+};
+
 interface ThemedButtonState {
   readonly Text: ButtonText;
   readonly Touchable: Touchable<TouchableWithoutFeedbackProps>;
   readonly View: ButtonView;
-}
-
-interface ViewAndTouchableProps {
-  readonly touchable: TouchableWithoutFeedbackProps;
-  readonly view: SpecialButtonProps;
 }
 
 class ThemedButton extends React.Component<ButtonProps, ThemedButtonState> {
@@ -224,15 +175,15 @@ class ThemedButton extends React.Component<ButtonProps, ThemedButtonState> {
     const { children } = this.props;
     // tslint:disable-next-line:no-shadowed-variable
     const { Touchable, View } = this.state;
-    const visualAndButtonProps = this.getVisualAndButtonProps();
+    const specialProps = extractSpecialButtonProps(this.props);
+    const touchableProps = extractTouchableProps(this.props);
 
-    const viewStyle = getRegisteredViewStyle(visualAndButtonProps.view);
+    const viewStyle = getRegisteredViewStyle(specialProps);
 
     return (
-      <Touchable {...visualAndButtonProps.touchable}>
-        <View style={viewStyle.view} {...visualAndButtonProps.view}>
-          {children &&
-            this.getChildrenComponent(children, visualAndButtonProps.view)}
+      <Touchable {...touchableProps}>
+        <View style={viewStyle.view} {...specialProps}>
+          {children && this.getChildrenComponent(children, specialProps)}
         </View>
       </Touchable>
     );
@@ -240,7 +191,7 @@ class ThemedButton extends React.Component<ButtonProps, ThemedButtonState> {
 
   private getChildrenComponent(
     children: React.ReactNode,
-    visual: SpecialButtonProps,
+    props: SpecialButtonProps,
   ): JSX.Element | React.ReactNode {
     const { Text } = this.state;
 
@@ -249,85 +200,28 @@ class ThemedButton extends React.Component<ButtonProps, ThemedButtonState> {
       typeof children === 'number' ||
       typeof children === 'boolean'
     ) {
-      const textStyle = getRegisteredTextStyle(visual);
+      const textStyle = getRegisteredTextStyle(props);
+      let stringChildren =
+        typeof children === 'string' ? children : children.toString();
+
+      if (isAndroid) {
+        stringChildren = transformText({
+          text: stringChildren,
+          transformation: StyleSheet.flatten(textStyle.text).textTransform,
+        });
+      }
 
       return (
-        <Text style={textStyle.text} {...visual}>
-          {children}
+        <Text style={textStyle.text} {...props}>
+          {stringChildren}
         </Text>
       );
     }
 
     return children;
   }
-
-  private getVisualAndButtonProps(): ViewAndTouchableProps {
-    const {
-      children,
-      colorVariant,
-      customStyle,
-      fullWidth,
-      interactivityEvent,
-      interactivityState,
-      leftIcon,
-      rightIcon,
-      size,
-      theme,
-      variant,
-      ...buttonProps
-    } = this.props;
-
-    return {
-      touchable: buttonProps,
-      view: {
-        children,
-        colorVariant,
-        customStyle,
-        fullWidth,
-        interactivityEvent,
-        interactivityState,
-        leftIcon,
-        rightIcon,
-        size,
-        theme,
-        variant,
-      },
-    };
-  }
-}
-/*
-// tslint:disable-next-line:max-classes-per-file
-class DefaultLabelButton extends React.Component<OptionalButtonProps> {
-  public render() {
-    return (
-      // prettier-ignore
-      <ThemeContext.Consumer>
-        {(theme) => {
-          const defaultProps: SpecialButtonProps = {
-            colorVariant: ColorVariant.PRIMARY_NORMAL,
-            fullWidth: false,
-            interactivityState: InteractivityState.ENABLED,
-            size: Size.REGULAR,
-            // tslint:disable-next-line:object-shorthand-properties-first
-            theme,
-            variant: Variant.DEFAULT,
-          };
-
-          return <ThemedButton {...defaultProps} {...this.props} />;
-        }}
-      </ThemeContext.Consumer>
-    );
-  }
 }
 
-// const ThemedButtonWithTheme = withTheme(DefaultLabelButton);
-export { DefaultLabelButton as ThemedButton };
-*/
-/*
-export type WithOptionalButtonProps = <P extends ButtonProps>(
-  WrappedComponent: React.ComponentType<P>,
-) => React.ComponentType<OptionalButtonProps>;
-*/
 const withOptionalButtonProps = (
   WrappedComponent: React.ComponentType<ButtonProps>,
 ) =>
@@ -338,16 +232,17 @@ const withOptionalButtonProps = (
         // prettier-ignore
         <ThemeContext.Consumer>
         {(theme) => {
-          const defaultProps: SpecialButtonProps = {
+          const props: ButtonProps = {
             colorVariant: ColorVariant.PRIMARY_NORMAL,
             fullWidth: false,
             interactivityState: InteractivityState.ENABLED,
             size: Size.REGULAR,
             theme,
             variant: Variant.DEFAULT,
+            ...this.props,
           };
 
-          return <WrappedComponent {...defaultProps} {...this.props} />;
+          return <WrappedComponent {...props} />;
         }}
       </ThemeContext.Consumer>
       );
@@ -356,9 +251,3 @@ const withOptionalButtonProps = (
 
 const ButtonWithOptionalProps = withOptionalButtonProps(ThemedButton);
 export { ButtonWithOptionalProps as ThemedButton };
-
-/*
-const ThemedButtonWithTheme = withTheme(ThemedButton);
-
-export { ThemedButtonWithTheme as ThemedButton };
-*/
