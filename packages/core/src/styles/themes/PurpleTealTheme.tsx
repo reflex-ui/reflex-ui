@@ -19,7 +19,7 @@ import {
 import { InteractivityState } from '../../interactivity/InteractivityState';
 // prettier-ignore
 import {
-  ThemedVisualButtonProps,
+  SpecialButtonProps,
 } from '../../widgets/buttons/label-button/StyledLabelButton';
 import { FontWeight } from '../FontWeight';
 import { getFontWeight } from '../getFontWeight';
@@ -81,9 +81,9 @@ type RegisteredTextStyleGetter<P> = (
   props: P,
 ) => { text: RegisteredStyle<TextStyle> };
 
-export type ButtonViewProps = ThemedVisualButtonProps & ViewProps;
+export type ButtonViewProps = SpecialButtonProps & ViewProps;
 
-export type ButtonTextProps = ThemedVisualButtonProps & TextProps;
+export type ButtonTextProps = SpecialButtonProps & TextProps;
 
 export type ButtonView = React.ComponentType<ButtonViewProps>;
 
@@ -108,8 +108,8 @@ interface OptionalTextTheme<P> {
 }
 
 interface OptionalButtonTheme {
-  readonly view?: OptionalViewTheme<ThemedVisualButtonProps>;
-  readonly text?: OptionalTextTheme<ThemedVisualButtonProps>;
+  readonly view?: OptionalViewTheme<SpecialButtonProps>;
+  readonly text?: OptionalTextTheme<SpecialButtonProps>;
 }
 
 interface OptionalButtonStateTheme {
@@ -156,8 +156,8 @@ export interface TextTheme<P> {
 }
 
 interface ButtonTheme {
-  readonly text: TextTheme<ThemedVisualButtonProps>;
-  readonly view: ViewTheme<ThemedVisualButtonProps>;
+  readonly text: TextTheme<SpecialButtonProps>;
+  readonly view: ViewTheme<SpecialButtonProps>;
 }
 
 interface ButtonStateTheme {
@@ -209,41 +209,45 @@ type FontFamilyGetter = () => string;
 
 const getFontFamily: FontFamilyGetter = (): string => 'System';
 
-const getButtonViewStyle: ViewStyleGetter<ThemedVisualButtonProps> = ({
+const getButtonViewStyle: ViewStyleGetter<SpecialButtonProps> = ({
   fullWidth,
 }) => ({
   flexDirection: fullWidth ? 'column' : 'row',
   flexGrow: fullWidth ? 1 : undefined,
 });
 
-const getOutlinedContainerCommonStyle: ViewStyleGetter<
-  ThemedVisualButtonProps
-> = ({ colorVariant, theme }): ViewStyle => ({
+const getOutlinedContainerCommonStyle: ViewStyleGetter<SpecialButtonProps> = ({
+  colorVariant,
+  theme,
+}): ViewStyle => ({
   borderColor: getThemedColor({ colorVariant, theme }),
 });
 
 const getDisabledContainedContainerStyle: ViewStyleGetter<
-  ThemedVisualButtonProps
+  SpecialButtonProps
 > = ({ colorVariant, theme }) => ({
   backgroundColor: getThemedColor({ colorVariant, theme }),
 });
 
+// tslint:disable-next-line:max-line-length
 const getEnabledContainedContainerStyle: ViewStyleGetter<
-  ThemedVisualButtonProps
+  SpecialButtonProps
 > = ({ colorVariant, theme }) => ({
   backgroundColor: getThemedColor({ colorVariant, theme }),
 });
 
+// tslint:disable-next-line:max-line-length
 const getFocusedContainedContainerStyle: ViewStyleGetter<
-  ThemedVisualButtonProps
+  SpecialButtonProps
 > = ({ colorVariant, theme }) => ({
   backgroundColor: Color.rgb(getThemedColor({ colorVariant, theme }))
     .lighten(0.35)
     .toString(),
 });
 
+// tslint:disable-next-line:max-line-length
 const getHoveredContainedContainerStyle: ViewStyleGetter<
-  ThemedVisualButtonProps
+  SpecialButtonProps
 > = ({ colorVariant, theme }) => ({
   backgroundColor: Color.rgb(getThemedColor({ colorVariant, theme }))
     .lighten(0.12)
@@ -260,141 +264,138 @@ const getPressedContainedContainerStyle: ViewStyleGetter = ({
 });
 */
 
-// tslint:disable-next-line:max-line-length
 const getPressedContainedContainerStyle: ViewStyleGetter<
-  ThemedVisualButtonProps
+  SpecialButtonProps
 > = props => ({
   ...getHoveredContainedContainerStyle(props),
 });
 
-// tslint:disable-next-line:max-line-length
 const getDisabledContainedRaisedContainerStyle: ViewStyleGetter<
-  ThemedVisualButtonProps
+  SpecialButtonProps
 > = props => ({
   ...getDisabledContainedContainerStyle(props),
   // ...getContainerElevationStyle(props),
 });
 
-// tslint:disable-next-line:max-line-length
 const getEnabledContainedRaisedContainerStyle: ViewStyleGetter<
-  ThemedVisualButtonProps
+  SpecialButtonProps
 > = props => ({
   ...getEnabledContainedContainerStyle(props),
   // ...getContainerElevationStyle(props),
 });
 
-// tslint:disable-next-line:max-line-length
 const getFocusedContainedRaisedContainerStyle: ViewStyleGetter<
-  ThemedVisualButtonProps
+  SpecialButtonProps
 > = props => ({
   ...getFocusedContainedContainerStyle(props),
   // ...getContainerElevationStyle(props),
 });
 
-// tslint:disable-next-line:max-line-length
 const getHoveredContainedRaisedContainerStyle: ViewStyleGetter<
-  ThemedVisualButtonProps
+  SpecialButtonProps
 > = props => ({
   ...getHoveredContainedContainerStyle(props),
   // ...getContainerElevationStyle(props),
 });
 
-// tslint:disable-next-line:max-line-length
 const getPressedContainedRaisedContainerStyle: ViewStyleGetter<
-  ThemedVisualButtonProps
+  SpecialButtonProps
 > = props => ({
   ...getPressedContainedContainerStyle(props),
   // ...getContainerElevationStyle(props),
 });
 
 const getDisabledDefaultContainerStyle: ViewStyleGetter<
-  ThemedVisualButtonProps
+  SpecialButtonProps
 > = () => ({
   backgroundColor: 'transparent',
 });
 
 const getEnabledDefaultContainerStyle: ViewStyleGetter<
-  ThemedVisualButtonProps
+  SpecialButtonProps
 > = () => ({
   backgroundColor: 'transparent',
 });
 
-const getFocusedDefaultContainerStyle: ViewStyleGetter<
-  ThemedVisualButtonProps
-> = ({ colorVariant, theme }) => ({
+const getFocusedDefaultContainerStyle: ViewStyleGetter<SpecialButtonProps> = ({
+  colorVariant,
+  theme,
+}) => ({
   backgroundColor: Color.rgb(getThemedColor({ colorVariant, theme }))
     .fade(0.89)
     .toString(),
 });
 
-const getHoveredDefaultContainerStyle: ViewStyleGetter<
-  ThemedVisualButtonProps
-> = ({ colorVariant, theme }) => ({
+const getHoveredDefaultContainerStyle: ViewStyleGetter<SpecialButtonProps> = ({
+  colorVariant,
+  theme,
+}) => ({
   backgroundColor: Color.rgb(getThemedColor({ colorVariant, theme }))
     .fade(0.94)
     .toString(),
 });
 
-const getPressedDefaultContainerStyle: ViewStyleGetter<
-  ThemedVisualButtonProps
-> = ({ colorVariant, theme }) => ({
+const getPressedDefaultContainerStyle: ViewStyleGetter<SpecialButtonProps> = ({
+  colorVariant,
+  theme,
+}) => ({
   backgroundColor: Color.rgb(getThemedColor({ colorVariant, theme }))
     .fade(0.81)
     .toString(),
 });
 
-const getDisabledOutlinedContainerStyle: ViewStyleGetter<
-  ThemedVisualButtonProps
-> = (props: ThemedVisualButtonProps) => ({
+const getDisabledOutlinedContainerStyle: ViewStyleGetter<SpecialButtonProps> = (
+  props: SpecialButtonProps,
+) => ({
   ...getDisabledDefaultContainerStyle(props),
 });
 
-const getEnabledOutlinedContainerStyle: ViewStyleGetter<
-  ThemedVisualButtonProps
-> = (props: ThemedVisualButtonProps) => ({
+const getEnabledOutlinedContainerStyle: ViewStyleGetter<SpecialButtonProps> = (
+  props: SpecialButtonProps,
+) => ({
   ...getEnabledDefaultContainerStyle(props),
 });
 
 const getFocusedOutlinedContainerStyle: ViewStyleGetter<
-  ThemedVisualButtonProps
+  SpecialButtonProps
 > = props => ({
   ...getFocusedDefaultContainerStyle(props),
 });
 
 const getHoveredOutlinedContainerStyle: ViewStyleGetter<
-  ThemedVisualButtonProps
+  SpecialButtonProps
 > = props => ({
   ...getHoveredDefaultContainerStyle(props),
 });
 
 const getPressedOutlinedContainerStyle: ViewStyleGetter<
-  ThemedVisualButtonProps
+  SpecialButtonProps
 > = props => ({
   ...getPressedDefaultContainerStyle(props),
 });
 
-const getContainedLabelStyle: TextStyleGetter<ThemedVisualButtonProps> = ({
+const getContainedLabelStyle: TextStyleGetter<SpecialButtonProps> = ({
   colorVariant,
   theme,
 }) => ({
   color: getThemedColor({ colorVariant, theme, onColor: true }),
 });
 
-const getContainedRaisedLabelStyle: TextStyleGetter<ThemedVisualButtonProps> = (
-  props: ThemedVisualButtonProps,
+const getContainedRaisedLabelStyle: TextStyleGetter<SpecialButtonProps> = (
+  props: SpecialButtonProps,
 ) => ({
   ...getContainedLabelStyle(props),
 });
 
-const getDefaultLabelStyle: TextStyleGetter<ThemedVisualButtonProps> = ({
+const getDefaultLabelStyle: TextStyleGetter<SpecialButtonProps> = ({
   colorVariant,
   theme,
 }) => ({
   color: getThemedColor({ colorVariant, theme, onColor: false }),
 });
 
-const getOutlinedLabelStyle: TextStyleGetter<ThemedVisualButtonProps> = (
-  props: ThemedVisualButtonProps,
+const getOutlinedLabelStyle: TextStyleGetter<SpecialButtonProps> = (
+  props: SpecialButtonProps,
 ) => ({
   ...getDefaultLabelStyle(props),
 });
@@ -405,15 +406,15 @@ type TextStyleFromThemeGetter<TextThemeProps> = (
 ) => TextStyle;
 
 const getTextButtonStyleFromTheme: TextStyleFromThemeGetter<
-  ThemedVisualButtonProps
+  SpecialButtonProps
 > = (textTheme, props): TextStyle => ({
   ...textTheme.style,
   ...textTheme.getDynamicStyle(props),
   ...textTheme.getDynamicCustomStyle(props),
 });
 
-export const getTextStyle: TextStyleGetter<ThemedVisualButtonProps> = (
-  props: ThemedVisualButtonProps,
+export const getTextStyle: TextStyleGetter<SpecialButtonProps> = (
+  props: SpecialButtonProps,
 ): TextStyle => {
   // tslint:disable-next-line:no-shadowed-variable
   const buttonTheme = props.theme.components.button;
@@ -464,7 +465,7 @@ export const getTextStyle: TextStyleGetter<ThemedVisualButtonProps> = (
 };
 
 export const getRegisteredTextStyle: RegisteredTextStyleGetter<
-  ThemedVisualButtonProps
+  SpecialButtonProps
 > = props =>
   StyleSheet.create<TextStyleObj>({
     text: getTextStyle(props),
@@ -475,16 +476,17 @@ type ViewStyleFromThemeGetter<ViewThemeProps> = (
   props: ViewThemeProps,
 ) => ViewStyle;
 
-const getViewStyleFromTheme: ViewStyleFromThemeGetter<
-  ThemedVisualButtonProps
-> = (viewTheme, props): ViewStyle => ({
+const getViewStyleFromTheme: ViewStyleFromThemeGetter<SpecialButtonProps> = (
+  viewTheme,
+  props,
+): ViewStyle => ({
   ...viewTheme.style,
   ...viewTheme.getDynamicStyle(props),
   ...viewTheme.getDynamicCustomStyle(props),
 });
 
-export const getViewStyle: ViewStyleGetter<ThemedVisualButtonProps> = (
-  props: ThemedVisualButtonProps,
+export const getViewStyle: ViewStyleGetter<SpecialButtonProps> = (
+  props: SpecialButtonProps,
 ): ViewStyle => {
   // tslint:disable-next-line:no-shadowed-variable
   const buttonTheme = props.theme.components.button;
@@ -535,7 +537,7 @@ export const getViewStyle: ViewStyleGetter<ThemedVisualButtonProps> = (
 };
 
 export const getRegisteredViewStyle: RegisteredViewStyleGetter<
-  ThemedVisualButtonProps
+  SpecialButtonProps
 > = props =>
   StyleSheet.create<ViewStyleObj>({
     view: getViewStyle(props),
@@ -560,7 +562,7 @@ const DefaultInnerContainer: ButtonView = ({
    */
   ...buttonProps
 }: /**/
-ThemedVisualButtonProps) => (
+SpecialButtonProps) => (
   <View {...buttonProps} pointerEvents="box-only">
     {children}
   </View>

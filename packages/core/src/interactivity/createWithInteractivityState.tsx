@@ -29,6 +29,8 @@ export const createWithInteractivityState: WithInteractivityStateFactory = <
 
     public render(): JSX.Element {
       const interactivityProps: InteractivityProps = {
+        interactivityEvent: this.state.interactivityEvent,
+        interactivityState: this.getInteractivityState(),
         onBlur: isWeb ? this.onBlur : undefined,
         onFocus: isWeb ? this.onFocus : undefined,
         onMouseEnter: isWeb ? this.onMouseEnter : undefined,
@@ -37,14 +39,7 @@ export const createWithInteractivityState: WithInteractivityStateFactory = <
         onPressOut: this.onPressOut,
       };
 
-      return (
-        <WrappedComponent
-          interactivityEvent={this.state.interactivityEvent}
-          interactivityState={this.getInteractivityState()}
-          {...interactivityProps}
-          {...this.props}
-        />
-      );
+      return <WrappedComponent {...interactivityProps} {...this.props} />;
     }
 
     private getInteractivityState = (): InteractivityState => {

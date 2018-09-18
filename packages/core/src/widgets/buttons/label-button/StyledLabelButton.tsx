@@ -1,15 +1,15 @@
 import * as React from 'react';
 import {
-  // StyleSheet,
-  // Text,
   TextStyle,
-  // TouchableWithoutFeedback,
   TouchableWithoutFeedbackProps,
-  // View,
   ViewStyle,
 } from 'react-native';
 
-import { InteractivityEvent, InteractivityState } from '../../../interactivity';
+import {
+  InteractivityEvent,
+  InteractivityInfoProps,
+  InteractivityState,
+} from '../../../interactivity';
 import { ColorVariant, Theme, ThemeContext } from '../../../styles';
 import {
   ButtonText,
@@ -26,7 +26,7 @@ export interface ButtonStyles {
   outerContainer: ViewStyle;
 }
 
-export interface VisualButtonProps {
+export interface SpecialButtonProps {
   children?: React.ReactNode;
   colorVariant: ColorVariant;
   customStyle?: ButtonStyles;
@@ -36,42 +36,28 @@ export interface VisualButtonProps {
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
   size: Size;
+  theme: Theme;
   variant: Variant;
 }
 
-export interface DefaultVisualButtonProps {
+export interface OptionalSpecialButtonProps extends InteractivityInfoProps {
   children?: React.ReactNode;
   colorVariant?: ColorVariant;
   customStyle?: ButtonStyles;
   fullWidth?: boolean;
-  interactivityEvent?: InteractivityEvent;
-  interactivityState?: InteractivityState;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
   size?: Size;
   variant?: Variant;
 }
 
-export interface Themed {
-  theme: Theme;
-}
-
-export interface ThemedVisualButtonProps extends VisualButtonProps, Themed {}
-
 export interface ButtonProps
-  extends VisualButtonProps,
+  extends SpecialButtonProps,
     TouchableWithoutFeedbackProps {}
 
-export interface DefaultButtonProps
-  extends DefaultVisualButtonProps,
+export interface OptionalButtonProps
+  extends OptionalSpecialButtonProps,
     TouchableWithoutFeedbackProps {}
-
-/*
-export interface StyledButtonProps
-  extends StyledButtonViewProps,
-    ButtonProps {}
-*/
-// export type StyledButtonProps = ButtonStyleProps & ButtonProps;
 
 export enum Variant {
   CONTAINED = 'contained',
@@ -79,14 +65,6 @@ export enum Variant {
   DEFAULT = 'default',
   OUTLINED = 'outlined',
 }
-
-export interface ThemedStyledButtonProps extends ButtonProps, Themed {}
-
-export interface DefaultThemedStyledButtonProps
-  extends DefaultButtonProps,
-    Themed {}
-
-// export type StyledButton = React.ComponentType<ButtonProps>;
 
 type TransformText = (
   props: { text: string; transformation?: string },
@@ -128,7 +106,7 @@ const getStyledChildren: GetStyledChildren = ({ children }): React.ReactNode =>
     })
     : children;
 
-type GetStyle = (props: ThemedStyledButtonProps) => ButtonStyleAndChildren;
+type GetStyle = (props: ThemedButtonProps) => ButtonStyleAndChildren;
 
 const getStyle: GetStyle = ({
   children,
@@ -138,7 +116,7 @@ const getStyle: GetStyle = ({
   interactivityState = InteractivityState.ENABLED,
   theme,
   variant = Variant.DEFAULT,
-}: ThemedStyledButtonProps): ButtonStyleAndChildren => ({
+}: ThemedButtonProps): ButtonStyleAndChildren => ({
   children: getStyledChildren({ children, size, theme }),
   styles: StyleSheet.create<ButtonStyle>({
     view: {
@@ -186,7 +164,7 @@ const getChildrenContainer = ({
   size,
   theme,
   variant = Variant.DEFAULT,
-}: ThemedStyledButtonProps) =>
+}: ThemedButtonProps) =>
   theme.components.button[variant].childrenContainerFactory({
     children,
     colorVariant,
@@ -218,14 +196,11 @@ interface ThemedButtonState {
 
 interface ViewAndTouchableProps {
   readonly touchable: TouchableWithoutFeedbackProps;
-  readonly view: ThemedVisualButtonProps;
+  readonly view: SpecialButtonProps;
 }
 
-class ThemedButton extends React.Component<
-  ThemedStyledButtonProps,
-  ThemedButtonState
-> {
-  constructor(props: ThemedStyledButtonProps) {
+class ThemedButton extends React.Component<ButtonProps, ThemedButtonState> {
+  constructor(props: ButtonProps) {
     super(props);
     // tslint:disable-next-line:no-console
     // console.log('ThemedButton.constructor() - props: ', props);
@@ -263,16 +238,9 @@ class ThemedButton extends React.Component<
     );
   }
 
-  /*
-  private onPress() {
-    // tslint:disable-next-line:no-console
-    console.log('ThemedButton().onPress()');
-  }
-  */
-
   private getChildrenComponent(
     children: React.ReactNode,
-    visual: ThemedVisualButtonProps,
+    visual: SpecialButtonProps,
   ): JSX.Element | React.ReactNode {
     const { Text } = this.state;
 
@@ -327,15 +295,15 @@ class ThemedButton extends React.Component<
     };
   }
 }
-
+/*
 // tslint:disable-next-line:max-classes-per-file
-class DefaultLabelButton extends React.Component<DefaultButtonProps> {
+class DefaultLabelButton extends React.Component<OptionalButtonProps> {
   public render() {
     return (
       // prettier-ignore
       <ThemeContext.Consumer>
         {(theme) => {
-          const defaultProps: ThemedVisualButtonProps = {
+          const defaultProps: SpecialButtonProps = {
             colorVariant: ColorVariant.PRIMARY_NORMAL,
             fullWidth: false,
             interactivityState: InteractivityState.ENABLED,
@@ -354,47 +322,43 @@ class DefaultLabelButton extends React.Component<DefaultButtonProps> {
 
 // const ThemedButtonWithTheme = withTheme(DefaultLabelButton);
 export { DefaultLabelButton as ThemedButton };
+*/
+/*
+export type WithOptionalButtonProps = <P extends ButtonProps>(
+  WrappedComponent: React.ComponentType<P>,
+) => React.ComponentType<OptionalButtonProps>;
+*/
+const withOptionalButtonProps = (
+  WrappedComponent: React.ComponentType<ButtonProps>,
+) =>
+  // tslint:disable-next-line
+  class ButtonWithOptionalProps extends React.Component<OptionalButtonProps> {
+    public render() {
+      return (
+        // prettier-ignore
+        <ThemeContext.Consumer>
+        {(theme) => {
+          const defaultProps: SpecialButtonProps = {
+            colorVariant: ColorVariant.PRIMARY_NORMAL,
+            fullWidth: false,
+            interactivityState: InteractivityState.ENABLED,
+            size: Size.REGULAR,
+            theme,
+            variant: Variant.DEFAULT,
+          };
+
+          return <WrappedComponent {...defaultProps} {...this.props} />;
+        }}
+      </ThemeContext.Consumer>
+      );
+    }
+  };
+
+const ButtonWithOptionalProps = withOptionalButtonProps(ThemedButton);
+export { ButtonWithOptionalProps as ThemedButton };
 
 /*
 const ThemedButtonWithTheme = withTheme(ThemedButton);
 
 export { ThemedButtonWithTheme as ThemedButton };
-*/
-
-/*
-export const ThemedButton: StyledButton = ({
-  children,
-  colorVariant,
-  fullWidth,
-  interactivityState,
-  size,
-  variant = Variant.DEFAULT,
-  ...other // tslint:disable-line:trailing-comma
-}: StyledButtonProps): JSX.Element => (
-  <ThemeContext.Consumer>
-    {theme => (
-      <Button
-        {...other}
-        ChildrenContainer={getChildrenContainer({
-          children,
-          colorVariant,
-          fullWidth,
-          interactivityState,
-          size,
-          theme,
-          variant,
-        })}
-        customStyle={getStyle({
-          children,
-          colorVariant,
-          fullWidth,
-          interactivityState,
-          size,
-          theme,
-          variant,
-        })}
-      />
-    )}
-  </ThemeContext.Consumer>
-);
 */

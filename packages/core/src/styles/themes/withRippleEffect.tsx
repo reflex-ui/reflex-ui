@@ -14,7 +14,7 @@ import { animated, Keyframes } from 'react-spring/dist/native';
 import { InteractivityEvent, InteractivityState } from '../../interactivity';
 // prettier-ignore
 import {
-  ThemedVisualButtonProps,
+  SpecialButtonProps,
 } from '../../widgets/buttons/label-button/StyledLabelButton';
 import { ColorVariant } from './ColorVariant';
 import { getThemedColor } from './getThemedColor';
@@ -300,7 +300,7 @@ export const withRippleEffect: WithRippleEffect = (
       // tslint:disable-next-line:no-console
       // console.log('RippledComponent.render() - state: ', this.state);
 
-      const { children, ...otherProps } = this.props as ThemedVisualButtonProps;
+      const { children, ...otherProps } = this.props as SpecialButtonProps;
       const RippleAnimation = this.rippleAnimation;
 
       const { animationKeyframe, rippleStyles } = this.state;

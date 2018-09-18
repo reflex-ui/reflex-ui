@@ -8,7 +8,7 @@ import { animated, Keyframes } from 'react-spring/dist/native';
 import { InteractivityState } from '../../interactivity';
 // prettier-ignore
 import {
-  ThemedVisualButtonProps,
+  SpecialButtonProps,
 } from '../../widgets/buttons/label-button/StyledLabelButton';
 // import { ColorVariant } from './ColorVariant';
 import { getElevationStyles } from './getElevationStyles';
@@ -308,7 +308,7 @@ export const withRaiseEffect: WithRaiseEffect = (
       // tslint:disable-next-line:no-console
       console.log('RaisedComponent.render() - state: ', this.state);
 
-      const { children, ...otherProps } = this.props as ThemedVisualButtonProps;
+      const { children, ...otherProps } = this.props as SpecialButtonProps;
       const RaiseAnimation = this.raiseAnimation;
 
       const { animationKeyframe } = this.state;
