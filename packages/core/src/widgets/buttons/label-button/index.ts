@@ -1,17 +1,13 @@
 import * as React from 'react';
 
-import { createWithInteractivityState } from '../../../interactivity';
-// import { Button } from './LabelButton';
-import {
-  OptionalButtonProps,
-  ThemedButton,
-  Variant,
-} from './StyledLabelButton';
+import { createFullFeaturedButton } from './createFullFeaturedButton';
+import { OptionalButtonProps } from './SimpleButton';
 
-const LabelButton: React.ComponentType<
+const Button: React.ComponentType<
   OptionalButtonProps
-> = createWithInteractivityState(ThemedButton);
+> = createFullFeaturedButton();
 
 // export { Button as RawLabelButton };
-export { LabelButton };
-export { Variant as LabelButtonVariant };
+export { Button };
+export * from './SimpleButton';
+export * from './withOptionalButtonProps';

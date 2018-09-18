@@ -15,7 +15,7 @@ import { InteractivityEvent, InteractivityState } from '../../interactivity';
 // prettier-ignore
 import {
   SpecialButtonProps,
-} from '../../widgets/buttons/label-button/StyledLabelButton';
+} from '../../widgets/buttons/label-button/SimpleButton';
 import { ColorVariant } from './ColorVariant';
 import { getThemedColor } from './getThemedColor';
 import { ButtonView, ButtonViewProps, Theme } from './PurpleTealTheme';

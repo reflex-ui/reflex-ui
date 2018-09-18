@@ -4,7 +4,6 @@ import * as React from 'react';
 import {
   Platform,
   RegisteredStyle,
-  // StyleProp,
   StyleSheet,
   Text,
   TextProps,
@@ -20,7 +19,7 @@ import { InteractivityState } from '../../interactivity/InteractivityState';
 // prettier-ignore
 import {
   SpecialButtonProps,
-} from '../../widgets/buttons/label-button/StyledLabelButton';
+} from '../../widgets/buttons/label-button/SimpleButton';
 import { FontWeight } from '../FontWeight';
 import { getFontWeight } from '../getFontWeight';
 import { getThemedColor } from './getThemedColor';

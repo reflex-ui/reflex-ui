@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ScrollView, Text } from 'react-native';
 import {
-  LabelButton,
-  LabelButtonVariant,
+  Button,
+  ButtonVariant,
   RowView,
   // Size,
 } from 'react-platform-material-design';
@@ -16,12 +16,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
     <Text>WelcomeSignedOutScreen 1234567</Text>
     <RowView>
-      <LabelButton
-        onPress={onButtonPress}
-        variant={LabelButtonVariant.CONTAINED_RAISED}
-      >
+      <Button onPress={onButtonPress} variant={ButtonVariant.CONTAINED_RAISED}>
         Sign In
-      </LabelButton>
+      </Button>
     </RowView>
     <RowView>
       <Text>Lorem</Text>

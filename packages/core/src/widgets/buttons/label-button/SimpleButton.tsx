@@ -11,7 +11,7 @@ import {
   InteractivityInfoProps,
   InteractivityState,
 } from '../../../interactivity';
-import { ColorVariant, Theme, ThemeContext } from '../../../styles';
+import { ColorVariant, Theme } from '../../../styles';
 import {
   ButtonText,
   ButtonView,
@@ -39,7 +39,7 @@ export interface SpecialButtonProps {
   rightIcon?: JSX.Element;
   size: Size;
   theme: Theme;
-  variant: Variant;
+  variant: ButtonVariant;
 }
 
 export interface OptionalSpecialButtonProps extends InteractivityInfoProps {
@@ -50,7 +50,7 @@ export interface OptionalSpecialButtonProps extends InteractivityInfoProps {
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
   size?: Size;
-  variant?: Variant;
+  variant?: ButtonVariant;
 }
 
 export interface ButtonProps
@@ -61,7 +61,7 @@ export interface OptionalButtonProps
   extends OptionalSpecialButtonProps,
     TouchableWithoutFeedbackProps {}
 
-export enum Variant {
+export enum ButtonVariant {
   CONTAINED = 'contained',
   CONTAINED_RAISED = 'containedRaised',
   DEFAULT = 'default',
@@ -150,7 +150,10 @@ interface ThemedButtonState {
   readonly View: ButtonView;
 }
 
-class ThemedButton extends React.Component<ButtonProps, ThemedButtonState> {
+export class SimpleButton extends React.Component<
+  ButtonProps,
+  ThemedButtonState
+> {
   constructor(props: ButtonProps) {
     super(props);
     // tslint:disable-next-line:no-console
@@ -221,33 +224,3 @@ class ThemedButton extends React.Component<ButtonProps, ThemedButtonState> {
     return children;
   }
 }
-
-const withOptionalButtonProps = (
-  WrappedComponent: React.ComponentType<ButtonProps>,
-) =>
-  // tslint:disable-next-line
-  class ButtonWithOptionalProps extends React.Component<OptionalButtonProps> {
-    public render() {
-      return (
-        // prettier-ignore
-        <ThemeContext.Consumer>
-        {(theme) => {
-          const props: ButtonProps = {
-            colorVariant: ColorVariant.PRIMARY_NORMAL,
-            fullWidth: false,
-            interactivityState: InteractivityState.ENABLED,
-            size: Size.REGULAR,
-            theme,
-            variant: Variant.DEFAULT,
-            ...this.props,
-          };
-
-          return <WrappedComponent {...props} />;
-        }}
-      </ThemeContext.Consumer>
-      );
-    }
-  };
-
-const ButtonWithOptionalProps = withOptionalButtonProps(ThemedButton);
-export { ButtonWithOptionalProps as ThemedButton };
