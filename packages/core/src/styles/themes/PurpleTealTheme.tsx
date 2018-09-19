@@ -106,38 +106,54 @@ interface OptionalTextTheme<P> {
   readonly style?: TextStyle;
 }
 
-interface OptionalButtonTheme {
+interface OptionalButtonSubComponentsTheme {
   readonly view?: OptionalViewTheme<SpecialButtonProps>;
   readonly text?: OptionalTextTheme<SpecialButtonProps>;
 }
 
-interface OptionalButtonStateTheme {
-  readonly allStates?: OptionalButtonTheme;
-  readonly disabled?: OptionalButtonTheme;
-  readonly enabled?: OptionalButtonTheme;
-  readonly focused?: OptionalButtonTheme;
-  readonly hovered?: OptionalButtonTheme;
-  readonly pressed?: OptionalButtonTheme;
+interface OptionalInteractivityStateTheme<T> {
+  readonly allStates?: T;
+  readonly disabled?: T;
+  readonly enabled?: T;
+  readonly focused?: T;
+  readonly hovered?: T;
+  readonly pressed?: T;
 }
 
-interface OptionalSizedButtonTheme {
-  readonly allSizes?: OptionalButtonStateTheme;
-  readonly large?: OptionalButtonStateTheme;
-  readonly regular?: OptionalButtonStateTheme;
-  readonly small?: OptionalButtonStateTheme;
+interface OptionalButtonSubComponents {
   readonly Text?: ButtonText;
   readonly Touchable?: Touchable<TouchableWithoutFeedbackProps>;
   readonly View?: ButtonView;
-  readonly xlarge?: OptionalButtonStateTheme;
-  readonly xsmall?: OptionalButtonStateTheme;
 }
 
 interface OptionalButtonVariantTheme {
-  readonly allVariants?: OptionalSizedButtonTheme;
-  readonly contained?: OptionalSizedButtonTheme;
-  readonly containedRaised?: OptionalSizedButtonTheme;
-  readonly default?: OptionalSizedButtonTheme;
-  readonly outlined?: OptionalSizedButtonTheme;
+  readonly allSizes?: OptionalInteractivityStateTheme<
+    OptionalButtonSubComponentsTheme
+  >;
+  readonly large?: OptionalInteractivityStateTheme<
+    OptionalButtonSubComponentsTheme
+  >;
+  readonly regular?: OptionalInteractivityStateTheme<
+    OptionalButtonSubComponentsTheme
+  >;
+  readonly small?: OptionalInteractivityStateTheme<
+    OptionalButtonSubComponentsTheme
+  >;
+  readonly subComponents?: OptionalButtonSubComponents;
+  readonly xlarge?: OptionalInteractivityStateTheme<
+    OptionalButtonSubComponentsTheme
+  >;
+  readonly xsmall?: OptionalInteractivityStateTheme<
+    OptionalButtonSubComponentsTheme
+  >;
+}
+
+interface OptionalButtonTheme {
+  readonly allVariants?: OptionalButtonVariantTheme;
+  readonly contained?: OptionalButtonVariantTheme;
+  readonly containedRaised?: OptionalButtonVariantTheme;
+  readonly default?: OptionalButtonVariantTheme;
+  readonly outlined?: OptionalButtonVariantTheme;
 }
 
 /* END OPTIONAL BUTTON STUFF */
@@ -154,47 +170,51 @@ export interface TextTheme<P> {
   readonly style: TextStyle;
 }
 
-interface ButtonTheme {
+interface InteractivityStateTheme<T> {
+  readonly allStates: T;
+  readonly disabled: T;
+  readonly enabled: T;
+  readonly focused: T;
+  readonly hovered: T;
+  readonly pressed: T;
+}
+
+interface ButtonSubComponentsTheme {
   readonly text: TextTheme<SpecialButtonProps>;
   readonly view: ViewTheme<SpecialButtonProps>;
 }
 
-interface ButtonStateTheme {
-  readonly allStates: ButtonTheme;
-  readonly disabled: ButtonTheme;
-  readonly enabled: ButtonTheme;
-  readonly focused: ButtonTheme;
-  readonly hovered: ButtonTheme;
-  readonly pressed: ButtonTheme;
-}
-
-interface SizedButtonTheme {
-  readonly allSizes: ButtonStateTheme;
-  readonly large: ButtonStateTheme;
-  readonly regular: ButtonStateTheme;
-  readonly small: ButtonStateTheme;
+interface ButtonSubComponents {
   readonly Text: ButtonText;
   readonly Touchable: Touchable<TouchableWithoutFeedbackProps>;
   readonly View: ButtonView;
-  readonly xlarge: ButtonStateTheme;
-  readonly xsmall: ButtonStateTheme;
 }
 
 interface ButtonVariantTheme {
-  readonly allVariants: SizedButtonTheme;
-  readonly contained: SizedButtonTheme;
-  readonly containedRaised: SizedButtonTheme;
-  readonly default: SizedButtonTheme;
-  readonly outlined: SizedButtonTheme;
+  readonly allSizes: InteractivityStateTheme<ButtonSubComponentsTheme>;
+  readonly large: InteractivityStateTheme<ButtonSubComponentsTheme>;
+  readonly regular: InteractivityStateTheme<ButtonSubComponentsTheme>;
+  readonly small: InteractivityStateTheme<ButtonSubComponentsTheme>;
+  readonly subComponents: ButtonSubComponents;
+  readonly xlarge: InteractivityStateTheme<ButtonSubComponentsTheme>;
+  readonly xsmall: InteractivityStateTheme<ButtonSubComponentsTheme>;
 }
 
-interface ThemeComponents {
-  readonly button: ButtonVariantTheme;
+interface ButtonTheme {
+  readonly allVariants: ButtonVariantTheme;
+  readonly contained: ButtonVariantTheme;
+  readonly containedRaised: ButtonVariantTheme;
+  readonly default: ButtonVariantTheme;
+  readonly outlined: ButtonVariantTheme;
+}
+
+interface ComponentsTheme {
+  readonly button: ButtonTheme;
   readonly typography: TypographyComponents;
 }
 
 export interface Theme {
-  readonly components: ThemeComponents;
+  readonly components: ComponentsTheme;
   readonly palette: ThemePalette;
 }
 
@@ -547,6 +567,7 @@ const DefaultInnerContainer: ButtonView = ({
   colorVariant,
   customStyle,
   fullWidth,
+  interactivityEvent,
   interactivityState,
   leftIcon,
   rightIcon,
@@ -575,7 +596,7 @@ const DefaultText: ButtonText = (props: ButtonTextProps) => (
   <Text style={props.style}>{props.children}</Text>
 );
 
-const emptyButtonTheme: ButtonTheme = {
+const emptyButtonSubComponentsTheme: ButtonSubComponentsTheme = {
   text: {
     getDynamicCustomStyle: () => ({}),
     getDynamicStyle: () => ({}),
@@ -588,33 +609,39 @@ const emptyButtonTheme: ButtonTheme = {
   },
 };
 
-const emptyButtonStateTheme: ButtonStateTheme = {
-  allStates: emptyButtonTheme,
-  disabled: emptyButtonTheme,
-  enabled: emptyButtonTheme,
-  focused: emptyButtonTheme,
-  hovered: emptyButtonTheme,
-  pressed: emptyButtonTheme,
+const emptyButtonInteractivityStateTheme: InteractivityStateTheme<
+  ButtonSubComponentsTheme
+> = {
+  allStates: emptyButtonSubComponentsTheme,
+  disabled: emptyButtonSubComponentsTheme,
+  enabled: emptyButtonSubComponentsTheme,
+  focused: emptyButtonSubComponentsTheme,
+  hovered: emptyButtonSubComponentsTheme,
+  pressed: emptyButtonSubComponentsTheme,
 };
 
-const emptySizedButtonTheme: SizedButtonTheme = {
+const emptyButtonSubComponents: ButtonSubComponents = {
   Text: DefaultText,
   Touchable: DefaultButton,
   View: DefaultInnerContainer,
-  allSizes: emptyButtonStateTheme,
-  large: emptyButtonStateTheme,
-  regular: emptyButtonStateTheme,
-  small: emptyButtonStateTheme,
-  xlarge: emptyButtonStateTheme,
-  xsmall: emptyButtonStateTheme,
 };
 
 const emptyButtonVariantTheme: ButtonVariantTheme = {
-  allVariants: emptySizedButtonTheme,
-  contained: emptySizedButtonTheme,
-  containedRaised: emptySizedButtonTheme,
-  default: emptySizedButtonTheme,
-  outlined: emptySizedButtonTheme,
+  allSizes: emptyButtonInteractivityStateTheme,
+  large: emptyButtonInteractivityStateTheme,
+  regular: emptyButtonInteractivityStateTheme,
+  small: emptyButtonInteractivityStateTheme,
+  subComponents: emptyButtonSubComponents,
+  xlarge: emptyButtonInteractivityStateTheme,
+  xsmall: emptyButtonInteractivityStateTheme,
+};
+
+const emptyButtonTheme: ButtonTheme = {
+  allVariants: emptyButtonVariantTheme,
+  contained: emptyButtonVariantTheme,
+  containedRaised: emptyButtonVariantTheme,
+  default: emptyButtonVariantTheme,
+  outlined: emptyButtonVariantTheme,
 };
 
 const typographyComponentsTheme: TypographyComponents = {
@@ -737,7 +764,7 @@ const themePalette: ThemePalette = {
   },
 };
 
-const buttonTheme: OptionalButtonVariantTheme = {
+const buttonTheme: OptionalButtonTheme = {
   allVariants: {
     allSizes: {
       allStates: {
@@ -859,7 +886,6 @@ const buttonTheme: OptionalButtonVariantTheme = {
     },
   },
   contained: {
-    View: withRippleEffect(DefaultInnerContainer),
     allSizes: {
       allStates: {
         text: {
@@ -931,6 +957,9 @@ const buttonTheme: OptionalButtonVariantTheme = {
         },
       },
     },
+    subComponents: {
+      View: withRippleEffect(DefaultInnerContainer),
+    },
     xlarge: {
       allStates: {
         view: {
@@ -959,7 +988,6 @@ const buttonTheme: OptionalButtonVariantTheme = {
     },
   },
   containedRaised: {
-    View: withRippleEffect(withRaiseEffect(DefaultInnerContainer)),
     allSizes: {
       allStates: {
         text: {
@@ -1030,6 +1058,9 @@ const buttonTheme: OptionalButtonVariantTheme = {
           },
         },
       },
+    },
+    subComponents: {
+      View: withRippleEffect(withRaiseEffect(DefaultInnerContainer)),
     },
     xlarge: {
       allStates: {
@@ -1266,11 +1297,11 @@ const buttonTheme: OptionalButtonVariantTheme = {
   },
 };
 
-const mergedButtonTheme: ButtonVariantTheme = merge<
+const mergedButtonTheme: ButtonTheme = merge<
   {},
-  ButtonVariantTheme,
-  OptionalButtonVariantTheme
->({}, emptyButtonVariantTheme, buttonTheme);
+  ButtonTheme,
+  OptionalButtonTheme
+>({}, emptyButtonTheme, buttonTheme);
 
 export const PurpleTealTheme: Theme = {
   components: {

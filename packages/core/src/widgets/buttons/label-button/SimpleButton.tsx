@@ -165,7 +165,7 @@ export class SimpleButton extends React.Component<
       // tslint:disable-next-line:no-shadowed-variable
       Touchable,
       View,
-    } = props.theme.components.button[props.variant];
+    } = props.theme.components.button[props.variant].subComponents;
 
     this.state = {
       Text,
