@@ -15,36 +15,42 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { InteractivityState } from '../../interactivity/InteractivityState';
-// prettier-ignore
-import {
-  SpecialButtonProps,
-} from '../../widgets/buttons/label-button/SimpleButton';
+import { SpecialButtonProps } from '../../components/buttons/SimpleButton';
+import { InteractivityType } from '../../interactivity/InteractivityType';
 import { FontWeight } from '../FontWeight';
 import { getFontWeight } from '../getFontWeight';
 import { getThemedColor } from './getThemedColor';
 import { withRaiseEffect } from './withRaiseEffect';
 import { withRippleEffect } from './withRippleEffect';
 
-interface PaletteColor {
+interface PaletteColorVariant {
   readonly color: string;
   readonly onColor: string;
 }
 
-interface PaletteColorVariant {
-  readonly dark: PaletteColor;
-  readonly light: PaletteColor;
-  readonly normal: PaletteColor;
+// interface PaletteColorVariant {
+interface PaletteColor {
+  readonly dark: PaletteColorVariant;
+  readonly light: PaletteColorVariant;
+  readonly normal: PaletteColorVariant;
 }
 
-interface ThemePalette {
+interface PaletteTheme {
+  readonly background: PaletteColor;
+  readonly error: PaletteColor;
+  readonly primary: PaletteColor;
+  readonly secondary: PaletteColor;
+  readonly surface: PaletteColor;
+}
+/*
+interface PaletteTheme {
   readonly background: PaletteColor;
   readonly error: PaletteColor;
   readonly primary: PaletteColorVariant;
   readonly secondary: PaletteColorVariant;
   readonly surface: PaletteColor;
 }
-
+*/
 interface TypographyComponents {
   readonly caption: TextStyle;
   readonly headline1: TextStyle;
@@ -215,7 +221,7 @@ interface ComponentsTheme {
 
 export interface Theme {
   readonly components: ComponentsTheme;
-  readonly palette: ThemePalette;
+  readonly palette: PaletteTheme;
 }
 
 /*
@@ -236,30 +242,30 @@ const getButtonViewStyle: ViewStyleGetter<SpecialButtonProps> = ({
 });
 
 const getOutlinedContainerCommonStyle: ViewStyleGetter<SpecialButtonProps> = ({
-  colorVariant,
+  colorTheme,
   theme,
 }): ViewStyle => ({
-  borderColor: getThemedColor({ colorVariant, theme }),
+  borderColor: getThemedColor({ colorTheme, theme }),
 });
 
 const getDisabledContainedContainerStyle: ViewStyleGetter<
   SpecialButtonProps
-> = ({ colorVariant, theme }) => ({
-  backgroundColor: getThemedColor({ colorVariant, theme }),
+> = ({ colorTheme, theme }) => ({
+  backgroundColor: getThemedColor({ colorTheme, theme }),
 });
 
 // tslint:disable-next-line:max-line-length
 const getEnabledContainedContainerStyle: ViewStyleGetter<
   SpecialButtonProps
-> = ({ colorVariant, theme }) => ({
-  backgroundColor: getThemedColor({ colorVariant, theme }),
+> = ({ colorTheme, theme }) => ({
+  backgroundColor: getThemedColor({ colorTheme, theme }),
 });
 
 // tslint:disable-next-line:max-line-length
 const getFocusedContainedContainerStyle: ViewStyleGetter<
   SpecialButtonProps
-> = ({ colorVariant, theme }) => ({
-  backgroundColor: Color.rgb(getThemedColor({ colorVariant, theme }))
+> = ({ colorTheme, theme }) => ({
+  backgroundColor: Color.rgb(getThemedColor({ colorTheme, theme }))
     .lighten(0.35)
     .toString(),
 });
@@ -267,17 +273,17 @@ const getFocusedContainedContainerStyle: ViewStyleGetter<
 // tslint:disable-next-line:max-line-length
 const getHoveredContainedContainerStyle: ViewStyleGetter<
   SpecialButtonProps
-> = ({ colorVariant, theme }) => ({
-  backgroundColor: Color.rgb(getThemedColor({ colorVariant, theme }))
+> = ({ colorTheme, theme }) => ({
+  backgroundColor: Color.rgb(getThemedColor({ colorTheme, theme }))
     .lighten(0.12)
     .toString(),
 });
 /*
 const getPressedContainedContainerStyle: ViewStyleGetter = ({
-  colorVariant,
+  colorTheme,
   theme,
 }) => ({
-  backgroundColor: Color.rgb(getThemedColor({ colorVariant, theme }))
+  backgroundColor: Color.rgb(getThemedColor({ colorTheme, theme }))
     .lighten(0.6)
     .toString(),
 });
@@ -337,28 +343,28 @@ const getEnabledDefaultContainerStyle: ViewStyleGetter<
 });
 
 const getFocusedDefaultContainerStyle: ViewStyleGetter<SpecialButtonProps> = ({
-  colorVariant,
+  colorTheme,
   theme,
 }) => ({
-  backgroundColor: Color.rgb(getThemedColor({ colorVariant, theme }))
+  backgroundColor: Color.rgb(getThemedColor({ colorTheme, theme }))
     .fade(0.89)
     .toString(),
 });
 
 const getHoveredDefaultContainerStyle: ViewStyleGetter<SpecialButtonProps> = ({
-  colorVariant,
+  colorTheme,
   theme,
 }) => ({
-  backgroundColor: Color.rgb(getThemedColor({ colorVariant, theme }))
+  backgroundColor: Color.rgb(getThemedColor({ colorTheme, theme }))
     .fade(0.94)
     .toString(),
 });
 
 const getPressedDefaultContainerStyle: ViewStyleGetter<SpecialButtonProps> = ({
-  colorVariant,
+  colorTheme,
   theme,
 }) => ({
-  backgroundColor: Color.rgb(getThemedColor({ colorVariant, theme }))
+  backgroundColor: Color.rgb(getThemedColor({ colorTheme, theme }))
     .fade(0.81)
     .toString(),
 });
@@ -394,10 +400,10 @@ const getPressedOutlinedContainerStyle: ViewStyleGetter<
 });
 
 const getContainedLabelStyle: TextStyleGetter<SpecialButtonProps> = ({
-  colorVariant,
+  colorTheme,
   theme,
 }) => ({
-  color: getThemedColor({ colorVariant, theme, onColor: true }),
+  color: getThemedColor({ colorTheme, theme, onColor: true }),
 });
 
 const getContainedRaisedLabelStyle: TextStyleGetter<SpecialButtonProps> = (
@@ -407,10 +413,10 @@ const getContainedRaisedLabelStyle: TextStyleGetter<SpecialButtonProps> = (
 });
 
 const getDefaultLabelStyle: TextStyleGetter<SpecialButtonProps> = ({
-  colorVariant,
+  colorTheme,
   theme,
 }) => ({
-  color: getThemedColor({ colorVariant, theme, onColor: false }),
+  color: getThemedColor({ colorTheme, theme, onColor: false }),
 });
 
 const getOutlinedLabelStyle: TextStyleGetter<SpecialButtonProps> = (
@@ -437,7 +443,7 @@ export const getTextStyle: TextStyleGetter<SpecialButtonProps> = (
 ): TextStyle => {
   // tslint:disable-next-line:no-shadowed-variable
   const buttonTheme = props.theme.components.button;
-  const state: InteractivityState = props.interactivityState;
+  const stateType: InteractivityType = props.interactivityState.type;
 
   return {
     /* allVariants && allSizes && allStates */
@@ -447,7 +453,7 @@ export const getTextStyle: TextStyleGetter<SpecialButtonProps> = (
     ),
     /* allVariants && allSizes && state */
     ...getTextButtonStyleFromTheme(
-      buttonTheme.allVariants.allSizes[state].text,
+      buttonTheme.allVariants.allSizes[stateType].text,
       props,
     ),
     /* allVariants && size && allStates */
@@ -457,7 +463,7 @@ export const getTextStyle: TextStyleGetter<SpecialButtonProps> = (
     ),
     /* allVariants && size && state */
     ...getTextButtonStyleFromTheme(
-      buttonTheme.allVariants[props.size][state].text,
+      buttonTheme.allVariants[props.size][stateType].text,
       props,
     ),
     /* variant && allSizes && allStates */
@@ -467,7 +473,7 @@ export const getTextStyle: TextStyleGetter<SpecialButtonProps> = (
     ),
     /* variant && allSizes && state */
     ...getTextButtonStyleFromTheme(
-      buttonTheme[props.variant].allSizes[state].text,
+      buttonTheme[props.variant].allSizes[stateType].text,
       props,
     ),
     /* variant && size && allStates */
@@ -477,7 +483,7 @@ export const getTextStyle: TextStyleGetter<SpecialButtonProps> = (
     ),
     /* variant && size && state */
     ...getTextButtonStyleFromTheme(
-      buttonTheme[props.variant][props.size][state].text,
+      buttonTheme[props.variant][props.size][stateType].text,
       props,
     ),
   };
@@ -509,7 +515,7 @@ export const getViewStyle: ViewStyleGetter<SpecialButtonProps> = (
 ): ViewStyle => {
   // tslint:disable-next-line:no-shadowed-variable
   const buttonTheme = props.theme.components.button;
-  const state: InteractivityState = props.interactivityState;
+  const stateType: InteractivityType = props.interactivityState.type;
 
   return {
     /* allVariants && allSizes && allStates */
@@ -519,7 +525,7 @@ export const getViewStyle: ViewStyleGetter<SpecialButtonProps> = (
     ),
     /* allVariants && allSizes && state */
     ...getViewStyleFromTheme(
-      buttonTheme.allVariants.allSizes[state].view,
+      buttonTheme.allVariants.allSizes[stateType].view,
       props,
     ),
     /* allVariants && size && allStates */
@@ -529,7 +535,7 @@ export const getViewStyle: ViewStyleGetter<SpecialButtonProps> = (
     ),
     /* allVariants && size && state */
     ...getViewStyleFromTheme(
-      buttonTheme.allVariants[props.size][state].view,
+      buttonTheme.allVariants[props.size][stateType].view,
       props,
     ),
     /* variant && allSizes && allStates */
@@ -539,7 +545,7 @@ export const getViewStyle: ViewStyleGetter<SpecialButtonProps> = (
     ),
     /* variant && allSizes && state */
     ...getViewStyleFromTheme(
-      buttonTheme[props.variant].allSizes[state].view,
+      buttonTheme[props.variant].allSizes[stateType].view,
       props,
     ),
     /* variant && size && allStates */
@@ -549,7 +555,7 @@ export const getViewStyle: ViewStyleGetter<SpecialButtonProps> = (
     ),
     /* variant && size && state */
     ...getViewStyleFromTheme(
-      buttonTheme[props.variant][props.size][state].view,
+      buttonTheme[props.variant][props.size][stateType].view,
       props,
     ),
   };
@@ -564,10 +570,9 @@ export const getRegisteredViewStyle: RegisteredViewStyleGetter<
 
 const DefaultInnerContainer: ButtonView = ({
   children,
-  colorVariant,
+  colorTheme,
   customStyle,
   fullWidth,
-  interactivityEvent,
   interactivityState,
   leftIcon,
   rightIcon,
@@ -720,14 +725,34 @@ const typographyComponentsTheme: TypographyComponents = {
   },
 };
 
-const themePalette: ThemePalette = {
+const themePalette: PaletteTheme = {
   background: {
-    color: '#ffffff',
-    onColor: '#000000',
+    dark: {
+      color: '#ffffff',
+      onColor: '#000000',
+    },
+    light: {
+      color: '#ffffff',
+      onColor: '#000000',
+    },
+    normal: {
+      color: '#ffffff',
+      onColor: '#000000',
+    },
   },
   error: {
-    color: '#b00020',
-    onColor: '#ffffff',
+    dark: {
+      color: '#b00020',
+      onColor: '#ffffff',
+    },
+    light: {
+      color: '#b00020',
+      onColor: '#ffffff',
+    },
+    normal: {
+      color: '#b00020',
+      onColor: '#ffffff',
+    },
   },
   primary: {
     dark: {
@@ -759,8 +784,18 @@ const themePalette: ThemePalette = {
     },
   },
   surface: {
-    color: '#ffffff',
-    onColor: '#000000',
+    dark: {
+      color: '#ffffff',
+      onColor: '#000000',
+    },
+    light: {
+      color: '#ffffff',
+      onColor: '#000000',
+    },
+    normal: {
+      color: '#ffffff',
+      onColor: '#000000',
+    },
   },
 };
 

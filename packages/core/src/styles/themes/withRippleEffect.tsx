@@ -6,19 +6,21 @@ import {
   LayoutChangeEvent,
   StyleSheet,
   View,
+  ViewProps,
   ViewStyle,
 } from 'react-native';
 // @ts-ignore Could not find a declaration file for module'
 import { animated, Keyframes } from 'react-spring/dist/native';
 
-import { InteractivityEvent, InteractivityState } from '../../interactivity';
-// prettier-ignore
 import {
-  SpecialButtonProps,
-} from '../../widgets/buttons/label-button/SimpleButton';
-import { ColorVariant } from './ColorVariant';
+  InteractivityEvent,
+  InteractivityStateProps,
+  InteractivityType,
+} from '../../interactivity';
+import { ColorTheme } from './ColorTheme';
 import { getThemedColor } from './getThemedColor';
-import { ButtonView, ButtonViewProps, Theme } from './PurpleTealTheme';
+import { Theme } from './PurpleTealTheme';
+import { Themed } from './Themed';
 
 interface RippleStyles {
   container: ViewStyle;
@@ -87,7 +89,7 @@ const calculateRipplePosition: RipplePositionCalculator = ({
 });
 
 type InteractivityPositionGetter = (
-  readinteractivityEvent?: InteractivityEvent,
+  interactivityEvent?: InteractivityEvent,
 ) => Position2D;
 
 const getInteractivityPosition: InteractivityPositionGetter = (
@@ -133,7 +135,7 @@ const createRippleStyles: RippleStylesCreator = ({
 });
 
 interface ComponentRippleStylesCreatorData {
-  readonly colorVariant: ColorVariant;
+  readonly colorTheme: ColorTheme;
   readonly height: number;
   readonly interactivityEvent?: InteractivityEvent;
   readonly maxDiameter: number;
@@ -146,7 +148,7 @@ type ComponentRippleStylesCreator = (
 ) => RippleStyles;
 
 const createComponentRippleStyles: ComponentRippleStylesCreator = ({
-  colorVariant,
+  colorTheme,
   height,
   interactivityEvent,
   maxDiameter,
@@ -160,7 +162,7 @@ const createComponentRippleStyles: ComponentRippleStylesCreator = ({
     posX: interactivityPosition.x,
     width,
   });
-  const color = Color.rgb(getThemedColor({ colorVariant, theme }))
+  const color = Color.rgb(getThemedColor({ colorTheme, theme }))
     .lighten(0.6)
     .toString();
 
@@ -168,15 +170,23 @@ const createComponentRippleStyles: ComponentRippleStylesCreator = ({
 
   return createRippleStyles({ color, diameter, position });
 };
-
-export type WithRippleEffect = (WrappedComponent: ButtonView) => ButtonView;
-
-export const withRippleEffect: WithRippleEffect = (
-  WrappedComponent: ButtonView,
-) =>
-  class RippledComponent extends React.Component<ButtonViewProps> {
+/*
+export type WithRippleEffect = (
+  WrappedComponent: React.ComponentType<
+    ViewProps & InteractivityStateProps
+  >,
+) => React.ComponentType<
+  ViewProps & InteractivityStateProps & Themed
+>;
+*/
+export const withRippleEffect = <
+  P extends ViewProps & InteractivityStateProps & Themed
+>(
+  WrappedComponent: React.ComponentType<P>,
+): React.ComponentType<P> =>
+  class RippledComponent extends React.Component<P> {
     public static getDerivedStateFromProps(
-      props: ButtonViewProps,
+      props: P,
       state: RippledComponentState,
     ) {
       // tslint:disable-next-line:no-console
@@ -187,7 +197,7 @@ export const withRippleEffect: WithRippleEffect = (
       );
       */
 
-      const { interactivityEvent, interactivityState } = props;
+      const { interactivityState } = props;
       const {
         animationKeyframe,
         isAnimatingPressIn,
@@ -195,11 +205,11 @@ export const withRippleEffect: WithRippleEffect = (
       } = state;
 
       if (
-        interactivityState === InteractivityState.PRESSED &&
+        interactivityState.type === InteractivityType.PRESSED &&
         animationKeyframe === AnimationKeyframe.PRESS_OUT &&
         !isAnimatingPressOut
       ) {
-        const { colorVariant, theme } = props;
+        const { colorTheme, theme } = props;
         const { height, width } = state;
         const maxDiameter = 300;
 
@@ -208,9 +218,9 @@ export const withRippleEffect: WithRippleEffect = (
           animationKeyframe: AnimationKeyframe.PRESS_IN,
           isAnimatingPressIn: true,
           rippleStyles: createComponentRippleStyles({
-            colorVariant,
+            colorTheme,
             height,
-            interactivityEvent,
+            interactivityEvent: interactivityState.event,
             maxDiameter,
             theme,
             width,
@@ -219,7 +229,7 @@ export const withRippleEffect: WithRippleEffect = (
       }
 
       if (
-        interactivityState !== InteractivityState.PRESSED &&
+        interactivityState.type !== InteractivityType.PRESSED &&
         animationKeyframe === AnimationKeyframe.PRESS_IN &&
         !isAnimatingPressIn
       ) {
@@ -247,7 +257,7 @@ export const withRippleEffect: WithRippleEffect = (
       width: 100,
     };
 
-    public constructor(props: ButtonViewProps) {
+    public constructor(props: P) {
       super(props);
 
       this.animatedView = animated(View);
@@ -300,7 +310,9 @@ export const withRippleEffect: WithRippleEffect = (
       // tslint:disable-next-line:no-console
       // console.log('RippledComponent.render() - state: ', this.state);
 
-      const { children, ...otherProps } = this.props as SpecialButtonProps;
+      // @ts-ignore [ts] Rest types may only be created from object types.
+      // https://github.com/Microsoft/TypeScript/issues/10727
+      const { children, ...otherProps } = this.props;
       const RippleAnimation = this.rippleAnimation;
 
       const { animationKeyframe, rippleStyles } = this.state;

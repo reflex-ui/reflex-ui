@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { createWithInteractivityState } from '../../../interactivity';
+import { createWithInteractivityState } from '../../interactivity';
 import { OptionalButtonProps, SimpleButton } from './SimpleButton';
 import { withOptionalButtonProps } from './withOptionalButtonProps';
 

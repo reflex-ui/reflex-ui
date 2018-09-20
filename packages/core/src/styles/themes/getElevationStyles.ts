@@ -1,32 +1,32 @@
 import { Platform, ViewStyle } from 'react-native';
-import { InteractivityState } from '../../interactivity';
+import { InteractivityType } from '../../interactivity';
 
 const androidShadows: { [key: string]: number } = {};
-androidShadows[InteractivityState.DISABLED] = 0;
-androidShadows[InteractivityState.ENABLED] = 2;
-androidShadows[InteractivityState.FOCUSED] = 4;
+androidShadows[InteractivityType.DISABLED] = 0;
+androidShadows[InteractivityType.ENABLED] = 2;
+androidShadows[InteractivityType.FOCUSED] = 4;
 /*
  * No hover state on native Android.
  */
-// androidShadows[InteractivityState.HOVERED] = 0;
+// androidShadows[InteractivityType.HOVERED] = 0;
 /**/
-androidShadows[InteractivityState.PRESSED] = 8;
+androidShadows[InteractivityType.PRESSED] = 8;
 
 const iosShadows: { [key: string]: ViewStyle } = {};
-// iosShadows[InteractivityState.DISABLED] = {};
-iosShadows[InteractivityState.DISABLED] = {
+// iosShadows[InteractivityType.DISABLED] = {};
+iosShadows[InteractivityType.DISABLED] = {
   shadowColor: '#000000',
   shadowOffset: { height: 0, width: 0 },
   shadowOpacity: 0,
   shadowRadius: 0,
 };
-iosShadows[InteractivityState.ENABLED] = {
+iosShadows[InteractivityType.ENABLED] = {
   shadowColor: '#000000',
   shadowOffset: { height: 1.6, width: 0 },
   shadowOpacity: 0.2,
   shadowRadius: 1,
 };
-iosShadows[InteractivityState.FOCUSED] = {
+iosShadows[InteractivityType.FOCUSED] = {
   shadowColor: '#000000',
   shadowOffset: { height: 3.4, width: 0 },
   shadowOpacity: 0.2,
@@ -35,9 +35,9 @@ iosShadows[InteractivityState.FOCUSED] = {
 /*
  * No hover state on native iOS.
  */
-// iosShadows[InteractivityState.HOVERED] = {};
+// iosShadows[InteractivityType.HOVERED] = {};
 /**/
-iosShadows[InteractivityState.PRESSED] = {
+iosShadows[InteractivityType.PRESSED] = {
   shadowColor: '#000000',
   shadowOffset: { height: 5, width: 0 },
   shadowOpacity: 0.2,
@@ -45,35 +45,35 @@ iosShadows[InteractivityState.PRESSED] = {
 };
 
 const webShadows: { [key: string]: string } = {};
-webShadows[InteractivityState.DISABLED] =
+webShadows[InteractivityType.DISABLED] =
   '0 0 0 0 rgba(0,0,0,0), 0 0 0 0 rgba(0,0,0,0), 0 0 0 0 rgba(0,0,0,0)';
-webShadows[InteractivityState.ENABLED] = `0 3px 1px -2px rgba(0,0,0,.2),
+webShadows[InteractivityType.ENABLED] = `0 3px 1px -2px rgba(0,0,0,.2),
   0 2px 2px 0 rgba(0,0,0,.14),
   0 1px 5px 0 rgba(0,0,0,.12)`;
-webShadows[InteractivityState.HOVERED] = `0px 2px 4px -1px rgba(0,0,0,.2),
+webShadows[InteractivityType.HOVERED] = `0px 2px 4px -1px rgba(0,0,0,.2),
   0px 4px 5px 0px rgba(0,0,0,.14),
   0px 1px 10px 0px rgba(0,0,0,.12)`;
-webShadows[InteractivityState.FOCUSED] = webShadows[InteractivityState.HOVERED];
-webShadows[InteractivityState.PRESSED] = `0px 5px 5px -3px rgba(0,0,0,.2),
+webShadows[InteractivityType.FOCUSED] = webShadows[InteractivityType.HOVERED];
+webShadows[InteractivityType.PRESSED] = `0px 5px 5px -3px rgba(0,0,0,.2),
   0px 8px 10px 1px rgba(0,0,0,.14),
   0px 3px 14px 2px rgba(0,0,0,.12)`;
 
 interface ElevationStylesGetterData {
-  readonly interactivityState: InteractivityState;
+  readonly interactivityType: InteractivityType;
 }
 
 type ElevationStylesGetter = (props: ElevationStylesGetterData) => ViewStyle;
 
 export const getElevationStyles: ElevationStylesGetter = ({
-  interactivityState = InteractivityState.ENABLED,
+  interactivityType = InteractivityType.ENABLED,
 }) => ({
   ...Platform.select({
     android: {
-      elevation: androidShadows[interactivityState],
+      elevation: androidShadows[interactivityType],
     },
-    ios: { ...iosShadows[interactivityState] },
+    ios: { ...iosShadows[interactivityType] },
     web: {
-      boxShadow: webShadows[interactivityState],
+      boxShadow: webShadows[interactivityType],
     },
   }),
 });

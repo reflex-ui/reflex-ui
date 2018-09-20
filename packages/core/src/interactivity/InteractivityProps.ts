@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { GestureResponderEvent } from 'react-native';
-import { InteractivityInfoProps } from './InteractivityInfoProps';
 
-export interface InteractivityProps extends InteractivityInfoProps {
+export interface InteractivityProps {
   readonly disabled?: boolean;
   readonly onBlur?: React.FocusEventHandler;
   readonly onFocus?: React.FocusEventHandler;

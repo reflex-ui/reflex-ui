@@ -1,4 +1,4 @@
-export enum ColorVariant {
+export enum ColorTheme {
   PRIMARY_DARK,
   PRIMARY_LIGHT,
   PRIMARY_NORMAL,

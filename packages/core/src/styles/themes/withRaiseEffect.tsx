@@ -1,19 +1,22 @@
 import delay from 'delay';
 import * as React from 'react';
-import { LayoutChangeEvent, StyleSheet, View, ViewStyle } from 'react-native';
-import { isAndroid, isIOS, isWeb } from 'react-platform-material-design';
+import {
+  LayoutChangeEvent,
+  StyleSheet,
+  View,
+  ViewProps,
+  ViewStyle,
+} from 'react-native';
 // @ts-ignore Could not find a declaration file for module'
 import { animated, Keyframes } from 'react-spring/dist/native';
 
-import { InteractivityState } from '../../interactivity';
-// prettier-ignore
 import {
-  SpecialButtonProps,
-} from '../../widgets/buttons/label-button/SimpleButton';
-// import { ColorVariant } from './ColorVariant';
+  InteractivityStateProps,
+  InteractivityType,
+} from '../../interactivity';
+import { isAndroid, isIOS, isWeb } from '../../utils';
 import { getElevationStyles } from './getElevationStyles';
-// import { getThemedColor } from './getThemedColor';
-import { ButtonView, ButtonViewProps } from './PurpleTealTheme';
+import { Themed } from './Themed';
 
 interface RaiseStyles {
   container: ViewStyle;
@@ -49,7 +52,7 @@ const createStaticRaiseStyles: StaticRaiseStylesCreator = backgroundColor => ({
 });
 
 interface MotionRaiseStylesCreatorData {
-  readonly interactivityState: InteractivityState;
+  readonly interactivityType: InteractivityType;
 }
 
 type MotionRaiseStylesCreator = (
@@ -57,10 +60,10 @@ type MotionRaiseStylesCreator = (
 ) => ViewStyle;
 
 const createMotionRaiseStyles: MotionRaiseStylesCreator = ({
-  interactivityState,
+  interactivityType,
 }) => {
   const styles = getElevationStyles({
-    interactivityState,
+    interactivityType,
   });
 
   if (isIOS && styles.shadowOffset) {
@@ -71,15 +74,21 @@ const createMotionRaiseStyles: MotionRaiseStylesCreator = ({
 
   return styles;
 };
-
-export type WithRaiseEffect = (WrappedComponent: ButtonView) => ButtonView;
-
-export const withRaiseEffect: WithRaiseEffect = (
-  WrappedComponent: ButtonView,
-) =>
-  class RaisedComponent extends React.Component<ButtonViewProps> {
+/*
+export type WithRaiseEffect = (
+  WrappedComponent: React.ComponentType<
+    ViewProps & InteractivityStateProps & Themed
+  >,
+) => React.ComponentType<ViewProps & InteractivityStateProps & Themed>;
+*/
+export const withRaiseEffect = <
+  P extends ViewProps & InteractivityStateProps & Themed
+>(
+  WrappedComponent: React.ComponentType<P>,
+): React.ComponentType<P> =>
+  class RaisedComponent extends React.Component<P> {
     public static getDerivedStateFromProps(
-      props: ButtonViewProps,
+      props: P,
       state: RaisedComponentState,
     ) {
       // tslint:disable-next-line:no-console
@@ -103,7 +112,7 @@ export const withRaiseEffect: WithRaiseEffect = (
       const staticRaiseStyles = createStaticRaiseStyles(backgroundColor);
 
       if (
-        interactivityState === InteractivityState.DISABLED &&
+        interactivityState.type === InteractivityType.DISABLED &&
         animationKeyframe !== AnimationKeyframe.DISABLED &&
         !isAnimating
       ) {
@@ -116,7 +125,7 @@ export const withRaiseEffect: WithRaiseEffect = (
       }
 
       if (
-        interactivityState === InteractivityState.HOVERED &&
+        interactivityState.type === InteractivityType.HOVERED &&
         animationKeyframe !== AnimationKeyframe.HOVERED &&
         !isAnimating
       ) {
@@ -129,7 +138,7 @@ export const withRaiseEffect: WithRaiseEffect = (
       }
 
       if (
-        interactivityState === InteractivityState.FOCUSED &&
+        interactivityState.type === InteractivityType.FOCUSED &&
         animationKeyframe !== AnimationKeyframe.FOCUSED &&
         !isAnimating
       ) {
@@ -142,7 +151,7 @@ export const withRaiseEffect: WithRaiseEffect = (
       }
 
       if (
-        interactivityState === InteractivityState.PRESSED &&
+        interactivityState.type === InteractivityType.PRESSED &&
         animationKeyframe !== AnimationKeyframe.PRESS_IN &&
         !isAnimating
       ) {
@@ -155,7 +164,7 @@ export const withRaiseEffect: WithRaiseEffect = (
       }
 
       if (
-        interactivityState === InteractivityState.ENABLED &&
+        interactivityState.type === InteractivityType.ENABLED &&
         animationKeyframe !== AnimationKeyframe.ENABLED &&
         !isAnimating
       ) {
@@ -181,7 +190,7 @@ export const withRaiseEffect: WithRaiseEffect = (
       staticRaiseStyles: { container: {}, shadow: {} },
     };
 
-    public constructor(props: ButtonViewProps) {
+    public constructor(props: P) {
       super(props);
 
       // tslint:disable-next-line:no-console
@@ -198,12 +207,12 @@ export const withRaiseEffect: WithRaiseEffect = (
             config: { tension: 75, friction: 20 },
             from: {
               ...createMotionRaiseStyles({
-                interactivityState: InteractivityState.ENABLED,
+                interactivityType: InteractivityType.ENABLED,
               }),
             },
             to: {
               ...createMotionRaiseStyles({
-                interactivityState: InteractivityState.DISABLED,
+                interactivityType: InteractivityType.DISABLED,
               }),
             },
           });
@@ -219,12 +228,12 @@ export const withRaiseEffect: WithRaiseEffect = (
             config: { tension: 75, friction: 20 },
             from: {
               ...createMotionRaiseStyles({
-                interactivityState: InteractivityState.HOVERED,
+                interactivityType: InteractivityType.HOVERED,
               }),
             },
             to: {
               ...createMotionRaiseStyles({
-                interactivityState: InteractivityState.ENABLED,
+                interactivityType: InteractivityType.ENABLED,
               }),
             },
           });
@@ -240,12 +249,12 @@ export const withRaiseEffect: WithRaiseEffect = (
             config: { tension: 75, friction: 20 },
             from: {
               ...createMotionRaiseStyles({
-                interactivityState: InteractivityState.ENABLED,
+                interactivityType: InteractivityType.ENABLED,
               }),
             },
             to: {
               ...createMotionRaiseStyles({
-                interactivityState: InteractivityState.FOCUSED,
+                interactivityType: InteractivityType.FOCUSED,
               }),
             },
           });
@@ -261,12 +270,12 @@ export const withRaiseEffect: WithRaiseEffect = (
             config: { tension: 150, friction: 20 },
             from: {
               ...createMotionRaiseStyles({
-                interactivityState: InteractivityState.ENABLED,
+                interactivityType: InteractivityType.ENABLED,
               }),
             },
             to: {
               ...createMotionRaiseStyles({
-                interactivityState: InteractivityState.HOVERED,
+                interactivityType: InteractivityType.HOVERED,
               }),
             },
           });
@@ -284,12 +293,12 @@ export const withRaiseEffect: WithRaiseEffect = (
             // from: { opacity: 0, scale: 0.001 },
             from: {
               ...createMotionRaiseStyles({
-                interactivityState: InteractivityState.HOVERED,
+                interactivityType: InteractivityType.HOVERED,
               }),
             },
             to: {
               ...createMotionRaiseStyles({
-                interactivityState: InteractivityState.PRESSED,
+                interactivityType: InteractivityType.PRESSED,
               }),
             },
           });
@@ -308,7 +317,9 @@ export const withRaiseEffect: WithRaiseEffect = (
       // tslint:disable-next-line:no-console
       console.log('RaisedComponent.render() - state: ', this.state);
 
-      const { children, ...otherProps } = this.props as SpecialButtonProps;
+      // @ts-ignore [ts] Rest types may only be created from object types.
+      // https://github.com/Microsoft/TypeScript/issues/10727
+      const { children, ...otherProps } = this.props;
       const RaiseAnimation = this.raiseAnimation;
 
       const { animationKeyframe } = this.state;
@@ -355,7 +366,7 @@ export const withRaiseEffect: WithRaiseEffect = (
                     * shadowOffset, i.e., an object of values.
                     */
                     const elevationStyles = getElevationStyles({
-                      interactivityState: this.props.interactivityState,
+                      interactivityType: this.props.interactivityState.type,
                     });
                     const height = elevationStyles.shadowOffset
                       ? elevationStyles.shadowOffset.height

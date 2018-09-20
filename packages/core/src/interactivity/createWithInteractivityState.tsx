@@ -5,31 +5,41 @@ import { isWeb } from '../utils';
 import { InteractivityEvent } from './InteractivityEvent';
 import { InteractivityProps } from './InteractivityProps';
 import { InteractivityState } from './InteractivityState';
-import { WithInteractivityStateFactory } from './WithInteractivityStateFactory';
+import {
+  InteractivityStateProps,
+  OptionalInteractivityStateProps,
+} from './InteractivityStateProps';
+import { InteractivityType } from './InteractivityType';
 
 interface State {
   interactivityEvent?: InteractivityEvent;
+  interactivityState: InteractivityState;
   isFocusing: boolean;
   isHovering: boolean;
   isPressing: boolean;
 }
 
-export const createWithInteractivityState: WithInteractivityStateFactory = <
-  P extends InteractivityProps
+export const createWithInteractivityState = <
+  P extends InteractivityProps & OptionalInteractivityStateProps
 >(
   WrappedComponent: React.ComponentType<P>,
-) =>
+): React.ComponentType<P> =>
   class WithInteractivityState extends React.Component<P, State> {
     public readonly state: State = {
       interactivityEvent: undefined,
+      interactivityState: { type: InteractivityType.DISABLED },
       isFocusing: false,
       isHovering: false,
       isPressing: false,
     };
 
     public render(): JSX.Element {
-      const interactivityProps: InteractivityProps = {
-        interactivityEvent: this.state.interactivityEvent,
+      // tslint:disable-next-line:no-console
+      console.log(
+        'RaisedComponent.getDerivedStateFromProps() - getInteractivityState() ',
+        this.getInteractivityState(),
+      );
+      const interactivityProps: InteractivityProps & InteractivityStateProps = {
         interactivityState: this.getInteractivityState(),
         onBlur: isWeb ? this.onBlur : undefined,
         onFocus: isWeb ? this.onFocus : undefined,
@@ -43,11 +53,34 @@ export const createWithInteractivityState: WithInteractivityStateFactory = <
     }
 
     private getInteractivityState = (): InteractivityState => {
-      if (this.props.disabled) return InteractivityState.DISABLED;
-      if (this.state.isPressing) return InteractivityState.PRESSED;
-      if (this.state.isFocusing) return InteractivityState.FOCUSED;
-      if (this.state.isHovering) return InteractivityState.HOVERED;
-      return InteractivityState.ENABLED;
+      if (this.props.disabled) {
+        return {
+          event: this.state.interactivityEvent,
+          type: InteractivityType.DISABLED,
+        };
+      }
+      if (this.state.isPressing) {
+        return {
+          event: this.state.interactivityEvent,
+          type: InteractivityType.PRESSED,
+        };
+      }
+      if (this.state.isFocusing) {
+        return {
+          event: this.state.interactivityEvent,
+          type: InteractivityType.FOCUSED,
+        };
+      }
+      if (this.state.isHovering) {
+        return {
+          event: this.state.interactivityEvent,
+          type: InteractivityType.HOVERED,
+        };
+      }
+      return {
+        event: this.state.interactivityEvent,
+        type: InteractivityType.ENABLED,
+      };
     };
 
     private onBlur = (): void => {

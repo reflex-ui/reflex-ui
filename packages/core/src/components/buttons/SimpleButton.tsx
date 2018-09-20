@@ -7,20 +7,19 @@ import {
 } from 'react-native';
 
 import {
-  InteractivityEvent,
-  InteractivityInfoProps,
-  InteractivityState,
-} from '../../../interactivity';
-import { ColorVariant, Theme } from '../../../styles';
+  InteractivityStateProps,
+  OptionalInteractivityStateProps,
+} from '../../interactivity';
+import { OptionalThemed, Themed } from '../../styles';
 import {
   ButtonText,
   ButtonView,
   getRegisteredTextStyle,
   getRegisteredViewStyle,
   Touchable,
-} from '../../../styles/themes/PurpleTealTheme';
-import { isAndroid } from '../../../utils';
-import { Size } from '../../Size';
+} from '../../styles/themes/PurpleTealTheme';
+import { isAndroid } from '../../utils';
+import { Size } from '../Size';
 
 export interface ButtonStyles {
   view: ViewStyle;
@@ -28,23 +27,20 @@ export interface ButtonStyles {
   outerContainer: ViewStyle;
 }
 
-export interface SpecialButtonProps {
+export interface SpecialButtonProps extends InteractivityStateProps, Themed {
   children?: React.ReactNode;
-  colorVariant: ColorVariant;
   customStyle?: ButtonStyles;
-  fullWidth: boolean;
-  interactivityEvent?: InteractivityEvent;
-  interactivityState: InteractivityState;
+  fullWidth?: boolean;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
   size: Size;
-  theme: Theme;
   variant: ButtonVariant;
 }
 
-export interface OptionalSpecialButtonProps extends InteractivityInfoProps {
+export interface OptionalSpecialButtonProps
+  extends OptionalInteractivityStateProps,
+    OptionalThemed {
   children?: React.ReactNode;
-  colorVariant?: ColorVariant;
   customStyle?: ButtonStyles;
   fullWidth?: boolean;
   leftIcon?: JSX.Element;
@@ -96,10 +92,9 @@ const extractSpecialButtonProps = (
 ): SpecialButtonProps => {
   const {
     children,
-    colorVariant,
+    colorTheme,
     customStyle,
     fullWidth,
-    interactivityEvent,
     interactivityState,
     leftIcon,
     rightIcon,
@@ -110,10 +105,9 @@ const extractSpecialButtonProps = (
 
   return {
     children,
-    colorVariant,
+    colorTheme,
     customStyle,
     fullWidth,
-    interactivityEvent,
     interactivityState,
     leftIcon,
     rightIcon,
@@ -128,10 +122,9 @@ const extractTouchableProps = (
 ): TouchableWithoutFeedbackProps => {
   const {
     children,
-    colorVariant,
+    colorTheme,
     customStyle,
     fullWidth,
-    interactivityEvent,
     interactivityState,
     leftIcon,
     rightIcon,
