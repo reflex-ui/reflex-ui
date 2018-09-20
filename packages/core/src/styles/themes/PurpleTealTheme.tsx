@@ -571,7 +571,6 @@ export const getRegisteredViewStyle: RegisteredViewStyleGetter<
 const DefaultInnerContainer: ButtonView = ({
   children,
   colorTheme,
-  customStyle,
   fullWidth,
   interactivityState,
   leftIcon,

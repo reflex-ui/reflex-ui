@@ -19,12 +19,12 @@ interface State {
   isPressing: boolean;
 }
 
-export const createWithInteractivityState = <
+export const withInteractivityState = <
   P extends InteractivityProps & OptionalInteractivityStateProps
 >(
   WrappedComponent: React.ComponentType<P>,
 ): React.ComponentType<P> =>
-  class WithInteractivityState extends React.Component<P, State> {
+  class ComponentWithInteractivityState extends React.Component<P, State> {
     public readonly state: State = {
       interactivityEvent: undefined,
       interactivityState: { type: InteractivityType.DISABLED },

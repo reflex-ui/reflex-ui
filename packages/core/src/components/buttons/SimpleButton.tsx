@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  StyleSheet,
-  TextStyle,
-  TouchableWithoutFeedbackProps,
-  ViewStyle,
-} from 'react-native';
+import { StyleSheet, TouchableWithoutFeedbackProps } from 'react-native';
 
 import {
   InteractivityStateProps,
@@ -12,24 +7,15 @@ import {
 } from '../../interactivity';
 import { OptionalThemed, Themed } from '../../styles';
 import {
-  ButtonText,
-  ButtonView,
   getRegisteredTextStyle,
   getRegisteredViewStyle,
-  Touchable,
 } from '../../styles/themes/PurpleTealTheme';
-import { isAndroid } from '../../utils';
+import { isAndroid, transformText } from '../../utils';
 import { Size } from '../Size';
-
-export interface ButtonStyles {
-  view: ViewStyle;
-  label: TextStyle;
-  outerContainer: ViewStyle;
-}
+import { ButtonVariant } from './ButtonVariant';
 
 export interface SpecialButtonProps extends InteractivityStateProps, Themed {
   children?: React.ReactNode;
-  customStyle?: ButtonStyles;
   fullWidth?: boolean;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
@@ -41,7 +27,6 @@ export interface OptionalSpecialButtonProps
   extends OptionalInteractivityStateProps,
     OptionalThemed {
   children?: React.ReactNode;
-  customStyle?: ButtonStyles;
   fullWidth?: boolean;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
@@ -57,43 +42,12 @@ export interface OptionalButtonProps
   extends OptionalSpecialButtonProps,
     TouchableWithoutFeedbackProps {}
 
-export enum ButtonVariant {
-  CONTAINED = 'contained',
-  CONTAINED_RAISED = 'containedRaised',
-  DEFAULT = 'default',
-  OUTLINED = 'outlined',
-}
-
-type TextTransformer = (
-  props: { text: string; transformation?: string },
-) => string;
-
-export const transformText: TextTransformer = ({
-  text,
-  transformation = 'none',
-}): string => {
-  switch (transformation) {
-    case 'capitalize':
-      return text.replace(
-        /\w\S*/g,
-        w => w.charAt(0).toUpperCase() + w.substr(1).toLowerCase(),
-      );
-    case 'lowercase':
-      return text.toLowerCase();
-    case 'uppercase':
-      return text.toUpperCase();
-    default:
-      return text;
-  }
-};
-
 const extractSpecialButtonProps = (
   props: SpecialButtonProps,
 ): SpecialButtonProps => {
   const {
     children,
     colorTheme,
-    customStyle,
     fullWidth,
     interactivityState,
     leftIcon,
@@ -106,7 +60,6 @@ const extractSpecialButtonProps = (
   return {
     children,
     colorTheme,
-    customStyle,
     fullWidth,
     interactivityState,
     leftIcon,
@@ -123,7 +76,6 @@ const extractTouchableProps = (
   const {
     children,
     colorTheme,
-    customStyle,
     fullWidth,
     interactivityState,
     leftIcon,
@@ -137,83 +89,59 @@ const extractTouchableProps = (
   return touchableProps;
 };
 
-interface ThemedButtonState {
-  readonly Text: ButtonText;
-  readonly Touchable: Touchable<TouchableWithoutFeedbackProps>;
-  readonly View: ButtonView;
-}
+const transformButtonChildren = (
+  props: SpecialButtonProps,
+): React.ReactNode => {
+  const { children } = props;
+  if (!children) return undefined;
 
-export class SimpleButton extends React.Component<
-  ButtonProps,
-  ThemedButtonState
-> {
-  constructor(props: ButtonProps) {
-    super(props);
-    // tslint:disable-next-line:no-console
-    // console.log('ThemedButton.constructor() - props: ', props);
-
-    // prettier-ignore
-    const {
-      Text,
-      // tslint:disable-next-line:no-shadowed-variable
-      Touchable,
-      View,
-    } = props.theme.components.button[props.variant].subComponents;
-
-    this.state = {
-      Text,
-      Touchable,
-      View,
-    };
+  if (
+    typeof children === 'string' ||
+    typeof children === 'number' ||
+    typeof children === 'boolean'
+  ) {
+    return transformToButtonText(children.toString(), props);
   }
 
-  public render() {
-    const { children } = this.props;
-    // tslint:disable-next-line:no-shadowed-variable
-    const { Touchable, View } = this.state;
-    const specialProps = extractSpecialButtonProps(this.props);
-    const touchableProps = extractTouchableProps(this.props);
+  return children;
+};
 
-    const viewStyle = getRegisteredViewStyle(specialProps);
+const transformToButtonText = (
+  children: string,
+  props: SpecialButtonProps,
+): JSX.Element => {
+  const textStyle = getRegisteredTextStyle(props);
+  let transformedString = children;
 
-    return (
-      <Touchable {...touchableProps}>
-        <View style={viewStyle.view} {...specialProps}>
-          {children && this.getChildrenComponent(children, specialProps)}
-        </View>
-      </Touchable>
-    );
+  if (isAndroid) {
+    transformedString = transformText({
+      text: transformedString,
+      transformation: StyleSheet.flatten(textStyle.text).textTransform,
+    });
   }
 
-  private getChildrenComponent(
-    children: React.ReactNode,
-    props: SpecialButtonProps,
-  ): JSX.Element | React.ReactNode {
-    const { Text } = this.state;
+  const { Text } = props.theme.components.button[props.variant].subComponents;
 
-    if (
-      typeof children === 'string' ||
-      typeof children === 'number' ||
-      typeof children === 'boolean'
-    ) {
-      const textStyle = getRegisteredTextStyle(props);
-      let stringChildren =
-        typeof children === 'string' ? children : children.toString();
+  return (
+    <Text style={textStyle.text} {...props}>
+      {transformedString}
+    </Text>
+  );
+};
 
-      if (isAndroid) {
-        stringChildren = transformText({
-          text: stringChildren,
-          transformation: StyleSheet.flatten(textStyle.text).textTransform,
-        });
-      }
+export const SimpleButton: React.SFC<ButtonProps> = (props: ButtonProps) => {
+  const { children, variant } = props;
+  const buttonTheme = props.theme.components.button;
+  const { Touchable, View } = buttonTheme[variant].subComponents;
+  const specialProps = extractSpecialButtonProps(props);
+  const touchableProps = extractTouchableProps(props);
+  const viewStyle = getRegisteredViewStyle(specialProps);
 
-      return (
-        <Text style={textStyle.text} {...props}>
-          {stringChildren}
-        </Text>
-      );
-    }
-
-    return children;
-  }
-}
+  return (
+    <Touchable {...touchableProps}>
+      <View style={viewStyle.view} {...specialProps}>
+        {children && transformButtonChildren(specialProps)}
+      </View>
+    </Touchable>
+  );
+};
