@@ -10,7 +10,10 @@ import {
 // @ts-ignore Could not find a declaration file for module'
 import { animated, Keyframes } from 'react-spring/dist/native';
 
-import { InteractivityProps, InteractivityType } from '../../interactivity';
+import {
+  InteractivityStateProps,
+  InteractivityType,
+} from '../../interactivity';
 import { isAndroid, isIOS, isWeb } from '../../utils';
 import { getElevationStyles } from './getElevationStyles';
 import { Themed } from './Themed';
@@ -79,7 +82,7 @@ export type WithRaiseEffect = (
 ) => React.ComponentType<ViewProps & InteractivityProps & Themed>;
 */
 export const withRaiseEffect = <
-  P extends ViewProps & InteractivityProps & Themed
+  P extends ViewProps & InteractivityStateProps & Themed
 >(
   WrappedComponent: React.ComponentType<P>,
 ): React.ComponentType<P> =>

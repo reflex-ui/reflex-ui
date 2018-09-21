@@ -14,7 +14,7 @@ import { animated, Keyframes } from 'react-spring/dist/native';
 
 import {
   InteractivityEvent,
-  InteractivityProps,
+  InteractivityStateProps,
   InteractivityType,
 } from '../../interactivity';
 import { ColorTheme } from './ColorTheme';
@@ -180,7 +180,7 @@ export type WithRippleEffect = (
 >;
 */
 export const withRippleEffect = <
-  P extends ViewProps & InteractivityProps & Themed
+  P extends ViewProps & InteractivityStateProps & Themed
 >(
   WrappedComponent: React.ComponentType<P>,
 ): React.ComponentType<P> =>
