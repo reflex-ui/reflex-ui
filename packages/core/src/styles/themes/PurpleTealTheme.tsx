@@ -90,13 +90,9 @@ export type ButtonViewProps = SpecialButtonProps & ViewProps;
 
 export type ButtonTextProps = SpecialButtonProps & TextProps;
 
-export type ButtonView = React.ComponentType<ButtonViewProps>;
-
 export type Touchable<
   T extends TouchableWithoutFeedbackProps
 > = React.ComponentType<T>;
-
-export type ButtonText = React.ComponentType<ButtonTextProps>;
 
 /* BEGIN OPTIONAL BUTTON STUFF */
 
@@ -127,9 +123,9 @@ interface OptionalInteractivityStateTheme<T> {
 }
 
 interface OptionalButtonSubComponents {
-  readonly Text?: ButtonText;
+  readonly Text?: React.ComponentType<ButtonTextProps>;
   readonly Touchable?: Touchable<TouchableWithoutFeedbackProps>;
-  readonly View?: ButtonView;
+  readonly View?: React.ComponentType<ButtonViewProps>;
 }
 
 interface OptionalButtonVariantTheme {
@@ -191,9 +187,9 @@ interface ButtonSubComponentsTheme {
 }
 
 interface ButtonSubComponents {
-  readonly Text: ButtonText;
+  readonly Text: React.ComponentType<ButtonTextProps>;
   readonly Touchable: Touchable<TouchableWithoutFeedbackProps>;
-  readonly View: ButtonView;
+  readonly View: React.ComponentType<ButtonViewProps>;
 }
 
 interface ButtonVariantTheme {
@@ -568,7 +564,7 @@ export const getRegisteredViewStyle: RegisteredViewStyleGetter<
     view: getViewStyle(props),
   });
 
-const DefaultInnerContainer: ButtonView = ({
+const DefaultInnerContainer: React.ComponentType<ButtonViewProps> = ({
   children,
   colorTheme,
   fullWidth,
@@ -585,8 +581,8 @@ const DefaultInnerContainer: ButtonView = ({
    * https://github.com/facebook/react-native/issues/10180
    */
   ...buttonProps
-}: /**/
-SpecialButtonProps) => (
+  /**/
+}) => (
   <View {...buttonProps} pointerEvents="box-only">
     {children}
   </View>
@@ -596,7 +592,7 @@ const DefaultButton: Touchable<
   TouchableWithoutFeedbackProps
 > = TouchableWithoutFeedback;
 
-const DefaultText: ButtonText = (props: ButtonTextProps) => (
+const DefaultText: React.ComponentType<ButtonTextProps> = props => (
   <Text style={props.style}>{props.children}</Text>
 );
 
