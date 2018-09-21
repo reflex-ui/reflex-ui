@@ -10,10 +10,7 @@ import {
 // @ts-ignore Could not find a declaration file for module'
 import { animated, Keyframes } from 'react-spring/dist/native';
 
-import {
-  InteractivityStateProps,
-  InteractivityType,
-} from '../../interactivity';
+import { InteractivityProps, InteractivityType } from '../../interactivity';
 import { isAndroid, isIOS, isWeb } from '../../utils';
 import { getElevationStyles } from './getElevationStyles';
 import { Themed } from './Themed';
@@ -77,12 +74,12 @@ const createMotionRaiseStyles: MotionRaiseStylesCreator = ({
 /*
 export type WithRaiseEffect = (
   WrappedComponent: React.ComponentType<
-    ViewProps & InteractivityStateProps & Themed
+    ViewProps & InteractivityProps & Themed
   >,
-) => React.ComponentType<ViewProps & InteractivityStateProps & Themed>;
+) => React.ComponentType<ViewProps & InteractivityProps & Themed>;
 */
 export const withRaiseEffect = <
-  P extends ViewProps & InteractivityStateProps & Themed
+  P extends ViewProps & InteractivityProps & Themed
 >(
   WrappedComponent: React.ComponentType<P>,
 ): React.ComponentType<P> =>
@@ -104,6 +101,11 @@ export const withRaiseEffect = <
       );
 
       const { interactivityState } = props;
+
+      const interactivityType = interactivityState
+        ? interactivityState.type
+        : InteractivityType.ENABLED;
+
       const { animationKeyframe, isAnimating } = state;
 
       const backgroundColor =
@@ -112,7 +114,7 @@ export const withRaiseEffect = <
       const staticRaiseStyles = createStaticRaiseStyles(backgroundColor);
 
       if (
-        interactivityState.type === InteractivityType.DISABLED &&
+        interactivityType === InteractivityType.DISABLED &&
         animationKeyframe !== AnimationKeyframe.DISABLED &&
         !isAnimating
       ) {
@@ -125,7 +127,7 @@ export const withRaiseEffect = <
       }
 
       if (
-        interactivityState.type === InteractivityType.HOVERED &&
+        interactivityType === InteractivityType.HOVERED &&
         animationKeyframe !== AnimationKeyframe.HOVERED &&
         !isAnimating
       ) {
@@ -138,7 +140,7 @@ export const withRaiseEffect = <
       }
 
       if (
-        interactivityState.type === InteractivityType.FOCUSED &&
+        interactivityType === InteractivityType.FOCUSED &&
         animationKeyframe !== AnimationKeyframe.FOCUSED &&
         !isAnimating
       ) {
@@ -151,7 +153,7 @@ export const withRaiseEffect = <
       }
 
       if (
-        interactivityState.type === InteractivityType.PRESSED &&
+        interactivityType === InteractivityType.PRESSED &&
         animationKeyframe !== AnimationKeyframe.PRESS_IN &&
         !isAnimating
       ) {
@@ -164,7 +166,7 @@ export const withRaiseEffect = <
       }
 
       if (
-        interactivityState.type === InteractivityType.ENABLED &&
+        interactivityType === InteractivityType.ENABLED &&
         animationKeyframe !== AnimationKeyframe.ENABLED &&
         !isAnimating
       ) {
@@ -365,8 +367,12 @@ export const withRaiseEffect = <
                     * Temporary solution. Need to investigate how to animate
                     * shadowOffset, i.e., an object of values.
                     */
+                    const interactivityType = this.props.interactivityState
+                      ? this.props.interactivityState.type
+                      : InteractivityType.ENABLED;
+
                     const elevationStyles = getElevationStyles({
-                      interactivityType: this.props.interactivityState.type,
+                      interactivityType,
                     });
                     const height = elevationStyles.shadowOffset
                       ? elevationStyles.shadowOffset.height

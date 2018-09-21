@@ -439,7 +439,9 @@ export const getTextStyle: TextStyleGetter<SpecialButtonProps> = (
 ): TextStyle => {
   // tslint:disable-next-line:no-shadowed-variable
   const buttonTheme = props.theme.components.button;
-  const stateType: InteractivityType = props.interactivityState.type;
+  const interactivityType: InteractivityType = props.interactivityState
+    ? props.interactivityState.type
+    : InteractivityType.ENABLED;
 
   return {
     /* allVariants && allSizes && allStates */
@@ -449,7 +451,7 @@ export const getTextStyle: TextStyleGetter<SpecialButtonProps> = (
     ),
     /* allVariants && allSizes && state */
     ...getTextButtonStyleFromTheme(
-      buttonTheme.allVariants.allSizes[stateType].text,
+      buttonTheme.allVariants.allSizes[interactivityType].text,
       props,
     ),
     /* allVariants && size && allStates */
@@ -459,7 +461,7 @@ export const getTextStyle: TextStyleGetter<SpecialButtonProps> = (
     ),
     /* allVariants && size && state */
     ...getTextButtonStyleFromTheme(
-      buttonTheme.allVariants[props.size][stateType].text,
+      buttonTheme.allVariants[props.size][interactivityType].text,
       props,
     ),
     /* variant && allSizes && allStates */
@@ -469,7 +471,7 @@ export const getTextStyle: TextStyleGetter<SpecialButtonProps> = (
     ),
     /* variant && allSizes && state */
     ...getTextButtonStyleFromTheme(
-      buttonTheme[props.variant].allSizes[stateType].text,
+      buttonTheme[props.variant].allSizes[interactivityType].text,
       props,
     ),
     /* variant && size && allStates */
@@ -479,7 +481,7 @@ export const getTextStyle: TextStyleGetter<SpecialButtonProps> = (
     ),
     /* variant && size && state */
     ...getTextButtonStyleFromTheme(
-      buttonTheme[props.variant][props.size][stateType].text,
+      buttonTheme[props.variant][props.size][interactivityType].text,
       props,
     ),
   };
@@ -511,7 +513,9 @@ export const getViewStyle: ViewStyleGetter<SpecialButtonProps> = (
 ): ViewStyle => {
   // tslint:disable-next-line:no-shadowed-variable
   const buttonTheme = props.theme.components.button;
-  const stateType: InteractivityType = props.interactivityState.type;
+  const interactivityType: InteractivityType = props.interactivityState
+    ? props.interactivityState.type
+    : InteractivityType.ENABLED;
 
   return {
     /* allVariants && allSizes && allStates */
@@ -521,7 +525,7 @@ export const getViewStyle: ViewStyleGetter<SpecialButtonProps> = (
     ),
     /* allVariants && allSizes && state */
     ...getViewStyleFromTheme(
-      buttonTheme.allVariants.allSizes[stateType].view,
+      buttonTheme.allVariants.allSizes[interactivityType].view,
       props,
     ),
     /* allVariants && size && allStates */
@@ -531,7 +535,7 @@ export const getViewStyle: ViewStyleGetter<SpecialButtonProps> = (
     ),
     /* allVariants && size && state */
     ...getViewStyleFromTheme(
-      buttonTheme.allVariants[props.size][stateType].view,
+      buttonTheme.allVariants[props.size][interactivityType].view,
       props,
     ),
     /* variant && allSizes && allStates */
@@ -541,7 +545,7 @@ export const getViewStyle: ViewStyleGetter<SpecialButtonProps> = (
     ),
     /* variant && allSizes && state */
     ...getViewStyleFromTheme(
-      buttonTheme[props.variant].allSizes[stateType].view,
+      buttonTheme[props.variant].allSizes[interactivityType].view,
       props,
     ),
     /* variant && size && allStates */
@@ -551,7 +555,7 @@ export const getViewStyle: ViewStyleGetter<SpecialButtonProps> = (
     ),
     /* variant && size && state */
     ...getViewStyleFromTheme(
-      buttonTheme[props.variant][props.size][stateType].view,
+      buttonTheme[props.variant][props.size][interactivityType].view,
       props,
     ),
   };
@@ -575,15 +579,16 @@ const DefaultInnerContainer: React.ComponentType<ButtonViewProps> = ({
   theme,
   variant,
   /*
-   * This is necessary to fix this issue with TouchableWithoutFeedback:
+   * This is used to pass framework's own stuff as well as to
+   * deal with a TouchableWithoutFeedback's issue:
    * https://github.com/facebook/react-native/issues/1352
    * It's still an issue. Ref:
    * https://github.com/facebook/react-native/issues/10180
    */
-  ...buttonProps
+  ...otherProps
   /**/
 }) => (
-  <View {...buttonProps} pointerEvents="box-only">
+  <View {...otherProps} pointerEvents="box-only">
     {children}
   </View>
 );

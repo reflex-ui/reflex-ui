@@ -14,7 +14,7 @@ import { animated, Keyframes } from 'react-spring/dist/native';
 
 import {
   InteractivityEvent,
-  InteractivityStateProps,
+  InteractivityProps,
   InteractivityType,
 } from '../../interactivity';
 import { ColorTheme } from './ColorTheme';
@@ -173,14 +173,14 @@ const createComponentRippleStyles: ComponentRippleStylesCreator = ({
 /*
 export type WithRippleEffect = (
   WrappedComponent: React.ComponentType<
-    ViewProps & InteractivityStateProps
+    ViewProps & InteractivityProps
   >,
 ) => React.ComponentType<
-  ViewProps & InteractivityStateProps & Themed
+  ViewProps & InteractivityProps & Themed
 >;
 */
 export const withRippleEffect = <
-  P extends ViewProps & InteractivityStateProps & Themed
+  P extends ViewProps & InteractivityProps & Themed
 >(
   WrappedComponent: React.ComponentType<P>,
 ): React.ComponentType<P> =>
@@ -198,6 +198,15 @@ export const withRippleEffect = <
       */
 
       const { interactivityState } = props;
+
+      const interactivityType = interactivityState
+        ? interactivityState.type
+        : InteractivityType.ENABLED;
+
+      const interactivityEvent = interactivityState
+        ? interactivityState.event
+        : undefined;
+
       const {
         animationKeyframe,
         isAnimatingPressIn,
@@ -205,7 +214,7 @@ export const withRippleEffect = <
       } = state;
 
       if (
-        interactivityState.type === InteractivityType.PRESSED &&
+        interactivityType === InteractivityType.PRESSED &&
         animationKeyframe === AnimationKeyframe.PRESS_OUT &&
         !isAnimatingPressOut
       ) {
@@ -220,7 +229,7 @@ export const withRippleEffect = <
           rippleStyles: createComponentRippleStyles({
             colorTheme,
             height,
-            interactivityEvent: interactivityState.event,
+            interactivityEvent,
             maxDiameter,
             theme,
             width,
@@ -229,7 +238,7 @@ export const withRippleEffect = <
       }
 
       if (
-        interactivityState.type !== InteractivityType.PRESSED &&
+        interactivityType !== InteractivityType.PRESSED &&
         animationKeyframe === AnimationKeyframe.PRESS_IN &&
         !isAnimatingPressIn
       ) {

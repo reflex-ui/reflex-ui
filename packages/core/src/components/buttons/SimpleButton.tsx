@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, TouchableWithoutFeedbackProps } from 'react-native';
 
-import {
-  InteractivityStateProps,
-  OptionalInteractivityStateProps,
-} from '../../interactivity';
+import { InteractivityProps } from '../../interactivity';
 import { OptionalThemed, Themed } from '../../styles';
 import {
   getRegisteredTextStyle,
@@ -14,7 +11,7 @@ import { isAndroid, transformText } from '../../utils';
 import { Size } from '../Size';
 import { ButtonVariant } from './ButtonVariant';
 
-export interface SpecialButtonProps extends InteractivityStateProps, Themed {
+export interface SpecialButtonProps extends InteractivityProps, Themed {
   children?: React.ReactNode;
   fullWidth?: boolean;
   leftIcon?: JSX.Element;
@@ -24,7 +21,7 @@ export interface SpecialButtonProps extends InteractivityStateProps, Themed {
 }
 
 export interface OptionalSpecialButtonProps
-  extends OptionalInteractivityStateProps,
+  extends InteractivityProps,
     OptionalThemed {
   children?: React.ReactNode;
   fullWidth?: boolean;
