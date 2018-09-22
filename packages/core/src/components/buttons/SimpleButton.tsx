@@ -7,8 +7,8 @@ import {
 } from '../../interactivity';
 import { OptionalThemed, Themed } from '../../styles';
 import {
-  getRegisteredTextStyle,
-  getRegisteredViewStyle,
+  getTextProps,
+  getViewProps,
 } from '../../styles/themes/PurpleTealTheme';
 import { isAndroid, transformText } from '../../utils';
 import { Size } from '../Size';
@@ -108,20 +108,21 @@ const transformToButtonText = (
   children: string,
   props: SpecialButtonProps,
 ): JSX.Element => {
-  const textStyle = getRegisteredTextStyle(props);
+  // const textStyle = getRegisteredTextStyle(props);
+  const textProps = getTextProps(props);
   let transformedString = children;
 
   if (isAndroid) {
     transformedString = transformText({
       text: transformedString,
-      transformation: StyleSheet.flatten(textStyle.text).textTransform,
+      transformation: StyleSheet.flatten(textProps.style).textTransform,
     });
   }
 
   const { Text } = props.theme.components.button[props.variant].subComponents;
 
   return (
-    <Text style={textStyle.text} {...props}>
+    <Text {...textProps} {...props}>
       {transformedString}
     </Text>
   );
@@ -133,11 +134,12 @@ export const SimpleButton: React.SFC<ButtonProps> = (props: ButtonProps) => {
   const { Touchable, View } = buttonTheme[variant].subComponents;
   const specialProps = extractSpecialButtonProps(props);
   const touchableProps = extractTouchableProps(props);
-  const viewStyle = getRegisteredViewStyle(specialProps);
+  // const viewStyle = getRegisteredViewStyle(specialProps);
+  const viewProps = getViewProps(specialProps);
 
   return (
     <Touchable {...touchableProps}>
-      <View style={viewStyle.view} {...specialProps}>
+      <View {...viewProps} {...specialProps}>
         {children && transformButtonChildren(specialProps)}
       </View>
     </Touchable>

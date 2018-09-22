@@ -66,15 +66,25 @@ interface TypographyComponents {
   readonly subtitle2: TextStyle;
 }
 
-type ViewStyleGetter<P> = (props: P) => ViewStyle;
+type ViewPropsGetter<P> = (props: P) => ViewProps;
 
-type RegisteredViewStyleGetter<P> = (
-  props: P,
-) => { view: RegisteredStyle<ViewStyle> };
+type ViewStyleGetter<P> = (props: P) => ViewStyle;
 
 interface ViewStyleObj {
   view: ViewStyle;
 }
+
+type RegisteredViewStyleFactory = (
+  style: ViewStyle,
+) => { view: RegisteredStyle<ViewStyle> };
+
+/*
+type RegisteredViewStyleGetter<P> = (
+  props: P,
+) => { view: RegisteredStyle<ViewStyle> };
+*/
+
+type TextPropsGetter<P> = (props: P) => TextProps;
 
 type TextStyleGetter<P> = (props: P) => TextStyle;
 
@@ -82,10 +92,15 @@ interface TextStyleObj {
   text: TextStyle;
 }
 
+type RegisteredTextStyleFactory = (
+  style: TextStyle,
+) => { text: RegisteredStyle<TextStyle> };
+
+/*
 type RegisteredTextStyleGetter<P> = (
   props: P,
 ) => { text: RegisteredStyle<TextStyle> };
-
+*/
 export type ButtonViewProps = SpecialButtonProps & ViewProps;
 
 export type ButtonTextProps = SpecialButtonProps & TextProps;
@@ -97,15 +112,13 @@ export type Touchable<
 /* BEGIN OPTIONAL BUTTON STUFF */
 
 interface OptionalViewTheme<P> {
-  readonly getDynamicCustomStyle?: ViewStyleGetter<P>;
-  readonly getDynamicStyle?: ViewStyleGetter<P>;
-  readonly style?: ViewStyle;
+  readonly getProps?: ViewPropsGetter<P>;
+  readonly props?: ViewProps;
 }
 
 interface OptionalTextTheme<P> {
-  readonly getDynamicCustomStyle?: TextStyleGetter<P>;
-  readonly getDynamicStyle?: TextStyleGetter<P>;
-  readonly style?: TextStyle;
+  readonly getProps?: TextPropsGetter<P>;
+  readonly props?: TextProps;
 }
 
 interface OptionalButtonSubComponentsTheme {
@@ -161,15 +174,13 @@ interface OptionalButtonTheme {
 /* END OPTIONAL BUTTON STUFF */
 
 export interface ViewTheme<P> {
-  readonly getDynamicCustomStyle: ViewStyleGetter<P>;
-  readonly getDynamicStyle: ViewStyleGetter<P>;
-  readonly style: ViewStyle;
+  readonly getProps: ViewPropsGetter<P>;
+  readonly props: ViewProps;
 }
 
 export interface TextTheme<P> {
-  readonly getDynamicCustomStyle: TextStyleGetter<P>;
-  readonly getDynamicStyle: TextStyleGetter<P>;
-  readonly style: TextStyle;
+  readonly getProps: TextPropsGetter<P>;
+  readonly props: TextProps;
 }
 
 interface InteractivityStateTheme<T> {
@@ -237,11 +248,21 @@ const getButtonViewStyle: ViewStyleGetter<SpecialButtonProps> = ({
   flexGrow: fullWidth ? 1 : undefined,
 });
 
+const getButtonViewProps: ViewPropsGetter<SpecialButtonProps> = props => ({
+  style: getButtonViewStyle(props),
+});
+
 const getOutlinedContainerCommonStyle: ViewStyleGetter<SpecialButtonProps> = ({
   colorTheme,
   theme,
 }): ViewStyle => ({
   borderColor: getThemedColor({ colorTheme, theme }),
+});
+
+const getOutlinedContainerCommonProps: ViewPropsGetter<
+  SpecialButtonProps
+> = props => ({
+  style: getOutlinedContainerCommonStyle(props),
 });
 
 const getDisabledContainedContainerStyle: ViewStyleGetter<
@@ -250,14 +271,24 @@ const getDisabledContainedContainerStyle: ViewStyleGetter<
   backgroundColor: getThemedColor({ colorTheme, theme }),
 });
 
-// tslint:disable-next-line:max-line-length
+const getDisabledContainedContainerProps: ViewPropsGetter<
+  SpecialButtonProps
+> = props => ({
+  style: getDisabledContainedContainerStyle(props),
+});
+
 const getEnabledContainedContainerStyle: ViewStyleGetter<
   SpecialButtonProps
 > = ({ colorTheme, theme }) => ({
   backgroundColor: getThemedColor({ colorTheme, theme }),
 });
 
-// tslint:disable-next-line:max-line-length
+const getEnabledContainedContainerProps: ViewPropsGetter<
+  SpecialButtonProps
+> = props => ({
+  style: getEnabledContainedContainerProps(props),
+});
+
 const getFocusedContainedContainerStyle: ViewStyleGetter<
   SpecialButtonProps
 > = ({ colorTheme, theme }) => ({
@@ -266,13 +297,24 @@ const getFocusedContainedContainerStyle: ViewStyleGetter<
     .toString(),
 });
 
-// tslint:disable-next-line:max-line-length
+const getFocusedContainedContainerProps: ViewPropsGetter<
+  SpecialButtonProps
+> = props => ({
+  style: getFocusedContainedContainerStyle(props),
+});
+
 const getHoveredContainedContainerStyle: ViewStyleGetter<
   SpecialButtonProps
 > = ({ colorTheme, theme }) => ({
   backgroundColor: Color.rgb(getThemedColor({ colorTheme, theme }))
     .lighten(0.12)
     .toString(),
+});
+
+const getHoveredContainedContainerProps: ViewPropsGetter<
+  SpecialButtonProps
+> = props => ({
+  style: getHoveredContainedContainerStyle(props),
 });
 /*
 const getPressedContainedContainerStyle: ViewStyleGetter = ({
@@ -285,45 +327,40 @@ const getPressedContainedContainerStyle: ViewStyleGetter = ({
 });
 */
 
-const getPressedContainedContainerStyle: ViewStyleGetter<
+const getPressedContainedContainerProps: ViewPropsGetter<
   SpecialButtonProps
 > = props => ({
-  ...getHoveredContainedContainerStyle(props),
+  style: getHoveredContainedContainerStyle(props),
 });
 
-const getDisabledContainedRaisedContainerStyle: ViewStyleGetter<
+const getDisabledContainedRaisedContainerProps: ViewPropsGetter<
   SpecialButtonProps
 > = props => ({
-  ...getDisabledContainedContainerStyle(props),
-  // ...getContainerElevationStyle(props),
+  style: getDisabledContainedContainerStyle(props),
 });
 
-const getEnabledContainedRaisedContainerStyle: ViewStyleGetter<
+const getEnabledContainedRaisedContainerProps: ViewPropsGetter<
   SpecialButtonProps
 > = props => ({
-  ...getEnabledContainedContainerStyle(props),
-  // ...getContainerElevationStyle(props),
+  style: getEnabledContainedContainerStyle(props),
 });
 
-const getFocusedContainedRaisedContainerStyle: ViewStyleGetter<
+const getFocusedContainedRaisedContainerProps: ViewPropsGetter<
   SpecialButtonProps
 > = props => ({
-  ...getFocusedContainedContainerStyle(props),
-  // ...getContainerElevationStyle(props),
+  style: getFocusedContainedContainerStyle(props),
 });
 
-const getHoveredContainedRaisedContainerStyle: ViewStyleGetter<
+const getHoveredContainedRaisedContainerProps: ViewPropsGetter<
   SpecialButtonProps
 > = props => ({
-  ...getHoveredContainedContainerStyle(props),
-  // ...getContainerElevationStyle(props),
+  style: getHoveredContainedContainerStyle(props),
 });
 
-const getPressedContainedRaisedContainerStyle: ViewStyleGetter<
+const getPressedContainedRaisedContainerProps: ViewPropsGetter<
   SpecialButtonProps
 > = props => ({
-  ...getPressedContainedContainerStyle(props),
-  // ...getContainerElevationStyle(props),
+  style: getHoveredContainedContainerStyle(props),
 });
 
 const getDisabledDefaultContainerStyle: ViewStyleGetter<
@@ -332,10 +369,22 @@ const getDisabledDefaultContainerStyle: ViewStyleGetter<
   backgroundColor: 'transparent',
 });
 
+const getDisabledDefaultContainerProps: ViewPropsGetter<
+  SpecialButtonProps
+> = props => ({
+  style: getDisabledDefaultContainerStyle(props),
+});
+
 const getEnabledDefaultContainerStyle: ViewStyleGetter<
   SpecialButtonProps
 > = () => ({
   backgroundColor: 'transparent',
+});
+
+const getEnabledDefaultContainerProps: ViewPropsGetter<
+  SpecialButtonProps
+> = props => ({
+  style: getEnabledDefaultContainerStyle(props),
 });
 
 const getFocusedDefaultContainerStyle: ViewStyleGetter<SpecialButtonProps> = ({
@@ -347,6 +396,12 @@ const getFocusedDefaultContainerStyle: ViewStyleGetter<SpecialButtonProps> = ({
     .toString(),
 });
 
+const getFocusedDefaultContainerProps: ViewPropsGetter<
+  SpecialButtonProps
+> = props => ({
+  style: getFocusedDefaultContainerStyle(props),
+});
+
 const getHoveredDefaultContainerStyle: ViewStyleGetter<SpecialButtonProps> = ({
   colorTheme,
   theme,
@@ -354,6 +409,12 @@ const getHoveredDefaultContainerStyle: ViewStyleGetter<SpecialButtonProps> = ({
   backgroundColor: Color.rgb(getThemedColor({ colorTheme, theme }))
     .fade(0.94)
     .toString(),
+});
+
+const getHoveredDefaultContainerProps: ViewPropsGetter<
+  SpecialButtonProps
+> = props => ({
+  style: getHoveredDefaultContainerStyle(props),
 });
 
 const getPressedDefaultContainerStyle: ViewStyleGetter<SpecialButtonProps> = ({
@@ -365,34 +426,40 @@ const getPressedDefaultContainerStyle: ViewStyleGetter<SpecialButtonProps> = ({
     .toString(),
 });
 
-const getDisabledOutlinedContainerStyle: ViewStyleGetter<SpecialButtonProps> = (
+const getPressedDefaultContainerProps: ViewPropsGetter<
+  SpecialButtonProps
+> = props => ({
+  style: getPressedDefaultContainerStyle(props),
+});
+
+const getDisabledOutlinedContainerProps: ViewPropsGetter<SpecialButtonProps> = (
   props: SpecialButtonProps,
 ) => ({
-  ...getDisabledDefaultContainerStyle(props),
+  style: getDisabledDefaultContainerStyle(props),
 });
 
-const getEnabledOutlinedContainerStyle: ViewStyleGetter<SpecialButtonProps> = (
+const getEnabledOutlinedContainerProps: ViewPropsGetter<SpecialButtonProps> = (
   props: SpecialButtonProps,
 ) => ({
-  ...getEnabledDefaultContainerStyle(props),
+  style: getEnabledDefaultContainerStyle(props),
 });
 
-const getFocusedOutlinedContainerStyle: ViewStyleGetter<
+const getFocusedOutlinedContainerProps: ViewPropsGetter<
   SpecialButtonProps
 > = props => ({
-  ...getFocusedDefaultContainerStyle(props),
+  style: getFocusedDefaultContainerStyle(props),
 });
 
-const getHoveredOutlinedContainerStyle: ViewStyleGetter<
+const getHoveredOutlinedContainerProps: ViewPropsGetter<
   SpecialButtonProps
 > = props => ({
-  ...getHoveredDefaultContainerStyle(props),
+  style: getHoveredDefaultContainerStyle(props),
 });
 
-const getPressedOutlinedContainerStyle: ViewStyleGetter<
+const getPressedOutlinedContainerProps: ViewPropsGetter<
   SpecialButtonProps
 > = props => ({
-  ...getPressedDefaultContainerStyle(props),
+  style: getPressedDefaultContainerStyle(props),
 });
 
 const getContainedLabelStyle: TextStyleGetter<SpecialButtonProps> = ({
@@ -402,10 +469,19 @@ const getContainedLabelStyle: TextStyleGetter<SpecialButtonProps> = ({
   color: getThemedColor({ colorTheme, theme, onColor: true }),
 });
 
-const getContainedRaisedLabelStyle: TextStyleGetter<SpecialButtonProps> = (
+const getContainedLabelProps: TextPropsGetter<SpecialButtonProps> = ({
+  colorTheme,
+  theme,
+}) => ({
+  style: {
+    color: getThemedColor({ colorTheme, theme, onColor: true }),
+  },
+});
+
+const getContainedRaisedLabelProps: TextPropsGetter<SpecialButtonProps> = (
   props: SpecialButtonProps,
 ) => ({
-  ...getContainedLabelStyle(props),
+  style: getContainedLabelStyle(props),
 });
 
 const getDefaultLabelStyle: TextStyleGetter<SpecialButtonProps> = ({
@@ -415,159 +491,239 @@ const getDefaultLabelStyle: TextStyleGetter<SpecialButtonProps> = ({
   color: getThemedColor({ colorTheme, theme, onColor: false }),
 });
 
-const getOutlinedLabelStyle: TextStyleGetter<SpecialButtonProps> = (
+const getDefaultLabelProps: TextPropsGetter<SpecialButtonProps> = props => ({
+  style: getDefaultLabelStyle(props),
+});
+
+const getOutlinedLabelProps: TextPropsGetter<SpecialButtonProps> = (
   props: SpecialButtonProps,
 ) => ({
-  ...getDefaultLabelStyle(props),
+  style: getDefaultLabelStyle(props),
 });
 
-type TextStyleFromThemeGetter<TextThemeProps> = (
+type TextPropsFromThemeGetter<TextThemeProps> = (
   textTheme: TextTheme<TextThemeProps>,
   props: TextThemeProps,
-) => TextStyle;
+) => TextProps;
 
-const getTextButtonStyleFromTheme: TextStyleFromThemeGetter<
+const getTextButtonPropsFromTheme: TextPropsFromThemeGetter<
   SpecialButtonProps
-> = (textTheme, props): TextStyle => ({
-  ...textTheme.style,
-  ...textTheme.getDynamicStyle(props),
-  ...textTheme.getDynamicCustomStyle(props),
-});
+> = (textTheme, props): TextProps =>
+  merge({}, textTheme.props, textTheme.getProps(props));
 
-export const getTextStyle: TextStyleGetter<SpecialButtonProps> = (
+export const createRegisteredTextStyle: RegisteredTextStyleFactory = style =>
+  StyleSheet.create<TextStyleObj>({
+    text: style,
+  });
+
+export const getTextProps: TextPropsGetter<SpecialButtonProps> = (
   props: SpecialButtonProps,
-): TextStyle => {
+): TextProps => {
   // tslint:disable-next-line:no-shadowed-variable
   const buttonTheme = props.theme.components.button;
   const interactivityType: InteractivityType = props.interactivityState
     ? props.interactivityState.type
     : InteractivityType.ENABLED;
 
-  return {
+  let textProps: ViewProps = {};
+
+  textProps = merge(
+    textProps,
     /* allVariants && allSizes && allStates */
-    ...getTextButtonStyleFromTheme(
+    getTextButtonPropsFromTheme(
       buttonTheme.allVariants.allSizes.allStates.text,
       props,
     ),
+  );
+
+  textProps = merge(
+    textProps,
     /* allVariants && allSizes && state */
-    ...getTextButtonStyleFromTheme(
+    getTextButtonPropsFromTheme(
       buttonTheme.allVariants.allSizes[interactivityType].text,
       props,
     ),
+  );
+
+  textProps = merge(
+    textProps,
     /* allVariants && size && allStates */
-    ...getTextButtonStyleFromTheme(
+    getTextButtonPropsFromTheme(
       buttonTheme.allVariants[props.size].allStates.text,
       props,
     ),
+  );
+
+  textProps = merge(
+    textProps,
     /* allVariants && size && state */
-    ...getTextButtonStyleFromTheme(
+    getTextButtonPropsFromTheme(
       buttonTheme.allVariants[props.size][interactivityType].text,
       props,
     ),
+  );
+
+  textProps = merge(
+    textProps,
     /* variant && allSizes && allStates */
-    ...getTextButtonStyleFromTheme(
+    getTextButtonPropsFromTheme(
       buttonTheme[props.variant].allSizes.allStates.text,
       props,
     ),
+  );
+
+  textProps = merge(
+    textProps,
     /* variant && allSizes && state */
-    ...getTextButtonStyleFromTheme(
+    getTextButtonPropsFromTheme(
       buttonTheme[props.variant].allSizes[interactivityType].text,
       props,
     ),
+  );
+
+  textProps = merge(
+    textProps,
     /* variant && size && allStates */
-    ...getTextButtonStyleFromTheme(
+    getTextButtonPropsFromTheme(
       buttonTheme[props.variant][props.size].allStates.text,
       props,
     ),
+  );
+
+  textProps = merge(
+    textProps,
     /* variant && size && state */
-    ...getTextButtonStyleFromTheme(
+    getTextButtonPropsFromTheme(
       buttonTheme[props.variant][props.size][interactivityType].text,
       props,
     ),
-  };
-};
+  );
 
+  const textStyle: TextStyle = textProps.style as TextStyle;
+  textProps.style = createRegisteredTextStyle(textStyle || {}).text;
+
+  return textProps;
+};
+/*
 export const getRegisteredTextStyle: RegisteredTextStyleGetter<
   SpecialButtonProps
 > = props =>
   StyleSheet.create<TextStyleObj>({
     text: getTextStyle(props),
   });
-
-type ViewStyleFromThemeGetter<ViewThemeProps> = (
+*/
+type ViewPropsFromThemeGetter<ViewThemeProps> = (
   viewTheme: ViewTheme<ViewThemeProps>,
   props: ViewThemeProps,
-) => ViewStyle;
+) => ViewProps;
 
-const getViewStyleFromTheme: ViewStyleFromThemeGetter<SpecialButtonProps> = (
+const getViewPropsFromTheme: ViewPropsFromThemeGetter<SpecialButtonProps> = (
   viewTheme,
   props,
-): ViewStyle => ({
-  ...viewTheme.style,
-  ...viewTheme.getDynamicStyle(props),
-  ...viewTheme.getDynamicCustomStyle(props),
-});
+): ViewProps => merge({}, viewTheme.props, viewTheme.getProps(props));
 
-export const getViewStyle: ViewStyleGetter<SpecialButtonProps> = (
+export const createRegisteredViewStyle: RegisteredViewStyleFactory = style =>
+  StyleSheet.create<ViewStyleObj>({
+    view: style,
+  });
+
+export const getViewProps: ViewPropsGetter<SpecialButtonProps> = (
   props: SpecialButtonProps,
-): ViewStyle => {
+): ViewProps => {
   // tslint:disable-next-line:no-shadowed-variable
   const buttonTheme = props.theme.components.button;
   const interactivityType: InteractivityType = props.interactivityState
     ? props.interactivityState.type
     : InteractivityType.ENABLED;
 
-  return {
+  let viewProps: ViewProps = {};
+
+  viewProps = merge(
+    viewProps,
     /* allVariants && allSizes && allStates */
-    ...getViewStyleFromTheme(
+    getViewPropsFromTheme(
       buttonTheme.allVariants.allSizes.allStates.view,
       props,
     ),
+  );
+
+  viewProps = merge(
+    viewProps,
     /* allVariants && allSizes && state */
-    ...getViewStyleFromTheme(
+    getViewPropsFromTheme(
       buttonTheme.allVariants.allSizes[interactivityType].view,
       props,
     ),
+  );
+
+  viewProps = merge(
+    viewProps,
     /* allVariants && size && allStates */
-    ...getViewStyleFromTheme(
+    getViewPropsFromTheme(
       buttonTheme.allVariants[props.size].allStates.view,
       props,
     ),
+  );
+
+  viewProps = merge(
+    viewProps,
     /* allVariants && size && state */
-    ...getViewStyleFromTheme(
+    getViewPropsFromTheme(
       buttonTheme.allVariants[props.size][interactivityType].view,
       props,
     ),
+  );
+
+  viewProps = merge(
+    viewProps,
     /* variant && allSizes && allStates */
-    ...getViewStyleFromTheme(
+    getViewPropsFromTheme(
       buttonTheme[props.variant].allSizes.allStates.view,
       props,
     ),
+  );
+
+  viewProps = merge(
+    viewProps,
     /* variant && allSizes && state */
-    ...getViewStyleFromTheme(
+    getViewPropsFromTheme(
       buttonTheme[props.variant].allSizes[interactivityType].view,
       props,
     ),
+  );
+
+  viewProps = merge(
+    viewProps,
     /* variant && size && allStates */
-    ...getViewStyleFromTheme(
+    getViewPropsFromTheme(
       buttonTheme[props.variant][props.size].allStates.view,
       props,
     ),
+  );
+
+  viewProps = merge(
+    viewProps,
     /* variant && size && state */
-    ...getViewStyleFromTheme(
+    getViewPropsFromTheme(
       buttonTheme[props.variant][props.size][interactivityType].view,
       props,
     ),
-  };
+  );
+
+  const viewStyle: ViewStyle = viewProps.style as ViewStyle;
+  viewProps.style = createRegisteredViewStyle(viewStyle || {}).view;
+
+  return viewProps;
 };
 
+/*
 export const getRegisteredViewStyle: RegisteredViewStyleGetter<
   SpecialButtonProps
 > = props =>
   StyleSheet.create<ViewStyleObj>({
     view: getViewStyle(props),
   });
-
+*/
 const DefaultInnerContainer: React.ComponentType<ButtonViewProps> = ({
   children,
   colorTheme,
@@ -587,11 +743,7 @@ const DefaultInnerContainer: React.ComponentType<ButtonViewProps> = ({
    */
   ...otherProps
   /**/
-}) => (
-  <View {...otherProps} pointerEvents="box-only">
-    {children}
-  </View>
-);
+}) => <View {...otherProps}>{children}</View>;
 
 const DefaultButton: Touchable<
   TouchableWithoutFeedbackProps
@@ -603,14 +755,12 @@ const DefaultText: React.ComponentType<ButtonTextProps> = props => (
 
 const emptyButtonSubComponentsTheme: ButtonSubComponentsTheme = {
   text: {
-    getDynamicCustomStyle: () => ({}),
-    getDynamicStyle: () => ({}),
-    style: {},
+    getProps: () => ({}),
+    props: {},
   },
   view: {
-    getDynamicCustomStyle: () => ({}),
-    getDynamicStyle: () => ({}),
-    style: {},
+    getProps: () => ({}),
+    props: {},
   },
 };
 
@@ -804,42 +954,49 @@ const buttonTheme: OptionalButtonTheme = {
     allSizes: {
       allStates: {
         text: {
-          style: {
-            fontFamily: getFontFamily(),
-            fontWeight: getFontWeight(FontWeight.MEDIUM),
-            position: 'relative',
-            textTransform: 'uppercase',
-            ...Platform.select({
-              web: {
-                MozOsxFontSmoothing: 'grayscale',
-                WebkitFontSmoothing: 'antialiased',
-                userSelect: 'none',
-              },
-            }),
+          props: {
+            style: {
+              fontFamily: getFontFamily(),
+              fontWeight: getFontWeight(FontWeight.MEDIUM),
+              position: 'relative',
+              textTransform: 'uppercase',
+              ...Platform.select({
+                web: {
+                  MozOsxFontSmoothing: 'grayscale',
+                  WebkitFontSmoothing: 'antialiased',
+                  userSelect: 'none',
+                },
+              }),
+            },
           },
         },
         view: {
-          getDynamicStyle: getButtonViewStyle,
-          style: {
-            alignItems: 'center',
-            justifyContent: 'center',
-            ...Platform.select({
-              web: {
-                cursor: 'pointer',
-                outline: 'none',
-              },
-            }),
+          getProps: getButtonViewProps,
+          props: {
+            pointerEvents: 'box-only',
+            style: {
+              alignItems: 'center',
+              justifyContent: 'center',
+              ...Platform.select({
+                web: {
+                  cursor: 'pointer',
+                  outline: 'none',
+                },
+              }),
+            },
           },
         },
       },
       disabled: {
         view: {
-          style: {
-            ...Platform.select({
-              web: {
-                cursor: 'not-allowed',
-              },
-            }),
+          props: {
+            style: {
+              ...Platform.select({
+                web: {
+                  cursor: 'not-allowed',
+                },
+              }),
+            },
           },
         },
       },
@@ -847,14 +1004,18 @@ const buttonTheme: OptionalButtonTheme = {
     large: {
       allStates: {
         text: {
-          style: {
-            fontSize: 15,
-            letterSpacing: 1,
+          props: {
+            style: {
+              fontSize: 15,
+              letterSpacing: 1,
+            },
           },
         },
         view: {
-          style: {
-            borderRadius: 2,
+          props: {
+            style: {
+              borderRadius: 2,
+            },
           },
         },
       },
@@ -862,14 +1023,18 @@ const buttonTheme: OptionalButtonTheme = {
     regular: {
       allStates: {
         text: {
-          style: {
-            fontSize: 14,
-            letterSpacing: 0.75,
+          props: {
+            style: {
+              fontSize: 14,
+              letterSpacing: 0.75,
+            },
           },
         },
         view: {
-          style: {
-            borderRadius: 2,
+          props: {
+            style: {
+              borderRadius: 2,
+            },
           },
         },
       },
@@ -877,14 +1042,18 @@ const buttonTheme: OptionalButtonTheme = {
     small: {
       allStates: {
         text: {
-          style: {
-            fontSize: 13,
-            letterSpacing: 0.5,
+          props: {
+            style: {
+              fontSize: 13,
+              letterSpacing: 0.5,
+            },
           },
         },
         view: {
-          style: {
-            borderRadius: 2,
+          props: {
+            style: {
+              borderRadius: 2,
+            },
           },
         },
       },
@@ -892,14 +1061,18 @@ const buttonTheme: OptionalButtonTheme = {
     xlarge: {
       allStates: {
         text: {
-          style: {
-            fontSize: 16,
-            letterSpacing: 1.25,
+          props: {
+            style: {
+              fontSize: 16,
+              letterSpacing: 1.25,
+            },
           },
         },
         view: {
-          style: {
-            borderRadius: 4,
+          props: {
+            style: {
+              borderRadius: 4,
+            },
           },
         },
       },
@@ -907,14 +1080,18 @@ const buttonTheme: OptionalButtonTheme = {
     xsmall: {
       allStates: {
         text: {
-          style: {
-            fontSize: 12,
-            letterSpacing: 0.25,
+          props: {
+            style: {
+              fontSize: 12,
+              letterSpacing: 0.25,
+            },
           },
         },
         view: {
-          style: {
-            borderRadius: 2,
+          props: {
+            style: {
+              borderRadius: 2,
+            },
           },
         },
       },
@@ -924,44 +1101,46 @@ const buttonTheme: OptionalButtonTheme = {
     allSizes: {
       allStates: {
         text: {
-          getDynamicStyle: getContainedLabelStyle,
+          getProps: getContainedLabelProps,
         },
       },
       disabled: {
         view: {
-          getDynamicStyle: getDisabledContainedContainerStyle,
+          getProps: getDisabledContainedContainerProps,
         },
       },
       enabled: {
         view: {
-          getDynamicStyle: getEnabledContainedContainerStyle,
+          getProps: getEnabledContainedContainerProps,
         },
       },
       focused: {
         view: {
-          getDynamicStyle: getFocusedContainedContainerStyle,
+          getProps: getFocusedContainedContainerProps,
         },
       },
       hovered: {
         view: {
-          getDynamicStyle: getHoveredContainedContainerStyle,
+          getProps: getHoveredContainedContainerProps,
         },
       },
       pressed: {
         view: {
-          getDynamicStyle: getPressedContainedContainerStyle,
+          getProps: getPressedContainedContainerProps,
         },
       },
     },
     large: {
       allStates: {
         view: {
-          style: {
-            height: 40,
-            marginHorizontal: 16,
-            marginVertical: 8,
-            minWidth: 72,
-            paddingHorizontal: 20,
+          props: {
+            style: {
+              height: 40,
+              marginHorizontal: 16,
+              marginVertical: 8,
+              minWidth: 72,
+              paddingHorizontal: 20,
+            },
           },
         },
       },
@@ -969,12 +1148,14 @@ const buttonTheme: OptionalButtonTheme = {
     regular: {
       allStates: {
         view: {
-          style: {
-            height: 36,
-            marginHorizontal: 16,
-            marginVertical: 8,
-            minWidth: 64,
-            paddingHorizontal: 16,
+          props: {
+            style: {
+              height: 36,
+              marginHorizontal: 16,
+              marginVertical: 8,
+              minWidth: 64,
+              paddingHorizontal: 16,
+            },
           },
         },
       },
@@ -982,12 +1163,14 @@ const buttonTheme: OptionalButtonTheme = {
     small: {
       allStates: {
         view: {
-          style: {
-            height: 32,
-            marginHorizontal: 16,
-            marginVertical: 8,
-            minWidth: 64,
-            paddingHorizontal: 16,
+          props: {
+            style: {
+              height: 32,
+              marginHorizontal: 16,
+              marginVertical: 8,
+              minWidth: 64,
+              paddingHorizontal: 16,
+            },
           },
         },
       },
@@ -998,12 +1181,14 @@ const buttonTheme: OptionalButtonTheme = {
     xlarge: {
       allStates: {
         view: {
-          style: {
-            height: 48,
-            marginHorizontal: 16,
-            marginVertical: 8,
-            minWidth: 82,
-            paddingHorizontal: 28,
+          props: {
+            style: {
+              height: 48,
+              marginHorizontal: 16,
+              marginVertical: 8,
+              minWidth: 82,
+              paddingHorizontal: 28,
+            },
           },
         },
       },
@@ -1011,12 +1196,14 @@ const buttonTheme: OptionalButtonTheme = {
     xsmall: {
       allStates: {
         view: {
-          style: {
-            height: 28,
-            marginHorizontal: 8,
-            marginVertical: 4,
-            minWidth: 54,
-            paddingHorizontal: 8,
+          props: {
+            style: {
+              height: 28,
+              marginHorizontal: 8,
+              marginVertical: 4,
+              minWidth: 54,
+              paddingHorizontal: 8,
+            },
           },
         },
       },
@@ -1026,44 +1213,46 @@ const buttonTheme: OptionalButtonTheme = {
     allSizes: {
       allStates: {
         text: {
-          getDynamicStyle: getContainedRaisedLabelStyle,
+          getProps: getContainedRaisedLabelProps,
         },
       },
       disabled: {
         view: {
-          getDynamicStyle: getDisabledContainedRaisedContainerStyle,
+          getProps: getDisabledContainedRaisedContainerProps,
         },
       },
       enabled: {
         view: {
-          getDynamicStyle: getEnabledContainedRaisedContainerStyle,
+          getProps: getEnabledContainedRaisedContainerProps,
         },
       },
       focused: {
         view: {
-          getDynamicStyle: getFocusedContainedRaisedContainerStyle,
+          getProps: getFocusedContainedRaisedContainerProps,
         },
       },
       hovered: {
         view: {
-          getDynamicStyle: getHoveredContainedRaisedContainerStyle,
+          getProps: getHoveredContainedRaisedContainerProps,
         },
       },
       pressed: {
         view: {
-          getDynamicStyle: getPressedContainedRaisedContainerStyle,
+          getProps: getPressedContainedRaisedContainerProps,
         },
       },
     },
     large: {
       allStates: {
         view: {
-          style: {
-            height: 40,
-            marginHorizontal: 16,
-            marginVertical: 8,
-            minWidth: 72,
-            paddingHorizontal: 20,
+          props: {
+            style: {
+              height: 40,
+              marginHorizontal: 16,
+              marginVertical: 8,
+              minWidth: 72,
+              paddingHorizontal: 20,
+            },
           },
         },
       },
@@ -1071,12 +1260,14 @@ const buttonTheme: OptionalButtonTheme = {
     regular: {
       allStates: {
         view: {
-          style: {
-            height: 36,
-            marginHorizontal: 16,
-            marginVertical: 8,
-            minWidth: 64,
-            paddingHorizontal: 16,
+          props: {
+            style: {
+              height: 36,
+              marginHorizontal: 16,
+              marginVertical: 8,
+              minWidth: 64,
+              paddingHorizontal: 16,
+            },
           },
         },
       },
@@ -1084,12 +1275,14 @@ const buttonTheme: OptionalButtonTheme = {
     small: {
       allStates: {
         view: {
-          style: {
-            height: 32,
-            marginHorizontal: 16,
-            marginVertical: 8,
-            minWidth: 64,
-            paddingHorizontal: 16,
+          props: {
+            style: {
+              height: 32,
+              marginHorizontal: 16,
+              marginVertical: 8,
+              minWidth: 64,
+              paddingHorizontal: 16,
+            },
           },
         },
       },
@@ -1100,12 +1293,14 @@ const buttonTheme: OptionalButtonTheme = {
     xlarge: {
       allStates: {
         view: {
-          style: {
-            height: 48,
-            marginHorizontal: 16,
-            marginVertical: 8,
-            minWidth: 82,
-            paddingHorizontal: 28,
+          props: {
+            style: {
+              height: 48,
+              marginHorizontal: 16,
+              marginVertical: 8,
+              minWidth: 82,
+              paddingHorizontal: 28,
+            },
           },
         },
       },
@@ -1113,12 +1308,14 @@ const buttonTheme: OptionalButtonTheme = {
     xsmall: {
       allStates: {
         view: {
-          style: {
-            height: 28,
-            marginHorizontal: 8,
-            marginVertical: 4,
-            minWidth: 54,
-            paddingHorizontal: 8,
+          props: {
+            style: {
+              height: 28,
+              marginHorizontal: 8,
+              marginVertical: 4,
+              minWidth: 54,
+              paddingHorizontal: 8,
+            },
           },
         },
       },
@@ -1128,44 +1325,46 @@ const buttonTheme: OptionalButtonTheme = {
     allSizes: {
       allStates: {
         text: {
-          getDynamicStyle: getDefaultLabelStyle,
+          getProps: getDefaultLabelProps,
         },
       },
       disabled: {
         view: {
-          getDynamicStyle: getDisabledDefaultContainerStyle,
+          getProps: getDisabledDefaultContainerProps,
         },
       },
       enabled: {
         view: {
-          getDynamicStyle: getEnabledDefaultContainerStyle,
+          getProps: getEnabledDefaultContainerProps,
         },
       },
       focused: {
         view: {
-          getDynamicStyle: getFocusedDefaultContainerStyle,
+          getProps: getFocusedDefaultContainerProps,
         },
       },
       hovered: {
         view: {
-          getDynamicStyle: getHoveredDefaultContainerStyle,
+          getProps: getHoveredDefaultContainerProps,
         },
       },
       pressed: {
         view: {
-          getDynamicStyle: getPressedDefaultContainerStyle,
+          getProps: getPressedDefaultContainerProps,
         },
       },
     },
     large: {
       allStates: {
         view: {
-          style: {
-            height: 40,
-            marginHorizontal: 16,
-            marginVertical: 8,
-            minWidth: 64,
-            paddingHorizontal: 8,
+          props: {
+            style: {
+              height: 40,
+              marginHorizontal: 16,
+              marginVertical: 8,
+              minWidth: 64,
+              paddingHorizontal: 8,
+            },
           },
         },
       },
@@ -1173,12 +1372,14 @@ const buttonTheme: OptionalButtonTheme = {
     regular: {
       allStates: {
         view: {
-          style: {
-            height: 36,
-            marginHorizontal: 16,
-            marginVertical: 8,
-            minWidth: 64,
-            paddingHorizontal: 8,
+          props: {
+            style: {
+              height: 36,
+              marginHorizontal: 16,
+              marginVertical: 8,
+              minWidth: 64,
+              paddingHorizontal: 8,
+            },
           },
         },
       },
@@ -1186,12 +1387,14 @@ const buttonTheme: OptionalButtonTheme = {
     small: {
       allStates: {
         view: {
-          style: {
-            height: 32,
-            marginHorizontal: 16,
-            marginVertical: 8,
-            minWidth: 64,
-            paddingHorizontal: 8,
+          props: {
+            style: {
+              height: 32,
+              marginHorizontal: 16,
+              marginVertical: 8,
+              minWidth: 64,
+              paddingHorizontal: 8,
+            },
           },
         },
       },
@@ -1199,12 +1402,14 @@ const buttonTheme: OptionalButtonTheme = {
     xlarge: {
       allStates: {
         view: {
-          style: {
-            height: 48,
-            marginHorizontal: 16,
-            marginVertical: 8,
-            minWidth: 70,
-            paddingHorizontal: 12,
+          props: {
+            style: {
+              height: 48,
+              marginHorizontal: 16,
+              marginVertical: 8,
+              minWidth: 70,
+              paddingHorizontal: 12,
+            },
           },
         },
       },
@@ -1212,12 +1417,14 @@ const buttonTheme: OptionalButtonTheme = {
     xsmall: {
       allStates: {
         view: {
-          style: {
-            height: 28,
-            marginHorizontal: 8,
-            marginVertical: 4,
-            minWidth: 54,
-            paddingHorizontal: 4,
+          props: {
+            style: {
+              height: 28,
+              marginHorizontal: 8,
+              marginVertical: 4,
+              minWidth: 54,
+              paddingHorizontal: 4,
+            },
           },
         },
       },
@@ -1227,48 +1434,50 @@ const buttonTheme: OptionalButtonTheme = {
     allSizes: {
       allStates: {
         text: {
-          getDynamicStyle: getOutlinedLabelStyle,
+          getProps: getOutlinedLabelProps,
         },
         view: {
-          getDynamicStyle: getOutlinedContainerCommonStyle,
+          getProps: getOutlinedContainerCommonProps,
         },
       },
       disabled: {
         view: {
-          getDynamicStyle: getDisabledOutlinedContainerStyle,
+          getProps: getDisabledOutlinedContainerProps,
         },
       },
       enabled: {
         view: {
-          getDynamicStyle: getEnabledOutlinedContainerStyle,
+          getProps: getEnabledOutlinedContainerProps,
         },
       },
       focused: {
         view: {
-          getDynamicStyle: getFocusedOutlinedContainerStyle,
+          getProps: getFocusedOutlinedContainerProps,
         },
       },
       hovered: {
         view: {
-          getDynamicStyle: getHoveredOutlinedContainerStyle,
+          getProps: getHoveredOutlinedContainerProps,
         },
       },
       pressed: {
         view: {
-          getDynamicStyle: getPressedOutlinedContainerStyle,
+          getProps: getPressedOutlinedContainerProps,
         },
       },
     },
     large: {
       allStates: {
         view: {
-          style: {
-            borderWidth: 2,
-            height: 40,
-            marginHorizontal: 16,
-            marginVertical: 8,
-            minWidth: 72,
-            paddingHorizontal: 20,
+          props: {
+            style: {
+              borderWidth: 2,
+              height: 40,
+              marginHorizontal: 16,
+              marginVertical: 8,
+              minWidth: 72,
+              paddingHorizontal: 20,
+            },
           },
         },
       },
@@ -1276,13 +1485,15 @@ const buttonTheme: OptionalButtonTheme = {
     regular: {
       allStates: {
         view: {
-          style: {
-            borderWidth: 2,
-            height: 36,
-            marginHorizontal: 16,
-            marginVertical: 8,
-            minWidth: 64,
-            paddingHorizontal: 14,
+          props: {
+            style: {
+              borderWidth: 2,
+              height: 36,
+              marginHorizontal: 16,
+              marginVertical: 8,
+              minWidth: 64,
+              paddingHorizontal: 14,
+            },
           },
         },
       },
@@ -1290,13 +1501,15 @@ const buttonTheme: OptionalButtonTheme = {
     small: {
       allStates: {
         view: {
-          style: {
-            borderWidth: 2,
-            height: 32,
-            marginHorizontal: 16,
-            marginVertical: 8,
-            minWidth: 64,
-            paddingHorizontal: 14,
+          props: {
+            style: {
+              borderWidth: 2,
+              height: 32,
+              marginHorizontal: 16,
+              marginVertical: 8,
+              minWidth: 64,
+              paddingHorizontal: 14,
+            },
           },
         },
       },
@@ -1304,13 +1517,15 @@ const buttonTheme: OptionalButtonTheme = {
     xlarge: {
       allStates: {
         view: {
-          style: {
-            borderWidth: 3,
-            height: 48,
-            marginHorizontal: 16,
-            marginVertical: 8,
-            minWidth: 82,
-            paddingHorizontal: 24,
+          props: {
+            style: {
+              borderWidth: 3,
+              height: 48,
+              marginHorizontal: 16,
+              marginVertical: 8,
+              minWidth: 82,
+              paddingHorizontal: 24,
+            },
           },
         },
       },
@@ -1318,13 +1533,15 @@ const buttonTheme: OptionalButtonTheme = {
     xsmall: {
       allStates: {
         view: {
-          style: {
-            borderWidth: 1,
-            height: 28,
-            marginHorizontal: 8,
-            marginVertical: 4,
-            minWidth: 54,
-            paddingHorizontal: 6,
+          props: {
+            style: {
+              borderWidth: 1,
+              height: 28,
+              marginHorizontal: 8,
+              marginVertical: 4,
+              minWidth: 54,
+              paddingHorizontal: 6,
+            },
           },
         },
       },
