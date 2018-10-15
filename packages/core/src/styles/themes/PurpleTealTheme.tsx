@@ -501,16 +501,6 @@ const getOutlinedLabelProps: TextPropsGetter<SpecialButtonProps> = (
   style: getDefaultLabelStyle(props),
 });
 
-type TextPropsFromThemeGetter<TextThemeProps> = (
-  textTheme: TextTheme<TextThemeProps>,
-  props: TextThemeProps,
-) => TextProps;
-
-const getTextButtonPropsFromTheme: TextPropsFromThemeGetter<
-  SpecialButtonProps
-> = (textTheme, props): TextProps =>
-  merge({}, textTheme.props, textTheme.getProps(props));
-
 export const createRegisteredTextStyle: RegisteredTextStyleFactory = style =>
   StyleSheet.create<TextStyleObj>({
     text: style,
@@ -525,48 +515,34 @@ export const getTextProps: TextPropsGetter<SpecialButtonProps> = (
     ? props.interactivityState.type
     : InteractivityType.ENABLED;
 
+  const { size, variant } = props;
+
   const textProps = merge(
     {},
     /* allVariants && allSizes && allStates */
-    getTextButtonPropsFromTheme(
-      buttonTheme.allVariants.allSizes.allStates.text,
-      props,
-    ),
+    buttonTheme.allVariants.allSizes.allStates.text.props,
+    buttonTheme.allVariants.allSizes.allStates.text.getProps(props),
     /* allVariants && allSizes && state */
-    getTextButtonPropsFromTheme(
-      buttonTheme.allVariants.allSizes[interactivityType].text,
-      props,
-    ),
+    buttonTheme.allVariants.allSizes[interactivityType].text.props,
+    buttonTheme.allVariants.allSizes[interactivityType].text.getProps(props),
     /* allVariants && size && allStates */
-    getTextButtonPropsFromTheme(
-      buttonTheme.allVariants[props.size].allStates.text,
-      props,
-    ),
+    buttonTheme.allVariants[size].allStates.text.props,
+    buttonTheme.allVariants[size].allStates.text.getProps(props),
     /* allVariants && size && state */
-    getTextButtonPropsFromTheme(
-      buttonTheme.allVariants[props.size][interactivityType].text,
-      props,
-    ),
+    buttonTheme.allVariants[size][interactivityType].text.props,
+    buttonTheme.allVariants[size][interactivityType].text.getProps(props),
     /* variant && allSizes && allStates */
-    getTextButtonPropsFromTheme(
-      buttonTheme[props.variant].allSizes.allStates.text,
-      props,
-    ),
+    buttonTheme[variant].allSizes.allStates.text.props,
+    buttonTheme[variant].allSizes.allStates.text.getProps(props),
     /* variant && allSizes && state */
-    getTextButtonPropsFromTheme(
-      buttonTheme[props.variant].allSizes[interactivityType].text,
-      props,
-    ),
+    buttonTheme[variant].allSizes[interactivityType].text.props,
+    buttonTheme[variant].allSizes[interactivityType].text.getProps(props),
     /* variant && size && allStates */
-    getTextButtonPropsFromTheme(
-      buttonTheme[props.variant][props.size].allStates.text,
-      props,
-    ),
+    buttonTheme[variant][size].allStates.text.props,
+    buttonTheme[variant][size].allStates.text.getProps(props),
     /* variant && size && state */
-    getTextButtonPropsFromTheme(
-      buttonTheme[props.variant][props.size][interactivityType].text,
-      props,
-    ),
+    buttonTheme[variant][size][interactivityType].text.props,
+    buttonTheme[variant][size][interactivityType].text.getProps(props),
   );
 
   const textStyle: TextStyle = textProps.style as TextStyle;
@@ -582,15 +558,6 @@ export const getRegisteredTextStyle: RegisteredTextStyleGetter<
     text: getTextStyle(props),
   });
 */
-type ViewPropsFromThemeGetter<ViewThemeProps> = (
-  viewTheme: ViewTheme<ViewThemeProps>,
-  props: ViewThemeProps,
-) => ViewProps;
-
-const getViewPropsFromTheme: ViewPropsFromThemeGetter<SpecialButtonProps> = (
-  viewTheme,
-  props,
-): ViewProps => merge({}, viewTheme.props, viewTheme.getProps(props));
 
 export const createRegisteredViewStyle: RegisteredViewStyleFactory = style =>
   StyleSheet.create<ViewStyleObj>({
@@ -606,48 +573,34 @@ export const getViewProps: ViewPropsGetter<SpecialButtonProps> = (
     ? props.interactivityState.type
     : InteractivityType.ENABLED;
 
+  const { size, variant } = props;
+
   const viewProps = merge(
     {},
     /* allVariants && allSizes && allStates */
-    getViewPropsFromTheme(
-      buttonTheme.allVariants.allSizes.allStates.view,
-      props,
-    ),
+    buttonTheme.allVariants.allSizes.allStates.view.props,
+    buttonTheme.allVariants.allSizes.allStates.view.getProps(props),
     /* allVariants && allSizes && state */
-    getViewPropsFromTheme(
-      buttonTheme.allVariants.allSizes[interactivityType].view,
-      props,
-    ),
+    buttonTheme.allVariants.allSizes[interactivityType].view.props,
+    buttonTheme.allVariants.allSizes[interactivityType].view.getProps(props),
     /* allVariants && size && allStates */
-    getViewPropsFromTheme(
-      buttonTheme.allVariants[props.size].allStates.view,
-      props,
-    ),
+    buttonTheme.allVariants[size].allStates.view.props,
+    buttonTheme.allVariants[size].allStates.view.getProps(props),
     /* allVariants && size && state */
-    getViewPropsFromTheme(
-      buttonTheme.allVariants[props.size][interactivityType].view,
-      props,
-    ),
+    buttonTheme.allVariants[size][interactivityType].view.props,
+    buttonTheme.allVariants[size][interactivityType].view.getProps(props),
     /* variant && allSizes && allStates */
-    getViewPropsFromTheme(
-      buttonTheme[props.variant].allSizes.allStates.view,
-      props,
-    ),
+    buttonTheme[variant].allSizes.allStates.view.props,
+    buttonTheme[variant].allSizes.allStates.view.getProps(props),
     /* variant && allSizes && state */
-    getViewPropsFromTheme(
-      buttonTheme[props.variant].allSizes[interactivityType].view,
-      props,
-    ),
+    buttonTheme[variant].allSizes[interactivityType].view.props,
+    buttonTheme[variant].allSizes[interactivityType].view.getProps(props),
     /* variant && size && allStates */
-    getViewPropsFromTheme(
-      buttonTheme[props.variant][props.size].allStates.view,
-      props,
-    ),
+    buttonTheme[variant][size].allStates.view.props,
+    buttonTheme[variant][size].allStates.view.getProps(props),
     /* variant && size && state */
-    getViewPropsFromTheme(
-      buttonTheme[props.variant][props.size][interactivityType].view,
-      props,
-    ),
+    buttonTheme[variant][size][interactivityType].view.props,
+    buttonTheme[variant][size][interactivityType].view.getProps(props),
   );
 
   const viewStyle: ViewStyle = viewProps.style as ViewStyle;
