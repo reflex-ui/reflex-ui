@@ -550,14 +550,6 @@ export const getTextProps: TextPropsGetter<SpecialButtonProps> = (
 
   return textProps;
 };
-/*
-export const getRegisteredTextStyle: RegisteredTextStyleGetter<
-  SpecialButtonProps
-> = props =>
-  StyleSheet.create<TextStyleObj>({
-    text: getTextStyle(props),
-  });
-*/
 
 export const createRegisteredViewStyle: RegisteredViewStyleFactory = style =>
   StyleSheet.create<ViewStyleObj>({
@@ -609,14 +601,6 @@ export const getViewProps: ViewPropsGetter<SpecialButtonProps> = (
   return viewProps;
 };
 
-/*
-export const getRegisteredViewStyle: RegisteredViewStyleGetter<
-  SpecialButtonProps
-> = props =>
-  StyleSheet.create<ViewStyleObj>({
-    view: getViewStyle(props),
-  });
-*/
 const DefaultInnerContainer: React.ComponentType<ButtonViewProps> = ({
   children,
   colorTheme,
