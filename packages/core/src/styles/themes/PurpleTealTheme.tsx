@@ -66,7 +66,7 @@ interface TypographyComponents {
   readonly subtitle2: TextStyle;
 }
 
-type ViewPropsGetter<P> = (props: P) => ViewProps;
+export type ViewPropsGetter<P> = (props: P) => ViewProps;
 
 type ViewStyleGetter<P> = (props: P) => ViewStyle;
 
@@ -248,7 +248,7 @@ const getButtonViewStyle: ViewStyleGetter<SpecialButtonProps> = ({
   flexGrow: fullWidth ? 1 : undefined,
 });
 
-const getButtonViewProps: ViewPropsGetter<SpecialButtonProps> = props => ({
+const getButtonThemeViewProps: ViewPropsGetter<SpecialButtonProps> = props => ({
   style: getButtonViewStyle(props),
 });
 
@@ -506,7 +506,7 @@ export const createRegisteredTextStyle: RegisteredTextStyleFactory = style =>
     text: style,
   });
 
-export const getTextProps: TextPropsGetter<SpecialButtonProps> = (
+export const getButtonTextProps: TextPropsGetter<SpecialButtonProps> = (
   props: SpecialButtonProps,
 ): TextProps => {
   // tslint:disable-next-line:no-shadowed-variable
@@ -556,7 +556,7 @@ export const createRegisteredViewStyle: RegisteredViewStyleFactory = style =>
     view: style,
   });
 
-export const getViewProps: ViewPropsGetter<SpecialButtonProps> = (
+export const getButtonViewProps: ViewPropsGetter<SpecialButtonProps> = (
   props: SpecialButtonProps,
 ): ViewProps => {
   // tslint:disable-next-line:no-shadowed-variable
@@ -566,6 +566,7 @@ export const getViewProps: ViewPropsGetter<SpecialButtonProps> = (
     : InteractivityType.ENABLED;
 
   const { size, variant } = props;
+  const userProps = props.getViewProps ? props.getViewProps(props) : {};
 
   const viewProps = merge(
     {},
@@ -593,10 +594,15 @@ export const getViewProps: ViewPropsGetter<SpecialButtonProps> = (
     /* variant && size && state */
     buttonTheme[variant][size][interactivityType].view.props,
     buttonTheme[variant][size][interactivityType].view.getProps(props),
+    /* user props */
+    userProps,
   );
 
   const viewStyle: ViewStyle = viewProps.style as ViewStyle;
   viewProps.style = createRegisteredViewStyle(viewStyle || {}).view;
+
+  // tslint:disable-next-line:no-console
+  console.log('PurpleTealTheme().getViewProps() - viewStyle: ', viewStyle);
 
   return viewProps;
 };
@@ -848,7 +854,7 @@ const buttonTheme: OptionalButtonTheme = {
           },
         },
         view: {
-          getProps: getButtonViewProps,
+          getProps: getButtonThemeViewProps,
           props: {
             pointerEvents: 'box-only',
             style: {

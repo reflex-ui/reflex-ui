@@ -38,16 +38,17 @@ interface RaisedComponentState {
   readonly staticRaiseStyles: RaiseStyles;
 }
 
-type StaticRaiseStylesCreator = (backgroundColor: string) => RaiseStyles;
+type StaticRaiseStylesCreator = (style: ViewStyle) => RaiseStyles;
 
-const createStaticRaiseStyles: StaticRaiseStylesCreator = backgroundColor => ({
+const createStaticRaiseStyles: StaticRaiseStylesCreator = style => ({
   container: {
     ...StyleSheet.absoluteFillObject,
     zIndex: 0,
   },
   shadow: {
+    backgroundColor: style.backgroundColor,
+    borderRadius: style.borderRadius,
     ...StyleSheet.absoluteFillObject,
-    backgroundColor,
   },
 });
 
@@ -111,10 +112,9 @@ export const withRaiseEffect = <
 
       const { animationKeyframe, isAnimating } = state;
 
-      const backgroundColor =
-        StyleSheet.flatten(props.style).backgroundColor || '#ffffff';
-
-      const staticRaiseStyles = createStaticRaiseStyles(backgroundColor);
+      const staticRaiseStyles = createStaticRaiseStyles(
+        StyleSheet.flatten(props.style),
+      );
 
       if (
         interactivityType === InteractivityType.DISABLED &&

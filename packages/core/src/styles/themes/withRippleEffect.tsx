@@ -110,6 +110,7 @@ interface RippleStylesCreatorData {
   readonly color: string;
   readonly diameter: number;
   readonly position: Position2D;
+  readonly style: ViewStyle;
 }
 
 type RippleStylesCreator = (props: RippleStylesCreatorData) => RippleStyles;
@@ -118,10 +119,12 @@ const createRippleStyles: RippleStylesCreator = ({
   color,
   diameter,
   position,
+  style,
 }) => ({
   container: {
-    ...StyleSheet.absoluteFillObject,
+    borderRadius: style.borderRadius,
     overflow: 'hidden',
+    ...StyleSheet.absoluteFillObject,
   },
   ripple: {
     backgroundColor: color,
@@ -139,6 +142,7 @@ interface ComponentRippleStylesCreatorData {
   readonly height: number;
   readonly interactivityEvent?: InteractivityEvent;
   readonly maxDiameter: number;
+  readonly style: ViewStyle;
   readonly theme: Theme;
   readonly width: number;
 }
@@ -152,6 +156,7 @@ const createComponentRippleStyles: ComponentRippleStylesCreator = ({
   height,
   interactivityEvent,
   maxDiameter,
+  style,
   theme,
   width,
 }) => {
@@ -162,13 +167,20 @@ const createComponentRippleStyles: ComponentRippleStylesCreator = ({
     posX: interactivityPosition.x,
     width,
   });
-  const color = Color.rgb(getThemedColor({ colorTheme, theme }))
+  const color = Color.rgb(
+    style.backgroundColor || getThemedColor({ colorTheme, theme }),
+  )
     .lighten(0.6)
     .toString();
 
   const position = calculateRipplePosition({ diameter, interactivityPosition });
 
-  return createRippleStyles({ color, diameter, position });
+  return createRippleStyles({
+    color,
+    diameter,
+    position,
+    style,
+  });
 };
 /*
 export type WithRippleEffect = (
@@ -231,6 +243,7 @@ export const withRippleEffect = <
             height,
             interactivityEvent,
             maxDiameter,
+            style: StyleSheet.flatten(props.style),
             theme,
             width,
           }),

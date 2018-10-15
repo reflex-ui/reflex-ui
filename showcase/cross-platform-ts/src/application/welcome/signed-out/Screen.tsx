@@ -3,21 +3,33 @@ import { ScrollView, Text } from 'react-native';
 import {
   Button,
   ButtonVariant,
+  // InteractivityType,
   RowView,
   // Size,
+  // SpecialButtonProps,
 } from 'react-platform-material-design';
 
 const onButtonPress = () => {
   // tslint:disable-next-line:no-console
   console.log('WelcomeSignedOutScreen().onButtonPress()');
 };
-
+/*
+const getViewProps = (props: SpecialButtonProps) => ({
+  style: {
+    backgroundColor:
+      props.interactivityState &&
+      props.interactivityState.type === InteractivityType.PRESSED
+        ? 'green'
+        : 'red',
+  },
+});
+*/
 export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
     <Text>WelcomeSignedOutScreen 1234567</Text>
     <RowView>
       <Button
-        onMouseEnter={onButtonPress}
+        // getViewProps={getViewProps}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >

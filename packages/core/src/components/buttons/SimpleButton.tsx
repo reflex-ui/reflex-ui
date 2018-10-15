@@ -7,8 +7,9 @@ import {
 } from '../../interactivity';
 import { OptionalThemed, Themed } from '../../styles';
 import {
-  getTextProps,
-  getViewProps,
+  getButtonTextProps,
+  getButtonViewProps,
+  ViewPropsGetter,
 } from '../../styles/themes/PurpleTealTheme';
 import { isAndroid, transformText } from '../../utils';
 import { Size } from '../Size';
@@ -17,6 +18,7 @@ import { ButtonVariant } from './ButtonVariant';
 export interface SpecialButtonProps extends InteractivityStateProps, Themed {
   children?: React.ReactNode;
   fullWidth?: boolean;
+  getViewProps?: ViewPropsGetter<SpecialButtonProps>;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
   size: Size;
@@ -28,6 +30,7 @@ export interface OptionalSpecialButtonProps
     OptionalThemed {
   children?: React.ReactNode;
   fullWidth?: boolean;
+  getViewProps?: ViewPropsGetter<SpecialButtonProps>;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
   size?: Size;
@@ -47,6 +50,7 @@ const extractSpecialButtonProps = (
     children,
     colorTheme,
     fullWidth,
+    getViewProps,
     interactivityState,
     leftIcon,
     rightIcon,
@@ -59,6 +63,7 @@ const extractSpecialButtonProps = (
     children,
     colorTheme,
     fullWidth,
+    getViewProps,
     interactivityState,
     leftIcon,
     rightIcon,
@@ -75,6 +80,7 @@ const extractTouchableProps = (
     children,
     colorTheme,
     fullWidth,
+    getViewProps,
     interactivityState,
     leftIcon,
     rightIcon,
@@ -109,7 +115,7 @@ const transformToButtonText = (
   props: SpecialButtonProps,
 ): JSX.Element => {
   // const textStyle = getRegisteredTextStyle(props);
-  const textProps = getTextProps(props);
+  const textProps = getButtonTextProps(props);
   let transformedString = children;
 
   if (isAndroid) {
@@ -134,8 +140,7 @@ export const SimpleButton: React.SFC<ButtonProps> = (props: ButtonProps) => {
   const { Touchable, View } = buttonTheme[variant].subComponents;
   const specialProps = extractSpecialButtonProps(props);
   const touchableProps = extractTouchableProps(props);
-  // const viewStyle = getRegisteredViewStyle(specialProps);
-  const viewProps = getViewProps(specialProps);
+  const viewProps = getButtonViewProps(specialProps);
 
   return (
     <Touchable {...touchableProps}>
