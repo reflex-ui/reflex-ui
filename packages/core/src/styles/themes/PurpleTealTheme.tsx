@@ -525,73 +525,43 @@ export const getTextProps: TextPropsGetter<SpecialButtonProps> = (
     ? props.interactivityState.type
     : InteractivityType.ENABLED;
 
-  let textProps: ViewProps = {};
-
-  textProps = merge(
-    textProps,
+  const textProps = merge(
+    {},
     /* allVariants && allSizes && allStates */
     getTextButtonPropsFromTheme(
       buttonTheme.allVariants.allSizes.allStates.text,
       props,
     ),
-  );
-
-  textProps = merge(
-    textProps,
     /* allVariants && allSizes && state */
     getTextButtonPropsFromTheme(
       buttonTheme.allVariants.allSizes[interactivityType].text,
       props,
     ),
-  );
-
-  textProps = merge(
-    textProps,
     /* allVariants && size && allStates */
     getTextButtonPropsFromTheme(
       buttonTheme.allVariants[props.size].allStates.text,
       props,
     ),
-  );
-
-  textProps = merge(
-    textProps,
     /* allVariants && size && state */
     getTextButtonPropsFromTheme(
       buttonTheme.allVariants[props.size][interactivityType].text,
       props,
     ),
-  );
-
-  textProps = merge(
-    textProps,
     /* variant && allSizes && allStates */
     getTextButtonPropsFromTheme(
       buttonTheme[props.variant].allSizes.allStates.text,
       props,
     ),
-  );
-
-  textProps = merge(
-    textProps,
     /* variant && allSizes && state */
     getTextButtonPropsFromTheme(
       buttonTheme[props.variant].allSizes[interactivityType].text,
       props,
     ),
-  );
-
-  textProps = merge(
-    textProps,
     /* variant && size && allStates */
     getTextButtonPropsFromTheme(
       buttonTheme[props.variant][props.size].allStates.text,
       props,
     ),
-  );
-
-  textProps = merge(
-    textProps,
     /* variant && size && state */
     getTextButtonPropsFromTheme(
       buttonTheme[props.variant][props.size][interactivityType].text,
@@ -636,73 +606,43 @@ export const getViewProps: ViewPropsGetter<SpecialButtonProps> = (
     ? props.interactivityState.type
     : InteractivityType.ENABLED;
 
-  let viewProps: ViewProps = {};
-
-  viewProps = merge(
-    viewProps,
+  const viewProps = merge(
+    {},
     /* allVariants && allSizes && allStates */
     getViewPropsFromTheme(
       buttonTheme.allVariants.allSizes.allStates.view,
       props,
     ),
-  );
-
-  viewProps = merge(
-    viewProps,
     /* allVariants && allSizes && state */
     getViewPropsFromTheme(
       buttonTheme.allVariants.allSizes[interactivityType].view,
       props,
     ),
-  );
-
-  viewProps = merge(
-    viewProps,
     /* allVariants && size && allStates */
     getViewPropsFromTheme(
       buttonTheme.allVariants[props.size].allStates.view,
       props,
     ),
-  );
-
-  viewProps = merge(
-    viewProps,
     /* allVariants && size && state */
     getViewPropsFromTheme(
       buttonTheme.allVariants[props.size][interactivityType].view,
       props,
     ),
-  );
-
-  viewProps = merge(
-    viewProps,
     /* variant && allSizes && allStates */
     getViewPropsFromTheme(
       buttonTheme[props.variant].allSizes.allStates.view,
       props,
     ),
-  );
-
-  viewProps = merge(
-    viewProps,
     /* variant && allSizes && state */
     getViewPropsFromTheme(
       buttonTheme[props.variant].allSizes[interactivityType].view,
       props,
     ),
-  );
-
-  viewProps = merge(
-    viewProps,
     /* variant && size && allStates */
     getViewPropsFromTheme(
       buttonTheme[props.variant][props.size].allStates.view,
       props,
     ),
-  );
-
-  viewProps = merge(
-    viewProps,
     /* variant && size && state */
     getViewPropsFromTheme(
       buttonTheme[props.variant][props.size][interactivityType].view,
