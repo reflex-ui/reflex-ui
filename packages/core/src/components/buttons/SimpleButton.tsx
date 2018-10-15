@@ -9,6 +9,7 @@ import { OptionalThemed, Themed } from '../../styles';
 import {
   getButtonTextProps,
   getButtonViewProps,
+  TextPropsGetter,
   ViewPropsGetter,
 } from '../../styles/themes/PurpleTealTheme';
 import { isAndroid, transformText } from '../../utils';
@@ -18,6 +19,7 @@ import { ButtonVariant } from './ButtonVariant';
 export interface SpecialButtonProps extends InteractivityStateProps, Themed {
   children?: React.ReactNode;
   fullWidth?: boolean;
+  getTextProps?: TextPropsGetter<SpecialButtonProps>;
   getViewProps?: ViewPropsGetter<SpecialButtonProps>;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
@@ -30,6 +32,7 @@ export interface OptionalSpecialButtonProps
     OptionalThemed {
   children?: React.ReactNode;
   fullWidth?: boolean;
+  getTextProps?: TextPropsGetter<SpecialButtonProps>;
   getViewProps?: ViewPropsGetter<SpecialButtonProps>;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
@@ -50,6 +53,7 @@ const extractSpecialButtonProps = (
     children,
     colorTheme,
     fullWidth,
+    getTextProps,
     getViewProps,
     interactivityState,
     leftIcon,
@@ -63,6 +67,7 @@ const extractSpecialButtonProps = (
     children,
     colorTheme,
     fullWidth,
+    getTextProps,
     getViewProps,
     interactivityState,
     leftIcon,
@@ -80,6 +85,7 @@ const extractTouchableProps = (
     children,
     colorTheme,
     fullWidth,
+    getTextProps,
     getViewProps,
     interactivityState,
     leftIcon,

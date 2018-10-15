@@ -24,11 +24,25 @@ const getViewProps = (props: SpecialButtonProps) => ({
   },
 });
 */
+
+/*
+const getTextProps = (props: SpecialButtonProps) => ({
+  style: {
+    color:
+      props.interactivityState &&
+      props.interactivityState.type === InteractivityType.PRESSED
+        ? 'green'
+        : 'red',
+  },
+});
+*/
+
 export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
     <Text>WelcomeSignedOutScreen 1234567</Text>
     <RowView>
       <Button
+        // getTextProps={getTextProps}
         // getViewProps={getViewProps}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}

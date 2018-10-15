@@ -84,7 +84,7 @@ type RegisteredViewStyleGetter<P> = (
 ) => { view: RegisteredStyle<ViewStyle> };
 */
 
-type TextPropsGetter<P> = (props: P) => TextProps;
+export type TextPropsGetter<P> = (props: P) => TextProps;
 
 type TextStyleGetter<P> = (props: P) => TextStyle;
 
@@ -516,6 +516,7 @@ export const getButtonTextProps: TextPropsGetter<SpecialButtonProps> = (
     : InteractivityType.ENABLED;
 
   const { size, variant } = props;
+  const userProps = props.getTextProps ? props.getTextProps(props) : {};
 
   const textProps = merge(
     {},
@@ -543,6 +544,8 @@ export const getButtonTextProps: TextPropsGetter<SpecialButtonProps> = (
     /* variant && size && state */
     buttonTheme[variant][size][interactivityType].text.props,
     buttonTheme[variant][size][interactivityType].text.getProps(props),
+    /* user props */
+    userProps,
   );
 
   const textStyle: TextStyle = textProps.style as TextStyle;
