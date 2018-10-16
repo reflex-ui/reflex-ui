@@ -3,6 +3,7 @@ import { ScrollView, Text } from 'react-native';
 import {
   Button,
   ButtonVariant,
+  MenuIcon,
   // InteractivityType,
   RowView,
   // Size,
@@ -40,6 +41,7 @@ const getTextProps = (props: SpecialButtonProps) => ({
 export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
     <Text>WelcomeSignedOutScreen 1234567</Text>
+    <MenuIcon />
     <RowView>
       <Button
         // getTextProps={getTextProps}

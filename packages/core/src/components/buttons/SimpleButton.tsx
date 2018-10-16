@@ -110,13 +110,13 @@ const transformButtonChildren = (
     typeof children === 'number' ||
     typeof children === 'boolean'
   ) {
-    return transformToButtonText(children.toString(), props);
+    return transformStringChildrenIntoComponent(children.toString(), props);
   }
 
   return children;
 };
 
-const transformToButtonText = (
+const transformStringChildrenIntoComponent = (
   children: string,
   props: SpecialButtonProps,
 ): JSX.Element => {
