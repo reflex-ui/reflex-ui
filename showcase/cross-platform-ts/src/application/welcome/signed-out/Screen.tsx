@@ -3,7 +3,7 @@ import { ScrollView, Text } from 'react-native';
 import {
   Button,
   ButtonVariant,
-  MenuIcon,
+  FavoriteIcon,
   // InteractivityType,
   RowView,
   // Size,
@@ -41,7 +41,35 @@ const getTextProps = (props: SpecialButtonProps) => ({
 export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
     <Text>WelcomeSignedOutScreen 1234567</Text>
-    <MenuIcon />
+    <RowView>
+      <Button
+        // getTextProps={getTextProps}
+        // getViewProps={getViewProps}
+        onPress={onButtonPress}
+        variant={ButtonVariant.DEFAULT}
+      >
+        Sign In
+      </Button>
+      <Button
+        leftIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.DEFAULT}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button onPress={onButtonPress} variant={ButtonVariant.OUTLINED}>
+        Sign In
+      </Button>
+      <Button
+        leftIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
     <RowView>
       <Button
         // getTextProps={getTextProps}
@@ -50,6 +78,13 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Sign In
+      </Button>
+      <Button
+        leftIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.CONTAINED_RAISED}
+      >
+        Favorite
       </Button>
     </RowView>
     <RowView>

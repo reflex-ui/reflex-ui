@@ -7,6 +7,8 @@ import {
 } from '../../interactivity';
 import { OptionalThemed, Themed } from '../../styles';
 import {
+  getButtonLeftIconContainerProps,
+  getButtonLeftIconProps,
   getButtonTextProps,
   getButtonViewProps,
   TextPropsGetter,
@@ -19,6 +21,7 @@ import { ButtonVariant } from './ButtonVariant';
 export interface SpecialButtonProps extends InteractivityStateProps, Themed {
   children?: React.ReactNode;
   fullWidth?: boolean;
+  getLeftIconContainerProps?: ViewPropsGetter<SpecialButtonProps>;
   getTextProps?: TextPropsGetter<SpecialButtonProps>;
   getViewProps?: ViewPropsGetter<SpecialButtonProps>;
   leftIcon?: JSX.Element;
@@ -32,6 +35,7 @@ export interface OptionalSpecialButtonProps
     OptionalThemed {
   children?: React.ReactNode;
   fullWidth?: boolean;
+  getLeftIconContainerProps?: ViewPropsGetter<SpecialButtonProps>;
   getTextProps?: TextPropsGetter<SpecialButtonProps>;
   getViewProps?: ViewPropsGetter<SpecialButtonProps>;
   leftIcon?: JSX.Element;
@@ -53,6 +57,7 @@ const extractSpecialButtonProps = (
     children,
     colorTheme,
     fullWidth,
+    getLeftIconContainerProps,
     getTextProps,
     getViewProps,
     interactivityState,
@@ -67,6 +72,7 @@ const extractSpecialButtonProps = (
     children,
     colorTheme,
     fullWidth,
+    getLeftIconContainerProps,
     getTextProps,
     getViewProps,
     interactivityState,
@@ -85,6 +91,7 @@ const extractTouchableProps = (
     children,
     colorTheme,
     fullWidth,
+    getLeftIconContainerProps,
     getTextProps,
     getViewProps,
     interactivityState,
@@ -140,6 +147,24 @@ const transformStringChildrenIntoComponent = (
   );
 };
 
+const handleLeftIcon = (props: SpecialButtonProps): JSX.Element | undefined => {
+  const buttonTheme = props.theme.components.button;
+  const { LeftIconContainer } = buttonTheme[props.variant].subComponents;
+  const containerProps = getButtonLeftIconContainerProps(props);
+  const iconProps = getButtonLeftIconProps(props);
+
+  let styledIcon;
+  if (props.leftIcon) {
+    styledIcon = React.cloneElement(props.leftIcon, iconProps);
+  }
+
+  return (
+    <LeftIconContainer {...containerProps} {...props}>
+      {styledIcon}
+    </LeftIconContainer>
+  );
+};
+
 export const SimpleButton: React.SFC<ButtonProps> = (props: ButtonProps) => {
   const { children, variant } = props;
   const buttonTheme = props.theme.components.button;
@@ -151,6 +176,7 @@ export const SimpleButton: React.SFC<ButtonProps> = (props: ButtonProps) => {
   return (
     <Touchable {...touchableProps}>
       <View {...viewProps} {...specialProps}>
+        {specialProps.leftIcon && handleLeftIcon(specialProps)}
         {children && transformButtonChildren(specialProps)}
       </View>
     </Touchable>

@@ -17,6 +17,7 @@ import {
 
 import { SpecialButtonProps } from '../../components/buttons/SimpleButton';
 import { InteractivityType } from '../../interactivity/InteractivityType';
+import { isWeb } from '../../utils/isWeb';
 import { FontWeight } from '../FontWeight';
 import { getFontWeight } from '../getFontWeight';
 import { getThemedColor } from './getThemedColor';
@@ -122,8 +123,10 @@ interface OptionalTextTheme<P> {
 }
 
 interface OptionalButtonSubComponentsTheme {
-  readonly view?: OptionalViewTheme<SpecialButtonProps>;
+  readonly leftIcon?: OptionalTextTheme<SpecialButtonProps>;
+  readonly leftIconContainer?: OptionalViewTheme<SpecialButtonProps>;
   readonly text?: OptionalTextTheme<SpecialButtonProps>;
+  readonly view?: OptionalViewTheme<SpecialButtonProps>;
 }
 
 interface OptionalInteractivityStateTheme<T> {
@@ -136,6 +139,9 @@ interface OptionalInteractivityStateTheme<T> {
 }
 
 interface OptionalButtonSubComponents {
+  readonly LeftIconContainer?: React.ComponentType<
+    SpecialButtonProps & ViewProps
+  >;
   readonly Text?: React.ComponentType<ButtonTextProps>;
   readonly Touchable?: Touchable<TouchableWithoutFeedbackProps>;
   readonly View?: React.ComponentType<ButtonViewProps>;
@@ -193,11 +199,16 @@ interface InteractivityStateTheme<T> {
 }
 
 interface ButtonSubComponentsTheme {
+  readonly leftIcon: TextTheme<SpecialButtonProps>;
+  readonly leftIconContainer: ViewTheme<SpecialButtonProps>;
   readonly text: TextTheme<SpecialButtonProps>;
   readonly view: ViewTheme<SpecialButtonProps>;
 }
 
 interface ButtonSubComponents {
+  readonly LeftIconContainer: React.ComponentType<
+    SpecialButtonProps & ViewProps
+  >;
   readonly Text: React.ComponentType<ButtonTextProps>;
   readonly Touchable: Touchable<TouchableWithoutFeedbackProps>;
   readonly View: React.ComponentType<ButtonViewProps>;
@@ -462,20 +473,31 @@ const getPressedOutlinedContainerProps: ViewPropsGetter<
   style: getPressedDefaultContainerStyle(props),
 });
 
-const getContainedLabelStyle: TextStyleGetter<SpecialButtonProps> = ({
+const getContainedLeftIconProps: TextPropsGetter<
+  SpecialButtonProps
+> = props => ({
+  style: {
+    ...getContainedLabelColorStyle(props),
+  },
+});
+
+const getContainedLabelColorStyle: TextStyleGetter<SpecialButtonProps> = ({
   colorTheme,
   theme,
 }) => ({
   color: getThemedColor({ colorTheme, theme, onColor: true }),
 });
 
-const getContainedLabelProps: TextPropsGetter<SpecialButtonProps> = ({
-  colorTheme,
-  theme,
-}) => ({
-  style: {
-    color: getThemedColor({ colorTheme, theme, onColor: true }),
-  },
+const getContainedLabelStyle: TextStyleGetter<SpecialButtonProps> = (
+  props: SpecialButtonProps,
+) => ({
+  ...getContainedLabelColorStyle(props),
+});
+
+const getContainedLabelProps: TextPropsGetter<SpecialButtonProps> = (
+  props: SpecialButtonProps,
+) => ({
+  style: getContainedLabelStyle(props),
 });
 
 const getContainedRaisedLabelProps: TextPropsGetter<SpecialButtonProps> = (
@@ -484,11 +506,23 @@ const getContainedRaisedLabelProps: TextPropsGetter<SpecialButtonProps> = (
   style: getContainedLabelStyle(props),
 });
 
-const getDefaultLabelStyle: TextStyleGetter<SpecialButtonProps> = ({
+const getDefaultLeftIconProps: TextPropsGetter<SpecialButtonProps> = props => ({
+  style: {
+    ...getDefaultLabelColorStyle(props),
+  },
+});
+
+const getDefaultLabelColorStyle: TextStyleGetter<SpecialButtonProps> = ({
   colorTheme,
   theme,
 }) => ({
-  color: getThemedColor({ colorTheme, theme, onColor: false }),
+  color: getThemedColor({ colorTheme, theme }),
+});
+
+const getDefaultLabelStyle: TextStyleGetter<SpecialButtonProps> = (
+  props: SpecialButtonProps,
+) => ({
+  ...getDefaultLabelColorStyle(props),
 });
 
 const getDefaultLabelProps: TextPropsGetter<SpecialButtonProps> = props => ({
@@ -498,7 +532,9 @@ const getDefaultLabelProps: TextPropsGetter<SpecialButtonProps> = props => ({
 const getOutlinedLabelProps: TextPropsGetter<SpecialButtonProps> = (
   props: SpecialButtonProps,
 ) => ({
-  style: getDefaultLabelStyle(props),
+  style: {
+    ...getDefaultLabelColorStyle(props),
+  },
 });
 
 export const createRegisteredTextStyle: RegisteredTextStyleFactory = style =>
@@ -554,10 +590,122 @@ export const getButtonTextProps: TextPropsGetter<SpecialButtonProps> = (
   return textProps;
 };
 
+export const getButtonLeftIconProps: TextPropsGetter<SpecialButtonProps> = (
+  props: SpecialButtonProps,
+): TextProps => {
+  // tslint:disable-next-line:no-shadowed-variable
+  const buttonTheme = props.theme.components.button;
+  const interactivityType: InteractivityType = props.interactivityState
+    ? props.interactivityState.type
+    : InteractivityType.ENABLED;
+
+  const { size, variant } = props;
+  const userProps = props.getTextProps ? props.getTextProps(props) : {};
+
+  const textProps = merge(
+    {},
+    /* allVariants && allSizes && allStates */
+    buttonTheme.allVariants.allSizes.allStates.leftIcon.props,
+    buttonTheme.allVariants.allSizes.allStates.leftIcon.getProps(props),
+    /* allVariants && allSizes && state */
+    buttonTheme.allVariants.allSizes[interactivityType].leftIcon.props,
+    buttonTheme.allVariants.allSizes[interactivityType].leftIcon.getProps(
+      props,
+    ),
+    /* allVariants && size && allStates */
+    buttonTheme.allVariants[size].allStates.leftIcon.props,
+    buttonTheme.allVariants[size].allStates.leftIcon.getProps(props),
+    /* allVariants && size && state */
+    buttonTheme.allVariants[size][interactivityType].leftIcon.props,
+    buttonTheme.allVariants[size][interactivityType].leftIcon.getProps(props),
+    /* variant && allSizes && allStates */
+    buttonTheme[variant].allSizes.allStates.leftIcon.props,
+    buttonTheme[variant].allSizes.allStates.leftIcon.getProps(props),
+    /* variant && allSizes && state */
+    buttonTheme[variant].allSizes[interactivityType].leftIcon.props,
+    buttonTheme[variant].allSizes[interactivityType].leftIcon.getProps(props),
+    /* variant && size && allStates */
+    buttonTheme[variant][size].allStates.leftIcon.props,
+    buttonTheme[variant][size].allStates.leftIcon.getProps(props),
+    /* variant && size && state */
+    buttonTheme[variant][size][interactivityType].leftIcon.props,
+    buttonTheme[variant][size][interactivityType].leftIcon.getProps(props),
+    /* user props */
+    userProps,
+  );
+
+  const textStyle: TextStyle = textProps.style as TextStyle;
+  textProps.style = createRegisteredTextStyle(textStyle || {}).text;
+
+  return textProps;
+};
+
 export const createRegisteredViewStyle: RegisteredViewStyleFactory = style =>
   StyleSheet.create<ViewStyleObj>({
     view: style,
   });
+
+export const getButtonLeftIconContainerProps: ViewPropsGetter<
+  SpecialButtonProps
+> = (props: SpecialButtonProps): ViewProps => {
+  // tslint:disable-next-line:no-shadowed-variable
+  const buttonTheme = props.theme.components.button;
+  const interactivityType: InteractivityType = props.interactivityState
+    ? props.interactivityState.type
+    : InteractivityType.ENABLED;
+
+  const { size, variant } = props;
+  const userProps = props.getLeftIconContainerProps
+    ? props.getLeftIconContainerProps(props)
+    : {};
+
+  const viewProps = merge(
+    {},
+    /* allVariants && allSizes && allStates */
+    buttonTheme.allVariants.allSizes.allStates.leftIconContainer.props,
+    buttonTheme.allVariants.allSizes.allStates.leftIconContainer.getProps(
+      props,
+    ),
+    /* allVariants && allSizes && state */
+    buttonTheme.allVariants.allSizes[interactivityType].leftIconContainer.props,
+    // tslint:disable-next-line
+    buttonTheme.allVariants.allSizes[
+      interactivityType
+      // tslint:disable-next-line
+    ].leftIconContainer.getProps(props),
+    /* allVariants && size && allStates */
+    buttonTheme.allVariants[size].allStates.leftIconContainer.props,
+    buttonTheme.allVariants[size].allStates.leftIconContainer.getProps(props),
+    /* allVariants && size && state */
+    buttonTheme.allVariants[size][interactivityType].leftIconContainer.props,
+    buttonTheme.allVariants[size][interactivityType].leftIconContainer.getProps(
+      props,
+    ),
+    /* variant && allSizes && allStates */
+    buttonTheme[variant].allSizes.allStates.leftIconContainer.props,
+    buttonTheme[variant].allSizes.allStates.leftIconContainer.getProps(props),
+    /* variant && allSizes && state */
+    buttonTheme[variant].allSizes[interactivityType].leftIconContainer.props,
+    buttonTheme[variant].allSizes[interactivityType].leftIconContainer.getProps(
+      props,
+    ),
+    /* variant && size && allStates */
+    buttonTheme[variant][size].allStates.leftIconContainer.props,
+    buttonTheme[variant][size].allStates.leftIconContainer.getProps(props),
+    /* variant && size && state */
+    buttonTheme[variant][size][interactivityType].leftIconContainer.props,
+    buttonTheme[variant][size][interactivityType].leftIconContainer.getProps(
+      props,
+    ),
+    /* user props */
+    userProps,
+  );
+
+  const viewStyle: ViewStyle = viewProps.style as ViewStyle;
+  viewProps.style = createRegisteredViewStyle(viewStyle || {}).view;
+
+  return viewProps;
+};
 
 export const getButtonViewProps: ViewPropsGetter<SpecialButtonProps> = (
   props: SpecialButtonProps,
@@ -604,9 +752,6 @@ export const getButtonViewProps: ViewPropsGetter<SpecialButtonProps> = (
   const viewStyle: ViewStyle = viewProps.style as ViewStyle;
   viewProps.style = createRegisteredViewStyle(viewStyle || {}).view;
 
-  // tslint:disable-next-line:no-console
-  console.log('PurpleTealTheme().getViewProps() - viewStyle: ', viewStyle);
-
   return viewProps;
 };
 
@@ -631,6 +776,21 @@ const DefaultInnerContainer: React.ComponentType<ButtonViewProps> = ({
   /**/
 }) => <View {...otherProps}>{children}</View>;
 
+const DefaultLeftIconContainer: React.ComponentType<
+  SpecialButtonProps & ViewProps
+> = ({
+  children,
+  colorTheme,
+  fullWidth,
+  interactivityState,
+  leftIcon,
+  rightIcon,
+  size,
+  theme,
+  variant,
+  ...otherProps
+}) => <View {...otherProps}>{children}</View>;
+
 const DefaultButton: Touchable<
   TouchableWithoutFeedbackProps
 > = TouchableWithoutFeedback;
@@ -640,6 +800,14 @@ const DefaultText: React.ComponentType<ButtonTextProps> = props => (
 );
 
 const emptyButtonSubComponentsTheme: ButtonSubComponentsTheme = {
+  leftIcon: {
+    getProps: () => ({}),
+    props: {},
+  },
+  leftIconContainer: {
+    getProps: () => ({}),
+    props: {},
+  },
   text: {
     getProps: () => ({}),
     props: {},
@@ -662,6 +830,7 @@ const emptyButtonInteractivityStateTheme: InteractivityStateTheme<
 };
 
 const emptyButtonSubComponents: ButtonSubComponents = {
+  LeftIconContainer: DefaultLeftIconContainer,
   Text: DefaultText,
   Touchable: DefaultButton,
   View: DefaultInnerContainer,
@@ -839,6 +1008,17 @@ const buttonTheme: OptionalButtonTheme = {
   allVariants: {
     allSizes: {
       allStates: {
+        leftIcon: {
+          props: {
+            style: {
+              ...Platform.select({
+                web: {
+                  userSelect: 'none',
+                },
+              }),
+            },
+          },
+        },
         text: {
           props: {
             style: {
@@ -850,6 +1030,7 @@ const buttonTheme: OptionalButtonTheme = {
                 web: {
                   MozOsxFontSmoothing: 'grayscale',
                   WebkitFontSmoothing: 'antialiased',
+                  marginTop: isWeb ? -2 : 0,
                   userSelect: 'none',
                 },
               }),
@@ -889,6 +1070,21 @@ const buttonTheme: OptionalButtonTheme = {
     },
     large: {
       allStates: {
+        leftIcon: {
+          props: {
+            style: {
+              fontSize: 19,
+            },
+          },
+        },
+        leftIconContainer: {
+          props: {
+            style: {
+              marginLeft: -6,
+              marginRight: 10,
+            },
+          },
+        },
         text: {
           props: {
             style: {
@@ -908,6 +1104,21 @@ const buttonTheme: OptionalButtonTheme = {
     },
     regular: {
       allStates: {
+        leftIcon: {
+          props: {
+            style: {
+              fontSize: 18,
+            },
+          },
+        },
+        leftIconContainer: {
+          props: {
+            style: {
+              marginLeft: -4,
+              marginRight: 8,
+            },
+          },
+        },
         text: {
           props: {
             style: {
@@ -927,6 +1138,21 @@ const buttonTheme: OptionalButtonTheme = {
     },
     small: {
       allStates: {
+        leftIcon: {
+          props: {
+            style: {
+              fontSize: 17,
+            },
+          },
+        },
+        leftIconContainer: {
+          props: {
+            style: {
+              marginLeft: -3,
+              marginRight: 7,
+            },
+          },
+        },
         text: {
           props: {
             style: {
@@ -946,6 +1172,21 @@ const buttonTheme: OptionalButtonTheme = {
     },
     xlarge: {
       allStates: {
+        leftIcon: {
+          props: {
+            style: {
+              fontSize: 20,
+            },
+          },
+        },
+        leftIconContainer: {
+          props: {
+            style: {
+              marginLeft: -8,
+              marginRight: 12,
+            },
+          },
+        },
         text: {
           props: {
             style: {
@@ -965,6 +1206,21 @@ const buttonTheme: OptionalButtonTheme = {
     },
     xsmall: {
       allStates: {
+        leftIcon: {
+          props: {
+            style: {
+              fontSize: 15,
+            },
+          },
+        },
+        leftIconContainer: {
+          props: {
+            style: {
+              marginLeft: -2,
+              marginRight: 6,
+            },
+          },
+        },
         text: {
           props: {
             style: {
@@ -986,6 +1242,9 @@ const buttonTheme: OptionalButtonTheme = {
   contained: {
     allSizes: {
       allStates: {
+        leftIcon: {
+          getProps: getContainedLeftIconProps,
+        },
         text: {
           getProps: getContainedLabelProps,
         },
@@ -1098,6 +1357,9 @@ const buttonTheme: OptionalButtonTheme = {
   containedRaised: {
     allSizes: {
       allStates: {
+        leftIcon: {
+          getProps: getContainedLeftIconProps,
+        },
         text: {
           getProps: getContainedRaisedLabelProps,
         },
@@ -1210,8 +1472,23 @@ const buttonTheme: OptionalButtonTheme = {
   default: {
     allSizes: {
       allStates: {
+        leftIcon: {
+          getProps: getDefaultLeftIconProps,
+        },
+        leftIconContainer: {
+          props: {
+            style: {
+              marginLeft: 0,
+            },
+          },
+        },
         text: {
           getProps: getDefaultLabelProps,
+          props: {
+            style: {
+              marginTop: isWeb ? -3 : 0,
+            },
+          },
         },
       },
       disabled: {
@@ -1319,6 +1596,9 @@ const buttonTheme: OptionalButtonTheme = {
   outlined: {
     allSizes: {
       allStates: {
+        leftIcon: {
+          getProps: getDefaultLeftIconProps,
+        },
         text: {
           getProps: getOutlinedLabelProps,
         },
