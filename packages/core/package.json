@@ -1,5 +1,5 @@
 {
-  "name": "react-platform-material-design",
+  "name": "@reflex-ui/core",
   "description": "Cross-Platform React Native & Web components for iOS, Android & Web based on Google's Material Design.",
   "author": {
     "name": "Flavio Silva",

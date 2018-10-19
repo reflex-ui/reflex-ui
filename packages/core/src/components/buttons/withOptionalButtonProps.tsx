@@ -1,21 +1,26 @@
 import * as React from 'react';
 
 import { InteractivityType } from '../../interactivity';
-import { ColorTheme, ThemeContext } from '../../styles';
+import { ColorTheme, ThemeContext } from '../../theming';
 import { Size } from '../Size';
 import { ButtonVariant } from './ButtonVariant';
-import { ButtonProps, OptionalButtonProps } from './SimpleButton';
+import {
+  OptionalSpecialButtonProps,
+  SpecialButtonProps,
+} from './SpecialButtonProps';
 
 export const withOptionalButtonProps = (
-  WrappedComponent: React.ComponentType<ButtonProps>,
-): React.ComponentType<OptionalButtonProps> =>
-  class ButtonWithOptionalProps extends React.Component<OptionalButtonProps> {
+  WrappedComponent: React.ComponentType<SpecialButtonProps>,
+): React.ComponentType<OptionalSpecialButtonProps> =>
+  class ButtonWithOptionalProps extends React.Component<
+    OptionalSpecialButtonProps
+  > {
     public render() {
       return (
         // prettier-ignore
         <ThemeContext.Consumer>
           {(theme) => {
-            const props: ButtonProps = {
+            const props: SpecialButtonProps = {
               colorTheme: ColorTheme.PRIMARY_NORMAL,
               interactivityState: {
                 type: InteractivityType.ENABLED,

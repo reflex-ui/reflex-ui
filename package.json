@@ -11,7 +11,8 @@
   ],
   "scripts": {
     "postinstall": "node ./scripts/react-native-web-tsd.js",
-    "start": "tsc -w -p packages/core/tsconfig.json"
+    "start-core": "tsc -w -p packages/core/tsconfig.json",
+    "start-md": "tsc -w -p packages/material-design/tsconfig.json"
   },
   "devDependencies": {
     "@types/history": "^4.7.0",

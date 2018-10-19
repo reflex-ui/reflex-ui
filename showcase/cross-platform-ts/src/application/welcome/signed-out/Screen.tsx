@@ -1,5 +1,3 @@
-import * as React from 'react';
-import { ScrollView, Text } from 'react-native';
 import {
   Button,
   ButtonVariant,
@@ -8,7 +6,9 @@ import {
   RowView,
   // Size,
   // SpecialButtonProps,
-} from 'react-platform-material-design';
+} from '@reflex-ui/core';
+import * as React from 'react';
+import { ScrollView, Text } from 'react-native';
 
 const onButtonPress = () => {
   // tslint:disable-next-line:no-console
@@ -66,6 +66,18 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button onPress={onButtonPress} variant={ButtonVariant.CONTAINED}>
+        Sign In
+      </Button>
+      <Button
+        leftIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.CONTAINED}
       >
         Favorite
       </Button>

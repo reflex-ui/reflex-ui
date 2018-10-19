@@ -1,6 +1,6 @@
 // app entry
+import { isWeb } from '@reflex-ui/core';
 import { AppRegistry } from 'react-native';
-import { isWeb } from 'react-platform-material-design';
 
 import { App } from './App';
 import { config } from './config';

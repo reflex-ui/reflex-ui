@@ -1,5 +1,11 @@
+import { Theme, ThemeContext } from '@reflex-ui/core';
+import {
+  createTheme,
+  purpleTealPaletteTheme,
+} from '@reflex-ui/material-design';
 import * as React from 'react';
-import { PurpleTealTheme, ThemeContext } from 'react-platform-material-design';
+
+const PurpleTealTheme: Theme = createTheme(purpleTealPaletteTheme);
 
 export type IWithAppLogic = <P extends {}>(
   WrappedComponent: React.ComponentType<P>,

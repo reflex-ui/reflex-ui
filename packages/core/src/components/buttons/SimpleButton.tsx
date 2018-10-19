@@ -1,48 +1,19 @@
 import * as React from 'react';
 import { StyleSheet, TouchableWithoutFeedbackProps } from 'react-native';
 
+import { InteractivityProps } from '../../interactivity';
+import { isAndroid } from '../../utils';
+import { transformText } from '../typography';
 import {
-  InteractivityProps,
-  InteractivityStateProps,
-} from '../../interactivity';
-import { OptionalThemed, Themed } from '../../styles';
+  OptionalSpecialButtonProps,
+  SpecialButtonProps,
+} from './SpecialButtonProps';
 import {
   getButtonLeftIconContainerProps,
   getButtonLeftIconProps,
   getButtonTextProps,
   getButtonViewProps,
-  TextPropsGetter,
-  ViewPropsGetter,
-} from '../../styles/themes/PurpleTealTheme';
-import { isAndroid, transformText } from '../../utils';
-import { Size } from '../Size';
-import { ButtonVariant } from './ButtonVariant';
-
-export interface SpecialButtonProps extends InteractivityStateProps, Themed {
-  children?: React.ReactNode;
-  fullWidth?: boolean;
-  getLeftIconContainerProps?: ViewPropsGetter<SpecialButtonProps>;
-  getTextProps?: TextPropsGetter<SpecialButtonProps>;
-  getViewProps?: ViewPropsGetter<SpecialButtonProps>;
-  leftIcon?: JSX.Element;
-  rightIcon?: JSX.Element;
-  size: Size;
-  variant: ButtonVariant;
-}
-
-export interface OptionalSpecialButtonProps
-  extends InteractivityStateProps,
-    OptionalThemed {
-  children?: React.ReactNode;
-  fullWidth?: boolean;
-  getLeftIconContainerProps?: ViewPropsGetter<SpecialButtonProps>;
-  getTextProps?: TextPropsGetter<SpecialButtonProps>;
-  getViewProps?: ViewPropsGetter<SpecialButtonProps>;
-  leftIcon?: JSX.Element;
-  rightIcon?: JSX.Element;
-  size?: Size;
-  variant?: ButtonVariant;
-}
+} from './theming';
 
 export interface ButtonProps extends SpecialButtonProps, InteractivityProps {}
 
@@ -127,7 +98,6 @@ const transformStringChildrenIntoComponent = (
   children: string,
   props: SpecialButtonProps,
 ): JSX.Element => {
-  // const textStyle = getRegisteredTextStyle(props);
   const textProps = getButtonTextProps(props);
   let transformedString = children;
 

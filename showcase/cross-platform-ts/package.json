@@ -22,7 +22,7 @@
     "react-native": "0.56.0",
     "react-native-navigation": "^2.0.2461",
     "react-native-web": "^0.8.9",
-    "react-platform-material-design": "^0.1.0",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "@reflex-ui/core": "^0.1.0"
   }
 }
