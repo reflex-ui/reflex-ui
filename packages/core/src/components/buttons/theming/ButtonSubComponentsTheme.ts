@@ -1,17 +1,17 @@
-import { SpecialButtonProps } from '../../buttons';
 import { OptionalTextTheme, TextTheme } from '../../typography';
 import { OptionalViewTheme, ViewTheme } from '../../views';
+import { ButtonProps } from '../ButtonProps';
 
 export interface ButtonSubComponentsTheme {
-  readonly leftIcon: TextTheme<SpecialButtonProps>;
-  readonly leftIconContainer: ViewTheme<SpecialButtonProps>;
-  readonly text: TextTheme<SpecialButtonProps>;
-  readonly view: ViewTheme<SpecialButtonProps>;
+  readonly leftIcon: TextTheme<ButtonProps>;
+  readonly leftIconContainer: ViewTheme<ButtonProps>;
+  readonly text: TextTheme<ButtonProps>;
+  readonly view: ViewTheme<ButtonProps>;
 }
 
 export interface OptionalButtonSubComponentsTheme {
-  readonly leftIcon?: OptionalTextTheme<SpecialButtonProps>;
-  readonly leftIconContainer?: OptionalViewTheme<SpecialButtonProps>;
-  readonly text?: OptionalTextTheme<SpecialButtonProps>;
-  readonly view?: OptionalViewTheme<SpecialButtonProps>;
+  readonly leftIcon?: OptionalTextTheme<ButtonProps>;
+  readonly leftIconContainer?: OptionalViewTheme<ButtonProps>;
+  readonly text?: OptionalTextTheme<ButtonProps>;
+  readonly view?: OptionalViewTheme<ButtonProps>;
 }

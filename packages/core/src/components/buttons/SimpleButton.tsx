@@ -6,47 +6,12 @@ import {
   handleAndroidTextTransformation,
 } from '../typography/handleAndroidTextTransformation';
 import { ButtonProps } from './ButtonProps';
-import { SpecialButtonProps } from './SpecialButtonProps';
 import {
   getButtonLeftIconContainerProps,
   getButtonLeftIconProps,
   getButtonTextProps,
   getButtonViewProps,
 } from './theming';
-
-const extractSpecialButtonProps = (
-  props: SpecialButtonProps,
-): SpecialButtonProps => {
-  const {
-    children,
-    colorTheme,
-    fullWidth,
-    getLeftIconContainerProps,
-    getTextProps,
-    getViewProps,
-    interactivityState,
-    leftIcon,
-    rightIcon,
-    size,
-    theme,
-    variant,
-  } = props;
-
-  return {
-    children,
-    colorTheme,
-    fullWidth,
-    getLeftIconContainerProps,
-    getTextProps,
-    getViewProps,
-    interactivityState,
-    leftIcon,
-    rightIcon,
-    size,
-    theme,
-    variant,
-  };
-};
 
 const extractTouchableProps = (
   props: ButtonProps,
@@ -70,9 +35,7 @@ const extractTouchableProps = (
   return touchableProps;
 };
 
-const transformButtonChildren = (
-  props: SpecialButtonProps,
-): React.ReactNode => {
+const transformButtonChildren = (props: ButtonProps): React.ReactNode => {
   const { children } = props;
   if (!children) return undefined;
 
@@ -89,19 +52,19 @@ const transformButtonChildren = (
 
 const transformStringChildrenIntoComponent = (
   children: string,
-  props: SpecialButtonProps,
+  props: ButtonProps,
 ): JSX.Element => {
   const textProps = getButtonTextProps(props);
   const { Text } = props.theme.components.button[props.variant].subComponents;
 
   return (
-    <Text {...textProps} {...props}>
+    <Text componentProps={props} {...textProps}>
       {handleAndroidTextTransformation(children, textProps.style)}
     </Text>
   );
 };
 
-const handleLeftIcon = (props: SpecialButtonProps): JSX.Element | undefined => {
+const handleLeftIcon = (props: ButtonProps): JSX.Element | undefined => {
   const buttonTheme = props.theme.components.button;
   const { LeftIconContainer } = buttonTheme[props.variant].subComponents;
   const containerProps = getButtonLeftIconContainerProps(props);
@@ -113,7 +76,7 @@ const handleLeftIcon = (props: SpecialButtonProps): JSX.Element | undefined => {
   }
 
   return (
-    <LeftIconContainer {...containerProps} {...props}>
+    <LeftIconContainer componentProps={props} {...containerProps}>
       {styledIcon}
     </LeftIconContainer>
   );
@@ -123,15 +86,14 @@ export const SimpleButton: React.SFC<ButtonProps> = (props: ButtonProps) => {
   const { children, variant } = props;
   const buttonTheme = props.theme.components.button;
   const { Touchable, View } = buttonTheme[variant].subComponents;
-  const specialProps = extractSpecialButtonProps(props);
   const touchableProps = extractTouchableProps(props);
-  const viewProps = getButtonViewProps(specialProps);
+  const viewProps = getButtonViewProps(props);
 
   return (
-    <Touchable {...touchableProps}>
-      <View {...viewProps} {...specialProps}>
-        {specialProps.leftIcon && handleLeftIcon(specialProps)}
-        {children && transformButtonChildren(specialProps)}
+    <Touchable componentProps={props} {...touchableProps}>
+      <View componentProps={props} {...viewProps}>
+        {props.leftIcon && handleLeftIcon(props)}
+        {children && transformButtonChildren(props)}
       </View>
     </Touchable>
   );

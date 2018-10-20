@@ -1,24 +1,25 @@
 import {
+  ButtonProps,
   getThemedColor,
-  SpecialButtonProps,
   TextPropsGetter,
   TextStyleGetter,
 } from '@reflex-ui/core';
 
-export const getDefaultButtonTextColorStyle: TextStyleGetter<
-  SpecialButtonProps
-> = ({ colorTheme, theme: { palette } }) => ({
+export const getDefaultButtonTextColorStyle: TextStyleGetter<ButtonProps> = ({
+  colorTheme,
+  theme: { palette },
+}) => ({
   color: getThemedColor({ colorTheme, palette }),
 });
 
-export const getDefaultButtonTextStyle: TextStyleGetter<SpecialButtonProps> = (
-  props: SpecialButtonProps,
+export const getDefaultButtonTextStyle: TextStyleGetter<ButtonProps> = (
+  props: ButtonProps,
 ) => ({
   ...getDefaultButtonTextColorStyle(props),
 });
 
 export const getDefaultButtonTextProps: TextPropsGetter<
-  SpecialButtonProps
+  ButtonProps
 > = props => ({
   style: getDefaultButtonTextStyle(props),
 });

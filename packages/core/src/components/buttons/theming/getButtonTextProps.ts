@@ -3,10 +3,10 @@ import { TextProps, TextStyle } from 'react-native';
 
 import { InteractivityType } from '../../../interactivity';
 import { createRegisteredTextStyle, TextPropsGetter } from '../../typography';
-import { SpecialButtonProps } from '../SpecialButtonProps';
+import { ButtonProps } from '../ButtonProps';
 
-export const getButtonTextProps: TextPropsGetter<SpecialButtonProps> = (
-  props: SpecialButtonProps,
+export const getButtonTextProps: TextPropsGetter<ButtonProps> = (
+  props: ButtonProps,
 ): TextProps => {
   const buttonTheme = props.theme.components.button;
   const interactivityType: InteractivityType = props.interactivityState

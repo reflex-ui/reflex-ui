@@ -3,10 +3,10 @@ import { ViewProps, ViewStyle } from 'react-native';
 
 import { InteractivityType } from '../../../interactivity';
 import { createRegisteredViewStyle, ViewPropsGetter } from '../../views';
-import { SpecialButtonProps } from '../SpecialButtonProps';
+import { ButtonProps } from '../ButtonProps';
 
-export const getButtonViewProps: ViewPropsGetter<SpecialButtonProps> = (
-  props: SpecialButtonProps,
+export const getButtonViewProps: ViewPropsGetter<ButtonProps> = (
+  props: ButtonProps,
 ): ViewProps => {
   const buttonTheme = props.theme.components.button;
   const interactivityType: InteractivityType = props.interactivityState

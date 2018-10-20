@@ -1,11 +1,30 @@
-import { InteractivityProps } from '../../interactivity/InteractivityProps';
-import {
-  OptionalSpecialButtonProps,
-  SpecialButtonProps,
-} from './SpecialButtonProps';
+import { Size, TextPropsGetter, ViewPropsGetter } from '../';
+import { InteractivityProps } from '../../interactivity';
+import { OptionalThemed, Themed } from '../../theming';
+import { ButtonVariant } from './ButtonVariant';
 
-export interface ButtonProps extends SpecialButtonProps, InteractivityProps {}
+export interface ButtonProps extends InteractivityProps, Themed {
+  children?: React.ReactNode;
+  fullWidth?: boolean;
+  getLeftIconContainerProps?: ViewPropsGetter<ButtonProps>;
+  getTextProps?: TextPropsGetter<ButtonProps>;
+  getViewProps?: ViewPropsGetter<ButtonProps>;
+  leftIcon?: JSX.Element;
+  rightIcon?: JSX.Element;
+  size: Size;
+  variant: ButtonVariant;
+}
 
 export interface OptionalButtonProps
-  extends OptionalSpecialButtonProps,
-    InteractivityProps {}
+  extends InteractivityProps,
+    OptionalThemed {
+  children?: React.ReactNode;
+  fullWidth?: boolean;
+  getLeftIconContainerProps?: ViewPropsGetter<ButtonProps>;
+  getTextProps?: TextPropsGetter<ButtonProps>;
+  getViewProps?: ViewPropsGetter<ButtonProps>;
+  leftIcon?: JSX.Element;
+  rightIcon?: JSX.Element;
+  size?: Size;
+  variant?: ButtonVariant;
+}

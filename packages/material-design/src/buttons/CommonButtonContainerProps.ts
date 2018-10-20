@@ -1,16 +1,12 @@
-import {
-  SpecialButtonProps,
-  ViewPropsGetter,
-  ViewStyleGetter,
-} from '@reflex-ui/core';
+import { ButtonProps, ViewPropsGetter, ViewStyleGetter } from '@reflex-ui/core';
 
 export const getCommonButtonViewProps: ViewPropsGetter<
-  SpecialButtonProps
+  ButtonProps
 > = props => ({
   style: getCommonButtonViewStyle(props),
 });
 
-export const getCommonButtonViewStyle: ViewStyleGetter<SpecialButtonProps> = ({
+export const getCommonButtonViewStyle: ViewStyleGetter<ButtonProps> = ({
   fullWidth,
 }) => ({
   flexDirection: fullWidth ? 'column' : 'row',

@@ -4,6 +4,7 @@ import {
   isAndroid,
   isIOS,
   isWeb,
+  ReflexSubcomponent,
   Themed,
 } from '@reflex-ui/core';
 import delay from 'delay';
@@ -84,7 +85,7 @@ export type WithRaiseEffect = (
 ) => React.ComponentType<ViewProps & InteractivityProps & Themed>;
 */
 export const withRaiseEffect = <
-  P extends ViewProps & InteractivityStateProps & Themed
+  P extends ReflexSubcomponent<InteractivityStateProps & Themed> & ViewProps
 >(
   WrappedComponent: React.ComponentType<P>,
 ): React.ComponentType<P> =>
@@ -105,7 +106,7 @@ export const withRaiseEffect = <
         props,
       );
 
-      const { interactivityState } = props;
+      const { interactivityState } = props.componentProps;
 
       const interactivityType = interactivityState
         ? interactivityState.type
@@ -371,8 +372,9 @@ export const withRaiseEffect = <
                     * Temporary solution. Need to investigate how to animate
                     * shadowOffset, i.e., an object of values.
                     */
-                    const interactivityType = this.props.interactivityState
-                      ? this.props.interactivityState.type
+                    const interactivityType = this.props.componentProps
+                      .interactivityState
+                      ? this.props.componentProps.interactivityState.type
                       : InteractivityType.ENABLED;
 
                     const elevationStyles = getElevationStyles({

@@ -1,11 +1,11 @@
 import {
   Button,
+  // ButtonProps,
   ButtonVariant,
   FavoriteIcon,
   // InteractivityType,
   RowView,
   // Size,
-  // SpecialButtonProps,
 } from '@reflex-ui/core';
 import * as React from 'react';
 import { ScrollView, Text } from 'react-native';
@@ -15,7 +15,14 @@ const onButtonPress = () => {
   console.log('WelcomeSignedOutScreen().onButtonPress()');
 };
 /*
-const getViewProps = (props: SpecialButtonProps) => ({
+const getLeftIconContainerProps = () => ({
+  style: {
+    marginRight: 30,
+  },
+});
+*/
+/*
+const getViewProps = (props: ButtonProps) => ({
   style: {
     backgroundColor:
       props.interactivityState &&
@@ -27,7 +34,7 @@ const getViewProps = (props: SpecialButtonProps) => ({
 */
 
 /*
-const getTextProps = (props: SpecialButtonProps) => ({
+const getTextProps = (props: ButtonProps) => ({
   style: {
     color:
       props.interactivityState &&
@@ -51,6 +58,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         Sign In
       </Button>
       <Button
+        // getLeftIconContainerProps={getLeftIconContainerProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.DEFAULT}

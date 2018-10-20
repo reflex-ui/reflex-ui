@@ -4,6 +4,7 @@ import {
   InteractivityEvent,
   InteractivityStateProps,
   InteractivityType,
+  ReflexSubcomponent,
   Theme,
   Themed,
 } from '@reflex-ui/core';
@@ -192,7 +193,7 @@ export type WithRippleEffect = (
 >;
 */
 export const withRippleEffect = <
-  P extends ViewProps & InteractivityStateProps & Themed
+  P extends ReflexSubcomponent<InteractivityStateProps & Themed> & ViewProps
 >(
   WrappedComponent: React.ComponentType<P>,
 ): React.ComponentType<P> =>
@@ -209,7 +210,7 @@ export const withRippleEffect = <
       );
       */
 
-      const { interactivityState } = props;
+      const { interactivityState } = props.componentProps;
 
       const interactivityType = interactivityState
         ? interactivityState.type
@@ -230,7 +231,7 @@ export const withRippleEffect = <
         animationKeyframe === AnimationKeyframe.PRESS_OUT &&
         !isAnimatingPressOut
       ) {
-        const { colorTheme, theme } = props;
+        const { colorTheme, theme } = props.componentProps;
         const { height, width } = state;
         const maxDiameter = 300;
 

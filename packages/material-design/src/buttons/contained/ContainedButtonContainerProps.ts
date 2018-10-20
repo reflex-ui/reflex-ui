@@ -1,43 +1,43 @@
 import {
+  ButtonProps,
   getThemedColor,
-  SpecialButtonProps,
   ViewPropsGetter,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import * as Color from 'color';
 
 export const getDisabledContainedButtonViewProps: ViewPropsGetter<
-  SpecialButtonProps
+  ButtonProps
 > = props => ({
   style: getDisabledContainedButtonViewStyle(props),
 });
 
 export const getDisabledContainedButtonViewStyle: ViewStyleGetter<
-  SpecialButtonProps
+  ButtonProps
 > = ({ colorTheme, theme: { palette } }) => ({
   backgroundColor: getThemedColor({ colorTheme, palette }),
 });
 
 export const getEnabledContainedButtonViewProps: ViewPropsGetter<
-  SpecialButtonProps
+  ButtonProps
 > = props => ({
   style: getEnabledContainedButtonViewStyle(props),
 });
 
 export const getEnabledContainedButtonViewStyle: ViewStyleGetter<
-  SpecialButtonProps
+  ButtonProps
 > = ({ colorTheme, theme: { palette } }) => ({
   backgroundColor: getThemedColor({ colorTheme, palette }),
 });
 
 export const getFocusedContainedButtonViewProps: ViewPropsGetter<
-  SpecialButtonProps
+  ButtonProps
 > = props => ({
   style: getFocusedContainedButtonViewStyle(props),
 });
 
 export const getFocusedContainedButtonViewStyle: ViewStyleGetter<
-  SpecialButtonProps
+  ButtonProps
 > = ({ colorTheme, theme: { palette } }) => ({
   backgroundColor: Color.rgb(getThemedColor({ colorTheme, palette }))
     .lighten(0.35)
@@ -45,13 +45,13 @@ export const getFocusedContainedButtonViewStyle: ViewStyleGetter<
 });
 
 export const getHoveredContainedButtonViewProps: ViewPropsGetter<
-  SpecialButtonProps
+  ButtonProps
 > = props => ({
   style: getHoveredContainedButtonViewStyle(props),
 });
 
 export const getHoveredContainedButtonViewStyle: ViewStyleGetter<
-  SpecialButtonProps
+  ButtonProps
 > = ({ colorTheme, theme: { palette } }) => ({
   backgroundColor: Color.rgb(getThemedColor({ colorTheme, palette }))
     .lighten(0.12)
@@ -59,7 +59,7 @@ export const getHoveredContainedButtonViewStyle: ViewStyleGetter<
 });
 
 export const getPressedContainedButtonViewProps: ViewPropsGetter<
-  SpecialButtonProps
+  ButtonProps
 > = props => ({
   style: getHoveredContainedButtonViewStyle(props),
 });

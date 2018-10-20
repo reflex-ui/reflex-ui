@@ -1,6 +1,6 @@
 import {
+  ButtonProps,
   getThemedColor,
-  SpecialButtonProps,
   ViewPropsGetter,
   ViewStyleGetter,
 } from '@reflex-ui/core';
@@ -14,43 +14,44 @@ import {
 } from '../default';
 
 export const getCommonOutlinedButtonViewProps: ViewPropsGetter<
-  SpecialButtonProps
+  ButtonProps
 > = props => ({
   style: getCommonOutlinedButtonViewStyle(props),
 });
 
-export const getCommonOutlinedButtonViewStyle: ViewStyleGetter<
-  SpecialButtonProps
-> = ({ colorTheme, theme: { palette } }): ViewStyle => ({
+export const getCommonOutlinedButtonViewStyle: ViewStyleGetter<ButtonProps> = ({
+  colorTheme,
+  theme: { palette },
+}): ViewStyle => ({
   borderColor: getThemedColor({ colorTheme, palette }),
 });
 
 export const getDisabledOutlinedButtonViewProps: ViewPropsGetter<
-  SpecialButtonProps
-> = (props: SpecialButtonProps) => ({
+  ButtonProps
+> = (props: ButtonProps) => ({
   style: getDisabledDefaultButtonViewStyle(props),
 });
 
-export const getEnabledOutlinedButtonViewProps: ViewPropsGetter<
-  SpecialButtonProps
-> = (props: SpecialButtonProps) => ({
+export const getEnabledOutlinedButtonViewProps: ViewPropsGetter<ButtonProps> = (
+  props: ButtonProps,
+) => ({
   style: getEnabledDefaultButtonViewStyle(props),
 });
 
 export const getFocusedOutlinedButtonViewProps: ViewPropsGetter<
-  SpecialButtonProps
+  ButtonProps
 > = props => ({
   style: getFocusedDefaultButtonViewStyle(props),
 });
 
 export const getHoveredOutlinedButtonViewProps: ViewPropsGetter<
-  SpecialButtonProps
+  ButtonProps
 > = props => ({
   style: getHoveredDefaultButtonViewStyle(props),
 });
 
 export const getPressedOutlinedButtonViewProps: ViewPropsGetter<
-  SpecialButtonProps
+  ButtonProps
 > = props => ({
   style: getPressedDefaultButtonViewStyle(props),
 });

@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { Text, TextProps } from 'react-native';
-import { SpecialButtonProps } from '../SpecialButtonProps';
+import { ReflexSubcomponent } from '../../ReflexSubcomponent';
+import { ButtonProps } from '../ButtonProps';
 
 export const DefaultButtonText: React.ComponentType<
-  SpecialButtonProps & TextProps
-> = props => <Text style={props.style}>{props.children}</Text>;
+  ReflexSubcomponent<ButtonProps> & TextProps
+> = ({ children, componentProps, ...otherProps }) => (
+  <Text {...otherProps}>{children}</Text>
+);

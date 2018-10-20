@@ -1,8 +1,8 @@
-import { SpecialButtonProps, TextPropsGetter } from '@reflex-ui/core';
+import { ButtonProps, TextPropsGetter } from '@reflex-ui/core';
 import { getContainedButtonTextColorStyle } from './ContainedButtonTextProps';
 
 export const getContainedButtonLeftIconProps: TextPropsGetter<
-  SpecialButtonProps
+  ButtonProps
 > = props => ({
   style: {
     ...getContainedButtonTextColorStyle(props),
