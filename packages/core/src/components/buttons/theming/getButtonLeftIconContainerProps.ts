@@ -8,7 +8,6 @@ import { SpecialButtonProps } from '../SpecialButtonProps';
 export const getButtonLeftIconContainerProps: ViewPropsGetter<
   SpecialButtonProps
 > = (props: SpecialButtonProps): ViewProps => {
-  // tslint:disable-next-line:no-shadowed-variable
   const buttonTheme = props.theme.components.button;
   const interactivityType: InteractivityType = props.interactivityState
     ? props.interactivityState.type

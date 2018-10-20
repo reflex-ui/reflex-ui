@@ -1,25 +1,18 @@
 import * as React from 'react';
-import { StyleSheet, TouchableWithoutFeedbackProps } from 'react-native';
+import { TouchableWithoutFeedbackProps } from 'react-native';
 
-import { InteractivityProps } from '../../interactivity';
-import { isAndroid } from '../../utils';
-import { transformText } from '../typography';
+// prettier-ignore
 import {
-  OptionalSpecialButtonProps,
-  SpecialButtonProps,
-} from './SpecialButtonProps';
+  handleAndroidTextTransformation,
+} from '../typography/handleAndroidTextTransformation';
+import { ButtonProps } from './ButtonProps';
+import { SpecialButtonProps } from './SpecialButtonProps';
 import {
   getButtonLeftIconContainerProps,
   getButtonLeftIconProps,
   getButtonTextProps,
   getButtonViewProps,
 } from './theming';
-
-export interface ButtonProps extends SpecialButtonProps, InteractivityProps {}
-
-export interface OptionalButtonProps
-  extends OptionalSpecialButtonProps,
-    InteractivityProps {}
 
 const extractSpecialButtonProps = (
   props: SpecialButtonProps,
@@ -99,20 +92,11 @@ const transformStringChildrenIntoComponent = (
   props: SpecialButtonProps,
 ): JSX.Element => {
   const textProps = getButtonTextProps(props);
-  let transformedString = children;
-
-  if (isAndroid) {
-    transformedString = transformText({
-      text: transformedString,
-      transformation: StyleSheet.flatten(textProps.style).textTransform,
-    });
-  }
-
   const { Text } = props.theme.components.button[props.variant].subComponents;
 
   return (
     <Text {...textProps} {...props}>
-      {transformedString}
+      {handleAndroidTextTransformation(children, textProps.style)}
     </Text>
   );
 };
