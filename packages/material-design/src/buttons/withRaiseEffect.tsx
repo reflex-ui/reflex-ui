@@ -94,18 +94,6 @@ export const withRaiseEffect = <
       props: P,
       state: RaisedComponentState,
     ) {
-      // tslint:disable-next-line:no-console
-      console.log(
-        'RaisedComponent.getDerivedStateFromProps() - state: ',
-        state,
-      );
-
-      // tslint:disable-next-line:no-console
-      console.log(
-        'RaisedComponent.getDerivedStateFromProps() - props: ',
-        props,
-      );
-
       const { interactivityState } = props.componentProps;
 
       const interactivityType = interactivityState
@@ -200,16 +188,11 @@ export const withRaiseEffect = <
     public constructor(props: P) {
       super(props);
 
-      // tslint:disable-next-line:no-console
-      console.log('RaisedComponent().constructor()');
-
       this.animatedView = animated(View);
       this.raiseAnimation = Keyframes.Spring({
         // @ts-ignore
         // tslint:disable-next-line:ter-arrow-parens
         disabled: async call => {
-          // tslint:disable-next-line:no-console
-          // console.log('RaisedComponent.Keyframes.Spring.enabled()');
           call({
             config: { tension: 75, friction: 20 },
             from: {
@@ -229,8 +212,6 @@ export const withRaiseEffect = <
         // @ts-ignore
         // tslint:disable-next-line:ter-arrow-parens
         enabled: async call => {
-          // tslint:disable-next-line:no-console
-          // console.log('RaisedComponent.Keyframes.Spring.enabled()');
           call({
             config: { tension: 75, friction: 20 },
             from: {
@@ -250,8 +231,6 @@ export const withRaiseEffect = <
         // @ts-ignore
         // tslint:disable-next-line:ter-arrow-parens
         focused: async call => {
-          // tslint:disable-next-line:no-console
-          // console.log('RaisedComponent.Keyframes.Spring.focused()');
           call({
             config: { tension: 75, friction: 20 },
             from: {
@@ -271,8 +250,6 @@ export const withRaiseEffect = <
         // @ts-ignore
         // tslint:disable-next-line:ter-arrow-parens
         hovered: async call => {
-          // tslint:disable-next-line:no-console
-          console.log('RaisedComponent.Keyframes.Spring.hovered()');
           call({
             config: { tension: 150, friction: 20 },
             from: {
@@ -292,12 +269,8 @@ export const withRaiseEffect = <
         // @ts-ignore
         // tslint:disable-next-line:ter-arrow-parens
         pressin: async call => {
-          // tslint:disable-next-line:no-console
-          // console.log('RaisedComponent.Keyframes.Spring.pressin()');
           call({
             config: { tension: 150, friction: 20 },
-            // config: { duration: 2000, easing: Easing.linear },
-            // from: { opacity: 0, scale: 0.001 },
             from: {
               ...createMotionRaiseStyles({
                 interactivityType: InteractivityType.HOVERED,
@@ -321,9 +294,6 @@ export const withRaiseEffect = <
     };
 
     public render() {
-      // tslint:disable-next-line:no-console
-      console.log('RaisedComponent.render() - state: ', this.state);
-
       // @ts-ignore [ts] Rest types may only be created from object types.
       // https://github.com/Microsoft/TypeScript/issues/10727
       const { children, ...otherProps } = this.props;
@@ -338,9 +308,6 @@ export const withRaiseEffect = <
             <View style={this.state.staticRaiseStyles.container}>
               <RaiseAnimation native state={animationKeyframe}>
                 {(styles: { boxShadow: string }) => {
-                  // tslint:disable-next-line:no-console
-                  console.log('RaisedComponent.render() styles: ', styles);
-
                   /*
                   const motionStyles = {
                     boxShadow: styles.boxShadow,
@@ -416,9 +383,6 @@ export const withRaiseEffect = <
     }
 
     private animationComplete() {
-      // tslint:disable-next-line:no-console
-      console.log('RaisedComponent.animationComplete()');
-
       this.setState({
         isAnimating: false,
       });

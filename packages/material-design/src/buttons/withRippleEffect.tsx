@@ -202,14 +202,6 @@ export const withRippleEffect = <
       props: P,
       state: RippledComponentState,
     ) {
-      // tslint:disable-next-line:no-console
-      /*
-      console.log(
-        'RippledComponent.getDerivedStateFromProps() - state: ',
-        state,
-      );
-      */
-
       const { interactivityState } = props.componentProps;
 
       const interactivityType = interactivityState
@@ -288,28 +280,20 @@ export const withRippleEffect = <
         // @ts-ignore
         // tslint:disable-next-line:ter-arrow-parens
         pressin: async call => {
-          // tslint:disable-next-line:no-console
-          // console.log('RippledComponent.Keyframes.Spring.pressin()');
           call({
             config: { tension: 150, friction: 20 },
-            // config: { duration: 2000, easing: Easing.linear },
-            // from: { opacity: 0, scale: 0.001 },
             from: {
-              // config: { duration: 2000, easing: Easing.linear },
               opacity: 0,
               scale: 0.001,
             },
             to: { opacity: 1, scale: 1 },
           });
-          // await call({ from: { opacity: 1 }, to: { opacity: 0 } });
           await delay(250);
           if (this.state.isAnimatingPressIn) this.pressInAnimationComplete();
         },
         // @ts-ignore
         // tslint:disable-next-line:ter-arrow-parens
         pressout: async call => {
-          // tslint:disable-next-line:no-console
-          // console.log('RippledComponent.Keyframes.Spring.pressout()');
           call({ config: { tension: 75, friction: 20 }, to: { opacity: 0 } });
           await delay(250);
           await call({
@@ -322,17 +306,11 @@ export const withRippleEffect = <
     }
 
     public onLayoutChanged = (event: LayoutChangeEvent) => {
-      // tslint:disable-next-line:no-console
-      console.log('RippledComponent.onLayoutChanged() - event: ', event);
-
       const { height, width } = event.nativeEvent.layout;
       this.setState({ height, width });
     };
 
     public render() {
-      // tslint:disable-next-line:no-console
-      // console.log('RippledComponent.render() - state: ', this.state);
-
       // @ts-ignore [ts] Rest types may only be created from object types.
       // https://github.com/Microsoft/TypeScript/issues/10727
       const { children, ...otherProps } = this.props;
@@ -347,13 +325,11 @@ export const withRippleEffect = <
             <View style={rippleStyles.container}>
               <RippleAnimation native state={animationKeyframe}>
                 {(styles: { opacity: number; scale: number }) => {
-                  // tslint:disable-next-line:no-console
-                  // console.log('RippledComponent.render() styles: ', styles);
-
                   const motionStyles = {
                     opacity: styles.opacity,
                     transform: [{ scale: styles.scale || 0 }],
                   };
+
                   return (
                     <AnimatedView
                       style={{
@@ -372,16 +348,10 @@ export const withRippleEffect = <
     }
 
     private pressOutAnimationComplete() {
-      // tslint:disable-next-line:no-console
-      // console.log('RippledComponent.pressOutAnimationComplete()');
-
       this.setState({ isAnimatingPressOut: false });
     }
 
     private pressInAnimationComplete() {
-      // tslint:disable-next-line:no-console
-      // console.log('RippledComponent.pressInAnimationComplete()');
-
       this.setState({
         isAnimatingPressIn: false,
       });
