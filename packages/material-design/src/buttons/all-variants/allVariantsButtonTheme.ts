@@ -6,11 +6,27 @@ import {
 } from '@reflex-ui/core';
 import { Platform } from 'react-native';
 import { getFontFamily } from '../../typography';
-import { getCommonButtonViewProps } from '../CommonButtonContainerProps';
+import { getCommonButtonContainerProps } from '../CommonButtonContainerProps';
 
 export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
   allSizes: {
     allStates: {
+      container: {
+        getProps: getCommonButtonContainerProps,
+        props: {
+          pointerEvents: 'box-only',
+          style: {
+            alignItems: 'center',
+            justifyContent: 'center',
+            ...Platform.select({
+              web: {
+                cursor: 'pointer',
+                outline: 'none',
+              },
+            }),
+          },
+        },
+      },
       leftIcon: {
         props: {
           style: {
@@ -40,25 +56,9 @@ export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
           },
         },
       },
-      view: {
-        getProps: getCommonButtonViewProps,
-        props: {
-          pointerEvents: 'box-only',
-          style: {
-            alignItems: 'center',
-            justifyContent: 'center',
-            ...Platform.select({
-              web: {
-                cursor: 'pointer',
-                outline: 'none',
-              },
-            }),
-          },
-        },
-      },
     },
     disabled: {
-      view: {
+      container: {
         props: {
           style: {
             ...Platform.select({
@@ -73,6 +73,13 @@ export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
   },
   large: {
     allStates: {
+      container: {
+        props: {
+          style: {
+            borderRadius: 2,
+          },
+        },
+      },
       leftIcon: {
         props: {
           style: {
@@ -96,17 +103,17 @@ export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
           },
         },
       },
-      view: {
+    },
+  },
+  regular: {
+    allStates: {
+      container: {
         props: {
           style: {
             borderRadius: 2,
           },
         },
       },
-    },
-  },
-  regular: {
-    allStates: {
       leftIcon: {
         props: {
           style: {
@@ -130,17 +137,17 @@ export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
           },
         },
       },
-      view: {
+    },
+  },
+  small: {
+    allStates: {
+      container: {
         props: {
           style: {
             borderRadius: 2,
           },
         },
       },
-    },
-  },
-  small: {
-    allStates: {
       leftIcon: {
         props: {
           style: {
@@ -164,17 +171,17 @@ export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
           },
         },
       },
-      view: {
-        props: {
-          style: {
-            borderRadius: 2,
-          },
-        },
-      },
     },
   },
   xlarge: {
     allStates: {
+      container: {
+        props: {
+          style: {
+            borderRadius: 4,
+          },
+        },
+      },
       leftIcon: {
         props: {
           style: {
@@ -198,17 +205,17 @@ export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
           },
         },
       },
-      view: {
-        props: {
-          style: {
-            borderRadius: 4,
-          },
-        },
-      },
     },
   },
   xsmall: {
     allStates: {
+      container: {
+        props: {
+          style: {
+            borderRadius: 2,
+          },
+        },
+      },
       leftIcon: {
         props: {
           style: {
@@ -229,13 +236,6 @@ export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
           style: {
             fontSize: 12,
             letterSpacing: 0.25,
-          },
-        },
-      },
-      view: {
-        props: {
-          style: {
-            borderRadius: 2,
           },
         },
       },

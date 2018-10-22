@@ -2,11 +2,11 @@ import { isWeb, OptionalButtonVariantTheme } from '@reflex-ui/core';
 import {
   getDefaultButtonLeftIconProps,
   getDefaultButtonTextProps,
-  getDisabledDefaultButtonViewProps,
-  getEnabledDefaultButtonViewProps,
-  getFocusedDefaultButtonViewProps,
-  getHoveredDefaultButtonViewProps,
-  getPressedDefaultButtonViewProps,
+  getDisabledDefaultButtonContainerProps,
+  getEnabledDefaultButtonContainerProps,
+  getFocusedDefaultButtonContainerProps,
+  getHoveredDefaultButtonContainerProps,
+  getPressedDefaultButtonContainerProps,
 } from './';
 
 export const defaultButtonTheme: OptionalButtonVariantTheme = {
@@ -32,34 +32,34 @@ export const defaultButtonTheme: OptionalButtonVariantTheme = {
       },
     },
     disabled: {
-      view: {
-        getProps: getDisabledDefaultButtonViewProps,
+      container: {
+        getProps: getDisabledDefaultButtonContainerProps,
       },
     },
     enabled: {
-      view: {
-        getProps: getEnabledDefaultButtonViewProps,
+      container: {
+        getProps: getEnabledDefaultButtonContainerProps,
       },
     },
     focused: {
-      view: {
-        getProps: getFocusedDefaultButtonViewProps,
+      container: {
+        getProps: getFocusedDefaultButtonContainerProps,
       },
     },
     hovered: {
-      view: {
-        getProps: getHoveredDefaultButtonViewProps,
+      container: {
+        getProps: getHoveredDefaultButtonContainerProps,
       },
     },
     pressed: {
-      view: {
-        getProps: getPressedDefaultButtonViewProps,
+      container: {
+        getProps: getPressedDefaultButtonContainerProps,
       },
     },
   },
   large: {
     allStates: {
-      view: {
+      container: {
         props: {
           style: {
             height: 40,
@@ -74,7 +74,7 @@ export const defaultButtonTheme: OptionalButtonVariantTheme = {
   },
   regular: {
     allStates: {
-      view: {
+      container: {
         props: {
           style: {
             height: 36,
@@ -89,7 +89,7 @@ export const defaultButtonTheme: OptionalButtonVariantTheme = {
   },
   small: {
     allStates: {
-      view: {
+      container: {
         props: {
           style: {
             height: 32,
@@ -104,7 +104,7 @@ export const defaultButtonTheme: OptionalButtonVariantTheme = {
   },
   xlarge: {
     allStates: {
-      view: {
+      container: {
         props: {
           style: {
             height: 48,
@@ -119,7 +119,7 @@ export const defaultButtonTheme: OptionalButtonVariantTheme = {
   },
   xsmall: {
     allStates: {
-      view: {
+      container: {
         props: {
           style: {
             height: 28,

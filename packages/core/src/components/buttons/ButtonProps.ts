@@ -6,9 +6,9 @@ import { ButtonVariant } from './ButtonVariant';
 export interface ButtonProps extends InteractivityProps, Themed {
   children?: React.ReactNode;
   fullWidth?: boolean;
+  getContainerProps?: ViewPropsGetter<ButtonProps>;
   getLeftIconContainerProps?: ViewPropsGetter<ButtonProps>;
   getTextProps?: TextPropsGetter<ButtonProps>;
-  getViewProps?: ViewPropsGetter<ButtonProps>;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
   size: Size;
@@ -20,9 +20,9 @@ export interface OptionalButtonProps
     OptionalThemed {
   children?: React.ReactNode;
   fullWidth?: boolean;
+  getContainerProps?: ViewPropsGetter<ButtonProps>;
   getLeftIconContainerProps?: ViewPropsGetter<ButtonProps>;
   getTextProps?: TextPropsGetter<ButtonProps>;
-  getViewProps?: ViewPropsGetter<ButtonProps>;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
   size?: Size;

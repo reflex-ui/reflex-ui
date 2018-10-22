@@ -6,57 +6,57 @@ import merge from 'lodash/merge';
 import { getDefaultButtonLeftIconProps } from '../';
 import { containedButtonTheme } from '../contained';
 import {
+  getCommonOutlinedButtonContainerProps,
   getCommonOutlinedButtonTextProps,
-  getCommonOutlinedButtonViewProps,
-  getDisabledOutlinedButtonViewProps,
-  getEnabledOutlinedButtonViewProps,
-  getFocusedOutlinedButtonViewProps,
-  getHoveredOutlinedButtonViewProps,
-  getPressedOutlinedButtonViewProps,
+  getDisabledOutlinedButtonContainerProps,
+  getEnabledOutlinedButtonContainerProps,
+  getFocusedOutlinedButtonContainerProps,
+  getHoveredOutlinedButtonContainerProps,
+  getPressedOutlinedButtonContainerProps,
 } from './';
 
 const optionalOutlinedButtonTheme: OptionalButtonVariantTheme = {
   allSizes: {
     allStates: {
+      container: {
+        getProps: getCommonOutlinedButtonContainerProps,
+      },
       leftIcon: {
         getProps: getDefaultButtonLeftIconProps,
       },
       text: {
         getProps: getCommonOutlinedButtonTextProps,
       },
-      view: {
-        getProps: getCommonOutlinedButtonViewProps,
-      },
     },
     disabled: {
-      view: {
-        getProps: getDisabledOutlinedButtonViewProps,
+      container: {
+        getProps: getDisabledOutlinedButtonContainerProps,
       },
     },
     enabled: {
-      view: {
-        getProps: getEnabledOutlinedButtonViewProps,
+      container: {
+        getProps: getEnabledOutlinedButtonContainerProps,
       },
     },
     focused: {
-      view: {
-        getProps: getFocusedOutlinedButtonViewProps,
+      container: {
+        getProps: getFocusedOutlinedButtonContainerProps,
       },
     },
     hovered: {
-      view: {
-        getProps: getHoveredOutlinedButtonViewProps,
+      container: {
+        getProps: getHoveredOutlinedButtonContainerProps,
       },
     },
     pressed: {
-      view: {
-        getProps: getPressedOutlinedButtonViewProps,
+      container: {
+        getProps: getPressedOutlinedButtonContainerProps,
       },
     },
   },
   large: {
     allStates: {
-      view: {
+      container: {
         props: {
           style: {
             borderWidth: 2,
@@ -68,7 +68,7 @@ const optionalOutlinedButtonTheme: OptionalButtonVariantTheme = {
   },
   regular: {
     allStates: {
-      view: {
+      container: {
         props: {
           style: {
             borderWidth: 2,
@@ -80,7 +80,7 @@ const optionalOutlinedButtonTheme: OptionalButtonVariantTheme = {
   },
   small: {
     allStates: {
-      view: {
+      container: {
         props: {
           style: {
             borderWidth: 2,
@@ -91,11 +91,11 @@ const optionalOutlinedButtonTheme: OptionalButtonVariantTheme = {
     },
   },
   subComponents: {
-    View: DefaultButtonContainer,
+    Container: DefaultButtonContainer,
   },
   xlarge: {
     allStates: {
-      view: {
+      container: {
         props: {
           style: {
             borderWidth: 3,
@@ -107,7 +107,7 @@ const optionalOutlinedButtonTheme: OptionalButtonVariantTheme = {
   },
   xsmall: {
     allStates: {
-      view: {
+      container: {
         props: {
           style: {
             borderWidth: 1,

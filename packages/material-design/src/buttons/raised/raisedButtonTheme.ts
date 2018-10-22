@@ -9,7 +9,7 @@ import { withRippleEffect } from '../withRippleEffect';
 
 const optionalRaisedButtonTheme: OptionalButtonVariantTheme = {
   subComponents: {
-    View: withRippleEffect(withRaiseEffect(DefaultButtonContainer)),
+    Container: withRippleEffect(withRaiseEffect(DefaultButtonContainer)),
   },
 };
 

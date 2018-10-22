@@ -11,6 +11,10 @@ import {
 } from './';
 
 export const rawButtonSubComponentsTheme: ButtonSubComponentsTheme = {
+  container: {
+    getProps: () => ({}),
+    props: {},
+  },
   leftIcon: {
     getProps: () => ({}),
     props: {},
@@ -20,10 +24,6 @@ export const rawButtonSubComponentsTheme: ButtonSubComponentsTheme = {
     props: {},
   },
   text: {
-    getProps: () => ({}),
-    props: {},
-  },
-  view: {
     getProps: () => ({}),
     props: {},
   },
@@ -41,10 +41,10 @@ export const rawButtonInteractivityStateTheme: InteractivityStateTheme<
 };
 
 export const rawButtonSubComponents: ButtonSubComponents = {
+  Container: DefaultButtonContainer,
   LeftIconContainer: DefaultButtonLeftIconContainer,
   Text: DefaultButtonText,
   Touchable: DefaultButtonTouchable,
-  View: DefaultButtonContainer,
 };
 
 export const rawButtonVariantTheme: ButtonVariantTheme = {

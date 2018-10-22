@@ -6,52 +6,51 @@ import {
 } from '@reflex-ui/core';
 import { ViewStyle } from 'react-native';
 import {
-  getDisabledDefaultButtonViewStyle,
-  getEnabledDefaultButtonViewStyle,
-  getFocusedDefaultButtonViewStyle,
-  getHoveredDefaultButtonViewStyle,
-  getPressedDefaultButtonViewStyle,
+  getDisabledDefaultButtonContainerStyle,
+  getEnabledDefaultButtonContainerStyle,
+  getFocusedDefaultButtonContainerStyle,
+  getHoveredDefaultButtonContainerStyle,
+  getPressedDefaultButtonContainerStyle,
 } from '../default';
 
-export const getCommonOutlinedButtonViewProps: ViewPropsGetter<
+export const getCommonOutlinedButtonContainerProps: ViewPropsGetter<
   ButtonProps
 > = props => ({
-  style: getCommonOutlinedButtonViewStyle(props),
+  style: getCommonOutlinedButtonContainerStyle(props),
 });
 
-export const getCommonOutlinedButtonViewStyle: ViewStyleGetter<ButtonProps> = ({
-  colorTheme,
-  theme: { palette },
-}): ViewStyle => ({
+export const getCommonOutlinedButtonContainerStyle: ViewStyleGetter<
+  ButtonProps
+> = ({ colorTheme, theme: { palette } }): ViewStyle => ({
   borderColor: getThemedColor({ colorTheme, palette }),
 });
 
-export const getDisabledOutlinedButtonViewProps: ViewPropsGetter<
+export const getDisabledOutlinedButtonContainerProps: ViewPropsGetter<
   ButtonProps
 > = (props: ButtonProps) => ({
-  style: getDisabledDefaultButtonViewStyle(props),
+  style: getDisabledDefaultButtonContainerStyle(props),
 });
 
-export const getEnabledOutlinedButtonViewProps: ViewPropsGetter<ButtonProps> = (
-  props: ButtonProps,
-) => ({
-  style: getEnabledDefaultButtonViewStyle(props),
+export const getEnabledOutlinedButtonContainerProps: ViewPropsGetter<
+  ButtonProps
+> = (props: ButtonProps) => ({
+  style: getEnabledDefaultButtonContainerStyle(props),
 });
 
-export const getFocusedOutlinedButtonViewProps: ViewPropsGetter<
+export const getFocusedOutlinedButtonContainerProps: ViewPropsGetter<
   ButtonProps
 > = props => ({
-  style: getFocusedDefaultButtonViewStyle(props),
+  style: getFocusedDefaultButtonContainerStyle(props),
 });
 
-export const getHoveredOutlinedButtonViewProps: ViewPropsGetter<
+export const getHoveredOutlinedButtonContainerProps: ViewPropsGetter<
   ButtonProps
 > = props => ({
-  style: getHoveredDefaultButtonViewStyle(props),
+  style: getHoveredDefaultButtonContainerStyle(props),
 });
 
-export const getPressedOutlinedButtonViewProps: ViewPropsGetter<
+export const getPressedOutlinedButtonContainerProps: ViewPropsGetter<
   ButtonProps
 > = props => ({
-  style: getPressedDefaultButtonViewStyle(props),
+  style: getPressedDefaultButtonContainerStyle(props),
 });

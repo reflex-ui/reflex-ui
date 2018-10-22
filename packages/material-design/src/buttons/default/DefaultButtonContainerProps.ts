@@ -6,70 +6,67 @@ import {
 } from '@reflex-ui/core';
 import * as Color from 'color';
 
-export const getDisabledDefaultButtonViewProps: ViewPropsGetter<
+export const getDisabledDefaultButtonContainerProps: ViewPropsGetter<
   ButtonProps
 > = props => ({
-  style: getDisabledDefaultButtonViewStyle(props),
+  style: getDisabledDefaultButtonContainerStyle(props),
 });
 
-export const getDisabledDefaultButtonViewStyle: ViewStyleGetter<
+export const getDisabledDefaultButtonContainerStyle: ViewStyleGetter<
   ButtonProps
 > = () => ({
   backgroundColor: 'transparent',
 });
 
-export const getEnabledDefaultButtonViewProps: ViewPropsGetter<
+export const getEnabledDefaultButtonContainerProps: ViewPropsGetter<
   ButtonProps
 > = props => ({
-  style: getEnabledDefaultButtonViewStyle(props),
+  style: getEnabledDefaultButtonContainerStyle(props),
 });
 
-export const getEnabledDefaultButtonViewStyle: ViewStyleGetter<
+export const getEnabledDefaultButtonContainerStyle: ViewStyleGetter<
   ButtonProps
 > = () => ({
   backgroundColor: 'transparent',
 });
 
-export const getFocusedDefaultButtonViewProps: ViewPropsGetter<
+export const getFocusedDefaultButtonContainerProps: ViewPropsGetter<
   ButtonProps
 > = props => ({
-  style: getFocusedDefaultButtonViewStyle(props),
+  style: getFocusedDefaultButtonContainerStyle(props),
 });
 
-export const getFocusedDefaultButtonViewStyle: ViewStyleGetter<ButtonProps> = ({
-  colorTheme,
-  theme: { palette },
-}) => ({
+export const getFocusedDefaultButtonContainerStyle: ViewStyleGetter<
+  ButtonProps
+> = ({ colorTheme, theme: { palette } }) => ({
   backgroundColor: Color.rgb(getThemedColor({ colorTheme, palette }))
     .fade(0.89)
     .toString(),
 });
 
-export const getHoveredDefaultButtonViewProps: ViewPropsGetter<
+export const getHoveredDefaultButtonContainerProps: ViewPropsGetter<
   ButtonProps
 > = props => ({
-  style: getHoveredDefaultButtonViewStyle(props),
+  style: getHoveredDefaultButtonContainerStyle(props),
 });
 
-export const getHoveredDefaultButtonViewStyle: ViewStyleGetter<ButtonProps> = ({
-  colorTheme,
-  theme: { palette },
-}) => ({
+export const getHoveredDefaultButtonContainerStyle: ViewStyleGetter<
+  ButtonProps
+> = ({ colorTheme, theme: { palette } }) => ({
   backgroundColor: Color.rgb(getThemedColor({ colorTheme, palette }))
     .fade(0.94)
     .toString(),
 });
 
-export const getPressedDefaultButtonViewProps: ViewPropsGetter<
+export const getPressedDefaultButtonContainerProps: ViewPropsGetter<
   ButtonProps
 > = props => ({
-  style: getPressedDefaultButtonViewStyle(props),
+  style: getPressedDefaultButtonContainerStyle(props),
 });
 
-export const getPressedDefaultButtonViewStyle: ViewStyleGetter<ButtonProps> = ({
-  colorTheme,
-  theme: { palette },
-}) => ({
+export const getPressedDefaultButtonContainerStyle: ViewStyleGetter<
+  ButtonProps
+> = ({ colorTheme, theme: { palette } }) => ({
   backgroundColor: Color.rgb(getThemedColor({ colorTheme, palette }))
     .fade(0.81)
     .toString(),

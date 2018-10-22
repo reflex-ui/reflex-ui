@@ -1,12 +1,12 @@
 import { ButtonProps, ViewPropsGetter, ViewStyleGetter } from '@reflex-ui/core';
 
-export const getCommonButtonViewProps: ViewPropsGetter<
+export const getCommonButtonContainerProps: ViewPropsGetter<
   ButtonProps
 > = props => ({
-  style: getCommonButtonViewStyle(props),
+  style: getCommonButtonContainerStyle(props),
 });
 
-export const getCommonButtonViewStyle: ViewStyleGetter<ButtonProps> = ({
+export const getCommonButtonContainerStyle: ViewStyleGetter<ButtonProps> = ({
   fullWidth,
 }) => ({
   flexDirection: fullWidth ? 'column' : 'row',

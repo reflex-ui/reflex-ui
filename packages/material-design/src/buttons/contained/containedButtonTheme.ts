@@ -6,11 +6,11 @@ import { withRippleEffect } from '../withRippleEffect';
 import {
   getContainedButtonLeftIconProps,
   getContainedButtonTextProps,
-  getDisabledContainedButtonViewProps,
-  getEnabledContainedButtonViewProps,
-  getFocusedContainedButtonViewProps,
-  getHoveredContainedButtonViewProps,
-  getPressedContainedButtonViewProps,
+  getDisabledContainedButtonContainerProps,
+  getEnabledContainedButtonContainerProps,
+  getFocusedContainedButtonContainerProps,
+  getHoveredContainedButtonContainerProps,
+  getPressedContainedButtonContainerProps,
 } from './';
 
 export const containedButtonTheme: OptionalButtonVariantTheme = {
@@ -24,34 +24,34 @@ export const containedButtonTheme: OptionalButtonVariantTheme = {
       },
     },
     disabled: {
-      view: {
-        getProps: getDisabledContainedButtonViewProps,
+      container: {
+        getProps: getDisabledContainedButtonContainerProps,
       },
     },
     enabled: {
-      view: {
-        getProps: getEnabledContainedButtonViewProps,
+      container: {
+        getProps: getEnabledContainedButtonContainerProps,
       },
     },
     focused: {
-      view: {
-        getProps: getFocusedContainedButtonViewProps,
+      container: {
+        getProps: getFocusedContainedButtonContainerProps,
       },
     },
     hovered: {
-      view: {
-        getProps: getHoveredContainedButtonViewProps,
+      container: {
+        getProps: getHoveredContainedButtonContainerProps,
       },
     },
     pressed: {
-      view: {
-        getProps: getPressedContainedButtonViewProps,
+      container: {
+        getProps: getPressedContainedButtonContainerProps,
       },
     },
   },
   large: {
     allStates: {
-      view: {
+      container: {
         props: {
           style: {
             height: 40,
@@ -66,7 +66,7 @@ export const containedButtonTheme: OptionalButtonVariantTheme = {
   },
   regular: {
     allStates: {
-      view: {
+      container: {
         props: {
           style: {
             height: 36,
@@ -81,7 +81,7 @@ export const containedButtonTheme: OptionalButtonVariantTheme = {
   },
   small: {
     allStates: {
-      view: {
+      container: {
         props: {
           style: {
             height: 32,
@@ -95,11 +95,11 @@ export const containedButtonTheme: OptionalButtonVariantTheme = {
     },
   },
   subComponents: {
-    View: withRippleEffect(DefaultButtonContainer),
+    Container: withRippleEffect(DefaultButtonContainer),
   },
   xlarge: {
     allStates: {
-      view: {
+      container: {
         props: {
           style: {
             height: 48,
@@ -114,7 +114,7 @@ export const containedButtonTheme: OptionalButtonVariantTheme = {
   },
   xsmall: {
     allStates: {
-      view: {
+      container: {
         props: {
           style: {
             height: 28,

@@ -6,37 +6,37 @@ import {
 } from '@reflex-ui/core';
 import * as Color from 'color';
 
-export const getDisabledContainedButtonViewProps: ViewPropsGetter<
+export const getDisabledContainedButtonContainerProps: ViewPropsGetter<
   ButtonProps
 > = props => ({
-  style: getDisabledContainedButtonViewStyle(props),
+  style: getDisabledContainedButtonContainerStyle(props),
 });
 
-export const getDisabledContainedButtonViewStyle: ViewStyleGetter<
+export const getDisabledContainedButtonContainerStyle: ViewStyleGetter<
   ButtonProps
 > = ({ colorTheme, theme: { palette } }) => ({
   backgroundColor: getThemedColor({ colorTheme, palette }),
 });
 
-export const getEnabledContainedButtonViewProps: ViewPropsGetter<
+export const getEnabledContainedButtonContainerProps: ViewPropsGetter<
   ButtonProps
 > = props => ({
-  style: getEnabledContainedButtonViewStyle(props),
+  style: getEnabledContainedButtonContainerStyle(props),
 });
 
-export const getEnabledContainedButtonViewStyle: ViewStyleGetter<
+export const getEnabledContainedButtonContainerStyle: ViewStyleGetter<
   ButtonProps
 > = ({ colorTheme, theme: { palette } }) => ({
   backgroundColor: getThemedColor({ colorTheme, palette }),
 });
 
-export const getFocusedContainedButtonViewProps: ViewPropsGetter<
+export const getFocusedContainedButtonContainerProps: ViewPropsGetter<
   ButtonProps
 > = props => ({
-  style: getFocusedContainedButtonViewStyle(props),
+  style: getFocusedContainedButtonContainerStyle(props),
 });
 
-export const getFocusedContainedButtonViewStyle: ViewStyleGetter<
+export const getFocusedContainedButtonContainerStyle: ViewStyleGetter<
   ButtonProps
 > = ({ colorTheme, theme: { palette } }) => ({
   backgroundColor: Color.rgb(getThemedColor({ colorTheme, palette }))
@@ -44,13 +44,13 @@ export const getFocusedContainedButtonViewStyle: ViewStyleGetter<
     .toString(),
 });
 
-export const getHoveredContainedButtonViewProps: ViewPropsGetter<
+export const getHoveredContainedButtonContainerProps: ViewPropsGetter<
   ButtonProps
 > = props => ({
-  style: getHoveredContainedButtonViewStyle(props),
+  style: getHoveredContainedButtonContainerStyle(props),
 });
 
-export const getHoveredContainedButtonViewStyle: ViewStyleGetter<
+export const getHoveredContainedButtonContainerStyle: ViewStyleGetter<
   ButtonProps
 > = ({ colorTheme, theme: { palette } }) => ({
   backgroundColor: Color.rgb(getThemedColor({ colorTheme, palette }))
@@ -58,8 +58,8 @@ export const getHoveredContainedButtonViewStyle: ViewStyleGetter<
     .toString(),
 });
 
-export const getPressedContainedButtonViewProps: ViewPropsGetter<
+export const getPressedContainedButtonContainerProps: ViewPropsGetter<
   ButtonProps
 > = props => ({
-  style: getHoveredContainedButtonViewStyle(props),
+  style: getHoveredContainedButtonContainerStyle(props),
 });

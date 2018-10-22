@@ -7,10 +7,10 @@ import {
 } from '../typography/handleAndroidTextTransformation';
 import { ButtonProps } from './ButtonProps';
 import {
+  getButtonContainerProps,
   getButtonLeftIconContainerProps,
   getButtonLeftIconProps,
   getButtonTextProps,
-  getButtonViewProps,
 } from './theming';
 
 const extractTouchableProps = (
@@ -20,9 +20,9 @@ const extractTouchableProps = (
     children,
     colorTheme,
     fullWidth,
+    getContainerProps,
     getLeftIconContainerProps,
     getTextProps,
-    getViewProps,
     interactivityState,
     leftIcon,
     rightIcon,
@@ -85,16 +85,16 @@ const handleLeftIcon = (props: ButtonProps): JSX.Element | undefined => {
 export const SimpleButton: React.SFC<ButtonProps> = (props: ButtonProps) => {
   const { children, variant } = props;
   const buttonTheme = props.theme.components.button;
-  const { Touchable, View } = buttonTheme[variant].subComponents;
+  const { Container, Touchable } = buttonTheme[variant].subComponents;
   const touchableProps = extractTouchableProps(props);
-  const viewProps = getButtonViewProps(props);
+  const containerProps = getButtonContainerProps(props);
 
   return (
     <Touchable componentProps={props} {...touchableProps}>
-      <View componentProps={props} {...viewProps}>
+      <Container componentProps={props} {...containerProps}>
         {props.leftIcon && handleLeftIcon(props)}
         {children && transformButtonChildren(props)}
-      </View>
+      </Container>
     </Touchable>
   );
 };

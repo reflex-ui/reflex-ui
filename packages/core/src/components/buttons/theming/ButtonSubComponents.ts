@@ -8,6 +8,9 @@ import { ReflexSubcomponent } from '../../ReflexSubcomponent';
 import { ButtonProps } from '../ButtonProps';
 
 export interface ButtonSubComponents {
+  readonly Container: React.ComponentType<
+    ReflexSubcomponent<ButtonProps> & ViewProps
+  >;
   readonly LeftIconContainer: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & ViewProps
   >;
@@ -17,12 +20,12 @@ export interface ButtonSubComponents {
   readonly Touchable: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & TouchableWithoutFeedbackProps
   >;
-  readonly View: React.ComponentType<
-    ReflexSubcomponent<ButtonProps> & ViewProps
-  >;
 }
 
 export interface OptionalButtonSubComponents {
+  readonly Container?: React.ComponentType<
+    ReflexSubcomponent<ButtonProps> & ViewProps
+  >;
   readonly LeftIconContainer?: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & ViewProps
   >;
@@ -31,8 +34,5 @@ export interface OptionalButtonSubComponents {
   >;
   readonly Touchable?: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & TouchableWithoutFeedbackProps
-  >;
-  readonly View?: React.ComponentType<
-    ReflexSubcomponent<ButtonProps> & ViewProps
   >;
 }

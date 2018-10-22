@@ -14,21 +14,23 @@ const onButtonPress = () => {
   // tslint:disable-next-line:no-console
   console.log('WelcomeSignedOutScreen().onButtonPress()');
 };
+
 /*
-const getLeftIconContainerProps = () => ({
-  style: {
-    marginRight: 30,
-  },
-});
-*/
-/*
-const getViewProps = (props: ButtonProps) => ({
+const getContainerProps = (props: ButtonProps) => ({
   style: {
     backgroundColor:
       props.interactivityState &&
       props.interactivityState.type === InteractivityType.PRESSED
         ? 'green'
         : 'red',
+  },
+});
+*/
+
+/*
+const getLeftIconContainerProps = () => ({
+  style: {
+    marginRight: 30,
   },
 });
 */
@@ -50,8 +52,8 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <Text>WelcomeSignedOutScreen 1234567</Text>
     <RowView>
       <Button
+        // getContainerProps={getContainerProps}
         // getTextProps={getTextProps}
-        // getViewProps={getViewProps}
         onPress={onButtonPress}
         variant={ButtonVariant.DEFAULT}
       >
@@ -92,8 +94,8 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
+        // getContainerProps={getContainerProps}
         // getTextProps={getTextProps}
-        // getViewProps={getViewProps}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
