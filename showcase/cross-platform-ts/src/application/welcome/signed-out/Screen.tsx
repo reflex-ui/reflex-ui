@@ -5,7 +5,7 @@ import {
   FavoriteIcon,
   // InteractivityType,
   RowView,
-  // Size,
+  Size,
 } from '@reflex-ui/core';
 import * as React from 'react';
 import { ScrollView, Text } from 'react-native';
@@ -49,7 +49,6 @@ const getTextProps = (props: ButtonProps) => ({
 
 export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
-    <Text>WelcomeSignedOutScreen 1234567</Text>
     <RowView>
       <Button
         // getContainerProps={getContainerProps}
@@ -138,8 +137,48 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       </Button>
     </RowView>
     <RowView>
-      <Text>Lorem</Text>
+      <Button
+        fullWidth
+        onPress={onButtonPress}
+        variant={ButtonVariant.CONTAINED_RAISED}
+      >
+        Sign In
+      </Button>
     </RowView>
+    <RowView>
+      <Button
+        onPress={onButtonPress}
+        size={Size.XLARGE}
+        variant={ButtonVariant.FAB}
+      >
+        <FavoriteIcon />
+      </Button>
+      <Button
+        onPress={onButtonPress}
+        size={Size.LARGE}
+        variant={ButtonVariant.FAB}
+      >
+        <FavoriteIcon />
+      </Button>
+      <Button onPress={onButtonPress} variant={ButtonVariant.FAB}>
+        <FavoriteIcon />
+      </Button>
+      <Button
+        onPress={onButtonPress}
+        size={Size.SMALL}
+        variant={ButtonVariant.FAB}
+      >
+        <FavoriteIcon />
+      </Button>
+      <Button
+        onPress={onButtonPress}
+        size={Size.XSMALL}
+        variant={ButtonVariant.FAB}
+      >
+        <FavoriteIcon />
+      </Button>
+    </RowView>
+    <Text>Lorem</Text>
   </ScrollView>
 );
 

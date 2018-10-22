@@ -8,6 +8,7 @@ import {
   allVariantsButtonTheme,
   containedButtonTheme,
   defaultButtonTheme,
+  fabButtonTheme,
   outlinedButtonTheme,
   raisedButtonTheme,
 } from './';
@@ -17,6 +18,7 @@ const optionalButtonTheme: OptionalButtonTheme = {
   contained: containedButtonTheme,
   containedRaised: raisedButtonTheme,
   default: defaultButtonTheme,
+  fab: fabButtonTheme,
   outlined: outlinedButtonTheme,
 };
 

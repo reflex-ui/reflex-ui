@@ -49,6 +49,9 @@ export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
           },
         },
       },
+      fabIcon: {
+        props: allVariantsCommonButtonIconProps,
+      },
       leftIcon: {
         props: allVariantsCommonButtonIconProps,
       },

@@ -6,8 +6,11 @@ import {
   handleAndroidTextTransformation,
 } from '../typography/handleAndroidTextTransformation';
 import { ButtonProps } from './ButtonProps';
+import { ButtonVariant } from './ButtonVariant';
 import {
   getButtonContainerProps,
+  getButtonFabIconContainerProps,
+  getButtonFabIconProps,
   getButtonLeftIconContainerProps,
   getButtonLeftIconProps,
   getButtonRightIconContainerProps,
@@ -50,6 +53,8 @@ const transformButtonChildren = (props: ButtonProps): React.ReactNode => {
     return transformStringChildrenIntoComponent(children.toString(), props);
   }
 
+  if (props.variant === ButtonVariant.FAB) return handleFabIcon(props);
+
   return children;
 };
 
@@ -64,6 +69,27 @@ const transformStringChildrenIntoComponent = (
     <Text componentProps={props} {...textProps}>
       {handleAndroidTextTransformation(children, textProps.style)}
     </Text>
+  );
+};
+
+const handleFabIcon = (props: ButtonProps): JSX.Element | undefined => {
+  const buttonTheme = props.theme.components.button;
+  const { FabIconContainer } = buttonTheme[props.variant].subComponents;
+  const containerProps = getButtonFabIconContainerProps(props);
+  const iconProps = getButtonFabIconProps(props);
+
+  let styledIcon;
+  if (props.children) {
+    styledIcon = React.cloneElement(
+      props.children as React.ReactElement<{}>,
+      iconProps,
+    );
+  }
+
+  return (
+    <FabIconContainer componentProps={props} {...containerProps}>
+      {styledIcon}
+    </FabIconContainer>
   );
 };
 

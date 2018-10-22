@@ -7,6 +7,8 @@ export * from './DefaultButtonIconContainer';
 export * from './DefaultButtonText';
 export * from './DefaultButtonTouchable';
 export * from './getButtonContainerProps';
+export * from './getButtonFabIconContainerProps';
+export * from './getButtonFabIconProps';
 export * from './getButtonLeftIconContainerProps';
 export * from './getButtonLeftIconProps';
 export * from './getButtonRightIconContainerProps';

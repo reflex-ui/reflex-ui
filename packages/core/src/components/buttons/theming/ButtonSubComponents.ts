@@ -11,6 +11,9 @@ export interface ButtonSubComponents {
   readonly Container: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & ViewProps
   >;
+  readonly FabIconContainer: React.ComponentType<
+    ReflexSubcomponent<ButtonProps> & ViewProps
+  >;
   readonly LeftIconContainer: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & ViewProps
   >;
@@ -27,6 +30,9 @@ export interface ButtonSubComponents {
 
 export interface OptionalButtonSubComponents {
   readonly Container?: React.ComponentType<
+    ReflexSubcomponent<ButtonProps> & ViewProps
+  >;
+  readonly FabIconContainer?: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & ViewProps
   >;
   readonly LeftIconContainer?: React.ComponentType<

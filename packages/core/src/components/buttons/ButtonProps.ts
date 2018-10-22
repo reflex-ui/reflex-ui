@@ -7,6 +7,7 @@ export interface ButtonProps extends InteractivityProps, Themed {
   children?: React.ReactNode;
   fullWidth?: boolean;
   getContainerProps?: ViewPropsGetter<ButtonProps>;
+  getFabIconContainerProps?: ViewPropsGetter<ButtonProps>;
   getLeftIconContainerProps?: ViewPropsGetter<ButtonProps>;
   getRightIconContainerProps?: ViewPropsGetter<ButtonProps>;
   getTextProps?: TextPropsGetter<ButtonProps>;
@@ -22,6 +23,7 @@ export interface OptionalButtonProps
   children?: React.ReactNode;
   fullWidth?: boolean;
   getContainerProps?: ViewPropsGetter<ButtonProps>;
+  getFabIconContainerProps?: ViewPropsGetter<ButtonProps>;
   getLeftIconContainerProps?: ViewPropsGetter<ButtonProps>;
   getRightIconContainerProps?: ViewPropsGetter<ButtonProps>;
   getTextProps?: TextPropsGetter<ButtonProps>;
