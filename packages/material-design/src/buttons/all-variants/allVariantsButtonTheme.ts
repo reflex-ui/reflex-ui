@@ -93,7 +93,7 @@ export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
       container: {
         props: {
           style: {
-            borderRadius: 2,
+            borderRadius: 4,
           },
         },
       },
@@ -124,7 +124,7 @@ export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
       container: {
         props: {
           style: {
-            borderRadius: 2,
+            borderRadius: 4,
           },
         },
       },
@@ -155,7 +155,7 @@ export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
       container: {
         props: {
           style: {
-            borderRadius: 2,
+            borderRadius: 4,
           },
         },
       },
@@ -186,7 +186,7 @@ export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
       container: {
         props: {
           style: {
-            borderRadius: 4,
+            borderRadius: 6,
           },
         },
       },
@@ -217,7 +217,7 @@ export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
       container: {
         props: {
           style: {
-            borderRadius: 2,
+            borderRadius: 4,
           },
         },
       },
