@@ -6,13 +6,16 @@ import {
 } from '@reflex-ui/core';
 import { Platform } from 'react-native';
 import { getFontFamily } from '../../typography';
-import { getCommonButtonContainerProps } from '../CommonButtonContainerProps';
+// prettier-ignore
+import {
+  getAllVariantsCommonButtonContainerProps,
+} from './AllVariantsButtonContainerProps';
 
 export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
   allSizes: {
     allStates: {
       container: {
-        getProps: getCommonButtonContainerProps,
+        getProps: getAllVariantsCommonButtonContainerProps,
         props: {
           pointerEvents: 'box-only',
           style: {
