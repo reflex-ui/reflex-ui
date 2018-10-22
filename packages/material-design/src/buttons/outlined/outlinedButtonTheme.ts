@@ -3,7 +3,7 @@ import {
   OptionalButtonVariantTheme,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
-import { getDefaultButtonLeftIconProps } from '../';
+import { getDefaultButtonIconProps } from '../';
 import { containedButtonTheme } from '../contained';
 import {
   getCommonOutlinedButtonContainerProps,
@@ -22,7 +22,10 @@ const optionalOutlinedButtonTheme: OptionalButtonVariantTheme = {
         getProps: getCommonOutlinedButtonContainerProps,
       },
       leftIcon: {
-        getProps: getDefaultButtonLeftIconProps,
+        getProps: getDefaultButtonIconProps,
+      },
+      rightIcon: {
+        getProps: getDefaultButtonIconProps,
       },
       text: {
         getProps: getCommonOutlinedButtonTextProps,

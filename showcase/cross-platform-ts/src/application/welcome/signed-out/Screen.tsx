@@ -67,6 +67,13 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
+      <Button
+        onPress={onButtonPress}
+        rightIcon={<FavoriteIcon />}
+        variant={ButtonVariant.DEFAULT}
+      >
+        Favorite
+      </Button>
     </RowView>
     <RowView>
       <Button onPress={onButtonPress} variant={ButtonVariant.OUTLINED}>
@@ -79,6 +86,13 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
+      <Button
+        onPress={onButtonPress}
+        rightIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED}
+      >
+        Favorite
+      </Button>
     </RowView>
     <RowView>
       <Button onPress={onButtonPress} variant={ButtonVariant.CONTAINED}>
@@ -87,6 +101,13 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
+        variant={ButtonVariant.CONTAINED}
+      >
+        Favorite
+      </Button>
+      <Button
+        onPress={onButtonPress}
+        rightIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -104,6 +125,13 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
+        variant={ButtonVariant.CONTAINED_RAISED}
+      >
+        Favorite
+      </Button>
+      <Button
+        onPress={onButtonPress}
+        rightIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite

@@ -4,7 +4,7 @@ import {
 } from '@reflex-ui/core';
 import { withRippleEffect } from '../withRippleEffect';
 import {
-  getContainedButtonLeftIconProps,
+  getContainedButtonIconProps,
   getContainedButtonTextProps,
   getDisabledContainedButtonContainerProps,
   getEnabledContainedButtonContainerProps,
@@ -17,7 +17,10 @@ export const containedButtonTheme: OptionalButtonVariantTheme = {
   allSizes: {
     allStates: {
       leftIcon: {
-        getProps: getContainedButtonLeftIconProps,
+        getProps: getContainedButtonIconProps,
+      },
+      rightIcon: {
+        getProps: getContainedButtonIconProps,
       },
       text: {
         getProps: getContainedButtonTextProps,

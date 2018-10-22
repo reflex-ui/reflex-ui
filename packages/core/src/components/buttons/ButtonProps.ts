@@ -8,6 +8,7 @@ export interface ButtonProps extends InteractivityProps, Themed {
   fullWidth?: boolean;
   getContainerProps?: ViewPropsGetter<ButtonProps>;
   getLeftIconContainerProps?: ViewPropsGetter<ButtonProps>;
+  getRightIconContainerProps?: ViewPropsGetter<ButtonProps>;
   getTextProps?: TextPropsGetter<ButtonProps>;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
@@ -22,6 +23,7 @@ export interface OptionalButtonProps
   fullWidth?: boolean;
   getContainerProps?: ViewPropsGetter<ButtonProps>;
   getLeftIconContainerProps?: ViewPropsGetter<ButtonProps>;
+  getRightIconContainerProps?: ViewPropsGetter<ButtonProps>;
   getTextProps?: TextPropsGetter<ButtonProps>;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;

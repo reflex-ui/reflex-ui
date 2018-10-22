@@ -11,6 +11,25 @@ import {
   getAllVariantsCommonButtonContainerProps,
 } from './AllVariantsButtonContainerProps';
 
+import {
+  allVariantsCommonButtonIconProps,
+  allVariantsLargeButtonIconProps,
+  allVariantsLargeButtonLeftIconContainerProps,
+  allVariantsLargeButtonRightIconContainerProps,
+  allVariantsRegularButtonIconProps,
+  allVariantsRegularButtonLeftIconContainerProps,
+  allVariantsRegularButtonRightIconContainerProps,
+  allVariantsSmallButtonIconProps,
+  allVariantsSmallButtonLeftIconContainerProps,
+  allVariantsSmallButtonRightIconContainerProps,
+  allVariantsXLargeButtonIconProps,
+  allVariantsXLargeButtonLeftIconContainerProps,
+  allVariantsXLargeButtonRightIconContainerProps,
+  allVariantsXSmallButtonIconProps,
+  allVariantsXSmallButtonLeftIconContainerProps,
+  allVariantsXSmallButtonRightIconContainerProps,
+} from './AllVariantsIconProps';
+
 export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
   allSizes: {
     allStates: {
@@ -31,15 +50,10 @@ export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
         },
       },
       leftIcon: {
-        props: {
-          style: {
-            ...Platform.select({
-              web: {
-                userSelect: 'none',
-              },
-            }),
-          },
-        },
+        props: allVariantsCommonButtonIconProps,
+      },
+      rightIcon: {
+        props: allVariantsCommonButtonIconProps,
       },
       text: {
         props: {
@@ -84,19 +98,16 @@ export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
         },
       },
       leftIcon: {
-        props: {
-          style: {
-            fontSize: 19,
-          },
-        },
+        props: allVariantsLargeButtonIconProps,
       },
       leftIconContainer: {
-        props: {
-          style: {
-            marginLeft: -6,
-            marginRight: 10,
-          },
-        },
+        props: allVariantsLargeButtonLeftIconContainerProps,
+      },
+      rightIcon: {
+        props: allVariantsLargeButtonIconProps,
+      },
+      rightIconContainer: {
+        props: allVariantsLargeButtonRightIconContainerProps,
       },
       text: {
         props: {
@@ -118,19 +129,16 @@ export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
         },
       },
       leftIcon: {
-        props: {
-          style: {
-            fontSize: 18,
-          },
-        },
+        props: allVariantsRegularButtonIconProps,
       },
       leftIconContainer: {
-        props: {
-          style: {
-            marginLeft: -4,
-            marginRight: 8,
-          },
-        },
+        props: allVariantsRegularButtonLeftIconContainerProps,
+      },
+      rightIcon: {
+        props: allVariantsRegularButtonIconProps,
+      },
+      rightIconContainer: {
+        props: allVariantsRegularButtonRightIconContainerProps,
       },
       text: {
         props: {
@@ -152,19 +160,16 @@ export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
         },
       },
       leftIcon: {
-        props: {
-          style: {
-            fontSize: 17,
-          },
-        },
+        props: allVariantsSmallButtonIconProps,
       },
       leftIconContainer: {
-        props: {
-          style: {
-            marginLeft: -3,
-            marginRight: 7,
-          },
-        },
+        props: allVariantsSmallButtonLeftIconContainerProps,
+      },
+      rightIcon: {
+        props: allVariantsSmallButtonIconProps,
+      },
+      rightIconContainer: {
+        props: allVariantsSmallButtonRightIconContainerProps,
       },
       text: {
         props: {
@@ -186,19 +191,16 @@ export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
         },
       },
       leftIcon: {
-        props: {
-          style: {
-            fontSize: 20,
-          },
-        },
+        props: allVariantsXLargeButtonIconProps,
       },
       leftIconContainer: {
-        props: {
-          style: {
-            marginLeft: -8,
-            marginRight: 12,
-          },
-        },
+        props: allVariantsXLargeButtonLeftIconContainerProps,
+      },
+      rightIcon: {
+        props: allVariantsXLargeButtonIconProps,
+      },
+      rightIconContainer: {
+        props: allVariantsXLargeButtonRightIconContainerProps,
       },
       text: {
         props: {
@@ -220,19 +222,16 @@ export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
         },
       },
       leftIcon: {
-        props: {
-          style: {
-            fontSize: 15,
-          },
-        },
+        props: allVariantsXSmallButtonIconProps,
       },
       leftIconContainer: {
-        props: {
-          style: {
-            marginLeft: -2,
-            marginRight: 6,
-          },
-        },
+        props: allVariantsXSmallButtonLeftIconContainerProps,
+      },
+      rightIcon: {
+        props: allVariantsXSmallButtonIconProps,
+      },
+      rightIconContainer: {
+        props: allVariantsXSmallButtonRightIconContainerProps,
       },
       text: {
         props: {

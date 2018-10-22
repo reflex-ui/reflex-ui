@@ -1,6 +1,8 @@
 import { isWeb, OptionalButtonVariantTheme } from '@reflex-ui/core';
 import {
-  getDefaultButtonLeftIconProps,
+  defaultButtonLeftIconContainerProps,
+  defaultButtonRightIconContainerProps,
+  getDefaultButtonIconProps,
   getDefaultButtonTextProps,
   getDisabledDefaultButtonContainerProps,
   getEnabledDefaultButtonContainerProps,
@@ -13,14 +15,16 @@ export const defaultButtonTheme: OptionalButtonVariantTheme = {
   allSizes: {
     allStates: {
       leftIcon: {
-        getProps: getDefaultButtonLeftIconProps,
+        getProps: getDefaultButtonIconProps,
       },
       leftIconContainer: {
-        props: {
-          style: {
-            marginLeft: 0,
-          },
-        },
+        props: defaultButtonLeftIconContainerProps,
+      },
+      rightIcon: {
+        getProps: getDefaultButtonIconProps,
+      },
+      rightIconContainer: {
+        props: defaultButtonRightIconContainerProps,
       },
       text: {
         getProps: getDefaultButtonTextProps,

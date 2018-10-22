@@ -5,7 +5,7 @@ import {
   ButtonTheme,
   ButtonVariantTheme,
   DefaultButtonContainer,
-  DefaultButtonLeftIconContainer,
+  DefaultButtonIconContainer,
   DefaultButtonText,
   DefaultButtonTouchable,
 } from './';
@@ -20,6 +20,14 @@ export const rawButtonSubComponentsTheme: ButtonSubComponentsTheme = {
     props: {},
   },
   leftIconContainer: {
+    getProps: () => ({}),
+    props: {},
+  },
+  rightIcon: {
+    getProps: () => ({}),
+    props: {},
+  },
+  rightIconContainer: {
     getProps: () => ({}),
     props: {},
   },
@@ -42,7 +50,8 @@ export const rawButtonInteractivityStateTheme: InteractivityStateTheme<
 
 export const rawButtonSubComponents: ButtonSubComponents = {
   Container: DefaultButtonContainer,
-  LeftIconContainer: DefaultButtonLeftIconContainer,
+  LeftIconContainer: DefaultButtonIconContainer,
+  RightIconContainer: DefaultButtonIconContainer,
   Text: DefaultButtonText,
   Touchable: DefaultButtonTouchable,
 };
