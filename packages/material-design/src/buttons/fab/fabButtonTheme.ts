@@ -1,10 +1,17 @@
-import { OptionalButtonVariantTheme } from '@reflex-ui/core';
+import {
+  DefaultButtonContainer,
+  OptionalButtonVariantTheme,
+} from '@reflex-ui/core';
 import merge from 'lodash/merge';
+
+import { ElevationDegree } from '../../elevation/ElevationDegree';
 // prettier-ignore
 import {
   getContainedButtonIconProps,
 } from '../contained/ContainedButtonIconProps';
 import { raisedButtonTheme } from '../raised/raisedButtonTheme';
+import { withRaiseEffect } from '../withRaiseEffect';
+import { withRippleEffect } from '../withRippleEffect';
 
 const optionalFabButtonTheme: OptionalButtonVariantTheme = {
   allSizes: {
@@ -85,6 +92,11 @@ const optionalFabButtonTheme: OptionalButtonVariantTheme = {
         },
       },
     },
+  },
+  subComponents: {
+    Container: withRippleEffect(
+      withRaiseEffect(ElevationDegree.MID)(DefaultButtonContainer),
+    ),
   },
   xlarge: {
     allStates: {

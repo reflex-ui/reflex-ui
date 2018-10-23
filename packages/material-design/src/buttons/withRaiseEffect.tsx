@@ -18,7 +18,8 @@ import {
 } from 'react-native';
 // @ts-ignore Could not find a declaration file for module'
 import { animated, Keyframes } from 'react-spring/dist/native';
-import { getElevationStyles } from '../shared';
+
+import { ElevationDegree, getElevationStyles } from '../elevation';
 
 interface RaiseStyles {
   container: ViewStyle;
@@ -54,7 +55,45 @@ const createStaticRaiseStyles: StaticRaiseStylesCreator = style => ({
   },
 });
 
+const convertInteractivityToElevation = (
+  interactivityType: InteractivityType,
+  degree: ElevationDegree,
+) => {
+  let elevation = 0;
+  if (interactivityType === InteractivityType.ENABLED) {
+    if (degree === ElevationDegree.LOW) {
+      elevation = 2;
+    } else if (degree === ElevationDegree.MID) {
+      elevation = 6;
+    } else {
+      elevation = 10;
+    }
+  } else if (
+    interactivityType === InteractivityType.FOCUSED ||
+    interactivityType === InteractivityType.HOVERED
+  ) {
+    if (degree === ElevationDegree.LOW) {
+      elevation = 4;
+    } else if (degree === ElevationDegree.MID) {
+      elevation = 8;
+    } else {
+      elevation = 14;
+    }
+  } else if (interactivityType === InteractivityType.PRESSED) {
+    if (degree === ElevationDegree.LOW) {
+      elevation = 8;
+    } else if (degree === ElevationDegree.MID) {
+      elevation = 12;
+    } else {
+      elevation = 20;
+    }
+  }
+
+  return elevation;
+};
+
 interface MotionRaiseStylesCreatorData {
+  readonly elevationDegree: ElevationDegree;
   readonly interactivityType: InteractivityType;
 }
 
@@ -63,11 +102,15 @@ type MotionRaiseStylesCreator = (
 ) => ViewStyle;
 
 const createMotionRaiseStyles: MotionRaiseStylesCreator = ({
+  elevationDegree,
   interactivityType,
 }) => {
-  const styles = getElevationStyles({
+  const elevation = convertInteractivityToElevation(
     interactivityType,
-  });
+    elevationDegree,
+  );
+
+  const styles = getElevationStyles(elevation);
 
   if (isIOS && styles.shadowOffset) {
     styles.height = styles.shadowOffset.height;
@@ -84,7 +127,7 @@ export type WithRaiseEffect = (
   >,
 ) => React.ComponentType<ViewProps & InteractivityProps & Themed>;
 */
-export const withRaiseEffect = <
+export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
   P extends ReflexSubcomponent<InteractivityStateProps & Themed> & ViewProps
 >(
   WrappedComponent: React.ComponentType<P>,
@@ -197,11 +240,13 @@ export const withRaiseEffect = <
             config: { tension: 75, friction: 20 },
             from: {
               ...createMotionRaiseStyles({
+                elevationDegree,
                 interactivityType: InteractivityType.ENABLED,
               }),
             },
             to: {
               ...createMotionRaiseStyles({
+                elevationDegree,
                 interactivityType: InteractivityType.DISABLED,
               }),
             },
@@ -216,11 +261,13 @@ export const withRaiseEffect = <
             config: { tension: 75, friction: 20 },
             from: {
               ...createMotionRaiseStyles({
+                elevationDegree,
                 interactivityType: InteractivityType.HOVERED,
               }),
             },
             to: {
               ...createMotionRaiseStyles({
+                elevationDegree,
                 interactivityType: InteractivityType.ENABLED,
               }),
             },
@@ -235,11 +282,13 @@ export const withRaiseEffect = <
             config: { tension: 75, friction: 20 },
             from: {
               ...createMotionRaiseStyles({
+                elevationDegree,
                 interactivityType: InteractivityType.ENABLED,
               }),
             },
             to: {
               ...createMotionRaiseStyles({
+                elevationDegree,
                 interactivityType: InteractivityType.FOCUSED,
               }),
             },
@@ -254,11 +303,13 @@ export const withRaiseEffect = <
             config: { tension: 150, friction: 20 },
             from: {
               ...createMotionRaiseStyles({
+                elevationDegree,
                 interactivityType: InteractivityType.ENABLED,
               }),
             },
             to: {
               ...createMotionRaiseStyles({
+                elevationDegree,
                 interactivityType: InteractivityType.HOVERED,
               }),
             },
@@ -273,11 +324,13 @@ export const withRaiseEffect = <
             config: { tension: 150, friction: 20 },
             from: {
               ...createMotionRaiseStyles({
+                elevationDegree,
                 interactivityType: InteractivityType.HOVERED,
               }),
             },
             to: {
               ...createMotionRaiseStyles({
+                elevationDegree,
                 interactivityType: InteractivityType.PRESSED,
               }),
             },
@@ -344,9 +397,11 @@ export const withRaiseEffect = <
                       ? this.props.componentProps.interactivityState.type
                       : InteractivityType.ENABLED;
 
-                    const elevationStyles = getElevationStyles({
+                    const elevation = convertInteractivityToElevation(
                       interactivityType,
-                    });
+                      ElevationDegree.MID,
+                    );
+                    const elevationStyles = getElevationStyles(elevation);
                     const height = elevationStyles.shadowOffset
                       ? elevationStyles.shadowOffset.height
                       : 0;
