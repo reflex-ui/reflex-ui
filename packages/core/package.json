@@ -38,16 +38,10 @@
     "build/dist"
   ],
   "dependencies": {
-    "color": "^3.0.0",
-    "delay": "^4.0.0",
-    "lodash": "^4.17.10",
-    "react-native-vector-icons": "^6.0.2",
-    "react-spring": "^5.6.14"
+    "lodash": "^4.17.10"
   },
   "devDependencies": {
-    "@types/color": "^3.0.0",
-    "@types/lodash": "^4.14.116",
-    "@types/react-native-vector-icons": "^4.6.4"
+    "@types/lodash": "^4.14.116"
   },
   "peerDependencies": {
     "react": "^16.4.2",

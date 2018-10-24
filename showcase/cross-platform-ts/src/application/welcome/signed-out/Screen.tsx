@@ -2,11 +2,11 @@ import {
   Button,
   // ButtonProps,
   ButtonVariant,
-  FavoriteIcon,
   // InteractivityType,
   RowView,
   Size,
 } from '@reflex-ui/core';
+import { FavoriteIcon } from '@reflex-ui/material-design';
 import * as React from 'react';
 import { ScrollView, Text } from 'react-native';
 
