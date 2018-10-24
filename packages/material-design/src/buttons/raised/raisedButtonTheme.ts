@@ -7,14 +7,13 @@ import merge from 'lodash/merge';
 import { ElevationDegree } from '../../elevation/ElevationDegree';
 import { containedButtonTheme } from '../contained/containedButtonTheme';
 import { withRaiseEffect } from '../withRaiseEffect';
-// import { withRippleEffect } from '../withRippleEffect';
+import { withRippleEffect } from '../withRippleEffect';
 
 const optionalRaisedButtonTheme: OptionalButtonVariantTheme = {
   subComponents: {
-    /*Container: withRippleEffect(
+    Container: withRippleEffect(
       withRaiseEffect(ElevationDegree.LOW)(DefaultButtonContainer),
-    ),*/
-    Container: withRaiseEffect(ElevationDegree.LOW)(DefaultButtonContainer),
+    ),
   },
 };
 

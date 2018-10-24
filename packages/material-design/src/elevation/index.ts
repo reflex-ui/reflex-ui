@@ -1,3 +1,4 @@
+export * from './convertInteractivityToElevation';
 export * from './ElevationDegree';
 export * from './ElevationStyleGetter';
 export * from './elevationStyles';

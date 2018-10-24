@@ -19,7 +19,11 @@ import {
 // @ts-ignore Could not find a declaration file for module'
 import { animated, Keyframes } from 'react-spring/dist/native';
 
-import { ElevationDegree, getElevationStyles } from '../elevation';
+import {
+  convertInteractivityToElevation,
+  ElevationDegree,
+  getElevationStyles,
+} from '../elevation';
 
 interface RaiseStyles {
   container: ViewStyle;
@@ -55,43 +59,6 @@ const createStaticRaiseStyles: StaticRaiseStylesCreator = style => ({
   },
 });
 
-const convertInteractivityToElevation = (
-  interactivityType: InteractivityType,
-  degree: ElevationDegree,
-) => {
-  let elevation = 0;
-  if (interactivityType === InteractivityType.ENABLED) {
-    if (degree === ElevationDegree.LOW) {
-      elevation = 2;
-    } else if (degree === ElevationDegree.MID) {
-      elevation = 6;
-    } else {
-      elevation = 10;
-    }
-  } else if (
-    interactivityType === InteractivityType.FOCUSED ||
-    interactivityType === InteractivityType.HOVERED
-  ) {
-    if (degree === ElevationDegree.LOW) {
-      elevation = 4;
-    } else if (degree === ElevationDegree.MID) {
-      elevation = 8;
-    } else {
-      elevation = 14;
-    }
-  } else if (interactivityType === InteractivityType.PRESSED) {
-    if (degree === ElevationDegree.LOW) {
-      elevation = 8;
-    } else if (degree === ElevationDegree.MID) {
-      elevation = 12;
-    } else {
-      elevation = 20;
-    }
-  }
-
-  return elevation;
-};
-
 interface MotionRaiseStylesCreatorData {
   readonly elevationDegree: ElevationDegree;
   readonly interactivityType: InteractivityType;
@@ -120,13 +87,7 @@ const createMotionRaiseStyles: MotionRaiseStylesCreator = ({
 
   return styles;
 };
-/*
-export type WithRaiseEffect = (
-  WrappedComponent: React.ComponentType<
-    ViewProps & InteractivityProps & Themed
-  >,
-) => React.ComponentType<ViewProps & InteractivityProps & Themed>;
-*/
+
 export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
   P extends ReflexSubcomponent<InteractivityStateProps & Themed> & ViewProps
 >(
