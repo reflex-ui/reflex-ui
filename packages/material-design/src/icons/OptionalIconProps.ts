@@ -1,7 +1,5 @@
-import { TextProps } from 'react-native';
+import { OptionalIconWrapperProps } from '@reflex-ui/core';
 
-export interface OptionalIconProps extends TextProps {
-  color?: string;
+export interface OptionalIconProps extends OptionalIconWrapperProps {
   name?: string;
-  size?: number;
 }

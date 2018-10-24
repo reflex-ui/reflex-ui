@@ -6,9 +6,9 @@ import {
   RowView,
   Size,
 } from '@reflex-ui/core';
-import { FavoriteIcon } from '@reflex-ui/material-design';
+import { FavoriteIcon, MenuIcon } from '@reflex-ui/material-design';
 import * as React from 'react';
-import { ScrollView, Text } from 'react-native';
+import { ScrollView } from 'react-native';
 
 const onButtonPress = () => {
   // tslint:disable-next-line:no-console
@@ -148,19 +148,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         onPress={onButtonPress}
-        size={Size.XLARGE}
+        size={Size.XSMALL}
         variant={ButtonVariant.FAB}
       >
-        <FavoriteIcon />
-      </Button>
-      <Button
-        onPress={onButtonPress}
-        size={Size.LARGE}
-        variant={ButtonVariant.FAB}
-      >
-        <FavoriteIcon />
-      </Button>
-      <Button onPress={onButtonPress} variant={ButtonVariant.FAB}>
         <FavoriteIcon />
       </Button>
       <Button
@@ -170,14 +160,43 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       >
         <FavoriteIcon />
       </Button>
+      <Button onPress={onButtonPress} variant={ButtonVariant.FAB}>
+        <FavoriteIcon />
+      </Button>
       <Button
         onPress={onButtonPress}
-        size={Size.XSMALL}
+        size={Size.LARGE}
+        variant={ButtonVariant.FAB}
+      >
+        <FavoriteIcon />
+      </Button>
+      <Button
+        onPress={onButtonPress}
+        size={Size.XLARGE}
         variant={ButtonVariant.FAB}
       >
         <FavoriteIcon />
       </Button>
     </RowView>
-    <Text>Lorem</Text>
+    <RowView>
+      <FavoriteIcon size={Size.XSMALL} />
+      <MenuIcon size={Size.XSMALL} />
+    </RowView>
+    <RowView>
+      <FavoriteIcon size={Size.SMALL} />
+      <MenuIcon size={Size.SMALL} />
+    </RowView>
+    <RowView>
+      <FavoriteIcon />
+      <MenuIcon />
+    </RowView>
+    <RowView>
+      <FavoriteIcon size={Size.LARGE} />
+      <MenuIcon size={Size.LARGE} />
+    </RowView>
+    <RowView>
+      <FavoriteIcon size={Size.XLARGE} />
+      <MenuIcon size={Size.XLARGE} />
+    </RowView>
   </ScrollView>
 );

@@ -1,4 +1,4 @@
-import '@reflex-ui/core/src/components/icons/Font';
+import '@reflex-ui/material-design/src/icons/Font';
 import * as React from 'react';
 
 import { withAppLogic } from './application/shared';
