@@ -76,7 +76,10 @@ const handleFabIcon = (props: ButtonProps): JSX.Element | undefined => {
   const buttonTheme = props.theme.components.button;
   const { FabIconContainer } = buttonTheme[props.variant].subComponents;
   const containerProps = getButtonFabIconContainerProps(props);
-  const iconProps = getButtonFabIconProps(props);
+  const iconProps = {
+    noContainer: true,
+    ...getButtonFabIconProps(props),
+  };
 
   let styledIcon;
   if (props.children) {
@@ -97,7 +100,10 @@ const handleLeftIcon = (props: ButtonProps): JSX.Element | undefined => {
   const buttonTheme = props.theme.components.button;
   const { LeftIconContainer } = buttonTheme[props.variant].subComponents;
   const containerProps = getButtonLeftIconContainerProps(props);
-  const iconProps = getButtonLeftIconProps(props);
+  const iconProps = {
+    noContainer: true,
+    ...getButtonLeftIconProps(props),
+  };
 
   let styledIcon;
   if (props.leftIcon) {
@@ -115,7 +121,10 @@ const handleRightIcon = (props: ButtonProps): JSX.Element | undefined => {
   const buttonTheme = props.theme.components.button;
   const { RightIconContainer } = buttonTheme[props.variant].subComponents;
   const containerProps = getButtonRightIconContainerProps(props);
-  const iconProps = getButtonRightIconProps(props);
+  const iconProps = {
+    noContainer: true,
+    ...getButtonRightIconProps(props),
+  };
 
   let styledIcon;
   if (props.rightIcon) {

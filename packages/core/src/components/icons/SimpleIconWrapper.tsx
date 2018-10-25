@@ -9,6 +9,7 @@ const extractTextProps = (props: IconWrapperProps): TextProps => {
     children,
     colorTheme,
     getContainerProps,
+    noContainer,
     size,
     theme,
     ...textProps
@@ -43,14 +44,18 @@ const handleIconChildren = (props: IconWrapperProps): React.ReactNode => {
 
 export const SimpleIconWrapper: React.SFC<IconWrapperProps> = (
   props: IconWrapperProps,
-) => {
+): React.ReactElement<{}> | null => {
+  let children: React.ReactNode;
+  if (props.children) children = handleIconChildren(props);
+  if (props.noContainer) return <React.Fragment>{children}</React.Fragment>;
+
   const iconTheme = props.theme.components.icon;
   const { Container } = iconTheme.subComponents;
   const containerProps = getIconContainerProps(props);
 
   return (
     <Container componentProps={props} {...containerProps}>
-      {props.children && handleIconChildren(props)}
+      {children}
     </Container>
   );
 };
