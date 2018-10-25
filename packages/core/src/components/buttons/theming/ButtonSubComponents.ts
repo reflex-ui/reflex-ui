@@ -26,6 +26,9 @@ export interface ButtonSubComponents {
   readonly Touchable: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & TouchableWithoutFeedbackProps
   >;
+  readonly XFabIconContainer: React.ComponentType<
+    ReflexSubcomponent<ButtonProps> & ViewProps
+  >;
 }
 
 export interface OptionalButtonSubComponents {
@@ -46,5 +49,8 @@ export interface OptionalButtonSubComponents {
   >;
   readonly Touchable?: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & TouchableWithoutFeedbackProps
+  >;
+  readonly XFabIconContainer?: React.ComponentType<
+    ReflexSubcomponent<ButtonProps> & ViewProps
   >;
 }

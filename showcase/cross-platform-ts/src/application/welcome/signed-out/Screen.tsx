@@ -8,7 +8,7 @@ import {
 } from '@reflex-ui/core';
 import { FavoriteIcon, MenuIcon } from '@reflex-ui/material-design';
 import * as React from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, Text } from 'react-native';
 
 const onButtonPress = () => {
   // tslint:disable-next-line:no-console
@@ -111,6 +111,14 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
+      <Button
+        onPress={onButtonPress}
+        rightIcon={<FavoriteIcon />}
+        size={Size.XLARGE}
+        variant={ButtonVariant.CONTAINED}
+      >
+        Favorite
+      </Button>
     </RowView>
     <RowView>
       <Button
@@ -176,6 +184,55 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         variant={ButtonVariant.FAB}
       >
         <FavoriteIcon />
+      </Button>
+    </RowView>
+    <RowView>
+      <Button onPress={onButtonPress} variant={ButtonVariant.XFAB}>
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Text>Lorem</Text>
+    </RowView>
+    <RowView>
+      <Button
+        onPress={onButtonPress}
+        leftIcon={<FavoriteIcon />}
+        size={Size.XSMALL}
+        variant={ButtonVariant.XFAB}
+      >
+        Favorite
+      </Button>
+      <Button
+        onPress={onButtonPress}
+        rightIcon={<FavoriteIcon />}
+        size={Size.SMALL}
+        variant={ButtonVariant.XFAB}
+      >
+        Favorite
+      </Button>
+      <Button
+        leftIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.XFAB}
+      >
+        Favorite
+      </Button>
+      <Button
+        onPress={onButtonPress}
+        rightIcon={<FavoriteIcon />}
+        size={Size.LARGE}
+        variant={ButtonVariant.XFAB}
+      >
+        Favorite
+      </Button>
+      <Button
+        leftIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        size={Size.XLARGE}
+        variant={ButtonVariant.XFAB}
+      >
+        Favorite
       </Button>
     </RowView>
     <RowView>

@@ -4,4 +4,5 @@ export enum ButtonVariant {
   DEFAULT = 'default',
   FAB = 'fab',
   OUTLINED = 'outlined',
+  XFAB = 'xfab',
 }

@@ -11,6 +11,7 @@ import {
   fabButtonTheme,
   outlinedButtonTheme,
   raisedButtonTheme,
+  xfabButtonTheme,
 } from './';
 
 const optionalButtonTheme: OptionalButtonTheme = {
@@ -20,6 +21,7 @@ const optionalButtonTheme: OptionalButtonTheme = {
   default: defaultButtonTheme,
   fab: fabButtonTheme,
   outlined: outlinedButtonTheme,
+  xfab: xfabButtonTheme,
 };
 
 export const buttonTheme: ButtonTheme = merge<

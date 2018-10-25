@@ -1,10 +1,11 @@
 import * as React from 'react';
 
 import { InteractivityType } from '../../interactivity';
-import { ColorTheme, ThemeContext } from '../../theming';
+import { ThemeContext } from '../../theming';
 import { Size } from '../Size';
 import { ButtonProps, OptionalButtonProps } from './ButtonProps';
 import { ButtonVariant } from './ButtonVariant';
+import { getButtonVariantColorTheme } from './getButtonVariantColorTheme';
 
 export const withOptionalButtonProps = (
   WrappedComponent: React.ComponentType<ButtonProps>,
@@ -15,14 +16,16 @@ export const withOptionalButtonProps = (
         // prettier-ignore
         <ThemeContext.Consumer>
           {(theme) => {
+            const variant: ButtonVariant = this.props.variant
+            || ButtonVariant.DEFAULT;
             const props: ButtonProps = {
-              colorTheme: ColorTheme.PRIMARY_NORMAL,
+              colorTheme: getButtonVariantColorTheme(variant),
               interactivityState: {
                 type: InteractivityType.ENABLED,
               },
               size: Size.REGULAR,
               theme,
-              variant: ButtonVariant.DEFAULT,
+              variant,
               ...this.props,
             };
 

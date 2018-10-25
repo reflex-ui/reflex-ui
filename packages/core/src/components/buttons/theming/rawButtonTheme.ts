@@ -63,6 +63,7 @@ export const rawButtonSubComponents: ButtonSubComponents = {
   RightIconContainer: DefaultButtonIconContainer,
   Text: DefaultButtonText,
   Touchable: DefaultButtonTouchable,
+  XFabIconContainer: DefaultButtonIconContainer,
 };
 
 export const rawButtonVariantTheme: ButtonVariantTheme = {
@@ -82,4 +83,5 @@ export const rawButtonTheme: ButtonTheme = {
   default: rawButtonVariantTheme,
   fab: rawButtonVariantTheme,
   outlined: rawButtonVariantTheme,
+  xfab: rawButtonVariantTheme,
 };

@@ -4,6 +4,7 @@ export * from './default';
 export * from './fab';
 export * from './outlined';
 export * from './raised';
+export * from './xfab';
 
 export * from './buttonTheme';
 export * from './withRaiseEffect';
