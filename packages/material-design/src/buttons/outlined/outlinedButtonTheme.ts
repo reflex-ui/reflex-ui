@@ -5,6 +5,7 @@ import {
 import merge from 'lodash/merge';
 import { getDefaultButtonIconProps } from '../';
 import { containedButtonTheme } from '../contained';
+import { withRippleEffect } from '../withRippleEffect';
 import {
   getCommonOutlinedButtonContainerProps,
   getCommonOutlinedButtonTextProps,
@@ -94,7 +95,7 @@ const optionalOutlinedButtonTheme: OptionalButtonVariantTheme = {
     },
   },
   subComponents: {
-    Container: DefaultButtonContainer,
+    Container: withRippleEffect(DefaultButtonContainer),
   },
   xlarge: {
     allStates: {

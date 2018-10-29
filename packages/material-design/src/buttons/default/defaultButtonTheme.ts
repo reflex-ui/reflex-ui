@@ -1,4 +1,9 @@
-import { isWeb, OptionalButtonVariantTheme } from '@reflex-ui/core';
+import {
+  DefaultButtonContainer,
+  isWeb,
+  OptionalButtonVariantTheme,
+} from '@reflex-ui/core';
+import { withRippleEffect } from '../withRippleEffect';
 import {
   defaultButtonLeftIconContainerProps,
   defaultButtonRightIconContainerProps,
@@ -105,6 +110,9 @@ export const defaultButtonTheme: OptionalButtonVariantTheme = {
         },
       },
     },
+  },
+  subComponents: {
+    Container: withRippleEffect(DefaultButtonContainer),
   },
   xlarge: {
     allStates: {
