@@ -9,6 +9,7 @@ import {
   containedButtonTheme,
   defaultButtonTheme,
   fabButtonTheme,
+  iconButtonTheme,
   outlinedButtonTheme,
   raisedButtonTheme,
   xfabButtonTheme,
@@ -20,6 +21,7 @@ const optionalButtonTheme: OptionalButtonTheme = {
   containedRaised: raisedButtonTheme,
   default: defaultButtonTheme,
   fab: fabButtonTheme,
+  icon: iconButtonTheme,
   outlined: outlinedButtonTheme,
   xfab: xfabButtonTheme,
 };

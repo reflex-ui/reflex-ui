@@ -5,7 +5,7 @@ import { InteractivityType } from '../../../interactivity';
 import { createRegisteredViewStyle, ViewPropsGetter } from '../../views';
 import { ButtonProps } from '../ButtonProps';
 
-export const getButtonFabIconContainerProps: ViewPropsGetter<ButtonProps> = (
+export const getButtonIconContainerProps: ViewPropsGetter<ButtonProps> = (
   props: ButtonProps,
 ): ViewProps => {
   const buttonTheme = props.theme.components.button;
@@ -21,39 +21,37 @@ export const getButtonFabIconContainerProps: ViewPropsGetter<ButtonProps> = (
   const viewProps = merge(
     {},
     /* allVariants && allSizes && allStates */
-    buttonTheme.allVariants.allSizes.allStates.fabIconContainer.props,
-    buttonTheme.allVariants.allSizes.allStates.fabIconContainer.getProps(props),
+    buttonTheme.allVariants.allSizes.allStates.iconContainer.props,
+    buttonTheme.allVariants.allSizes.allStates.iconContainer.getProps(props),
     /* allVariants && allSizes && state */
-    buttonTheme.allVariants.allSizes[interactivityType].fabIconContainer.props,
+    buttonTheme.allVariants.allSizes[interactivityType].iconContainer.props,
     // tslint:disable-next-line
     buttonTheme.allVariants.allSizes[
       interactivityType
       // tslint:disable-next-line
-    ].fabIconContainer.getProps(props),
+    ].iconContainer.getProps(props),
     /* allVariants && size && allStates */
-    buttonTheme.allVariants[size].allStates.fabIconContainer.props,
-    buttonTheme.allVariants[size].allStates.fabIconContainer.getProps(props),
+    buttonTheme.allVariants[size].allStates.iconContainer.props,
+    buttonTheme.allVariants[size].allStates.iconContainer.getProps(props),
     /* allVariants && size && state */
-    buttonTheme.allVariants[size][interactivityType].fabIconContainer.props,
-    buttonTheme.allVariants[size][interactivityType].fabIconContainer.getProps(
+    buttonTheme.allVariants[size][interactivityType].iconContainer.props,
+    buttonTheme.allVariants[size][interactivityType].iconContainer.getProps(
       props,
     ),
     /* variant && allSizes && allStates */
-    buttonTheme[variant].allSizes.allStates.fabIconContainer.props,
-    buttonTheme[variant].allSizes.allStates.fabIconContainer.getProps(props),
+    buttonTheme[variant].allSizes.allStates.iconContainer.props,
+    buttonTheme[variant].allSizes.allStates.iconContainer.getProps(props),
     /* variant && allSizes && state */
-    buttonTheme[variant].allSizes[interactivityType].fabIconContainer.props,
-    buttonTheme[variant].allSizes[interactivityType].fabIconContainer.getProps(
+    buttonTheme[variant].allSizes[interactivityType].iconContainer.props,
+    buttonTheme[variant].allSizes[interactivityType].iconContainer.getProps(
       props,
     ),
     /* variant && size && allStates */
-    buttonTheme[variant][size].allStates.fabIconContainer.props,
-    buttonTheme[variant][size].allStates.fabIconContainer.getProps(props),
+    buttonTheme[variant][size].allStates.iconContainer.props,
+    buttonTheme[variant][size].allStates.iconContainer.getProps(props),
     /* variant && size && state */
-    buttonTheme[variant][size][interactivityType].fabIconContainer.props,
-    buttonTheme[variant][size][interactivityType].fabIconContainer.getProps(
-      props,
-    ),
+    buttonTheme[variant][size][interactivityType].iconContainer.props,
+    buttonTheme[variant][size][interactivityType].iconContainer.getProps(props),
     /* user props */
     userProps,
   );

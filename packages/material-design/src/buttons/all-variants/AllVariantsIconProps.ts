@@ -16,12 +16,12 @@ export const allVariantsCommonButtonIconProps: TextProps = {
 
 /* all variants & large & all states */
 
-export const allVariantsLargeButtonIconStyle: TextStyle = {
+export const allVariantsLargeButtonSideIconStyle: TextStyle = {
   fontSize: 19,
 };
 
-export const allVariantsLargeButtonIconProps: TextProps = {
-  style: allVariantsLargeButtonIconStyle,
+export const allVariantsLargeButtonSideIconProps: TextProps = {
+  style: allVariantsLargeButtonSideIconStyle,
 };
 
 export const allVariantsLargeButtonLeftIconContainerStyle: TextStyle = {
@@ -44,12 +44,12 @@ export const allVariantsLargeButtonRightIconContainerProps: TextProps = {
 
 /* all variants & regular & all states */
 
-export const allVariantsRegularButtonIconStyle: TextStyle = {
+export const allVariantsRegularButtonSideIconStyle: TextStyle = {
   fontSize: 18,
 };
 
-export const allVariantsRegularButtonIconProps: TextProps = {
-  style: allVariantsRegularButtonIconStyle,
+export const allVariantsRegularButtonSideIconProps: TextProps = {
+  style: allVariantsRegularButtonSideIconStyle,
 };
 
 export const allVariantsRegularButtonLeftIconContainerStyle: TextStyle = {
@@ -72,12 +72,12 @@ export const allVariantsRegularButtonRightIconContainerProps: TextProps = {
 
 /* all variants & small & all states */
 
-export const allVariantsSmallButtonIconStyle: TextStyle = {
+export const allVariantsSmallButtonSideIconStyle: TextStyle = {
   fontSize: 17,
 };
 
-export const allVariantsSmallButtonIconProps: TextProps = {
-  style: allVariantsSmallButtonIconStyle,
+export const allVariantsSmallButtonSideIconProps: TextProps = {
+  style: allVariantsSmallButtonSideIconStyle,
 };
 
 export const allVariantsSmallButtonLeftIconContainerStyle: TextStyle = {
@@ -100,12 +100,12 @@ export const allVariantsSmallButtonRightIconContainerProps: TextProps = {
 
 /* all variants & xlarge & all states */
 
-export const allVariantsXLargeButtonIconStyle: TextStyle = {
+export const allVariantsXLargeButtonSideIconStyle: TextStyle = {
   fontSize: 20,
 };
 
-export const allVariantsXLargeButtonIconProps: TextProps = {
-  style: allVariantsXLargeButtonIconStyle,
+export const allVariantsXLargeButtonSideIconProps: TextProps = {
+  style: allVariantsXLargeButtonSideIconStyle,
 };
 
 export const allVariantsXLargeButtonLeftIconContainerStyle: TextStyle = {
@@ -128,12 +128,12 @@ export const allVariantsXLargeButtonRightIconContainerProps: TextProps = {
 
 /* all variants & xsmall & all states */
 
-export const allVariantsXSmallButtonIconStyle: TextStyle = {
+export const allVariantsXSmallButtonSideIconStyle: TextStyle = {
   fontSize: 15,
 };
 
-export const allVariantsXSmallButtonIconProps: TextProps = {
-  style: allVariantsXSmallButtonIconStyle,
+export const allVariantsXSmallButtonSideIconProps: TextProps = {
+  style: allVariantsXSmallButtonSideIconStyle,
 };
 
 export const allVariantsXSmallButtonLeftIconContainerStyle: TextStyle = {

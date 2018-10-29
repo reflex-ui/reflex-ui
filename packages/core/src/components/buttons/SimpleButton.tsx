@@ -9,8 +9,8 @@ import { ButtonProps } from './ButtonProps';
 import { ButtonVariant } from './ButtonVariant';
 import {
   getButtonContainerProps,
-  getButtonFabIconContainerProps,
-  getButtonFabIconProps,
+  getButtonIconContainerProps,
+  getButtonIconProps,
   getButtonLeftIconContainerProps,
   getButtonLeftIconProps,
   getButtonRightIconContainerProps,
@@ -53,7 +53,12 @@ const transformButtonChildren = (props: ButtonProps): React.ReactNode => {
     return transformStringChildrenIntoComponent(children.toString(), props);
   }
 
-  if (props.variant === ButtonVariant.FAB) return handleFabIcon(props);
+  if (
+    props.variant === ButtonVariant.FAB ||
+    props.variant === ButtonVariant.ICON
+  ) {
+    return handleIcon(props);
+  }
 
   return children;
 };
@@ -72,13 +77,13 @@ const transformStringChildrenIntoComponent = (
   );
 };
 
-const handleFabIcon = (props: ButtonProps): JSX.Element | undefined => {
+const handleIcon = (props: ButtonProps): JSX.Element | undefined => {
   const buttonTheme = props.theme.components.button;
-  const { FabIconContainer } = buttonTheme[props.variant].subComponents;
-  const containerProps = getButtonFabIconContainerProps(props);
+  const { IconContainer } = buttonTheme[props.variant].subComponents;
+  const containerProps = getButtonIconContainerProps(props);
   const iconProps = {
     noContainer: true,
-    ...getButtonFabIconProps(props),
+    ...getButtonIconProps(props),
   };
 
   let styledIcon;
@@ -90,9 +95,9 @@ const handleFabIcon = (props: ButtonProps): JSX.Element | undefined => {
   }
 
   return (
-    <FabIconContainer componentProps={props} {...containerProps}>
+    <IconContainer componentProps={props} {...containerProps}>
       {styledIcon}
-    </FabIconContainer>
+    </IconContainer>
   );
 };
 

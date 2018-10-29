@@ -15,11 +15,11 @@ export const rawButtonSubComponentsTheme: ButtonSubComponentsTheme = {
     getProps: () => ({}),
     props: {},
   },
-  fabIcon: {
+  icon: {
     getProps: () => ({}),
     props: {},
   },
-  fabIconContainer: {
+  iconContainer: {
     getProps: () => ({}),
     props: {},
   },
@@ -58,7 +58,7 @@ export const rawButtonInteractivityStateTheme: InteractivityStateTheme<
 
 export const rawButtonSubComponents: ButtonSubComponents = {
   Container: DefaultButtonContainer,
-  FabIconContainer: DefaultButtonIconContainer,
+  IconContainer: DefaultButtonIconContainer,
   LeftIconContainer: DefaultButtonIconContainer,
   RightIconContainer: DefaultButtonIconContainer,
   Text: DefaultButtonText,
@@ -82,6 +82,7 @@ export const rawButtonTheme: ButtonTheme = {
   containedRaised: rawButtonVariantTheme,
   default: rawButtonVariantTheme,
   fab: rawButtonVariantTheme,
+  icon: rawButtonVariantTheme,
   outlined: rawButtonVariantTheme,
   xfab: rawButtonVariantTheme,
 };

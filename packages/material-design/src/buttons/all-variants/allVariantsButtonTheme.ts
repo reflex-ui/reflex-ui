@@ -13,21 +13,21 @@ import {
 
 import {
   allVariantsCommonButtonIconProps,
-  allVariantsLargeButtonIconProps,
   allVariantsLargeButtonLeftIconContainerProps,
   allVariantsLargeButtonRightIconContainerProps,
-  allVariantsRegularButtonIconProps,
+  allVariantsLargeButtonSideIconProps,
   allVariantsRegularButtonLeftIconContainerProps,
   allVariantsRegularButtonRightIconContainerProps,
-  allVariantsSmallButtonIconProps,
+  allVariantsRegularButtonSideIconProps,
   allVariantsSmallButtonLeftIconContainerProps,
   allVariantsSmallButtonRightIconContainerProps,
-  allVariantsXLargeButtonIconProps,
+  allVariantsSmallButtonSideIconProps,
   allVariantsXLargeButtonLeftIconContainerProps,
   allVariantsXLargeButtonRightIconContainerProps,
-  allVariantsXSmallButtonIconProps,
+  allVariantsXLargeButtonSideIconProps,
   allVariantsXSmallButtonLeftIconContainerProps,
   allVariantsXSmallButtonRightIconContainerProps,
+  allVariantsXSmallButtonSideIconProps,
 } from './AllVariantsIconProps';
 
 export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
@@ -49,7 +49,7 @@ export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
           },
         },
       },
-      fabIcon: {
+      icon: {
         props: allVariantsCommonButtonIconProps,
       },
       leftIcon: {
@@ -100,14 +100,21 @@ export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
           },
         },
       },
+      icon: {
+        props: {
+          style: {
+            fontSize: 30,
+          },
+        },
+      },
       leftIcon: {
-        props: allVariantsLargeButtonIconProps,
+        props: allVariantsLargeButtonSideIconProps,
       },
       leftIconContainer: {
         props: allVariantsLargeButtonLeftIconContainerProps,
       },
       rightIcon: {
-        props: allVariantsLargeButtonIconProps,
+        props: allVariantsLargeButtonSideIconProps,
       },
       rightIconContainer: {
         props: allVariantsLargeButtonRightIconContainerProps,
@@ -131,14 +138,21 @@ export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
           },
         },
       },
+      icon: {
+        props: {
+          style: {
+            fontSize: 24,
+          },
+        },
+      },
       leftIcon: {
-        props: allVariantsRegularButtonIconProps,
+        props: allVariantsRegularButtonSideIconProps,
       },
       leftIconContainer: {
         props: allVariantsRegularButtonLeftIconContainerProps,
       },
       rightIcon: {
-        props: allVariantsRegularButtonIconProps,
+        props: allVariantsRegularButtonSideIconProps,
       },
       rightIconContainer: {
         props: allVariantsRegularButtonRightIconContainerProps,
@@ -162,14 +176,21 @@ export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
           },
         },
       },
+      icon: {
+        props: {
+          style: {
+            fontSize: 20,
+          },
+        },
+      },
       leftIcon: {
-        props: allVariantsSmallButtonIconProps,
+        props: allVariantsSmallButtonSideIconProps,
       },
       leftIconContainer: {
         props: allVariantsSmallButtonLeftIconContainerProps,
       },
       rightIcon: {
-        props: allVariantsSmallButtonIconProps,
+        props: allVariantsSmallButtonSideIconProps,
       },
       rightIconContainer: {
         props: allVariantsSmallButtonRightIconContainerProps,
@@ -193,14 +214,21 @@ export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
           },
         },
       },
+      icon: {
+        props: {
+          style: {
+            fontSize: 48,
+          },
+        },
+      },
       leftIcon: {
-        props: allVariantsXLargeButtonIconProps,
+        props: allVariantsXLargeButtonSideIconProps,
       },
       leftIconContainer: {
         props: allVariantsXLargeButtonLeftIconContainerProps,
       },
       rightIcon: {
-        props: allVariantsXLargeButtonIconProps,
+        props: allVariantsXLargeButtonSideIconProps,
       },
       rightIconContainer: {
         props: allVariantsXLargeButtonRightIconContainerProps,
@@ -224,14 +252,21 @@ export const allVariantsButtonTheme: OptionalButtonVariantTheme = {
           },
         },
       },
+      icon: {
+        props: {
+          style: {
+            fontSize: 18,
+          },
+        },
+      },
       leftIcon: {
-        props: allVariantsXSmallButtonIconProps,
+        props: allVariantsXSmallButtonSideIconProps,
       },
       leftIconContainer: {
         props: allVariantsXSmallButtonLeftIconContainerProps,
       },
       rightIcon: {
-        props: allVariantsXSmallButtonIconProps,
+        props: allVariantsXSmallButtonSideIconProps,
       },
       rightIconContainer: {
         props: allVariantsXSmallButtonRightIconContainerProps,

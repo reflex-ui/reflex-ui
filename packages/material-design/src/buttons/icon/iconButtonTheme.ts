@@ -4,35 +4,20 @@ import {
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
-import { ElevationDegree } from '../../elevation/ElevationDegree';
-// prettier-ignore
-import {
-  getContainedButtonIconProps,
-} from '../contained/ContainedButtonIconProps';
-import { raisedButtonTheme } from '../raised/raisedButtonTheme';
-import { withRaiseEffect } from '../withRaiseEffect';
+import { defaultButtonTheme } from '../default/defaultButtonTheme';
 import { withRippleEffect } from '../withRippleEffect';
 
-const optionalFabButtonTheme: OptionalButtonVariantTheme = {
-  allSizes: {
-    allStates: {
-      icon: {
-        getProps: getContainedButtonIconProps,
-      },
-    },
-  },
+const optionalIconButtonTheme: OptionalButtonVariantTheme = {
   large: {
     allStates: {
       container: {
         props: {
           style: {
-            borderRadius: 33,
-            height: 66,
+            borderRadius: 28,
+            height: 56,
             marginHorizontal: 0,
             marginVertical: 0,
-            minWidth: 66,
-            paddingHorizontal: 0,
-            paddingVertical: 0,
+            minWidth: 56,
           },
         },
       },
@@ -43,13 +28,11 @@ const optionalFabButtonTheme: OptionalButtonVariantTheme = {
       container: {
         props: {
           style: {
-            borderRadius: 28,
-            height: 56,
+            borderRadius: 24,
+            height: 48,
             marginHorizontal: 0,
             marginVertical: 0,
-            minWidth: 56,
-            paddingHorizontal: 0,
-            paddingVertical: 0,
+            minWidth: 48,
           },
         },
       },
@@ -65,24 +48,13 @@ const optionalFabButtonTheme: OptionalButtonVariantTheme = {
             marginHorizontal: 0,
             marginVertical: 0,
             minWidth: 40,
-            paddingHorizontal: 0,
-            paddingVertical: 0,
-          },
-        },
-      },
-      icon: {
-        props: {
-          style: {
-            fontSize: 24,
           },
         },
       },
     },
   },
   subComponents: {
-    Container: withRippleEffect(
-      withRaiseEffect(ElevationDegree.MID)(DefaultButtonContainer),
-    ),
+    Container: withRippleEffect(DefaultButtonContainer),
   },
   xlarge: {
     allStates: {
@@ -94,8 +66,6 @@ const optionalFabButtonTheme: OptionalButtonVariantTheme = {
             marginHorizontal: 0,
             marginVertical: 0,
             minWidth: 80,
-            paddingHorizontal: 0,
-            paddingVertical: 0,
           },
         },
       },
@@ -106,13 +76,11 @@ const optionalFabButtonTheme: OptionalButtonVariantTheme = {
       container: {
         props: {
           style: {
-            borderRadius: 15,
-            height: 30,
+            borderRadius: 16,
+            height: 32,
             marginHorizontal: 0,
             marginVertical: 0,
-            minWidth: 30,
-            paddingHorizontal: 0,
-            paddingVertical: 0,
+            minWidth: 32,
           },
         },
       },
@@ -120,8 +88,8 @@ const optionalFabButtonTheme: OptionalButtonVariantTheme = {
   },
 };
 
-export const fabButtonTheme: OptionalButtonVariantTheme = merge<
+export const iconButtonTheme: OptionalButtonVariantTheme = merge<
   {},
   OptionalButtonVariantTheme,
   OptionalButtonVariantTheme
->({}, raisedButtonTheme, optionalFabButtonTheme);
+>({}, defaultButtonTheme, optionalIconButtonTheme);

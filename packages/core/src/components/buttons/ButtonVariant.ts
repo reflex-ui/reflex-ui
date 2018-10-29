@@ -3,6 +3,7 @@ export enum ButtonVariant {
   CONTAINED_RAISED = 'containedRaised',
   DEFAULT = 'default',
   FAB = 'fab',
+  ICON = 'icon',
   OUTLINED = 'outlined',
   XFAB = 'xfab',
 }

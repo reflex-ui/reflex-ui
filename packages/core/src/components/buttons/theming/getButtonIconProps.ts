@@ -5,7 +5,7 @@ import { InteractivityType } from '../../../interactivity';
 import { createRegisteredTextStyle, TextPropsGetter } from '../../typography';
 import { ButtonProps } from '../ButtonProps';
 
-export const getButtonFabIconProps: TextPropsGetter<ButtonProps> = (
+export const getButtonIconProps: TextPropsGetter<ButtonProps> = (
   props: ButtonProps,
 ): TextProps => {
   const buttonTheme = props.theme.components.button;
@@ -19,29 +19,29 @@ export const getButtonFabIconProps: TextPropsGetter<ButtonProps> = (
   const textProps = merge(
     {},
     /* allVariants && allSizes && allStates */
-    buttonTheme.allVariants.allSizes.allStates.fabIcon.props,
-    buttonTheme.allVariants.allSizes.allStates.fabIcon.getProps(props),
+    buttonTheme.allVariants.allSizes.allStates.icon.props,
+    buttonTheme.allVariants.allSizes.allStates.icon.getProps(props),
     /* allVariants && allSizes && state */
-    buttonTheme.allVariants.allSizes[interactivityType].fabIcon.props,
-    buttonTheme.allVariants.allSizes[interactivityType].fabIcon.getProps(props),
+    buttonTheme.allVariants.allSizes[interactivityType].icon.props,
+    buttonTheme.allVariants.allSizes[interactivityType].icon.getProps(props),
     /* allVariants && size && allStates */
-    buttonTheme.allVariants[size].allStates.fabIcon.props,
-    buttonTheme.allVariants[size].allStates.fabIcon.getProps(props),
+    buttonTheme.allVariants[size].allStates.icon.props,
+    buttonTheme.allVariants[size].allStates.icon.getProps(props),
     /* allVariants && size && state */
-    buttonTheme.allVariants[size][interactivityType].fabIcon.props,
-    buttonTheme.allVariants[size][interactivityType].fabIcon.getProps(props),
+    buttonTheme.allVariants[size][interactivityType].icon.props,
+    buttonTheme.allVariants[size][interactivityType].icon.getProps(props),
     /* variant && allSizes && allStates */
-    buttonTheme[variant].allSizes.allStates.fabIcon.props,
-    buttonTheme[variant].allSizes.allStates.fabIcon.getProps(props),
+    buttonTheme[variant].allSizes.allStates.icon.props,
+    buttonTheme[variant].allSizes.allStates.icon.getProps(props),
     /* variant && allSizes && state */
-    buttonTheme[variant].allSizes[interactivityType].fabIcon.props,
-    buttonTheme[variant].allSizes[interactivityType].fabIcon.getProps(props),
+    buttonTheme[variant].allSizes[interactivityType].icon.props,
+    buttonTheme[variant].allSizes[interactivityType].icon.getProps(props),
     /* variant && size && allStates */
-    buttonTheme[variant][size].allStates.fabIcon.props,
-    buttonTheme[variant][size].allStates.fabIcon.getProps(props),
+    buttonTheme[variant][size].allStates.icon.props,
+    buttonTheme[variant][size].allStates.icon.getProps(props),
     /* variant && size && state */
-    buttonTheme[variant][size][interactivityType].fabIcon.props,
-    buttonTheme[variant][size][interactivityType].fabIcon.getProps(props),
+    buttonTheme[variant][size][interactivityType].icon.props,
+    buttonTheme[variant][size][interactivityType].icon.getProps(props),
     /* user props */
     userProps,
   );
