@@ -9,7 +9,7 @@ import { containedButtonTheme } from '../contained/containedButtonTheme';
 import { withRaiseEffect } from '../withRaiseEffect';
 import { withRippleEffect } from '../withRippleEffect';
 
-const optionalRaisedButtonTheme: OptionalButtonVariantTheme = {
+const partialRaisedButtonTheme: OptionalButtonVariantTheme = {
   subComponents: {
     Container: withRippleEffect(
       withRaiseEffect(ElevationDegree.LOW)(DefaultButtonContainer),
@@ -21,4 +21,4 @@ export const raisedButtonTheme: OptionalButtonVariantTheme = merge<
   {},
   OptionalButtonVariantTheme,
   OptionalButtonVariantTheme
->({}, containedButtonTheme, optionalRaisedButtonTheme);
+>({}, containedButtonTheme, partialRaisedButtonTheme);

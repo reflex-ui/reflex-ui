@@ -13,7 +13,7 @@ import { raisedButtonTheme } from '../raised/raisedButtonTheme';
 import { withRaiseEffect } from '../withRaiseEffect';
 import { withRippleEffect } from '../withRippleEffect';
 
-const optionalFabButtonTheme: OptionalButtonVariantTheme = {
+const partialFabButtonTheme: OptionalButtonVariantTheme = {
   allSizes: {
     allStates: {
       icon: {
@@ -124,4 +124,4 @@ export const fabButtonTheme: OptionalButtonVariantTheme = merge<
   {},
   OptionalButtonVariantTheme,
   OptionalButtonVariantTheme
->({}, raisedButtonTheme, optionalFabButtonTheme);
+>({}, raisedButtonTheme, partialFabButtonTheme);

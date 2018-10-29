@@ -1,4 +1,5 @@
 export * from './ComponentsTheme';
+export * from './createTheme';
 export * from './InteractivityStateTheme';
 export * from './palette';
 export * from './rawTheme';

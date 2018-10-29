@@ -1,9 +1,4 @@
-import {
-  ButtonTheme,
-  OptionalButtonTheme,
-  rawButtonTheme,
-} from '@reflex-ui/core';
-import merge from 'lodash/merge';
+import { OptionalButtonTheme } from '@reflex-ui/core';
 import {
   allVariantsButtonTheme,
   containedButtonTheme,
@@ -15,7 +10,7 @@ import {
   xfabButtonTheme,
 } from './';
 
-const optionalButtonTheme: OptionalButtonTheme = {
+export const buttonTheme: OptionalButtonTheme = {
   allVariants: allVariantsButtonTheme,
   contained: containedButtonTheme,
   containedRaised: raisedButtonTheme,
@@ -25,9 +20,3 @@ const optionalButtonTheme: OptionalButtonTheme = {
   outlined: outlinedButtonTheme,
   xfab: xfabButtonTheme,
 };
-
-export const buttonTheme: ButtonTheme = merge<
-  {},
-  ButtonTheme,
-  OptionalButtonTheme
->({}, rawButtonTheme, optionalButtonTheme);

@@ -3,7 +3,7 @@ import merge from 'lodash/merge';
 
 import { fabButtonTheme } from '../fab/fabButtonTheme';
 
-const optionalXFabButtonTheme: OptionalButtonVariantTheme = {
+const partialXFabButtonTheme: OptionalButtonVariantTheme = {
   large: {
     allStates: {
       container: {
@@ -220,4 +220,4 @@ export const xfabButtonTheme: OptionalButtonVariantTheme = merge<
   {},
   OptionalButtonVariantTheme,
   OptionalButtonVariantTheme
->({}, fabButtonTheme, optionalXFabButtonTheme);
+>({}, fabButtonTheme, partialXFabButtonTheme);

@@ -5,7 +5,7 @@ import {
 } from '@reflex-ui/material-design';
 import * as React from 'react';
 
-const PurpleTealTheme: Theme = createTheme(purpleTealPaletteTheme);
+const PurpleTealTheme: Theme = createTheme({ palette: purpleTealPaletteTheme });
 
 export type IWithAppLogic = <P extends {}>(
   WrappedComponent: React.ComponentType<P>,

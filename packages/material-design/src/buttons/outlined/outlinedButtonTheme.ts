@@ -16,7 +16,7 @@ import {
   getPressedOutlinedButtonContainerProps,
 } from './';
 
-const optionalOutlinedButtonTheme: OptionalButtonVariantTheme = {
+const partialOutlinedButtonTheme: OptionalButtonVariantTheme = {
   allSizes: {
     allStates: {
       container: {
@@ -127,4 +127,4 @@ export const outlinedButtonTheme: OptionalButtonVariantTheme = merge<
   {},
   OptionalButtonVariantTheme,
   OptionalButtonVariantTheme
->({}, containedButtonTheme, optionalOutlinedButtonTheme);
+>({}, containedButtonTheme, partialOutlinedButtonTheme);

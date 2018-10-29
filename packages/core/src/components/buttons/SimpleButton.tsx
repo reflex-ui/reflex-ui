@@ -144,6 +144,8 @@ const handleRightIcon = (props: ButtonProps): JSX.Element | undefined => {
 };
 
 export const SimpleButton: React.SFC<ButtonProps> = (props: ButtonProps) => {
+  // tslint:disable-next-line:no-console
+  // console.log('SimpleButton() - props.theme: ', props.theme);
   const { children, variant } = props;
   const buttonTheme = props.theme.components.button;
   const { Container, Touchable } = buttonTheme[variant].subComponents;
