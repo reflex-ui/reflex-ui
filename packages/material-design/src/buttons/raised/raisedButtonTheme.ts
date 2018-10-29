@@ -5,9 +5,9 @@ import {
 import merge from 'lodash/merge';
 
 import { ElevationDegree } from '../../elevation/ElevationDegree';
-import { containedButtonTheme } from '../contained/containedButtonTheme';
 import { withRaiseEffect } from '../withRaiseEffect';
 import { withRippleEffect } from '../withRippleEffect';
+import { raisedStaticButtonTheme } from './raisedStaticButtonTheme';
 
 const partialRaisedButtonTheme: OptionalButtonVariantTheme = {
   subComponents: {
@@ -21,4 +21,4 @@ export const raisedButtonTheme: OptionalButtonVariantTheme = merge<
   {},
   OptionalButtonVariantTheme,
   OptionalButtonVariantTheme
->({}, containedButtonTheme, partialRaisedButtonTheme);
+>({}, raisedStaticButtonTheme, partialRaisedButtonTheme);

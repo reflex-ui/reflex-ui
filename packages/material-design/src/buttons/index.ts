@@ -8,5 +8,6 @@ export * from './raised';
 export * from './xfab';
 
 export * from './buttonTheme';
+export * from './staticButtonTheme';
 export * from './withRaiseEffect';
 export * from './withRippleEffect';

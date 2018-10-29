@@ -4,20 +4,7 @@ import {
   Theme,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
-
-import { buttonTheme } from './buttons/buttonTheme';
-import { iconTheme } from './icons/iconTheme';
-import { purpleTealPaletteTheme } from './palette/purpleTealPaletteTheme';
-import { typographyTheme } from './typography/typographyTheme';
-
-const materialDesignTheme: OptionalTheme = {
-  components: {
-    button: buttonTheme,
-    icon: iconTheme,
-    typography: typographyTheme,
-  },
-  palette: purpleTealPaletteTheme,
-};
+import { materialDesignTheme } from './materialDesignTheme';
 
 export const createTheme = (theme: OptionalTheme): Theme =>
   createThemeCore(merge(materialDesignTheme, theme));
