@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { TouchableWithoutFeedbackProps } from 'react-native';
 
+import { cloneElement } from '../../utils';
+import { OptionalIconWrapperProps } from '../icons';
 // prettier-ignore
 import {
   handleAndroidTextTransformation,
@@ -86,13 +88,67 @@ const handleIcon = (props: ButtonProps): JSX.Element | undefined => {
     ...getButtonIconProps(props),
   };
 
+  /*
+  const childrenProps = {
+    ...(props.children as React.ReactElement<{}>).props,
+  };
+  console.log('handleIcon() - childrenProps: ', childrenProps);
+  console.log('handleIcon() - iconProps: ', iconProps);
+  console.log(
+    'handleIcon() - merge({}, iconProps, childrenProps): ',
+    merge({}, iconProps, childrenProps),
+  );
+  */
+  /*
+  const {
+    style: childrenStyle,
+    ...otherChildrenProps
+  } = (props.children as React.ReactElement<OptionalIconWrapperProps>).props;
+  if (!iconProps.style) iconProps.style = [];
+  if (isPlainObject(iconProps.style)) iconProps.style = [iconProps.style];
+  */
+
+  /*
+  let iconStyle = iconProps.style;
+  if (Number.isFinite(iconStyle as number)) {
+    iconStyle = StyleSheet.flatten(iconStyle);
+  }
+  if (!iconStyle) iconStyle = {};
+  iconProps.style = iconStyle;
+
   let styledIcon;
   if (props.children) {
     styledIcon = React.cloneElement(
       props.children as React.ReactElement<{}>,
-      iconProps,
+      merge({}, iconProps, (props.children as React.ReactElement<{}>).props),
     );
   }
+  */
+
+  /*
+  const children = props.children as React.ReactElement<
+    OptionalIconWrapperProps
+  >;
+  const { style: childrenStyle, ...otherChildrenProps } = children.props;
+
+  iconProps.style = iconProps.style ? [iconProps.style] : [];
+  if (childrenStyle) iconProps.style.push(childrenStyle);
+
+  let styledIcon;
+  if (props.children) {
+    styledIcon = React.cloneElement(
+      children,
+      merge({}, iconProps, otherChildrenProps),
+    );
+  }
+  */
+
+  const children = props.children as React.ReactElement<
+    OptionalIconWrapperProps
+  >;
+  const styledIcon = children
+    ? cloneElement({ element: children, props: iconProps })
+    : undefined;
 
   return (
     <IconContainer componentProps={props} {...containerProps}>
@@ -110,10 +166,9 @@ const handleLeftIcon = (props: ButtonProps): JSX.Element | undefined => {
     ...getButtonLeftIconProps(props),
   };
 
-  let styledIcon;
-  if (props.leftIcon) {
-    styledIcon = React.cloneElement(props.leftIcon, iconProps);
-  }
+  const styledIcon = props.leftIcon
+    ? cloneElement({ element: props.leftIcon, props: iconProps })
+    : undefined;
 
   return (
     <LeftIconContainer componentProps={props} {...containerProps}>
@@ -131,10 +186,9 @@ const handleRightIcon = (props: ButtonProps): JSX.Element | undefined => {
     ...getButtonRightIconProps(props),
   };
 
-  let styledIcon;
-  if (props.rightIcon) {
-    styledIcon = React.cloneElement(props.rightIcon, iconProps);
-  }
+  const styledIcon = props.rightIcon
+    ? cloneElement({ element: props.rightIcon, props: iconProps })
+    : undefined;
 
   return (
     <RightIconContainer componentProps={props} {...containerProps}>
@@ -144,8 +198,6 @@ const handleRightIcon = (props: ButtonProps): JSX.Element | undefined => {
 };
 
 export const SimpleButton: React.SFC<ButtonProps> = (props: ButtonProps) => {
-  // tslint:disable-next-line:no-console
-  // console.log('SimpleButton() - props.theme: ', props.theme);
   const { children, variant } = props;
   const buttonTheme = props.theme.components.button;
   const { Container, Touchable } = buttonTheme[variant].subComponents;

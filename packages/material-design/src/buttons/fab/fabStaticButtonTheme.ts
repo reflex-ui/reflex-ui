@@ -6,12 +6,44 @@ import {
   getContainedButtonIconProps,
 } from '../contained/ContainedButtonIconProps';
 import { raisedStaticButtonTheme } from '../raised/raisedStaticButtonTheme';
+import {
+  disabledFabButtonContainerProps,
+  enabledFabButtonContainerProps,
+  focusedFabButtonContainerProps,
+  hoveredFabButtonContainerProps,
+  pressedFabButtonContainerProps,
+} from './FabButtonContainerProps';
 
 const partialFabStaticButtonTheme: OptionalButtonVariantTheme = {
   allSizes: {
     allStates: {
       icon: {
         getProps: getContainedButtonIconProps,
+      },
+    },
+    disabled: {
+      container: {
+        props: disabledFabButtonContainerProps,
+      },
+    },
+    enabled: {
+      container: {
+        props: enabledFabButtonContainerProps,
+      },
+    },
+    focused: {
+      container: {
+        props: focusedFabButtonContainerProps,
+      },
+    },
+    hovered: {
+      container: {
+        props: hoveredFabButtonContainerProps,
+      },
+    },
+    pressed: {
+      container: {
+        props: pressedFabButtonContainerProps,
       },
     },
   },

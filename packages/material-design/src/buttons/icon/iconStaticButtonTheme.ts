@@ -2,8 +2,16 @@ import { OptionalButtonVariantTheme } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
 import { defaultStaticButtonTheme } from '../default/defaultStaticButtonTheme';
+import { getIconButtonIconProps } from './IconButtonIconProps';
 
 const optionalStaticIconButtonTheme: OptionalButtonVariantTheme = {
+  allSizes: {
+    allStates: {
+      icon: {
+        getProps: getIconButtonIconProps,
+      },
+    },
+  },
   large: {
     allStates: {
       container: {

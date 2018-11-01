@@ -1,11 +1,7 @@
+import { ButtonProps, ViewPropsGetter, ViewStyleGetter } from '@reflex-ui/core';
 import {
-  ButtonProps,
-  getThemedColor,
-  ViewPropsGetter,
-  ViewStyleGetter,
-} from '@reflex-ui/core';
-import { ViewStyle } from 'react-native';
-import {
+  disabledDefaultButtonTextStyle,
+  getDefaultButtonTextStyle,
   getDisabledDefaultButtonContainerStyle,
   getEnabledDefaultButtonContainerStyle,
   getFocusedDefaultButtonContainerStyle,
@@ -21,14 +17,17 @@ export const getCommonOutlinedButtonContainerProps: ViewPropsGetter<
 
 export const getCommonOutlinedButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = ({ colorTheme, theme: { palette } }): ViewStyle => ({
-  borderColor: getThemedColor({ colorTheme, palette }),
+> = props => ({
+  borderColor: getDefaultButtonTextStyle(props).color,
 });
 
 export const getDisabledOutlinedButtonContainerProps: ViewPropsGetter<
   ButtonProps
 > = (props: ButtonProps) => ({
-  style: getDisabledDefaultButtonContainerStyle(props),
+  style: {
+    ...getDisabledDefaultButtonContainerStyle(props),
+    borderColor: disabledDefaultButtonTextStyle.color,
+  },
 });
 
 export const getEnabledOutlinedButtonContainerProps: ViewPropsGetter<

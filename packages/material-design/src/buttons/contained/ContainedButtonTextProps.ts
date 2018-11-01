@@ -4,6 +4,16 @@ import {
   TextPropsGetter,
   TextStyleGetter,
 } from '@reflex-ui/core';
+import { TextProps } from 'react-native';
+
+// prettier-ignore
+import {
+  disabledDefaultButtonTextStyle,
+} from '../default/DefaultButtonTextProps';
+
+export const disabledContainedButtonTextProps: TextProps = {
+  style: { ...disabledDefaultButtonTextStyle },
+};
 
 export const getContainedButtonTextColorStyle: TextStyleGetter<ButtonProps> = ({
   colorTheme,

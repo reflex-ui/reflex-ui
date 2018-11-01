@@ -1,10 +1,5 @@
-import {
-  ButtonProps,
-  getThemedColor,
-  ViewPropsGetter,
-  ViewStyleGetter,
-} from '@reflex-ui/core';
-import * as Color from 'color';
+import { ButtonProps, ViewPropsGetter, ViewStyleGetter } from '@reflex-ui/core';
+import { getThemedOverlayColorByInteractivity } from '../../palette';
 
 export const getDisabledDefaultButtonContainerProps: ViewPropsGetter<
   ButtonProps
@@ -14,8 +9,8 @@ export const getDisabledDefaultButtonContainerProps: ViewPropsGetter<
 
 export const getDisabledDefaultButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = () => ({
-  backgroundColor: 'transparent',
+> = props => ({
+  backgroundColor: getThemedOverlayColorByInteractivity(props),
 });
 
 export const getEnabledDefaultButtonContainerProps: ViewPropsGetter<
@@ -26,8 +21,8 @@ export const getEnabledDefaultButtonContainerProps: ViewPropsGetter<
 
 export const getEnabledDefaultButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = () => ({
-  backgroundColor: 'transparent',
+> = props => ({
+  backgroundColor: getThemedOverlayColorByInteractivity(props),
 });
 
 export const getFocusedDefaultButtonContainerProps: ViewPropsGetter<
@@ -38,10 +33,8 @@ export const getFocusedDefaultButtonContainerProps: ViewPropsGetter<
 
 export const getFocusedDefaultButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = ({ colorTheme, theme: { palette } }) => ({
-  backgroundColor: Color.rgb(getThemedColor({ colorTheme, palette }))
-    .fade(0.89)
-    .toString(),
+> = props => ({
+  backgroundColor: getThemedOverlayColorByInteractivity(props),
 });
 
 export const getHoveredDefaultButtonContainerProps: ViewPropsGetter<
@@ -52,10 +45,8 @@ export const getHoveredDefaultButtonContainerProps: ViewPropsGetter<
 
 export const getHoveredDefaultButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = ({ colorTheme, theme: { palette } }) => ({
-  backgroundColor: Color.rgb(getThemedColor({ colorTheme, palette }))
-    .fade(0.94)
-    .toString(),
+> = props => ({
+  backgroundColor: getThemedOverlayColorByInteractivity(props),
 });
 
 export const getPressedDefaultButtonContainerProps: ViewPropsGetter<
@@ -66,8 +57,6 @@ export const getPressedDefaultButtonContainerProps: ViewPropsGetter<
 
 export const getPressedDefaultButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = ({ colorTheme, theme: { palette } }) => ({
-  backgroundColor: Color.rgb(getThemedColor({ colorTheme, palette }))
-    .fade(0.81)
-    .toString(),
+> = props => ({
+  backgroundColor: getThemedOverlayColorByInteractivity(props),
 });

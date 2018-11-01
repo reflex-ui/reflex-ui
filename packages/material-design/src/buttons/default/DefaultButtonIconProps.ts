@@ -1,7 +1,14 @@
 import { ButtonProps, TextPropsGetter } from '@reflex-ui/core';
 import { TextProps, TextStyle } from 'react-native';
 
-import { getDefaultButtonTextColorStyle } from './DefaultButtonTextProps';
+import {
+  disabledDefaultButtonTextStyle,
+  getDefaultButtonTextColorStyle,
+} from './DefaultButtonTextProps';
+
+export const disabledDefaultButtonIconProps: TextProps = {
+  style: { ...disabledDefaultButtonTextStyle },
+};
 
 export const getDefaultButtonIconProps: TextPropsGetter<
   ButtonProps

@@ -39,6 +39,7 @@ export const allVariantsStaticButtonTheme: OptionalButtonVariantTheme = {
           pointerEvents: 'box-only',
           style: {
             alignItems: 'center',
+            flexDirection: 'row',
             justifyContent: 'center',
             ...Platform.select({
               web: {
@@ -83,7 +84,7 @@ export const allVariantsStaticButtonTheme: OptionalButtonVariantTheme = {
           style: {
             ...Platform.select({
               web: {
-                cursor: 'not-allowed',
+                cursor: 'default',
               },
             }),
           },

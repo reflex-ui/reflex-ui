@@ -5,9 +5,20 @@ import {
 import merge from 'lodash/merge';
 
 import { withRippleEffect } from '../withRippleEffect';
+// prettier-ignore
+import {
+  getHoveredDefaultButtonContainerProps,
+} from './DefaultButtonContainerProps';
 import { defaultStaticButtonTheme } from './defaultStaticButtonTheme';
 
 export const partialDefaultButtonTheme: OptionalButtonVariantTheme = {
+  allSizes: {
+    pressed: {
+      container: {
+        getProps: getHoveredDefaultButtonContainerProps,
+      },
+    },
+  },
   subComponents: {
     Container: withRippleEffect(DefaultButtonContainer),
   },

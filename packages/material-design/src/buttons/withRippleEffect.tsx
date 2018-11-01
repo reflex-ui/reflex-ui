@@ -167,6 +167,14 @@ const createComponentRippleStyles: ComponentRippleStylesCreator = ({
     posX: interactivityPosition.x,
     width,
   });
+  /*
+  const color = Color.rgb(
+    style.backgroundColor ||
+      getThemedColor({ colorTheme, palette: theme.palette }),
+  )
+    .lighten(0.6)
+    .toString();
+  */
   const color = Color.rgb(
     style.backgroundColor ||
       getThemedColor({ colorTheme, palette: theme.palette }),

@@ -6,6 +6,11 @@ import { getDefaultButtonIconProps } from '../';
 import {
   containedStaticButtonTheme,
 } from '../contained/containedStaticButtonTheme';
+// prettier-ignore
+import {
+  disabledDefaultButtonIconProps,
+  disabledDefaultButtonTextProps,
+} from '../default';
 import {
   getCommonOutlinedButtonContainerProps,
   getCommonOutlinedButtonTextProps,
@@ -35,6 +40,18 @@ const partialOutlinedStaticButtonTheme: OptionalButtonVariantTheme = {
     disabled: {
       container: {
         getProps: getDisabledOutlinedButtonContainerProps,
+      },
+      icon: {
+        props: disabledDefaultButtonIconProps,
+      },
+      leftIcon: {
+        props: disabledDefaultButtonIconProps,
+      },
+      rightIcon: {
+        props: disabledDefaultButtonIconProps,
+      },
+      text: {
+        props: disabledDefaultButtonTextProps,
       },
     },
     enabled: {

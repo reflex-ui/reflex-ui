@@ -1,5 +1,7 @@
 import { OptionalButtonVariantTheme } from '@reflex-ui/core';
 import {
+  disabledContainedButtonIconProps,
+  disabledContainedButtonTextProps,
   getContainedButtonIconProps,
   getContainedButtonTextProps,
   getDisabledContainedButtonContainerProps,
@@ -25,6 +27,18 @@ export const containedStaticButtonTheme: OptionalButtonVariantTheme = {
     disabled: {
       container: {
         getProps: getDisabledContainedButtonContainerProps,
+      },
+      icon: {
+        props: disabledContainedButtonIconProps,
+      },
+      leftIcon: {
+        props: disabledContainedButtonIconProps,
+      },
+      rightIcon: {
+        props: disabledContainedButtonIconProps,
+      },
+      text: {
+        props: disabledContainedButtonTextProps,
       },
     },
     enabled: {

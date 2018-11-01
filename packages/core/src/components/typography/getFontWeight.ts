@@ -15,10 +15,10 @@ iosWeight[FontWeight.MEDIUM] = '500';
 iosWeight[FontWeight.BOLD] = '700';
 
 const webWeight: FontWeightValues[] = [];
-webWeight[FontWeight.LIGHT] = '400';
-webWeight[FontWeight.REGULAR] = '500';
-webWeight[FontWeight.MEDIUM] = '700';
-webWeight[FontWeight.BOLD] = '900';
+webWeight[FontWeight.LIGHT] = '300';
+webWeight[FontWeight.REGULAR] = '400';
+webWeight[FontWeight.MEDIUM] = '500';
+webWeight[FontWeight.BOLD] = '700';
 
 export const getFontWeight = (weight: FontWeight): FontWeightValues => {
   if (isAndroid) return androidWeight[weight];

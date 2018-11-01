@@ -9,6 +9,5 @@ export const getAllVariantsCommonButtonContainerProps: ViewPropsGetter<
 export const getAllVariantsCommonButtonContainerStyle: ViewStyleGetter<
   ButtonProps
 > = ({ fullWidth }) => ({
-  flexDirection: fullWidth ? 'column' : 'row',
   flexGrow: fullWidth ? 1 : undefined,
 });

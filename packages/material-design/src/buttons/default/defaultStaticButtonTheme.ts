@@ -3,6 +3,8 @@ import { isWeb, OptionalButtonVariantTheme } from '@reflex-ui/core';
 import {
   defaultButtonLeftIconContainerProps,
   defaultButtonRightIconContainerProps,
+  disabledDefaultButtonIconProps,
+  disabledDefaultButtonTextProps,
   getDefaultButtonIconProps,
   getDefaultButtonTextProps,
   getDisabledDefaultButtonContainerProps,
@@ -39,6 +41,18 @@ export const defaultStaticButtonTheme: OptionalButtonVariantTheme = {
     disabled: {
       container: {
         getProps: getDisabledDefaultButtonContainerProps,
+      },
+      icon: {
+        props: disabledDefaultButtonIconProps,
+      },
+      leftIcon: {
+        props: disabledDefaultButtonIconProps,
+      },
+      rightIcon: {
+        props: disabledDefaultButtonIconProps,
+      },
+      text: {
+        props: disabledDefaultButtonTextProps,
       },
     },
     enabled: {
