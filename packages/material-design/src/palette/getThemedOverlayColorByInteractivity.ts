@@ -10,10 +10,10 @@ import {
 
 export const getThemedOverlayColorByInteractivity = ({
   colorTheme,
-  interactivityState,
+  interactivityType,
   theme: { palette },
 }: ThemedColorByInteractivityData): string =>
   getOverlayColorByInteractivity({
     color: getThemedColor({ colorTheme, palette }),
-    type: interactivityState ? interactivityState.type : undefined,
+    type: interactivityType,
   });

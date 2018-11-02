@@ -1,14 +1,10 @@
 import {
-  ColorTheme,
-  getThemedColor,
   InteractivityEvent,
   InteractivityStateProps,
   InteractivityType,
   ReflexSubcomponent,
-  Theme,
   Themed,
 } from '@reflex-ui/core';
-import * as Color from 'color';
 import delay from 'delay';
 import * as React from 'react';
 import {
@@ -138,12 +134,11 @@ const createRippleStyles: RippleStylesCreator = ({
 });
 
 interface ComponentRippleStylesCreatorData {
-  readonly colorTheme: ColorTheme;
+  readonly color: string;
   readonly height: number;
   readonly interactivityEvent?: InteractivityEvent;
   readonly maxDiameter: number;
   readonly style: ViewStyle;
-  readonly theme: Theme;
   readonly width: number;
 }
 
@@ -152,12 +147,11 @@ type ComponentRippleStylesCreator = (
 ) => RippleStyles;
 
 const createComponentRippleStyles: ComponentRippleStylesCreator = ({
-  colorTheme,
+  color,
   height,
   interactivityEvent,
   maxDiameter,
   style,
-  theme,
   width,
 }) => {
   const interactivityPosition = getInteractivityPosition(interactivityEvent);
@@ -167,20 +161,6 @@ const createComponentRippleStyles: ComponentRippleStylesCreator = ({
     posX: interactivityPosition.x,
     width,
   });
-  /*
-  const color = Color.rgb(
-    style.backgroundColor ||
-      getThemedColor({ colorTheme, palette: theme.palette }),
-  )
-    .lighten(0.6)
-    .toString();
-  */
-  const color = Color.rgb(
-    style.backgroundColor ||
-      getThemedColor({ colorTheme, palette: theme.palette }),
-  )
-    .lighten(0.6)
-    .toString();
 
   const position = calculateRipplePosition({ diameter, interactivityPosition });
 
@@ -200,9 +180,16 @@ export type WithRippleEffect = (
   ViewProps & InteractivityProps & Themed
 >;
 */
-export const withRippleEffect = <
-  P extends ReflexSubcomponent<InteractivityStateProps & Themed> & ViewProps
->(
+
+type RippleColorGetter<P> = (props: P) => string;
+
+interface RippleEffectSettings<P> {
+  readonly getRippleColor: RippleColorGetter<P>;
+}
+
+export const withRippleEffect = <S extends InteractivityStateProps & Themed>(
+  settings: RippleEffectSettings<S>,
+) => <P extends ReflexSubcomponent<S> & ViewProps>(
   WrappedComponent: React.ComponentType<P>,
 ): React.ComponentType<P> =>
   class RippledComponent extends React.Component<P> {
@@ -211,14 +198,8 @@ export const withRippleEffect = <
       state: RippledComponentState,
     ) {
       const { interactivityState } = props.componentProps;
-
-      const interactivityType = interactivityState
-        ? interactivityState.type
-        : InteractivityType.ENABLED;
-
-      const interactivityEvent = interactivityState
-        ? interactivityState.event
-        : undefined;
+      const interactivityType = interactivityState.type;
+      const interactivityEvent = interactivityState.event;
 
       const {
         animationKeyframe,
@@ -231,7 +212,6 @@ export const withRippleEffect = <
         animationKeyframe === AnimationKeyframe.PRESS_OUT &&
         !isAnimatingPressOut
       ) {
-        const { colorTheme, theme } = props.componentProps;
         const { height, width } = state;
         const maxDiameter = 300;
 
@@ -240,12 +220,11 @@ export const withRippleEffect = <
           animationKeyframe: AnimationKeyframe.PRESS_IN,
           isAnimatingPressIn: true,
           rippleStyles: createComponentRippleStyles({
-            colorTheme,
+            color: settings.getRippleColor(props.componentProps),
             height,
             interactivityEvent,
             maxDiameter,
             style: StyleSheet.flatten(props.style),
-            theme,
             width,
           }),
         };

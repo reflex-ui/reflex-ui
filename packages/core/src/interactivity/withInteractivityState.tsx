@@ -3,7 +3,10 @@ import { GestureResponderEvent } from 'react-native';
 
 import { isWeb } from '../utils';
 import { InteractivityEvent } from './InteractivityEvent';
-import { InteractivityProps } from './InteractivityProps';
+import {
+  InteractivityProps,
+  OptionalInteractivityProps,
+} from './InteractivityProps';
 import { InteractivityState } from './InteractivityState';
 import { InteractivityType } from './InteractivityType';
 
@@ -15,7 +18,7 @@ interface State {
   isPressing: boolean;
 }
 
-export const withInteractivityState = <P extends InteractivityProps>(
+export const withInteractivityState = <P extends OptionalInteractivityProps>(
   WrappedComponent: React.ComponentType<P>,
 ): React.ComponentType<P> =>
   class ComponentWithInteractivityState extends React.Component<P, State> {

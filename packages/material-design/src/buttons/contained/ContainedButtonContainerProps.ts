@@ -1,4 +1,9 @@
-import { ButtonProps, ViewPropsGetter, ViewStyleGetter } from '@reflex-ui/core';
+import {
+  ButtonProps,
+  InteractivityType,
+  ViewPropsGetter,
+  ViewStyleGetter,
+} from '@reflex-ui/core';
 // prettier-ignore
 import {
   getThemedInlayColorByInteractivity,
@@ -12,8 +17,12 @@ export const getDisabledContainedButtonContainerProps: ViewPropsGetter<
 
 export const getDisabledContainedButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = props => ({
-  backgroundColor: getThemedInlayColorByInteractivity(props),
+> = ({ colorTheme, theme }) => ({
+  backgroundColor: getThemedInlayColorByInteractivity({
+    colorTheme,
+    interactivityType: InteractivityType.DISABLED,
+    theme,
+  }),
 });
 
 export const getEnabledContainedButtonContainerProps: ViewPropsGetter<
@@ -24,8 +33,12 @@ export const getEnabledContainedButtonContainerProps: ViewPropsGetter<
 
 export const getEnabledContainedButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = props => ({
-  backgroundColor: getThemedInlayColorByInteractivity(props),
+> = ({ colorTheme, theme }) => ({
+  backgroundColor: getThemedInlayColorByInteractivity({
+    colorTheme,
+    interactivityType: InteractivityType.ENABLED,
+    theme,
+  }),
 });
 
 export const getFocusedContainedButtonContainerProps: ViewPropsGetter<
@@ -36,8 +49,12 @@ export const getFocusedContainedButtonContainerProps: ViewPropsGetter<
 
 export const getFocusedContainedButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = props => ({
-  backgroundColor: getThemedInlayColorByInteractivity(props),
+> = ({ colorTheme, theme }) => ({
+  backgroundColor: getThemedInlayColorByInteractivity({
+    colorTheme,
+    interactivityType: InteractivityType.FOCUSED,
+    theme,
+  }),
 });
 
 export const getHoveredContainedButtonContainerProps: ViewPropsGetter<
@@ -48,8 +65,12 @@ export const getHoveredContainedButtonContainerProps: ViewPropsGetter<
 
 export const getHoveredContainedButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = props => ({
-  backgroundColor: getThemedInlayColorByInteractivity(props),
+> = ({ colorTheme, theme }) => ({
+  backgroundColor: getThemedInlayColorByInteractivity({
+    colorTheme,
+    interactivityType: InteractivityType.HOVERED,
+    theme,
+  }),
 });
 
 export const getPressedContainedButtonContainerProps: ViewPropsGetter<
@@ -60,6 +81,10 @@ export const getPressedContainedButtonContainerProps: ViewPropsGetter<
 
 export const getPressedContainedButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = props => ({
-  backgroundColor: getThemedInlayColorByInteractivity(props),
+> = ({ colorTheme, theme }) => ({
+  backgroundColor: getThemedInlayColorByInteractivity({
+    colorTheme,
+    interactivityType: InteractivityType.PRESSED,
+    theme,
+  }),
 });

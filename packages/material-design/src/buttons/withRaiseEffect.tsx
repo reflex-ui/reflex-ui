@@ -99,11 +99,7 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
       state: RaisedComponentState,
     ) {
       const { interactivityState } = props.componentProps;
-
-      const interactivityType = interactivityState
-        ? interactivityState.type
-        : InteractivityType.ENABLED;
-
+      const interactivityType = interactivityState.type;
       const { animationKeyframe, isAnimating } = state;
 
       const staticRaiseStyles = createStaticRaiseStyles(
@@ -354,9 +350,7 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
                     * shadowOffset, i.e., an object of values.
                     */
                     const interactivityType = this.props.componentProps
-                      .interactivityState
-                      ? this.props.componentProps.interactivityState.type
-                      : InteractivityType.ENABLED;
+                      .interactivityState.type;
 
                     const elevation = convertInteractivityToElevation(
                       interactivityType,

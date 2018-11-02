@@ -9,9 +9,7 @@ export const getButtonIconContainerProps: ViewPropsGetter<ButtonProps> = (
   props: ButtonProps,
 ): ViewProps => {
   const buttonTheme = props.theme.components.button;
-  const interactivityType: InteractivityType = props.interactivityState
-    ? props.interactivityState.type
-    : InteractivityType.ENABLED;
+  const interactivityType: InteractivityType = props.interactivityState.type;
 
   const { size, variant } = props;
   const userProps = props.getFabIconContainerProps

@@ -9,9 +9,7 @@ export const getButtonRightIconProps: TextPropsGetter<ButtonProps> = (
   props: ButtonProps,
 ): TextProps => {
   const buttonTheme = props.theme.components.button;
-  const interactivityType: InteractivityType = props.interactivityState
-    ? props.interactivityState.type
-    : InteractivityType.ENABLED;
+  const interactivityType: InteractivityType = props.interactivityState.type;
 
   const { size, variant } = props;
   const userProps = props.getTextProps ? props.getTextProps(props) : {};

@@ -25,9 +25,7 @@ const getContainedContainerProps = (props: ButtonProps) => ({
   style: {
     backgroundColor: getInlayColorByInteractivity({
       color: '#c70ad0',
-      type: props.interactivityState
-        ? props.interactivityState.type
-        : undefined,
+      type: props.interactivityState.type,
     }),
   },
 });
@@ -36,9 +34,7 @@ const getDefaultContainerProps = (props: ButtonProps) => ({
   style: {
     backgroundColor: getOverlayColorByInteractivity({
       color: '#c70ad0',
-      type: props.interactivityState
-        ? props.interactivityState.type
-        : undefined,
+      type: props.interactivityState.type,
     }),
   },
 });
@@ -46,7 +42,6 @@ const getDefaultContainerProps = (props: ButtonProps) => ({
 const getFabTextProps = (props: ButtonProps) => ({
   style: {
     color:
-      props.interactivityState &&
       props.interactivityState.type === InteractivityType.DISABLED
         ? disabledPaletteColor.normal.onColor
         : '#ffffff',
@@ -57,7 +52,6 @@ const getOutlinedContainerProps = (props: ButtonProps) => ({
   style: {
     backgroundColor: getDefaultContainerProps(props).style.backgroundColor,
     borderColor:
-      props.interactivityState &&
       props.interactivityState.type === InteractivityType.DISABLED
         ? disabledPaletteColor.normal.onColor
         : '#c70ad0',
@@ -67,7 +61,6 @@ const getOutlinedContainerProps = (props: ButtonProps) => ({
 const getTextProps = (props: ButtonProps) => ({
   style: {
     color:
-      props.interactivityState &&
       props.interactivityState.type === InteractivityType.DISABLED
         ? disabledPaletteColor.normal.onColor
         : '#c70ad0',
@@ -86,7 +79,6 @@ const getLeftIconContainerProps = () => ({
 const getTextProps = (props: ButtonProps) => ({
   style: {
     color:
-      props.interactivityState &&
       props.interactivityState.type === InteractivityType.PRESSED
         ? 'green'
         : 'red',

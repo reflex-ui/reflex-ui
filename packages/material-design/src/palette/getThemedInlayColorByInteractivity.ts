@@ -7,10 +7,10 @@ import {
 
 export const getThemedInlayColorByInteractivity = ({
   colorTheme,
-  interactivityState,
+  interactivityType,
   theme: { palette },
 }: ThemedColorByInteractivityData): string =>
   getInlayColorByInteractivity({
     color: getThemedColor({ colorTheme, palette }),
-    type: interactivityState ? interactivityState.type : undefined,
+    type: interactivityType,
   });

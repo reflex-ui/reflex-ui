@@ -1,5 +1,8 @@
 import { Size, TextPropsGetter, ViewPropsGetter } from '../';
-import { InteractivityProps } from '../../interactivity';
+import {
+  InteractivityProps,
+  OptionalInteractivityProps,
+} from '../../interactivity';
 import { OptionalThemed, Themed } from '../../theming';
 import { ButtonVariant } from './ButtonVariant';
 
@@ -18,7 +21,7 @@ export interface ButtonProps extends InteractivityProps, Themed {
 }
 
 export interface OptionalButtonProps
-  extends InteractivityProps,
+  extends OptionalInteractivityProps,
     OptionalThemed {
   children?: React.ReactNode;
   fullWidth?: boolean;

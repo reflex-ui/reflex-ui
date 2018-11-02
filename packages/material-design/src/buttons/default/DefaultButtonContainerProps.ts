@@ -1,4 +1,9 @@
-import { ButtonProps, ViewPropsGetter, ViewStyleGetter } from '@reflex-ui/core';
+import {
+  ButtonProps,
+  InteractivityType,
+  ViewPropsGetter,
+  ViewStyleGetter,
+} from '@reflex-ui/core';
 import { getThemedOverlayColorByInteractivity } from '../../palette';
 
 export const getDisabledDefaultButtonContainerProps: ViewPropsGetter<
@@ -9,8 +14,12 @@ export const getDisabledDefaultButtonContainerProps: ViewPropsGetter<
 
 export const getDisabledDefaultButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = props => ({
-  backgroundColor: getThemedOverlayColorByInteractivity(props),
+> = ({ colorTheme, theme }) => ({
+  backgroundColor: getThemedOverlayColorByInteractivity({
+    colorTheme,
+    interactivityType: InteractivityType.DISABLED,
+    theme,
+  }),
 });
 
 export const getEnabledDefaultButtonContainerProps: ViewPropsGetter<
@@ -21,8 +30,12 @@ export const getEnabledDefaultButtonContainerProps: ViewPropsGetter<
 
 export const getEnabledDefaultButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = props => ({
-  backgroundColor: getThemedOverlayColorByInteractivity(props),
+> = ({ colorTheme, theme }) => ({
+  backgroundColor: getThemedOverlayColorByInteractivity({
+    colorTheme,
+    interactivityType: InteractivityType.ENABLED,
+    theme,
+  }),
 });
 
 export const getFocusedDefaultButtonContainerProps: ViewPropsGetter<
@@ -33,8 +46,12 @@ export const getFocusedDefaultButtonContainerProps: ViewPropsGetter<
 
 export const getFocusedDefaultButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = props => ({
-  backgroundColor: getThemedOverlayColorByInteractivity(props),
+> = ({ colorTheme, theme }) => ({
+  backgroundColor: getThemedOverlayColorByInteractivity({
+    colorTheme,
+    interactivityType: InteractivityType.FOCUSED,
+    theme,
+  }),
 });
 
 export const getHoveredDefaultButtonContainerProps: ViewPropsGetter<
@@ -45,8 +62,12 @@ export const getHoveredDefaultButtonContainerProps: ViewPropsGetter<
 
 export const getHoveredDefaultButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = props => ({
-  backgroundColor: getThemedOverlayColorByInteractivity(props),
+> = ({ colorTheme, theme }) => ({
+  backgroundColor: getThemedOverlayColorByInteractivity({
+    colorTheme,
+    interactivityType: InteractivityType.HOVERED,
+    theme,
+  }),
 });
 
 export const getPressedDefaultButtonContainerProps: ViewPropsGetter<
@@ -57,6 +78,10 @@ export const getPressedDefaultButtonContainerProps: ViewPropsGetter<
 
 export const getPressedDefaultButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = props => ({
-  backgroundColor: getThemedOverlayColorByInteractivity(props),
+> = ({ colorTheme, theme }) => ({
+  backgroundColor: getThemedOverlayColorByInteractivity({
+    colorTheme,
+    interactivityType: InteractivityType.PRESSED,
+    theme,
+  }),
 });
