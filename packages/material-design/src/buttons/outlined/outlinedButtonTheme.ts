@@ -1,16 +1,27 @@
 import {
-  // DefaultButtonContainer,
+  DefaultButtonContainer,
   OptionalButtonVariantTheme,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
-// import { withRippleEffect } from '../withRippleEffect';
+import { getDefaultButtonRippleColor } from '../default/';
+import { withRippleEffect } from '../withRippleEffect';
+import { getHoveredOutlinedButtonContainerProps } from './';
 import { outlinedStaticButtonTheme } from './outlinedStaticButtonTheme';
 
 const partialOutlinedButtonTheme: OptionalButtonVariantTheme = {
-  /*subComponents: {
-    Container: withRippleEffect(DefaultButtonContainer),
-  },*/
+  allSizes: {
+    pressed: {
+      container: {
+        getProps: getHoveredOutlinedButtonContainerProps,
+      },
+    },
+  },
+  subComponents: {
+    Container: withRippleEffect({
+      getRippleColor: getDefaultButtonRippleColor,
+    })(DefaultButtonContainer),
+  },
 };
 
 export const outlinedButtonTheme: OptionalButtonVariantTheme = merge<
