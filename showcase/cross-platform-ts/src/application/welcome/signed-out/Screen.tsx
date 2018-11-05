@@ -1,6 +1,8 @@
 import {
   Button,
   ButtonProps,
+  ButtonSubProps,
+  ButtonSubPropsGetter,
   ButtonVariant,
   ColorTheme,
   InteractivityType,
@@ -21,49 +23,81 @@ const onButtonPress = () => {
   console.log('WelcomeSignedOutScreen().onButtonPress()');
 };
 
-const getContainedContainerProps = (props: ButtonProps) => ({
-  style: {
-    backgroundColor: getInlayColorByInteractivity({
-      color: '#c70ad0',
-      type: props.interactivityState.type,
-    }),
+const getDefaultButtonProps: ButtonSubPropsGetter = (
+  props: ButtonProps,
+): ButtonSubProps => ({
+  container: {
+    style: {
+      backgroundColor: getOverlayColorByInteractivity({
+        color: '#c70ad0',
+        type: props.interactivityState.type,
+      }),
+    },
+  },
+  text: {
+    style: {
+      color:
+        props.interactivityState.type === InteractivityType.DISABLED
+          ? disabledPaletteColor.normal.onColor
+          : '#c70ad0',
+    },
   },
 });
 
-const getDefaultContainerProps = (props: ButtonProps) => ({
-  style: {
-    backgroundColor: getOverlayColorByInteractivity({
-      color: '#c70ad0',
-      type: props.interactivityState.type,
-    }),
+const getContainedButtonProps: ButtonSubPropsGetter = (
+  props: ButtonProps,
+): ButtonSubProps => ({
+  container: {
+    style: {
+      backgroundColor: getInlayColorByInteractivity({
+        color: '#c70ad0',
+        type: props.interactivityState.type,
+      }),
+    },
   },
 });
 
-const getFabTextProps = (props: ButtonProps) => ({
-  style: {
-    color:
-      props.interactivityState.type === InteractivityType.DISABLED
-        ? disabledPaletteColor.normal.onColor
-        : '#ffffff',
+const getFabButtonProps: ButtonSubPropsGetter = (
+  props: ButtonProps,
+): ButtonSubProps => ({
+  container: {
+    style: {
+      backgroundColor: getInlayColorByInteractivity({
+        color: '#c70ad0',
+        type: props.interactivityState.type,
+      }),
+    },
+  },
+  text: {
+    style: {
+      color:
+        props.interactivityState.type === InteractivityType.DISABLED
+          ? disabledPaletteColor.normal.onColor
+          : '#ffffff',
+    },
   },
 });
 
-const getOutlinedContainerProps = (props: ButtonProps) => ({
-  style: {
-    backgroundColor: getDefaultContainerProps(props).style.backgroundColor,
-    borderColor:
-      props.interactivityState.type === InteractivityType.DISABLED
-        ? disabledPaletteColor.normal.onColor
-        : '#c70ad0',
+const getOutlinedButtonProps = (props: ButtonProps): ButtonSubProps => ({
+  container: {
+    style: {
+      backgroundColor: getOverlayColorByInteractivity({
+        color: '#c70ad0',
+        type: props.interactivityState.type,
+      }),
+      borderColor:
+        props.interactivityState.type === InteractivityType.DISABLED
+          ? disabledPaletteColor.normal.onColor
+          : '#c70ad0',
+    },
   },
-});
-
-const getTextProps = (props: ButtonProps) => ({
-  style: {
-    color:
-      props.interactivityState.type === InteractivityType.DISABLED
-        ? disabledPaletteColor.normal.onColor
-        : '#c70ad0',
+  text: {
+    style: {
+      color:
+        props.interactivityState.type === InteractivityType.DISABLED
+          ? disabledPaletteColor.normal.onColor
+          : '#c70ad0',
+    },
   },
 });
 
@@ -183,17 +217,12 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Text>Custom color</Text>
     </RowView>
     <RowView>
-      <Button
-        getContainerProps={getDefaultContainerProps}
-        getTextProps={getTextProps}
-        onPress={onButtonPress}
-      >
+      <Button getSubProps={getDefaultButtonProps} onPress={onButtonPress}>
         Sign In
       </Button>
       <Button
         disabled
-        getContainerProps={getDefaultContainerProps}
-        getTextProps={getTextProps}
+        getSubProps={getDefaultButtonProps}
         onPress={onButtonPress}
       >
         Sign In
@@ -201,17 +230,15 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
-        getContainerProps={getDefaultContainerProps}
-        getTextProps={getTextProps}
+        getSubProps={getDefaultButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
       >
         Favorite
       </Button>
       <Button
-        getContainerProps={getDefaultContainerProps}
         disabled
-        getTextProps={getTextProps}
+        getSubProps={getDefaultButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
       >
@@ -220,17 +247,15 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
-        getContainerProps={getDefaultContainerProps}
-        getTextProps={getTextProps}
+        getSubProps={getDefaultButtonProps}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
       >
         Favorite
       </Button>
       <Button
-        getContainerProps={getDefaultContainerProps}
         disabled
-        getTextProps={getTextProps}
+        getSubProps={getDefaultButtonProps}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
       >
@@ -239,8 +264,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
-        getContainerProps={getDefaultContainerProps}
-        getTextProps={getTextProps}
+        getSubProps={getDefaultButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
@@ -249,8 +273,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       </Button>
       <Button
         disabled
-        getContainerProps={getDefaultContainerProps}
-        getTextProps={getTextProps}
+        getSubProps={getDefaultButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
@@ -582,8 +605,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
-        getContainerProps={getOutlinedContainerProps}
-        getTextProps={getTextProps}
+        getSubProps={getOutlinedButtonProps}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -591,8 +613,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       </Button>
       <Button
         disabled
-        getContainerProps={getOutlinedContainerProps}
-        getTextProps={getTextProps}
+        getSubProps={getOutlinedButtonProps}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -601,8 +622,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
-        getContainerProps={getOutlinedContainerProps}
-        getTextProps={getTextProps}
+        getSubProps={getOutlinedButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
@@ -611,8 +631,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       </Button>
       <Button
         disabled
-        getContainerProps={getOutlinedContainerProps}
-        getTextProps={getTextProps}
+        getSubProps={getOutlinedButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
@@ -622,8 +641,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
-        getContainerProps={getOutlinedContainerProps}
-        getTextProps={getTextProps}
+        getSubProps={getOutlinedButtonProps}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
@@ -632,8 +650,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       </Button>
       <Button
         disabled
-        getContainerProps={getOutlinedContainerProps}
-        getTextProps={getTextProps}
+        getSubProps={getOutlinedButtonProps}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
@@ -643,8 +660,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
-        getContainerProps={getOutlinedContainerProps}
-        getTextProps={getTextProps}
+        getSubProps={getOutlinedButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
@@ -654,8 +670,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       </Button>
       <Button
         disabled
-        getContainerProps={getOutlinedContainerProps}
-        getTextProps={getTextProps}
+        getSubProps={getOutlinedButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
@@ -667,8 +682,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         fullWidth
-        getContainerProps={getOutlinedContainerProps}
-        getTextProps={getTextProps}
+        getSubProps={getOutlinedButtonProps}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -679,8 +693,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         fullWidth
-        getContainerProps={getOutlinedContainerProps}
-        getTextProps={getTextProps}
+        getSubProps={getOutlinedButtonProps}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -690,8 +703,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         fullWidth
-        getContainerProps={getOutlinedContainerProps}
-        getTextProps={getTextProps}
+        getSubProps={getOutlinedButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
@@ -703,8 +715,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         fullWidth
-        getContainerProps={getOutlinedContainerProps}
-        getTextProps={getTextProps}
+        getSubProps={getOutlinedButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
@@ -715,8 +726,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         fullWidth
-        getContainerProps={getOutlinedContainerProps}
-        getTextProps={getTextProps}
+        getSubProps={getOutlinedButtonProps}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
@@ -728,8 +738,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         fullWidth
-        getContainerProps={getOutlinedContainerProps}
-        getTextProps={getTextProps}
+        getSubProps={getOutlinedButtonProps}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
@@ -740,8 +749,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         fullWidth
-        getContainerProps={getOutlinedContainerProps}
-        getTextProps={getTextProps}
+        getSubProps={getOutlinedButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
@@ -754,8 +762,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         fullWidth
-        getContainerProps={getOutlinedContainerProps}
-        getTextProps={getTextProps}
+        getSubProps={getOutlinedButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
@@ -1092,7 +1099,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -1100,76 +1107,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       </Button>
       <Button
         disabled
-        getContainerProps={getContainedContainerProps}
-        onPress={onButtonPress}
-        variant={ButtonVariant.CONTAINED}
-      >
-        Sign In
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        getContainerProps={getContainedContainerProps}
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.CONTAINED}
-      >
-        Favorite
-      </Button>
-      <Button
-        disabled
-        getContainerProps={getContainedContainerProps}
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.CONTAINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        getContainerProps={getContainedContainerProps}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED}
-      >
-        Favorite
-      </Button>
-      <Button
-        disabled
-        getContainerProps={getContainedContainerProps}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        getContainerProps={getContainedContainerProps}
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED}
-      >
-        Favorite
-      </Button>
-      <Button
-        disabled
-        getContainerProps={getContainedContainerProps}
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        fullWidth
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -1178,9 +1116,78 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
+        getSubProps={getContainedButtonProps}
+        leftIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.CONTAINED}
+      >
+        Favorite
+      </Button>
+      <Button
+        disabled
+        getSubProps={getContainedButtonProps}
+        leftIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.CONTAINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        getSubProps={getContainedButtonProps}
+        onPress={onButtonPress}
+        rightIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED}
+      >
+        Favorite
+      </Button>
+      <Button
+        disabled
+        getSubProps={getContainedButtonProps}
+        onPress={onButtonPress}
+        rightIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        getSubProps={getContainedButtonProps}
+        leftIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        rightIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED}
+      >
+        Favorite
+      </Button>
+      <Button
+        disabled
+        getSubProps={getContainedButtonProps}
+        leftIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        rightIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        getSubProps={getContainedButtonProps}
+        onPress={onButtonPress}
+        variant={ButtonVariant.CONTAINED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
         disabled
         fullWidth
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -1190,7 +1197,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         fullWidth
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
@@ -1202,7 +1209,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         fullWidth
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
@@ -1213,7 +1220,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         fullWidth
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
@@ -1225,7 +1232,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         fullWidth
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
@@ -1236,7 +1243,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         fullWidth
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
@@ -1249,7 +1256,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         fullWidth
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
@@ -1586,7 +1593,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -1594,76 +1601,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       </Button>
       <Button
         disabled
-        getContainerProps={getContainedContainerProps}
-        onPress={onButtonPress}
-        variant={ButtonVariant.CONTAINED_RAISED}
-      >
-        Sign In
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        getContainerProps={getContainedContainerProps}
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.CONTAINED_RAISED}
-      >
-        Favorite
-      </Button>
-      <Button
-        disabled
-        getContainerProps={getContainedContainerProps}
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.CONTAINED_RAISED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        getContainerProps={getContainedContainerProps}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED_RAISED}
-      >
-        Favorite
-      </Button>
-      <Button
-        disabled
-        getContainerProps={getContainedContainerProps}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED_RAISED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        getContainerProps={getContainedContainerProps}
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED_RAISED}
-      >
-        Favorite
-      </Button>
-      <Button
-        disabled
-        getContainerProps={getContainedContainerProps}
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED_RAISED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        fullWidth
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -1672,9 +1610,78 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
+        getSubProps={getContainedButtonProps}
+        leftIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.CONTAINED_RAISED}
+      >
+        Favorite
+      </Button>
+      <Button
+        disabled
+        getSubProps={getContainedButtonProps}
+        leftIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.CONTAINED_RAISED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        getSubProps={getContainedButtonProps}
+        onPress={onButtonPress}
+        rightIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED_RAISED}
+      >
+        Favorite
+      </Button>
+      <Button
+        disabled
+        getSubProps={getContainedButtonProps}
+        onPress={onButtonPress}
+        rightIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED_RAISED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        getSubProps={getContainedButtonProps}
+        leftIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        rightIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED_RAISED}
+      >
+        Favorite
+      </Button>
+      <Button
+        disabled
+        getSubProps={getContainedButtonProps}
+        leftIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        rightIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED_RAISED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        getSubProps={getContainedButtonProps}
+        onPress={onButtonPress}
+        variant={ButtonVariant.CONTAINED_RAISED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
         disabled
         fullWidth
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -1684,7 +1691,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         fullWidth
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
@@ -1696,7 +1703,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         fullWidth
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
@@ -1707,7 +1714,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         fullWidth
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
@@ -1719,7 +1726,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         fullWidth
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
@@ -1730,7 +1737,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         fullWidth
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
@@ -1743,7 +1750,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         fullWidth
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
@@ -2072,7 +2079,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -2080,76 +2087,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       </Button>
       <Button
         disabled
-        getContainerProps={getContainedContainerProps}
-        onPress={onButtonPress}
-        variant={ButtonVariant.SHAPED}
-      >
-        Sign In
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        getContainerProps={getContainedContainerProps}
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.SHAPED}
-      >
-        Favorite
-      </Button>
-      <Button
-        disabled
-        getContainerProps={getContainedContainerProps}
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.SHAPED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        getContainerProps={getContainedContainerProps}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.SHAPED}
-      >
-        Favorite
-      </Button>
-      <Button
-        disabled
-        getContainerProps={getContainedContainerProps}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.SHAPED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        getContainerProps={getContainedContainerProps}
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.SHAPED}
-      >
-        Favorite
-      </Button>
-      <Button
-        disabled
-        getContainerProps={getContainedContainerProps}
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.SHAPED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        fullWidth
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -2158,9 +2096,78 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
+        getSubProps={getContainedButtonProps}
+        leftIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.SHAPED}
+      >
+        Favorite
+      </Button>
+      <Button
+        disabled
+        getSubProps={getContainedButtonProps}
+        leftIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        getSubProps={getContainedButtonProps}
+        onPress={onButtonPress}
+        rightIcon={<FavoriteIcon />}
+        variant={ButtonVariant.SHAPED}
+      >
+        Favorite
+      </Button>
+      <Button
+        disabled
+        getSubProps={getContainedButtonProps}
+        onPress={onButtonPress}
+        rightIcon={<FavoriteIcon />}
+        variant={ButtonVariant.SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        getSubProps={getContainedButtonProps}
+        leftIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        rightIcon={<FavoriteIcon />}
+        variant={ButtonVariant.SHAPED}
+      >
+        Favorite
+      </Button>
+      <Button
+        disabled
+        getSubProps={getContainedButtonProps}
+        leftIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        rightIcon={<FavoriteIcon />}
+        variant={ButtonVariant.SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        getSubProps={getContainedButtonProps}
+        onPress={onButtonPress}
+        variant={ButtonVariant.SHAPED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
         disabled
         fullWidth
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -2170,7 +2177,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         fullWidth
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
@@ -2182,7 +2189,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         fullWidth
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
@@ -2193,7 +2200,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         fullWidth
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
@@ -2205,7 +2212,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         fullWidth
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
@@ -2216,7 +2223,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         fullWidth
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
@@ -2229,7 +2236,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         fullWidth
-        getContainerProps={getContainedContainerProps}
+        getSubProps={getContainedButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
@@ -2274,8 +2281,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
-        getContainerProps={getDefaultContainerProps}
-        getTextProps={getTextProps}
+        getSubProps={getDefaultButtonProps}
         onPress={onButtonPress}
         variant={ButtonVariant.ICON}
       >
@@ -2283,8 +2289,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       </Button>
       <Button
         disabled
-        getContainerProps={getDefaultContainerProps}
-        getTextProps={getTextProps}
+        getSubProps={getDefaultButtonProps}
         onPress={onButtonPress}
         variant={ButtonVariant.ICON}
       >
@@ -2327,8 +2332,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
-        getContainerProps={getContainedContainerProps}
-        getTextProps={getFabTextProps}
+        getSubProps={getFabButtonProps}
         onPress={onButtonPress}
         variant={ButtonVariant.FAB}
       >
@@ -2336,8 +2340,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       </Button>
       <Button
         disabled
-        getContainerProps={getContainedContainerProps}
-        getTextProps={getFabTextProps}
+        getSubProps={getFabButtonProps}
         onPress={onButtonPress}
         variant={ButtonVariant.FAB}
       >
@@ -2492,8 +2495,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
-        getContainerProps={getContainedContainerProps}
-        getTextProps={getFabTextProps}
+        getSubProps={getFabButtonProps}
         onPress={onButtonPress}
         variant={ButtonVariant.XFAB}
       >
@@ -2501,8 +2503,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       </Button>
       <Button
         disabled
-        getContainerProps={getContainedContainerProps}
-        getTextProps={getFabTextProps}
+        getSubProps={getFabButtonProps}
         onPress={onButtonPress}
         variant={ButtonVariant.XFAB}
       >
@@ -2511,8 +2512,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
-        getContainerProps={getContainedContainerProps}
-        getTextProps={getFabTextProps}
+        getSubProps={getFabButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.XFAB}
@@ -2521,8 +2521,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       </Button>
       <Button
         disabled
-        getContainerProps={getContainedContainerProps}
-        getTextProps={getFabTextProps}
+        getSubProps={getFabButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.XFAB}
@@ -2532,8 +2531,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
-        getContainerProps={getContainedContainerProps}
-        getTextProps={getFabTextProps}
+        getSubProps={getFabButtonProps}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
         variant={ButtonVariant.XFAB}
@@ -2542,8 +2540,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       </Button>
       <Button
         disabled
-        getContainerProps={getContainedContainerProps}
-        getTextProps={getFabTextProps}
+        getSubProps={getFabButtonProps}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
         variant={ButtonVariant.XFAB}
@@ -2553,8 +2550,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
-        getContainerProps={getContainedContainerProps}
-        getTextProps={getFabTextProps}
+        getSubProps={getFabButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}
@@ -2564,8 +2560,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       </Button>
       <Button
         disabled
-        getContainerProps={getContainedContainerProps}
-        getTextProps={getFabTextProps}
+        getSubProps={getFabButtonProps}
         leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         rightIcon={<FavoriteIcon />}

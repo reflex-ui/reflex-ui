@@ -11,8 +11,8 @@ export const getContainedButtonRippleColor = (props: ButtonProps): string => {
     ...props.interactivityState,
     type: InteractivityType.ENABLED,
   };
-  const viewProps = props.getContainerProps
-    ? props.getContainerProps({ ...props, interactivityState })
+  const viewProps = props.getSubProps
+    ? props.getSubProps({ ...props, interactivityState }).container || {}
     : {};
   let color = viewProps.style
     ? StyleSheet.flatten(viewProps.style).backgroundColor

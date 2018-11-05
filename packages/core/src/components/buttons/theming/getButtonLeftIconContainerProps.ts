@@ -12,8 +12,8 @@ export const getButtonLeftIconContainerProps: ViewPropsGetter<ButtonProps> = (
   const interactivityType: InteractivityType = props.interactivityState.type;
 
   const { size, variant } = props;
-  const userProps = props.getLeftIconContainerProps
-    ? props.getLeftIconContainerProps(props)
+  const userProps = props.getSubProps
+    ? props.getSubProps(props).leftIconContainer || {}
     : {};
 
   const viewProps = merge(

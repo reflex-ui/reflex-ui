@@ -12,8 +12,8 @@ export const getButtonIconContainerProps: ViewPropsGetter<ButtonProps> = (
   const interactivityType: InteractivityType = props.interactivityState.type;
 
   const { size, variant } = props;
-  const userProps = props.getFabIconContainerProps
-    ? props.getFabIconContainerProps(props)
+  const userProps = props.getSubProps
+    ? props.getSubProps(props).iconContainer || {}
     : {};
 
   const viewProps = merge(

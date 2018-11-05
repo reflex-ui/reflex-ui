@@ -12,7 +12,9 @@ export const getButtonTextProps: TextPropsGetter<ButtonProps> = (
   const interactivityType: InteractivityType = props.interactivityState.type;
 
   const { size, variant } = props;
-  const userProps = props.getTextProps ? props.getTextProps(props) : {};
+  const userProps = props.getSubProps
+    ? props.getSubProps(props).text || {}
+    : {};
 
   const textProps = merge(
     {},

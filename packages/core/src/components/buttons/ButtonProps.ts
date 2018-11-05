@@ -1,19 +1,16 @@
-import { Size, TextPropsGetter, ViewPropsGetter } from '../';
+import { Size } from '../';
 import {
   InteractivityProps,
   OptionalInteractivityProps,
 } from '../../interactivity';
 import { OptionalThemed, Themed } from '../../theming';
+import { ButtonSubPropsGetter } from './ButtonSubPropsGetter';
 import { ButtonVariant } from './ButtonVariant';
 
 export interface ButtonProps extends InteractivityProps, Themed {
   children?: React.ReactNode;
   fullWidth?: boolean;
-  getContainerProps?: ViewPropsGetter<ButtonProps>;
-  getFabIconContainerProps?: ViewPropsGetter<ButtonProps>;
-  getLeftIconContainerProps?: ViewPropsGetter<ButtonProps>;
-  getRightIconContainerProps?: ViewPropsGetter<ButtonProps>;
-  getTextProps?: TextPropsGetter<ButtonProps>;
+  getSubProps?: ButtonSubPropsGetter;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
   size: Size;
@@ -25,11 +22,7 @@ export interface OptionalButtonProps
     OptionalThemed {
   children?: React.ReactNode;
   fullWidth?: boolean;
-  getContainerProps?: ViewPropsGetter<ButtonProps>;
-  getFabIconContainerProps?: ViewPropsGetter<ButtonProps>;
-  getLeftIconContainerProps?: ViewPropsGetter<ButtonProps>;
-  getRightIconContainerProps?: ViewPropsGetter<ButtonProps>;
-  getTextProps?: TextPropsGetter<ButtonProps>;
+  getSubProps?: ButtonSubPropsGetter;
   leftIcon?: JSX.Element;
   rightIcon?: JSX.Element;
   size?: Size;

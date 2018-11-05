@@ -11,8 +11,8 @@ export const getDefaultButtonRippleColor = (props: ButtonProps): string => {
     ...props.interactivityState,
     type: InteractivityType.ENABLED,
   };
-  const textProps = props.getTextProps
-    ? props.getTextProps({ ...props, interactivityState })
+  const textProps = props.getSubProps
+    ? props.getSubProps({ ...props, interactivityState }).text || {}
     : {};
   let color = textProps.style
     ? StyleSheet.flatten(textProps.style).color
