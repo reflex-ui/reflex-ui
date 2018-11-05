@@ -84,5 +84,6 @@ export const rawButtonTheme: ButtonTheme = {
   fab: rawButtonVariantTheme,
   icon: rawButtonVariantTheme,
   outlined: rawButtonVariantTheme,
+  shaped: rawButtonVariantTheme,
   xfab: rawButtonVariantTheme,
 };

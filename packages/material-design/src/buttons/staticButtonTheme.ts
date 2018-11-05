@@ -7,6 +7,7 @@ import {
   iconStaticButtonTheme,
   outlinedStaticButtonTheme,
   raisedStaticButtonTheme,
+  shapedStaticButtonTheme,
   xfabStaticButtonTheme,
 } from './';
 
@@ -18,5 +19,6 @@ export const staticButtonTheme: OptionalButtonTheme = {
   fab: fabStaticButtonTheme,
   icon: iconStaticButtonTheme,
   outlined: outlinedStaticButtonTheme,
+  shaped: shapedStaticButtonTheme,
   xfab: xfabStaticButtonTheme,
 };

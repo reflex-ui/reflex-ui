@@ -88,61 +88,6 @@ const handleIcon = (props: ButtonProps): JSX.Element | undefined => {
     ...getButtonIconProps(props),
   };
 
-  /*
-  const childrenProps = {
-    ...(props.children as React.ReactElement<{}>).props,
-  };
-  console.log('handleIcon() - childrenProps: ', childrenProps);
-  console.log('handleIcon() - iconProps: ', iconProps);
-  console.log(
-    'handleIcon() - merge({}, iconProps, childrenProps): ',
-    merge({}, iconProps, childrenProps),
-  );
-  */
-  /*
-  const {
-    style: childrenStyle,
-    ...otherChildrenProps
-  } = (props.children as React.ReactElement<OptionalIconWrapperProps>).props;
-  if (!iconProps.style) iconProps.style = [];
-  if (isPlainObject(iconProps.style)) iconProps.style = [iconProps.style];
-  */
-
-  /*
-  let iconStyle = iconProps.style;
-  if (Number.isFinite(iconStyle as number)) {
-    iconStyle = StyleSheet.flatten(iconStyle);
-  }
-  if (!iconStyle) iconStyle = {};
-  iconProps.style = iconStyle;
-
-  let styledIcon;
-  if (props.children) {
-    styledIcon = React.cloneElement(
-      props.children as React.ReactElement<{}>,
-      merge({}, iconProps, (props.children as React.ReactElement<{}>).props),
-    );
-  }
-  */
-
-  /*
-  const children = props.children as React.ReactElement<
-    OptionalIconWrapperProps
-  >;
-  const { style: childrenStyle, ...otherChildrenProps } = children.props;
-
-  iconProps.style = iconProps.style ? [iconProps.style] : [];
-  if (childrenStyle) iconProps.style.push(childrenStyle);
-
-  let styledIcon;
-  if (props.children) {
-    styledIcon = React.cloneElement(
-      children,
-      merge({}, iconProps, otherChildrenProps),
-    );
-  }
-  */
-
   const children = props.children as React.ReactElement<
     OptionalIconWrapperProps
   >;
