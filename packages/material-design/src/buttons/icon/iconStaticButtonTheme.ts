@@ -19,23 +19,19 @@ const optionalStaticIconButtonTheme: OptionalButtonVariantTheme = {
           style: {
             borderRadius: 28,
             height: 56,
-            marginHorizontal: 0,
-            marginVertical: 0,
             minWidth: 56,
           },
         },
       },
     },
   },
-  regular: {
+  medium: {
     allStates: {
       container: {
         props: {
           style: {
             borderRadius: 24,
             height: 48,
-            marginHorizontal: 0,
-            marginVertical: 0,
             minWidth: 48,
           },
         },
@@ -49,8 +45,6 @@ const optionalStaticIconButtonTheme: OptionalButtonVariantTheme = {
           style: {
             borderRadius: 20,
             height: 40,
-            marginHorizontal: 0,
-            marginVertical: 0,
             minWidth: 40,
           },
         },
@@ -64,8 +58,6 @@ const optionalStaticIconButtonTheme: OptionalButtonVariantTheme = {
           style: {
             borderRadius: 40,
             height: 80,
-            marginHorizontal: 0,
-            marginVertical: 0,
             minWidth: 80,
           },
         },
@@ -79,8 +71,6 @@ const optionalStaticIconButtonTheme: OptionalButtonVariantTheme = {
           style: {
             borderRadius: 16,
             height: 32,
-            marginHorizontal: 0,
-            marginVertical: 0,
             minWidth: 32,
           },
         },

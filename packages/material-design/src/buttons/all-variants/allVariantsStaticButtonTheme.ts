@@ -130,7 +130,7 @@ export const allVariantsStaticButtonTheme: OptionalButtonVariantTheme = {
       },
     },
   },
-  regular: {
+  medium: {
     allStates: {
       container: {
         props: {

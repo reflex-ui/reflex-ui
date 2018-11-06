@@ -68,8 +68,6 @@ export const containedStaticButtonTheme: OptionalButtonVariantTheme = {
         props: {
           style: {
             height: 40,
-            marginHorizontal: 16,
-            marginVertical: 8,
             minWidth: 72,
             paddingHorizontal: 20,
           },
@@ -77,14 +75,12 @@ export const containedStaticButtonTheme: OptionalButtonVariantTheme = {
       },
     },
   },
-  regular: {
+  medium: {
     allStates: {
       container: {
         props: {
           style: {
             height: 36,
-            marginHorizontal: 16,
-            marginVertical: 8,
             minWidth: 64,
             paddingHorizontal: 16,
           },
@@ -98,8 +94,6 @@ export const containedStaticButtonTheme: OptionalButtonVariantTheme = {
         props: {
           style: {
             height: 32,
-            marginHorizontal: 16,
-            marginVertical: 8,
             minWidth: 64,
             paddingHorizontal: 16,
           },
@@ -113,8 +107,6 @@ export const containedStaticButtonTheme: OptionalButtonVariantTheme = {
         props: {
           style: {
             height: 48,
-            marginHorizontal: 16,
-            marginVertical: 8,
             minWidth: 82,
             paddingHorizontal: 28,
           },
@@ -128,8 +120,6 @@ export const containedStaticButtonTheme: OptionalButtonVariantTheme = {
         props: {
           style: {
             height: 28,
-            marginHorizontal: 8,
-            marginVertical: 4,
             minWidth: 54,
             paddingHorizontal: 8,
           },

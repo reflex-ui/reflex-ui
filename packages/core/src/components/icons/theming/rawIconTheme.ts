@@ -23,7 +23,8 @@ export const rawIconSubComponents: IconSubComponents = {
 export const rawIconTheme: IconTheme = {
   allSizes: rawIconSubComponentsTheme,
   large: rawIconSubComponentsTheme,
-  regular: rawIconSubComponentsTheme,
+  medium: rawIconSubComponentsTheme,
+  none: rawIconSubComponentsTheme,
   small: rawIconSubComponentsTheme,
   subComponents: rawIconSubComponents,
   xlarge: rawIconSubComponentsTheme,

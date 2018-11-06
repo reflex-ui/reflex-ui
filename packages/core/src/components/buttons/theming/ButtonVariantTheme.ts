@@ -14,7 +14,8 @@ import {
 export interface ButtonVariantTheme {
   readonly allSizes: InteractivityStateTheme<ButtonSubComponentsTheme>;
   readonly large: InteractivityStateTheme<ButtonSubComponentsTheme>;
-  readonly regular: InteractivityStateTheme<ButtonSubComponentsTheme>;
+  readonly medium: InteractivityStateTheme<ButtonSubComponentsTheme>;
+  readonly none: InteractivityStateTheme<ButtonSubComponentsTheme>;
   readonly small: InteractivityStateTheme<ButtonSubComponentsTheme>;
   readonly subComponents: ButtonSubComponents;
   readonly xlarge: InteractivityStateTheme<ButtonSubComponentsTheme>;
@@ -28,7 +29,10 @@ export interface OptionalButtonVariantTheme {
   readonly large?: OptionalInteractivityStateTheme<
     OptionalButtonSubComponentsTheme
   >;
-  readonly regular?: OptionalInteractivityStateTheme<
+  readonly medium?: OptionalInteractivityStateTheme<
+    OptionalButtonSubComponentsTheme
+  >;
+  readonly none?: OptionalInteractivityStateTheme<
     OptionalButtonSubComponentsTheme
   >;
   readonly small?: OptionalInteractivityStateTheme<

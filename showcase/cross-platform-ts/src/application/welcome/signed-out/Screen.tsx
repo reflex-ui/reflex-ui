@@ -2570,11 +2570,11 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       </Button>
     </RowView>
     <RowView>
-      <FavoriteIcon size={Size.XSMALL} />
-      <FavoriteIcon size={Size.SMALL} />
+      <FavoriteIcon size={Size.XS} />
+      <FavoriteIcon size={Size.S} />
       <FavoriteIcon />
-      <FavoriteIcon size={Size.LARGE} />
-      <FavoriteIcon size={Size.XLARGE} />
+      <FavoriteIcon size={Size.L} />
+      <FavoriteIcon size={Size.XL} />
     </RowView>
   </ScrollView>
 );

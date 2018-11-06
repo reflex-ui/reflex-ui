@@ -46,7 +46,7 @@ const partialXFabStaticButtonTheme: OptionalButtonVariantTheme = {
       },
     },
   },
-  regular: {
+  medium: {
     allStates: {
       container: {
         props: {

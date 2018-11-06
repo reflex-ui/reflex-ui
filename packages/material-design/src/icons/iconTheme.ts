@@ -1,19 +1,63 @@
 import {
+  getSizedMarginStyle,
   getThemedColor,
   IconTheme,
   IconWrapperProps,
   OptionalIconTheme,
   rawIconTheme,
+  Size,
+  SizedMarginStyle,
   TextPropsGetter,
   TextStyleGetter,
+  ViewPropsGetter,
+  ViewStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 import { Platform, TextStyle } from 'react-native';
+
+export const iconSizedMarginStyle: SizedMarginStyle = {
+  [Size.L]: {
+    marginHorizontal: 12,
+    marginVertical: 6,
+  },
+  [Size.M]: {
+    marginHorizontal: 8,
+    marginVertical: 4,
+  },
+  [Size.NONE]: {
+    marginHorizontal: 0,
+    marginVertical: 0,
+  },
+  [Size.S]: {
+    marginHorizontal: 4,
+    marginVertical: 2,
+  },
+  [Size.XL]: {
+    marginHorizontal: 16,
+    marginVertical: 8,
+  },
+  [Size.XS]: {
+    marginHorizontal: 2,
+    marginVertical: 1,
+  },
+};
 
 export const getAllSizesIconProps: TextPropsGetter<
   IconWrapperProps
 > = props => ({
   style: getAllSizesIconStyle(props),
+});
+
+export const getIconContainerProps: ViewPropsGetter<
+  IconWrapperProps
+> = props => ({
+  style: getIconContainerStyle(props),
+});
+
+export const getIconContainerStyle: ViewStyleGetter<
+  IconWrapperProps
+> = props => ({
+  ...getSizedMarginStyle(iconSizedMarginStyle)(props),
 });
 
 export const getAllSizesIconStyle: TextStyleGetter<IconWrapperProps> = ({
@@ -25,6 +69,9 @@ export const getAllSizesIconStyle: TextStyleGetter<IconWrapperProps> = ({
 
 const optionalIconTheme: OptionalIconTheme = {
   allSizes: {
+    container: {
+      getProps: getIconContainerProps,
+    },
     icon: {
       getProps: getAllSizesIconProps,
       props: {
@@ -39,14 +86,6 @@ const optionalIconTheme: OptionalIconTheme = {
     },
   },
   large: {
-    container: {
-      props: {
-        style: {
-          marginHorizontal: 8,
-          marginVertical: 2,
-        },
-      },
-    },
     icon: {
       props: {
         style: {
@@ -55,15 +94,7 @@ const optionalIconTheme: OptionalIconTheme = {
       },
     },
   },
-  regular: {
-    container: {
-      props: {
-        style: {
-          marginHorizontal: 4,
-          marginVertical: 2,
-        },
-      },
-    },
+  medium: {
     icon: {
       props: {
         style: {
@@ -73,13 +104,6 @@ const optionalIconTheme: OptionalIconTheme = {
     },
   },
   small: {
-    container: {
-      props: {
-        style: {
-          marginHorizontal: 2,
-        },
-      },
-    },
     icon: {
       props: {
         style: {
@@ -89,14 +113,6 @@ const optionalIconTheme: OptionalIconTheme = {
     },
   },
   xlarge: {
-    container: {
-      props: {
-        style: {
-          marginHorizontal: 12,
-          marginVertical: 4,
-        },
-      },
-    },
     icon: {
       props: {
         style: {
@@ -106,13 +122,6 @@ const optionalIconTheme: OptionalIconTheme = {
     },
   },
   xsmall: {
-    container: {
-      props: {
-        style: {
-          marginHorizontal: 1,
-        },
-      },
-    },
     icon: {
       props: {
         style: {

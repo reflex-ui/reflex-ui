@@ -87,7 +87,7 @@ const partialOutlinedStaticButtonTheme: OptionalButtonVariantTheme = {
       },
     },
   },
-  regular: {
+  medium: {
     allStates: {
       container: {
         props: {

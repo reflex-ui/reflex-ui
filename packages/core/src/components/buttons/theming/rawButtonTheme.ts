@@ -69,7 +69,8 @@ export const rawButtonSubComponents: ButtonSubComponents = {
 export const rawButtonVariantTheme: ButtonVariantTheme = {
   allSizes: rawButtonInteractivityStateTheme,
   large: rawButtonInteractivityStateTheme,
-  regular: rawButtonInteractivityStateTheme,
+  medium: rawButtonInteractivityStateTheme,
+  none: rawButtonInteractivityStateTheme,
   small: rawButtonInteractivityStateTheme,
   subComponents: rawButtonSubComponents,
   xlarge: rawButtonInteractivityStateTheme,

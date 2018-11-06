@@ -54,8 +54,6 @@ const partialFabStaticButtonTheme: OptionalButtonVariantTheme = {
           style: {
             borderRadius: 33,
             height: 66,
-            marginHorizontal: 0,
-            marginVertical: 0,
             minWidth: 66,
             paddingHorizontal: 0,
             paddingVertical: 0,
@@ -64,15 +62,13 @@ const partialFabStaticButtonTheme: OptionalButtonVariantTheme = {
       },
     },
   },
-  regular: {
+  medium: {
     allStates: {
       container: {
         props: {
           style: {
             borderRadius: 28,
             height: 56,
-            marginHorizontal: 0,
-            marginVertical: 0,
             minWidth: 56,
             paddingHorizontal: 0,
             paddingVertical: 0,
@@ -88,8 +84,6 @@ const partialFabStaticButtonTheme: OptionalButtonVariantTheme = {
           style: {
             borderRadius: 20,
             height: 40,
-            marginHorizontal: 0,
-            marginVertical: 0,
             minWidth: 40,
             paddingHorizontal: 0,
             paddingVertical: 0,
@@ -112,8 +106,6 @@ const partialFabStaticButtonTheme: OptionalButtonVariantTheme = {
           style: {
             borderRadius: 40,
             height: 80,
-            marginHorizontal: 0,
-            marginVertical: 0,
             minWidth: 80,
             paddingHorizontal: 0,
             paddingVertical: 0,
@@ -129,8 +121,6 @@ const partialFabStaticButtonTheme: OptionalButtonVariantTheme = {
           style: {
             borderRadius: 15,
             height: 30,
-            marginHorizontal: 0,
-            marginVertical: 0,
             minWidth: 30,
             paddingHorizontal: 0,
             paddingVertical: 0,

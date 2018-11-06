@@ -1,7 +1,7 @@
 import * as React from 'react';
 
+import { Size } from '../../Size';
 import { ColorTheme, ThemeContext } from '../../theming';
-import { Size } from '../Size';
 import { IconWrapperProps, OptionalIconWrapperProps } from './IconWrapperProps';
 
 export const withOptionalIconWrapperProps = (
@@ -17,7 +17,7 @@ export const withOptionalIconWrapperProps = (
           {(theme) => {
             const props: IconWrapperProps = {
               colorTheme: ColorTheme.SECONDARY_NORMAL,
-              size: Size.REGULAR,
+              size: Size.M,
               theme,
               ...this.props,
             };

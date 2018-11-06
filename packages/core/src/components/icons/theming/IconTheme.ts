@@ -10,7 +10,8 @@ import {
 export interface IconTheme {
   readonly allSizes: IconSubComponentsTheme;
   readonly large: IconSubComponentsTheme;
-  readonly regular: IconSubComponentsTheme;
+  readonly medium: IconSubComponentsTheme;
+  readonly none: IconSubComponentsTheme;
   readonly small: IconSubComponentsTheme;
   readonly subComponents: IconSubComponents;
   readonly xlarge: IconSubComponentsTheme;
@@ -20,7 +21,8 @@ export interface IconTheme {
 export interface OptionalIconTheme {
   readonly allSizes?: OptionalIconSubComponentsTheme;
   readonly large?: OptionalIconSubComponentsTheme;
-  readonly regular?: OptionalIconSubComponentsTheme;
+  readonly medium?: OptionalIconSubComponentsTheme;
+  readonly none?: OptionalIconSubComponentsTheme;
   readonly small?: OptionalIconSubComponentsTheme;
   readonly subComponents?: OptionalIconSubComponents;
   readonly xlarge?: OptionalIconSubComponentsTheme;
