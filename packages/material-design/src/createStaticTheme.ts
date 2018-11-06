@@ -1,10 +1,11 @@
 import {
-  createTheme as createThemeCore,
-  OptionalTheme,
-  Theme,
+  ComponentsTheme,
+  createComponentsTheme as createThemeCore,
+  OptionalComponentsTheme,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 import { staticMaterialDesignTheme } from './staticMaterialDesignTheme';
 
-export const createStaticTheme = (theme: OptionalTheme): Theme =>
-  createThemeCore(merge(staticMaterialDesignTheme, theme));
+export const createStaticTheme = (
+  theme: OptionalComponentsTheme,
+): ComponentsTheme => createThemeCore(merge(staticMaterialDesignTheme, theme));

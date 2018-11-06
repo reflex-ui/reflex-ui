@@ -1,4 +1,5 @@
 export * from './ColorByInteractivityData';
+export * from './createPaletteTheme';
 export * from './disabledPaletteColor';
 export * from './getInlayColorByInteractivity';
 export * from './getOverlayColorByInteractivity';

@@ -62,9 +62,9 @@ export const getIconContainerStyle: ViewStyleGetter<
 
 export const getAllSizesIconStyle: TextStyleGetter<IconWrapperProps> = ({
   colorTheme,
-  theme: { palette },
+  paletteTheme,
 }) => ({
-  color: getThemedColor({ colorTheme, palette }),
+  color: getThemedColor({ colorTheme, paletteTheme }),
 });
 
 const optionalIconTheme: OptionalIconTheme = {

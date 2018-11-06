@@ -26,13 +26,14 @@ const extractTouchableProps = (
   const {
     children,
     colorTheme,
+    componentsTheme,
     fullWidth,
     getSubProps,
     interactivityState,
     leftIcon,
+    paletteTheme,
     rightIcon,
     size,
-    theme,
     variant,
     ...touchableProps
   } = props;
@@ -67,7 +68,7 @@ const transformStringChildrenIntoComponent = (
   props: ButtonProps,
 ): JSX.Element => {
   const textProps = getButtonTextProps(props);
-  const { Text } = props.theme.components.button[props.variant].subComponents;
+  const { Text } = props.componentsTheme.button[props.variant].subComponents;
 
   return (
     <Text componentProps={props} {...textProps}>
@@ -77,7 +78,7 @@ const transformStringChildrenIntoComponent = (
 };
 
 const handleIcon = (props: ButtonProps): JSX.Element | undefined => {
-  const buttonTheme = props.theme.components.button;
+  const buttonTheme = props.componentsTheme.button;
   const { IconContainer } = buttonTheme[props.variant].subComponents;
   const containerProps = getButtonIconContainerProps(props);
   const iconProps = {
@@ -100,7 +101,7 @@ const handleIcon = (props: ButtonProps): JSX.Element | undefined => {
 };
 
 const handleLeftIcon = (props: ButtonProps): JSX.Element | undefined => {
-  const buttonTheme = props.theme.components.button;
+  const buttonTheme = props.componentsTheme.button;
   const { LeftIconContainer } = buttonTheme[props.variant].subComponents;
   const containerProps = getButtonLeftIconContainerProps(props);
   const iconProps = {
@@ -120,7 +121,7 @@ const handleLeftIcon = (props: ButtonProps): JSX.Element | undefined => {
 };
 
 const handleRightIcon = (props: ButtonProps): JSX.Element | undefined => {
-  const buttonTheme = props.theme.components.button;
+  const buttonTheme = props.componentsTheme.button;
   const { RightIconContainer } = buttonTheme[props.variant].subComponents;
   const containerProps = getButtonRightIconContainerProps(props);
   const iconProps = {
@@ -141,7 +142,7 @@ const handleRightIcon = (props: ButtonProps): JSX.Element | undefined => {
 
 export const SimpleButton: React.SFC<ButtonProps> = (props: ButtonProps) => {
   const { children, variant } = props;
-  const buttonTheme = props.theme.components.button;
+  const buttonTheme = props.componentsTheme.button;
   const { Container, Touchable } = buttonTheme[variant].subComponents;
   const touchableProps = extractTouchableProps(props);
   const containerProps = getButtonContainerProps(props);

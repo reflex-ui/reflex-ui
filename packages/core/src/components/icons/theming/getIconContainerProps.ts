@@ -7,7 +7,7 @@ import { IconWrapperProps } from '../IconWrapperProps';
 export const getIconContainerProps: ViewPropsGetter<IconWrapperProps> = (
   props: IconWrapperProps,
 ): ViewProps => {
-  const iconTheme = props.theme.components.icon;
+  const iconTheme = props.componentsTheme.icon;
   const { size } = props;
   const userProps = props.getContainerProps
     ? props.getContainerProps(props)

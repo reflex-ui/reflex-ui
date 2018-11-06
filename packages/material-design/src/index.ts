@@ -1,5 +1,5 @@
 export * from './buttons';
-export * from './createTheme';
+export * from './createComponentsTheme';
 export * from './createStaticTheme';
 export * from './icons';
 export * from './materialDesignTheme';

@@ -7,7 +7,7 @@ import { IconWrapperProps } from '../IconWrapperProps';
 export const getIconProps: TextPropsGetter<IconWrapperProps> = (
   props: IconWrapperProps,
 ): TextProps => {
-  const iconTheme = props.theme.components.icon;
+  const iconTheme = props.componentsTheme.icon;
   const { size } = props;
 
   const textProps = merge(

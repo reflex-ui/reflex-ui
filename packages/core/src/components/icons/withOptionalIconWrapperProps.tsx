@@ -1,7 +1,11 @@
 import * as React from 'react';
 
 import { Size } from '../../Size';
-import { ColorTheme, ThemeContext } from '../../theming';
+import {
+  ColorTheme,
+  ComponentsThemeContext,
+  PaletteThemeContext,
+} from '../../theming';
 import { IconWrapperProps, OptionalIconWrapperProps } from './IconWrapperProps';
 
 export const withOptionalIconWrapperProps = (
@@ -13,18 +17,23 @@ export const withOptionalIconWrapperProps = (
     public render() {
       return (
         // prettier-ignore
-        <ThemeContext.Consumer>
-          {(theme) => {
-            const props: IconWrapperProps = {
-              colorTheme: ColorTheme.SECONDARY_NORMAL,
-              size: Size.M,
-              theme,
-              ...this.props,
-            };
+        <PaletteThemeContext.Consumer>
+          {paletteTheme => (
+            <ComponentsThemeContext.Consumer>
+              {(componentsTheme) => {
+                const props: IconWrapperProps = {
+                  colorTheme: ColorTheme.SECONDARY_NORMAL,
+                  componentsTheme,
+                  paletteTheme,
+                  size: Size.M,
+                  ...this.props,
+                };
 
-            return <WrappedComponent {...props} />;
-          }}
-        </ThemeContext.Consumer>
+                return <WrappedComponent {...props} />;
+              }}
+            </ComponentsThemeContext.Consumer>
+          )}
+        </PaletteThemeContext.Consumer>
       );
     }
   };

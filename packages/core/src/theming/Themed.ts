@@ -1,12 +1,15 @@
-import { ColorTheme } from './palette';
-import { Theme } from './Theme';
+import { ComponentsTheme } from './ComponentsTheme';
+import { ColorTheme } from './palette/ColorTheme';
+import { PaletteTheme } from './palette/PaletteTheme';
 
 export interface Themed {
   readonly colorTheme: ColorTheme;
-  readonly theme: Theme;
+  readonly componentsTheme: ComponentsTheme;
+  readonly paletteTheme: PaletteTheme;
 }
 
 export interface OptionalThemed {
   readonly colorTheme?: ColorTheme;
-  readonly theme?: Theme;
+  readonly componentsTheme?: ComponentsTheme;
+  readonly paletteTheme?: PaletteTheme;
 }

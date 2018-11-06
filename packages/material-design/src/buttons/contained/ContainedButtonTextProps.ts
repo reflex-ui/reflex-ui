@@ -17,9 +17,9 @@ export const disabledContainedButtonTextProps: TextProps = {
 
 export const getContainedButtonTextColorStyle: TextStyleGetter<ButtonProps> = ({
   colorTheme,
-  theme: { palette },
+  paletteTheme,
 }) => ({
-  color: getThemedColor({ colorTheme, palette, onColor: true }),
+  color: getThemedColor({ colorTheme, onColor: true, paletteTheme }),
 });
 
 export const getContainedButtonTextProps: TextPropsGetter<ButtonProps> = (

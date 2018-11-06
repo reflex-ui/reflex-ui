@@ -5,6 +5,6 @@ export type ThemedColorGetter = (
   props: {
     colorTheme?: ColorTheme;
     onColor?: boolean;
-    palette: PaletteTheme;
+    paletteTheme: PaletteTheme;
   },
 ) => string;

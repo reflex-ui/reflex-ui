@@ -8,7 +8,7 @@ import { ButtonProps } from '../ButtonProps';
 export const getButtonLeftIconProps: TextPropsGetter<ButtonProps> = (
   props: ButtonProps,
 ): TextProps => {
-  const buttonTheme = props.theme.components.button;
+  const buttonTheme = props.componentsTheme.button;
   const interactivityType: InteractivityType = props.interactivityState.type;
 
   const { size, variant } = props;

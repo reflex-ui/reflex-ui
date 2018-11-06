@@ -21,7 +21,7 @@ export const getContainedButtonRippleColor = (props: ButtonProps): string => {
   if (!color) {
     color = getThemedColor({
       colorTheme: props.colorTheme,
-      palette: props.theme.palette,
+      paletteTheme: props.paletteTheme,
     });
   }
 

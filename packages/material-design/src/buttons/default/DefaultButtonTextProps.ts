@@ -18,9 +18,9 @@ export const disabledDefaultButtonTextProps: TextProps = {
 
 export const getDefaultButtonTextColorStyle: TextStyleGetter<ButtonProps> = ({
   colorTheme,
-  theme: { palette },
+  paletteTheme,
 }) => ({
-  color: getThemedColor({ colorTheme, palette }),
+  color: getThemedColor({ colorTheme, paletteTheme }),
 });
 
 export const getDefaultButtonTextStyle: TextStyleGetter<ButtonProps> = (

@@ -1,7 +1,7 @@
-import { ColorTheme, InteractivityType, Theme } from '@reflex-ui/core';
+import { ColorTheme, InteractivityType, PaletteTheme } from '@reflex-ui/core';
 
 export interface ThemedColorByInteractivityData {
   readonly colorTheme: ColorTheme;
   readonly interactivityType: InteractivityType;
-  readonly theme: Theme;
+  readonly paletteTheme: PaletteTheme;
 }

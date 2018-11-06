@@ -17,11 +17,11 @@ export const getDisabledContainedButtonContainerProps: ViewPropsGetter<
 
 export const getDisabledContainedButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = ({ colorTheme, theme }) => ({
+> = ({ colorTheme, paletteTheme }) => ({
   backgroundColor: getThemedInlayColorByInteractivity({
     colorTheme,
     interactivityType: InteractivityType.DISABLED,
-    theme,
+    paletteTheme,
   }),
 });
 
@@ -33,11 +33,11 @@ export const getEnabledContainedButtonContainerProps: ViewPropsGetter<
 
 export const getEnabledContainedButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = ({ colorTheme, theme }) => ({
+> = ({ colorTheme, paletteTheme }) => ({
   backgroundColor: getThemedInlayColorByInteractivity({
     colorTheme,
     interactivityType: InteractivityType.ENABLED,
-    theme,
+    paletteTheme,
   }),
 });
 
@@ -49,11 +49,11 @@ export const getFocusedContainedButtonContainerProps: ViewPropsGetter<
 
 export const getFocusedContainedButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = ({ colorTheme, theme }) => ({
+> = ({ colorTheme, paletteTheme }) => ({
   backgroundColor: getThemedInlayColorByInteractivity({
     colorTheme,
     interactivityType: InteractivityType.FOCUSED,
-    theme,
+    paletteTheme,
   }),
 });
 
@@ -65,11 +65,11 @@ export const getHoveredContainedButtonContainerProps: ViewPropsGetter<
 
 export const getHoveredContainedButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = ({ colorTheme, theme }) => ({
+> = ({ colorTheme, paletteTheme }) => ({
   backgroundColor: getThemedInlayColorByInteractivity({
     colorTheme,
     interactivityType: InteractivityType.HOVERED,
-    theme,
+    paletteTheme,
   }),
 });
 
@@ -81,10 +81,10 @@ export const getPressedContainedButtonContainerProps: ViewPropsGetter<
 
 export const getPressedContainedButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = ({ colorTheme, theme }) => ({
+> = ({ colorTheme, paletteTheme }) => ({
   backgroundColor: getThemedInlayColorByInteractivity({
     colorTheme,
     interactivityType: InteractivityType.PRESSED,
-    theme,
+    paletteTheme,
   }),
 });

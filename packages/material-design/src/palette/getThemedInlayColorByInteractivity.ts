@@ -8,9 +8,9 @@ import {
 export const getThemedInlayColorByInteractivity = ({
   colorTheme,
   interactivityType,
-  theme: { palette },
+  paletteTheme,
 }: ThemedColorByInteractivityData): string =>
   getInlayColorByInteractivity({
-    color: getThemedColor({ colorTheme, palette }),
+    color: getThemedColor({ colorTheme, paletteTheme }),
     type: interactivityType,
   });

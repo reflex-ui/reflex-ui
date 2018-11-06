@@ -14,11 +14,11 @@ export const getDisabledDefaultButtonContainerProps: ViewPropsGetter<
 
 export const getDisabledDefaultButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = ({ colorTheme, theme }) => ({
+> = ({ colorTheme, paletteTheme }) => ({
   backgroundColor: getThemedOverlayColorByInteractivity({
     colorTheme,
     interactivityType: InteractivityType.DISABLED,
-    theme,
+    paletteTheme,
   }),
 });
 
@@ -30,11 +30,11 @@ export const getEnabledDefaultButtonContainerProps: ViewPropsGetter<
 
 export const getEnabledDefaultButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = ({ colorTheme, theme }) => ({
+> = ({ colorTheme, paletteTheme }) => ({
   backgroundColor: getThemedOverlayColorByInteractivity({
     colorTheme,
     interactivityType: InteractivityType.ENABLED,
-    theme,
+    paletteTheme,
   }),
 });
 
@@ -46,11 +46,11 @@ export const getFocusedDefaultButtonContainerProps: ViewPropsGetter<
 
 export const getFocusedDefaultButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = ({ colorTheme, theme }) => ({
+> = ({ colorTheme, paletteTheme }) => ({
   backgroundColor: getThemedOverlayColorByInteractivity({
     colorTheme,
     interactivityType: InteractivityType.FOCUSED,
-    theme,
+    paletteTheme,
   }),
 });
 
@@ -62,11 +62,11 @@ export const getHoveredDefaultButtonContainerProps: ViewPropsGetter<
 
 export const getHoveredDefaultButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = ({ colorTheme, theme }) => ({
+> = ({ colorTheme, paletteTheme }) => ({
   backgroundColor: getThemedOverlayColorByInteractivity({
     colorTheme,
     interactivityType: InteractivityType.HOVERED,
-    theme,
+    paletteTheme,
   }),
 });
 
@@ -78,10 +78,10 @@ export const getPressedDefaultButtonContainerProps: ViewPropsGetter<
 
 export const getPressedDefaultButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = ({ colorTheme, theme }) => ({
+> = ({ colorTheme, paletteTheme }) => ({
   backgroundColor: getThemedOverlayColorByInteractivity({
     colorTheme,
     interactivityType: InteractivityType.PRESSED,
-    theme,
+    paletteTheme,
   }),
 });
