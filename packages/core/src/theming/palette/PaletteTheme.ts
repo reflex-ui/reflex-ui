@@ -5,7 +5,9 @@ export interface PaletteTheme {
   readonly error: PaletteColor;
   readonly primary: PaletteColor;
   readonly secondary: PaletteColor;
+  readonly success: PaletteColor;
   readonly surface: PaletteColor;
+  readonly warning: PaletteColor;
 }
 
 export interface OptionalPaletteTheme {
@@ -13,5 +15,7 @@ export interface OptionalPaletteTheme {
   readonly error?: OptionalPaletteColor;
   readonly primary?: OptionalPaletteColor;
   readonly secondary?: OptionalPaletteColor;
+  readonly success?: OptionalPaletteColor;
   readonly surface?: OptionalPaletteColor;
+  readonly warning?: OptionalPaletteColor;
 }

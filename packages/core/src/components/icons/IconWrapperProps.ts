@@ -7,6 +7,7 @@ import { ViewPropsGetter } from '../views';
 
 export interface IconWrapperProps extends MarginProps, TextProps, Themed {
   children?: React.ReactNode;
+  color?: string;
   getContainerProps?: ViewPropsGetter<IconWrapperProps>;
   noContainer?: boolean;
   size: Size;
@@ -17,6 +18,7 @@ export interface OptionalIconWrapperProps
     TextProps,
     OptionalThemed {
   children?: React.ReactNode;
+  color?: string;
   getContainerProps?: ViewPropsGetter<IconWrapperProps>;
   noContainer?: boolean;
   size?: Size;

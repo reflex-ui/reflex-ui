@@ -1,4 +1,7 @@
 import { PaletteTheme } from '@reflex-ui/core';
+import { errorPaletteColor } from './errorPaletteColor';
+import { successPaletteColor } from './successPaletteColor';
+import { warningPaletteColor } from './warningPaletteColor';
 
 export const purpleTealPaletteTheme: PaletteTheme = {
   background: {
@@ -15,20 +18,7 @@ export const purpleTealPaletteTheme: PaletteTheme = {
       onColor: '#000000',
     },
   },
-  error: {
-    dark: {
-      color: '#b00020',
-      onColor: '#ffffff',
-    },
-    light: {
-      color: '#b00020',
-      onColor: '#ffffff',
-    },
-    normal: {
-      color: '#b00020',
-      onColor: '#ffffff',
-    },
-  },
+  error: errorPaletteColor,
   primary: {
     dark: {
       color: '#0400ba',
@@ -57,6 +47,7 @@ export const purpleTealPaletteTheme: PaletteTheme = {
       onColor: '#000000',
     },
   },
+  success: successPaletteColor,
   surface: {
     dark: {
       color: '#ffffff',
@@ -71,4 +62,5 @@ export const purpleTealPaletteTheme: PaletteTheme = {
       onColor: '#000000',
     },
   },
+  warning: warningPaletteColor,
 };

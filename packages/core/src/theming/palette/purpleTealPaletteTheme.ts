@@ -57,6 +57,20 @@ export const purpleTealPaletteTheme: PaletteTheme = {
       onColor: '#000000',
     },
   },
+  success: {
+    dark: {
+      color: '#087f23',
+      onColor: '#ffffff',
+    },
+    light: {
+      color: '#80e27e',
+      onColor: '#000000',
+    },
+    normal: {
+      color: '#4caf50',
+      onColor: '#000000',
+    },
+  },
   surface: {
     dark: {
       color: '#ffffff',
@@ -68,6 +82,20 @@ export const purpleTealPaletteTheme: PaletteTheme = {
     },
     normal: {
       color: '#ffffff',
+      onColor: '#000000',
+    },
+  },
+  warning: {
+    dark: {
+      color: '#c6a700',
+      onColor: '#000000',
+    },
+    light: {
+      color: '#ffff6b',
+      onColor: '#000000',
+    },
+    normal: {
+      color: '#fdd835',
       onColor: '#000000',
     },
   },

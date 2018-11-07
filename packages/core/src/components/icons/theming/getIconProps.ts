@@ -20,6 +20,11 @@ export const getIconProps: TextPropsGetter<IconWrapperProps> = (
     iconTheme[size].icon.getProps(props),
   );
 
+  if (props.color) {
+    if (!textProps.style) textProps.style = {};
+    (textProps.style as TextStyle).color = props.color;
+  }
+
   const textStyle: TextStyle = textProps.style as TextStyle;
   textProps.style = createRegisteredTextStyle(textStyle || {}).style;
 

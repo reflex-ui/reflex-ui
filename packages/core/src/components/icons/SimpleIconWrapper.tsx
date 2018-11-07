@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { TextProps } from 'react-native';
 
-import { IconWrapperProps } from './IconWrapperProps';
+import { cloneElement } from '../../utils';
+import { IconWrapperProps, OptionalIconWrapperProps } from './IconWrapperProps';
 import { getIconContainerProps, getIconProps } from './theming';
 
 const extractTextProps = (props: IconWrapperProps): TextProps => {
@@ -20,7 +21,9 @@ const extractTextProps = (props: IconWrapperProps): TextProps => {
 };
 
 const handleIconChildren = (props: IconWrapperProps): React.ReactNode => {
-  const { children } = props;
+  const children = props.children as React.ReactElement<
+    OptionalIconWrapperProps
+  >;
   if (!children) return undefined;
 
   if (typeof children !== 'object') {
@@ -32,13 +35,9 @@ const handleIconChildren = (props: IconWrapperProps): React.ReactNode => {
     ...extractTextProps(props),
   };
 
-  let styledIcon;
-  if (props.children) {
-    styledIcon = React.cloneElement(
-      props.children as React.ReactElement<{}>,
-      iconProps,
-    );
-  }
+  const styledIcon = children
+    ? cloneElement({ element: children, props: iconProps })
+    : undefined;
 
   return styledIcon;
 };
