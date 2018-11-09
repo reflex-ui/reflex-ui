@@ -7,7 +7,7 @@ import {
 } from '../contained/containedStaticButtonTheme';
 // prettier-ignore
 
-const partialShapedStaticButtonTheme: OptionalButtonVariantTheme = {
+const partialContainedShapedStaticButtonTheme: OptionalButtonVariantTheme = {
   large: {
     allStates: {
       container: {
@@ -65,8 +65,9 @@ const partialShapedStaticButtonTheme: OptionalButtonVariantTheme = {
   },
 };
 
-export const shapedStaticButtonTheme: OptionalButtonVariantTheme = merge<
+// tslint:disable-next-line:max-line-length
+export const containedShapedStaticButtonTheme: OptionalButtonVariantTheme = merge<
   {},
   OptionalButtonVariantTheme,
   OptionalButtonVariantTheme
->({}, containedStaticButtonTheme, partialShapedStaticButtonTheme);
+>({}, containedStaticButtonTheme, partialContainedShapedStaticButtonTheme);

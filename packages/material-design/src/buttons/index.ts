@@ -1,11 +1,11 @@
 export * from './all-variants';
 export * from './contained';
+export * from './containedShaped';
 export * from './default';
 export * from './fab';
 export * from './icon';
 export * from './outlined';
 export * from './raised';
-export * from './shaped';
 export * from './xfab';
 
 export * from './buttonTheme';

@@ -9,9 +9,12 @@ import {
   getHoveredContainedButtonContainerProps,
 } from '../contained';
 import { withRippleEffect } from '../withRippleEffect';
-import { shapedStaticButtonTheme } from './shapedStaticButtonTheme';
+// prettier-ignore
+import {
+  containedShapedStaticButtonTheme,
+} from './containedShapedStaticButtonTheme';
 
-const partialShapedButtonTheme: OptionalButtonVariantTheme = {
+const partialContainedShapedButtonTheme: OptionalButtonVariantTheme = {
   allSizes: {
     pressed: {
       container: {
@@ -26,8 +29,8 @@ const partialShapedButtonTheme: OptionalButtonVariantTheme = {
   },
 };
 
-export const shapedButtonTheme: OptionalButtonVariantTheme = merge<
+export const containedShapedButtonTheme: OptionalButtonVariantTheme = merge<
   {},
   OptionalButtonVariantTheme,
   OptionalButtonVariantTheme
->({}, shapedStaticButtonTheme, partialShapedButtonTheme);
+>({}, containedShapedStaticButtonTheme, partialContainedShapedButtonTheme);
