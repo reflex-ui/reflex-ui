@@ -13,20 +13,20 @@ import {
 
 import {
   allVariantsCommonButtonIconProps,
-  allVariantsLargeButtonLeftIconContainerProps,
-  allVariantsLargeButtonRightIconContainerProps,
+  allVariantsLargeButtonLeadingIconContainerProps,
+  allVariantsLargeButtonTrailingIconContainerProps,
   allVariantsLargeButtonSideIconProps,
-  allVariantsRegularButtonLeftIconContainerProps,
-  allVariantsRegularButtonRightIconContainerProps,
+  allVariantsRegularButtonLeadingIconContainerProps,
+  allVariantsRegularButtonTrailingIconContainerProps,
   allVariantsRegularButtonSideIconProps,
-  allVariantsSmallButtonLeftIconContainerProps,
-  allVariantsSmallButtonRightIconContainerProps,
+  allVariantsSmallButtonLeadingIconContainerProps,
+  allVariantsSmallButtonTrailingIconContainerProps,
   allVariantsSmallButtonSideIconProps,
-  allVariantsXLargeButtonLeftIconContainerProps,
-  allVariantsXLargeButtonRightIconContainerProps,
+  allVariantsXLargeButtonLeadingIconContainerProps,
+  allVariantsXLargeButtonTrailingIconContainerProps,
   allVariantsXLargeButtonSideIconProps,
-  allVariantsXSmallButtonLeftIconContainerProps,
-  allVariantsXSmallButtonRightIconContainerProps,
+  allVariantsXSmallButtonLeadingIconContainerProps,
+  allVariantsXSmallButtonTrailingIconContainerProps,
   allVariantsXSmallButtonSideIconProps,
 } from './AllVariantsIconProps';
 
@@ -53,10 +53,7 @@ export const allVariantsStaticButtonTheme: OptionalButtonVariantTheme = {
       icon: {
         props: allVariantsCommonButtonIconProps,
       },
-      leftIcon: {
-        props: allVariantsCommonButtonIconProps,
-      },
-      rightIcon: {
+      leadingIcon: {
         props: allVariantsCommonButtonIconProps,
       },
       text: {
@@ -76,6 +73,9 @@ export const allVariantsStaticButtonTheme: OptionalButtonVariantTheme = {
             }),
           },
         },
+      },
+      trailingIcon: {
+        props: allVariantsCommonButtonIconProps,
       },
     },
     disabled: {
@@ -108,17 +108,11 @@ export const allVariantsStaticButtonTheme: OptionalButtonVariantTheme = {
           },
         },
       },
-      leftIcon: {
+      leadingIcon: {
         props: allVariantsLargeButtonSideIconProps,
       },
-      leftIconContainer: {
-        props: allVariantsLargeButtonLeftIconContainerProps,
-      },
-      rightIcon: {
-        props: allVariantsLargeButtonSideIconProps,
-      },
-      rightIconContainer: {
-        props: allVariantsLargeButtonRightIconContainerProps,
+      leadingIconContainer: {
+        props: allVariantsLargeButtonLeadingIconContainerProps,
       },
       text: {
         props: {
@@ -127,6 +121,12 @@ export const allVariantsStaticButtonTheme: OptionalButtonVariantTheme = {
             letterSpacing: 1,
           },
         },
+      },
+      trailingIcon: {
+        props: allVariantsLargeButtonSideIconProps,
+      },
+      trailingIconContainer: {
+        props: allVariantsLargeButtonTrailingIconContainerProps,
       },
     },
   },
@@ -146,17 +146,11 @@ export const allVariantsStaticButtonTheme: OptionalButtonVariantTheme = {
           },
         },
       },
-      leftIcon: {
+      leadingIcon: {
         props: allVariantsRegularButtonSideIconProps,
       },
-      leftIconContainer: {
-        props: allVariantsRegularButtonLeftIconContainerProps,
-      },
-      rightIcon: {
-        props: allVariantsRegularButtonSideIconProps,
-      },
-      rightIconContainer: {
-        props: allVariantsRegularButtonRightIconContainerProps,
+      leadingIconContainer: {
+        props: allVariantsRegularButtonLeadingIconContainerProps,
       },
       text: {
         props: {
@@ -165,6 +159,12 @@ export const allVariantsStaticButtonTheme: OptionalButtonVariantTheme = {
             letterSpacing: 0.75,
           },
         },
+      },
+      trailingIcon: {
+        props: allVariantsRegularButtonSideIconProps,
+      },
+      trailingIconContainer: {
+        props: allVariantsRegularButtonTrailingIconContainerProps,
       },
     },
   },
@@ -184,17 +184,11 @@ export const allVariantsStaticButtonTheme: OptionalButtonVariantTheme = {
           },
         },
       },
-      leftIcon: {
+      leadingIcon: {
         props: allVariantsSmallButtonSideIconProps,
       },
-      leftIconContainer: {
-        props: allVariantsSmallButtonLeftIconContainerProps,
-      },
-      rightIcon: {
-        props: allVariantsSmallButtonSideIconProps,
-      },
-      rightIconContainer: {
-        props: allVariantsSmallButtonRightIconContainerProps,
+      leadingIconContainer: {
+        props: allVariantsSmallButtonLeadingIconContainerProps,
       },
       text: {
         props: {
@@ -203,6 +197,12 @@ export const allVariantsStaticButtonTheme: OptionalButtonVariantTheme = {
             letterSpacing: 0.5,
           },
         },
+      },
+      trailingIcon: {
+        props: allVariantsSmallButtonSideIconProps,
+      },
+      trailingIconContainer: {
+        props: allVariantsSmallButtonTrailingIconContainerProps,
       },
     },
   },
@@ -222,17 +222,11 @@ export const allVariantsStaticButtonTheme: OptionalButtonVariantTheme = {
           },
         },
       },
-      leftIcon: {
+      leadingIcon: {
         props: allVariantsXLargeButtonSideIconProps,
       },
-      leftIconContainer: {
-        props: allVariantsXLargeButtonLeftIconContainerProps,
-      },
-      rightIcon: {
-        props: allVariantsXLargeButtonSideIconProps,
-      },
-      rightIconContainer: {
-        props: allVariantsXLargeButtonRightIconContainerProps,
+      leadingIconContainer: {
+        props: allVariantsXLargeButtonLeadingIconContainerProps,
       },
       text: {
         props: {
@@ -241,6 +235,12 @@ export const allVariantsStaticButtonTheme: OptionalButtonVariantTheme = {
             letterSpacing: 1.25,
           },
         },
+      },
+      trailingIcon: {
+        props: allVariantsXLargeButtonSideIconProps,
+      },
+      trailingIconContainer: {
+        props: allVariantsXLargeButtonTrailingIconContainerProps,
       },
     },
   },
@@ -260,17 +260,11 @@ export const allVariantsStaticButtonTheme: OptionalButtonVariantTheme = {
           },
         },
       },
-      leftIcon: {
+      leadingIcon: {
         props: allVariantsXSmallButtonSideIconProps,
       },
-      leftIconContainer: {
-        props: allVariantsXSmallButtonLeftIconContainerProps,
-      },
-      rightIcon: {
-        props: allVariantsXSmallButtonSideIconProps,
-      },
-      rightIconContainer: {
-        props: allVariantsXSmallButtonRightIconContainerProps,
+      leadingIconContainer: {
+        props: allVariantsXSmallButtonLeadingIconContainerProps,
       },
       text: {
         props: {
@@ -279,6 +273,12 @@ export const allVariantsStaticButtonTheme: OptionalButtonVariantTheme = {
             letterSpacing: 0.25,
           },
         },
+      },
+      trailingIcon: {
+        props: allVariantsXSmallButtonSideIconProps,
+      },
+      trailingIconContainer: {
+        props: allVariantsXSmallButtonTrailingIconContainerProps,
       },
     },
   },

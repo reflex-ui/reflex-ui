@@ -24,22 +24,22 @@ export const allVariantsLargeButtonSideIconProps: TextProps = {
   style: allVariantsLargeButtonSideIconStyle,
 };
 
-export const allVariantsLargeButtonLeftIconContainerStyle: TextStyle = {
-  marginLeft: -6,
-  marginRight: 10,
+export const allVariantsLargeButtonLeadingIconContainerStyle: TextStyle = {
+  marginEnd: 10,
+  marginStart: -6,
 };
 
-export const allVariantsLargeButtonLeftIconContainerProps: TextProps = {
-  style: allVariantsLargeButtonLeftIconContainerStyle,
+export const allVariantsLargeButtonLeadingIconContainerProps: TextProps = {
+  style: allVariantsLargeButtonLeadingIconContainerStyle,
 };
 
-export const allVariantsLargeButtonRightIconContainerStyle: TextStyle = {
-  marginLeft: 10,
-  marginRight: -6,
+export const allVariantsLargeButtonTrailingIconContainerStyle: TextStyle = {
+  marginEnd: -6,
+  marginStart: 10,
 };
 
-export const allVariantsLargeButtonRightIconContainerProps: TextProps = {
-  style: allVariantsLargeButtonRightIconContainerStyle,
+export const allVariantsLargeButtonTrailingIconContainerProps: TextProps = {
+  style: allVariantsLargeButtonTrailingIconContainerStyle,
 };
 
 /* all variants & regular & all states */
@@ -52,22 +52,22 @@ export const allVariantsRegularButtonSideIconProps: TextProps = {
   style: allVariantsRegularButtonSideIconStyle,
 };
 
-export const allVariantsRegularButtonLeftIconContainerStyle: TextStyle = {
-  marginLeft: -4,
-  marginRight: 8,
+export const allVariantsRegularButtonLeadingIconContainerStyle: TextStyle = {
+  marginEnd: 8,
+  marginStart: -4,
 };
 
-export const allVariantsRegularButtonLeftIconContainerProps: TextProps = {
-  style: allVariantsRegularButtonLeftIconContainerStyle,
+export const allVariantsRegularButtonLeadingIconContainerProps: TextProps = {
+  style: allVariantsRegularButtonLeadingIconContainerStyle,
 };
 
-export const allVariantsRegularButtonRightIconContainerStyle: TextStyle = {
-  marginLeft: 8,
-  marginRight: -4,
+export const allVariantsRegularButtonTrailingIconContainerStyle: TextStyle = {
+  marginEnd: -4,
+  marginStart: 8,
 };
 
-export const allVariantsRegularButtonRightIconContainerProps: TextProps = {
-  style: allVariantsRegularButtonRightIconContainerStyle,
+export const allVariantsRegularButtonTrailingIconContainerProps: TextProps = {
+  style: allVariantsRegularButtonTrailingIconContainerStyle,
 };
 
 /* all variants & small & all states */
@@ -80,22 +80,22 @@ export const allVariantsSmallButtonSideIconProps: TextProps = {
   style: allVariantsSmallButtonSideIconStyle,
 };
 
-export const allVariantsSmallButtonLeftIconContainerStyle: TextStyle = {
-  marginLeft: -3,
-  marginRight: 7,
+export const allVariantsSmallButtonLeadingIconContainerStyle: TextStyle = {
+  marginEnd: 7,
+  marginStart: -3,
 };
 
-export const allVariantsSmallButtonLeftIconContainerProps: TextProps = {
-  style: allVariantsSmallButtonLeftIconContainerStyle,
+export const allVariantsSmallButtonLeadingIconContainerProps: TextProps = {
+  style: allVariantsSmallButtonLeadingIconContainerStyle,
 };
 
-export const allVariantsSmallButtonRightIconContainerStyle: TextStyle = {
-  marginLeft: 7,
-  marginRight: -3,
+export const allVariantsSmallButtonTrailingIconContainerStyle: TextStyle = {
+  marginEnd: -3,
+  marginStart: 7,
 };
 
-export const allVariantsSmallButtonRightIconContainerProps: TextProps = {
-  style: allVariantsSmallButtonRightIconContainerStyle,
+export const allVariantsSmallButtonTrailingIconContainerProps: TextProps = {
+  style: allVariantsSmallButtonTrailingIconContainerStyle,
 };
 
 /* all variants & xlarge & all states */
@@ -108,22 +108,22 @@ export const allVariantsXLargeButtonSideIconProps: TextProps = {
   style: allVariantsXLargeButtonSideIconStyle,
 };
 
-export const allVariantsXLargeButtonLeftIconContainerStyle: TextStyle = {
-  marginLeft: -8,
-  marginRight: 12,
+export const allVariantsXLargeButtonLeadingIconContainerStyle: TextStyle = {
+  marginEnd: 12,
+  marginStart: -8,
 };
 
-export const allVariantsXLargeButtonLeftIconContainerProps: TextProps = {
-  style: allVariantsXLargeButtonLeftIconContainerStyle,
+export const allVariantsXLargeButtonLeadingIconContainerProps: TextProps = {
+  style: allVariantsXLargeButtonLeadingIconContainerStyle,
 };
 
-export const allVariantsXLargeButtonRightIconContainerStyle: TextStyle = {
-  marginLeft: 12,
-  marginRight: -8,
+export const allVariantsXLargeButtonTrailingIconContainerStyle: TextStyle = {
+  marginEnd: -8,
+  marginStart: 12,
 };
 
-export const allVariantsXLargeButtonRightIconContainerProps: TextProps = {
-  style: allVariantsXLargeButtonRightIconContainerStyle,
+export const allVariantsXLargeButtonTrailingIconContainerProps: TextProps = {
+  style: allVariantsXLargeButtonTrailingIconContainerStyle,
 };
 
 /* all variants & xsmall & all states */
@@ -136,20 +136,20 @@ export const allVariantsXSmallButtonSideIconProps: TextProps = {
   style: allVariantsXSmallButtonSideIconStyle,
 };
 
-export const allVariantsXSmallButtonLeftIconContainerStyle: TextStyle = {
-  marginLeft: -2,
-  marginRight: 6,
+export const allVariantsXSmallButtonLeadingIconContainerStyle: TextStyle = {
+  marginEnd: 6,
+  marginStart: -2,
 };
 
-export const allVariantsXSmallButtonLeftIconContainerProps: TextProps = {
-  style: allVariantsXSmallButtonLeftIconContainerStyle,
+export const allVariantsXSmallButtonLeadingIconContainerProps: TextProps = {
+  style: allVariantsXSmallButtonLeadingIconContainerStyle,
 };
 
-export const allVariantsXSmallButtonRightIconContainerStyle: TextStyle = {
-  marginLeft: 6,
-  marginRight: -2,
+export const allVariantsXSmallButtonTrailingIconContainerStyle: TextStyle = {
+  marginEnd: -2,
+  marginStart: 6,
 };
 
-export const allVariantsXSmallButtonRightIconContainerProps: TextProps = {
-  style: allVariantsXSmallButtonRightIconContainerStyle,
+export const allVariantsXSmallButtonTrailingIconContainerProps: TextProps = {
+  style: allVariantsXSmallButtonTrailingIconContainerStyle,
 };

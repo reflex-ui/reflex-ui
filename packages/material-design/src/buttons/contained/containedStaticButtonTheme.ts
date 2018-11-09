@@ -14,14 +14,14 @@ import {
 export const containedStaticButtonTheme: OptionalButtonVariantTheme = {
   allSizes: {
     allStates: {
-      leftIcon: {
-        getProps: getContainedButtonIconProps,
-      },
-      rightIcon: {
+      leadingIcon: {
         getProps: getContainedButtonIconProps,
       },
       text: {
         getProps: getContainedButtonTextProps,
+      },
+      trailingIcon: {
+        getProps: getContainedButtonIconProps,
       },
     },
     disabled: {
@@ -31,14 +31,14 @@ export const containedStaticButtonTheme: OptionalButtonVariantTheme = {
       icon: {
         props: disabledContainedButtonIconProps,
       },
-      leftIcon: {
-        props: disabledContainedButtonIconProps,
-      },
-      rightIcon: {
+      leadingIcon: {
         props: disabledContainedButtonIconProps,
       },
       text: {
         props: disabledContainedButtonTextProps,
+      },
+      trailingIcon: {
+        props: disabledContainedButtonIconProps,
       },
     },
     enabled: {

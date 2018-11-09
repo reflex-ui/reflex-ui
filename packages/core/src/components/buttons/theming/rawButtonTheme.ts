@@ -23,23 +23,23 @@ export const rawButtonSubComponentsTheme: ButtonSubComponentsTheme = {
     getProps: () => ({}),
     props: {},
   },
-  leftIcon: {
+  leadingIcon: {
     getProps: () => ({}),
     props: {},
   },
-  leftIconContainer: {
-    getProps: () => ({}),
-    props: {},
-  },
-  rightIcon: {
-    getProps: () => ({}),
-    props: {},
-  },
-  rightIconContainer: {
+  leadingIconContainer: {
     getProps: () => ({}),
     props: {},
   },
   text: {
+    getProps: () => ({}),
+    props: {},
+  },
+  trailingIcon: {
+    getProps: () => ({}),
+    props: {},
+  },
+  trailingIconContainer: {
     getProps: () => ({}),
     props: {},
   },
@@ -59,10 +59,10 @@ export const rawButtonInteractivityStateTheme: InteractivityStateTheme<
 export const rawButtonSubComponents: ButtonSubComponents = {
   Container: DefaultButtonContainer,
   IconContainer: DefaultButtonIconContainer,
-  LeftIconContainer: DefaultButtonIconContainer,
-  RightIconContainer: DefaultButtonIconContainer,
+  LeadingIconContainer: DefaultButtonIconContainer,
   Text: DefaultButtonText,
   Touchable: DefaultButtonTouchable,
+  TrailingIconContainer: DefaultButtonIconContainer,
   XFabIconContainer: DefaultButtonIconContainer,
 };
 

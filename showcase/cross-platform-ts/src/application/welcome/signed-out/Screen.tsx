@@ -113,34 +113,34 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       </Button>
     </RowView>
     <RowView>
-      <Button leftIcon={<FavoriteIcon />} onPress={onButtonPress}>
+      <Button leadingIcon={<FavoriteIcon />} onPress={onButtonPress}>
         Favorite
       </Button>
-      <Button disabled leftIcon={<FavoriteIcon />} onPress={onButtonPress}>
+      <Button disabled leadingIcon={<FavoriteIcon />} onPress={onButtonPress}>
         Favorite
       </Button>
     </RowView>
     <RowView>
-      <Button onPress={onButtonPress} rightIcon={<FavoriteIcon />}>
+      <Button onPress={onButtonPress} trailingIcon={<FavoriteIcon />}>
         Favorite
       </Button>
-      <Button disabled onPress={onButtonPress} rightIcon={<FavoriteIcon />}>
+      <Button disabled onPress={onButtonPress} trailingIcon={<FavoriteIcon />}>
         Favorite
       </Button>
     </RowView>
     <RowView>
       <Button
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
       >
         Favorite
       </Button>
       <Button
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
       >
         Favorite
       </Button>
@@ -163,7 +163,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
       >
         Favorite
@@ -171,7 +171,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
       >
         Favorite
@@ -181,7 +181,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
       >
         Favorite
       </Button>
@@ -189,7 +189,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
       >
         Favorite
       </Button>
@@ -197,18 +197,18 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
       >
         Favorite
       </Button>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
       >
         Favorite
       </Button>
@@ -231,7 +231,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
       >
         Favorite
@@ -239,7 +239,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
       >
         Favorite
@@ -249,7 +249,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
       >
         Favorite
       </Button>
@@ -257,7 +257,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
       >
         Favorite
       </Button>
@@ -265,18 +265,18 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
       >
         Favorite
       </Button>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
       >
         Favorite
       </Button>
@@ -299,7 +299,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
       >
         Favorite
@@ -307,7 +307,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
       >
         Favorite
@@ -317,7 +317,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
       >
         Favorite
       </Button>
@@ -325,7 +325,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
       >
         Favorite
       </Button>
@@ -333,18 +333,18 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
       >
         Favorite
       </Button>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
       >
         Favorite
       </Button>
@@ -367,7 +367,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
       >
         Favorite
@@ -375,7 +375,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
       >
         Favorite
@@ -385,7 +385,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
       >
         Favorite
       </Button>
@@ -393,7 +393,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
       >
         Favorite
       </Button>
@@ -401,18 +401,18 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
       >
         Favorite
       </Button>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
       >
         Favorite
       </Button>
@@ -435,7 +435,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         getSubProps={getDefaultButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
       >
         Favorite
@@ -443,7 +443,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         getSubProps={getDefaultButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
       >
         Favorite
@@ -453,7 +453,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         getSubProps={getDefaultButtonProps}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
       >
         Favorite
       </Button>
@@ -461,7 +461,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         disabled
         getSubProps={getDefaultButtonProps}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
       >
         Favorite
       </Button>
@@ -469,18 +469,18 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         getSubProps={getDefaultButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
       >
         Favorite
       </Button>
       <Button
         disabled
         getSubProps={getDefaultButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
       >
         Favorite
       </Button>
@@ -498,7 +498,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -506,7 +506,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       </Button>
       <Button
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -516,7 +516,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -524,7 +524,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -532,18 +532,18 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
       </Button>
       <Button
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -571,7 +571,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -582,7 +582,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -593,29 +593,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         fullWidth
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.OUTLINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.OUTLINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        fullWidth
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -625,9 +603,31 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -656,7 +656,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -665,7 +665,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -676,7 +676,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -685,7 +685,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -694,9 +694,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -704,9 +704,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -737,7 +737,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -749,7 +749,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -761,31 +761,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.OUTLINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.OUTLINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        fullWidth
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -796,9 +772,33 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -827,7 +827,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -836,7 +836,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -847,7 +847,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -856,7 +856,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -865,9 +865,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -875,9 +875,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -908,7 +908,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -920,7 +920,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -932,31 +932,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.OUTLINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.OUTLINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        fullWidth
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -967,9 +943,33 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -998,7 +998,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -1007,7 +1007,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -1018,7 +1018,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -1027,7 +1027,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -1036,9 +1036,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -1046,9 +1046,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -1079,7 +1079,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -1091,7 +1091,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -1103,31 +1103,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.OUTLINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.OUTLINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        fullWidth
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -1138,9 +1114,33 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -1169,7 +1169,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -1178,7 +1178,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -1189,7 +1189,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -1198,7 +1198,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -1207,9 +1207,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -1217,9 +1217,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -1250,7 +1250,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -1262,7 +1262,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -1274,31 +1274,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.OUTLINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.OUTLINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        fullWidth
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -1309,9 +1285,33 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -1340,7 +1340,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         getSubProps={getOutlinedButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -1349,7 +1349,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         getSubProps={getOutlinedButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -1360,7 +1360,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         getSubProps={getOutlinedButtonProps}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -1369,7 +1369,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         disabled
         getSubProps={getOutlinedButtonProps}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -1378,9 +1378,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         getSubProps={getOutlinedButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -1388,9 +1388,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         getSubProps={getOutlinedButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -1421,7 +1421,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         fullWidth
         getSubProps={getOutlinedButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -1433,7 +1433,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         disabled
         fullWidth
         getSubProps={getOutlinedButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.OUTLINED}
       >
@@ -1445,31 +1445,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         fullWidth
         getSubProps={getOutlinedButtonProps}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.OUTLINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        disabled
-        fullWidth
-        getSubProps={getOutlinedButtonProps}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.OUTLINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        fullWidth
-        getSubProps={getOutlinedButtonProps}
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -1480,9 +1456,33 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         disabled
         fullWidth
         getSubProps={getOutlinedButtonProps}
-        leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        getSubProps={getOutlinedButtonProps}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        disabled
+        fullWidth
+        getSubProps={getOutlinedButtonProps}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.OUTLINED}
       >
         Favorite
@@ -1505,7 +1505,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -1513,7 +1513,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       </Button>
       <Button
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -1523,7 +1523,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -1531,7 +1531,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -1539,18 +1539,18 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
       </Button>
       <Button
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -1578,7 +1578,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -1589,7 +1589,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -1600,29 +1600,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         fullWidth
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        fullWidth
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -1632,9 +1610,31 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -1663,7 +1663,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -1672,7 +1672,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -1683,7 +1683,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -1692,7 +1692,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -1701,9 +1701,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -1711,9 +1711,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -1744,7 +1744,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -1756,7 +1756,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -1768,31 +1768,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        fullWidth
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -1803,9 +1779,33 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -1834,7 +1834,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -1843,7 +1843,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -1854,7 +1854,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -1863,7 +1863,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -1872,9 +1872,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -1882,9 +1882,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -1915,7 +1915,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -1927,7 +1927,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -1939,31 +1939,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        fullWidth
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -1974,9 +1950,33 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -2005,7 +2005,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -2014,7 +2014,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -2025,7 +2025,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -2034,7 +2034,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -2043,9 +2043,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -2053,9 +2053,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -2086,7 +2086,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -2098,7 +2098,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -2110,31 +2110,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        fullWidth
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -2145,9 +2121,33 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -2176,7 +2176,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -2185,7 +2185,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -2196,7 +2196,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -2205,7 +2205,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -2214,9 +2214,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -2224,9 +2224,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -2257,7 +2257,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -2269,7 +2269,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -2281,31 +2281,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        fullWidth
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -2316,9 +2292,33 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -2347,7 +2347,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         getSubProps={getContainedButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -2356,7 +2356,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         getSubProps={getContainedButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -2367,7 +2367,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -2376,7 +2376,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         disabled
         getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -2385,9 +2385,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         getSubProps={getContainedButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -2395,9 +2395,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         getSubProps={getContainedButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -2428,7 +2428,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         fullWidth
         getSubProps={getContainedButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -2440,7 +2440,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         disabled
         fullWidth
         getSubProps={getContainedButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED}
       >
@@ -2452,31 +2452,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         fullWidth
         getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        disabled
-        fullWidth
-        getSubProps={getContainedButtonProps}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        fullWidth
-        getSubProps={getContainedButtonProps}
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -2487,9 +2463,33 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         disabled
         fullWidth
         getSubProps={getContainedButtonProps}
-        leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        getSubProps={getContainedButtonProps}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        disabled
+        fullWidth
+        getSubProps={getContainedButtonProps}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED}
       >
         Favorite
@@ -2512,7 +2512,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -2520,7 +2520,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       </Button>
       <Button
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -2530,7 +2530,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -2538,7 +2538,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -2546,18 +2546,18 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
       </Button>
       <Button
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -2585,7 +2585,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -2596,7 +2596,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -2607,29 +2607,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         fullWidth
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED_RAISED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED_RAISED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        fullWidth
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -2639,9 +2617,31 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED_RAISED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED_RAISED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -2670,7 +2670,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -2679,7 +2679,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -2690,7 +2690,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -2699,7 +2699,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -2708,9 +2708,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -2718,9 +2718,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -2751,7 +2751,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -2763,7 +2763,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -2775,31 +2775,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED_RAISED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED_RAISED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        fullWidth
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -2810,9 +2786,33 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED_RAISED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED_RAISED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -2841,7 +2841,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -2850,7 +2850,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -2861,7 +2861,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -2870,7 +2870,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -2879,9 +2879,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -2889,9 +2889,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -2922,7 +2922,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -2934,7 +2934,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -2946,31 +2946,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED_RAISED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED_RAISED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        fullWidth
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -2981,9 +2957,33 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED_RAISED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED_RAISED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -3012,7 +3012,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -3021,7 +3021,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -3032,7 +3032,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -3041,7 +3041,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -3050,9 +3050,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -3060,9 +3060,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -3093,7 +3093,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -3105,7 +3105,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -3117,31 +3117,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED_RAISED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED_RAISED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        fullWidth
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -3152,9 +3128,33 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED_RAISED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED_RAISED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -3183,7 +3183,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -3192,7 +3192,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -3203,7 +3203,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -3212,7 +3212,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -3221,9 +3221,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -3231,9 +3231,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -3264,7 +3264,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -3276,7 +3276,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -3288,31 +3288,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED_RAISED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED_RAISED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        fullWidth
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -3323,9 +3299,33 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED_RAISED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED_RAISED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -3354,7 +3354,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         getSubProps={getContainedButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -3363,7 +3363,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         getSubProps={getContainedButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -3374,7 +3374,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -3383,7 +3383,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         disabled
         getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -3392,9 +3392,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         getSubProps={getContainedButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -3402,9 +3402,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         getSubProps={getContainedButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -3435,7 +3435,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         fullWidth
         getSubProps={getContainedButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -3447,7 +3447,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         disabled
         fullWidth
         getSubProps={getContainedButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
@@ -3459,31 +3459,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         fullWidth
         getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED_RAISED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        disabled
-        fullWidth
-        getSubProps={getContainedButtonProps}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.CONTAINED_RAISED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        fullWidth
-        getSubProps={getContainedButtonProps}
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -3494,9 +3470,33 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         disabled
         fullWidth
         getSubProps={getContainedButtonProps}
-        leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED_RAISED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        getSubProps={getContainedButtonProps}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.CONTAINED_RAISED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        disabled
+        fullWidth
+        getSubProps={getContainedButtonProps}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_RAISED}
       >
         Favorite
@@ -3515,7 +3515,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -3523,7 +3523,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       </Button>
       <Button
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -3533,7 +3533,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -3541,7 +3541,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -3549,18 +3549,18 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
       </Button>
       <Button
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -3584,7 +3584,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -3595,7 +3595,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -3606,29 +3606,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         fullWidth
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.SHAPED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.SHAPED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        fullWidth
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -3638,9 +3616,31 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -3669,7 +3669,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -3678,7 +3678,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -3689,7 +3689,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -3698,7 +3698,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -3707,9 +3707,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -3717,9 +3717,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -3750,7 +3750,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -3762,7 +3762,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -3774,31 +3774,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.SHAPED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.SHAPED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        fullWidth
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -3809,9 +3785,33 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -3840,7 +3840,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -3849,7 +3849,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -3860,7 +3860,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -3869,7 +3869,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -3878,9 +3878,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -3888,9 +3888,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -3921,7 +3921,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -3933,7 +3933,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -3945,31 +3945,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.SHAPED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.SHAPED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        fullWidth
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -3980,9 +3956,33 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -4011,7 +4011,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -4020,7 +4020,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -4031,7 +4031,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -4040,7 +4040,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -4049,9 +4049,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -4059,9 +4059,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -4092,7 +4092,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -4104,7 +4104,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -4116,31 +4116,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.SHAPED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.SHAPED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        fullWidth
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -4151,9 +4127,33 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -4182,7 +4182,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -4191,7 +4191,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -4202,7 +4202,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -4211,7 +4211,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -4220,9 +4220,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -4230,9 +4230,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -4263,7 +4263,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -4275,7 +4275,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -4287,31 +4287,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.SHAPED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.SHAPED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        fullWidth
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -4322,9 +4298,33 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
         fullWidth
-        leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -4353,7 +4353,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         getSubProps={getContainedButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -4362,7 +4362,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         getSubProps={getContainedButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -4373,7 +4373,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -4382,7 +4382,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         disabled
         getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -4391,9 +4391,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         getSubProps={getContainedButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -4401,9 +4401,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         getSubProps={getContainedButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -4434,7 +4434,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         fullWidth
         getSubProps={getContainedButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -4446,7 +4446,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         disabled
         fullWidth
         getSubProps={getContainedButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.SHAPED}
       >
@@ -4458,31 +4458,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         fullWidth
         getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.SHAPED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        disabled
-        fullWidth
-        getSubProps={getContainedButtonProps}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
-        variant={ButtonVariant.SHAPED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        fullWidth
-        getSubProps={getContainedButtonProps}
-        leftIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -4493,9 +4469,33 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         disabled
         fullWidth
         getSubProps={getContainedButtonProps}
-        leftIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        getSubProps={getContainedButtonProps}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        disabled
+        fullWidth
+        getSubProps={getContainedButtonProps}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.SHAPED}
       >
         Favorite
@@ -4736,7 +4736,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.XFAB}
       >
@@ -4744,7 +4744,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       </Button>
       <Button
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.XFAB}
       >
@@ -4754,7 +4754,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.XFAB}
       >
         Favorite
@@ -4762,7 +4762,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.XFAB}
       >
         Favorite
@@ -4770,18 +4770,18 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
     <RowView>
       <Button
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.XFAB}
       >
         Favorite
       </Button>
       <Button
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.XFAB}
       >
         Favorite
@@ -4810,7 +4810,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.PRIMARY_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.XFAB}
       >
@@ -4819,7 +4819,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.PRIMARY_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.XFAB}
       >
@@ -4830,7 +4830,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.PRIMARY_NORMAL}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.XFAB}
       >
         Favorite
@@ -4839,7 +4839,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.PRIMARY_NORMAL}
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.XFAB}
       >
         Favorite
@@ -4848,9 +4848,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.PRIMARY_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.XFAB}
       >
         Favorite
@@ -4858,9 +4858,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.PRIMARY_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.XFAB}
       >
         Favorite
@@ -4889,7 +4889,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.XFAB}
       >
@@ -4898,7 +4898,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.XFAB}
       >
@@ -4909,7 +4909,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.XFAB}
       >
         Favorite
@@ -4918,7 +4918,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.XFAB}
       >
         Favorite
@@ -4927,9 +4927,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.XFAB}
       >
         Favorite
@@ -4937,9 +4937,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.XFAB}
       >
         Favorite
@@ -4968,7 +4968,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.XFAB}
       >
@@ -4977,7 +4977,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.XFAB}
       >
@@ -4988,7 +4988,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.XFAB}
       >
         Favorite
@@ -4997,7 +4997,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.XFAB}
       >
         Favorite
@@ -5006,9 +5006,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.XFAB}
       >
         Favorite
@@ -5016,9 +5016,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.XFAB}
       >
         Favorite
@@ -5047,7 +5047,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.XFAB}
       >
@@ -5056,7 +5056,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.XFAB}
       >
@@ -5067,7 +5067,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.XFAB}
       >
         Favorite
@@ -5076,7 +5076,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.XFAB}
       >
         Favorite
@@ -5085,9 +5085,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.XFAB}
       >
         Favorite
@@ -5095,9 +5095,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.XFAB}
       >
         Favorite
@@ -5126,7 +5126,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         getSubProps={getFabButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.XFAB}
       >
@@ -5135,7 +5135,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         getSubProps={getFabButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
         variant={ButtonVariant.XFAB}
       >
@@ -5146,7 +5146,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         getSubProps={getFabButtonProps}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.XFAB}
       >
         Favorite
@@ -5155,7 +5155,7 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         disabled
         getSubProps={getFabButtonProps}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.XFAB}
       >
         Favorite
@@ -5164,9 +5164,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button
         getSubProps={getFabButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.XFAB}
       >
         Favorite
@@ -5174,9 +5174,9 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Button
         disabled
         getSubProps={getFabButtonProps}
-        leftIcon={<FavoriteIcon />}
+        leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
-        rightIcon={<FavoriteIcon />}
+        trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.XFAB}
       >
         Favorite

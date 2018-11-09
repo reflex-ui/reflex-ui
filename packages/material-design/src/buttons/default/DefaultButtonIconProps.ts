@@ -18,18 +18,18 @@ export const getDefaultButtonIconProps: TextPropsGetter<
   },
 });
 
-export const defaultButtonLeftIconContainerStyle: TextStyle = {
-  marginLeft: 0,
+export const defaultButtonLeadingIconContainerStyle: TextStyle = {
+  marginStart: 0,
 };
 
-export const defaultButtonLeftIconContainerProps: TextProps = {
-  style: defaultButtonLeftIconContainerStyle,
+export const defaultButtonLeadingIconContainerProps: TextProps = {
+  style: defaultButtonLeadingIconContainerStyle,
 };
 
-export const defaultButtonRightIconContainerStyle: TextStyle = {
-  marginRight: 0,
+export const defaultButtonTrailingIconContainerStyle: TextStyle = {
+  marginEnd: 0,
 };
 
-export const defaultButtonRightIconContainerProps: TextProps = {
-  style: defaultButtonRightIconContainerStyle,
+export const defaultButtonTrailingIconContainerProps: TextProps = {
+  style: defaultButtonTrailingIconContainerStyle,
 };

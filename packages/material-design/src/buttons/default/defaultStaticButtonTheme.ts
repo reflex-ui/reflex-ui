@@ -1,8 +1,8 @@
 import { isWeb, OptionalButtonVariantTheme } from '@reflex-ui/core';
 
 import {
-  defaultButtonLeftIconContainerProps,
-  defaultButtonRightIconContainerProps,
+  defaultButtonLeadingIconContainerProps,
+  defaultButtonTrailingIconContainerProps,
   disabledDefaultButtonIconProps,
   disabledDefaultButtonTextProps,
   getDefaultButtonIconProps,
@@ -17,17 +17,11 @@ import {
 export const defaultStaticButtonTheme: OptionalButtonVariantTheme = {
   allSizes: {
     allStates: {
-      leftIcon: {
+      leadingIcon: {
         getProps: getDefaultButtonIconProps,
       },
-      leftIconContainer: {
-        props: defaultButtonLeftIconContainerProps,
-      },
-      rightIcon: {
-        getProps: getDefaultButtonIconProps,
-      },
-      rightIconContainer: {
-        props: defaultButtonRightIconContainerProps,
+      leadingIconContainer: {
+        props: defaultButtonLeadingIconContainerProps,
       },
       text: {
         getProps: getDefaultButtonTextProps,
@@ -37,6 +31,12 @@ export const defaultStaticButtonTheme: OptionalButtonVariantTheme = {
           },
         },
       },
+      trailingIcon: {
+        getProps: getDefaultButtonIconProps,
+      },
+      trailingIconContainer: {
+        props: defaultButtonTrailingIconContainerProps,
+      },
     },
     disabled: {
       container: {
@@ -45,14 +45,14 @@ export const defaultStaticButtonTheme: OptionalButtonVariantTheme = {
       icon: {
         props: disabledDefaultButtonIconProps,
       },
-      leftIcon: {
-        props: disabledDefaultButtonIconProps,
-      },
-      rightIcon: {
+      leadingIcon: {
         props: disabledDefaultButtonIconProps,
       },
       text: {
         props: disabledDefaultButtonTextProps,
+      },
+      trailingIcon: {
+        props: disabledDefaultButtonIconProps,
       },
     },
     enabled: {

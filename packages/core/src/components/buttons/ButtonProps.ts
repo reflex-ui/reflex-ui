@@ -12,9 +12,9 @@ export interface ButtonProps extends InteractivityProps, MarginProps, Themed {
   children?: React.ReactNode;
   fullWidth?: boolean;
   getSubProps?: ButtonSubPropsGetter;
-  leftIcon?: JSX.Element;
-  rightIcon?: JSX.Element;
+  leadingIcon?: JSX.Element;
   size: Size;
+  trailingIcon?: JSX.Element;
   variant: ButtonVariant;
 }
 
@@ -25,8 +25,8 @@ export interface OptionalButtonProps
   children?: React.ReactNode;
   fullWidth?: boolean;
   getSubProps?: ButtonSubPropsGetter;
-  leftIcon?: JSX.Element;
-  rightIcon?: JSX.Element;
+  leadingIcon?: JSX.Element;
   size?: Size;
+  trailingIcon?: JSX.Element;
   variant?: ButtonVariant;
 }

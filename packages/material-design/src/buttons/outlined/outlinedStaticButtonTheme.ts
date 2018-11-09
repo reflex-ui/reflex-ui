@@ -27,14 +27,14 @@ const partialOutlinedStaticButtonTheme: OptionalButtonVariantTheme = {
       container: {
         getProps: getCommonOutlinedButtonContainerProps,
       },
-      leftIcon: {
-        getProps: getDefaultButtonIconProps,
-      },
-      rightIcon: {
+      leadingIcon: {
         getProps: getDefaultButtonIconProps,
       },
       text: {
         getProps: getCommonOutlinedButtonTextProps,
+      },
+      trailingIcon: {
+        getProps: getDefaultButtonIconProps,
       },
     },
     disabled: {
@@ -44,14 +44,14 @@ const partialOutlinedStaticButtonTheme: OptionalButtonVariantTheme = {
       icon: {
         props: disabledDefaultButtonIconProps,
       },
-      leftIcon: {
-        props: disabledDefaultButtonIconProps,
-      },
-      rightIcon: {
+      leadingIcon: {
         props: disabledDefaultButtonIconProps,
       },
       text: {
         props: disabledDefaultButtonTextProps,
+      },
+      trailingIcon: {
+        props: disabledDefaultButtonIconProps,
       },
     },
     enabled: {

@@ -14,10 +14,7 @@ export interface ButtonSubComponents {
   readonly IconContainer: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & ViewProps
   >;
-  readonly LeftIconContainer: React.ComponentType<
-    ReflexSubcomponent<ButtonProps> & ViewProps
-  >;
-  readonly RightIconContainer: React.ComponentType<
+  readonly LeadingIconContainer: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & ViewProps
   >;
   readonly Text: React.ComponentType<
@@ -25,6 +22,9 @@ export interface ButtonSubComponents {
   >;
   readonly Touchable: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & TouchableWithoutFeedbackProps
+  >;
+  readonly TrailingIconContainer: React.ComponentType<
+    ReflexSubcomponent<ButtonProps> & ViewProps
   >;
   readonly XFabIconContainer: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & ViewProps
@@ -38,10 +38,7 @@ export interface OptionalButtonSubComponents {
   readonly IconContainer?: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & ViewProps
   >;
-  readonly LeftIconContainer?: React.ComponentType<
-    ReflexSubcomponent<ButtonProps> & ViewProps
-  >;
-  readonly RightIconContainer?: React.ComponentType<
+  readonly LeadingIconContainer?: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & ViewProps
   >;
   readonly Text?: React.ComponentType<
@@ -49,6 +46,9 @@ export interface OptionalButtonSubComponents {
   >;
   readonly Touchable?: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & TouchableWithoutFeedbackProps
+  >;
+  readonly TrailingIconContainer?: React.ComponentType<
+    ReflexSubcomponent<ButtonProps> & ViewProps
   >;
   readonly XFabIconContainer?: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & ViewProps

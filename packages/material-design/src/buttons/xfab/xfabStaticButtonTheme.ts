@@ -16,31 +16,31 @@ const partialXFabStaticButtonTheme: OptionalButtonVariantTheme = {
           },
         },
       },
-      leftIcon: {
+      leadingIcon: {
         props: {
           style: {
             fontSize: 28,
           },
         },
       },
-      leftIconContainer: {
+      leadingIconContainer: {
         props: {
           style: {
-            marginRight: 14,
+            marginEnd: 14,
           },
         },
       },
-      rightIcon: {
+      trailingIcon: {
         props: {
           style: {
             fontSize: 28,
           },
         },
       },
-      rightIconContainer: {
+      trailingIconContainer: {
         props: {
           style: {
-            marginLeft: 14,
+            marginStart: 14,
           },
         },
       },
@@ -58,31 +58,31 @@ const partialXFabStaticButtonTheme: OptionalButtonVariantTheme = {
           },
         },
       },
-      leftIcon: {
+      leadingIcon: {
         props: {
           style: {
             fontSize: 24,
           },
         },
       },
-      leftIconContainer: {
+      leadingIconContainer: {
         props: {
           style: {
-            marginRight: 12,
+            marginEnd: 12,
           },
         },
       },
-      rightIcon: {
+      trailingIcon: {
         props: {
           style: {
             fontSize: 24,
           },
         },
       },
-      rightIconContainer: {
+      trailingIconContainer: {
         props: {
           style: {
-            marginLeft: 12,
+            marginStart: 12,
           },
         },
       },
@@ -100,31 +100,31 @@ const partialXFabStaticButtonTheme: OptionalButtonVariantTheme = {
           },
         },
       },
-      leftIcon: {
+      leadingIcon: {
         props: {
           style: {
             fontSize: 22,
           },
         },
       },
-      leftIconContainer: {
+      leadingIconContainer: {
         props: {
           style: {
-            marginRight: 10,
+            marginEnd: 10,
           },
         },
       },
-      rightIcon: {
+      trailingIcon: {
         props: {
           style: {
             fontSize: 22,
           },
         },
       },
-      rightIconContainer: {
+      trailingIconContainer: {
         props: {
           style: {
-            marginLeft: 10,
+            marginStart: 10,
           },
         },
       },
@@ -142,31 +142,31 @@ const partialXFabStaticButtonTheme: OptionalButtonVariantTheme = {
           },
         },
       },
-      leftIcon: {
+      leadingIcon: {
         props: {
           style: {
             fontSize: 32,
           },
         },
       },
-      leftIconContainer: {
+      leadingIconContainer: {
         props: {
           style: {
-            marginRight: 18,
+            marginEnd: 18,
           },
         },
       },
-      rightIcon: {
+      trailingIcon: {
         props: {
           style: {
             fontSize: 32,
           },
         },
       },
-      rightIconContainer: {
+      trailingIconContainer: {
         props: {
           style: {
-            marginLeft: 18,
+            marginStart: 18,
           },
         },
       },
@@ -184,31 +184,31 @@ const partialXFabStaticButtonTheme: OptionalButtonVariantTheme = {
           },
         },
       },
-      leftIcon: {
+      leadingIcon: {
         props: {
           style: {
             fontSize: 18,
           },
         },
       },
-      leftIconContainer: {
+      leadingIconContainer: {
         props: {
           style: {
-            marginRight: 8,
+            marginEnd: 8,
           },
         },
       },
-      rightIcon: {
+      trailingIcon: {
         props: {
           style: {
             fontSize: 18,
           },
         },
       },
-      rightIconContainer: {
+      trailingIconContainer: {
         props: {
           style: {
-            marginLeft: 8,
+            marginStart: 8,
           },
         },
       },

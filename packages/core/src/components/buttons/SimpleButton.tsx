@@ -13,11 +13,11 @@ import {
   getButtonContainerProps,
   getButtonIconContainerProps,
   getButtonIconProps,
-  getButtonLeftIconContainerProps,
-  getButtonLeftIconProps,
-  getButtonRightIconContainerProps,
-  getButtonRightIconProps,
+  getButtonLeadingIconContainerProps,
+  getButtonLeadingIconProps,
   getButtonTextProps,
+  getButtonTrailingIconContainerProps,
+  getButtonTrailingIconProps,
 } from './theming';
 
 const extractTouchableProps = (
@@ -30,9 +30,9 @@ const extractTouchableProps = (
     fullWidth,
     getSubProps,
     interactivityState,
-    leftIcon,
+    leadingIcon,
     paletteTheme,
-    rightIcon,
+    trailingIcon,
     size,
     variant,
     ...touchableProps
@@ -100,43 +100,43 @@ const handleIcon = (props: ButtonProps): JSX.Element | undefined => {
   );
 };
 
-const handleLeftIcon = (props: ButtonProps): JSX.Element | undefined => {
+const handleLeadingIcon = (props: ButtonProps): JSX.Element | undefined => {
   const buttonTheme = props.componentsTheme.button;
-  const { LeftIconContainer } = buttonTheme[props.variant].subComponents;
-  const containerProps = getButtonLeftIconContainerProps(props);
+  const { LeadingIconContainer } = buttonTheme[props.variant].subComponents;
+  const containerProps = getButtonLeadingIconContainerProps(props);
   const iconProps = {
     noContainer: true,
-    ...getButtonLeftIconProps(props),
+    ...getButtonLeadingIconProps(props),
   };
 
-  const styledIcon = props.leftIcon
-    ? cloneElement({ element: props.leftIcon, props: iconProps })
+  const styledIcon = props.leadingIcon
+    ? cloneElement({ element: props.leadingIcon, props: iconProps })
     : undefined;
 
   return (
-    <LeftIconContainer componentProps={props} {...containerProps}>
+    <LeadingIconContainer componentProps={props} {...containerProps}>
       {styledIcon}
-    </LeftIconContainer>
+    </LeadingIconContainer>
   );
 };
 
-const handleRightIcon = (props: ButtonProps): JSX.Element | undefined => {
+const handleTrailingIcon = (props: ButtonProps): JSX.Element | undefined => {
   const buttonTheme = props.componentsTheme.button;
-  const { RightIconContainer } = buttonTheme[props.variant].subComponents;
-  const containerProps = getButtonRightIconContainerProps(props);
+  const { TrailingIconContainer } = buttonTheme[props.variant].subComponents;
+  const containerProps = getButtonTrailingIconContainerProps(props);
   const iconProps = {
     noContainer: true,
-    ...getButtonRightIconProps(props),
+    ...getButtonTrailingIconProps(props),
   };
 
-  const styledIcon = props.rightIcon
-    ? cloneElement({ element: props.rightIcon, props: iconProps })
+  const styledIcon = props.trailingIcon
+    ? cloneElement({ element: props.trailingIcon, props: iconProps })
     : undefined;
 
   return (
-    <RightIconContainer componentProps={props} {...containerProps}>
+    <TrailingIconContainer componentProps={props} {...containerProps}>
       {styledIcon}
-    </RightIconContainer>
+    </TrailingIconContainer>
   );
 };
 
@@ -150,9 +150,9 @@ export const SimpleButton: React.SFC<ButtonProps> = (props: ButtonProps) => {
   return (
     <Touchable componentProps={props} {...touchableProps}>
       <Container componentProps={props} {...containerProps}>
-        {props.leftIcon && handleLeftIcon(props)}
+        {props.leadingIcon && handleLeadingIcon(props)}
         {children && transformButtonChildren(props)}
-        {props.rightIcon && handleRightIcon(props)}
+        {props.trailingIcon && handleTrailingIcon(props)}
       </Container>
     </Touchable>
   );
