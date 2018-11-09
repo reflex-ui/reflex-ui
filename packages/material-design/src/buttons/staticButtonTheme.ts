@@ -14,9 +14,9 @@ import {
 export const staticButtonTheme: OptionalButtonTheme = {
   allVariants: allVariantsStaticButtonTheme,
   contained: containedStaticButtonTheme,
-  containedRaised: raisedStaticButtonTheme,
   default: defaultStaticButtonTheme,
   fab: fabStaticButtonTheme,
+  highlighted: raisedStaticButtonTheme,
   icon: iconStaticButtonTheme,
   outlined: outlinedStaticButtonTheme,
   shaped: shapedStaticButtonTheme,

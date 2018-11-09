@@ -14,9 +14,9 @@ import {
 export const buttonTheme: OptionalButtonTheme = {
   allVariants: allVariantsButtonTheme,
   contained: containedButtonTheme,
-  containedRaised: raisedButtonTheme,
   default: defaultButtonTheme,
   fab: fabButtonTheme,
+  highlighted: raisedButtonTheme,
   icon: iconButtonTheme,
   outlined: outlinedButtonTheme,
   shaped: shapedButtonTheme,

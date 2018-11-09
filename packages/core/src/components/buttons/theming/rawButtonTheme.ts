@@ -80,9 +80,9 @@ export const rawButtonVariantTheme: ButtonVariantTheme = {
 export const rawButtonTheme: ButtonTheme = {
   allVariants: rawButtonVariantTheme,
   contained: rawButtonVariantTheme,
-  containedRaised: rawButtonVariantTheme,
   default: rawButtonVariantTheme,
   fab: rawButtonVariantTheme,
+  highlighted: rawButtonVariantTheme,
   icon: rawButtonVariantTheme,
   outlined: rawButtonVariantTheme,
   shaped: rawButtonVariantTheme,

@@ -1,8 +1,8 @@
 export enum ButtonVariant {
   CONTAINED = 'contained',
-  CONTAINED_RAISED = 'containedRaised',
   DEFAULT = 'default',
   FAB = 'fab',
+  HIGHLIGHTED = 'highlighted',
   ICON = 'icon',
   OUTLINED = 'outlined',
   SHAPED = 'shaped',
