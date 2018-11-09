@@ -1492,6 +1492,1013 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Text>ColorTheme.PRIMARY_NORMAL (default)</Text>
     </RowView>
     <RowView>
+      <Button onPress={onButtonPress} variant={ButtonVariant.OUTLINED_SHAPED}>
+        Sign In
+      </Button>
+      <Button
+        disabled
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+      <Button
+        disabled
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+      <Button
+        disabled
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+      <Button
+        disabled
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        disabled
+        fullWidth
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        disabled
+        fullWidth
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Text>ColorTheme.SECONDARY_NORMAL</Text>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Sign In
+      </Button>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        disabled
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        disabled
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        disabled
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        disabled
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        fullWidth
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        disabled
+        fullWidth
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        fullWidth
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        disabled
+        fullWidth
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Text>ColorTheme.ERROR_NORMAL</Text>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Sign In
+      </Button>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        disabled
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        disabled
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        disabled
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        disabled
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        fullWidth
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        disabled
+        fullWidth
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        fullWidth
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        disabled
+        fullWidth
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Text>ColorTheme.SUCCESS_NORMAL</Text>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Sign In
+      </Button>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        disabled
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        disabled
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        disabled
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        disabled
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        fullWidth
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        disabled
+        fullWidth
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        fullWidth
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        disabled
+        fullWidth
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Text>ColorTheme.WARNING_NORMAL</Text>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Sign In
+      </Button>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        disabled
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        disabled
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        disabled
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        disabled
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        fullWidth
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        disabled
+        fullWidth
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        fullWidth
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        disabled
+        fullWidth
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Text>Custom color</Text>
+    </RowView>
+    <RowView>
+      <Button
+        getSubProps={getOutlinedButtonProps}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Sign In
+      </Button>
+      <Button
+        disabled
+        getSubProps={getOutlinedButtonProps}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        getSubProps={getOutlinedButtonProps}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+      <Button
+        disabled
+        getSubProps={getOutlinedButtonProps}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        getSubProps={getOutlinedButtonProps}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+      <Button
+        disabled
+        getSubProps={getOutlinedButtonProps}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        getSubProps={getOutlinedButtonProps}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+      <Button
+        disabled
+        getSubProps={getOutlinedButtonProps}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        getSubProps={getOutlinedButtonProps}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        disabled
+        fullWidth
+        getSubProps={getOutlinedButtonProps}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        getSubProps={getOutlinedButtonProps}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        disabled
+        fullWidth
+        getSubProps={getOutlinedButtonProps}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        getSubProps={getOutlinedButtonProps}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        disabled
+        fullWidth
+        getSubProps={getOutlinedButtonProps}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        getSubProps={getOutlinedButtonProps}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        disabled
+        fullWidth
+        getSubProps={getOutlinedButtonProps}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.OUTLINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Text>ColorTheme.PRIMARY_NORMAL (default)</Text>
+    </RowView>
+    <RowView>
       <Button onPress={onButtonPress} variant={ButtonVariant.CONTAINED}>
         Sign In
       </Button>
@@ -2499,1013 +3506,6 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
       <Text>ColorTheme.PRIMARY_NORMAL (default)</Text>
     </RowView>
     <RowView>
-      <Button onPress={onButtonPress} variant={ButtonVariant.HIGHLIGHTED}>
-        Sign In
-      </Button>
-      <Button
-        disabled
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Sign In
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-      <Button
-        disabled
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-      <Button
-        disabled
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-      <Button
-        disabled
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        fullWidth
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Sign In
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Sign In
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        fullWidth
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        disabled
-        fullWidth
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        fullWidth
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        fullWidth
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        disabled
-        fullWidth
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Text>ColorTheme.SECONDARY_NORMAL</Text>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Sign In
-      </Button>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        disabled
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Sign In
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        disabled
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        disabled
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        disabled
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        fullWidth
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Sign In
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Sign In
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        fullWidth
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        disabled
-        fullWidth
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        fullWidth
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        fullWidth
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        disabled
-        fullWidth
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Text>ColorTheme.ERROR_NORMAL</Text>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Sign In
-      </Button>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        disabled
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Sign In
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        disabled
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        disabled
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        disabled
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        fullWidth
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Sign In
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Sign In
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        fullWidth
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        disabled
-        fullWidth
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        fullWidth
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        fullWidth
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        disabled
-        fullWidth
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Text>ColorTheme.SUCCESS_NORMAL</Text>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Sign In
-      </Button>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        disabled
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Sign In
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        disabled
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        disabled
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        disabled
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        fullWidth
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Sign In
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Sign In
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        fullWidth
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        disabled
-        fullWidth
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        fullWidth
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        fullWidth
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        disabled
-        fullWidth
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Text>ColorTheme.WARNING_NORMAL</Text>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Sign In
-      </Button>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        disabled
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Sign In
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        disabled
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        disabled
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        disabled
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        fullWidth
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Sign In
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Sign In
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        fullWidth
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        disabled
-        fullWidth
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        fullWidth
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        disabled
-        fullWidth
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        fullWidth
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        disabled
-        fullWidth
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Text>Custom color</Text>
-    </RowView>
-    <RowView>
-      <Button
-        getSubProps={getContainedButtonProps}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Sign In
-      </Button>
-      <Button
-        disabled
-        getSubProps={getContainedButtonProps}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Sign In
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        getSubProps={getContainedButtonProps}
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-      <Button
-        disabled
-        getSubProps={getContainedButtonProps}
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        getSubProps={getContainedButtonProps}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-      <Button
-        disabled
-        getSubProps={getContainedButtonProps}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        getSubProps={getContainedButtonProps}
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-      <Button
-        disabled
-        getSubProps={getContainedButtonProps}
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        fullWidth
-        getSubProps={getContainedButtonProps}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Sign In
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        disabled
-        fullWidth
-        getSubProps={getContainedButtonProps}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Sign In
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        fullWidth
-        getSubProps={getContainedButtonProps}
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        disabled
-        fullWidth
-        getSubProps={getContainedButtonProps}
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        fullWidth
-        getSubProps={getContainedButtonProps}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        disabled
-        fullWidth
-        getSubProps={getContainedButtonProps}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        fullWidth
-        getSubProps={getContainedButtonProps}
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        disabled
-        fullWidth
-        getSubProps={getContainedButtonProps}
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={ButtonVariant.HIGHLIGHTED}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Text>ColorTheme.PRIMARY_NORMAL (default)</Text>
-    </RowView>
-    <RowView>
       <Button onPress={onButtonPress} variant={ButtonVariant.CONTAINED_SHAPED}>
         Sign In
       </Button>
@@ -4505,6 +4505,1013 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
         onPress={onButtonPress}
         trailingIcon={<FavoriteIcon />}
         variant={ButtonVariant.CONTAINED_SHAPED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Text>ColorTheme.PRIMARY_NORMAL (default)</Text>
+    </RowView>
+    <RowView>
+      <Button onPress={onButtonPress} variant={ButtonVariant.HIGHLIGHTED}>
+        Sign In
+      </Button>
+      <Button
+        disabled
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+      <Button
+        disabled
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+      <Button
+        disabled
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+      <Button
+        disabled
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        disabled
+        fullWidth
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        disabled
+        fullWidth
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Text>ColorTheme.SECONDARY_NORMAL</Text>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Sign In
+      </Button>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        disabled
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        disabled
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        disabled
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        disabled
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        fullWidth
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        disabled
+        fullWidth
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        fullWidth
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        disabled
+        fullWidth
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SECONDARY_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Text>ColorTheme.ERROR_NORMAL</Text>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Sign In
+      </Button>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        disabled
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        disabled
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        disabled
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        disabled
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        fullWidth
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        disabled
+        fullWidth
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        fullWidth
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        disabled
+        fullWidth
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.ERROR_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Text>ColorTheme.SUCCESS_NORMAL</Text>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Sign In
+      </Button>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        disabled
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        disabled
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        disabled
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        disabled
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        fullWidth
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        disabled
+        fullWidth
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        fullWidth
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        disabled
+        fullWidth
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.SUCCESS_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Text>ColorTheme.WARNING_NORMAL</Text>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Sign In
+      </Button>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        disabled
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        disabled
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        disabled
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        disabled
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        fullWidth
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        disabled
+        fullWidth
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        fullWidth
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        disabled
+        fullWidth
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        colorTheme={ColorTheme.WARNING_NORMAL}
+        disabled
+        fullWidth
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Text>Custom color</Text>
+    </RowView>
+    <RowView>
+      <Button
+        getSubProps={getContainedButtonProps}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Sign In
+      </Button>
+      <Button
+        disabled
+        getSubProps={getContainedButtonProps}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        getSubProps={getContainedButtonProps}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+      <Button
+        disabled
+        getSubProps={getContainedButtonProps}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        getSubProps={getContainedButtonProps}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+      <Button
+        disabled
+        getSubProps={getContainedButtonProps}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        getSubProps={getContainedButtonProps}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+      <Button
+        disabled
+        getSubProps={getContainedButtonProps}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        getSubProps={getContainedButtonProps}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        disabled
+        fullWidth
+        getSubProps={getContainedButtonProps}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Sign In
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        getSubProps={getContainedButtonProps}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        disabled
+        fullWidth
+        getSubProps={getContainedButtonProps}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        getSubProps={getContainedButtonProps}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        disabled
+        fullWidth
+        getSubProps={getContainedButtonProps}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        fullWidth
+        getSubProps={getContainedButtonProps}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
+      >
+        Favorite
+      </Button>
+    </RowView>
+    <RowView>
+      <Button
+        disabled
+        fullWidth
+        getSubProps={getContainedButtonProps}
+        leadingIcon={<FavoriteIcon />}
+        onPress={onButtonPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={ButtonVariant.HIGHLIGHTED}
       >
         Favorite
       </Button>

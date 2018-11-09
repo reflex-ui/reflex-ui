@@ -6,5 +6,6 @@ export enum ButtonVariant {
   HIGHLIGHTED = 'highlighted',
   ICON = 'icon',
   OUTLINED = 'outlined',
+  OUTLINED_SHAPED = 'outlinedShaped',
   XFAB = 'xfab',
 }

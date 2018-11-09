@@ -5,6 +5,7 @@ export * from './default';
 export * from './fab';
 export * from './icon';
 export * from './outlined';
+export * from './outlinedShaped';
 export * from './raised';
 export * from './xfab';
 

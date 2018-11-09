@@ -12,6 +12,7 @@ export interface ButtonTheme {
   readonly highlighted: ButtonVariantTheme;
   readonly icon: ButtonVariantTheme;
   readonly outlined: ButtonVariantTheme;
+  readonly outlinedShaped: ButtonVariantTheme;
   readonly xfab: ButtonVariantTheme;
 }
 
@@ -24,5 +25,6 @@ export interface OptionalButtonTheme {
   readonly highlighted?: OptionalButtonVariantTheme;
   readonly icon?: OptionalButtonVariantTheme;
   readonly outlined?: OptionalButtonVariantTheme;
+  readonly outlinedShaped?: OptionalButtonVariantTheme;
   readonly xfab?: OptionalButtonVariantTheme;
 }
