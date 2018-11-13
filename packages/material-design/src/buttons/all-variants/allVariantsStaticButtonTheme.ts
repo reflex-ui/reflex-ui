@@ -14,20 +14,20 @@ import {
 import {
   allVariantsCommonButtonIconProps,
   allVariantsLargeButtonLeadingIconContainerProps,
-  allVariantsLargeButtonTrailingIconContainerProps,
   allVariantsLargeButtonSideIconProps,
+  allVariantsLargeButtonTrailingIconContainerProps,
   allVariantsRegularButtonLeadingIconContainerProps,
-  allVariantsRegularButtonTrailingIconContainerProps,
   allVariantsRegularButtonSideIconProps,
+  allVariantsRegularButtonTrailingIconContainerProps,
   allVariantsSmallButtonLeadingIconContainerProps,
-  allVariantsSmallButtonTrailingIconContainerProps,
   allVariantsSmallButtonSideIconProps,
+  allVariantsSmallButtonTrailingIconContainerProps,
   allVariantsXLargeButtonLeadingIconContainerProps,
-  allVariantsXLargeButtonTrailingIconContainerProps,
   allVariantsXLargeButtonSideIconProps,
+  allVariantsXLargeButtonTrailingIconContainerProps,
   allVariantsXSmallButtonLeadingIconContainerProps,
-  allVariantsXSmallButtonTrailingIconContainerProps,
   allVariantsXSmallButtonSideIconProps,
+  allVariantsXSmallButtonTrailingIconContainerProps,
 } from './AllVariantsIconProps';
 
 export const allVariantsStaticButtonTheme: OptionalButtonVariantTheme = {

@@ -67,7 +67,7 @@ const partialRaisedButtonTheme: OptionalButtonVariantTheme = {
     },
   },
   subComponents: {
-    Container: withRippleEffect({
+    container: withRippleEffect({
       getRippleColor: getContainedButtonRippleColor,
     })(withRaiseEffect(ElevationDegree.LOW)(DefaultButtonContainer)),
   },

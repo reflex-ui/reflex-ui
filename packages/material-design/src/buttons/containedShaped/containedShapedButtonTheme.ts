@@ -23,7 +23,7 @@ const partialContainedShapedButtonTheme: OptionalButtonVariantTheme = {
     },
   },
   subComponents: {
-    Container: withRippleEffect({
+    container: withRippleEffect({
       getRippleColor: getContainedButtonRippleColor,
     })(DefaultButtonContainer),
   },

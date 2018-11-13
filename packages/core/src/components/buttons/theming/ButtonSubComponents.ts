@@ -6,51 +6,46 @@ import {
 
 import { ReflexSubcomponent } from '../../ReflexSubcomponent';
 import { ButtonProps } from '../ButtonProps';
+import { ButtonSubName } from '../ButtonSubName';
 
 export interface ButtonSubComponents {
-  readonly Container: React.ComponentType<
+  readonly [ButtonSubName.CONTAINER]: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & ViewProps
   >;
-  readonly IconContainer: React.ComponentType<
+  readonly [ButtonSubName.ICON_CONTAINER]: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & ViewProps
   >;
-  readonly LeadingIconContainer: React.ComponentType<
+  readonly [ButtonSubName.LEADING_ICON_CONTAINER]: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & ViewProps
   >;
-  readonly Text: React.ComponentType<
+  readonly [ButtonSubName.TEXT]: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & TextProps
   >;
-  readonly Touchable: React.ComponentType<
+  readonly [ButtonSubName.TOUCHABLE]: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & TouchableWithoutFeedbackProps
   >;
-  readonly TrailingIconContainer: React.ComponentType<
-    ReflexSubcomponent<ButtonProps> & ViewProps
-  >;
-  readonly XFabIconContainer: React.ComponentType<
+  readonly [ButtonSubName.TRAILING_ICON_CONTAINER]: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & ViewProps
   >;
 }
 
 export interface OptionalButtonSubComponents {
-  readonly Container?: React.ComponentType<
+  readonly [ButtonSubName.CONTAINER]?: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & ViewProps
   >;
-  readonly IconContainer?: React.ComponentType<
+  readonly [ButtonSubName.ICON_CONTAINER]?: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & ViewProps
   >;
-  readonly LeadingIconContainer?: React.ComponentType<
+  readonly [ButtonSubName.LEADING_ICON_CONTAINER]?: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & ViewProps
   >;
-  readonly Text?: React.ComponentType<
+  readonly [ButtonSubName.TEXT]?: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & TextProps
   >;
-  readonly Touchable?: React.ComponentType<
+  readonly [ButtonSubName.TOUCHABLE]?: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & TouchableWithoutFeedbackProps
   >;
-  readonly TrailingIconContainer?: React.ComponentType<
-    ReflexSubcomponent<ButtonProps> & ViewProps
-  >;
-  readonly XFabIconContainer?: React.ComponentType<
+  readonly [ButtonSubName.TRAILING_ICON_CONTAINER]?: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & ViewProps
   >;
 }

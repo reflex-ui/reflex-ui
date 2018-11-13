@@ -21,7 +21,7 @@ export const partialDefaultButtonTheme: OptionalButtonVariantTheme = {
     },
   },
   subComponents: {
-    Container: withRippleEffect({
+    container: withRippleEffect({
       getRippleColor: getDefaultButtonRippleColor,
     })(DefaultButtonContainer),
   },

@@ -1,12 +1,12 @@
 import { TextProps } from 'react-native';
-import { TextPropsGetter } from '../TextPropsGetter';
+import { OptionalPrimitiveTheme, PrimitiveTheme } from '../../../theming';
 
-export interface TextTheme<P> {
-  readonly getProps: TextPropsGetter<P>;
-  readonly props: TextProps;
-}
+export type TextTheme<ComponentProps> = PrimitiveTheme<
+  ComponentProps,
+  TextProps
+>;
 
-export interface OptionalTextTheme<P> {
-  readonly getProps?: TextPropsGetter<P>;
-  readonly props?: TextProps;
-}
+export type OptionalTextTheme<ComponentProps> = OptionalPrimitiveTheme<
+  ComponentProps,
+  TextProps
+>;

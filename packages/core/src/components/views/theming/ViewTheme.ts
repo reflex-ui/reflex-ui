@@ -1,12 +1,12 @@
 import { ViewProps } from 'react-native';
-import { ViewPropsGetter } from '../ViewPropsGetter';
+import { OptionalPrimitiveTheme, PrimitiveTheme } from '../../../theming';
 
-export interface ViewTheme<P> {
-  readonly getProps: ViewPropsGetter<P>;
-  readonly props: ViewProps;
-}
+export type ViewTheme<ComponentProps> = PrimitiveTheme<
+  ComponentProps,
+  ViewProps
+>;
 
-export interface OptionalViewTheme<P> {
-  readonly getProps?: ViewPropsGetter<P>;
-  readonly props?: ViewProps;
-}
+export type OptionalViewTheme<ComponentProps> = OptionalPrimitiveTheme<
+  ComponentProps,
+  ViewProps
+>;

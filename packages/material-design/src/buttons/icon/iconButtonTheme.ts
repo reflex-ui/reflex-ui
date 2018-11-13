@@ -20,7 +20,7 @@ const optionalIconButtonTheme: OptionalButtonVariantTheme = {
     },
   },
   subComponents: {
-    Container: withRippleEffect({
+    container: withRippleEffect({
       getRippleColor: getDefaultButtonRippleColor,
     })(DefaultButtonContainer),
   },
