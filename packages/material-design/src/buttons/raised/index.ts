@@ -1,3 +1,3 @@
-export * from './RaisedButtonContainerProps';
-export * from './raisedButtonTheme';
-export * from './raisedStaticButtonTheme';
+export * from './container';
+export * from './staticTheme';
+export * from './theme';

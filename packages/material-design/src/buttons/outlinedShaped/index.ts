@@ -1,2 +1,3 @@
-export * from './outlinedShapedButtonTheme';
-export * from './outlinedShapedStaticButtonTheme';
+export * from './container';
+export * from './staticTheme';
+export * from './theme';

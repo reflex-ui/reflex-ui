@@ -1,3 +1,4 @@
-export * from './FabButtonContainerProps';
-export * from './fabButtonTheme';
-export * from './fabStaticButtonTheme';
+export * from './container';
+export * from './icon';
+export * from './staticTheme';
+export * from './theme';

@@ -5,8 +5,8 @@ import {
   SizedSubcomponentTheme,
 } from '../../../theming';
 import { TouchableTheme } from '../../touchable';
-import { TextTheme } from '../../typography';
-import { ViewTheme } from '../../views';
+import { OptionalTextTheme, TextTheme } from '../../typography';
+import { OptionalViewTheme, ViewTheme } from '../../views';
 import { ButtonProps } from '../ButtonProps';
 import { ButtonSubName } from '../ButtonSubName';
 import {
@@ -47,33 +47,33 @@ export interface ButtonVariantTheme {
 
 export interface OptionalButtonVariantTheme {
   readonly [ButtonSubName.CONTAINER]?: OptionalSizedSubcomponentTheme<
-    OptionalInteractivityStateTheme<ViewTheme<ButtonProps>>
+    OptionalInteractivityStateTheme<OptionalViewTheme<ButtonProps>>
   >;
   readonly [ButtonSubName.ICON]?: OptionalSizedSubcomponentTheme<
-    OptionalInteractivityStateTheme<TextTheme<ButtonProps>>
+    OptionalInteractivityStateTheme<OptionalTextTheme<ButtonProps>>
   >;
   readonly [ButtonSubName.ICON_CONTAINER]?: OptionalSizedSubcomponentTheme<
-    OptionalInteractivityStateTheme<ViewTheme<ButtonProps>>
+    OptionalInteractivityStateTheme<OptionalViewTheme<ButtonProps>>
   >;
   readonly [ButtonSubName.LEADING_ICON]?: OptionalSizedSubcomponentTheme<
-    OptionalInteractivityStateTheme<TextTheme<ButtonProps>>
+    OptionalInteractivityStateTheme<OptionalTextTheme<ButtonProps>>
   >;
   // tslint:disable-next-line:max-line-length
   readonly [ButtonSubName.LEADING_ICON_CONTAINER]?: OptionalSizedSubcomponentTheme<
-    OptionalInteractivityStateTheme<ViewTheme<ButtonProps>>
+    OptionalInteractivityStateTheme<OptionalViewTheme<ButtonProps>>
   >;
   readonly subComponents?: OptionalButtonSubComponents;
   readonly [ButtonSubName.TEXT]?: OptionalSizedSubcomponentTheme<
-    OptionalInteractivityStateTheme<TextTheme<ButtonProps>>
+    OptionalInteractivityStateTheme<OptionalTextTheme<ButtonProps>>
   >;
   readonly [ButtonSubName.TOUCHABLE]?: OptionalSizedSubcomponentTheme<
     OptionalInteractivityStateTheme<TouchableTheme<ButtonProps>>
   >;
   readonly [ButtonSubName.TRAILING_ICON]?: OptionalSizedSubcomponentTheme<
-    OptionalInteractivityStateTheme<TextTheme<ButtonProps>>
+    OptionalInteractivityStateTheme<OptionalTextTheme<ButtonProps>>
   >;
   // tslint:disable-next-line:max-line-length
   readonly [ButtonSubName.TRAILING_ICON_CONTAINER]?: OptionalSizedSubcomponentTheme<
-    OptionalInteractivityStateTheme<ViewTheme<ButtonProps>>
+    OptionalInteractivityStateTheme<OptionalViewTheme<ButtonProps>>
   >;
 }
