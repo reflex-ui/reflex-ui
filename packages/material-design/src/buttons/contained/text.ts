@@ -8,13 +8,17 @@ import {
   TextStyleGetter,
 } from '@reflex-ui/core';
 
-import { disabledDefaultButtonTextStyle } from '../default/text';
-
 export const getContainedButtonTextColorStyle: TextStyleGetter<ButtonProps> = ({
   colorTheme,
+  interactivityState,
   paletteTheme,
 }) => ({
-  color: getThemedColor({ colorTheme, onColor: true, paletteTheme }),
+  color: getThemedColor({
+    colorTheme,
+    interactivityType: interactivityState.type,
+    onColor: true,
+    paletteTheme,
+  }),
 });
 
 export const getContainedButtonTextProps: TextPropsGetter<ButtonProps> = (
@@ -35,9 +39,6 @@ export const containedStaticButtonTextTheme: OptionalSizedSubcomponentTheme<
   allSizes: {
     allStates: {
       getProps: getContainedButtonTextProps,
-    },
-    disabled: {
-      props: disabledDefaultButtonTextStyle,
     },
   },
 };

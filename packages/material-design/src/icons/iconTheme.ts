@@ -4,9 +4,13 @@ import {
   IconTheme,
   IconWrapperProps,
   OptionalIconTheme,
+  OptionalPrimitiveTheme,
+  OptionalSizedSubcomponentTheme,
+  OptionalViewTheme,
   rawIconTheme,
   Size,
   SizedMarginStyle,
+  TextIconProps,
   TextPropsGetter,
   TextStyleGetter,
   ViewPropsGetter,
@@ -47,6 +51,25 @@ export const getAllSizesIconProps: TextPropsGetter<
 > = props => ({
   style: getAllSizesIconStyle(props),
 });
+/*
+export const getAllSizesIconStyle: TextStyleGetter<IconWrapperProps> = ({
+  color,
+  colorTheme,
+  paletteTheme,
+}) => ({
+  color: color ? color : getThemedColor({ colorTheme, paletteTheme }),
+});
+*/
+export const getAllSizesIconStyle: TextStyleGetter<IconWrapperProps> = ({
+  color,
+  colorTheme,
+  paletteTheme,
+}) => {
+  console.log('getAllSizesIconStyle() - color: ', color);
+  return {
+    color: color ? color : getThemedColor({ colorTheme, paletteTheme }),
+  };
+};
 
 export const getIconContainerProps: ViewPropsGetter<
   IconWrapperProps
@@ -60,76 +83,69 @@ export const getIconContainerStyle: ViewStyleGetter<
   ...getSizedMarginStyle(iconSizedMarginStyle)(props),
 });
 
-export const getAllSizesIconStyle: TextStyleGetter<IconWrapperProps> = ({
-  colorTheme,
-  paletteTheme,
-}) => ({
-  color: getThemedColor({ colorTheme, paletteTheme }),
-});
-
-const optionalIconTheme: OptionalIconTheme = {
+export const iconContainerTheme: OptionalSizedSubcomponentTheme<
+  OptionalViewTheme<IconWrapperProps>
+> = {
   allSizes: {
-    container: {
-      getProps: getIconContainerProps,
-    },
-    icon: {
-      getProps: getAllSizesIconProps,
-      props: {
-        style: {
-          ...Platform.select<TextStyle>({
-            web: {
-              userSelect: 'none',
-            },
-          }),
-        },
+    getProps: getIconContainerProps,
+  },
+};
+
+export const iconIconTheme: OptionalSizedSubcomponentTheme<
+  OptionalPrimitiveTheme<IconWrapperProps, TextIconProps>
+> = {
+  allSizes: {
+    getProps: getAllSizesIconProps,
+    props: {
+      style: {
+        ...Platform.select<TextStyle>({
+          web: {
+            userSelect: 'none',
+          },
+        }),
       },
     },
   },
   large: {
-    icon: {
-      props: {
-        style: {
-          fontSize: 32,
-        },
+    props: {
+      style: {
+        fontSize: 32,
       },
     },
   },
   medium: {
-    icon: {
-      props: {
-        style: {
-          fontSize: 24,
-        },
+    props: {
+      style: {
+        fontSize: 24,
       },
     },
   },
   small: {
-    icon: {
-      props: {
-        style: {
-          fontSize: 16,
-        },
+    props: {
+      style: {
+        fontSize: 16,
       },
     },
   },
   xlarge: {
-    icon: {
-      props: {
-        style: {
-          fontSize: 48,
-        },
+    props: {
+      style: {
+        fontSize: 48,
       },
     },
   },
   xsmall: {
-    icon: {
-      props: {
-        style: {
-          fontSize: 12,
-        },
+    props: {
+      style: {
+        fontSize: 12,
       },
     },
   },
+};
+
+export const optionalIconTheme: OptionalIconTheme = {
+  container: iconContainerTheme,
+  icon: iconIconTheme,
 };
 
 export const iconTheme: IconTheme = merge<{}, IconTheme, OptionalIconTheme>(

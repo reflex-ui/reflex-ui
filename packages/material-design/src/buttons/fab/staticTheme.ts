@@ -1,7 +1,7 @@
 import { ButtonSubName, OptionalButtonVariantTheme } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
-import { raisedStaticButtonTheme } from '../raised';
+import { raisedStaticButtonTheme } from '../raised/staticTheme';
 import { fabStaticButtonContainerTheme } from './container';
 import { fabStaticButtonIconTheme } from './icon';
 

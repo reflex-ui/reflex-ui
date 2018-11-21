@@ -1,7 +1,6 @@
 import { ButtonSubName, OptionalButtonVariantTheme } from '@reflex-ui/core';
 
 import { defaultStaticButtonContainerTheme } from './container';
-import { defaultStaticButtonIconTheme } from './icon';
 import {
   defaultStaticButtonLeadingIconContainerTheme,
   defaultStaticButtonTrailingIconContainerTheme,
@@ -14,7 +13,6 @@ import { defaultStaticButtonTextTheme } from './text';
 
 export const defaultStaticButtonTheme: OptionalButtonVariantTheme = {
   [ButtonSubName.CONTAINER]: defaultStaticButtonContainerTheme,
-  [ButtonSubName.ICON]: defaultStaticButtonIconTheme,
   [ButtonSubName.LEADING_ICON]: defaultStaticButtonLeadingIconTheme,
   // tslint:disable-next-line:max-line-length
   [ButtonSubName.LEADING_ICON_CONTAINER]: defaultStaticButtonLeadingIconContainerTheme,

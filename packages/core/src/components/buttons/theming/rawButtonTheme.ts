@@ -4,11 +4,8 @@ import {
   ViewProps,
 } from 'react-native';
 
-import {
-  InteractivityStateTheme,
-  PrimitiveTheme,
-  SizedSubcomponentTheme,
-} from '../../../theming';
+// tslint:disable-next-line:max-line-length
+import { getRawSizedInteractiveTheme } from '../../../theming/getRawSizedInteractiveTheme';
 import { ButtonProps } from '../ButtonProps';
 import { ButtonSubName } from '../ButtonSubName';
 import {
@@ -30,62 +27,31 @@ export const rawButtonSubComponents: ButtonSubComponents = {
   trailingIconContainer: DefaultButtonIconContainer,
 };
 
-export const getInteractiveButtonTheme = <
-  PrimitiveProps extends TextProps | ViewProps
->(): InteractivityStateTheme<PrimitiveTheme<ButtonProps, PrimitiveProps>> => ({
-  allStates: {
-    getProps: () => ({} as PrimitiveProps),
-    props: {} as PrimitiveProps,
-  },
-  disabled: {
-    getProps: () => ({} as PrimitiveProps),
-    props: {} as PrimitiveProps,
-  },
-  enabled: {
-    getProps: () => ({} as PrimitiveProps),
-    props: {} as PrimitiveProps,
-  },
-  focused: {
-    getProps: () => ({} as PrimitiveProps),
-    props: {} as PrimitiveProps,
-  },
-  hovered: {
-    getProps: () => ({} as PrimitiveProps),
-    props: {} as PrimitiveProps,
-  },
-  pressed: {
-    getProps: () => ({} as PrimitiveProps),
-    props: {} as PrimitiveProps,
-  },
-});
-
-export const getSizedButtonTheme = <
-  PrimitiveProps extends TextProps | ViewProps
->(): SizedSubcomponentTheme<
-  InteractivityStateTheme<PrimitiveTheme<ButtonProps, PrimitiveProps>>
-> => ({
-  allSizes: getInteractiveButtonTheme(),
-  large: getInteractiveButtonTheme(),
-  medium: getInteractiveButtonTheme(),
-  none: getInteractiveButtonTheme(),
-  small: getInteractiveButtonTheme(),
-  xlarge: getInteractiveButtonTheme(),
-  xsmall: getInteractiveButtonTheme(),
-});
-
 export const rawButtonVariantTheme: ButtonVariantTheme = {
-  [ButtonSubName.CONTAINER]: getSizedButtonTheme<ViewProps>(),
-  [ButtonSubName.ICON]: getSizedButtonTheme<TextProps>(),
-  [ButtonSubName.ICON_CONTAINER]: getSizedButtonTheme<ViewProps>(),
-  [ButtonSubName.LEADING_ICON]: getSizedButtonTheme<TextProps>(),
-  [ButtonSubName.LEADING_ICON_CONTAINER]: getSizedButtonTheme<TextProps>(),
-  subComponents: rawButtonSubComponents,
-  [ButtonSubName.TEXT]: getSizedButtonTheme<TextProps>(),
   // prettier-ignore
   // tslint:disable-next-line:max-line-length
-  [ButtonSubName.TOUCHABLE]: getSizedButtonTheme<TouchableWithoutFeedbackProps>(),
-  [ButtonSubName.TRAILING_ICON]: getSizedButtonTheme<TextProps>(),
-  [ButtonSubName.TRAILING_ICON_CONTAINER]: getSizedButtonTheme<TextProps>(),
+  [ButtonSubName.CONTAINER]: getRawSizedInteractiveTheme<ButtonProps, ViewProps>(),
+  [ButtonSubName.ICON]: getRawSizedInteractiveTheme<ButtonProps, TextProps>(),
+  // prettier-ignore
+  // tslint:disable-next-line:max-line-length
+  [ButtonSubName.ICON_CONTAINER]: getRawSizedInteractiveTheme<ButtonProps, ViewProps>(),
+  // prettier-ignore
+  // tslint:disable-next-line:max-line-length
+  [ButtonSubName.LEADING_ICON]: getRawSizedInteractiveTheme<ButtonProps, TextProps>(),
+  // prettier-ignore
+  // tslint:disable-next-line:max-line-length
+  [ButtonSubName.LEADING_ICON_CONTAINER]: getRawSizedInteractiveTheme<ButtonProps, TextProps>(),
+  subComponents: rawButtonSubComponents,
+  [ButtonSubName.TEXT]: getRawSizedInteractiveTheme<ButtonProps, TextProps>(),
+  // prettier-ignore
+  // tslint:disable-next-line:max-line-length
+  [ButtonSubName.TOUCHABLE]: getRawSizedInteractiveTheme<ButtonProps, TouchableWithoutFeedbackProps>(),
+  // prettier-ignore
+  // tslint:disable-next-line:max-line-length
+  [ButtonSubName.TRAILING_ICON]: getRawSizedInteractiveTheme<ButtonProps, TextProps>(),
+  // prettier-ignore
+  // tslint:disable-next-line
+  [ButtonSubName.TRAILING_ICON_CONTAINER]: getRawSizedInteractiveTheme<ButtonProps, TextProps>()
 };
 
 export const rawButtonTheme: ButtonTheme = {

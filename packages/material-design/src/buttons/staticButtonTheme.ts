@@ -6,6 +6,7 @@ import {
   defaultStaticButtonTheme,
   fabStaticButtonTheme,
   iconStaticButtonTheme,
+  outlinedShapedStaticButtonTheme,
   outlinedStaticButtonTheme,
   raisedStaticButtonTheme,
   xfabStaticButtonTheme,
@@ -20,5 +21,6 @@ export const staticButtonTheme: OptionalButtonTheme = {
   highlighted: raisedStaticButtonTheme,
   icon: iconStaticButtonTheme,
   outlined: outlinedStaticButtonTheme,
+  outlinedShaped: outlinedShapedStaticButtonTheme,
   xfab: xfabStaticButtonTheme,
 };

@@ -6,10 +6,7 @@ import {
   TextPropsGetter,
 } from '@reflex-ui/core';
 
-import {
-  disabledDefaultButtonTextProps,
-  getDefaultButtonTextColorStyle,
-} from '../default/text';
+import { getDefaultButtonTextColorStyle } from '../default/text';
 
 export const getOutlinedButtonTextProps: TextPropsGetter<ButtonProps> = (
   props: ButtonProps,
@@ -25,9 +22,6 @@ export const outlinedStaticButtonTextTheme: OptionalSizedSubcomponentTheme<
   allSizes: {
     allStates: {
       getProps: getOutlinedButtonTextProps,
-    },
-    disabled: {
-      props: disabledDefaultButtonTextProps,
     },
   },
 };

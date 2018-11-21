@@ -1,30 +1,34 @@
 import {
+  OptionalPrimitiveTheme,
+  OptionalSizedSubcomponentTheme,
+  PrimitiveTheme,
+  SizedSubcomponentTheme,
+} from '../../../theming';
+import { OptionalViewTheme, ViewTheme } from '../../views';
+import { IconSubName } from '../IconSubName';
+import { IconWrapperProps } from '../IconWrapperProps';
+import { TextIconProps } from '../TextIconProps';
+import {
   IconSubComponents,
   OptionalIconSubComponents,
 } from './IconSubComponents';
-import {
-  IconSubComponentsTheme,
-  OptionalIconSubComponentsTheme,
-} from './IconSubComponentsTheme';
 
 export interface IconTheme {
-  readonly allSizes: IconSubComponentsTheme;
-  readonly large: IconSubComponentsTheme;
-  readonly medium: IconSubComponentsTheme;
-  readonly none: IconSubComponentsTheme;
-  readonly small: IconSubComponentsTheme;
+  readonly [IconSubName.CONTAINER]: SizedSubcomponentTheme<
+    ViewTheme<IconWrapperProps>
+  >;
+  readonly [IconSubName.ICON]: SizedSubcomponentTheme<
+    PrimitiveTheme<IconWrapperProps, TextIconProps>
+  >;
   readonly subComponents: IconSubComponents;
-  readonly xlarge: IconSubComponentsTheme;
-  readonly xsmall: IconSubComponentsTheme;
 }
 
 export interface OptionalIconTheme {
-  readonly allSizes?: OptionalIconSubComponentsTheme;
-  readonly large?: OptionalIconSubComponentsTheme;
-  readonly medium?: OptionalIconSubComponentsTheme;
-  readonly none?: OptionalIconSubComponentsTheme;
-  readonly small?: OptionalIconSubComponentsTheme;
+  readonly [IconSubName.CONTAINER]?: OptionalSizedSubcomponentTheme<
+    OptionalViewTheme<IconWrapperProps>
+  >;
+  readonly [IconSubName.ICON]?: OptionalSizedSubcomponentTheme<
+    OptionalPrimitiveTheme<IconWrapperProps, TextIconProps>
+  >;
   readonly subComponents?: OptionalIconSubComponents;
-  readonly xlarge?: OptionalIconSubComponentsTheme;
-  readonly xsmall?: OptionalIconSubComponentsTheme;
 }

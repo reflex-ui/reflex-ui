@@ -1,32 +1,17 @@
-import {
-  DefaultIconContainer,
-  IconSubComponents,
-  IconSubComponentsTheme,
-  IconTheme,
-} from './';
+import { ViewProps } from 'react-native';
 
-export const rawIconSubComponentsTheme: IconSubComponentsTheme = {
-  container: {
-    getProps: () => ({}),
-    props: {},
-  },
-  icon: {
-    getProps: () => ({}),
-    props: {},
-  },
-};
+import { getRawSizedTheme } from '../../../theming/getRawSizedTheme';
+import { IconSubName } from '../IconSubName';
+import { IconWrapperProps } from '../IconWrapperProps';
+import { TextIconProps } from '../TextIconProps';
+import { DefaultIconContainer, IconSubComponents, IconTheme } from './';
 
 export const rawIconSubComponents: IconSubComponents = {
   Container: DefaultIconContainer,
 };
 
 export const rawIconTheme: IconTheme = {
-  allSizes: rawIconSubComponentsTheme,
-  large: rawIconSubComponentsTheme,
-  medium: rawIconSubComponentsTheme,
-  none: rawIconSubComponentsTheme,
-  small: rawIconSubComponentsTheme,
+  [IconSubName.CONTAINER]: getRawSizedTheme<IconWrapperProps, ViewProps>(),
+  [IconSubName.ICON]: getRawSizedTheme<IconWrapperProps, TextIconProps>(),
   subComponents: rawIconSubComponents,
-  xlarge: rawIconSubComponentsTheme,
-  xsmall: rawIconSubComponentsTheme,
 };

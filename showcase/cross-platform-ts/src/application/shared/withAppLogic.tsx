@@ -5,17 +5,13 @@ import {
   PaletteThemeContext,
 } from '@reflex-ui/core';
 import {
-  createComponentsTheme,
   createPaletteTheme,
+  createStaticComponentsTheme,
   purpleTealPaletteTheme,
 } from '@reflex-ui/material-design';
 import * as React from 'react';
-/*
-const PurpleTealTheme: Theme = createStaticTheme({
-  palette: purpleTealPaletteTheme,
-});
-*/
-const MaterialDesignTheme: ComponentsTheme = createComponentsTheme();
+
+const MaterialDesignTheme: ComponentsTheme = createStaticComponentsTheme();
 const PurpleTealPaletteTheme: PaletteTheme = createPaletteTheme(
   purpleTealPaletteTheme,
 );

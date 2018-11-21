@@ -6,6 +6,6 @@ import {
 import merge from 'lodash/merge';
 import { staticMaterialDesignTheme } from './staticMaterialDesignTheme';
 
-export const createStaticTheme = (
-  theme: OptionalComponentsTheme,
+export const createStaticComponentsTheme = (
+  theme: OptionalComponentsTheme = {},
 ): ComponentsTheme => createThemeCore(merge(staticMaterialDesignTheme, theme));

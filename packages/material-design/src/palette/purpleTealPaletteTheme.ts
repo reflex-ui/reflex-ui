@@ -1,4 +1,6 @@
 import { PaletteTheme } from '@reflex-ui/core';
+
+import { disabledPaletteColor } from './disabledPaletteColor';
 import { errorPaletteColor } from './errorPaletteColor';
 import { successPaletteColor } from './successPaletteColor';
 import { warningPaletteColor } from './warningPaletteColor';
@@ -18,6 +20,7 @@ export const purpleTealPaletteTheme: PaletteTheme = {
       onColor: '#000000',
     },
   },
+  disabled: disabledPaletteColor,
   error: errorPaletteColor,
   primary: {
     dark: {

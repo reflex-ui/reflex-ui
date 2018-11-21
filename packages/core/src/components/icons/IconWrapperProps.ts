@@ -1,25 +1,20 @@
-import { TextProps } from 'react-native';
-
 import { MarginProps } from '../../margin';
 import { Size } from '../../Size';
 import { OptionalThemed, Themed } from '../../theming';
-import { ViewPropsGetter } from '../views';
+import { IconWrapperSubPropsGetter } from './IconWrapperSubPropsGetter';
 
-export interface IconWrapperProps extends MarginProps, TextProps, Themed {
+export interface IconWrapperProps extends MarginProps, Themed {
   children?: React.ReactNode;
   color?: string;
-  getContainerProps?: ViewPropsGetter<IconWrapperProps>;
+  getSubProps?: IconWrapperSubPropsGetter;
   noContainer?: boolean;
   size: Size;
 }
 
-export interface OptionalIconWrapperProps
-  extends MarginProps,
-    TextProps,
-    OptionalThemed {
+export interface OptionalIconWrapperProps extends MarginProps, OptionalThemed {
   children?: React.ReactNode;
   color?: string;
-  getContainerProps?: ViewPropsGetter<IconWrapperProps>;
+  getSubProps?: IconWrapperSubPropsGetter;
   noContainer?: boolean;
   size?: Size;
 }

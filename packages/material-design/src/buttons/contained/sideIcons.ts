@@ -6,7 +6,6 @@ import {
   TextPropsGetter,
 } from '@reflex-ui/core';
 
-import { disabledDefaultButtonTextStyle } from '../default/text';
 import { getContainedButtonTextColorStyle } from './text';
 
 export const getContainedButtonIconProps: TextPropsGetter<
@@ -24,9 +23,6 @@ export const containedStaticButtonLeadingIconTheme: OptionalSizedSubcomponentThe
   allSizes: {
     allStates: {
       getProps: getContainedButtonIconProps,
-    },
-    disabled: {
-      props: disabledDefaultButtonTextStyle,
     },
   },
 };

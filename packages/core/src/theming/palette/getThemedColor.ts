@@ -1,11 +1,19 @@
+import { InteractivityType } from '../../interactivity';
 import { ColorTheme } from './ColorTheme';
 import { ThemedColorGetter } from './ThemedColorGetter';
 
 export const getThemedColor: ThemedColorGetter = ({
   colorTheme = ColorTheme.PRIMARY_NORMAL,
+  interactivityType,
   onColor,
   paletteTheme,
 }): string => {
+  if (interactivityType === InteractivityType.DISABLED) {
+    return onColor
+      ? paletteTheme.disabled.normal.onColor
+      : paletteTheme.disabled.normal.color;
+  }
+
   switch (colorTheme) {
     case ColorTheme.BACKGROUND_DARK:
       return onColor
@@ -93,7 +101,7 @@ export const getThemedColor: ThemedColorGetter = ({
         : paletteTheme.warning.normal.color;
     default:
       return onColor
-        ? paletteTheme.primary.light.onColor
-        : paletteTheme.primary.light.color;
+        ? paletteTheme.primary.normal.onColor
+        : paletteTheme.primary.normal.color;
   }
 };

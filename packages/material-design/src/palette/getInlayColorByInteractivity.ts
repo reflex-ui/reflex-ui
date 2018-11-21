@@ -1,16 +1,14 @@
 import { InteractivityType } from '@reflex-ui/core';
 import * as Color from 'color';
 import { ColorByInteractivityData } from './ColorByInteractivityData';
-import { disabledPaletteColor } from './disabledPaletteColor';
 
 export const getInlayColorByInteractivity = ({
   color,
-  disabledColor = disabledPaletteColor.normal.color,
   type,
 }: ColorByInteractivityData): string => {
   switch (type) {
     case InteractivityType.DISABLED:
-      return disabledColor;
+      return color;
     case InteractivityType.ENABLED:
       return color;
     case InteractivityType.FOCUSED:

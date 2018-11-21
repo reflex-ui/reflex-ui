@@ -33,6 +33,26 @@ export const getInteractiveSubProps = <
   const interactivityType: InteractivityType =
     componentProps.interactivityState.type;
 
+  // const { style, ...otherUserProps } = userProps ? userProps : {};
+  /*
+  if (userProps) {
+    const { style: userStyle, ...otherUserProps } = userProps;
+  } else {
+    const otherUserProps = {};
+    const userStyle = undefined;
+  }
+  */
+
+  // @ts-ignore Type '{}' is not assignable to type 'PrimitiveProps'.
+  let otherUserProps: PrimitiveProps = {};
+  let userStyle;
+  if (userProps) {
+    // @ts-ignore Spread types may only be created from object types.
+    otherUserProps = { ...userProps };
+    delete otherUserProps.style;
+    if (userProps.style) userStyle = userProps.style;
+  }
+
   // @ts-ignore [ts] Type '{}' is not assignable to type 'PrimitiveProps'.
   const subProps: PrimitiveProps = {};
   themes.forEach(theme =>
@@ -51,12 +71,45 @@ export const getInteractiveSubProps = <
       theme[size][interactivityType].props,
       theme[size][interactivityType].getProps(componentProps),
       /* user props */
-      userProps || {},
+      // userProps || {},
+      otherUserProps,
     ),
   );
 
   const subStyle: PrimitiveStyle = subProps.style as PrimitiveStyle;
+  if (subStyle && userStyle) {
+    subProps.style = [
+      createRegisteredStyle<PrimitiveStyle>(subStyle || {}).style,
+      userStyle,
+    ];
+  } else if (subStyle) {
+    subProps.style = [
+      createRegisteredStyle<PrimitiveStyle>(subStyle || {}).style,
+    ];
+  } else if (userStyle) {
+    subProps.style = [userStyle];
+  }
+
+  /*
+  const subStyle: PrimitiveStyle = subProps.style as PrimitiveStyle;
+  if (subStyle || userStyle) {
+    if (subStyle) {
+      subProps.style = [
+        createRegisteredStyle<PrimitiveStyle>(subStyle || {}).style,
+      ];
+    }
+    if (userStyle) {
+      if (subProps.style) {
+        (subProps.style as []).push(userStyle as PrimitiveStyle);
+      } else {
+        subProps.style = [userStyle];
+      }
+    }
+  }
+  */
+  /*
   subProps.style = createRegisteredStyle<PrimitiveStyle>(subStyle || {}).style;
+  */
 
   return subProps;
 };

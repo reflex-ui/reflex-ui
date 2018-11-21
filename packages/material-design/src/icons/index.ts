@@ -4,4 +4,3 @@ export * from './Icon';
 export * from './IconNames';
 export * from './iconTheme';
 export * from './MenuIcon';
-export * from './OptionalIconProps';

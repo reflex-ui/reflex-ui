@@ -1,6 +1,7 @@
 import {
   ButtonProps,
   getThemedColor,
+  InteractivityType,
   isWeb,
   OptionalInteractivityStateTheme,
   OptionalSizedSubcomponentTheme,
@@ -8,35 +9,30 @@ import {
   TextPropsGetter,
   TextStyleGetter,
 } from '@reflex-ui/core';
-import { TextProps, TextStyle } from 'react-native';
-
-import { disabledPaletteColor } from '../../palette/disabledPaletteColor';
-
-export const disabledDefaultButtonTextStyle: TextStyle = {
-  color: disabledPaletteColor.normal.onColor,
-};
-
-export const disabledDefaultButtonTextProps: TextProps = {
-  style: { ...disabledDefaultButtonTextStyle },
-};
 
 export const getDefaultButtonTextColorStyle: TextStyleGetter<ButtonProps> = ({
   colorTheme,
+  interactivityState,
   paletteTheme,
 }) => ({
-  color: getThemedColor({ colorTheme, paletteTheme }),
-});
-
-export const getDefaultButtonTextStyle: TextStyleGetter<ButtonProps> = (
-  props: ButtonProps,
-) => ({
-  ...getDefaultButtonTextColorStyle(props),
+  color: getThemedColor({
+    colorTheme,
+    interactivityType: interactivityState.type,
+    onColor: interactivityState.type === InteractivityType.DISABLED,
+    paletteTheme,
+  }),
 });
 
 export const getDefaultButtonTextProps: TextPropsGetter<
   ButtonProps
 > = props => ({
   style: getDefaultButtonTextStyle(props),
+});
+
+export const getDefaultButtonTextStyle: TextStyleGetter<ButtonProps> = (
+  props: ButtonProps,
+) => ({
+  ...getDefaultButtonTextColorStyle(props),
 });
 
 export const defaultStaticButtonTextTheme: OptionalSizedSubcomponentTheme<
@@ -50,9 +46,6 @@ export const defaultStaticButtonTextTheme: OptionalSizedSubcomponentTheme<
           marginTop: isWeb ? -3 : 0,
         },
       },
-    },
-    disabled: {
-      props: disabledDefaultButtonTextProps,
     },
   },
 };

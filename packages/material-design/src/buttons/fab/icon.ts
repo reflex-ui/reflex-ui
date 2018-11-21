@@ -3,14 +3,25 @@ import {
   OptionalInteractivityStateTheme,
   OptionalSizedSubcomponentTheme,
   OptionalTextTheme,
+  TextPropsGetter,
 } from '@reflex-ui/core';
-import merge from 'lodash/merge';
 
-import { containedStaticButtonIconTheme } from '../contained/icon';
+import { getContainedButtonTextColorStyle } from '../contained/text';
 
-export const partialFabStaticButtonIconTheme: OptionalSizedSubcomponentTheme<
+export const getFabButtonIconProps: TextPropsGetter<ButtonProps> = props => ({
+  style: {
+    ...getContainedButtonTextColorStyle(props),
+  },
+});
+
+export const fabStaticButtonIconTheme: OptionalSizedSubcomponentTheme<
   OptionalInteractivityStateTheme<OptionalTextTheme<ButtonProps>>
 > = {
+  allSizes: {
+    allStates: {
+      getProps: getFabButtonIconProps,
+    },
+  },
   small: {
     allStates: {
       props: {
@@ -21,15 +32,3 @@ export const partialFabStaticButtonIconTheme: OptionalSizedSubcomponentTheme<
     },
   },
 };
-
-export const fabStaticButtonIconTheme: OptionalSizedSubcomponentTheme<
-  OptionalInteractivityStateTheme<OptionalTextTheme<ButtonProps>>
-> = merge<
-  {},
-  OptionalSizedSubcomponentTheme<
-    OptionalInteractivityStateTheme<OptionalTextTheme<ButtonProps>>
-  >,
-  OptionalSizedSubcomponentTheme<
-    OptionalInteractivityStateTheme<OptionalTextTheme<ButtonProps>>
-  >
->({}, containedStaticButtonIconTheme, partialFabStaticButtonIconTheme);

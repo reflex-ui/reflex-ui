@@ -1,7 +1,6 @@
 import { ButtonSubName, OptionalButtonVariantTheme } from '@reflex-ui/core';
 
 import { containedStaticButtonContainerTheme } from './container';
-import { containedStaticButtonIconTheme } from './icon';
 import {
   containedStaticButtonLeadingIconTheme,
   containedStaticButtonTrailingIconTheme,
@@ -10,7 +9,6 @@ import { containedStaticButtonTextTheme } from './text';
 
 export const containedStaticButtonTheme: OptionalButtonVariantTheme = {
   [ButtonSubName.CONTAINER]: containedStaticButtonContainerTheme,
-  [ButtonSubName.ICON]: containedStaticButtonIconTheme,
   [ButtonSubName.LEADING_ICON]: containedStaticButtonLeadingIconTheme,
   [ButtonSubName.TEXT]: containedStaticButtonTextTheme,
   [ButtonSubName.TRAILING_ICON]: containedStaticButtonTrailingIconTheme,

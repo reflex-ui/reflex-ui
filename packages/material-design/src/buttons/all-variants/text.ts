@@ -8,6 +8,7 @@ import {
   OptionalTextTheme,
 } from '@reflex-ui/core';
 import { Platform } from 'react-native';
+
 import { getFontFamily } from '../../typography';
 
 export const allVariantsStaticButtonTextTheme: OptionalSizedSubcomponentTheme<

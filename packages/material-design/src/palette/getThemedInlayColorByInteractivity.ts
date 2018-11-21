@@ -11,6 +11,6 @@ export const getThemedInlayColorByInteractivity = ({
   paletteTheme,
 }: ThemedColorByInteractivityData): string =>
   getInlayColorByInteractivity({
-    color: getThemedColor({ colorTheme, paletteTheme }),
+    color: getThemedColor({ colorTheme, interactivityType, paletteTheme }),
     type: interactivityType,
   });
