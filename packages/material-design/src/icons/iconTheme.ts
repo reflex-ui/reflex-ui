@@ -51,7 +51,7 @@ export const getAllSizesIconProps: TextPropsGetter<
 > = props => ({
   style: getAllSizesIconStyle(props),
 });
-/*
+
 export const getAllSizesIconStyle: TextStyleGetter<IconWrapperProps> = ({
   color,
   colorTheme,
@@ -59,17 +59,6 @@ export const getAllSizesIconStyle: TextStyleGetter<IconWrapperProps> = ({
 }) => ({
   color: color ? color : getThemedColor({ colorTheme, paletteTheme }),
 });
-*/
-export const getAllSizesIconStyle: TextStyleGetter<IconWrapperProps> = ({
-  color,
-  colorTheme,
-  paletteTheme,
-}) => {
-  console.log('getAllSizesIconStyle() - color: ', color);
-  return {
-    color: color ? color : getThemedColor({ colorTheme, paletteTheme }),
-  };
-};
 
 export const getIconContainerProps: ViewPropsGetter<
   IconWrapperProps

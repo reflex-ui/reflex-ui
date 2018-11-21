@@ -6,6 +6,7 @@ import {
   ButtonVariant,
   ColorTheme,
   InteractivityType,
+  registerStyle,
   RowView,
   Size,
 } from '@reflex-ui/core';
@@ -16,11 +17,12 @@ import {
   getOverlayColorByInteractivity,
 } from '@reflex-ui/material-design';
 import * as React from 'react';
-import { RegisteredStyle, ScrollView, StyleSheet, Text } from 'react-native';
-
-const registerStyle = <PrimitiveStyle extends {}>(
-  style: PrimitiveStyle,
-): RegisteredStyle<PrimitiveStyle> => StyleSheet.create({ style }).style;
+import {
+  ScrollView,
+  Text,
+  TextStyle,
+  ViewStyle,
+} from 'react-native';
 
 const onButtonPress = () => {
   // tslint:disable-next-line:no-console
@@ -32,7 +34,7 @@ const getDefaultButtonProps: ButtonSubPropsGetter = (
 ): ButtonSubProps => {
   const subProps: ButtonSubProps = {
     container: {
-      style: registerStyle({
+      style: registerStyle<ViewStyle>({
         backgroundColor: getOverlayColorByInteractivity({
           color: '#c70ad0',
           type: props.interactivityState.type,
@@ -40,7 +42,7 @@ const getDefaultButtonProps: ButtonSubPropsGetter = (
       }),
     },
     text: {
-      style: registerStyle({
+      style: registerStyle<TextStyle>({
         color:
           props.interactivityState.type === InteractivityType.DISABLED
             ? disabledPaletteColor.normal.onColor
@@ -60,7 +62,7 @@ const getContainedButtonProps: ButtonSubPropsGetter = (
   props: ButtonProps,
 ): ButtonSubProps => ({
   container: {
-    style: registerStyle({
+    style: registerStyle<ViewStyle>({
       backgroundColor:
       props.interactivityState.type === InteractivityType.DISABLED
         ? disabledPaletteColor.normal.color
@@ -76,7 +78,7 @@ const getFabButtonProps: ButtonSubPropsGetter = (
   props: ButtonProps,
 ): ButtonSubProps => ({
   container: {
-    style: registerStyle({
+    style: registerStyle<ViewStyle>({
       backgroundColor:
       props.interactivityState.type === InteractivityType.DISABLED
         ? disabledPaletteColor.normal.color
@@ -87,7 +89,7 @@ const getFabButtonProps: ButtonSubPropsGetter = (
     }),
   },
   icon: {
-    style: registerStyle({
+    style: registerStyle<TextStyle>({
       color:
         props.interactivityState.type === InteractivityType.DISABLED
           ? disabledPaletteColor.normal.onColor
@@ -100,7 +102,7 @@ const getIconButtonProps: ButtonSubPropsGetter = (
   props: ButtonProps,
 ): ButtonSubProps => ({
   container: {
-    style: registerStyle({
+    style: registerStyle<ViewStyle>({
       backgroundColor: getOverlayColorByInteractivity({
         color: '#c70ad0',
         type: props.interactivityState.type,
@@ -108,7 +110,7 @@ const getIconButtonProps: ButtonSubPropsGetter = (
     }),
   },
   icon: {
-    style: registerStyle({
+    style: registerStyle<TextStyle>({
       color:
           props.interactivityState.type === InteractivityType.DISABLED
             ? disabledPaletteColor.normal.onColor
@@ -122,7 +124,7 @@ const getOutlinedButtonProps: ButtonSubPropsGetter = (
 ): ButtonSubProps => {
   const subProps: ButtonSubProps = {
     container: {
-      style: registerStyle({
+      style: registerStyle<ViewStyle>({
         backgroundColor: getOverlayColorByInteractivity({
           color: '#c70ad0',
           type: props.interactivityState.type,
@@ -134,7 +136,7 @@ const getOutlinedButtonProps: ButtonSubPropsGetter = (
       }),
     },
     text: {
-      style: registerStyle({
+      style: registerStyle<TextStyle>({
         color:
           props.interactivityState.type === InteractivityType.DISABLED
             ? disabledPaletteColor.normal.onColor
@@ -155,7 +157,7 @@ const getXFabButtonProps: ButtonSubPropsGetter = (
 ): ButtonSubProps => {
   const subProps: ButtonSubProps = {
     container: {
-      style: registerStyle({
+      style: registerStyle<ViewStyle>({
         backgroundColor:
         props.interactivityState.type === InteractivityType.DISABLED
           ? disabledPaletteColor.normal.color
@@ -166,7 +168,7 @@ const getXFabButtonProps: ButtonSubPropsGetter = (
       }),
     },
     text: {
-      style: registerStyle({
+      style: registerStyle<TextStyle>({
         color:
           props.interactivityState.type === InteractivityType.DISABLED
             ? disabledPaletteColor.normal.onColor

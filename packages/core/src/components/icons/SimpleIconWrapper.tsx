@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  StyleSheet,
-  TextProps,
-  TextStyle,
-  ViewProps,
-  ViewStyle,
-} from 'react-native';
+import { TextProps, TextStyle, ViewProps, ViewStyle } from 'react-native';
 
 import {
   getSubProps,
@@ -16,23 +10,7 @@ import { cloneElement } from '../../utils';
 import { IconWrapperProps, OptionalIconWrapperProps } from './IconWrapperProps';
 import { IconWrapperSubProps } from './IconWrapperSubProps';
 import { TextIconProps } from './TextIconProps';
-/*
-const extractTextProps = (props: IconWrapperProps): TextProps => {
-  const {
-    children,
-    colorTheme,
-    componentsTheme,
-    // tslint:disable-next-line:no-shadowed-variable
-    getSubProps,
-    noContainer,
-    paletteTheme,
-    size,
-    ...textProps
-  } = props;
 
-  return textProps;
-};
-*/
 const handleIconChildren = (
   props: IconWrapperProps,
   userSubProps: IconWrapperSubProps,
@@ -56,49 +34,11 @@ const handleIconChildren = (
       ],
       userProps: userSubProps.icon,
     }),
-    // ...extractTextProps(props),
-    // color: '#ff0000',
   };
 
   const styledIcon = children
     ? cloneElement({ element: children, props: iconProps })
     : undefined;
-
-  console.log('SimpleIconWrapper() - props: ', props);
-  /*
-  console.log(
-    'SimpleIconWrapper() - extractTextProps(props): ',
-    extractTextProps(props),
-  );
-  */
-  console.log('SimpleIconWrapper() - children: ', children);
-  /*
-  console.log(
-    'SimpleIconWrapper() - children.props.style: ',
-    StyleSheet.flatten(children.props.style),
-  );
-  */
-  console.log('SimpleIconWrapper() - userSubProps: ', userSubProps);
-  if (userSubProps.icon) {
-    console.log(
-      'SimpleIconWrapper() - userSubProps.icon.style: ',
-      StyleSheet.flatten(userSubProps.icon.style),
-    );
-  }
-  console.log('SimpleIconWrapper() - iconProps: ', iconProps);
-  console.log(
-    'SimpleIconWrapper() - iconProps.style: ',
-    StyleSheet.flatten(iconProps.style),
-  );
-  console.log('SimpleIconWrapper() - styledIcon: ', styledIcon);
-  /*
-  if (styledIcon) {
-    console.log(
-      'SimpleIconWrapper() - styledIcon.props.style: ',
-      StyleSheet.flatten(styledIcon.props.style),
-    );
-  }
-  */
 
   return styledIcon;
 };

@@ -1,17 +1,12 @@
 import merge from 'lodash/merge';
 
-import { createRegisteredStyle } from '../components/createRegisteredStyle';
+import { registerStyle } from '../components/registerStyle';
 import { StyledPrimitiveProps } from '../components/StyledPrimitiveProps';
-import { InteractivityState, InteractivityType } from '../interactivity';
-import { Size } from '../Size';
+import { InteractivityStateProps, InteractivityType } from '../interactivity';
+import { SizeProps } from '../SizeProps';
 import { InteractivityStateTheme } from './InteractivityStateTheme';
 import { PrimitiveTheme } from './PrimitiveTheme';
 import { SizedSubcomponentTheme } from './SizedSubcomponentTheme';
-
-export interface InteractiveComponentProps {
-  interactivityState: InteractivityState;
-  size: Size;
-}
 
 export interface InteractiveSubPropsGetterData<ComponentProps, PrimitiveProps> {
   componentProps: ComponentProps;
@@ -22,7 +17,7 @@ export interface InteractiveSubPropsGetterData<ComponentProps, PrimitiveProps> {
 }
 
 export const getInteractiveSubProps = <
-  ComponentProps extends InteractiveComponentProps,
+  ComponentProps extends InteractivityStateProps & SizeProps,
   PrimitiveProps extends StyledPrimitiveProps<PrimitiveStyle>,
   PrimitiveStyle
 >(
@@ -32,16 +27,6 @@ export const getInteractiveSubProps = <
   const { size } = componentProps;
   const interactivityType: InteractivityType =
     componentProps.interactivityState.type;
-
-  // const { style, ...otherUserProps } = userProps ? userProps : {};
-  /*
-  if (userProps) {
-    const { style: userStyle, ...otherUserProps } = userProps;
-  } else {
-    const otherUserProps = {};
-    const userStyle = undefined;
-  }
-  */
 
   // @ts-ignore Type '{}' is not assignable to type 'PrimitiveProps'.
   let otherUserProps: PrimitiveProps = {};
@@ -71,45 +56,17 @@ export const getInteractiveSubProps = <
       theme[size][interactivityType].props,
       theme[size][interactivityType].getProps(componentProps),
       /* user props */
-      // userProps || {},
       otherUserProps,
     ),
   );
 
   const subStyle: PrimitiveStyle = subProps.style as PrimitiveStyle;
-  if (subStyle && userStyle) {
-    subProps.style = [
-      createRegisteredStyle<PrimitiveStyle>(subStyle || {}).style,
-      userStyle,
-    ];
-  } else if (subStyle) {
-    subProps.style = [
-      createRegisteredStyle<PrimitiveStyle>(subStyle || {}).style,
-    ];
-  } else if (userStyle) {
-    subProps.style = [userStyle];
-  }
-
-  /*
-  const subStyle: PrimitiveStyle = subProps.style as PrimitiveStyle;
   if (subStyle || userStyle) {
-    if (subStyle) {
-      subProps.style = [
-        createRegisteredStyle<PrimitiveStyle>(subStyle || {}).style,
-      ];
-    }
-    if (userStyle) {
-      if (subProps.style) {
-        (subProps.style as []).push(userStyle as PrimitiveStyle);
-      } else {
-        subProps.style = [userStyle];
-      }
-    }
+    const subStyles = [];
+    if (subStyle) subStyles.push(registerStyle<PrimitiveStyle>(subStyle));
+    if (userStyle) subStyles.push(userStyle);
+    subProps.style = subStyles;
   }
-  */
-  /*
-  subProps.style = createRegisteredStyle<PrimitiveStyle>(subStyle || {}).style;
-  */
 
   return subProps;
 };

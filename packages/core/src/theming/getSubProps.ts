@@ -1,16 +1,12 @@
 import merge from 'lodash/merge';
 
-import { createRegisteredStyle } from '../components/createRegisteredStyle';
+import { registerStyle } from '../components/registerStyle';
 import { StyledPrimitiveProps } from '../components/StyledPrimitiveProps';
-import { Size } from '../Size';
+import { SizeProps } from '../SizeProps';
 import { PrimitiveTheme } from './PrimitiveTheme';
 import { SizedSubcomponentTheme } from './SizedSubcomponentTheme';
 
-export interface SizedComponentProps {
-  size: Size;
-}
-
-export interface SubPropsGetterData<ComponentProps, PrimitiveProps extends {}> {
+export interface SubPropsGetterData<ComponentProps, PrimitiveProps> {
   componentProps: ComponentProps;
   themes: SizedSubcomponentTheme<
     PrimitiveTheme<ComponentProps, PrimitiveProps>
@@ -19,7 +15,7 @@ export interface SubPropsGetterData<ComponentProps, PrimitiveProps extends {}> {
 }
 
 export const getSubProps = <
-  ComponentProps extends SizedComponentProps,
+  ComponentProps extends SizeProps,
   PrimitiveProps extends StyledPrimitiveProps<PrimitiveStyle>,
   PrimitiveStyle
 >(
@@ -27,13 +23,6 @@ export const getSubProps = <
 ): PrimitiveProps => {
   const { componentProps, themes, userProps } = data;
   const { size } = componentProps;
-
-  /*
-  const flattenUserSubStyle =
-    userProps && Number.isFinite(userProps.style as number)
-      ? StyleSheet.flatten(userProps.style)
-      : undefined;
-  */
 
   // @ts-ignore Type '{}' is not assignable to type 'PrimitiveProps'.
   let otherUserProps: PrimitiveProps = {};
@@ -57,38 +46,16 @@ export const getSubProps = <
       theme[size].props,
       theme[size].getProps(componentProps),
       /* user props */
-      // userProps || {},
-      // prettier-ignore
-      /*
-      flattenUserSubStyle
-        ? {
-          // @ts-ignore Spread types may only be created from object types.
-          ...userProps,
-          style: flattenUserSubStyle,
-        }
-        : userProps || {},
-      */
       otherUserProps,
     ),
   );
 
-  /*
   const subStyle: PrimitiveStyle = subProps.style as PrimitiveStyle;
-  subProps.style = createRegisteredStyle<PrimitiveStyle>(subStyle || {}).style;
-  */
-
-  const subStyle: PrimitiveStyle = subProps.style as PrimitiveStyle;
-  if (subStyle && userStyle) {
-    subProps.style = [
-      createRegisteredStyle<PrimitiveStyle>(subStyle || {}).style,
-      userStyle,
-    ];
-  } else if (subStyle) {
-    subProps.style = [
-      createRegisteredStyle<PrimitiveStyle>(subStyle || {}).style,
-    ];
-  } else if (userStyle) {
-    subProps.style = [userStyle];
+  if (subStyle || userStyle) {
+    const subStyles = [];
+    if (subStyle) subStyles.push(registerStyle<PrimitiveStyle>(subStyle));
+    if (userStyle) subStyles.push(userStyle);
+    subProps.style = subStyles;
   }
 
   return subProps;
