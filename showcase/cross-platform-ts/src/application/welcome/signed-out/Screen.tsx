@@ -3,119 +3,6 @@ import {
   ButtonProps,
   ButtonSubProps,
   ButtonSubPropsGetter,
-  InteractivityType,
-  RowView,
-  Size,
-} from '@reflex-ui/core';
-import {
-  disabledPaletteColor,
-  FavoriteIcon,
-  getOverlayColorByInteractivity,
-} from '@reflex-ui/material-design';
-import * as React from 'react';
-
-import {
-  RegisteredStyle,
-  ScrollView,
-  StyleSheet,
-  TextStyle,
-  ViewStyle,
-} from 'react-native';
-
-const registerStyle = <PrimitiveStyle extends {}>(
-  style: PrimitiveStyle,
-): RegisteredStyle<PrimitiveStyle> => StyleSheet.create({ style }).style;
-
-const getDefaultButtonProps: ButtonSubPropsGetter = (
-  props: ButtonProps,
-): ButtonSubProps => {
-  const subProps: ButtonSubProps = {
-    container: {
-      style: registerStyle<ViewStyle>({
-        backgroundColor: getOverlayColorByInteractivity({
-          color: '#c70ad0',
-          type: props.interactivityState.type,
-        }),
-      }),
-    },
-    leadingIcon: {
-      style: registerStyle<TextStyle>({
-        fontSize: 28,
-      }),
-    },
-    text: {
-      style: registerStyle<TextStyle>({
-        color:
-          props.interactivityState.type === InteractivityType.DISABLED
-            ? disabledPaletteColor.normal.onColor
-            : '#c70ad0',
-      }),
-    },
-  };
-
-  return {
-    ...subProps,
-    // leadingIcon: subProps.text,
-    trailingIcon: subProps.text,
-  };
-};
-
-/*
-const getDefaultButtonProps: ButtonSubPropsGetter = (
-  props: ButtonProps,
-): ButtonSubProps => {
-  const subProps: ButtonSubProps = {
-    container: {
-      style: {
-        backgroundColor: getOverlayColorByInteractivity({
-          color: '#c70ad0',
-          type: props.interactivityState.type,
-        }),
-      },
-    },
-    text: {
-      style: {
-        color:
-          props.interactivityState.type === InteractivityType.DISABLED
-            ? disabledPaletteColor.normal.onColor
-            : '#c70ad0',
-      },
-    },
-  };
-
-  return {
-    ...subProps,
-    // leadingIcon: subProps.text,
-    trailingIcon: subProps.text,
-  };
-};
-*/
-
-const onButtonPress = () => {
-  // tslint:disable-next-line:no-console
-  console.log('WelcomeSignedOutScreen().onButtonPress()');
-};
-
-export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
-  <ScrollView>
-    <RowView>
-      <Button
-        getSubProps={getDefaultButtonProps}
-        leadingIcon={<FavoriteIcon color="#c70ad0" />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon size={Size.XL} />}
-      >
-        Favorite
-      </Button>
-    </RowView>
-  </ScrollView>
-);
-/*
-import {
-  Button,
-  ButtonProps,
-  ButtonSubProps,
-  ButtonSubPropsGetter,
   ButtonVariant,
   ColorTheme,
   InteractivityType,
@@ -129,7 +16,11 @@ import {
   getOverlayColorByInteractivity,
 } from '@reflex-ui/material-design';
 import * as React from 'react';
-import { ScrollView, Text } from 'react-native';
+import { RegisteredStyle, ScrollView, StyleSheet, Text } from 'react-native';
+
+const registerStyle = <PrimitiveStyle extends {}>(
+  style: PrimitiveStyle,
+): RegisteredStyle<PrimitiveStyle> => StyleSheet.create({ style }).style;
 
 const onButtonPress = () => {
   // tslint:disable-next-line:no-console
@@ -141,26 +32,26 @@ const getDefaultButtonProps: ButtonSubPropsGetter = (
 ): ButtonSubProps => {
   const subProps: ButtonSubProps = {
     container: {
-      style: {
+      style: registerStyle({
         backgroundColor: getOverlayColorByInteractivity({
           color: '#c70ad0',
           type: props.interactivityState.type,
         }),
-      },
+      }),
     },
     text: {
-      style: {
+      style: registerStyle({
         color:
           props.interactivityState.type === InteractivityType.DISABLED
             ? disabledPaletteColor.normal.onColor
             : '#c70ad0',
-      },
+      }),
     },
   };
 
   return {
     ...subProps,
-    // leadingIcon: subProps.text,
+    leadingIcon: subProps.text,
     trailingIcon: subProps.text,
   };
 };
@@ -169,7 +60,7 @@ const getContainedButtonProps: ButtonSubPropsGetter = (
   props: ButtonProps,
 ): ButtonSubProps => ({
   container: {
-    style: {
+    style: registerStyle({
       backgroundColor:
       props.interactivityState.type === InteractivityType.DISABLED
         ? disabledPaletteColor.normal.color
@@ -177,7 +68,7 @@ const getContainedButtonProps: ButtonSubPropsGetter = (
           color: '#c70ad0',
           type: props.interactivityState.type,
         }),
-    },
+    }),
   },
 });
 
@@ -185,7 +76,7 @@ const getFabButtonProps: ButtonSubPropsGetter = (
   props: ButtonProps,
 ): ButtonSubProps => ({
   container: {
-    style: {
+    style: registerStyle({
       backgroundColor:
       props.interactivityState.type === InteractivityType.DISABLED
         ? disabledPaletteColor.normal.color
@@ -193,15 +84,15 @@ const getFabButtonProps: ButtonSubPropsGetter = (
           color: '#c70ad0',
           type: props.interactivityState.type,
         }),
-    },
+    }),
   },
   icon: {
-    style: {
+    style: registerStyle({
       color:
         props.interactivityState.type === InteractivityType.DISABLED
           ? disabledPaletteColor.normal.onColor
           : '#ffffff',
-    },
+    }),
   },
 });
 
@@ -209,20 +100,20 @@ const getIconButtonProps: ButtonSubPropsGetter = (
   props: ButtonProps,
 ): ButtonSubProps => ({
   container: {
-    style: {
+    style: registerStyle({
       backgroundColor: getOverlayColorByInteractivity({
         color: '#c70ad0',
         type: props.interactivityState.type,
       }),
-    },
+    }),
   },
   icon: {
-    style: {
+    style: registerStyle({
       color:
           props.interactivityState.type === InteractivityType.DISABLED
             ? disabledPaletteColor.normal.onColor
             : '#c70ad0',
-    },
+    }),
   },
 });
 
@@ -231,7 +122,7 @@ const getOutlinedButtonProps: ButtonSubPropsGetter = (
 ): ButtonSubProps => {
   const subProps: ButtonSubProps = {
     container: {
-      style: {
+      style: registerStyle({
         backgroundColor: getOverlayColorByInteractivity({
           color: '#c70ad0',
           type: props.interactivityState.type,
@@ -240,15 +131,15 @@ const getOutlinedButtonProps: ButtonSubPropsGetter = (
           props.interactivityState.type === InteractivityType.DISABLED
             ? disabledPaletteColor.normal.onColor
             : '#c70ad0',
-      },
+      }),
     },
     text: {
-      style: {
+      style: registerStyle({
         color:
           props.interactivityState.type === InteractivityType.DISABLED
             ? disabledPaletteColor.normal.onColor
             : '#c70ad0',
-      },
+      }),
     },
   };
 
@@ -264,7 +155,7 @@ const getXFabButtonProps: ButtonSubPropsGetter = (
 ): ButtonSubProps => {
   const subProps: ButtonSubProps = {
     container: {
-      style: {
+      style: registerStyle({
         backgroundColor:
         props.interactivityState.type === InteractivityType.DISABLED
           ? disabledPaletteColor.normal.color
@@ -272,15 +163,15 @@ const getXFabButtonProps: ButtonSubPropsGetter = (
             color: '#c70ad0',
             type: props.interactivityState.type,
           }),
-      },
+      }),
     },
     text: {
-      style: {
+      style: registerStyle({
         color:
           props.interactivityState.type === InteractivityType.DISABLED
             ? disabledPaletteColor.normal.onColor
             : '#ffffff',
-      },
+      }),
     },
   };
   return {
@@ -6448,4 +6339,3 @@ export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
     </RowView>
   </ScrollView>
 );
-*/
