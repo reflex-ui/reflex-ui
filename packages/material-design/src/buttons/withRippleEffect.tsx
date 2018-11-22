@@ -3,7 +3,6 @@ import {
   InteractivityStateProps,
   InteractivityType,
   ReflexSubcomponent,
-  Themed,
 } from '@reflex-ui/core';
 import delay from 'delay';
 import * as React from 'react';
@@ -171,15 +170,6 @@ const createComponentRippleStyles: ComponentRippleStylesCreator = ({
     style,
   });
 };
-/*
-export type WithRippleEffect = (
-  WrappedComponent: React.ComponentType<
-    ViewProps & InteractivityProps
-  >,
-) => React.ComponentType<
-  ViewProps & InteractivityProps & Themed
->;
-*/
 
 type RippleColorGetter<P> = (props: P) => string;
 
@@ -187,7 +177,7 @@ interface RippleEffectSettings<P> {
   readonly getRippleColor: RippleColorGetter<P>;
 }
 
-export const withRippleEffect = <S extends InteractivityStateProps & Themed>(
+export const withRippleEffect = <S extends InteractivityStateProps>(
   settings: RippleEffectSettings<S>,
 ) => <P extends ReflexSubcomponent<S> & ViewProps>(
   WrappedComponent: React.ComponentType<P>,
