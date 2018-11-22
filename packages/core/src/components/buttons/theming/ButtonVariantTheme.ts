@@ -1,6 +1,6 @@
 import {
-  InteractivityStateTheme,
-  OptionalInteractivityStateTheme,
+  InteractiveSubTheme,
+  OptionalInteractiveSubTheme,
   OptionalSizedSubcomponentTheme,
   SizedSubcomponentTheme,
 } from '../../../theming';
@@ -16,64 +16,64 @@ import { ButtonSubName } from '../ButtonSubName';
 
 export interface ButtonVariantTheme {
   readonly [ButtonSubName.CONTAINER]: SizedSubcomponentTheme<
-    InteractivityStateTheme<ViewTheme<ButtonProps>>
+    InteractiveSubTheme<ViewTheme<ButtonProps>>
   >;
   readonly [ButtonSubName.ICON]: SizedSubcomponentTheme<
-    InteractivityStateTheme<TextTheme<ButtonProps>>
+    InteractiveSubTheme<TextTheme<ButtonProps>>
   >;
   readonly [ButtonSubName.ICON_CONTAINER]: SizedSubcomponentTheme<
-    InteractivityStateTheme<ViewTheme<ButtonProps>>
+    InteractiveSubTheme<ViewTheme<ButtonProps>>
   >;
   readonly [ButtonSubName.LEADING_ICON]: SizedSubcomponentTheme<
-    InteractivityStateTheme<TextTheme<ButtonProps>>
+    InteractiveSubTheme<TextTheme<ButtonProps>>
   >;
   readonly [ButtonSubName.LEADING_ICON_CONTAINER]: SizedSubcomponentTheme<
-    InteractivityStateTheme<ViewTheme<ButtonProps>>
+    InteractiveSubTheme<ViewTheme<ButtonProps>>
   >;
   readonly subComponents: ButtonSubComponents;
   readonly [ButtonSubName.TEXT]: SizedSubcomponentTheme<
-    InteractivityStateTheme<TextTheme<ButtonProps>>
+    InteractiveSubTheme<TextTheme<ButtonProps>>
   >;
   readonly [ButtonSubName.TOUCHABLE]: SizedSubcomponentTheme<
-    InteractivityStateTheme<TouchableTheme<ButtonProps>>
+    InteractiveSubTheme<TouchableTheme<ButtonProps>>
   >;
   readonly [ButtonSubName.TRAILING_ICON]: SizedSubcomponentTheme<
-    InteractivityStateTheme<TextTheme<ButtonProps>>
+    InteractiveSubTheme<TextTheme<ButtonProps>>
   >;
   readonly [ButtonSubName.TRAILING_ICON_CONTAINER]: SizedSubcomponentTheme<
-    InteractivityStateTheme<ViewTheme<ButtonProps>>
+    InteractiveSubTheme<ViewTheme<ButtonProps>>
   >;
 }
 
 export interface OptionalButtonVariantTheme {
   readonly [ButtonSubName.CONTAINER]?: OptionalSizedSubcomponentTheme<
-    OptionalInteractivityStateTheme<OptionalViewTheme<ButtonProps>>
+    OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
   >;
   readonly [ButtonSubName.ICON]?: OptionalSizedSubcomponentTheme<
-    OptionalInteractivityStateTheme<OptionalTextTheme<ButtonProps>>
+    OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
   >;
   readonly [ButtonSubName.ICON_CONTAINER]?: OptionalSizedSubcomponentTheme<
-    OptionalInteractivityStateTheme<OptionalViewTheme<ButtonProps>>
+    OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
   >;
   readonly [ButtonSubName.LEADING_ICON]?: OptionalSizedSubcomponentTheme<
-    OptionalInteractivityStateTheme<OptionalTextTheme<ButtonProps>>
+    OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
   >;
   // tslint:disable-next-line:max-line-length
   readonly [ButtonSubName.LEADING_ICON_CONTAINER]?: OptionalSizedSubcomponentTheme<
-    OptionalInteractivityStateTheme<OptionalViewTheme<ButtonProps>>
+    OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
   >;
   readonly subComponents?: OptionalButtonSubComponents;
   readonly [ButtonSubName.TEXT]?: OptionalSizedSubcomponentTheme<
-    OptionalInteractivityStateTheme<OptionalTextTheme<ButtonProps>>
+    OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
   >;
   readonly [ButtonSubName.TOUCHABLE]?: OptionalSizedSubcomponentTheme<
-    OptionalInteractivityStateTheme<TouchableTheme<ButtonProps>>
+    OptionalInteractiveSubTheme<TouchableTheme<ButtonProps>>
   >;
   readonly [ButtonSubName.TRAILING_ICON]?: OptionalSizedSubcomponentTheme<
-    OptionalInteractivityStateTheme<OptionalTextTheme<ButtonProps>>
+    OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
   >;
   // tslint:disable-next-line:max-line-length
   readonly [ButtonSubName.TRAILING_ICON_CONTAINER]?: OptionalSizedSubcomponentTheme<
-    OptionalInteractivityStateTheme<OptionalViewTheme<ButtonProps>>
+    OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
   >;
 }

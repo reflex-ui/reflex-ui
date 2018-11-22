@@ -1,6 +1,6 @@
 import {
   ButtonProps,
-  OptionalInteractivityStateTheme,
+  OptionalInteractiveSubTheme,
   OptionalSizedSubcomponentTheme,
   OptionalViewTheme,
   ViewPropsGetter,
@@ -24,7 +24,7 @@ export const getOutlinedButtonContainerStyle: ViewStyleGetter<
 });
 
 export const outlinedStaticButtonContainerTheme: OptionalSizedSubcomponentTheme<
-  OptionalInteractivityStateTheme<OptionalViewTheme<ButtonProps>>
+  OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
 > = {
   allSizes: {
     allStates: {

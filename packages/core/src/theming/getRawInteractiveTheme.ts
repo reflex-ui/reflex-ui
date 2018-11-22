@@ -1,13 +1,11 @@
 import { getRawPrimitiveTheme } from './getRawPrimitiveTheme';
-import { InteractivityStateTheme } from './InteractivityStateTheme';
+import { InteractiveSubTheme } from './InteractiveSubTheme';
 import { PrimitiveTheme } from './PrimitiveTheme';
 
 export const getRawInteractiveTheme = <
   ComponentProps,
   PrimitiveProps
->(): InteractivityStateTheme<
-  PrimitiveTheme<ComponentProps, PrimitiveProps>
-> => ({
+>(): InteractiveSubTheme<PrimitiveTheme<ComponentProps, PrimitiveProps>> => ({
   allStates: getRawPrimitiveTheme<PrimitiveProps>(),
   disabled: getRawPrimitiveTheme<PrimitiveProps>(),
   enabled: getRawPrimitiveTheme<PrimitiveProps>(),

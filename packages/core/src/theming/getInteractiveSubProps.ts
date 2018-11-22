@@ -4,14 +4,14 @@ import { registerStyle } from '../components/registerStyle';
 import { StyledPrimitiveProps } from '../components/StyledPrimitiveProps';
 import { InteractivityStateProps, InteractivityType } from '../interactivity';
 import { SizeProps } from '../SizeProps';
-import { InteractivityStateTheme } from './InteractivityStateTheme';
+import { InteractiveSubTheme } from './InteractiveSubTheme';
 import { PrimitiveTheme } from './PrimitiveTheme';
 import { SizedSubcomponentTheme } from './SizedSubcomponentTheme';
 
 export interface InteractiveSubPropsGetterData<ComponentProps, PrimitiveProps> {
   componentProps: ComponentProps;
   themes: SizedSubcomponentTheme<
-    InteractivityStateTheme<PrimitiveTheme<ComponentProps, PrimitiveProps>>
+    InteractiveSubTheme<PrimitiveTheme<ComponentProps, PrimitiveProps>>
   >[];
   userProps?: PrimitiveProps;
 }

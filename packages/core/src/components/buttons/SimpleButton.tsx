@@ -9,7 +9,7 @@ import {
 
 import {
   getInteractiveSubProps,
-  InteractivityStateTheme,
+  InteractiveSubTheme,
   PrimitiveTheme,
   SizedSubcomponentTheme,
 } from '../../theming';
@@ -196,10 +196,10 @@ export const getButtonSubProps = <PrimitiveProps, PrimitiveStyle>(
     componentProps: data.props,
     themes: [
       buttonTheme.allVariants[data.subName] as SizedSubcomponentTheme<
-        InteractivityStateTheme<PrimitiveTheme<ButtonProps, PrimitiveProps>>
+        InteractiveSubTheme<PrimitiveTheme<ButtonProps, PrimitiveProps>>
       >,
       buttonTheme[data.props.variant][data.subName] as SizedSubcomponentTheme<
-        InteractivityStateTheme<PrimitiveTheme<ButtonProps, PrimitiveProps>>
+        InteractiveSubTheme<PrimitiveTheme<ButtonProps, PrimitiveProps>>
       >,
     ],
     userProps: data.userProps,

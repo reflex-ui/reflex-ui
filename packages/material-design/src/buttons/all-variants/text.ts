@@ -3,7 +3,7 @@ import {
   FontWeight,
   getFontWeight,
   isWeb,
-  OptionalInteractivityStateTheme,
+  OptionalInteractiveSubTheme,
   OptionalSizedSubcomponentTheme,
   OptionalTextTheme,
 } from '@reflex-ui/core';
@@ -12,7 +12,7 @@ import { Platform } from 'react-native';
 import { getFontFamily } from '../../typography';
 
 export const allVariantsStaticButtonTextTheme: OptionalSizedSubcomponentTheme<
-  OptionalInteractivityStateTheme<OptionalTextTheme<ButtonProps>>
+  OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
 > = {
   allSizes: {
     allStates: {

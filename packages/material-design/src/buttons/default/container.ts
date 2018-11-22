@@ -1,6 +1,6 @@
 import {
   ButtonProps,
-  OptionalInteractivityStateTheme,
+  OptionalInteractiveSubTheme,
   OptionalSizedSubcomponentTheme,
   OptionalViewTheme,
   ViewPropsGetter,
@@ -28,7 +28,7 @@ export const getDefaultButtonContainerStyle: ViewStyleGetter<ButtonProps> = ({
 });
 
 export const defaultStaticButtonContainerTheme: OptionalSizedSubcomponentTheme<
-  OptionalInteractivityStateTheme<OptionalViewTheme<ButtonProps>>
+  OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
 > = {
   allSizes: {
     allStates: {

@@ -3,7 +3,7 @@ import {
   getThemedColor,
   InteractivityType,
   isWeb,
-  OptionalInteractivityStateTheme,
+  OptionalInteractiveSubTheme,
   OptionalSizedSubcomponentTheme,
   OptionalTextTheme,
   TextPropsGetter,
@@ -36,7 +36,7 @@ export const getDefaultButtonTextStyle: TextStyleGetter<ButtonProps> = (
 });
 
 export const defaultStaticButtonTextTheme: OptionalSizedSubcomponentTheme<
-  OptionalInteractivityStateTheme<OptionalTextTheme<ButtonProps>>
+  OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
 > = {
   allSizes: {
     allStates: {

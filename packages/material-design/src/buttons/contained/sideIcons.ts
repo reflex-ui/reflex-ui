@@ -1,6 +1,6 @@
 import {
   ButtonProps,
-  OptionalInteractivityStateTheme,
+  OptionalInteractiveSubTheme,
   OptionalSizedSubcomponentTheme,
   OptionalTextTheme,
   TextPropsGetter,
@@ -18,7 +18,7 @@ export const getContainedButtonIconProps: TextPropsGetter<
 
 // tslint:disable-next-line:max-line-length
 export const containedStaticButtonLeadingIconTheme: OptionalSizedSubcomponentTheme<
-  OptionalInteractivityStateTheme<OptionalTextTheme<ButtonProps>>
+  OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
 > = {
   allSizes: {
     allStates: {
@@ -29,7 +29,7 @@ export const containedStaticButtonLeadingIconTheme: OptionalSizedSubcomponentThe
 
 // tslint:disable-next-line:max-line-length
 export const containedStaticButtonTrailingIconTheme: OptionalSizedSubcomponentTheme<
-  OptionalInteractivityStateTheme<OptionalTextTheme<ButtonProps>>
+  OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
 > = {
   ...containedStaticButtonLeadingIconTheme,
 };

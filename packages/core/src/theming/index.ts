@@ -7,7 +7,7 @@ export * from './getRawPrimitiveTheme';
 export * from './getRawSizedInteractiveTheme';
 export * from './getRawSizedTheme';
 export * from './getSubProps';
-export * from './InteractivityStateTheme';
+export * from './InteractiveSubTheme';
 export * from './palette';
 export * from './PrimitiveTheme';
 export * from './rawComponentsTheme';

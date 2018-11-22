@@ -1,4 +1,4 @@
-export interface InteractivityStateTheme<T> {
+export interface InteractiveSubTheme<T> {
   readonly allStates: T;
   readonly disabled: T;
   readonly enabled: T;
@@ -7,7 +7,7 @@ export interface InteractivityStateTheme<T> {
   readonly pressed: T;
 }
 
-export interface OptionalInteractivityStateTheme<T> {
+export interface OptionalInteractiveSubTheme<T> {
   readonly allStates?: T;
   readonly disabled?: T;
   readonly enabled?: T;

@@ -1,12 +1,12 @@
 import {
   ButtonProps,
-  OptionalInteractivityStateTheme,
+  OptionalInteractiveSubTheme,
   OptionalSizedSubcomponentTheme,
   OptionalTextTheme,
 } from '@reflex-ui/core';
 
 export const xfabStaticButtonLeadingIconTheme: OptionalSizedSubcomponentTheme<
-  OptionalInteractivityStateTheme<OptionalTextTheme<ButtonProps>>
+  OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
 > = {
   large: {
     allStates: {
@@ -56,7 +56,7 @@ export const xfabStaticButtonLeadingIconTheme: OptionalSizedSubcomponentTheme<
 };
 
 export const xfabStaticButtonTrailingIconTheme: OptionalSizedSubcomponentTheme<
-  OptionalInteractivityStateTheme<OptionalTextTheme<ButtonProps>>
+  OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
 > = {
   ...xfabStaticButtonLeadingIconTheme,
 };

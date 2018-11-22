@@ -1,7 +1,7 @@
 import {
   ButtonProps,
   getSizedMarginStyle,
-  OptionalInteractivityStateTheme,
+  OptionalInteractiveSubTheme,
   OptionalSizedSubcomponentTheme,
   OptionalViewTheme,
   ViewPropsGetter,
@@ -27,7 +27,7 @@ export const getAllVariantsAllSizesAllStatesButtonContainerStyle: ViewStyleGette
 
 // tslint:disable-next-line:max-line-length
 export const allVariantsStaticButtonContainerTheme: OptionalSizedSubcomponentTheme<
-  OptionalInteractivityStateTheme<OptionalViewTheme<ButtonProps>>
+  OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
 > = {
   allSizes: {
     allStates: {
