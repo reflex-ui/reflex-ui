@@ -1,3 +1,3 @@
 export interface PrimitiveStyleObj<PrimitiveStyle> {
-  style: PrimitiveStyle;
+  readonly style: PrimitiveStyle;
 }

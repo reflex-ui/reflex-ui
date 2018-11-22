@@ -1,9 +1,9 @@
 import { Size } from './Size';
 
 export interface SizeProps {
-  size: Size;
+  readonly size: Size;
 }
 
 export interface OptionalSizeProps {
-  size?: Size;
+  readonly size?: Size;
 }

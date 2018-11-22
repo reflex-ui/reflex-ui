@@ -11,11 +11,11 @@ import { InteractivityState } from './InteractivityState';
 import { InteractivityType } from './InteractivityType';
 
 interface State {
-  interactivityEvent?: InteractivityEvent;
-  interactivityState: InteractivityState;
-  isFocusing: boolean;
-  isHovering: boolean;
-  isPressing: boolean;
+  readonly interactivityEvent?: InteractivityEvent;
+  readonly interactivityState: InteractivityState;
+  readonly isFocusing: boolean;
+  readonly isHovering: boolean;
+  readonly isPressing: boolean;
 }
 
 export const withInteractivityState = <P extends OptionalInteractivityProps>(

@@ -14,12 +14,12 @@ export interface ButtonProps
     MarginProps,
     SizeProps,
     Themed {
-  children?: React.ReactNode;
-  fullWidth?: boolean;
-  getSubProps?: ButtonSubPropsGetter;
-  leadingIcon?: JSX.Element;
-  trailingIcon?: JSX.Element;
-  variant: ButtonVariant;
+  readonly children?: React.ReactNode;
+  readonly fullWidth?: boolean;
+  readonly getSubProps?: ButtonSubPropsGetter;
+  readonly leadingIcon?: JSX.Element;
+  readonly trailingIcon?: JSX.Element;
+  readonly variant: ButtonVariant;
 }
 
 export interface OptionalButtonProps
@@ -27,10 +27,10 @@ export interface OptionalButtonProps
     MarginProps,
     OptionalSizeProps,
     OptionalThemed {
-  children?: React.ReactNode;
-  fullWidth?: boolean;
-  getSubProps?: ButtonSubPropsGetter;
-  leadingIcon?: JSX.Element;
-  trailingIcon?: JSX.Element;
-  variant?: ButtonVariant;
+  readonly children?: React.ReactNode;
+  readonly fullWidth?: boolean;
+  readonly getSubProps?: ButtonSubPropsGetter;
+  readonly leadingIcon?: JSX.Element;
+  readonly trailingIcon?: JSX.Element;
+  readonly variant?: ButtonVariant;
 }

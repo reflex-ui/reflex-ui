@@ -4,9 +4,9 @@ import { PaletteTheme } from './PaletteTheme';
 
 export type ThemedColorGetter = (
   props: {
-    colorTheme?: ColorTheme;
-    interactivityType?: InteractivityType;
-    onColor?: boolean;
-    paletteTheme: PaletteTheme;
+    readonly colorTheme?: ColorTheme;
+    readonly interactivityType?: InteractivityType;
+    readonly onColor?: boolean;
+    readonly paletteTheme: PaletteTheme;
   },
 ) => string;

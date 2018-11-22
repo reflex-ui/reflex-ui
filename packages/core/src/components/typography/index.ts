@@ -1,4 +1,3 @@
-export * from './createRegisteredTextStyle';
 export * from './DefaultTextSubcomponent';
 export * from './FontWeight';
 export * from './FontWeightValues';

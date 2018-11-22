@@ -1,11 +1,11 @@
 import { Size } from '../Size';
 
 export interface MarginProps {
-  margin?: Size;
-  marginBottom?: Size;
-  marginEnd?: Size;
-  marginHorizontal?: Size;
-  marginStart?: Size;
-  marginTop?: Size;
-  marginVertical?: Size;
+  readonly margin?: Size;
+  readonly marginBottom?: Size;
+  readonly marginEnd?: Size;
+  readonly marginHorizontal?: Size;
+  readonly marginStart?: Size;
+  readonly marginTop?: Size;
+  readonly marginVertical?: Size;
 }

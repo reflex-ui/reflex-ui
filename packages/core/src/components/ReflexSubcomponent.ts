@@ -1,3 +1,3 @@
 export interface ReflexSubcomponent<P> {
-  componentProps: P;
+  readonly componentProps: P;
 }

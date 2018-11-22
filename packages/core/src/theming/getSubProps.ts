@@ -7,11 +7,11 @@ import { PrimitiveTheme } from './PrimitiveTheme';
 import { SizedSubcomponentTheme } from './SizedSubcomponentTheme';
 
 export interface SubPropsGetterData<ComponentProps, PrimitiveProps> {
-  componentProps: ComponentProps;
-  themes: SizedSubcomponentTheme<
+  readonly componentProps: ComponentProps;
+  readonly themes: SizedSubcomponentTheme<
     PrimitiveTheme<ComponentProps, PrimitiveProps>
   >[];
-  userProps?: PrimitiveProps;
+  readonly userProps?: PrimitiveProps;
 }
 
 export const getSubProps = <
@@ -21,21 +21,16 @@ export const getSubProps = <
 >(
   data: SubPropsGetterData<ComponentProps, PrimitiveProps>,
 ): PrimitiveProps => {
-  const { componentProps, themes, userProps } = data;
+  const { componentProps, themes } = data;
+  // @ts-ignore Type '{}' is not assignable to type 'PrimitiveProps'. [2322]
+  const userProps: PrimitiveProps = data.userProps ? data.userProps : {};
   const { size } = componentProps;
 
-  // @ts-ignore Type '{}' is not assignable to type 'PrimitiveProps'.
-  let otherUserProps: PrimitiveProps = {};
-  let userStyle;
-  if (userProps) {
-    // @ts-ignore Spread types may only be created from object types.
-    otherUserProps = { ...userProps };
-    delete otherUserProps.style;
-    if (userProps.style) userStyle = userProps.style;
-  }
+  // @ts-ignore Rest types may only be created from object types. [2700]
+  const { style: userStyle, ...otherUserProps } = userProps;
 
-  // @ts-ignore [ts] Type '{}' is not assignable to type 'PrimitiveProps'.
-  const subProps: PrimitiveProps = {};
+  // @ts-ignore Type '{}' is not assignable to type 'PrimitiveProps'.
+  let subProps: PrimitiveProps = {};
   themes.forEach(theme =>
     merge(
       subProps,
@@ -55,7 +50,12 @@ export const getSubProps = <
     const subStyles = [];
     if (subStyle) subStyles.push(registerStyle<PrimitiveStyle>(subStyle));
     if (userStyle) subStyles.push(userStyle);
-    subProps.style = subStyles;
+
+    subProps = {
+      // @ts-ignore Spread types may only be created from object types. [2698]
+      ...subProps,
+      style: subStyles,
+    };
   }
 
   return subProps;

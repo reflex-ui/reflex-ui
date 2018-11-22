@@ -1,9 +1,9 @@
 import { IconWrapperProps, OptionalIconWrapperProps } from './IconWrapperProps';
 
 export interface TextIconWrapperProps extends IconWrapperProps {
-  name: string;
+  readonly name: string;
 }
 
 export interface OptionalTextIconWrapperProps extends OptionalIconWrapperProps {
-  name?: string;
+  readonly name?: string;
 }

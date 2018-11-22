@@ -105,13 +105,15 @@ const transformStringChildrenIntoComponent = (
 };
 
 export interface HandleButtonIconData {
-  Container: React.ComponentType<ReflexSubcomponent<ButtonProps> & ViewProps>;
-  containerName: ButtonSubName;
-  icon: React.ReactElement<OptionalIconWrapperProps>;
-  iconName: ButtonSubName;
-  props: ButtonProps;
-  userContainerProps?: ViewProps;
-  userIconProps?: TextProps;
+  readonly Container: React.ComponentType<
+    ReflexSubcomponent<ButtonProps> & ViewProps
+  >;
+  readonly containerName: ButtonSubName;
+  readonly icon: React.ReactElement<OptionalIconWrapperProps>;
+  readonly iconName: ButtonSubName;
+  readonly props: ButtonProps;
+  readonly userContainerProps?: ViewProps;
+  readonly userIconProps?: TextProps;
 }
 
 const handleButtonIcon = (
@@ -183,9 +185,9 @@ const handleTrailingIcon = (
 };
 
 export interface ButtonSubPropsGetterData<PrimitiveProps> {
-  props: ButtonProps;
-  subName: ButtonSubName;
-  userProps?: PrimitiveProps;
+  readonly props: ButtonProps;
+  readonly subName: ButtonSubName;
+  readonly userProps?: PrimitiveProps;
 }
 
 export const getButtonSubProps = <PrimitiveProps, PrimitiveStyle>(

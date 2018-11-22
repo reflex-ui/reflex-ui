@@ -6,8 +6,8 @@ export const cloneElement = ({
   element,
   props = {},
 }: {
-  element: React.ReactElement<{}>;
-  props: {};
+  readonly element: React.ReactElement<{}>;
+  readonly props: {};
 }) => {
   if (!element.props) element.props = {};
   // @ts-ignore Type '{}' has no property 'style' and no string index signature.
