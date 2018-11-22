@@ -1,2 +1,2 @@
-export * from './IconTheme';
-export * from './rawIconTheme';
+export * from './IconWrapperTheme';
+export * from './rawIconWrapperTheme';

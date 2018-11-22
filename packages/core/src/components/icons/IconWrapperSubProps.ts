@@ -1,7 +1,7 @@
 import { TextProps, ViewProps } from 'react-native';
-import { IconSubName } from './IconSubName';
+import { IconWrapperSubName } from './IconWrapperSubName';
 
 export interface IconWrapperSubProps {
-  readonly [IconSubName.CONTAINER]?: ViewProps;
-  readonly [IconSubName.ICON]?: TextProps;
+  readonly [IconWrapperSubName.CONTAINER]?: ViewProps;
+  readonly [IconWrapperSubName.ICON]?: TextProps;
 }

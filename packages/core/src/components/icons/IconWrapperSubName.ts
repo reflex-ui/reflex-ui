@@ -1,4 +1,4 @@
-export enum IconSubName {
+export enum IconWrapperSubName {
   CONTAINER = 'container',
   ICON = 'icon',
 }

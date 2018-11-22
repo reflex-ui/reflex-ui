@@ -1,13 +1,13 @@
 import {
   getSizedMarginStyle,
   getThemedColor,
-  IconTheme,
+  IconWrapperTheme,
   IconWrapperProps,
-  OptionalIconTheme,
+  OptionalIconWrapperTheme,
   OptionalPrimitiveTheme,
   OptionalSizedSubcomponentTheme,
   OptionalViewTheme,
-  rawIconTheme,
+  rawIconWrapperTheme,
   Size,
   SizedMarginStyle,
   TextIconProps,
@@ -132,13 +132,13 @@ export const iconIconTheme: OptionalSizedSubcomponentTheme<
   },
 };
 
-export const optionalIconTheme: OptionalIconTheme = {
+export const optionalIconTheme: OptionalIconWrapperTheme = {
   container: iconContainerTheme,
   icon: iconIconTheme,
 };
 
-export const iconTheme: IconTheme = merge<{}, IconTheme, OptionalIconTheme>(
+export const iconTheme: IconWrapperTheme = merge<
   {},
-  rawIconTheme,
-  optionalIconTheme,
-);
+  IconWrapperTheme,
+  OptionalIconWrapperTheme
+>({}, rawIconWrapperTheme, optionalIconTheme);

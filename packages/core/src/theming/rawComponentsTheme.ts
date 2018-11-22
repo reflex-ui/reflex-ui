@@ -1,5 +1,6 @@
 import { rawButtonTheme } from '../components/buttons/theming/rawButtonTheme';
-import { rawIconTheme } from '../components/icons/theming/rawIconTheme';
+// tslint:disable-next-line:max-line-length
+import { rawIconWrapperTheme } from '../components/icons/theming/rawIconWrapperTheme';
 // prettier-ignore
 import {
   rawTypographyTheme,
@@ -8,6 +9,6 @@ import { ComponentsTheme } from './ComponentsTheme';
 
 export const rawComponentsTheme: ComponentsTheme = {
   button: rawButtonTheme,
-  icon: rawIconTheme,
+  icon: rawIconWrapperTheme,
   typography: rawTypographyTheme,
 };

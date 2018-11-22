@@ -3,13 +3,13 @@ import { ViewProps } from 'react-native';
 import { ReflexSubcomponent } from '../ReflexSubcomponent';
 import { IconWrapperProps } from './IconWrapperProps';
 
-export interface IconSubComponents {
+export interface IconWrapperSubcomponents {
   readonly Container: React.ComponentType<
     ReflexSubcomponent<IconWrapperProps> & ViewProps
   >;
 }
 
-export interface OptionalIconSubComponents {
+export interface OptionalIconWrapperSubcomponents {
   readonly Container?: React.ComponentType<
     ReflexSubcomponent<IconWrapperProps> & ViewProps
   >;
