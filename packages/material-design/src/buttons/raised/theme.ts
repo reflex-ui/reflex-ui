@@ -1,7 +1,7 @@
 import {
   ButtonProps,
   ButtonSubName,
-  DefaultButtonContainer,
+  DefaultViewSubcomponent,
   InteractivityType,
   OptionalButtonVariantTheme,
   ViewPropsGetter,
@@ -42,7 +42,7 @@ export const partialRaisedButtonTheme: OptionalButtonVariantTheme = {
   subComponents: {
     [ButtonSubName.CONTAINER]: withRippleEffect({
       getRippleColor: getContainedButtonRippleColor,
-    })(withRaiseEffect(ElevationDegree.LOW)(DefaultButtonContainer)),
+    })(withRaiseEffect(ElevationDegree.LOW)(DefaultViewSubcomponent)),
   },
 };
 

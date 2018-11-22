@@ -1,6 +1,6 @@
 import {
   ButtonSubName,
-  DefaultButtonContainer,
+  DefaultViewSubcomponent,
   OptionalButtonVariantTheme,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
@@ -22,7 +22,7 @@ export const outlinedShapedAnimatedButtonTheme: OptionalButtonVariantTheme = {
   subComponents: {
     [ButtonSubName.CONTAINER]: withRippleEffect({
       getRippleColor: getDefaultButtonRippleColor,
-    })(DefaultButtonContainer),
+    })(DefaultViewSubcomponent),
   },
 };
 

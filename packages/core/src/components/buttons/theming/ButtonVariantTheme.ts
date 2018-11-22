@@ -8,11 +8,11 @@ import { TouchableTheme } from '../../touchable';
 import { OptionalTextTheme, TextTheme } from '../../typography';
 import { OptionalViewTheme, ViewTheme } from '../../views';
 import { ButtonProps } from '../ButtonProps';
-import { ButtonSubName } from '../ButtonSubName';
 import {
   ButtonSubComponents,
   OptionalButtonSubComponents,
-} from './ButtonSubComponents';
+} from '../ButtonSubComponents';
+import { ButtonSubName } from '../ButtonSubName';
 
 export interface ButtonVariantTheme {
   readonly [ButtonSubName.CONTAINER]: SizedSubcomponentTheme<

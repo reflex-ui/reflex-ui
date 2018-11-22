@@ -3,11 +3,11 @@ import {
   TouchableWithoutFeedback,
   TouchableWithoutFeedbackProps,
 } from 'react-native';
-import { ReflexSubcomponent } from '../../ReflexSubcomponent';
-import { ButtonProps } from '../ButtonProps';
+import { ReflexSubcomponent } from '../ReflexSubcomponent';
 
-export const DefaultButtonTouchable: React.ComponentType<
-  ReflexSubcomponent<ButtonProps> & TouchableWithoutFeedbackProps
+export const DefaultTouchableSubcomponent: React.ComponentType<
+  // tslint:disable-next-line:no-any
+  ReflexSubcomponent<any> & TouchableWithoutFeedbackProps
 > = ({ children, componentProps, ...otherProps }) => (
   <TouchableWithoutFeedback {...otherProps}>
     {children}

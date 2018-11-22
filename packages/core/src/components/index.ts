@@ -4,5 +4,6 @@ export * from './ReflexSubcomponent';
 export * from './registerStyle';
 export * from './Styled';
 export * from './SubcomponentPropsGetter';
+export * from './touchable';
 export * from './typography';
 export * from './views';

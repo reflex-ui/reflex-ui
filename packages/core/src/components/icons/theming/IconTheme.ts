@@ -5,13 +5,13 @@ import {
   SizedSubcomponentTheme,
 } from '../../../theming';
 import { OptionalViewTheme, ViewTheme } from '../../views';
-import { IconSubName } from '../IconSubName';
-import { IconWrapperProps } from '../IconWrapperProps';
-import { TextIconProps } from '../TextIconProps';
 import {
   IconSubComponents,
   OptionalIconSubComponents,
-} from './IconSubComponents';
+} from '../IconSubComponents';
+import { IconSubName } from '../IconSubName';
+import { IconWrapperProps } from '../IconWrapperProps';
+import { TextIconProps } from '../TextIconProps';
 
 export interface IconTheme {
   readonly [IconSubName.CONTAINER]: SizedSubcomponentTheme<

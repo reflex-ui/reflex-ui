@@ -5,6 +5,7 @@ import {
   PaletteThemeContext,
 } from '@reflex-ui/core';
 import {
+  // createComponentsTheme,
   createPaletteTheme,
   createStaticComponentsTheme,
   purpleTealPaletteTheme,
@@ -12,6 +13,7 @@ import {
 import * as React from 'react';
 
 const MaterialDesignTheme: ComponentsTheme = createStaticComponentsTheme();
+// const MaterialDesignTheme: ComponentsTheme = createComponentsTheme();
 const PurpleTealPaletteTheme: PaletteTheme = createPaletteTheme(
   purpleTealPaletteTheme,
 );

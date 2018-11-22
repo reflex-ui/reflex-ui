@@ -6,25 +6,23 @@ import {
 
 // tslint:disable-next-line:max-line-length
 import { getRawSizedInteractiveTheme } from '../../../theming/getRawSizedInteractiveTheme';
+// tslint:disable-next-line:max-line-length
+import { DefaultTouchableSubcomponent } from '../../touchable/DefaultTouchableSubcomponent';
+// tslint:disable-next-line:max-line-length
+import { DefaultTextSubcomponent } from '../../typography/DefaultTextSubcomponent';
+import { DefaultViewSubcomponent } from '../../views/DefaultViewSubcomponent';
 import { ButtonProps } from '../ButtonProps';
+import { ButtonSubComponents } from '../ButtonSubComponents';
 import { ButtonSubName } from '../ButtonSubName';
-import {
-  ButtonSubComponents,
-  ButtonTheme,
-  ButtonVariantTheme,
-  DefaultButtonContainer,
-  DefaultButtonIconContainer,
-  DefaultButtonText,
-  DefaultButtonTouchable,
-} from './';
+import { ButtonTheme, ButtonVariantTheme } from './';
 
 export const rawButtonSubComponents: ButtonSubComponents = {
-  container: DefaultButtonContainer,
-  iconContainer: DefaultButtonIconContainer,
-  leadingIconContainer: DefaultButtonIconContainer,
-  text: DefaultButtonText,
-  touchable: DefaultButtonTouchable,
-  trailingIconContainer: DefaultButtonIconContainer,
+  container: DefaultViewSubcomponent,
+  iconContainer: DefaultViewSubcomponent,
+  leadingIconContainer: DefaultViewSubcomponent,
+  text: DefaultTextSubcomponent,
+  touchable: DefaultTouchableSubcomponent,
+  trailingIconContainer: DefaultViewSubcomponent,
 };
 
 export const rawButtonVariantTheme: ButtonVariantTheme = {

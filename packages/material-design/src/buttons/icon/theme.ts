@@ -1,5 +1,5 @@
 import {
-  DefaultButtonContainer,
+  DefaultViewSubcomponent,
   InteractivityType,
   OptionalButtonVariantTheme,
 } from '@reflex-ui/core';
@@ -30,7 +30,7 @@ const optionalIconButtonTheme: OptionalButtonVariantTheme = {
   subComponents: {
     container: withRippleEffect({
       getRippleColor: getDefaultButtonRippleColor,
-    })(DefaultButtonContainer),
+    })(DefaultViewSubcomponent),
   },
 };
 

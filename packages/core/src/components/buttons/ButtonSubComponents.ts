@@ -4,9 +4,9 @@ import {
   ViewProps,
 } from 'react-native';
 
-import { ReflexSubcomponent } from '../../ReflexSubcomponent';
-import { ButtonProps } from '../ButtonProps';
-import { ButtonSubName } from '../ButtonSubName';
+import { ReflexSubcomponent } from '../ReflexSubcomponent';
+import { ButtonProps } from './ButtonProps';
+import { ButtonSubName } from './ButtonSubName';
 
 export interface ButtonSubComponents {
   readonly [ButtonSubName.CONTAINER]: React.ComponentType<

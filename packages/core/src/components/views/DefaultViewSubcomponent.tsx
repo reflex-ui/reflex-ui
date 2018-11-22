@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { View, ViewProps } from 'react-native';
-import { ReflexSubcomponent } from '../../ReflexSubcomponent';
-import { ButtonProps } from '../ButtonProps';
+import { ReflexSubcomponent } from '../ReflexSubcomponent';
 
-export const DefaultButtonContainer: React.ComponentType<
-  ReflexSubcomponent<ButtonProps> & ViewProps
+export const DefaultViewSubcomponent: React.ComponentType<
+  // tslint:disable-next-line:no-any
+  ReflexSubcomponent<any> & ViewProps
 > = ({
   children,
   componentProps,
   /*
-   * This is used to pass framework's own stuff, users'custom stuff,
+   * This is used to pass lib provided props, users'custom props,
    * as well as to deal with a TouchableWithoutFeedback's issue:
    * https://github.com/facebook/react-native/issues/1352
    * It's still an issue. Ref:

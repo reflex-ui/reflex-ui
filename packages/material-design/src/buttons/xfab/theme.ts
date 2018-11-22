@@ -1,6 +1,6 @@
 import {
   ButtonSubName,
-  DefaultButtonContainer,
+  DefaultViewSubcomponent,
   InteractivityType,
   OptionalButtonVariantTheme,
 } from '@reflex-ui/core';
@@ -32,7 +32,7 @@ export const partialXFabButtonTheme: OptionalButtonVariantTheme = {
   subComponents: {
     [ButtonSubName.CONTAINER]: withRippleEffect({
       getRippleColor: getContainedButtonRippleColor,
-    })(withRaiseEffect(ElevationDegree.MID)(DefaultButtonContainer)),
+    })(withRaiseEffect(ElevationDegree.MID)(DefaultViewSubcomponent)),
   },
 };
 

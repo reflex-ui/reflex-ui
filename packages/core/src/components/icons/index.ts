@@ -1,4 +1,5 @@
 export * from './IconProps';
+export * from './IconSubComponents';
 export * from './IconSubName';
 export * from './IconWrapper';
 export * from './IconWrapperProps';
