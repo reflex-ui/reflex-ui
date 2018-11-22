@@ -190,36 +190,28 @@ export interface ButtonSubPropsGetterData<PrimitiveProps> {
 
 export const getButtonSubProps = <PrimitiveProps, PrimitiveStyle>(
   data: ButtonSubPropsGetterData<PrimitiveProps>,
-): PrimitiveProps =>
-  getInteractiveSubProps<ButtonProps, PrimitiveProps, PrimitiveStyle>({
+): PrimitiveProps => {
+  const buttonTheme = data.props.componentsTheme.button;
+  return getInteractiveSubProps<ButtonProps, PrimitiveProps, PrimitiveStyle>({
     componentProps: data.props,
     themes: [
-      // tslint:disable-next-line
-      data.props.componentsTheme.button.allVariants[
-        data.subName
-        // tslint:disable-next-line
-      ] as SizedSubcomponentTheme<
+      buttonTheme.allVariants[data.subName] as SizedSubcomponentTheme<
         InteractivityStateTheme<PrimitiveTheme<ButtonProps, PrimitiveProps>>
       >,
-      data.props.componentsTheme.button[data.props.variant][
-        data.subName
-        // tslint:disable-next-line
-      ] as SizedSubcomponentTheme<
+      buttonTheme[data.props.variant][data.subName] as SizedSubcomponentTheme<
         InteractivityStateTheme<PrimitiveTheme<ButtonProps, PrimitiveProps>>
       >,
     ],
     userProps: data.userProps,
   });
+};
 
 export const SimpleButton: React.SFC<ButtonProps> = (props: ButtonProps) => {
   const { children, variant } = props;
   const buttonTheme = props.componentsTheme.button;
   const userSubProps = props.getSubProps ? props.getSubProps(props) : {};
-  // prettier-ignore
-  const {
-    container: Container,
-    touchable: Touchable,
-  } = buttonTheme[variant].subComponents;
+  const { subComponents } = buttonTheme[variant];
+  const { container: Container, touchable: Touchable } = subComponents;
   const touchableProps = extractTouchableProps(props);
 
   const containerProps = getButtonSubProps<ViewProps, ViewStyle>({
