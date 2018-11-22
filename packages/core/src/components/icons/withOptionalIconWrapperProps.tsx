@@ -8,32 +8,25 @@ import {
 } from '../../theming';
 import { IconWrapperProps, OptionalIconWrapperProps } from './IconWrapperProps';
 
+// prettier-ignore
 export const withOptionalIconWrapperProps = (
   WrappedComponent: React.ComponentType<IconWrapperProps>,
-): React.ComponentType<OptionalIconWrapperProps> =>
-  class IconWrapperWithOptionalProps extends React.Component<
-    OptionalIconWrapperProps
-  > {
-    public render() {
-      return (
-        // prettier-ignore
-        <PaletteThemeContext.Consumer>
-          {paletteTheme => (
-            <ComponentsThemeContext.Consumer>
-              {(componentsTheme) => {
-                const props: IconWrapperProps = {
-                  colorTheme: ColorTheme.SECONDARY_NORMAL,
-                  componentsTheme,
-                  paletteTheme,
-                  size: Size.M,
-                  ...this.props,
-                };
+): React.ComponentType<OptionalIconWrapperProps> => props => (
+  <PaletteThemeContext.Consumer>
+    {paletteTheme => (
+      <ComponentsThemeContext.Consumer>
+        {(componentsTheme) => {
+          const propsWithDefaults: IconWrapperProps = {
+            colorTheme: ColorTheme.SECONDARY_NORMAL,
+            componentsTheme,
+            paletteTheme,
+            size: Size.M,
+            ...props,
+          };
 
-                return <WrappedComponent {...props} />;
-              }}
-            </ComponentsThemeContext.Consumer>
-          )}
-        </PaletteThemeContext.Consumer>
-      );
-    }
-  };
+          return <WrappedComponent {...propsWithDefaults} />;
+        }}
+      </ComponentsThemeContext.Consumer>
+    )}
+  </PaletteThemeContext.Consumer>
+);
