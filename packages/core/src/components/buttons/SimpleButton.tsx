@@ -15,6 +15,7 @@ import {
 } from '../../theming';
 import { cloneElement } from '../../utils';
 import { OptionalIconWrapperProps } from '../icons';
+import { ReflexSubcomponent } from '../ReflexSubcomponent';
 // prettier-ignore
 import {
   handleAndroidTextTransformation,
@@ -68,7 +69,16 @@ const transformButtonChildren = (
     props.variant === ButtonVariant.FAB ||
     props.variant === ButtonVariant.ICON
   ) {
-    return handleIcon(props, userSubProps);
+    const buttonTheme = props.componentsTheme.button;
+    return handleButtonIcon({
+      Container: buttonTheme[props.variant].subComponents.iconContainer,
+      containerName: ButtonSubName.ICON_CONTAINER,
+      icon: children as React.ReactElement<OptionalIconWrapperProps>,
+      iconName: ButtonSubName.ICON,
+      props,
+      userContainerProps: userSubProps.iconContainer,
+      userIconProps: userSubProps.icon,
+    });
   }
 
   return children;
@@ -94,16 +104,24 @@ const transformStringChildrenIntoComponent = (
   );
 };
 
-const handleIcon = (
-  props: ButtonProps,
-  userSubProps: ButtonSubProps,
+export interface HandleButtonIconData {
+  Container: React.ComponentType<ReflexSubcomponent<ButtonProps> & ViewProps>;
+  containerName: ButtonSubName;
+  icon: React.ReactElement<OptionalIconWrapperProps>;
+  iconName: ButtonSubName;
+  props: ButtonProps;
+  userContainerProps?: ViewProps;
+  userIconProps?: TextProps;
+}
+
+const handleButtonIcon = (
+  data: HandleButtonIconData,
 ): JSX.Element | undefined => {
-  const buttonTheme = props.componentsTheme.button;
-  const { iconContainer: Container } = buttonTheme[props.variant].subComponents;
+  const { props } = data;
   const containerProps = getButtonSubProps<ViewProps, ViewStyle>({
     props,
-    subName: ButtonSubName.ICON_CONTAINER,
-    userProps: userSubProps.iconContainer,
+    subName: data.containerName,
+    userProps: data.userContainerProps,
   });
 
   const iconProps: OptionalIconWrapperProps = {
@@ -111,20 +129,19 @@ const handleIcon = (
       icon: {
         ...getButtonSubProps<TextProps, TextStyle>({
           props,
-          subName: ButtonSubName.ICON,
-          userProps: userSubProps.icon,
+          subName: data.iconName,
+          userProps: data.userIconProps,
         }),
       },
     }),
     noContainer: true,
   };
 
-  const children = props.children as React.ReactElement<
-    OptionalIconWrapperProps
-  >;
-  const styledIcon = children
-    ? cloneElement({ element: children, props: iconProps })
+  const styledIcon = data.icon
+    ? cloneElement({ element: data.icon, props: iconProps })
     : undefined;
+
+  const { Container } = data;
 
   return (
     <Container componentProps={props} {...containerProps}>
@@ -138,39 +155,15 @@ const handleLeadingIcon = (
   userSubProps: ButtonSubProps,
 ): JSX.Element | undefined => {
   const buttonTheme = props.componentsTheme.button;
-  // prettier-ignore
-  const {
-    leadingIconContainer: Container,
-  } = buttonTheme[props.variant].subComponents;
-
-  const containerProps = getButtonSubProps<ViewProps, ViewStyle>({
+  return handleButtonIcon({
+    Container: buttonTheme[props.variant].subComponents.leadingIconContainer,
+    containerName: ButtonSubName.LEADING_ICON_CONTAINER,
+    icon: props.leadingIcon as React.ReactElement<OptionalIconWrapperProps>,
+    iconName: ButtonSubName.LEADING_ICON,
     props,
-    subName: ButtonSubName.LEADING_ICON_CONTAINER,
-    userProps: userSubProps.leadingIconContainer,
+    userContainerProps: userSubProps.leadingIconContainer,
+    userIconProps: userSubProps.leadingIcon,
   });
-
-  const iconProps: OptionalIconWrapperProps = {
-    getSubProps: () => ({
-      icon: {
-        ...getButtonSubProps<TextProps, TextStyle>({
-          props,
-          subName: ButtonSubName.LEADING_ICON,
-          userProps: userSubProps.leadingIcon,
-        }),
-      },
-    }),
-    noContainer: true,
-  };
-
-  const styledIcon = props.leadingIcon
-    ? cloneElement({ element: props.leadingIcon, props: iconProps })
-    : undefined;
-
-  return (
-    <Container componentProps={props} {...containerProps}>
-      {styledIcon}
-    </Container>
-  );
 };
 
 const handleTrailingIcon = (
@@ -178,39 +171,15 @@ const handleTrailingIcon = (
   userSubProps: ButtonSubProps,
 ): JSX.Element | undefined => {
   const buttonTheme = props.componentsTheme.button;
-  // prettier-ignore
-  const {
-    trailingIconContainer: Container,
-  } = buttonTheme[props.variant].subComponents;
-
-  const containerProps = getButtonSubProps<ViewProps, ViewStyle>({
+  return handleButtonIcon({
+    Container: buttonTheme[props.variant].subComponents.trailingIconContainer,
+    containerName: ButtonSubName.TRAILING_ICON_CONTAINER,
+    icon: props.trailingIcon as React.ReactElement<OptionalIconWrapperProps>,
+    iconName: ButtonSubName.TRAILING_ICON,
     props,
-    subName: ButtonSubName.TRAILING_ICON_CONTAINER,
-    userProps: userSubProps.trailingIconContainer,
+    userContainerProps: userSubProps.trailingIconContainer,
+    userIconProps: userSubProps.trailingIcon,
   });
-
-  const iconProps: OptionalIconWrapperProps = {
-    getSubProps: () => ({
-      icon: {
-        ...getButtonSubProps<TextProps, TextStyle>({
-          props,
-          subName: ButtonSubName.TRAILING_ICON,
-          userProps: userSubProps.trailingIcon,
-        }),
-      },
-    }),
-    noContainer: true,
-  };
-
-  const styledIcon = props.trailingIcon
-    ? cloneElement({ element: props.trailingIcon, props: iconProps })
-    : undefined;
-
-  return (
-    <Container componentProps={props} {...containerProps}>
-      {styledIcon}
-    </Container>
-  );
 };
 
 export interface ButtonSubPropsGetterData<PrimitiveProps> {
