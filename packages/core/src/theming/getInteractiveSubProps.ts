@@ -1,7 +1,7 @@
 import merge from 'lodash/merge';
 
 import { registerStyle } from '../components/registerStyle';
-import { StyledPrimitiveProps } from '../components/StyledPrimitiveProps';
+import { StyleProps } from '../components/StyleProps';
 import { InteractivityStateProps, InteractivityType } from '../interactivity';
 import { SizeProps } from '../SizeProps';
 import { InteractiveSubTheme } from './InteractiveSubTheme';
@@ -18,7 +18,7 @@ export interface InteractiveSubPropsGetterData<ComponentProps, PrimitiveProps> {
 
 export const getInteractiveSubProps = <
   ComponentProps extends InteractivityStateProps & SizeProps,
-  PrimitiveProps extends StyledPrimitiveProps<PrimitiveStyle>,
+  PrimitiveProps extends StyleProps<PrimitiveStyle>,
   PrimitiveStyle
 >(
   data: InteractiveSubPropsGetterData<ComponentProps, PrimitiveProps>,

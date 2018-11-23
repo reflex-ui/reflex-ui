@@ -1,7 +1,7 @@
 import merge from 'lodash/merge';
 
 import { registerStyle } from '../components/registerStyle';
-import { StyledPrimitiveProps } from '../components/StyledPrimitiveProps';
+import { StyleProps } from '../components/StyleProps';
 import { SizeProps } from '../SizeProps';
 import { PrimitiveTheme } from './PrimitiveTheme';
 import { SizedSubcomponentTheme } from './SizedSubcomponentTheme';
@@ -16,7 +16,7 @@ export interface SubPropsGetterData<ComponentProps, PrimitiveProps> {
 
 export const getSubProps = <
   ComponentProps extends SizeProps,
-  PrimitiveProps extends StyledPrimitiveProps<PrimitiveStyle>,
+  PrimitiveProps extends StyleProps<PrimitiveStyle>,
   PrimitiveStyle
 >(
   data: SubPropsGetterData<ComponentProps, PrimitiveProps>,

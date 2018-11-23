@@ -2,7 +2,7 @@ export * from './buttons';
 export * from './icons';
 export * from './ReflexSubcomponent';
 export * from './registerStyle';
-export * from './Styled';
+export * from './StyleProps';
 export * from './SubcomponentPropsGetter';
 export * from './touchable';
 export * from './typography';
