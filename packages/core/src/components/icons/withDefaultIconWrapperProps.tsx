@@ -9,7 +9,7 @@ import {
 import { IconWrapperProps, OptionalIconWrapperProps } from './IconWrapperProps';
 
 // prettier-ignore
-export const withOptionalIconWrapperProps = (
+export const withDefaultIconWrapperProps = (
   WrappedComponent: React.ComponentType<IconWrapperProps>,
 ): React.ComponentType<OptionalIconWrapperProps> => props => (
   <PaletteThemeContext.Consumer>

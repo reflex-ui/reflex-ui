@@ -3,10 +3,10 @@ import * as React from 'react';
 import { withInteractivityState } from '../../interactivity';
 import { OptionalButtonProps } from './ButtonProps';
 import { SimpleButton } from './SimpleButton';
-import { withOptionalButtonProps } from './withOptionalButtonProps';
+import { withDefaultButtonProps } from './withDefaultButtonProps';
 
 const Button: React.ComponentType<OptionalButtonProps> = withInteractivityState(
-  withOptionalButtonProps(SimpleButton),
+  withDefaultButtonProps(SimpleButton),
 );
 
 export { Button };

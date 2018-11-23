@@ -8,7 +8,7 @@ import { ButtonVariant } from './ButtonVariant';
 import { getButtonVariantColorTheme } from './getButtonVariantColorTheme';
 
 // prettier-ignore
-export const withOptionalButtonProps = (
+export const withDefaultButtonProps = (
   WrappedComponent: React.ComponentType<ButtonProps>,
 ): React.ComponentType<OptionalButtonProps> => props => (
   <PaletteThemeContext.Consumer>

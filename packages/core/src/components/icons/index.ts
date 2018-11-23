@@ -9,4 +9,4 @@ export * from './SimpleIconWrapper';
 export * from './TextIconProps';
 export * from './TextIconWrapperProps';
 export * from './theming';
-export * from './withOptionalIconWrapperProps';
+export * from './withDefaultIconWrapperProps';

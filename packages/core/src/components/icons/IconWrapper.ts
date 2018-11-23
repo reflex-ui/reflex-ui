@@ -2,10 +2,10 @@ import * as React from 'react';
 
 import { OptionalIconWrapperProps } from './IconWrapperProps';
 import { SimpleIconWrapper } from './SimpleIconWrapper';
-import { withOptionalIconWrapperProps } from './withOptionalIconWrapperProps';
+import { withDefaultIconWrapperProps } from './withDefaultIconWrapperProps';
 
 const IconWrapper: React.ComponentType<
   OptionalIconWrapperProps
-> = withOptionalIconWrapperProps(SimpleIconWrapper);
+> = withDefaultIconWrapperProps(SimpleIconWrapper);
 
 export { IconWrapper };
