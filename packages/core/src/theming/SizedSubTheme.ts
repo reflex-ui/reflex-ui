@@ -1,4 +1,4 @@
-export interface SizedSubcomponentTheme<T> {
+export interface SizedSubTheme<T> {
   readonly allSizes: T;
   readonly large: T;
   readonly medium: T;
@@ -8,6 +8,4 @@ export interface SizedSubcomponentTheme<T> {
   readonly xsmall: T;
 }
 
-export type OptionalSizedSubcomponentTheme<T> = Partial<
-  SizedSubcomponentTheme<T>
->;
+export type OptionalSizedSubTheme<T> = Partial<SizedSubTheme<T>>;

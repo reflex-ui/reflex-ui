@@ -6,11 +6,11 @@ import { InteractivityStateProps, InteractivityType } from '../interactivity';
 import { SizeProps } from '../SizeProps';
 import { InteractiveSubTheme } from './InteractiveSubTheme';
 import { PrimitiveTheme } from './PrimitiveTheme';
-import { SizedSubcomponentTheme } from './SizedSubcomponentTheme';
+import { SizedSubTheme } from './SizedSubTheme';
 
 export interface InteractiveSubPropsGetterData<ComponentProps, PrimitiveProps> {
   readonly componentProps: ComponentProps;
-  readonly themes: SizedSubcomponentTheme<
+  readonly themes: SizedSubTheme<
     InteractiveSubTheme<PrimitiveTheme<ComponentProps, PrimitiveProps>>
   >[];
   readonly userProps?: PrimitiveProps;

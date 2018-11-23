@@ -1,13 +1,11 @@
 import { getRawPrimitiveTheme } from './getRawPrimitiveTheme';
 import { PrimitiveTheme } from './PrimitiveTheme';
-import { SizedSubcomponentTheme } from './SizedSubcomponentTheme';
+import { SizedSubTheme } from './SizedSubTheme';
 
 export const getRawSizedTheme = <
   ComponentProps,
   PrimitiveProps
->(): SizedSubcomponentTheme<
-  PrimitiveTheme<ComponentProps, PrimitiveProps>
-> => ({
+>(): SizedSubTheme<PrimitiveTheme<ComponentProps, PrimitiveProps>> => ({
   allSizes: getRawPrimitiveTheme<PrimitiveProps>(),
   large: getRawPrimitiveTheme<PrimitiveProps>(),
   medium: getRawPrimitiveTheme<PrimitiveProps>(),

@@ -1,12 +1,12 @@
 import {
   ButtonProps,
   OptionalInteractiveSubTheme,
-  OptionalSizedSubcomponentTheme,
+  OptionalSizedSubTheme,
   OptionalViewTheme,
 } from '@reflex-ui/core';
 
 // tslint:disable-next-line:max-line-length
-export const xfabStaticButtonLeadingIconContainerTheme: OptionalSizedSubcomponentTheme<
+export const xfabStaticButtonLeadingIconContainerTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
 > = {
   large: {
@@ -57,7 +57,7 @@ export const xfabStaticButtonLeadingIconContainerTheme: OptionalSizedSubcomponen
 };
 
 // tslint:disable-next-line:max-line-length
-export const xfabStaticButtonTrailingIconContainerTheme: OptionalSizedSubcomponentTheme<
+export const xfabStaticButtonTrailingIconContainerTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
 > = {
   large: {

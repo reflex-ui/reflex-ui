@@ -1,7 +1,7 @@
 import {
   ButtonProps,
   OptionalInteractiveSubTheme,
-  OptionalSizedSubcomponentTheme,
+  OptionalSizedSubTheme,
   OptionalViewTheme,
   ViewPropsGetter,
   ViewStyleGetter,
@@ -23,7 +23,7 @@ export const getOutlinedButtonContainerStyle: ViewStyleGetter<
   borderColor: getDefaultButtonTextStyle(props).color,
 });
 
-export const outlinedStaticButtonContainerTheme: OptionalSizedSubcomponentTheme<
+export const outlinedStaticButtonContainerTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
 > = {
   allSizes: {

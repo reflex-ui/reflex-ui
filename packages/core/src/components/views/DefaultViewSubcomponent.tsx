@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { View, ViewProps } from 'react-native';
-import { ReflexSubcomponent } from '../ReflexSubcomponent';
+import { SubProps } from '../SubProps';
 
 export const DefaultViewSubcomponent: React.ComponentType<
   // tslint:disable-next-line:no-any
-  ReflexSubcomponent<any> & ViewProps
+  SubProps<any> & ViewProps
 > = ({
   children,
   componentProps,

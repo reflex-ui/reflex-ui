@@ -2,7 +2,7 @@ import {
   ButtonProps,
   getThemedColor,
   OptionalInteractiveSubTheme,
-  OptionalSizedSubcomponentTheme,
+  OptionalSizedSubTheme,
   OptionalTextTheme,
   TextPropsGetter,
   TextStyleGetter,
@@ -33,7 +33,7 @@ export const getContainedButtonTextStyle: TextStyleGetter<ButtonProps> = (
   ...getContainedButtonTextColorStyle(props),
 });
 
-export const containedStaticButtonTextTheme: OptionalSizedSubcomponentTheme<
+export const containedStaticButtonTextTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
 > = {
   allSizes: {

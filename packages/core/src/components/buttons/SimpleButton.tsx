@@ -11,11 +11,11 @@ import {
   getInteractiveSubProps,
   InteractiveSubTheme,
   PrimitiveTheme,
-  SizedSubcomponentTheme,
+  SizedSubTheme,
 } from '../../theming';
 import { cloneElement } from '../../utils';
 import { OptionalIconWrapperProps } from '../icons';
-import { ReflexSubcomponent } from '../ReflexSubcomponent';
+import { SubProps } from '../SubProps';
 // prettier-ignore
 import {
   handleAndroidTextTransformation,
@@ -105,9 +105,7 @@ const transformStringChildrenIntoComponent = (
 };
 
 export interface HandleButtonIconData {
-  readonly Container: React.ComponentType<
-    ReflexSubcomponent<ButtonProps> & ViewProps
-  >;
+  readonly Container: React.ComponentType<SubProps<ButtonProps> & ViewProps>;
   readonly containerName: ButtonSubName;
   readonly icon: React.ReactElement<OptionalIconWrapperProps>;
   readonly iconName: ButtonSubName;
@@ -197,10 +195,10 @@ export const getButtonSubProps = <PrimitiveProps, PrimitiveStyle>(
   return getInteractiveSubProps<ButtonProps, PrimitiveProps, PrimitiveStyle>({
     componentProps: data.props,
     themes: [
-      buttonTheme.allVariants[data.subName] as SizedSubcomponentTheme<
+      buttonTheme.allVariants[data.subName] as SizedSubTheme<
         InteractiveSubTheme<PrimitiveTheme<ButtonProps, PrimitiveProps>>
       >,
-      buttonTheme[data.props.variant][data.subName] as SizedSubcomponentTheme<
+      buttonTheme[data.props.variant][data.subName] as SizedSubTheme<
         InteractiveSubTheme<PrimitiveTheme<ButtonProps, PrimitiveProps>>
       >,
     ],

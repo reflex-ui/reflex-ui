@@ -2,7 +2,7 @@ import {
   InteractivityEvent,
   InteractivityStateProps,
   InteractivityType,
-  ReflexSubcomponent,
+  SubProps,
 } from '@reflex-ui/core';
 import delay from 'delay';
 import * as React from 'react';
@@ -179,7 +179,7 @@ interface RippleEffectSettings<P> {
 
 export const withRippleEffect = <S extends InteractivityStateProps>(
   settings: RippleEffectSettings<S>,
-) => <P extends ReflexSubcomponent<S> & ViewProps>(
+) => <P extends SubProps<S> & ViewProps>(
   WrappedComponent: React.ComponentType<P>,
 ): React.ComponentType<P> =>
   class RippledComponent extends React.Component<P> {

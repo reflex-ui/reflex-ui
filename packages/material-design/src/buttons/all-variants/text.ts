@@ -4,14 +4,14 @@ import {
   getFontWeight,
   isWeb,
   OptionalInteractiveSubTheme,
-  OptionalSizedSubcomponentTheme,
+  OptionalSizedSubTheme,
   OptionalTextTheme,
 } from '@reflex-ui/core';
 import { Platform } from 'react-native';
 
 import { getFontFamily } from '../../typography';
 
-export const allVariantsStaticButtonTextTheme: OptionalSizedSubcomponentTheme<
+export const allVariantsStaticButtonTextTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
 > = {
   allSizes: {

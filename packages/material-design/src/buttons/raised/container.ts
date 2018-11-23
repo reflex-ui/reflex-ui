@@ -1,7 +1,7 @@
 import {
   ButtonProps,
   OptionalInteractiveSubTheme,
-  OptionalSizedSubcomponentTheme,
+  OptionalSizedSubTheme,
   OptionalViewTheme,
   ViewPropsGetter,
   ViewStyleGetter,
@@ -23,7 +23,7 @@ export const getRaisedButtonContainerStyle: ViewStyleGetter<
   ...getLowElevationStylesByInteractivity(props.interactivityState.type),
 });
 
-export const raisedStaticButtonContainerTheme: OptionalSizedSubcomponentTheme<
+export const raisedStaticButtonContainerTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
 > = {
   allSizes: {

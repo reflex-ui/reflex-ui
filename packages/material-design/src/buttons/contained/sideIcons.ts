@@ -1,7 +1,7 @@
 import {
   ButtonProps,
   OptionalInteractiveSubTheme,
-  OptionalSizedSubcomponentTheme,
+  OptionalSizedSubTheme,
   OptionalTextTheme,
   TextPropsGetter,
 } from '@reflex-ui/core';
@@ -17,7 +17,7 @@ export const getContainedButtonIconProps: TextPropsGetter<
 });
 
 // tslint:disable-next-line:max-line-length
-export const containedStaticButtonLeadingIconTheme: OptionalSizedSubcomponentTheme<
+export const containedStaticButtonLeadingIconTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
 > = {
   allSizes: {
@@ -28,7 +28,7 @@ export const containedStaticButtonLeadingIconTheme: OptionalSizedSubcomponentThe
 };
 
 // tslint:disable-next-line:max-line-length
-export const containedStaticButtonTrailingIconTheme: OptionalSizedSubcomponentTheme<
+export const containedStaticButtonTrailingIconTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
 > = {
   ...containedStaticButtonLeadingIconTheme,

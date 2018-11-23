@@ -11,5 +11,5 @@ export * from './InteractiveSubTheme';
 export * from './palette';
 export * from './PrimitiveTheme';
 export * from './rawComponentsTheme';
-export * from './SizedSubcomponentTheme';
+export * from './SizedSubTheme';
 export * from './Themed';

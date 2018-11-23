@@ -1,8 +1,8 @@
 import {
   OptionalPrimitiveTheme,
-  OptionalSizedSubcomponentTheme,
+  OptionalSizedSubTheme,
   PrimitiveTheme,
-  SizedSubcomponentTheme,
+  SizedSubTheme,
 } from '../../../theming';
 import { OptionalViewTheme, ViewTheme } from '../../views';
 import { IconWrapperProps } from '../IconWrapperProps';
@@ -14,20 +14,20 @@ import { IconWrapperSubName } from '../IconWrapperSubName';
 import { TextIconProps } from '../TextIconProps';
 
 export interface IconWrapperTheme {
-  readonly [IconWrapperSubName.CONTAINER]: SizedSubcomponentTheme<
+  readonly [IconWrapperSubName.CONTAINER]: SizedSubTheme<
     ViewTheme<IconWrapperProps>
   >;
-  readonly [IconWrapperSubName.ICON]: SizedSubcomponentTheme<
+  readonly [IconWrapperSubName.ICON]: SizedSubTheme<
     PrimitiveTheme<IconWrapperProps, TextIconProps>
   >;
   readonly subcomponents: IconWrapperSubcomponents;
 }
 
 export interface OptionalIconWrapperTheme {
-  readonly [IconWrapperSubName.CONTAINER]?: OptionalSizedSubcomponentTheme<
+  readonly [IconWrapperSubName.CONTAINER]?: OptionalSizedSubTheme<
     OptionalViewTheme<IconWrapperProps>
   >;
-  readonly [IconWrapperSubName.ICON]?: OptionalSizedSubcomponentTheme<
+  readonly [IconWrapperSubName.ICON]?: OptionalSizedSubTheme<
     OptionalPrimitiveTheme<IconWrapperProps, TextIconProps>
   >;
   readonly subcomponents?: OptionalIconWrapperSubcomponents;

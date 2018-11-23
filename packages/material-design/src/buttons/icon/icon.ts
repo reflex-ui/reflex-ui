@@ -1,7 +1,7 @@
 import {
   ButtonProps,
   OptionalInteractiveSubTheme,
-  OptionalSizedSubcomponentTheme,
+  OptionalSizedSubTheme,
   OptionalTextTheme,
   TextPropsGetter,
 } from '@reflex-ui/core';
@@ -14,7 +14,7 @@ export const getIconButtonIconProps: TextPropsGetter<ButtonProps> = props => ({
   },
 });
 
-export const iconStaticButtonIconTheme: OptionalSizedSubcomponentTheme<
+export const iconStaticButtonIconTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
 > = {
   allSizes: {

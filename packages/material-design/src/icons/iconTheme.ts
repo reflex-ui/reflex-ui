@@ -5,7 +5,7 @@ import {
   IconWrapperProps,
   OptionalIconWrapperTheme,
   OptionalPrimitiveTheme,
-  OptionalSizedSubcomponentTheme,
+  OptionalSizedSubTheme,
   OptionalViewTheme,
   rawIconWrapperTheme,
   Size,
@@ -72,7 +72,7 @@ export const getIconContainerStyle: ViewStyleGetter<
   ...getSizedMarginStyle(iconSizedMarginStyle)(props),
 });
 
-export const iconContainerTheme: OptionalSizedSubcomponentTheme<
+export const iconContainerTheme: OptionalSizedSubTheme<
   OptionalViewTheme<IconWrapperProps>
 > = {
   allSizes: {
@@ -80,7 +80,7 @@ export const iconContainerTheme: OptionalSizedSubcomponentTheme<
   },
 };
 
-export const iconIconTheme: OptionalSizedSubcomponentTheme<
+export const iconIconTheme: OptionalSizedSubTheme<
   OptionalPrimitiveTheme<IconWrapperProps, TextIconProps>
 > = {
   allSizes: {

@@ -1,11 +1,7 @@
 import * as React from 'react';
 import { TextProps, TextStyle, ViewProps, ViewStyle } from 'react-native';
 
-import {
-  getSubProps,
-  PrimitiveTheme,
-  SizedSubcomponentTheme,
-} from '../../theming';
+import { getSubProps, PrimitiveTheme, SizedSubTheme } from '../../theming';
 import { cloneElement } from '../../utils';
 import { IconWrapperProps, OptionalIconWrapperProps } from './IconWrapperProps';
 import { IconWrapperSubProps } from './IconWrapperSubProps';
@@ -28,7 +24,7 @@ const handleIconChildren = (
     ...getSubProps<IconWrapperProps, TextIconProps, TextStyle>({
       componentProps: props,
       themes: [
-        props.componentsTheme.icon.icon as SizedSubcomponentTheme<
+        props.componentsTheme.icon.icon as SizedSubTheme<
           PrimitiveTheme<IconWrapperProps, TextProps>
         >,
       ],
@@ -57,7 +53,7 @@ export const SimpleIconWrapper: React.SFC<IconWrapperProps> = (
   const containerProps = getSubProps<IconWrapperProps, ViewProps, ViewStyle>({
     componentProps: props,
     themes: [
-      props.componentsTheme.icon.container as SizedSubcomponentTheme<
+      props.componentsTheme.icon.container as SizedSubTheme<
         PrimitiveTheme<IconWrapperProps, ViewProps>
       >,
     ],

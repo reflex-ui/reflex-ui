@@ -1,7 +1,7 @@
 import {
   ButtonProps,
   OptionalInteractiveSubTheme,
-  OptionalSizedSubcomponentTheme,
+  OptionalSizedSubTheme,
   OptionalTextTheme,
   TextPropsGetter,
 } from '@reflex-ui/core';
@@ -16,7 +16,7 @@ export const getOutlinedButtonTextProps: TextPropsGetter<ButtonProps> = (
   },
 });
 
-export const outlinedStaticButtonTextTheme: OptionalSizedSubcomponentTheme<
+export const outlinedStaticButtonTextTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
 > = {
   allSizes: {

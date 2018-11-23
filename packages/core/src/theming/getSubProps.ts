@@ -4,11 +4,11 @@ import { registerStyle } from '../components/registerStyle';
 import { StyleProps } from '../components/StyleProps';
 import { SizeProps } from '../SizeProps';
 import { PrimitiveTheme } from './PrimitiveTheme';
-import { SizedSubcomponentTheme } from './SizedSubcomponentTheme';
+import { SizedSubTheme } from './SizedSubTheme';
 
 export interface SubPropsGetterData<ComponentProps, PrimitiveProps> {
   readonly componentProps: ComponentProps;
-  readonly themes: SizedSubcomponentTheme<
+  readonly themes: SizedSubTheme<
     PrimitiveTheme<ComponentProps, PrimitiveProps>
   >[];
   readonly userProps?: PrimitiveProps;

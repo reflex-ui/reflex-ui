@@ -4,48 +4,48 @@ import {
   ViewProps,
 } from 'react-native';
 
-import { ReflexSubcomponent } from '../ReflexSubcomponent';
+import { SubProps } from '../SubProps';
 import { ButtonProps } from './ButtonProps';
 import { ButtonSubName } from './ButtonSubName';
 
 export interface ButtonSubcomponents {
   readonly [ButtonSubName.CONTAINER]: React.ComponentType<
-    ReflexSubcomponent<ButtonProps> & ViewProps
+    SubProps<ButtonProps> & ViewProps
   >;
   readonly [ButtonSubName.ICON_CONTAINER]: React.ComponentType<
-    ReflexSubcomponent<ButtonProps> & ViewProps
+    SubProps<ButtonProps> & ViewProps
   >;
   readonly [ButtonSubName.LEADING_ICON_CONTAINER]: React.ComponentType<
-    ReflexSubcomponent<ButtonProps> & ViewProps
+    SubProps<ButtonProps> & ViewProps
   >;
   readonly [ButtonSubName.TEXT]: React.ComponentType<
-    ReflexSubcomponent<ButtonProps> & TextProps
+    SubProps<ButtonProps> & TextProps
   >;
   readonly [ButtonSubName.TOUCHABLE]: React.ComponentType<
-    ReflexSubcomponent<ButtonProps> & TouchableWithoutFeedbackProps
+    SubProps<ButtonProps> & TouchableWithoutFeedbackProps
   >;
   readonly [ButtonSubName.TRAILING_ICON_CONTAINER]: React.ComponentType<
-    ReflexSubcomponent<ButtonProps> & ViewProps
+    SubProps<ButtonProps> & ViewProps
   >;
 }
 
 export interface OptionalButtonSubcomponents {
   readonly [ButtonSubName.CONTAINER]?: React.ComponentType<
-    ReflexSubcomponent<ButtonProps> & ViewProps
+    SubProps<ButtonProps> & ViewProps
   >;
   readonly [ButtonSubName.ICON_CONTAINER]?: React.ComponentType<
-    ReflexSubcomponent<ButtonProps> & ViewProps
+    SubProps<ButtonProps> & ViewProps
   >;
   readonly [ButtonSubName.LEADING_ICON_CONTAINER]?: React.ComponentType<
-    ReflexSubcomponent<ButtonProps> & ViewProps
+    SubProps<ButtonProps> & ViewProps
   >;
   readonly [ButtonSubName.TEXT]?: React.ComponentType<
-    ReflexSubcomponent<ButtonProps> & TextProps
+    SubProps<ButtonProps> & TextProps
   >;
   readonly [ButtonSubName.TOUCHABLE]?: React.ComponentType<
-    ReflexSubcomponent<ButtonProps> & TouchableWithoutFeedbackProps
+    SubProps<ButtonProps> & TouchableWithoutFeedbackProps
   >;
   readonly [ButtonSubName.TRAILING_ICON_CONTAINER]?: React.ComponentType<
-    ReflexSubcomponent<ButtonProps> & ViewProps
+    SubProps<ButtonProps> & ViewProps
   >;
 }

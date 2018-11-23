@@ -1,7 +1,7 @@
 import {
   ButtonProps,
   OptionalInteractiveSubTheme,
-  OptionalSizedSubcomponentTheme,
+  OptionalSizedSubTheme,
   OptionalViewTheme,
   ViewPropsGetter,
   ViewStyleGetter,
@@ -22,7 +22,7 @@ export const getFabButtonContainerStyle: ViewStyleGetter<ButtonProps> = ({
   ...getMidElevationStylesByInteractivity(interactivityState.type),
 });
 
-export const fabStaticButtonContainerTheme: OptionalSizedSubcomponentTheme<
+export const fabStaticButtonContainerTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
 > = {
   allSizes: {

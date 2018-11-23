@@ -1,12 +1,12 @@
 import {
   ButtonProps,
   OptionalInteractiveSubTheme,
-  OptionalSizedSubcomponentTheme,
+  OptionalSizedSubTheme,
   OptionalTextTheme,
 } from '@reflex-ui/core';
 import { Platform, TextStyle } from 'react-native';
 
-export const allVariantsStaticButtonIconTheme: OptionalSizedSubcomponentTheme<
+export const allVariantsStaticButtonIconTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
 > = {
   allSizes: {

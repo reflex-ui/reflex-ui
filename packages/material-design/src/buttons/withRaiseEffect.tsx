@@ -4,7 +4,7 @@ import {
   isAndroid,
   isIOS,
   isWeb,
-  ReflexSubcomponent,
+  SubProps,
 } from '@reflex-ui/core';
 import delay from 'delay';
 import * as React from 'react';
@@ -88,7 +88,7 @@ const createMotionRaiseStyles: MotionRaiseStylesCreator = ({
 };
 
 export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
-  P extends ReflexSubcomponent<InteractivityStateProps> & ViewProps
+  P extends SubProps<InteractivityStateProps> & ViewProps
 >(
   WrappedComponent: React.ComponentType<P>,
 ): React.ComponentType<P> =>
