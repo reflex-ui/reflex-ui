@@ -12,11 +12,11 @@ import { DefaultTouchableSubcomponent } from '../../touchable/DefaultTouchableSu
 import { DefaultTextSubcomponent } from '../../typography/DefaultTextSubcomponent';
 import { DefaultViewSubcomponent } from '../../views/DefaultViewSubcomponent';
 import { ButtonProps } from '../ButtonProps';
-import { ButtonSubComponents } from '../ButtonSubComponents';
+import { ButtonSubcomponents } from '../ButtonSubcomponents';
 import { ButtonSubName } from '../ButtonSubName';
 import { ButtonTheme, ButtonVariantTheme } from './';
 
-export const rawButtonSubComponents: ButtonSubComponents = {
+export const rawButtonSubcomponents: ButtonSubcomponents = {
   container: DefaultViewSubcomponent,
   iconContainer: DefaultViewSubcomponent,
   leadingIconContainer: DefaultViewSubcomponent,
@@ -39,7 +39,7 @@ export const rawButtonVariantTheme: ButtonVariantTheme = {
   // prettier-ignore
   // tslint:disable-next-line:max-line-length
   [ButtonSubName.LEADING_ICON_CONTAINER]: getRawSizedInteractiveTheme<ButtonProps, TextProps>(),
-  subComponents: rawButtonSubComponents,
+  subComponents: rawButtonSubcomponents,
   [ButtonSubName.TEXT]: getRawSizedInteractiveTheme<ButtonProps, TextProps>(),
   // prettier-ignore
   // tslint:disable-next-line:max-line-length

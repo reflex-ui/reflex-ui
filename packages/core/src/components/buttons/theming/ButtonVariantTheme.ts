@@ -9,9 +9,9 @@ import { OptionalTextTheme, TextTheme } from '../../typography';
 import { OptionalViewTheme, ViewTheme } from '../../views';
 import { ButtonProps } from '../ButtonProps';
 import {
-  ButtonSubComponents,
-  OptionalButtonSubComponents,
-} from '../ButtonSubComponents';
+  ButtonSubcomponents,
+  OptionalButtonSubcomponents,
+} from '../ButtonSubcomponents';
 import { ButtonSubName } from '../ButtonSubName';
 
 export interface ButtonVariantTheme {
@@ -30,7 +30,7 @@ export interface ButtonVariantTheme {
   readonly [ButtonSubName.LEADING_ICON_CONTAINER]: SizedSubcomponentTheme<
     InteractiveSubTheme<ViewTheme<ButtonProps>>
   >;
-  readonly subComponents: ButtonSubComponents;
+  readonly subComponents: ButtonSubcomponents;
   readonly [ButtonSubName.TEXT]: SizedSubcomponentTheme<
     InteractiveSubTheme<TextTheme<ButtonProps>>
   >;
@@ -62,7 +62,7 @@ export interface OptionalButtonVariantTheme {
   readonly [ButtonSubName.LEADING_ICON_CONTAINER]?: OptionalSizedSubcomponentTheme<
     OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
   >;
-  readonly subComponents?: OptionalButtonSubComponents;
+  readonly subComponents?: OptionalButtonSubcomponents;
   readonly [ButtonSubName.TEXT]?: OptionalSizedSubcomponentTheme<
     OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
   >;

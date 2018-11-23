@@ -8,7 +8,7 @@ import { ReflexSubcomponent } from '../ReflexSubcomponent';
 import { ButtonProps } from './ButtonProps';
 import { ButtonSubName } from './ButtonSubName';
 
-export interface ButtonSubComponents {
+export interface ButtonSubcomponents {
   readonly [ButtonSubName.CONTAINER]: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & ViewProps
   >;
@@ -29,7 +29,7 @@ export interface ButtonSubComponents {
   >;
 }
 
-export interface OptionalButtonSubComponents {
+export interface OptionalButtonSubcomponents {
   readonly [ButtonSubName.CONTAINER]?: React.ComponentType<
     ReflexSubcomponent<ButtonProps> & ViewProps
   >;
