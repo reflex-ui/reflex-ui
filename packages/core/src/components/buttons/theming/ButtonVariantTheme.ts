@@ -30,7 +30,7 @@ export interface ButtonVariantTheme {
   readonly [ButtonSubName.LEADING_ICON_CONTAINER]: SizedSubcomponentTheme<
     InteractiveSubTheme<ViewTheme<ButtonProps>>
   >;
-  readonly subComponents: ButtonSubcomponents;
+  readonly subcomponents: ButtonSubcomponents;
   readonly [ButtonSubName.TEXT]: SizedSubcomponentTheme<
     InteractiveSubTheme<TextTheme<ButtonProps>>
   >;
@@ -62,7 +62,7 @@ export interface OptionalButtonVariantTheme {
   readonly [ButtonSubName.LEADING_ICON_CONTAINER]?: OptionalSizedSubcomponentTheme<
     OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
   >;
-  readonly subComponents?: OptionalButtonSubcomponents;
+  readonly subcomponents?: OptionalButtonSubcomponents;
   readonly [ButtonSubName.TEXT]?: OptionalSizedSubcomponentTheme<
     OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
   >;

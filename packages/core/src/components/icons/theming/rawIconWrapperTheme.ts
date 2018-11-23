@@ -19,5 +19,5 @@ export const rawIconWrapperTheme: IconWrapperTheme = {
   // prettier-ignore
   // tslint:disable-next-line:max-line-length
   [IconWrapperSubName.ICON]: getRawSizedTheme<IconWrapperProps, TextIconProps>(),
-  subComponents: rawIconWrapperSubcomponents,
+  subcomponents: rawIconWrapperSubcomponents,
 };

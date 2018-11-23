@@ -39,7 +39,7 @@ export const rawButtonVariantTheme: ButtonVariantTheme = {
   // prettier-ignore
   // tslint:disable-next-line:max-line-length
   [ButtonSubName.LEADING_ICON_CONTAINER]: getRawSizedInteractiveTheme<ButtonProps, TextProps>(),
-  subComponents: rawButtonSubcomponents,
+  subcomponents: rawButtonSubcomponents,
   [ButtonSubName.TEXT]: getRawSizedInteractiveTheme<ButtonProps, TextProps>(),
   // prettier-ignore
   // tslint:disable-next-line:max-line-length

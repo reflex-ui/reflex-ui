@@ -29,7 +29,7 @@ export const partialXFabButtonTheme: OptionalButtonVariantTheme = {
       },
     },
   },
-  subComponents: {
+  subcomponents: {
     [ButtonSubName.CONTAINER]: withRippleEffect({
       getRippleColor: getContainedButtonRippleColor,
     })(withRaiseEffect(ElevationDegree.MID)(DefaultViewSubcomponent)),

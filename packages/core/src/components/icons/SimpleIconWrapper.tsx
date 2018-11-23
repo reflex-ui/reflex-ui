@@ -52,7 +52,7 @@ export const SimpleIconWrapper: React.SFC<IconWrapperProps> = (
   if (props.noContainer) return <React.Fragment>{children}</React.Fragment>;
 
   const iconTheme = props.componentsTheme.icon;
-  const { Container } = iconTheme.subComponents;
+  const { Container } = iconTheme.subcomponents;
 
   const containerProps = getSubProps<IconWrapperProps, ViewProps, ViewStyle>({
     componentProps: props,

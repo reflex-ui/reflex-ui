@@ -71,7 +71,7 @@ const transformButtonChildren = (
   ) {
     const buttonTheme = props.componentsTheme.button;
     return handleButtonIcon({
-      Container: buttonTheme[props.variant].subComponents.iconContainer,
+      Container: buttonTheme[props.variant].subcomponents.iconContainer,
       containerName: ButtonSubName.ICON_CONTAINER,
       icon: children as React.ReactElement<OptionalIconWrapperProps>,
       iconName: ButtonSubName.ICON,
@@ -90,7 +90,7 @@ const transformStringChildrenIntoComponent = (
   userSubProps: ButtonSubProps,
 ): JSX.Element => {
   const buttonTheme = props.componentsTheme.button;
-  const { text: Text } = buttonTheme[props.variant].subComponents;
+  const { text: Text } = buttonTheme[props.variant].subcomponents;
   const textProps = getButtonSubProps<TextProps, TextStyle>({
     props,
     subName: ButtonSubName.TEXT,
@@ -158,7 +158,7 @@ const handleLeadingIcon = (
 ): JSX.Element | undefined => {
   const buttonTheme = props.componentsTheme.button;
   return handleButtonIcon({
-    Container: buttonTheme[props.variant].subComponents.leadingIconContainer,
+    Container: buttonTheme[props.variant].subcomponents.leadingIconContainer,
     containerName: ButtonSubName.LEADING_ICON_CONTAINER,
     icon: props.leadingIcon as React.ReactElement<OptionalIconWrapperProps>,
     iconName: ButtonSubName.LEADING_ICON,
@@ -174,7 +174,7 @@ const handleTrailingIcon = (
 ): JSX.Element | undefined => {
   const buttonTheme = props.componentsTheme.button;
   return handleButtonIcon({
-    Container: buttonTheme[props.variant].subComponents.trailingIconContainer,
+    Container: buttonTheme[props.variant].subcomponents.trailingIconContainer,
     containerName: ButtonSubName.TRAILING_ICON_CONTAINER,
     icon: props.trailingIcon as React.ReactElement<OptionalIconWrapperProps>,
     iconName: ButtonSubName.TRAILING_ICON,
@@ -212,8 +212,8 @@ export const SimpleButton: React.SFC<ButtonProps> = (props: ButtonProps) => {
   const { children, variant } = props;
   const buttonTheme = props.componentsTheme.button;
   const userSubProps = props.getSubProps ? props.getSubProps(props) : {};
-  const { subComponents } = buttonTheme[variant];
-  const { container: Container, touchable: Touchable } = subComponents;
+  const { subcomponents } = buttonTheme[variant];
+  const { container: Container, touchable: Touchable } = subcomponents;
   const touchableProps = extractTouchableProps(props);
 
   const containerProps = getButtonSubProps<ViewProps, ViewStyle>({

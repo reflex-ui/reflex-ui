@@ -18,7 +18,7 @@ export const defaultAnimatedButtonTheme: OptionalButtonVariantTheme = {
       },
     },
   },
-  subComponents: {
+  subcomponents: {
     [ButtonSubName.CONTAINER]: withRippleEffect({
       getRippleColor: getDefaultButtonRippleColor,
     })(DefaultViewSubcomponent),

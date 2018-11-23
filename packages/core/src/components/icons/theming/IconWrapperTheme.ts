@@ -20,7 +20,7 @@ export interface IconWrapperTheme {
   readonly [IconWrapperSubName.ICON]: SizedSubcomponentTheme<
     PrimitiveTheme<IconWrapperProps, TextIconProps>
   >;
-  readonly subComponents: IconWrapperSubcomponents;
+  readonly subcomponents: IconWrapperSubcomponents;
 }
 
 export interface OptionalIconWrapperTheme {
@@ -30,5 +30,5 @@ export interface OptionalIconWrapperTheme {
   readonly [IconWrapperSubName.ICON]?: OptionalSizedSubcomponentTheme<
     OptionalPrimitiveTheme<IconWrapperProps, TextIconProps>
   >;
-  readonly subComponents?: OptionalIconWrapperSubcomponents;
+  readonly subcomponents?: OptionalIconWrapperSubcomponents;
 }

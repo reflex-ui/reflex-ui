@@ -39,7 +39,7 @@ export const partialRaisedButtonTheme: OptionalButtonVariantTheme = {
       },
     },
   },
-  subComponents: {
+  subcomponents: {
     [ButtonSubName.CONTAINER]: withRippleEffect({
       getRippleColor: getContainedButtonRippleColor,
     })(withRaiseEffect(ElevationDegree.LOW)(DefaultViewSubcomponent)),

@@ -20,7 +20,7 @@ export const containedShapedAnimatedButtonTheme: OptionalButtonVariantTheme = {
       },
     },
   },
-  subComponents: {
+  subcomponents: {
     [ButtonSubName.CONTAINER]: withRippleEffect({
       getRippleColor: getContainedButtonRippleColor,
     })(DefaultViewSubcomponent),
