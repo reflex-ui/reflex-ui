@@ -1,12 +1,11 @@
 import { ViewProps } from 'react-native';
-import { OptionalPrimitiveTheme, PrimitiveTheme } from '../../../theming';
+import { PrimitiveTheme } from '../../../theming';
 
 export type ViewTheme<ComponentProps> = PrimitiveTheme<
   ComponentProps,
   ViewProps
 >;
 
-export type OptionalViewTheme<ComponentProps> = OptionalPrimitiveTheme<
-  ComponentProps,
-  ViewProps
+export type OptionalViewTheme<ComponentProps> = Partial<
+  ViewTheme<ComponentProps>
 >;

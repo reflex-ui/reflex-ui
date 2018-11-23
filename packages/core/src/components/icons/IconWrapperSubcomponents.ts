@@ -9,8 +9,6 @@ export interface IconWrapperSubcomponents {
   >;
 }
 
-export interface OptionalIconWrapperSubcomponents {
-  readonly Container?: React.ComponentType<
-    ReflexSubcomponent<IconWrapperProps> & ViewProps
-  >;
-}
+export type OptionalIconWrapperSubcomponents = Partial<
+  IconWrapperSubcomponents
+>;

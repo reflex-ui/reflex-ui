@@ -3,7 +3,4 @@ export interface PaletteColorVariant {
   readonly onColor: string;
 }
 
-export interface OptionalPaletteColorVariant {
-  readonly color?: string;
-  readonly onColor?: string;
-}
+export type OptionalPaletteColorVariant = Partial<PaletteColorVariant>;

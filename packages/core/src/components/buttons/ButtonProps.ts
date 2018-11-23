@@ -1,10 +1,7 @@
-import {
-  InteractivityProps,
-  OptionalInteractivityProps,
-} from '../../interactivity';
+import { InteractivityProps } from '../../interactivity';
 import { MarginProps } from '../../margin';
-import { OptionalSizeProps, SizeProps } from '../../SizeProps';
-import { OptionalThemed, Themed } from '../../theming';
+import { SizeProps } from '../../SizeProps';
+import { Themed } from '../../theming';
 import { ButtonProps } from './ButtonProps';
 import { ButtonSubPropsGetter } from './ButtonSubPropsGetter';
 import { ButtonVariant } from './ButtonVariant';
@@ -22,15 +19,4 @@ export interface ButtonProps
   readonly variant: ButtonVariant;
 }
 
-export interface OptionalButtonProps
-  extends OptionalInteractivityProps,
-    MarginProps,
-    OptionalSizeProps,
-    OptionalThemed {
-  readonly children?: React.ReactNode;
-  readonly fullWidth?: boolean;
-  readonly getSubProps?: ButtonSubPropsGetter;
-  readonly leadingIcon?: JSX.Element;
-  readonly trailingIcon?: JSX.Element;
-  readonly variant?: ButtonVariant;
-}
+export type OptionalButtonProps = Partial<ButtonProps>;

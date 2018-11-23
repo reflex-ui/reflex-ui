@@ -1,7 +1,4 @@
-import {
-  OptionalPaletteColorVariant,
-  PaletteColorVariant,
-} from './PaletteColorVariant';
+import { PaletteColorVariant } from './PaletteColorVariant';
 
 export interface PaletteColor {
   readonly dark: PaletteColorVariant;
@@ -9,8 +6,4 @@ export interface PaletteColor {
   readonly normal: PaletteColorVariant;
 }
 
-export interface OptionalPaletteColor {
-  readonly dark?: OptionalPaletteColorVariant;
-  readonly light?: OptionalPaletteColorVariant;
-  readonly normal?: OptionalPaletteColorVariant;
-}
+export type OptionalPaletteColor = Partial<PaletteColor>;

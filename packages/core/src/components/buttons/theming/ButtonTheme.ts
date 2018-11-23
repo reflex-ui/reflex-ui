@@ -16,15 +16,6 @@ export interface ButtonTheme {
   readonly xfab: ButtonVariantTheme;
 }
 
-export interface OptionalButtonTheme {
-  readonly allVariants?: OptionalButtonVariantTheme;
-  readonly contained?: OptionalButtonVariantTheme;
-  readonly containedShaped?: OptionalButtonVariantTheme;
-  readonly default?: OptionalButtonVariantTheme;
-  readonly fab?: OptionalButtonVariantTheme;
-  readonly highlighted?: OptionalButtonVariantTheme;
-  readonly icon?: OptionalButtonVariantTheme;
-  readonly outlined?: OptionalButtonVariantTheme;
-  readonly outlinedShaped?: OptionalButtonVariantTheme;
-  readonly xfab?: OptionalButtonVariantTheme;
-}
+export type OptionalButtonTheme = {
+  [P in keyof ButtonTheme]?: OptionalButtonVariantTheme
+};

@@ -8,8 +8,4 @@ export interface Themed {
   readonly paletteTheme: PaletteTheme;
 }
 
-export interface OptionalThemed {
-  readonly colorTheme?: ColorTheme;
-  readonly componentsTheme?: ComponentsTheme;
-  readonly paletteTheme?: PaletteTheme;
-}
+export type OptionalThemed = Partial<Themed>;

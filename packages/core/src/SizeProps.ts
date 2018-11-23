@@ -4,6 +4,4 @@ export interface SizeProps {
   readonly size: Size;
 }
 
-export interface OptionalSizeProps {
-  readonly size?: Size;
-}
+export type OptionalSizeProps = Partial<SizeProps>;
