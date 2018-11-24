@@ -1,5 +1,4 @@
 import {
-  ButtonSubName,
   DefaultViewSubcomponent,
   InteractivityType,
   OptionalButtonTheme,
@@ -15,7 +14,7 @@ import { getFabButtonContainerProps } from './container';
 import { fabStaticButtonTheme } from './staticTheme';
 
 export const partialFabButtonTheme: OptionalButtonTheme = {
-  [ButtonSubName.CONTAINER]: {
+  container: {
     allSizes: {
       allStates: {
         getProps: props =>

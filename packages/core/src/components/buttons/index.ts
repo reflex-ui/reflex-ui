@@ -1,6 +1,5 @@
 export * from './Button';
 export * from './ButtonProps';
-export * from './ButtonSubName';
 export * from './ButtonSubProps';
 export * from './ButtonSubPropsGetter';
 export * from './ButtonVariant';

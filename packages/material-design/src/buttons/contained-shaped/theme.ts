@@ -1,8 +1,4 @@
-import {
-  ButtonSubName,
-  DefaultViewSubcomponent,
-  OptionalButtonTheme,
-} from '@reflex-ui/core';
+import { DefaultViewSubcomponent, OptionalButtonTheme } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
 import {
@@ -13,7 +9,7 @@ import { withRippleEffect } from '../withRippleEffect';
 import { containedShapedStaticButtonTheme } from './staticTheme';
 
 export const containedShapedAnimatedButtonTheme: OptionalButtonTheme = {
-  [ButtonSubName.CONTAINER]: {
+  container: {
     allSizes: {
       pressed: {
         getProps: getContainedButtonContainerProps,

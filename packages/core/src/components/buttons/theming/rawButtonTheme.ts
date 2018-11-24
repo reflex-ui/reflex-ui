@@ -12,42 +12,35 @@ import { DefaultTouchableSubcomponent } from '../../touchable/DefaultTouchableSu
 import { DefaultTextSubcomponent } from '../../typography/DefaultTextSubcomponent';
 import { DefaultViewSubcomponent } from '../../views/DefaultViewSubcomponent';
 import { ButtonProps } from '../ButtonProps';
-import { ButtonSubName } from '../ButtonSubName';
 import { ButtonTheme, ButtonVariantsTheme } from './';
 
 export const rawButtonVariantTheme: ButtonTheme = {
-  [ButtonSubName.CONTAINER]: {
+  container: {
     component: DefaultViewSubcomponent,
     ...getRawSizedInteractiveTheme<ButtonProps, ViewProps>(),
   },
-  [ButtonSubName.ICON]: getRawSizedInteractiveTheme<ButtonProps, TextProps>(),
-  [ButtonSubName.ICON_CONTAINER]: {
+  icon: getRawSizedInteractiveTheme<ButtonProps, TextProps>(),
+  iconContainer: {
     component: DefaultViewSubcomponent,
     ...getRawSizedInteractiveTheme<ButtonProps, ViewProps>(),
   },
-  [ButtonSubName.LEADING_ICON]: getRawSizedInteractiveTheme<
-    ButtonProps,
-    TextProps
-    // tslint:disable-next-line:ter-func-call-spacing
-  >(),
-  [ButtonSubName.LEADING_ICON_CONTAINER]: {
+  leadingIcon: getRawSizedInteractiveTheme<ButtonProps, TextProps>(),
+  leadingIconContainer: {
     component: DefaultViewSubcomponent,
     ...getRawSizedInteractiveTheme<ButtonProps, ViewProps>(),
   },
-  [ButtonSubName.TEXT]: {
+  text: {
     component: DefaultTextSubcomponent,
     ...getRawSizedInteractiveTheme<ButtonProps, TextProps>(),
   },
   // prettier-ignore
-  [ButtonSubName.TOUCHABLE]: {
+  touchable: {
     component: DefaultTouchableSubcomponent,
     // tslint:disable-next-line:max-line-length
     ...getRawSizedInteractiveTheme<ButtonProps, TouchableWithoutFeedbackProps>(),
   },
-  // prettier-ignore
-  // tslint:disable-next-line:max-line-length
-  [ButtonSubName.TRAILING_ICON]: getRawSizedInteractiveTheme<ButtonProps, TextProps>(),
-  [ButtonSubName.TRAILING_ICON_CONTAINER]: {
+  trailingIcon: getRawSizedInteractiveTheme<ButtonProps, TextProps>(),
+  trailingIconContainer: {
     component: DefaultViewSubcomponent,
     ...getRawSizedInteractiveTheme<ButtonProps, ViewProps>(),
   },

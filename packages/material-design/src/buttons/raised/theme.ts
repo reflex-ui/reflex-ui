@@ -1,6 +1,5 @@
 import {
   ButtonProps,
-  ButtonSubName,
   DefaultViewSubcomponent,
   InteractivityType,
   OptionalButtonTheme,
@@ -32,7 +31,7 @@ export const getAnimatedRaisedButtonContainerStyle: ViewStyleGetter<
 > = () => getLowElevationStylesByInteractivity(InteractivityType.DISABLED);
 
 export const partialRaisedButtonTheme: OptionalButtonTheme = {
-  [ButtonSubName.CONTAINER]: {
+  container: {
     allSizes: {
       allStates: {
         getProps: getAnimatedRaisedButtonContainerProps,

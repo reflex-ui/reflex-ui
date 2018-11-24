@@ -1,5 +1,4 @@
 import {
-  ButtonSubName,
   DefaultViewSubcomponent,
   InteractivityType,
   OptionalButtonTheme,
@@ -15,7 +14,7 @@ import { withRippleEffect } from '../withRippleEffect';
 import { xfabStaticButtonTheme } from './staticTheme';
 
 export const partialXFabButtonTheme: OptionalButtonTheme = {
-  [ButtonSubName.CONTAINER]: {
+  container: {
     allSizes: {
       allStates: {
         getProps: props =>

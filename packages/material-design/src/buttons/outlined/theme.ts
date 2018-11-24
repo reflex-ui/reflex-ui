@@ -1,8 +1,4 @@
-import {
-  ButtonSubName,
-  DefaultViewSubcomponent,
-  OptionalButtonTheme,
-} from '@reflex-ui/core';
+import { DefaultViewSubcomponent, OptionalButtonTheme } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
 // tslint:disable-next-line:max-line-length
@@ -12,7 +8,7 @@ import { getOutlinedButtonContainerProps } from './container';
 import { outlinedStaticButtonTheme } from './staticTheme';
 
 export const outlinedAnimatedButtonTheme: OptionalButtonTheme = {
-  [ButtonSubName.CONTAINER]: {
+  container: {
     allSizes: {
       pressed: {
         getProps: getOutlinedButtonContainerProps,

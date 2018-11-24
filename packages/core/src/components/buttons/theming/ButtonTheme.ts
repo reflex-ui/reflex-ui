@@ -17,85 +17,82 @@ import { OptionalTouchableTheme, TouchableTheme } from '../../touchable';
 import { OptionalTextTheme, TextTheme } from '../../typography';
 import { OptionalViewTheme, ViewTheme } from '../../views';
 import { ButtonProps } from '../ButtonProps';
-import { ButtonSubName } from '../ButtonSubName';
 
 export interface ButtonTheme {
-  readonly [ButtonSubName.CONTAINER]: SubTheme<
+  readonly container: SubTheme<
     React.ComponentType<SubProps<ButtonProps> & ViewProps>
   > &
     SizedSubTheme<InteractiveSubTheme<ViewTheme<ButtonProps>>>;
-  readonly [ButtonSubName.ICON]: SizedSubTheme<
+  readonly icon: SizedSubTheme<InteractiveSubTheme<TextTheme<ButtonProps>>>;
+  readonly iconContainer: SubTheme<
+    React.ComponentType<SubProps<ButtonProps> & ViewProps>
+  > &
+    SizedSubTheme<InteractiveSubTheme<ViewTheme<ButtonProps>>>;
+  readonly leadingIcon: SizedSubTheme<
     InteractiveSubTheme<TextTheme<ButtonProps>>
   >;
-  readonly [ButtonSubName.ICON_CONTAINER]: SubTheme<
+  readonly leadingIconContainer: SubTheme<
     React.ComponentType<SubProps<ButtonProps> & ViewProps>
   > &
     SizedSubTheme<InteractiveSubTheme<ViewTheme<ButtonProps>>>;
-  readonly [ButtonSubName.LEADING_ICON]: SizedSubTheme<
-    InteractiveSubTheme<TextTheme<ButtonProps>>
-  >;
-  readonly [ButtonSubName.LEADING_ICON_CONTAINER]: SubTheme<
-    React.ComponentType<SubProps<ButtonProps> & ViewProps>
-  > &
-    SizedSubTheme<InteractiveSubTheme<ViewTheme<ButtonProps>>>;
-  readonly [ButtonSubName.TEXT]: SubTheme<
+  readonly text: SubTheme<
     React.ComponentType<SubProps<ButtonProps> & TextProps>
   > &
     SizedSubTheme<InteractiveSubTheme<TextTheme<ButtonProps>>>;
-  readonly [ButtonSubName.TOUCHABLE]: SubTheme<
+  readonly touchable: SubTheme<
     React.ComponentType<SubProps<ButtonProps> & TouchableWithoutFeedbackProps>
   > &
     SizedSubTheme<InteractiveSubTheme<TouchableTheme<ButtonProps>>>;
-  readonly [ButtonSubName.TRAILING_ICON]: SizedSubTheme<
+  readonly trailingIcon: SizedSubTheme<
     InteractiveSubTheme<TextTheme<ButtonProps>>
   >;
-  readonly [ButtonSubName.TRAILING_ICON_CONTAINER]: SubTheme<
+  readonly trailingIconContainer: SubTheme<
     React.ComponentType<SubProps<ButtonProps> & ViewProps>
   > &
     SizedSubTheme<InteractiveSubTheme<ViewTheme<ButtonProps>>>;
 }
 
 export interface OptionalButtonTheme {
-  readonly [ButtonSubName.CONTAINER]?: OptionalSubTheme<
+  readonly container?: OptionalSubTheme<
     React.ComponentType<SubProps<ButtonProps> & ViewProps>
   > &
     OptionalSizedSubTheme<
       OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
     >;
-  readonly [ButtonSubName.ICON]?: OptionalSizedSubTheme<
+  readonly icon?: OptionalSizedSubTheme<
     OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
   >;
-  readonly [ButtonSubName.ICON_CONTAINER]?: OptionalSubTheme<
+  readonly iconContainer?: OptionalSubTheme<
     React.ComponentType<SubProps<ButtonProps> & ViewProps>
   > &
     OptionalSizedSubTheme<
       OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
     >;
-  readonly [ButtonSubName.LEADING_ICON]?: OptionalSizedSubTheme<
+  readonly leadingIcon?: OptionalSizedSubTheme<
     OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
   >;
-  readonly [ButtonSubName.LEADING_ICON_CONTAINER]?: OptionalSubTheme<
+  readonly leadingIconContainer?: OptionalSubTheme<
     React.ComponentType<SubProps<ButtonProps> & ViewProps>
   > &
     OptionalSizedSubTheme<
       OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
     >;
-  readonly [ButtonSubName.TEXT]?: OptionalSubTheme<
+  readonly text?: OptionalSubTheme<
     React.ComponentType<SubProps<ButtonProps> & TextProps>
   > &
     OptionalSizedSubTheme<
       OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
     >;
-  readonly [ButtonSubName.TOUCHABLE]?: OptionalSubTheme<
+  readonly touchable?: OptionalSubTheme<
     React.ComponentType<SubProps<ButtonProps> & TouchableWithoutFeedbackProps>
   > &
     OptionalSizedSubTheme<
       OptionalInteractiveSubTheme<OptionalTouchableTheme<ButtonProps>>
     >;
-  readonly [ButtonSubName.TRAILING_ICON]?: OptionalSizedSubTheme<
+  readonly trailingIcon?: OptionalSizedSubTheme<
     OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
   >;
-  readonly [ButtonSubName.TRAILING_ICON_CONTAINER]?: OptionalSubTheme<
+  readonly trailingIconContainer?: OptionalSubTheme<
     React.ComponentType<SubProps<ButtonProps> & ViewProps>
   > &
     OptionalSizedSubTheme<
