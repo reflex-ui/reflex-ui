@@ -24,7 +24,7 @@ import { ButtonProps } from './ButtonProps';
 import { ButtonSubProps } from './ButtonSubProps';
 import { ButtonVariant } from './ButtonVariant';
 
-export const extractTouchableProps = (
+export const extractTouchablePropsFromButtonProps = (
   props: ButtonProps,
 ): TouchableWithoutFeedbackProps => {
   const {
@@ -45,7 +45,7 @@ export const extractTouchableProps = (
   return touchableProps;
 };
 
-export const transformButtonChildren = (
+export const handleButtonChildren = (
   props: ButtonProps,
   userSubProps: ButtonSubProps,
 ): React.ReactNode => {
@@ -57,7 +57,7 @@ export const transformButtonChildren = (
     typeof children === 'number' ||
     typeof children === 'boolean'
   ) {
-    return transformStringChildrenIntoComponent(
+    return transformButtonStringChildrenIntoComponent(
       children.toString(),
       props,
       userSubProps,
@@ -90,7 +90,7 @@ export const transformButtonChildren = (
   return children;
 };
 
-export const transformStringChildrenIntoComponent = (
+export const transformButtonStringChildrenIntoComponent = (
   children: string,
   props: ButtonProps,
   userSubProps: ButtonSubProps,
@@ -225,7 +225,7 @@ export const SimpleButton: React.SFC<ButtonProps> = (props: ButtonProps) => {
   const { children, variant } = props;
   const buttonTheme = props.componentsTheme.button;
   const userSubProps = props.getSubProps ? props.getSubProps(props) : {};
-  const touchableProps = extractTouchableProps(props);
+  const touchableProps = extractTouchablePropsFromButtonProps(props);
 
   const Container = buttonTheme[variant].container.component;
   const Touchable = buttonTheme[variant].touchable.component;
@@ -248,7 +248,7 @@ export const SimpleButton: React.SFC<ButtonProps> = (props: ButtonProps) => {
     <Touchable componentProps={props} {...touchableProps}>
       <Container componentProps={props} {...containerProps}>
         {props.leadingIcon && handleLeadingIcon(props, userSubProps)}
-        {children && transformButtonChildren(props, userSubProps)}
+        {children && handleButtonChildren(props, userSubProps)}
         {props.trailingIcon && handleTrailingIcon(props, userSubProps)}
       </Container>
     </Touchable>
