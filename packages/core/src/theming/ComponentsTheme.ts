@@ -1,4 +1,7 @@
-import { ButtonTheme, OptionalButtonTheme } from '../components/buttons';
+import {
+  ButtonVariantsTheme,
+  OptionalButtonVariantsTheme,
+} from '../components/buttons';
 import {
   IconWrapperTheme,
   OptionalIconWrapperTheme,
@@ -9,13 +12,13 @@ import {
 } from '../components/typography';
 
 export interface ComponentsTheme {
-  readonly button: ButtonTheme;
+  readonly button: ButtonVariantsTheme;
   readonly icon: IconWrapperTheme;
   readonly typography: TypographyTheme;
 }
 
 export interface OptionalComponentsTheme {
-  readonly button?: OptionalButtonTheme;
+  readonly button?: OptionalButtonVariantsTheme;
   readonly icon?: OptionalIconWrapperTheme;
   readonly typography?: OptionalTypographyTheme;
 }

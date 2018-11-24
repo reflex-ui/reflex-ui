@@ -12,47 +12,48 @@ import { DefaultTouchableSubcomponent } from '../../touchable/DefaultTouchableSu
 import { DefaultTextSubcomponent } from '../../typography/DefaultTextSubcomponent';
 import { DefaultViewSubcomponent } from '../../views/DefaultViewSubcomponent';
 import { ButtonProps } from '../ButtonProps';
-import { ButtonSubcomponents } from '../ButtonSubcomponents';
 import { ButtonSubName } from '../ButtonSubName';
-import { ButtonTheme, ButtonVariantTheme } from './';
+import { ButtonTheme, ButtonVariantsTheme } from './';
 
-export const rawButtonSubcomponents: ButtonSubcomponents = {
-  container: DefaultViewSubcomponent,
-  iconContainer: DefaultViewSubcomponent,
-  leadingIconContainer: DefaultViewSubcomponent,
-  text: DefaultTextSubcomponent,
-  touchable: DefaultTouchableSubcomponent,
-  trailingIconContainer: DefaultViewSubcomponent,
-};
-
-export const rawButtonVariantTheme: ButtonVariantTheme = {
-  // prettier-ignore
-  // tslint:disable-next-line:max-line-length
-  [ButtonSubName.CONTAINER]: getRawSizedInteractiveTheme<ButtonProps, ViewProps>(),
+export const rawButtonVariantTheme: ButtonTheme = {
+  [ButtonSubName.CONTAINER]: {
+    component: DefaultViewSubcomponent,
+    ...getRawSizedInteractiveTheme<ButtonProps, ViewProps>(),
+  },
   [ButtonSubName.ICON]: getRawSizedInteractiveTheme<ButtonProps, TextProps>(),
+  [ButtonSubName.ICON_CONTAINER]: {
+    component: DefaultViewSubcomponent,
+    ...getRawSizedInteractiveTheme<ButtonProps, ViewProps>(),
+  },
+  [ButtonSubName.LEADING_ICON]: getRawSizedInteractiveTheme<
+    ButtonProps,
+    TextProps
+    // tslint:disable-next-line:ter-func-call-spacing
+  >(),
+  [ButtonSubName.LEADING_ICON_CONTAINER]: {
+    component: DefaultViewSubcomponent,
+    ...getRawSizedInteractiveTheme<ButtonProps, ViewProps>(),
+  },
+  [ButtonSubName.TEXT]: {
+    component: DefaultTextSubcomponent,
+    ...getRawSizedInteractiveTheme<ButtonProps, TextProps>(),
+  },
   // prettier-ignore
-  // tslint:disable-next-line:max-line-length
-  [ButtonSubName.ICON_CONTAINER]: getRawSizedInteractiveTheme<ButtonProps, ViewProps>(),
-  // prettier-ignore
-  // tslint:disable-next-line:max-line-length
-  [ButtonSubName.LEADING_ICON]: getRawSizedInteractiveTheme<ButtonProps, TextProps>(),
-  // prettier-ignore
-  // tslint:disable-next-line:max-line-length
-  [ButtonSubName.LEADING_ICON_CONTAINER]: getRawSizedInteractiveTheme<ButtonProps, TextProps>(),
-  subcomponents: rawButtonSubcomponents,
-  [ButtonSubName.TEXT]: getRawSizedInteractiveTheme<ButtonProps, TextProps>(),
-  // prettier-ignore
-  // tslint:disable-next-line:max-line-length
-  [ButtonSubName.TOUCHABLE]: getRawSizedInteractiveTheme<ButtonProps, TouchableWithoutFeedbackProps>(),
+  [ButtonSubName.TOUCHABLE]: {
+    component: DefaultTouchableSubcomponent,
+    // tslint:disable-next-line:max-line-length
+    ...getRawSizedInteractiveTheme<ButtonProps, TouchableWithoutFeedbackProps>(),
+  },
   // prettier-ignore
   // tslint:disable-next-line:max-line-length
   [ButtonSubName.TRAILING_ICON]: getRawSizedInteractiveTheme<ButtonProps, TextProps>(),
-  // prettier-ignore
-  // tslint:disable-next-line
-  [ButtonSubName.TRAILING_ICON_CONTAINER]: getRawSizedInteractiveTheme<ButtonProps, TextProps>()
+  [ButtonSubName.TRAILING_ICON_CONTAINER]: {
+    component: DefaultViewSubcomponent,
+    ...getRawSizedInteractiveTheme<ButtonProps, ViewProps>(),
+  },
 };
 
-export const rawButtonTheme: ButtonTheme = {
+export const rawButtonTheme: ButtonVariantsTheme = {
   allVariants: rawButtonVariantTheme,
   contained: rawButtonVariantTheme,
   containedShaped: rawButtonVariantTheme,

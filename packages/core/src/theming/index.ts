@@ -12,4 +12,5 @@ export * from './palette';
 export * from './PrimitiveTheme';
 export * from './rawComponentsTheme';
 export * from './SizedSubTheme';
+export * from './SubTheme';
 export * from './Themed';

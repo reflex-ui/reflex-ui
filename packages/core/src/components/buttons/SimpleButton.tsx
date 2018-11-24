@@ -21,11 +21,10 @@ import {
   handleAndroidTextTransformation,
 } from '../typography/handleAndroidTextTransformation';
 import { ButtonProps } from './ButtonProps';
-import { ButtonSubName } from './ButtonSubName';
 import { ButtonSubProps } from './ButtonSubProps';
 import { ButtonVariant } from './ButtonVariant';
 
-const extractTouchableProps = (
+export const extractTouchableProps = (
   props: ButtonProps,
 ): TouchableWithoutFeedbackProps => {
   const {
@@ -46,7 +45,7 @@ const extractTouchableProps = (
   return touchableProps;
 };
 
-const transformButtonChildren = (
+export const transformButtonChildren = (
   props: ButtonProps,
   userSubProps: ButtonSubProps,
 ): React.ReactNode => {
@@ -70,11 +69,18 @@ const transformButtonChildren = (
     props.variant === ButtonVariant.ICON
   ) {
     const buttonTheme = props.componentsTheme.button;
+
     return handleButtonIcon({
-      Container: buttonTheme[props.variant].subcomponents.iconContainer,
-      containerName: ButtonSubName.ICON_CONTAINER,
+      Container: buttonTheme[props.variant].iconContainer.component,
+      containerThemes: [
+        buttonTheme.allVariants.iconContainer,
+        buttonTheme[props.variant].iconContainer,
+      ],
       icon: children as React.ReactElement<OptionalIconWrapperProps>,
-      iconName: ButtonSubName.ICON,
+      iconThemes: [
+        buttonTheme.allVariants.icon,
+        buttonTheme[props.variant].icon,
+      ],
       props,
       userContainerProps: userSubProps.iconContainer,
       userIconProps: userSubProps.icon,
@@ -84,16 +90,22 @@ const transformButtonChildren = (
   return children;
 };
 
-const transformStringChildrenIntoComponent = (
+export const transformStringChildrenIntoComponent = (
   children: string,
   props: ButtonProps,
   userSubProps: ButtonSubProps,
 ): JSX.Element => {
   const buttonTheme = props.componentsTheme.button;
-  const { text: Text } = buttonTheme[props.variant].subcomponents;
-  const textProps = getButtonSubProps<TextProps, TextStyle>({
-    props,
-    subName: ButtonSubName.TEXT,
+  const Text = buttonTheme[props.variant].text.component;
+
+  const textProps = getInteractiveSubProps<
+    ButtonProps,
+    TextProps,
+    TextStyle
+    // tslint:disable-next-line:ter-func-call-spacing
+  >({
+    componentProps: props,
+    themes: [buttonTheme.allVariants.text, buttonTheme[props.variant].text],
     userProps: userSubProps.text,
   });
 
@@ -106,30 +118,43 @@ const transformStringChildrenIntoComponent = (
 
 export interface HandleButtonIconData {
   readonly Container: React.ComponentType<SubProps<ButtonProps> & ViewProps>;
-  readonly containerName: ButtonSubName;
+  readonly containerThemes: SizedSubTheme<
+    InteractiveSubTheme<PrimitiveTheme<ButtonProps, ViewProps>>
+  >[];
   readonly icon: React.ReactElement<OptionalIconWrapperProps>;
-  readonly iconName: ButtonSubName;
+  readonly iconThemes: SizedSubTheme<
+    InteractiveSubTheme<PrimitiveTheme<ButtonProps, TextProps>>
+  >[];
   readonly props: ButtonProps;
   readonly userContainerProps?: ViewProps;
   readonly userIconProps?: TextProps;
 }
 
-const handleButtonIcon = (
+export const handleButtonIcon = (
   data: HandleButtonIconData,
 ): JSX.Element | undefined => {
-  const { props } = data;
-  const containerProps = getButtonSubProps<ViewProps, ViewStyle>({
-    props,
-    subName: data.containerName,
+  const containerProps = getInteractiveSubProps<
+    ButtonProps,
+    ViewProps,
+    ViewStyle
+    // tslint:disable-next-line:ter-func-call-spacing
+  >({
+    componentProps: data.props,
+    themes: data.containerThemes,
     userProps: data.userContainerProps,
   });
 
   const iconProps: OptionalIconWrapperProps = {
     getSubProps: () => ({
       icon: {
-        ...getButtonSubProps<TextProps, TextStyle>({
-          props,
-          subName: data.iconName,
+        ...getInteractiveSubProps<
+          ButtonProps,
+          TextProps,
+          TextStyle
+          // tslint:disable-next-line:ter-func-call-spacing
+        >({
+          componentProps: data.props,
+          themes: data.iconThemes,
           userProps: data.userIconProps,
         }),
       },
@@ -144,65 +169,55 @@ const handleButtonIcon = (
   const { Container } = data;
 
   return (
-    <Container componentProps={props} {...containerProps}>
+    <Container componentProps={data.props} {...containerProps}>
       {styledIcon}
     </Container>
   );
 };
 
-const handleLeadingIcon = (
+export const handleLeadingIcon = (
   props: ButtonProps,
   userSubProps: ButtonSubProps,
 ): JSX.Element | undefined => {
   const buttonTheme = props.componentsTheme.button;
+
   return handleButtonIcon({
-    Container: buttonTheme[props.variant].subcomponents.leadingIconContainer,
-    containerName: ButtonSubName.LEADING_ICON_CONTAINER,
+    Container: buttonTheme[props.variant].leadingIconContainer.component,
+    containerThemes: [
+      buttonTheme.allVariants.leadingIconContainer,
+      buttonTheme[props.variant].leadingIconContainer,
+    ],
     icon: props.leadingIcon as React.ReactElement<OptionalIconWrapperProps>,
-    iconName: ButtonSubName.LEADING_ICON,
+    iconThemes: [
+      buttonTheme.allVariants.leadingIcon,
+      buttonTheme[props.variant].leadingIcon,
+    ],
     props,
     userContainerProps: userSubProps.leadingIconContainer,
     userIconProps: userSubProps.leadingIcon,
   });
 };
 
-const handleTrailingIcon = (
+export const handleTrailingIcon = (
   props: ButtonProps,
   userSubProps: ButtonSubProps,
 ): JSX.Element | undefined => {
   const buttonTheme = props.componentsTheme.button;
+
   return handleButtonIcon({
-    Container: buttonTheme[props.variant].subcomponents.trailingIconContainer,
-    containerName: ButtonSubName.TRAILING_ICON_CONTAINER,
+    Container: buttonTheme[props.variant].trailingIconContainer.component,
+    containerThemes: [
+      buttonTheme.allVariants.trailingIconContainer,
+      buttonTheme[props.variant].trailingIconContainer,
+    ],
     icon: props.trailingIcon as React.ReactElement<OptionalIconWrapperProps>,
-    iconName: ButtonSubName.TRAILING_ICON,
+    iconThemes: [
+      buttonTheme.allVariants.trailingIcon,
+      buttonTheme[props.variant].trailingIcon,
+    ],
     props,
     userContainerProps: userSubProps.trailingIconContainer,
     userIconProps: userSubProps.trailingIcon,
-  });
-};
-
-export interface ButtonSubPropsGetterData<PrimitiveProps> {
-  readonly props: ButtonProps;
-  readonly subName: ButtonSubName;
-  readonly userProps?: PrimitiveProps;
-}
-
-export const getButtonSubProps = <PrimitiveProps, PrimitiveStyle>(
-  data: ButtonSubPropsGetterData<PrimitiveProps>,
-): PrimitiveProps => {
-  const buttonTheme = data.props.componentsTheme.button;
-  return getInteractiveSubProps<ButtonProps, PrimitiveProps, PrimitiveStyle>({
-    componentProps: data.props,
-    themes: [
-      buttonTheme.allVariants[data.subName] as SizedSubTheme<
-        InteractiveSubTheme<PrimitiveTheme<ButtonProps, PrimitiveProps>>
-      >,
-      buttonTheme[data.props.variant][data.subName] as SizedSubTheme<
-        InteractiveSubTheme<PrimitiveTheme<ButtonProps, PrimitiveProps>>
-      >,
-    ],
-    userProps: data.userProps,
   });
 };
 
@@ -210,14 +225,23 @@ export const SimpleButton: React.SFC<ButtonProps> = (props: ButtonProps) => {
   const { children, variant } = props;
   const buttonTheme = props.componentsTheme.button;
   const userSubProps = props.getSubProps ? props.getSubProps(props) : {};
-  const { subcomponents } = buttonTheme[variant];
-  const { container: Container, touchable: Touchable } = subcomponents;
   const touchableProps = extractTouchableProps(props);
 
-  const containerProps = getButtonSubProps<ViewProps, ViewStyle>({
-    props,
-    subName: ButtonSubName.CONTAINER,
-    userProps: userSubProps.container || {},
+  const Container = buttonTheme[variant].container.component;
+  const Touchable = buttonTheme[variant].touchable.component;
+
+  const containerProps = getInteractiveSubProps<
+    ButtonProps,
+    ViewProps,
+    ViewStyle
+    // tslint:disable-next-line:ter-func-call-spacing
+  >({
+    componentProps: props,
+    themes: [
+      buttonTheme.allVariants.container,
+      buttonTheme[props.variant].container,
+    ],
+    userProps: userSubProps.container,
   });
 
   return (

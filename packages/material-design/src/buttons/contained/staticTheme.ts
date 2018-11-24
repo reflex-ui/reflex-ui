@@ -1,4 +1,4 @@
-import { ButtonSubName, OptionalButtonVariantTheme } from '@reflex-ui/core';
+import { ButtonSubName, OptionalButtonTheme } from '@reflex-ui/core';
 
 import { containedStaticButtonContainerTheme } from './container';
 import {
@@ -7,7 +7,7 @@ import {
 } from './sideIcons';
 import { containedStaticButtonTextTheme } from './text';
 
-export const containedStaticButtonTheme: OptionalButtonVariantTheme = {
+export const containedStaticButtonTheme: OptionalButtonTheme = {
   [ButtonSubName.CONTAINER]: containedStaticButtonContainerTheme,
   [ButtonSubName.LEADING_ICON]: containedStaticButtonLeadingIconTheme,
   [ButtonSubName.TEXT]: containedStaticButtonTextTheme,

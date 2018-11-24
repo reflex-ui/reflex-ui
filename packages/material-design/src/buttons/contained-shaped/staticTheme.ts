@@ -1,16 +1,16 @@
-import { OptionalButtonVariantTheme } from '@reflex-ui/core';
+import { OptionalButtonTheme } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
 import { containedStaticButtonTheme } from '../contained/staticTheme';
 import { containedShapedStaticButtonContainerTheme } from './container';
 
-const partialContainedShapedStaticButtonTheme: OptionalButtonVariantTheme = {
+const partialContainedShapedStaticButtonTheme: OptionalButtonTheme = {
   container: containedShapedStaticButtonContainerTheme,
 };
 
 // tslint:disable-next-line:max-line-length
-export const containedShapedStaticButtonTheme: OptionalButtonVariantTheme = merge<
+export const containedShapedStaticButtonTheme: OptionalButtonTheme = merge<
   {},
-  OptionalButtonVariantTheme,
-  OptionalButtonVariantTheme
+  OptionalButtonTheme,
+  OptionalButtonTheme
 >({}, containedStaticButtonTheme, partialContainedShapedStaticButtonTheme);

@@ -1,3 +1,3 @@
 export * from './ButtonTheme';
-export * from './ButtonVariantTheme';
+export * from './ButtonVariantsTheme';
 export * from './rawButtonTheme';

@@ -3,7 +3,7 @@ import {
   ButtonSubName,
   DefaultViewSubcomponent,
   InteractivityType,
-  OptionalButtonVariantTheme,
+  OptionalButtonTheme,
   ViewPropsGetter,
   ViewStyleGetter,
 } from '@reflex-ui/core';
@@ -31,23 +31,21 @@ export const getAnimatedRaisedButtonContainerStyle: ViewStyleGetter<
   ButtonProps
 > = () => getLowElevationStylesByInteractivity(InteractivityType.DISABLED);
 
-export const partialRaisedButtonTheme: OptionalButtonVariantTheme = {
+export const partialRaisedButtonTheme: OptionalButtonTheme = {
   [ButtonSubName.CONTAINER]: {
     allSizes: {
       allStates: {
         getProps: getAnimatedRaisedButtonContainerProps,
       },
     },
-  },
-  subcomponents: {
-    [ButtonSubName.CONTAINER]: withRippleEffect({
+    component: withRippleEffect({
       getRippleColor: getContainedButtonRippleColor,
     })(withRaiseEffect(ElevationDegree.LOW)(DefaultViewSubcomponent)),
   },
 };
 
-export const raisedButtonTheme: OptionalButtonVariantTheme = merge<
+export const raisedButtonTheme: OptionalButtonTheme = merge<
   {},
-  OptionalButtonVariantTheme,
-  OptionalButtonVariantTheme
+  OptionalButtonTheme,
+  OptionalButtonTheme
 >({}, raisedStaticButtonTheme, partialRaisedButtonTheme);

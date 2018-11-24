@@ -1,4 +1,4 @@
-import { OptionalButtonTheme } from '@reflex-ui/core';
+import { OptionalButtonVariantsTheme } from '@reflex-ui/core';
 import {
   allVariantsStaticButtonTheme,
   containedShapedStaticButtonTheme,
@@ -12,7 +12,7 @@ import {
   xfabStaticButtonTheme,
 } from './';
 
-export const staticButtonTheme: OptionalButtonTheme = {
+export const staticButtonTheme: OptionalButtonVariantsTheme = {
   allVariants: allVariantsStaticButtonTheme,
   contained: containedStaticButtonTheme,
   containedShaped: containedShapedStaticButtonTheme,

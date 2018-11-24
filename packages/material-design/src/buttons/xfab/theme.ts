@@ -2,7 +2,7 @@ import {
   ButtonSubName,
   DefaultViewSubcomponent,
   InteractivityType,
-  OptionalButtonVariantTheme,
+  OptionalButtonTheme,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
@@ -14,7 +14,7 @@ import { withRaiseEffect } from '../withRaiseEffect';
 import { withRippleEffect } from '../withRippleEffect';
 import { xfabStaticButtonTheme } from './staticTheme';
 
-export const partialXFabButtonTheme: OptionalButtonVariantTheme = {
+export const partialXFabButtonTheme: OptionalButtonTheme = {
   [ButtonSubName.CONTAINER]: {
     allSizes: {
       allStates: {
@@ -28,16 +28,14 @@ export const partialXFabButtonTheme: OptionalButtonVariantTheme = {
           }),
       },
     },
-  },
-  subcomponents: {
-    [ButtonSubName.CONTAINER]: withRippleEffect({
+    component: withRippleEffect({
       getRippleColor: getContainedButtonRippleColor,
     })(withRaiseEffect(ElevationDegree.MID)(DefaultViewSubcomponent)),
   },
 };
 
-export const xfabButtonTheme: OptionalButtonVariantTheme = merge<
+export const xfabButtonTheme: OptionalButtonTheme = merge<
   {},
-  OptionalButtonVariantTheme,
-  OptionalButtonVariantTheme
+  OptionalButtonTheme,
+  OptionalButtonTheme
 >({}, xfabStaticButtonTheme, partialXFabButtonTheme);

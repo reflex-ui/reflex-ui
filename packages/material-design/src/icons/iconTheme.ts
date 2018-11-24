@@ -1,8 +1,8 @@
 import {
   getSizedMarginStyle,
   getThemedColor,
-  IconWrapperTheme,
   IconWrapperProps,
+  IconWrapperTheme,
   OptionalIconWrapperTheme,
   OptionalPrimitiveTheme,
   OptionalSizedSubTheme,

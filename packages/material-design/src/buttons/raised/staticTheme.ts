@@ -1,15 +1,15 @@
-import { ButtonSubName, OptionalButtonVariantTheme } from '@reflex-ui/core';
+import { ButtonSubName, OptionalButtonTheme } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
 import { containedStaticButtonTheme } from '../contained';
 import { raisedStaticButtonContainerTheme } from './container';
 
-export const partialRaisedStaticButtonTheme: OptionalButtonVariantTheme = {
+export const partialRaisedStaticButtonTheme: OptionalButtonTheme = {
   [ButtonSubName.CONTAINER]: raisedStaticButtonContainerTheme,
 };
 
-export const raisedStaticButtonTheme: OptionalButtonVariantTheme = merge<
+export const raisedStaticButtonTheme: OptionalButtonTheme = merge<
   {},
-  OptionalButtonVariantTheme,
-  OptionalButtonVariantTheme
+  OptionalButtonTheme,
+  OptionalButtonTheme
 >({}, containedStaticButtonTheme, partialRaisedStaticButtonTheme);

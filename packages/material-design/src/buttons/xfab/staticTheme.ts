@@ -1,4 +1,4 @@
-import { ButtonSubName, OptionalButtonVariantTheme } from '@reflex-ui/core';
+import { ButtonSubName, OptionalButtonTheme } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
 import { fabStaticButtonTheme } from '../fab/staticTheme';
@@ -12,7 +12,7 @@ import {
   xfabStaticButtonTrailingIconTheme,
 } from './sideIcons';
 
-export const partialXFabStaticButtonTheme: OptionalButtonVariantTheme = {
+export const partialXFabStaticButtonTheme: OptionalButtonTheme = {
   [ButtonSubName.CONTAINER]: xfabStaticButtonContainerTheme,
   [ButtonSubName.LEADING_ICON]: xfabStaticButtonLeadingIconTheme,
   // tslint:disable-next-line:max-line-length
@@ -22,8 +22,8 @@ export const partialXFabStaticButtonTheme: OptionalButtonVariantTheme = {
   [ButtonSubName.TRAILING_ICON_CONTAINER]: xfabStaticButtonTrailingIconContainerTheme,
 };
 
-export const xfabStaticButtonTheme: OptionalButtonVariantTheme = merge<
+export const xfabStaticButtonTheme: OptionalButtonTheme = merge<
   {},
-  OptionalButtonVariantTheme,
-  OptionalButtonVariantTheme
+  OptionalButtonTheme,
+  OptionalButtonTheme
 >({}, fabStaticButtonTheme, partialXFabStaticButtonTheme);
