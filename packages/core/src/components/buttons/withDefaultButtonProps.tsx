@@ -26,14 +26,15 @@ export const withDefaultButtonProps = (
               : Size.M;
 
           const propsWithDefaults: ButtonProps = {
+            allVariantsTheme: componentsTheme.button.allVariants,
             colorTheme: getButtonVariantColorTheme(variant),
-            componentsTheme,
             interactivityState: {
               type: InteractivityType.ENABLED,
             },
             margin,
             paletteTheme,
             size: Size.M,
+            theme: componentsTheme.button[variant],
             variant,
             ...props,
           };

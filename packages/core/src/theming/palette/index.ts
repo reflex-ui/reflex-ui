@@ -5,5 +5,6 @@ export * from './PaletteColor';
 export * from './PaletteColorVariant';
 export * from './PaletteTheme';
 export * from './PaletteThemeContext';
+export * from './PaletteThemeProps';
 export * from './purpleTealPaletteTheme';
 export * from './ThemedColorGetter';

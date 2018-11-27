@@ -24,7 +24,7 @@ const handleIconChildren = (
     ...getSubProps<IconWrapperProps, TextIconProps, TextStyle>({
       componentProps: props,
       themes: [
-        props.componentsTheme.icon.icon as SizedSubTheme<
+        props.theme.icon as SizedSubTheme<
           PrimitiveTheme<IconWrapperProps, TextProps>
         >,
       ],
@@ -47,13 +47,12 @@ export const SimpleIconWrapper: React.SFC<IconWrapperProps> = (
   if (props.children) children = handleIconChildren(props, userSubProps);
   if (props.noContainer) return <React.Fragment>{children}</React.Fragment>;
 
-  const iconTheme = props.componentsTheme.icon;
-  const { Container } = iconTheme.subcomponents;
+  const { Container } = props.theme.subcomponents;
 
   const containerProps = getSubProps<IconWrapperProps, ViewProps, ViewStyle>({
     componentProps: props,
     themes: [
-      props.componentsTheme.icon.container as SizedSubTheme<
+      props.theme.container as SizedSubTheme<
         PrimitiveTheme<IconWrapperProps, ViewProps>
       >,
     ],

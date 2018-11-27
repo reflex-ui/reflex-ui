@@ -28,9 +28,9 @@ export const extractTouchablePropsFromButtonProps = (
   props: ButtonProps,
 ): TouchableWithoutFeedbackProps => {
   const {
+    allVariantsTheme,
     children,
     colorTheme,
-    componentsTheme,
     fullWidth,
     getSubProps,
     interactivityState,
@@ -38,6 +38,7 @@ export const extractTouchablePropsFromButtonProps = (
     paletteTheme,
     trailingIcon,
     size,
+    theme,
     variant,
     ...touchableProps
   } = props;
@@ -68,19 +69,14 @@ export const handleButtonChildren = (
     props.variant === ButtonVariant.FAB ||
     props.variant === ButtonVariant.ICON
   ) {
-    const buttonTheme = props.componentsTheme.button;
-
     return handleButtonIcon({
-      Container: buttonTheme[props.variant].iconContainer.component,
+      Container: props.theme.iconContainer.component,
       containerThemes: [
-        buttonTheme.allVariants.iconContainer,
-        buttonTheme[props.variant].iconContainer,
+        props.allVariantsTheme.iconContainer,
+        props.theme.iconContainer,
       ],
       icon: children as React.ReactElement<OptionalIconWrapperProps>,
-      iconThemes: [
-        buttonTheme.allVariants.icon,
-        buttonTheme[props.variant].icon,
-      ],
+      iconThemes: [props.allVariantsTheme.icon, props.theme.icon],
       props,
       userContainerProps: userSubProps.iconContainer,
       userIconProps: userSubProps.icon,
@@ -95,8 +91,7 @@ export const transformButtonStringChildrenIntoComponent = (
   props: ButtonProps,
   userSubProps: ButtonSubProps,
 ): JSX.Element => {
-  const buttonTheme = props.componentsTheme.button;
-  const Text = buttonTheme[props.variant].text.component;
+  const Text = props.theme.text.component;
 
   const textProps = getInteractiveSubProps<
     ButtonProps,
@@ -105,7 +100,7 @@ export const transformButtonStringChildrenIntoComponent = (
     // tslint:disable-next-line:ter-func-call-spacing
   >({
     componentProps: props,
-    themes: [buttonTheme.allVariants.text, buttonTheme[props.variant].text],
+    themes: [props.allVariantsTheme.text, props.theme.text],
     userProps: userSubProps.text,
   });
 
@@ -178,57 +173,44 @@ export const handleButtonIcon = (
 export const handleLeadingIcon = (
   props: ButtonProps,
   userSubProps: ButtonSubProps,
-): JSX.Element | undefined => {
-  const buttonTheme = props.componentsTheme.button;
-
-  return handleButtonIcon({
-    Container: buttonTheme[props.variant].leadingIconContainer.component,
+): JSX.Element | undefined =>
+  handleButtonIcon({
+    Container: props.theme.leadingIconContainer.component,
     containerThemes: [
-      buttonTheme.allVariants.leadingIconContainer,
-      buttonTheme[props.variant].leadingIconContainer,
+      props.allVariantsTheme.leadingIconContainer,
+      props.theme.leadingIconContainer,
     ],
     icon: props.leadingIcon as React.ReactElement<OptionalIconWrapperProps>,
-    iconThemes: [
-      buttonTheme.allVariants.leadingIcon,
-      buttonTheme[props.variant].leadingIcon,
-    ],
+    iconThemes: [props.allVariantsTheme.leadingIcon, props.theme.leadingIcon],
     props,
     userContainerProps: userSubProps.leadingIconContainer,
     userIconProps: userSubProps.leadingIcon,
   });
-};
 
 export const handleTrailingIcon = (
   props: ButtonProps,
   userSubProps: ButtonSubProps,
-): JSX.Element | undefined => {
-  const buttonTheme = props.componentsTheme.button;
-
-  return handleButtonIcon({
-    Container: buttonTheme[props.variant].trailingIconContainer.component,
+): JSX.Element | undefined =>
+  handleButtonIcon({
+    Container: props.theme.trailingIconContainer.component,
     containerThemes: [
-      buttonTheme.allVariants.trailingIconContainer,
-      buttonTheme[props.variant].trailingIconContainer,
+      props.allVariantsTheme.trailingIconContainer,
+      props.theme.trailingIconContainer,
     ],
     icon: props.trailingIcon as React.ReactElement<OptionalIconWrapperProps>,
-    iconThemes: [
-      buttonTheme.allVariants.trailingIcon,
-      buttonTheme[props.variant].trailingIcon,
-    ],
+    iconThemes: [props.allVariantsTheme.trailingIcon, props.theme.trailingIcon],
     props,
     userContainerProps: userSubProps.trailingIconContainer,
     userIconProps: userSubProps.trailingIcon,
   });
-};
 
 export const SimpleButton: React.SFC<ButtonProps> = (props: ButtonProps) => {
-  const { children, variant } = props;
-  const buttonTheme = props.componentsTheme.button;
+  const { children } = props;
   const userSubProps = props.getSubProps ? props.getSubProps(props) : {};
   const touchableProps = extractTouchablePropsFromButtonProps(props);
 
-  const Container = buttonTheme[variant].container.component;
-  const Touchable = buttonTheme[variant].touchable.component;
+  const Container = props.theme.container.component;
+  const Touchable = props.theme.touchable.component;
 
   const containerProps = getInteractiveSubProps<
     ButtonProps,
@@ -237,10 +219,7 @@ export const SimpleButton: React.SFC<ButtonProps> = (props: ButtonProps) => {
     // tslint:disable-next-line:ter-func-call-spacing
   >({
     componentProps: props,
-    themes: [
-      buttonTheme.allVariants.container,
-      buttonTheme[props.variant].container,
-    ],
+    themes: [props.allVariantsTheme.container, props.theme.container],
     userProps: userSubProps.container,
   });
 

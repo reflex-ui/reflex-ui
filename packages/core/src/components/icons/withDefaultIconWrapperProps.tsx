@@ -18,9 +18,9 @@ export const withDefaultIconWrapperProps = (
         {(componentsTheme) => {
           const propsWithDefaults: IconWrapperProps = {
             colorTheme: ColorTheme.SECONDARY_NORMAL,
-            componentsTheme,
             paletteTheme,
             size: Size.M,
+            theme: componentsTheme.icon,
             ...props,
           };
 
