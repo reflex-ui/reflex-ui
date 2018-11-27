@@ -1,5 +1,5 @@
 import { TextProps } from 'react-native';
-import { PrimitiveTheme } from '../../../theming';
+import { PrimitiveTheme } from '../../theming/PrimitiveTheme';
 
 export type TextTheme<ComponentProps> = PrimitiveTheme<
   ComponentProps,

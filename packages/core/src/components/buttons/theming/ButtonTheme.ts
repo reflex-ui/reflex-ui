@@ -12,7 +12,7 @@ import {
   OptionalSubTheme,
   SizedSubTheme,
   SubTheme,
-} from '../../../theming';
+} from '../../theming';
 import { OptionalTouchableTheme, TouchableTheme } from '../../touchable';
 import { OptionalTextTheme, TextTheme } from '../../typography';
 import { OptionalViewTheme, ViewTheme } from '../../views';

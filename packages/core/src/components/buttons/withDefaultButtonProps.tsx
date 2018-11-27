@@ -1,8 +1,9 @@
 import * as React from 'react';
 
 import { InteractivityType } from '../../interactivity';
+import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
 import { Size } from '../../Size';
-import { ComponentsThemeContext, PaletteThemeContext } from '../../theming';
+import { ComponentsThemeContext } from '../theming';
 import { ButtonProps, OptionalButtonProps } from './ButtonProps';
 import { ButtonVariant } from './ButtonVariant';
 import { getButtonVariantColorTheme } from './getButtonVariantColorTheme';

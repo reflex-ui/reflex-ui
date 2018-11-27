@@ -1,4 +1,4 @@
-import { InteractivityType } from '../../interactivity';
+import { InteractivityType } from '../interactivity/InteractivityType';
 import { ColorTheme } from './ColorTheme';
 import { PaletteTheme } from './PaletteTheme';
 

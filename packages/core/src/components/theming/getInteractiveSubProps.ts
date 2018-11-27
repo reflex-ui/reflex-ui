@@ -1,9 +1,12 @@
 import merge from 'lodash/merge';
 
-import { registerStyle } from '../components/registerStyle';
-import { StyleProps } from '../components/StyleProps';
-import { InteractivityStateProps, InteractivityType } from '../interactivity';
-import { SizeProps } from '../SizeProps';
+import {
+  InteractivityStateProps,
+  InteractivityType,
+} from '../../interactivity';
+import { SizeProps } from '../../SizeProps';
+import { registerStyle } from '../registerStyle';
+import { StyleProps } from '../StyleProps';
 import { InteractiveSubTheme } from './InteractiveSubTheme';
 import { PrimitiveTheme } from './PrimitiveTheme';
 import { SizedSubTheme } from './SizedSubTheme';

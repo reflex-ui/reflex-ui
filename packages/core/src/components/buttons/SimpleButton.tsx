@@ -7,15 +7,15 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import { cloneElement } from '../../utils';
+import { OptionalIconWrapperProps } from '../icons';
+import { SubProps } from '../SubProps';
 import {
   getInteractiveSubProps,
   InteractiveSubTheme,
   PrimitiveTheme,
   SizedSubTheme,
-} from '../../theming';
-import { cloneElement } from '../../utils';
-import { OptionalIconWrapperProps } from '../icons';
-import { SubProps } from '../SubProps';
+} from '../theming';
 // prettier-ignore
 import {
   handleAndroidTextTransformation,

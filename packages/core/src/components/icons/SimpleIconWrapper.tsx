@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { TextProps, TextStyle, ViewProps, ViewStyle } from 'react-native';
 
-import { getSubProps, PrimitiveTheme, SizedSubTheme } from '../../theming';
 import { cloneElement } from '../../utils';
+import { getSubProps, PrimitiveTheme, SizedSubTheme } from '../theming';
 import { IconWrapperProps, OptionalIconWrapperProps } from './IconWrapperProps';
 import { IconWrapperSubProps } from './IconWrapperSubProps';
 import { TextIconProps } from './TextIconProps';

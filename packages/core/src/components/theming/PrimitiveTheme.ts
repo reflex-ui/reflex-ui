@@ -1,4 +1,4 @@
-import { PrimitivePropsGetter } from '../components/PrimitivePropsGetter';
+import { PrimitivePropsGetter } from '../PrimitivePropsGetter';
 
 export interface PrimitiveTheme<ComponentProps, PrimitiveProps> {
   readonly getProps: PrimitivePropsGetter<ComponentProps, PrimitiveProps>;

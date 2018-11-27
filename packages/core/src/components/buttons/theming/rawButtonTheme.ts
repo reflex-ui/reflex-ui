@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 
 // tslint:disable-next-line:max-line-length
-import { getRawSizedInteractiveTheme } from '../../../theming/getRawSizedInteractiveTheme';
+import { getRawSizedInteractiveTheme } from '../../theming/getRawSizedInteractiveTheme';
 // tslint:disable-next-line:max-line-length
 import { DefaultTouchableSubcomponent } from '../../touchable/DefaultTouchableSubcomponent';
 // tslint:disable-next-line:max-line-length

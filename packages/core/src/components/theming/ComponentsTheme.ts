@@ -1,15 +1,6 @@
-import {
-  ButtonVariantsTheme,
-  OptionalButtonVariantsTheme,
-} from '../components/buttons';
-import {
-  IconWrapperTheme,
-  OptionalIconWrapperTheme,
-} from '../components/icons';
-import {
-  OptionalTypographyTheme,
-  TypographyTheme,
-} from '../components/typography';
+import { ButtonVariantsTheme, OptionalButtonVariantsTheme } from '../buttons';
+import { IconWrapperTheme, OptionalIconWrapperTheme } from '../icons';
+import { OptionalTypographyTheme, TypographyTheme } from '../typography';
 
 export interface ComponentsTheme {
   readonly button: ButtonVariantsTheme;

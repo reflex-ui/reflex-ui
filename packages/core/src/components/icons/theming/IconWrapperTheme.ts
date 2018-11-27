@@ -3,7 +3,7 @@ import {
   OptionalSizedSubTheme,
   PrimitiveTheme,
   SizedSubTheme,
-} from '../../../theming';
+} from '../../theming';
 import { OptionalViewTheme, ViewTheme } from '../../views';
 import { IconWrapperProps } from '../IconWrapperProps';
 import {

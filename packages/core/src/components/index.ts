@@ -4,6 +4,7 @@ export * from './registerStyle';
 export * from './StyleProps';
 export * from './SubProps';
 export * from './SubPropsGetter';
+export * from './theming';
 export * from './touchable';
 export * from './typography';
 export * from './views';

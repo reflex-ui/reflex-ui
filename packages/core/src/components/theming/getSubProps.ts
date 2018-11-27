@@ -1,8 +1,8 @@
 import merge from 'lodash/merge';
 
-import { registerStyle } from '../components/registerStyle';
-import { StyleProps } from '../components/StyleProps';
-import { SizeProps } from '../SizeProps';
+import { SizeProps } from '../../SizeProps';
+import { registerStyle } from '../registerStyle';
+import { StyleProps } from '../StyleProps';
 import { PrimitiveTheme } from './PrimitiveTheme';
 import { SizedSubTheme } from './SizedSubTheme';
 

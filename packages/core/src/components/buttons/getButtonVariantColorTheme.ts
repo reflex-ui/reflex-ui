@@ -1,4 +1,4 @@
-import { ColorTheme } from '../../theming';
+import { ColorTheme } from '../../palette';
 import { ButtonVariant } from './ButtonVariant';
 
 export const getButtonVariantColorTheme = (

@@ -1,6 +1,6 @@
 import { ViewProps } from 'react-native';
 
-import { getRawSizedTheme } from '../../../theming/getRawSizedTheme';
+import { getRawSizedTheme } from '../../theming/getRawSizedTheme';
 import { DefaultViewSubcomponent } from '../../views/DefaultViewSubcomponent';
 import { IconWrapperProps } from '../IconWrapperProps';
 import { IconWrapperSubcomponents } from '../IconWrapperSubcomponents';

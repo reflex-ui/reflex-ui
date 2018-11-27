@@ -1,11 +1,8 @@
 import * as React from 'react';
 
+import { ColorTheme, PaletteThemeContext } from '../../palette';
 import { Size } from '../../Size';
-import {
-  ColorTheme,
-  ComponentsThemeContext,
-  PaletteThemeContext,
-} from '../../theming';
+import { ComponentsThemeContext } from '../theming';
 import { IconWrapperProps, OptionalIconWrapperProps } from './IconWrapperProps';
 
 // prettier-ignore

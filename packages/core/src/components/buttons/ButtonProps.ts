@@ -1,7 +1,7 @@
 import { InteractivityProps } from '../../interactivity';
 import { MarginProps } from '../../margin';
+import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
 import { SizeProps } from '../../SizeProps';
-import { PaletteThemeProps } from '../../theming/palette/PaletteThemeProps';
 import { ButtonProps } from './ButtonProps';
 import { ButtonSubPropsGetter } from './ButtonSubPropsGetter';
 import { ButtonVariant } from './ButtonVariant';
@@ -10,8 +10,8 @@ import { ButtonTheme } from './theming/ButtonTheme';
 export interface ButtonProps
   extends InteractivityProps,
     MarginProps,
-    SizeProps,
-    PaletteThemeProps {
+    PaletteThemeProps,
+    SizeProps {
   readonly allVariantsTheme: ButtonTheme;
   readonly children?: React.ReactNode;
   readonly fullWidth?: boolean;
