@@ -5,14 +5,12 @@ import {
 } from 'react-native';
 
 // tslint:disable-next-line:max-line-length
-import { getRawSizedInteractiveTheme } from '../../theming/getRawSizedInteractiveTheme';
+import { getRawSizedInteractiveTheme } from '../raw/getRawSizedInteractiveTheme';
 // tslint:disable-next-line:max-line-length
-import { DefaultTouchableSubcomponent } from '../../touchable/DefaultTouchableSubcomponent';
-// tslint:disable-next-line:max-line-length
-import { DefaultTextSubcomponent } from '../../typography/DefaultTextSubcomponent';
-import { DefaultViewSubcomponent } from '../../views/DefaultViewSubcomponent';
-import { ButtonProps } from '../ButtonProps';
-import { ButtonTheme, ButtonVariantsTheme } from './';
+import { DefaultTouchableSubcomponent } from '../touchable/DefaultTouchableSubcomponent';
+import { DefaultTextSubcomponent } from '../typography/DefaultTextSubcomponent';
+import { DefaultViewSubcomponent } from '../views/DefaultViewSubcomponent';
+import { ButtonProps, ButtonTheme, ButtonVariantsTheme } from './';
 
 export const rawButtonVariantTheme: ButtonTheme = {
   container: {

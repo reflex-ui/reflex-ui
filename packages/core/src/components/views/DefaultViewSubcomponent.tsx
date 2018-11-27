@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { View, ViewProps } from 'react-native';
-import { SubProps } from '../SubProps';
+import { SubProps } from '../subcomponents/SubProps';
 
 export const DefaultViewSubcomponent: React.ComponentType<
   // tslint:disable-next-line:no-any

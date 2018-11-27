@@ -1,7 +1,7 @@
+import { PrimitiveTheme } from '../PrimitiveTheme';
+import { InteractiveSubTheme } from '../subcomponents/InteractiveSubTheme';
+import { SizedSubTheme } from '../subcomponents/SizedSubTheme';
 import { getRawInteractiveTheme } from './getRawInteractiveTheme';
-import { InteractiveSubTheme } from './InteractiveSubTheme';
-import { PrimitiveTheme } from './PrimitiveTheme';
-import { SizedSubTheme } from './SizedSubTheme';
 
 export const getRawSizedInteractiveTheme = <
   ComponentProps,

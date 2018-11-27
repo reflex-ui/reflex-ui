@@ -1,9 +1,9 @@
 import merge from 'lodash/merge';
 
 import { SizeProps } from '../../SizeProps';
+import { PrimitiveTheme } from '../PrimitiveTheme';
 import { registerStyle } from '../registerStyle';
 import { StyleProps } from '../StyleProps';
-import { PrimitiveTheme } from './PrimitiveTheme';
 import { SizedSubTheme } from './SizedSubTheme';
 
 export interface SubPropsGetterData<ComponentProps, PrimitiveProps> {

@@ -9,13 +9,13 @@ import {
 
 import { cloneElement } from '../../utils';
 import { OptionalIconWrapperProps } from '../icons';
-import { SubProps } from '../SubProps';
+import { PrimitiveTheme } from '../PrimitiveTheme';
 import {
   getInteractiveSubProps,
   InteractiveSubTheme,
-  PrimitiveTheme,
   SizedSubTheme,
-} from '../theming';
+  SubProps,
+} from '../subcomponents';
 // prettier-ignore
 import {
   handleAndroidTextTransformation,

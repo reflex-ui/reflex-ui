@@ -5,10 +5,10 @@ import {
   InteractivityType,
 } from '../../interactivity';
 import { SizeProps } from '../../SizeProps';
+import { PrimitiveTheme } from '../PrimitiveTheme';
 import { registerStyle } from '../registerStyle';
 import { StyleProps } from '../StyleProps';
 import { InteractiveSubTheme } from './InteractiveSubTheme';
-import { PrimitiveTheme } from './PrimitiveTheme';
 import { SizedSubTheme } from './SizedSubTheme';
 
 export interface InteractiveSubPropsGetterData<ComponentProps, PrimitiveProps> {

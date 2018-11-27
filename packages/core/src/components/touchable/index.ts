@@ -1,3 +1,3 @@
 export * from './DefaultTouchableSubcomponent';
-export * from './theming';
 export * from './TouchablePropsGetter';
+export * from './TouchableTheme';

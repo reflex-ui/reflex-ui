@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { ColorTheme, PaletteThemeContext } from '../../palette';
 import { Size } from '../../Size';
-import { ComponentsThemeContext } from '../theming';
+import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { IconWrapperProps, OptionalIconWrapperProps } from './IconWrapperProps';
 
 // prettier-ignore

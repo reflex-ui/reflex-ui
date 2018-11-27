@@ -1,4 +1,4 @@
-import { PrimitiveTheme } from './PrimitiveTheme';
+import { PrimitiveTheme } from '../PrimitiveTheme';
 
 export const getRawPrimitiveTheme = <PrimitiveProps>(): PrimitiveTheme<
   {},

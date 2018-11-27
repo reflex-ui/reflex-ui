@@ -4,8 +4,8 @@ import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
 import { SizeProps } from '../../SizeProps';
 import { ButtonProps } from './ButtonProps';
 import { ButtonSubPropsGetter } from './ButtonSubPropsGetter';
+import { ButtonTheme } from './ButtonTheme';
 import { ButtonVariant } from './ButtonVariant';
-import { ButtonTheme } from './theming/ButtonTheme';
 
 export interface ButtonProps
   extends InteractivityProps,

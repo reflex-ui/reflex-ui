@@ -4,19 +4,19 @@ import {
   ViewProps,
 } from 'react-native';
 
-import { SubProps } from '../../';
 import {
   InteractiveSubTheme,
   OptionalInteractiveSubTheme,
   OptionalSizedSubTheme,
   OptionalSubTheme,
   SizedSubTheme,
+  SubProps,
   SubTheme,
-} from '../../theming';
-import { OptionalTouchableTheme, TouchableTheme } from '../../touchable';
-import { OptionalTextTheme, TextTheme } from '../../typography';
-import { OptionalViewTheme, ViewTheme } from '../../views';
-import { ButtonProps } from '../ButtonProps';
+} from '../subcomponents';
+import { OptionalTouchableTheme, TouchableTheme } from '../touchable';
+import { OptionalTextTheme, TextTheme } from '../typography';
+import { OptionalViewTheme, ViewTheme } from '../views';
+import { ButtonProps } from './ButtonProps';
 
 export interface ButtonTheme {
   readonly container: SubTheme<

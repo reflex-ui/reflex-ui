@@ -1,6 +1,6 @@
+import { PrimitiveTheme } from '../PrimitiveTheme';
+import { SizedSubTheme } from '../subcomponents/SizedSubTheme';
 import { getRawPrimitiveTheme } from './getRawPrimitiveTheme';
-import { PrimitiveTheme } from './PrimitiveTheme';
-import { SizedSubTheme } from './SizedSubTheme';
 
 export const getRawSizedTheme = <
   ComponentProps,

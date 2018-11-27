@@ -1,4 +1,4 @@
-import { SubPropsGetter } from '../SubPropsGetter';
+import { SubPropsGetter } from '../subcomponents';
 import { ButtonProps } from './ButtonProps';
 import { ButtonSubProps } from './ButtonSubProps';
 

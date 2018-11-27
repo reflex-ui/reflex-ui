@@ -1,8 +1,8 @@
 import { MarginProps } from '../../margin';
-import { SizeProps } from '../../SizeProps';
 import { PaletteThemeProps } from '../../palette';
+import { SizeProps } from '../../SizeProps';
 import { IconWrapperSubPropsGetter } from './IconWrapperSubPropsGetter';
-import { IconWrapperTheme } from './theming/IconWrapperTheme';
+import { IconWrapperTheme } from './IconWrapperTheme';
 
 export interface IconWrapperProps
   extends MarginProps,

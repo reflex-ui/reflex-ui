@@ -1,4 +1,4 @@
-import { SubPropsGetter } from '../SubPropsGetter';
+import { SubPropsGetter } from '../subcomponents/SubPropsGetter';
 import { IconWrapperProps } from './IconWrapperProps';
 import { IconWrapperSubProps } from './IconWrapperSubProps';
 

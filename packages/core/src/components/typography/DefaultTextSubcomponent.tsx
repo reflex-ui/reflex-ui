@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Text, TextProps } from 'react-native';
-import { SubProps } from '../SubProps';
+import { SubProps } from '../subcomponents/SubProps';
 
 export const DefaultTextSubcomponent: React.ComponentType<
   // tslint:disable-next-line:no-any

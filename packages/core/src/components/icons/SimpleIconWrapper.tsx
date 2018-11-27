@@ -2,7 +2,8 @@ import * as React from 'react';
 import { TextProps, TextStyle, ViewProps, ViewStyle } from 'react-native';
 
 import { cloneElement } from '../../utils';
-import { getSubProps, PrimitiveTheme, SizedSubTheme } from '../theming';
+import { PrimitiveTheme } from '../PrimitiveTheme';
+import { getSubProps, SizedSubTheme } from '../subcomponents';
 import { IconWrapperProps, OptionalIconWrapperProps } from './IconWrapperProps';
 import { IconWrapperSubProps } from './IconWrapperSubProps';
 import { TextIconProps } from './TextIconProps';
@@ -47,7 +48,7 @@ export const SimpleIconWrapper: React.SFC<IconWrapperProps> = (
   if (props.children) children = handleIconChildren(props, userSubProps);
   if (props.noContainer) return <React.Fragment>{children}</React.Fragment>;
 
-  const { Container } = props.theme.subcomponents;
+  const Container = props.theme.container.component;
 
   const containerProps = getSubProps<IconWrapperProps, ViewProps, ViewStyle>({
     componentProps: props,
