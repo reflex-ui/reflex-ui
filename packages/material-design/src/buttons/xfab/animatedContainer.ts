@@ -5,7 +5,6 @@ import {
   OptionalInteractiveSubTheme,
   OptionalSizedSubTheme,
   OptionalViewTheme,
-  SubProps,
   SubTheme,
 } from '@reflex-ui/core';
 import { ViewProps } from 'react-native';
@@ -18,7 +17,8 @@ import { withRaiseEffect } from '../withRaiseEffect';
 import { withRippleEffect } from '../withRippleEffect';
 
 export const xfabAnimatedButtonContainerTheme: SubTheme<
-  React.ComponentType<SubProps<ButtonProps> & ViewProps>
+  ButtonProps,
+  ViewProps
 > &
   OptionalSizedSubTheme<
     OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>

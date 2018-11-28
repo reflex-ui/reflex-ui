@@ -4,7 +4,6 @@ import {
   OptionalInteractiveSubTheme,
   OptionalSizedSubTheme,
   OptionalViewTheme,
-  SubProps,
   SubTheme,
 } from '@reflex-ui/core';
 import { ViewProps } from 'react-native';
@@ -15,7 +14,8 @@ import { withRippleEffect } from '../withRippleEffect';
 import { getOutlinedButtonContainerProps } from './container';
 
 export const outlinedAnimatedButtonContainerTheme: SubTheme<
-  React.ComponentType<SubProps<ButtonProps> & ViewProps>
+  ButtonProps,
+  ViewProps
 > &
   OptionalSizedSubTheme<
     OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>

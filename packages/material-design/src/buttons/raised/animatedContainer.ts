@@ -5,7 +5,6 @@ import {
   OptionalInteractiveSubTheme,
   OptionalSizedSubTheme,
   OptionalViewTheme,
-  SubProps,
   SubTheme,
   ViewPropsGetter,
   ViewStyleGetter,
@@ -35,7 +34,8 @@ export const getAnimatedRaisedButtonContainerStyle: ViewStyleGetter<
 > = () => getLowElevationStylesByInteractivity(InteractivityType.DISABLED);
 
 export const raisedAnimatedButtonContainerTheme: SubTheme<
-  React.ComponentType<SubProps<ButtonProps> & ViewProps>
+  ButtonProps,
+  ViewProps
 > &
   OptionalSizedSubTheme<
     OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>

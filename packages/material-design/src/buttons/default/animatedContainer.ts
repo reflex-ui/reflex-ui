@@ -4,7 +4,6 @@ import {
   OptionalInteractiveSubTheme,
   OptionalSizedSubTheme,
   OptionalViewTheme,
-  SubProps,
   SubTheme,
 } from '@reflex-ui/core';
 import { ViewProps } from 'react-native';
@@ -14,7 +13,8 @@ import { getDefaultButtonContainerProps } from './container';
 import { getDefaultButtonRippleColor } from './getDefaultButtonRippleColor';
 
 export const defaultAnimatedButtonContainerTheme: SubTheme<
-  React.ComponentType<SubProps<ButtonProps> & ViewProps>
+  ButtonProps,
+  ViewProps
 > &
   OptionalSizedSubTheme<
     OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>

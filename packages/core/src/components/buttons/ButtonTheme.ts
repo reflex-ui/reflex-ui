@@ -10,7 +10,6 @@ import {
   OptionalSizedSubTheme,
   OptionalSubTheme,
   SizedSubTheme,
-  SubProps,
   SubTheme,
 } from '../subcomponents';
 import { OptionalTouchableTheme, TouchableTheme } from '../touchable';
@@ -19,72 +18,53 @@ import { OptionalViewTheme, ViewTheme } from '../views';
 import { ButtonProps } from './ButtonProps';
 
 export interface ButtonTheme {
-  readonly container: SubTheme<
-    React.ComponentType<SubProps<ButtonProps> & ViewProps>
-  > &
+  readonly container: SubTheme<ButtonProps, ViewProps> &
     SizedSubTheme<InteractiveSubTheme<ViewTheme<ButtonProps>>>;
   readonly icon: SizedSubTheme<InteractiveSubTheme<TextTheme<ButtonProps>>>;
-  readonly iconContainer: SubTheme<
-    React.ComponentType<SubProps<ButtonProps> & ViewProps>
-  > &
+  readonly iconContainer: SubTheme<ButtonProps, ViewProps> &
     SizedSubTheme<InteractiveSubTheme<ViewTheme<ButtonProps>>>;
   readonly leadingIcon: SizedSubTheme<
     InteractiveSubTheme<TextTheme<ButtonProps>>
   >;
-  readonly leadingIconContainer: SubTheme<
-    React.ComponentType<SubProps<ButtonProps> & ViewProps>
-  > &
+  readonly leadingIconContainer: SubTheme<ButtonProps, ViewProps> &
     SizedSubTheme<InteractiveSubTheme<ViewTheme<ButtonProps>>>;
-  readonly text: SubTheme<
-    React.ComponentType<SubProps<ButtonProps> & TextProps>
-  > &
+  readonly text: SubTheme<ButtonProps, TextProps> &
     SizedSubTheme<InteractiveSubTheme<TextTheme<ButtonProps>>>;
-  readonly touchable: SubTheme<
-    React.ComponentType<SubProps<ButtonProps> & TouchableWithoutFeedbackProps>
-  > &
+  readonly touchable: SubTheme<ButtonProps, TouchableWithoutFeedbackProps> &
     SizedSubTheme<InteractiveSubTheme<TouchableTheme<ButtonProps>>>;
   readonly trailingIcon: SizedSubTheme<
     InteractiveSubTheme<TextTheme<ButtonProps>>
   >;
-  readonly trailingIconContainer: SubTheme<
-    React.ComponentType<SubProps<ButtonProps> & ViewProps>
-  > &
+  readonly trailingIconContainer: SubTheme<ButtonProps, ViewProps> &
     SizedSubTheme<InteractiveSubTheme<ViewTheme<ButtonProps>>>;
 }
 
 export interface OptionalButtonTheme {
-  readonly container?: OptionalSubTheme<
-    React.ComponentType<SubProps<ButtonProps> & ViewProps>
-  > &
+  readonly container?: OptionalSubTheme<ButtonProps, ViewProps> &
     OptionalSizedSubTheme<
       OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
     >;
   readonly icon?: OptionalSizedSubTheme<
     OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
   >;
-  readonly iconContainer?: OptionalSubTheme<
-    React.ComponentType<SubProps<ButtonProps> & ViewProps>
-  > &
+  readonly iconContainer?: OptionalSubTheme<ButtonProps, ViewProps> &
     OptionalSizedSubTheme<
       OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
     >;
   readonly leadingIcon?: OptionalSizedSubTheme<
     OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
   >;
-  readonly leadingIconContainer?: OptionalSubTheme<
-    React.ComponentType<SubProps<ButtonProps> & ViewProps>
-  > &
+  readonly leadingIconContainer?: OptionalSubTheme<ButtonProps, ViewProps> &
     OptionalSizedSubTheme<
       OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
     >;
-  readonly text?: OptionalSubTheme<
-    React.ComponentType<SubProps<ButtonProps> & TextProps>
-  > &
+  readonly text?: OptionalSubTheme<ButtonProps, TextProps> &
     OptionalSizedSubTheme<
       OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
     >;
   readonly touchable?: OptionalSubTheme<
-    React.ComponentType<SubProps<ButtonProps> & TouchableWithoutFeedbackProps>
+    ButtonProps,
+    TouchableWithoutFeedbackProps
   > &
     OptionalSizedSubTheme<
       OptionalInteractiveSubTheme<OptionalTouchableTheme<ButtonProps>>
@@ -92,9 +72,7 @@ export interface OptionalButtonTheme {
   readonly trailingIcon?: OptionalSizedSubTheme<
     OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
   >;
-  readonly trailingIconContainer?: OptionalSubTheme<
-    React.ComponentType<SubProps<ButtonProps> & ViewProps>
-  > &
+  readonly trailingIconContainer?: OptionalSubTheme<ButtonProps, ViewProps> &
     OptionalSizedSubTheme<
       OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
     >;
