@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 import { cloneElement } from '../../utils';
-import { OptionalIconWrapperProps } from '../icons';
+import { OptionalSuperIconProps } from '../icons';
 import { PrimitiveTheme } from '../PrimitiveTheme';
 import {
   getSizedInteractiveSubProps,
@@ -75,7 +75,7 @@ export const handleButtonChildren = (
         props.allVariantsTheme.iconContainer,
         props.theme.iconContainer,
       ],
-      icon: children as React.ReactElement<OptionalIconWrapperProps>,
+      icon: children as React.ReactElement<OptionalSuperIconProps>,
       iconThemes: [props.allVariantsTheme.icon, props.theme.icon],
       props,
       userContainerProps: userSubProps.iconContainer,
@@ -116,7 +116,7 @@ export interface HandleButtonIconData {
   readonly containerThemes: SizedSubTheme<
     InteractiveSubTheme<PrimitiveTheme<ButtonProps, ViewProps>>
   >[];
-  readonly icon: React.ReactElement<OptionalIconWrapperProps>;
+  readonly icon: React.ReactElement<OptionalSuperIconProps>;
   readonly iconThemes: SizedSubTheme<
     InteractiveSubTheme<PrimitiveTheme<ButtonProps, TextProps>>
   >[];
@@ -139,7 +139,7 @@ export const handleButtonIcon = (
     userProps: data.userContainerProps,
   });
 
-  const iconProps: OptionalIconWrapperProps = {
+  const iconProps: OptionalSuperIconProps = {
     getSubProps: () => ({
       icon: {
         ...getSizedInteractiveSubProps<
@@ -180,7 +180,7 @@ export const handleLeadingIcon = (
       props.allVariantsTheme.leadingIconContainer,
       props.theme.leadingIconContainer,
     ],
-    icon: props.leadingIcon as React.ReactElement<OptionalIconWrapperProps>,
+    icon: props.leadingIcon as React.ReactElement<OptionalSuperIconProps>,
     iconThemes: [props.allVariantsTheme.leadingIcon, props.theme.leadingIcon],
     props,
     userContainerProps: userSubProps.leadingIconContainer,
@@ -197,7 +197,7 @@ export const handleTrailingIcon = (
       props.allVariantsTheme.trailingIconContainer,
       props.theme.trailingIconContainer,
     ],
-    icon: props.trailingIcon as React.ReactElement<OptionalIconWrapperProps>,
+    icon: props.trailingIcon as React.ReactElement<OptionalSuperIconProps>,
     iconThemes: [props.allVariantsTheme.trailingIcon, props.theme.trailingIcon],
     props,
     userContainerProps: userSubProps.trailingIconContainer,

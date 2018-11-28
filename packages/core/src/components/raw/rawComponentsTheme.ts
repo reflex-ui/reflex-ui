@@ -1,10 +1,10 @@
 import { rawButtonTheme } from '../buttons/rawButtonTheme';
 import { ComponentsTheme } from '../ComponentsTheme';
-import { rawIconWrapperTheme } from '../icons/rawIconWrapperTheme';
+import { rawSuperIconTheme } from '../icons/rawSuperIconTheme';
 import { rawTypographyTheme } from '../typography/rawTypographyTheme';
 
 export const rawComponentsTheme: ComponentsTheme = {
   button: rawButtonTheme,
-  icon: rawIconWrapperTheme,
+  icon: rawSuperIconTheme,
   typography: rawTypographyTheme,
 };

@@ -1,4 +1,4 @@
 import { createIconComponent } from './createIconComponent';
-import { IconNames } from './IconNames';
+import { IconName } from './IconName';
 
-export const MenuIcon = createIconComponent(IconNames.MENU);
+export const MenuIcon = createIconComponent(IconName.MENU);

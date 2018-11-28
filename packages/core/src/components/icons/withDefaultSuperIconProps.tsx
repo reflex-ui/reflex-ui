@@ -3,17 +3,17 @@ import * as React from 'react';
 import { ColorTheme, PaletteThemeContext } from '../../palette';
 import { Size } from '../../Size';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
-import { IconWrapperProps, OptionalIconWrapperProps } from './IconWrapperProps';
+import { OptionalSuperIconProps, SuperIconProps } from './SuperIconProps';
 
 // prettier-ignore
-export const withDefaultIconWrapperProps = (
-  WrappedComponent: React.ComponentType<IconWrapperProps>,
-): React.ComponentType<OptionalIconWrapperProps> => props => (
+export const withDefaultSuperIconProps = (
+  WrappedComponent: React.ComponentType<SuperIconProps>,
+): React.ComponentType<OptionalSuperIconProps> => props => (
   <PaletteThemeContext.Consumer>
     {paletteTheme => (
       <ComponentsThemeContext.Consumer>
         {(componentsTheme) => {
-          const propsWithDefaults: IconWrapperProps = {
+          const propsWithDefaults: SuperIconProps = {
             colorTheme: ColorTheme.SECONDARY_NORMAL,
             paletteTheme,
             size: Size.M,

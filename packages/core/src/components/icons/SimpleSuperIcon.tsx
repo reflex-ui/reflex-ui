@@ -1,20 +1,17 @@
 import * as React from 'react';
-import { TextProps, TextStyle, ViewProps, ViewStyle } from 'react-native';
+import { TextStyle, ViewProps, ViewStyle } from 'react-native';
 
 import { cloneElement } from '../../utils';
-import { PrimitiveTheme } from '../PrimitiveTheme';
-import { getSizedSubProps, SizedSubTheme } from '../subcomponents';
-import { IconWrapperProps, OptionalIconWrapperProps } from './IconWrapperProps';
-import { IconWrapperSubProps } from './IconWrapperSubProps';
+import { getSizedSubProps } from '../subcomponents';
+import { OptionalSuperIconProps, SuperIconProps } from './SuperIconProps';
+import { SuperIconSubProps } from './SuperIconSubProps';
 import { TextIconProps } from './TextIconProps';
 
 const handleIconChildren = (
-  props: IconWrapperProps,
-  userSubProps: IconWrapperSubProps,
+  props: SuperIconProps,
+  userSubProps: SuperIconSubProps,
 ): React.ReactNode => {
-  const children = props.children as React.ReactElement<
-    OptionalIconWrapperProps
-  >;
+  const children = props.children as React.ReactElement<OptionalSuperIconProps>;
   if (!children) return undefined;
 
   if (typeof children !== 'object') {
@@ -22,13 +19,9 @@ const handleIconChildren = (
   }
 
   const iconProps: TextIconProps = {
-    ...getSizedSubProps<IconWrapperProps, TextIconProps, TextStyle>({
+    ...getSizedSubProps<SuperIconProps, TextIconProps, TextStyle>({
       componentProps: props,
-      themes: [
-        props.theme.icon as SizedSubTheme<
-          PrimitiveTheme<IconWrapperProps, TextProps>
-        >,
-      ],
+      themes: [props.theme.icon],
       userProps: userSubProps.icon,
     }),
   };
@@ -40,8 +33,8 @@ const handleIconChildren = (
   return styledIcon;
 };
 
-export const SimpleIconWrapper: React.SFC<IconWrapperProps> = (
-  props: IconWrapperProps,
+export const SimpleSuperIcon: React.SFC<SuperIconProps> = (
+  props: SuperIconProps,
 ): React.ReactElement<{}> | null => {
   let children: React.ReactNode;
   const userSubProps = props.getSubProps ? props.getSubProps(props) : {};
@@ -51,17 +44,13 @@ export const SimpleIconWrapper: React.SFC<IconWrapperProps> = (
   const Container = props.theme.container.component;
 
   const containerProps = getSizedSubProps<
-    IconWrapperProps,
+    SuperIconProps,
     ViewProps,
     ViewStyle
     // tslint:disable-next-line:ter-func-call-spacing
   >({
     componentProps: props,
-    themes: [
-      props.theme.container as SizedSubTheme<
-        PrimitiveTheme<IconWrapperProps, ViewProps>
-      >,
-    ],
+    themes: [props.theme.container],
     userProps: userSubProps.container,
   });
 

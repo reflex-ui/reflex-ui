@@ -1,15 +1,15 @@
 import {
   getSizedMarginStyle,
   getThemedColor,
-  IconWrapperProps,
-  IconWrapperTheme,
-  OptionalIconWrapperTheme,
   OptionalPrimitiveTheme,
   OptionalSizedSubTheme,
+  OptionalSuperIconTheme,
   OptionalViewTheme,
-  rawIconWrapperTheme,
+  rawSuperIconTheme,
   Size,
   SizedMarginStyle,
+  SuperIconProps,
+  SuperIconTheme,
   TextIconProps,
   TextPropsGetter,
   TextStyleGetter,
@@ -46,13 +46,11 @@ export const iconSizedMarginStyle: SizedMarginStyle = {
   },
 };
 
-export const getAllSizesIconProps: TextPropsGetter<
-  IconWrapperProps
-> = props => ({
+export const getAllSizesIconProps: TextPropsGetter<SuperIconProps> = props => ({
   style: getAllSizesIconStyle(props),
 });
 
-export const getAllSizesIconStyle: TextStyleGetter<IconWrapperProps> = ({
+export const getAllSizesIconStyle: TextStyleGetter<SuperIconProps> = ({
   color,
   colorTheme,
   paletteTheme,
@@ -61,19 +59,19 @@ export const getAllSizesIconStyle: TextStyleGetter<IconWrapperProps> = ({
 });
 
 export const getIconContainerProps: ViewPropsGetter<
-  IconWrapperProps
+  SuperIconProps
 > = props => ({
   style: getIconContainerStyle(props),
 });
 
 export const getIconContainerStyle: ViewStyleGetter<
-  IconWrapperProps
+  SuperIconProps
 > = props => ({
   ...getSizedMarginStyle(iconSizedMarginStyle)(props),
 });
 
 export const iconContainerTheme: OptionalSizedSubTheme<
-  OptionalViewTheme<IconWrapperProps>
+  OptionalViewTheme<SuperIconProps>
 > = {
   allSizes: {
     getProps: getIconContainerProps,
@@ -81,7 +79,7 @@ export const iconContainerTheme: OptionalSizedSubTheme<
 };
 
 export const iconIconTheme: OptionalSizedSubTheme<
-  OptionalPrimitiveTheme<IconWrapperProps, TextIconProps>
+  OptionalPrimitiveTheme<SuperIconProps, TextIconProps>
 > = {
   allSizes: {
     getProps: getAllSizesIconProps,
@@ -132,13 +130,13 @@ export const iconIconTheme: OptionalSizedSubTheme<
   },
 };
 
-export const optionalIconTheme: OptionalIconWrapperTheme = {
+export const optionalIconTheme: OptionalSuperIconTheme = {
   container: iconContainerTheme,
   icon: iconIconTheme,
 };
 
-export const iconTheme: IconWrapperTheme = merge<
+export const iconTheme: SuperIconTheme = merge<
   {},
-  IconWrapperTheme,
-  OptionalIconWrapperTheme
->({}, rawIconWrapperTheme, optionalIconTheme);
+  SuperIconTheme,
+  OptionalSuperIconTheme
+>({}, rawSuperIconTheme, optionalIconTheme);

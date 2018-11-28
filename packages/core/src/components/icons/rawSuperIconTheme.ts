@@ -2,14 +2,14 @@ import { ViewProps } from 'react-native';
 
 import { getRawSizedTheme } from '../raw/getRawSizedTheme';
 import { DefaultViewSubcomponent } from '../views/DefaultViewSubcomponent';
-import { IconWrapperProps } from './IconWrapperProps';
-import { IconWrapperTheme } from './IconWrapperTheme';
+import { SuperIconProps } from './SuperIconProps';
+import { SuperIconTheme } from './SuperIconTheme';
 import { TextIconProps } from './TextIconProps';
 
-export const rawIconWrapperTheme: IconWrapperTheme = {
+export const rawSuperIconTheme: SuperIconTheme = {
   container: {
     component: DefaultViewSubcomponent,
-    ...getRawSizedTheme<IconWrapperProps, ViewProps>(),
+    ...getRawSizedTheme<SuperIconProps, ViewProps>(),
   },
-  icon: getRawSizedTheme<IconWrapperProps, TextIconProps>(),
+  icon: getRawSizedTheme<SuperIconProps, TextIconProps>(),
 };
