@@ -5,7 +5,7 @@ import {
   OptionalTextTheme,
 } from '@reflex-ui/core';
 
-export const xfabStaticButtonLeadingIconTheme: OptionalSizedSubTheme<
+export const xfabButtonLeadingIconTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
 > = {
   large: {
@@ -55,8 +55,8 @@ export const xfabStaticButtonLeadingIconTheme: OptionalSizedSubTheme<
   },
 };
 
-export const xfabStaticButtonTrailingIconTheme: OptionalSizedSubTheme<
+export const xfabButtonTrailingIconTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
 > = {
-  ...xfabStaticButtonLeadingIconTheme,
+  ...xfabButtonLeadingIconTheme,
 };

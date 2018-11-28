@@ -4,14 +4,14 @@ import {
   PaletteThemeContext,
 } from '@reflex-ui/core';
 import {
-  // createComponentsTheme,
-  createStaticComponentsTheme,
+  // createAnimatedComponentsTheme,
+  createComponentsTheme,
   purpleTealPaletteTheme,
 } from '@reflex-ui/material-design';
 import * as React from 'react';
 
-const MaterialDesignTheme: ComponentsTheme = createStaticComponentsTheme();
-// const MaterialDesignTheme: ComponentsTheme = createComponentsTheme();
+const MaterialDesignTheme: ComponentsTheme = createComponentsTheme();
+// const MaterialDesignTheme: ComponentsTheme = createAnimatedComponentsTheme();
 
 export type IWithAppLogic = <P extends {}>(
   WrappedComponent: React.ComponentType<P>,

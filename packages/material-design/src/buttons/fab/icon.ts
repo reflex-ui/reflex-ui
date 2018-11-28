@@ -14,7 +14,7 @@ export const getFabButtonIconProps: TextPropsGetter<ButtonProps> = props => ({
   },
 });
 
-export const fabStaticButtonIconTheme: OptionalSizedSubTheme<
+export const fabButtonIconTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
 > = {
   allSizes: {

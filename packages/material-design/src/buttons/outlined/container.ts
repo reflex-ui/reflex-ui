@@ -23,7 +23,7 @@ export const getOutlinedButtonContainerStyle: ViewStyleGetter<
   borderColor: getDefaultButtonTextStyle(props).color,
 });
 
-export const outlinedStaticButtonContainerTheme: OptionalSizedSubTheme<
+export const outlinedButtonContainerTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
 > = {
   allSizes: {

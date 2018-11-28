@@ -6,7 +6,7 @@ import {
 } from '@reflex-ui/core';
 
 // tslint:disable-next-line:max-line-length
-export const allVariantsStaticButtonLeadingIconContainerTheme: OptionalSizedSubTheme<
+export const allVariantsButtonLeadingIconContainerTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
 > = {
   large: {
@@ -62,7 +62,7 @@ export const allVariantsStaticButtonLeadingIconContainerTheme: OptionalSizedSubT
 };
 
 // tslint:disable-next-line:max-line-length
-export const allVariantsStaticButtonTrailingIconContainerTheme: OptionalSizedSubTheme<
+export const allVariantsButtonTrailingIconContainerTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
 > = {
   large: {

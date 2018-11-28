@@ -5,7 +5,7 @@ import {
   OptionalViewTheme,
 } from '@reflex-ui/core';
 
-export const xfabStaticButtonContainerTheme: OptionalSizedSubTheme<
+export const xfabButtonContainerTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
 > = {
   large: {

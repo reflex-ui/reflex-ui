@@ -30,8 +30,7 @@ export const getContainedButtonContainerStyle: ViewStyleGetter<ButtonProps> = ({
   }),
 });
 
-// tslint:disable-next-line:max-line-length
-export const containedStaticButtonContainerTheme: OptionalSizedSubTheme<
+export const containedButtonContainerTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
 > = {
   allSizes: {

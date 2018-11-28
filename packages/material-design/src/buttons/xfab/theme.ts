@@ -1,40 +1,27 @@
-import {
-  DefaultViewSubcomponent,
-  InteractivityType,
-  OptionalButtonTheme,
-} from '@reflex-ui/core';
+import { OptionalButtonTheme } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
-import { ElevationDegree } from '../../elevation';
-// tslint:disable-next-line:max-line-length
-import { getContainedButtonRippleColor } from '../contained/getContainedButtonRippleColor';
-import { getFabButtonContainerProps } from '../fab/container';
-import { withRaiseEffect } from '../withRaiseEffect';
-import { withRippleEffect } from '../withRippleEffect';
-import { xfabStaticButtonTheme } from './staticTheme';
+import { fabButtonTheme } from '../fab/theme';
+import { xfabButtonContainerTheme } from './container';
+import {
+  xfabButtonLeadingIconContainerTheme,
+  xfabButtonTrailingIconContainerTheme,
+} from './sideIconContainers';
+import {
+  xfabButtonLeadingIconTheme,
+  xfabButtonTrailingIconTheme,
+} from './sideIcons';
 
 export const partialXFabButtonTheme: OptionalButtonTheme = {
-  container: {
-    allSizes: {
-      allStates: {
-        getProps: props =>
-          getFabButtonContainerProps({
-            ...props,
-            interactivityState: {
-              ...props.interactivityState,
-              type: InteractivityType.DISABLED,
-            },
-          }),
-      },
-    },
-    component: withRippleEffect({
-      getRippleColor: getContainedButtonRippleColor,
-    })(withRaiseEffect(ElevationDegree.MID)(DefaultViewSubcomponent)),
-  },
+  container: xfabButtonContainerTheme,
+  leadingIcon: xfabButtonLeadingIconTheme,
+  leadingIconContainer: xfabButtonLeadingIconContainerTheme,
+  trailingIcon: xfabButtonTrailingIconTheme,
+  trailingIconContainer: xfabButtonTrailingIconContainerTheme,
 };
 
 export const xfabButtonTheme: OptionalButtonTheme = merge<
   {},
   OptionalButtonTheme,
   OptionalButtonTheme
->({}, xfabStaticButtonTheme, partialXFabButtonTheme);
+>({}, fabButtonTheme, partialXFabButtonTheme);

@@ -1,26 +1,15 @@
-import { DefaultViewSubcomponent, OptionalButtonTheme } from '@reflex-ui/core';
-import merge from 'lodash/merge';
+import { OptionalButtonTheme } from '@reflex-ui/core';
 
-import { withRippleEffect } from '../withRippleEffect';
-import { getContainedButtonContainerProps } from './container';
-import { getContainedButtonRippleColor } from './getContainedButtonRippleColor';
-import { containedStaticButtonTheme } from './staticTheme';
+import { containedButtonContainerTheme } from './container';
+import {
+  containedButtonLeadingIconTheme,
+  containedButtonTrailingIconTheme,
+} from './sideIcons';
+import { containedButtonTextTheme } from './text';
 
-export const containedAnimatedButtonTheme: OptionalButtonTheme = {
-  container: {
-    allSizes: {
-      pressed: {
-        getProps: getContainedButtonContainerProps,
-      },
-    },
-    component: withRippleEffect({
-      getRippleColor: getContainedButtonRippleColor,
-    })(DefaultViewSubcomponent),
-  },
+export const containedButtonTheme: OptionalButtonTheme = {
+  container: containedButtonContainerTheme,
+  leadingIcon: containedButtonLeadingIconTheme,
+  text: containedButtonTextTheme,
+  trailingIcon: containedButtonTrailingIconTheme,
 };
-
-export const containedButtonTheme: OptionalButtonTheme = merge<
-  {},
-  OptionalButtonTheme,
-  OptionalButtonTheme
->({}, containedStaticButtonTheme, containedAnimatedButtonTheme);

@@ -1,11 +1,11 @@
 import { OptionalComponentsTheme } from '@reflex-ui/core';
 
-import { staticButtonTheme } from './buttons/staticButtonTheme';
+import { animatedButtonTheme } from './buttons/animatedTheme';
 import { iconTheme } from './icons/iconTheme';
 import { typographyTheme } from './typography/typographyTheme';
 
-export const staticMaterialDesignTheme: OptionalComponentsTheme = {
-  button: staticButtonTheme,
+export const animatedMaterialDesignTheme: OptionalComponentsTheme = {
+  button: animatedButtonTheme,
   icon: iconTheme,
   typography: typographyTheme,
 };

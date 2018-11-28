@@ -23,7 +23,7 @@ export const getRaisedButtonContainerStyle: ViewStyleGetter<
   ...getLowElevationStylesByInteractivity(props.interactivityState.type),
 });
 
-export const raisedStaticButtonContainerTheme: OptionalSizedSubTheme<
+export const raisedButtonContainerTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
 > = {
   allSizes: {

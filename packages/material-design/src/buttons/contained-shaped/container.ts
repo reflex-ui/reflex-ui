@@ -6,7 +6,7 @@ import {
 } from '@reflex-ui/core';
 
 // tslint:disable-next-line:max-line-length
-export const containedShapedStaticButtonContainerTheme: OptionalSizedSubTheme<
+export const containedShapedButtonContainerTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
 > = {
   large: {

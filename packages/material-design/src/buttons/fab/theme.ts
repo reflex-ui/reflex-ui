@@ -1,40 +1,17 @@
-import {
-  DefaultViewSubcomponent,
-  InteractivityType,
-  OptionalButtonTheme,
-} from '@reflex-ui/core';
+import { OptionalButtonTheme } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
-import { ElevationDegree } from '../../elevation';
-// tslint:disable-next-line:max-line-length
-import { getContainedButtonRippleColor } from '../contained/getContainedButtonRippleColor';
-import { withRaiseEffect } from '../withRaiseEffect';
-import { withRippleEffect } from '../withRippleEffect';
-import { getFabButtonContainerProps } from './container';
-import { fabStaticButtonTheme } from './staticTheme';
+import { raisedButtonTheme } from '../raised/theme';
+import { fabButtonContainerTheme } from './container';
+import { fabButtonIconTheme } from './icon';
 
 export const partialFabButtonTheme: OptionalButtonTheme = {
-  container: {
-    allSizes: {
-      allStates: {
-        getProps: props =>
-          getFabButtonContainerProps({
-            ...props,
-            interactivityState: {
-              ...props.interactivityState,
-              type: InteractivityType.DISABLED,
-            },
-          }),
-      },
-    },
-    component: withRippleEffect({
-      getRippleColor: getContainedButtonRippleColor,
-    })(withRaiseEffect(ElevationDegree.MID)(DefaultViewSubcomponent)),
-  },
+  container: fabButtonContainerTheme,
+  icon: fabButtonIconTheme,
 };
 
 export const fabButtonTheme: OptionalButtonTheme = merge<
   {},
   OptionalButtonTheme,
   OptionalButtonTheme
->({}, fabStaticButtonTheme, partialFabButtonTheme);
+>({}, raisedButtonTheme, partialFabButtonTheme);

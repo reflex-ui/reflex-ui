@@ -35,7 +35,7 @@ export const getDefaultButtonTextStyle: TextStyleGetter<ButtonProps> = (
   ...getDefaultButtonTextColorStyle(props),
 });
 
-export const defaultStaticButtonTextTheme: OptionalSizedSubTheme<
+export const defaultButtonTextTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
 > = {
   allSizes: {

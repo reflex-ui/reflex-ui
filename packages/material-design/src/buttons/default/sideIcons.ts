@@ -17,7 +17,7 @@ export const getDefaultButtonIconProps: TextPropsGetter<
 });
 
 // tslint:disable-next-line:max-line-length
-export const defaultStaticButtonLeadingIconTheme: OptionalSizedSubTheme<
+export const defaultButtonLeadingIconTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
 > = {
   allSizes: {
@@ -28,8 +28,8 @@ export const defaultStaticButtonLeadingIconTheme: OptionalSizedSubTheme<
 };
 
 // tslint:disable-next-line:max-line-length
-export const defaultStaticButtonTrailingIconTheme: OptionalSizedSubTheme<
+export const defaultButtonTrailingIconTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
 > = {
-  ...defaultStaticButtonLeadingIconTheme,
+  ...defaultButtonLeadingIconTheme,
 };

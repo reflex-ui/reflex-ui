@@ -1,27 +1,15 @@
-import { DefaultViewSubcomponent, OptionalButtonTheme } from '@reflex-ui/core';
+import { OptionalButtonTheme } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
-// tslint:disable-next-line:max-line-length
-import { getDefaultButtonRippleColor } from '../default/getDefaultButtonRippleColor';
-import { getOutlinedButtonContainerProps } from '../outlined/container';
-import { withRippleEffect } from '../withRippleEffect';
-import { outlinedShapedStaticButtonTheme } from './staticTheme';
+import { outlinedButtonTheme } from '../outlined/theme';
+import { outlinedShapedButtonContainerTheme } from './container';
 
-export const outlinedShapedAnimatedButtonTheme: OptionalButtonTheme = {
-  container: {
-    allSizes: {
-      pressed: {
-        getProps: getOutlinedButtonContainerProps,
-      },
-    },
-    component: withRippleEffect({
-      getRippleColor: getDefaultButtonRippleColor,
-    })(DefaultViewSubcomponent),
-  },
+export const partialOutlinedShapedButtonTheme: OptionalButtonTheme = {
+  container: outlinedShapedButtonContainerTheme,
 };
 
 export const outlinedShapedButtonTheme: OptionalButtonTheme = merge<
   {},
   OptionalButtonTheme,
   OptionalButtonTheme
->({}, outlinedShapedStaticButtonTheme, outlinedShapedAnimatedButtonTheme);
+>({}, outlinedButtonTheme, partialOutlinedShapedButtonTheme);

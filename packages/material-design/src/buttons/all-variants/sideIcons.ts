@@ -5,18 +5,18 @@ import {
   OptionalTextTheme,
 } from '@reflex-ui/core';
 
-import { allVariantsStaticButtonIconTheme } from './icon';
+import { allVariantsButtonIconTheme } from './icon';
 
 // tslint:disable-next-line:max-line-length
-export const allVariantsStaticButtonLeadingIconTheme: OptionalSizedSubTheme<
+export const allVariantsButtonLeadingIconTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
 > = {
   allSizes: {
     allStates: {
       props:
-        allVariantsStaticButtonIconTheme.allSizes &&
-        allVariantsStaticButtonIconTheme.allSizes.allStates
-          ? allVariantsStaticButtonIconTheme.allSizes.allStates.props
+        allVariantsButtonIconTheme.allSizes &&
+        allVariantsButtonIconTheme.allSizes.allStates
+          ? allVariantsButtonIconTheme.allSizes.allStates.props
           : undefined,
     },
   },
@@ -68,8 +68,8 @@ export const allVariantsStaticButtonLeadingIconTheme: OptionalSizedSubTheme<
 };
 
 // tslint:disable-next-line:max-line-length
-export const allVariantsStaticButtonTrailingIconTheme: OptionalSizedSubTheme<
+export const allVariantsButtonTrailingIconTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
 > = {
-  ...allVariantsStaticButtonLeadingIconTheme,
+  ...allVariantsButtonLeadingIconTheme,
 };

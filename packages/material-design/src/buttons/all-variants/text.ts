@@ -11,7 +11,7 @@ import { Platform } from 'react-native';
 
 import { getFontFamily } from '../../typography';
 
-export const allVariantsStaticButtonTextTheme: OptionalSizedSubTheme<
+export const allVariantsButtonTextTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
 > = {
   allSizes: {

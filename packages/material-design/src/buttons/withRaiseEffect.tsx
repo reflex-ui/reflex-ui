@@ -44,9 +44,9 @@ interface RaisedComponentState {
   readonly staticRaiseStyles: RaiseStyles;
 }
 
-type StaticRaiseStylesCreator = (style: ViewStyle) => RaiseStyles;
+type RaiseStylesCreator = (style: ViewStyle) => RaiseStyles;
 
-const createStaticRaiseStyles: StaticRaiseStylesCreator = style => ({
+const createRaiseStyles: RaiseStylesCreator = style => ({
   container: {
     ...StyleSheet.absoluteFillObject,
     zIndex: 0,
@@ -101,7 +101,7 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
       const interactivityType = interactivityState.type;
       const { animationKeyframe, isAnimating } = state;
 
-      const staticRaiseStyles = createStaticRaiseStyles(
+      const staticRaiseStyles = createRaiseStyles(
         StyleSheet.flatten(props.style),
       );
 

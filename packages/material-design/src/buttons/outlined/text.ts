@@ -16,7 +16,7 @@ export const getOutlinedButtonTextProps: TextPropsGetter<ButtonProps> = (
   },
 });
 
-export const outlinedStaticButtonTextTheme: OptionalSizedSubTheme<
+export const outlinedButtonTextTheme: OptionalSizedSubTheme<
   OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
 > = {
   allSizes: {

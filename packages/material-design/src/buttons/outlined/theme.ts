@@ -1,27 +1,23 @@
-import { DefaultViewSubcomponent, OptionalButtonTheme } from '@reflex-ui/core';
+import { OptionalButtonTheme } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
-// tslint:disable-next-line:max-line-length
-import { getDefaultButtonRippleColor } from '../default/getDefaultButtonRippleColor';
-import { withRippleEffect } from '../withRippleEffect';
-import { getOutlinedButtonContainerProps } from './container';
-import { outlinedStaticButtonTheme } from './staticTheme';
+import { containedButtonTheme } from '../contained/theme';
+import {
+  defaultButtonLeadingIconTheme,
+  defaultButtonTrailingIconTheme,
+} from '../default/sideIcons';
+import { outlinedButtonContainerTheme } from './container';
+import { outlinedButtonTextTheme } from './text';
 
-export const outlinedAnimatedButtonTheme: OptionalButtonTheme = {
-  container: {
-    allSizes: {
-      pressed: {
-        getProps: getOutlinedButtonContainerProps,
-      },
-    },
-    component: withRippleEffect({
-      getRippleColor: getDefaultButtonRippleColor,
-    })(DefaultViewSubcomponent),
-  },
+export const partialOutlinedButtonTheme: OptionalButtonTheme = {
+  container: outlinedButtonContainerTheme,
+  leadingIcon: defaultButtonLeadingIconTheme,
+  text: outlinedButtonTextTheme,
+  trailingIcon: defaultButtonTrailingIconTheme,
 };
 
 export const outlinedButtonTheme: OptionalButtonTheme = merge<
   {},
   OptionalButtonTheme,
   OptionalButtonTheme
->({}, outlinedStaticButtonTheme, outlinedAnimatedButtonTheme);
+>({}, containedButtonTheme, partialOutlinedButtonTheme);

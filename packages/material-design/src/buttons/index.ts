@@ -9,7 +9,7 @@ export * from './outlined-shaped';
 export * from './raised';
 export * from './xfab';
 
-export * from './buttonTheme';
-export * from './staticButtonTheme';
+export * from './animatedTheme';
+export * from './theme';
 export * from './withRaiseEffect';
 export * from './withRippleEffect';
