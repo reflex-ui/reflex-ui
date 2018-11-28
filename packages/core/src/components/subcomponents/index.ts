@@ -1,5 +1,5 @@
-export * from './getInteractiveSubProps';
-export * from './getSubProps';
+export * from './getSizedInteractiveSubProps';
+export * from './getSizedSubProps';
 export * from './InteractiveSubTheme';
 export * from './SizedSubTheme';
 export * from './SubProps';

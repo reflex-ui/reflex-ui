@@ -11,7 +11,7 @@ import { cloneElement } from '../../utils';
 import { OptionalIconWrapperProps } from '../icons';
 import { PrimitiveTheme } from '../PrimitiveTheme';
 import {
-  getInteractiveSubProps,
+  getSizedInteractiveSubProps,
   InteractiveSubTheme,
   SizedSubTheme,
   SubProps,
@@ -93,7 +93,7 @@ export const transformButtonStringChildrenIntoComponent = (
 ): JSX.Element => {
   const Text = props.theme.text.component;
 
-  const textProps = getInteractiveSubProps<
+  const textProps = getSizedInteractiveSubProps<
     ButtonProps,
     TextProps,
     TextStyle
@@ -128,7 +128,7 @@ export interface HandleButtonIconData {
 export const handleButtonIcon = (
   data: HandleButtonIconData,
 ): JSX.Element | undefined => {
-  const containerProps = getInteractiveSubProps<
+  const containerProps = getSizedInteractiveSubProps<
     ButtonProps,
     ViewProps,
     ViewStyle
@@ -142,7 +142,7 @@ export const handleButtonIcon = (
   const iconProps: OptionalIconWrapperProps = {
     getSubProps: () => ({
       icon: {
-        ...getInteractiveSubProps<
+        ...getSizedInteractiveSubProps<
           ButtonProps,
           TextProps,
           TextStyle
@@ -212,7 +212,7 @@ export const SimpleButton: React.SFC<ButtonProps> = (props: ButtonProps) => {
   const Container = props.theme.container.component;
   const Touchable = props.theme.touchable.component;
 
-  const containerProps = getInteractiveSubProps<
+  const containerProps = getSizedInteractiveSubProps<
     ButtonProps,
     ViewProps,
     ViewStyle

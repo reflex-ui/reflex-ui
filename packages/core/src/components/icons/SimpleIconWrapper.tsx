@@ -3,7 +3,7 @@ import { TextProps, TextStyle, ViewProps, ViewStyle } from 'react-native';
 
 import { cloneElement } from '../../utils';
 import { PrimitiveTheme } from '../PrimitiveTheme';
-import { getSubProps, SizedSubTheme } from '../subcomponents';
+import { getSizedSubProps, SizedSubTheme } from '../subcomponents';
 import { IconWrapperProps, OptionalIconWrapperProps } from './IconWrapperProps';
 import { IconWrapperSubProps } from './IconWrapperSubProps';
 import { TextIconProps } from './TextIconProps';
@@ -22,7 +22,7 @@ const handleIconChildren = (
   }
 
   const iconProps: TextIconProps = {
-    ...getSubProps<IconWrapperProps, TextIconProps, TextStyle>({
+    ...getSizedSubProps<IconWrapperProps, TextIconProps, TextStyle>({
       componentProps: props,
       themes: [
         props.theme.icon as SizedSubTheme<
@@ -50,7 +50,12 @@ export const SimpleIconWrapper: React.SFC<IconWrapperProps> = (
 
   const Container = props.theme.container.component;
 
-  const containerProps = getSubProps<IconWrapperProps, ViewProps, ViewStyle>({
+  const containerProps = getSizedSubProps<
+    IconWrapperProps,
+    ViewProps,
+    ViewStyle
+    // tslint:disable-next-line:ter-func-call-spacing
+  >({
     componentProps: props,
     themes: [
       props.theme.container as SizedSubTheme<

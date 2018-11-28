@@ -1,45 +1,61 @@
 import merge from 'lodash/merge';
 
+import {
+  InteractivityStateProps,
+  InteractivityType,
+} from '../../interactivity';
 import { SizeProps } from '../../SizeProps';
 import { PrimitiveTheme } from '../PrimitiveTheme';
 import { registerStyle } from '../registerStyle';
 import { StyleProps } from '../StyleProps';
+import { InteractiveSubTheme } from './InteractiveSubTheme';
 import { SizedSubTheme } from './SizedSubTheme';
 
-export interface SubPropsGetterData<ComponentProps, PrimitiveProps> {
+export interface SizedInteractiveSubPropsGetterData<
+  ComponentProps,
+  PrimitiveProps
+> {
   readonly componentProps: ComponentProps;
   readonly themes: SizedSubTheme<
-    PrimitiveTheme<ComponentProps, PrimitiveProps>
+    InteractiveSubTheme<PrimitiveTheme<ComponentProps, PrimitiveProps>>
   >[];
   readonly userProps?: PrimitiveProps;
 }
 
-export const getSubProps = <
-  ComponentProps extends SizeProps,
+export const getSizedInteractiveSubProps = <
+  ComponentProps extends InteractivityStateProps & SizeProps,
   PrimitiveProps extends StyleProps<PrimitiveStyle>,
   PrimitiveStyle
 >(
-  data: SubPropsGetterData<ComponentProps, PrimitiveProps>,
+  data: SizedInteractiveSubPropsGetterData<ComponentProps, PrimitiveProps>,
 ): PrimitiveProps => {
   const { componentProps, themes } = data;
   // @ts-ignore Type '{}' is not assignable to type 'PrimitiveProps'. [2322]
   const userProps: PrimitiveProps = data.userProps ? data.userProps : {};
   const { size } = componentProps;
+  const interactivityType: InteractivityType =
+    componentProps.interactivityState.type;
 
   // @ts-ignore Rest types may only be created from object types. [2700]
   const { style: userStyle, ...otherUserProps } = userProps;
 
-  // @ts-ignore Type '{}' is not assignable to type 'PrimitiveProps'.
+  // @ts-ignore [ts] Type '{}' is not assignable to type 'PrimitiveProps'.
   let subProps: PrimitiveProps = {};
   themes.forEach(theme =>
     merge(
       subProps,
-      /* allSizes */
-      theme.allSizes.props,
-      theme.allSizes.getProps(componentProps),
-      /* size */
-      theme[size].props,
-      theme[size].getProps(componentProps),
+      /* allSizes && allStates */
+      theme.allSizes.allStates.props,
+      theme.allSizes.allStates.getProps(componentProps),
+      /* allSizes && state */
+      theme.allSizes[interactivityType].props,
+      theme.allSizes[interactivityType].getProps(componentProps),
+      /* size && allStates */
+      theme[size].allStates.props,
+      theme[size].allStates.getProps(componentProps),
+      /* size && state */
+      theme[size][interactivityType].props,
+      theme[size][interactivityType].getProps(componentProps),
       /* user props */
       otherUserProps,
     ),
