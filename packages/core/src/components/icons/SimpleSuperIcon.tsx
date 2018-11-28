@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { TextStyle, ViewProps, ViewStyle } from 'react-native';
+import { TextProps, TextStyle, ViewProps, ViewStyle } from 'react-native';
 
 import { cloneElement } from '../../utils';
 import { getSizedSubProps } from '../subcomponents';
 import { OptionalSuperIconProps, SuperIconProps } from './SuperIconProps';
 import { SuperIconSubProps } from './SuperIconSubProps';
-import { TextIconProps } from './TextIconProps';
 
 const handleIconChildren = (
   props: SuperIconProps,
@@ -18,8 +17,8 @@ const handleIconChildren = (
     throw new Error('Icon children must be a valid React element.');
   }
 
-  const iconProps: TextIconProps = {
-    ...getSizedSubProps<SuperIconProps, TextIconProps, TextStyle>({
+  const iconProps: TextProps = {
+    ...getSizedSubProps<SuperIconProps, TextProps, TextStyle>({
       componentProps: props,
       themes: [props.theme.icon],
       userProps: userSubProps.icon,

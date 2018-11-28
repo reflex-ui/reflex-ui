@@ -1,4 +1,4 @@
-import { ViewProps } from 'react-native';
+import { TextProps, ViewProps } from 'react-native';
 
 import { OptionalPrimitiveTheme, PrimitiveTheme } from '../PrimitiveTheme';
 import {
@@ -9,18 +9,17 @@ import {
 } from '../subcomponents';
 import { OptionalViewTheme, ViewTheme } from '../views';
 import { SuperIconProps } from './SuperIconProps';
-import { TextIconProps } from './TextIconProps';
 
 export interface SuperIconTheme {
   readonly container: SubTheme<SuperIconProps, ViewProps> &
     SizedSubTheme<ViewTheme<SuperIconProps>>;
-  readonly icon: SizedSubTheme<PrimitiveTheme<SuperIconProps, TextIconProps>>;
+  readonly icon: SizedSubTheme<PrimitiveTheme<SuperIconProps, TextProps>>;
 }
 
 export interface OptionalSuperIconTheme {
   readonly container?: OptionalSubTheme<SuperIconProps, ViewProps> &
     OptionalSizedSubTheme<OptionalViewTheme<SuperIconProps>>;
   readonly icon?: OptionalSizedSubTheme<
-    OptionalPrimitiveTheme<SuperIconProps, TextIconProps>
+    OptionalPrimitiveTheme<SuperIconProps, TextProps>
   >;
 }

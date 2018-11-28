@@ -10,14 +10,13 @@ import {
   SizedMarginStyle,
   SuperIconProps,
   SuperIconTheme,
-  TextIconProps,
   TextPropsGetter,
   TextStyleGetter,
   ViewPropsGetter,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
-import { Platform, TextStyle } from 'react-native';
+import { Platform, TextProps, TextStyle } from 'react-native';
 
 export const iconSizedMarginStyle: SizedMarginStyle = {
   [Size.L]: {
@@ -79,7 +78,7 @@ export const iconContainerTheme: OptionalSizedSubTheme<
 };
 
 export const iconIconTheme: OptionalSizedSubTheme<
-  OptionalPrimitiveTheme<SuperIconProps, TextIconProps>
+  OptionalPrimitiveTheme<SuperIconProps, TextProps>
 > = {
   allSizes: {
     getProps: getAllSizesIconProps,
