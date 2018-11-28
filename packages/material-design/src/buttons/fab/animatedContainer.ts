@@ -16,10 +16,7 @@ import { withRaiseEffect } from '../withRaiseEffect';
 import { withRippleEffect } from '../withRippleEffect';
 import { getFabButtonContainerProps } from './container';
 
-export const partialAnimatedFabButtonContainerTheme: SubTheme<
-  ButtonProps,
-  ViewProps
-> &
+export const fabAnimatedButtonContainerTheme: SubTheme<ButtonProps, ViewProps> &
   OptionalSizedSubTheme<
     OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
   > = {

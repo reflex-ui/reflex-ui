@@ -1,11 +1,11 @@
 import { OptionalButtonTheme } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
-import { partialAnimatedFabButtonContainerTheme } from './animatedContainer';
+import { fabAnimatedButtonContainerTheme } from './animatedContainer';
 import { fabButtonTheme } from './theme';
 
 export const partialAnimatedFabButtonTheme: OptionalButtonTheme = {
-  container: partialAnimatedFabButtonContainerTheme,
+  container: fabAnimatedButtonContainerTheme,
 };
 
 export const fabAnimatedButtonTheme: OptionalButtonTheme = merge<
