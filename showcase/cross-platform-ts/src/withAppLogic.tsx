@@ -13,11 +13,9 @@ import * as React from 'react';
 const MaterialDesignTheme: ComponentsTheme = createComponentsTheme();
 // const MaterialDesignTheme: ComponentsTheme = createAnimatedComponentsTheme();
 
-export type IWithAppLogic = <P extends {}>(
+export const withAppLogic = <P extends {}>(
   WrappedComponent: React.ComponentType<P>,
-) => React.ComponentType<P>;
-
-export const withAppLogic: IWithAppLogic = WrappedComponent => props => (
+): React.ComponentType<P> => props => (
   <PaletteThemeContext.Provider value={purpleTealPaletteTheme}>
     <ComponentsThemeContext.Provider value={MaterialDesignTheme}>
       <WrappedComponent {...props} />

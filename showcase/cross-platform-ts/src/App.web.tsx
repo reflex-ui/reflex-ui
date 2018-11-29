@@ -1,8 +1,8 @@
 import '@reflex-ui/material-design/src/icons/Font';
 import * as React from 'react';
 
-import { withAppLogic } from './application/shared';
 import { AppNavigation } from './navigation/Navigation.web';
+import { withAppLogic } from './withAppLogic';
 
 const WithAppLogic = withAppLogic(AppNavigation);
 export const App = () => <WithAppLogic />;

@@ -183,7 +183,7 @@ const getXFabButtonProps: ButtonSubPropsGetter = (
   };
 };
 
-export const WelcomeSignedOutScreen: React.SFC = (): JSX.Element => (
+export const DefaultButtonScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
     <RowView>
       <Text>ColorTheme.PRIMARY_NORMAL (default)</Text>

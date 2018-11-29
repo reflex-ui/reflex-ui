@@ -1,12 +1,12 @@
 import { Navigation } from 'react-native-navigation';
 
-import { withAppLogic } from '../application/shared';
-import { WelcomeSignedOutScreen } from '../application/welcome';
+import { DefaultButtonScreen } from '../screens';
+import { withAppLogic } from '../withAppLogic';
 
 const registerScreens = () => {
   Navigation.registerComponent(
-    'navigation.24beeps.WelcomeSignedOutScreen',
-    () => withAppLogic(WelcomeSignedOutScreen),
+    'navigation.showcase.buttons.DefaultButtonScreen',
+    () => withAppLogic(DefaultButtonScreen),
   );
 };
 
@@ -17,7 +17,7 @@ export const AppNavigation = () => {
     Navigation.setRoot({
       root: {
         component: {
-          name: 'navigation.24beeps.WelcomeSignedOutScreen',
+          name: 'navigation.showcase.buttons.DefaultButtonScreen',
         },
       },
     });
