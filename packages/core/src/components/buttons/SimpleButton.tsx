@@ -154,7 +154,7 @@ export const handleButtonIcon = (
         }),
       },
     }),
-    noContainer: true,
+    skipContainer: true,
   };
 
   const styledIcon = data.icon

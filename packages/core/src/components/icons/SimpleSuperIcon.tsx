@@ -38,7 +38,7 @@ export const SimpleSuperIcon: React.SFC<SuperIconProps> = (
   let children: React.ReactNode;
   const userSubProps = props.getSubProps ? props.getSubProps(props) : {};
   if (props.children) children = handleIconChildren(props, userSubProps);
-  if (props.noContainer) return <React.Fragment>{children}</React.Fragment>;
+  if (props.skipContainer) return <React.Fragment>{children}</React.Fragment>;
 
   const Container = props.theme.container.component;
 
