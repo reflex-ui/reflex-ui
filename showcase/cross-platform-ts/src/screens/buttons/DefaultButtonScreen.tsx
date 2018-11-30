@@ -6345,3 +6345,26 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
 DefaultButtonScreen.displayName = 'DefaultButtonScreen';
 
 export { DefaultButtonScreen };
+
+/*
+import { Button, RowView } from '@reflex-ui/core';
+import * as React from 'react';
+import { ScrollView } from 'react-native';
+
+const onButtonPress = () => {
+  // tslint:disable-next-line:no-console
+  console.log('DefaultButtonScreen().onButtonPress()');
+};
+
+const DefaultButtonScreen: React.SFC = (): JSX.Element => (
+  <ScrollView>
+    <RowView>
+      <Button onPress={onButtonPress}>Sign In</Button>
+    </RowView>
+  </ScrollView>
+);
+
+DefaultButtonScreen.displayName = 'DefaultButtonScreen';
+
+export { DefaultButtonScreen };
+*/
