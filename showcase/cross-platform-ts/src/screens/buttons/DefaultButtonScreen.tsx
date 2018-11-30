@@ -26,7 +26,7 @@ import {
 
 const onButtonPress = () => {
   // tslint:disable-next-line:no-console
-  console.log('WelcomeSignedOutScreen().onButtonPress()');
+  console.log('DefaultButtonScreen().onButtonPress()');
 };
 
 const getDefaultButtonProps: ButtonSubPropsGetter = (
@@ -183,7 +183,7 @@ const getXFabButtonProps: ButtonSubPropsGetter = (
   };
 };
 
-export const DefaultButtonScreen: React.SFC = (): JSX.Element => (
+const DefaultButtonScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
     <RowView>
       <Text>ColorTheme.PRIMARY_NORMAL (default)</Text>
@@ -6341,3 +6341,7 @@ export const DefaultButtonScreen: React.SFC = (): JSX.Element => (
     </RowView>
   </ScrollView>
 );
+
+DefaultButtonScreen.displayName = 'DefaultButtonScreen';
+
+export { DefaultButtonScreen };

@@ -4,6 +4,7 @@ import { InteractivityType } from '../../interactivity';
 import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
 import { Size } from '../../Size';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
+import { reflexComponent } from '../reflexComponent';
 import { ButtonProps, OptionalButtonProps } from './ButtonProps';
 import { ButtonVariant } from './ButtonVariant';
 import { getButtonVariantColorTheme } from './getButtonVariantColorTheme';
@@ -11,7 +12,9 @@ import { getButtonVariantColorTheme } from './getButtonVariantColorTheme';
 // prettier-ignore
 export const withDefaultButtonProps = (
   WrappedComponent: React.ComponentType<ButtonProps>,
-): React.ComponentType<OptionalButtonProps> => props => (
+): React.ComponentType<OptionalButtonProps> => reflexComponent<
+  OptionalButtonProps
+>({ name: 'WithDefaultButtonProps', wrapped: WrappedComponent })(props => (
   <PaletteThemeContext.Consumer>
     {paletteTheme => (
       <ComponentsThemeContext.Consumer>
@@ -45,4 +48,4 @@ export const withDefaultButtonProps = (
       </ComponentsThemeContext.Consumer>
     )}
   </PaletteThemeContext.Consumer>
-);
+));

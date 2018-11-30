@@ -2,6 +2,7 @@ import {
   InteractivityEvent,
   InteractivityStateProps,
   InteractivityType,
+  reflexComponent,
   SubProps,
 } from '@reflex-ui/core';
 import delay from 'delay';
@@ -182,155 +183,162 @@ export const withRippleEffect = <S extends InteractivityStateProps>(
 ) => <P extends SubProps<S> & ViewProps>(
   WrappedComponent: React.ComponentType<P>,
 ): React.ComponentType<P> =>
-  class RippledComponent extends React.Component<P> {
-    public static getDerivedStateFromProps(
-      props: P,
-      state: RippledComponentState,
-    ) {
-      const { interactivityState } = props.componentProps;
-      const interactivityType = interactivityState.type;
-      const interactivityEvent = interactivityState.event;
-
-      const {
-        animationKeyframe,
-        isAnimatingPressIn,
-        isAnimatingPressOut,
-      } = state;
-
-      if (
-        interactivityType === InteractivityType.PRESSED &&
-        animationKeyframe === AnimationKeyframe.PRESS_OUT &&
-        !isAnimatingPressOut
+  reflexComponent<P>({ wrapped: WrappedComponent })(
+    class WithRippleEffect extends React.Component<P> {
+      public static getDerivedStateFromProps(
+        props: P,
+        state: RippledComponentState,
       ) {
-        const { height, width } = state;
-        const maxDiameter = 300;
+        const { interactivityState } = props.componentProps;
+        const interactivityType = interactivityState.type;
+        const interactivityEvent = interactivityState.event;
 
-        return {
-          ...state,
-          animationKeyframe: AnimationKeyframe.PRESS_IN,
-          isAnimatingPressIn: true,
-          rippleStyles: createComponentRippleStyles({
-            color: settings.getRippleColor(props.componentProps),
-            height,
-            interactivityEvent,
-            maxDiameter,
-            style: StyleSheet.flatten(props.style),
-            width,
-          }),
-        };
+        const {
+          animationKeyframe,
+          isAnimatingPressIn,
+          isAnimatingPressOut,
+        } = state;
+
+        if (
+          interactivityType === InteractivityType.PRESSED &&
+          animationKeyframe === AnimationKeyframe.PRESS_OUT &&
+          !isAnimatingPressOut
+        ) {
+          const { height, width } = state;
+          const maxDiameter = 300;
+
+          return {
+            ...state,
+            animationKeyframe: AnimationKeyframe.PRESS_IN,
+            isAnimatingPressIn: true,
+            rippleStyles: createComponentRippleStyles({
+              color: settings.getRippleColor(props.componentProps),
+              height,
+              interactivityEvent,
+              maxDiameter,
+              style: StyleSheet.flatten(props.style),
+              width,
+            }),
+          };
+        }
+
+        if (
+          interactivityType !== InteractivityType.PRESSED &&
+          animationKeyframe === AnimationKeyframe.PRESS_IN &&
+          !isAnimatingPressIn
+        ) {
+          return {
+            ...state,
+            animationKeyframe: AnimationKeyframe.PRESS_OUT,
+            isAnimatingPressOut: true,
+          };
+        }
+
+        return state;
       }
 
-      if (
-        interactivityType !== InteractivityType.PRESSED &&
-        animationKeyframe === AnimationKeyframe.PRESS_IN &&
-        !isAnimatingPressIn
-      ) {
-        return {
-          ...state,
-          animationKeyframe: AnimationKeyframe.PRESS_OUT,
-          isAnimatingPressOut: true,
-        };
-      }
+      // tslint:disable-next-line:no-any
+      public animatedView: any;
+      // tslint:disable-next-line:no-any
+      public rippleAnimation: (props: {}) => Keyframes<any, any>;
 
-      return state;
-    }
-
-    // tslint:disable-next-line:no-any
-    public animatedView: any;
-    // tslint:disable-next-line:no-any
-    public rippleAnimation: (props: {}) => Keyframes<any, any>;
-
-    public readonly state: RippledComponentState = {
-      animationKeyframe: AnimationKeyframe.PRESS_OUT,
-      height: 40,
-      isAnimatingPressIn: false,
-      isAnimatingPressOut: false,
-      rippleStyles: { container: {}, ripple: {} },
-      width: 100,
-    };
-
-    public constructor(props: P) {
-      super(props);
-
-      this.animatedView = animated(View);
-      this.rippleAnimation = Keyframes.Spring({
-        // @ts-ignore
-        // tslint:disable-next-line:ter-arrow-parens
-        pressin: async call => {
-          call({
-            config: { tension: 150, friction: 20 },
-            from: {
-              opacity: 0,
-              scale: 0.001,
-            },
-            to: { opacity: 1, scale: 1 },
-          });
-          await delay(250);
-          if (this.state.isAnimatingPressIn) this.pressInAnimationComplete();
-        },
-        // @ts-ignore
-        // tslint:disable-next-line:ter-arrow-parens
-        pressout: async call => {
-          call({ config: { tension: 75, friction: 20 }, to: { opacity: 0 } });
-          await delay(250);
-          await call({
-            config: { tension: 300, friction: 20 },
-            to: { scale: 0 },
-          });
-          if (this.state.isAnimatingPressOut) this.pressOutAnimationComplete();
-        },
-      });
-    }
-
-    public onLayoutChanged = (event: LayoutChangeEvent) => {
-      const { height, width } = event.nativeEvent.layout;
-      this.setState({ height, width });
-    };
-
-    public render() {
-      // @ts-ignore [ts] Rest types may only be created from object types.
-      // https://github.com/Microsoft/TypeScript/issues/10727
-      const { children, ...otherProps } = this.props;
-      const RippleAnimation = this.rippleAnimation;
-
-      const { animationKeyframe, rippleStyles } = this.state;
-      const AnimatedView = this.animatedView;
-
-      return (
-        <WrappedComponent {...otherProps} onLayout={this.onLayoutChanged}>
-          <React.Fragment>
-            <View style={rippleStyles.container}>
-              <RippleAnimation native state={animationKeyframe}>
-                {(styles: { opacity: number; scale: number }) => {
-                  const motionStyles = {
-                    opacity: styles.opacity,
-                    transform: [{ scale: styles.scale || 0 }],
-                  };
-
-                  return (
-                    <AnimatedView
-                      style={{
-                        ...rippleStyles.ripple,
-                        ...motionStyles,
-                      }}
-                    />
-                  );
-                }}
-              </RippleAnimation>
-            </View>
-          </React.Fragment>
-          {children}
-        </WrappedComponent>
-      );
-    }
-
-    private pressOutAnimationComplete() {
-      this.setState({ isAnimatingPressOut: false });
-    }
-
-    private pressInAnimationComplete() {
-      this.setState({
+      public readonly state: RippledComponentState = {
+        animationKeyframe: AnimationKeyframe.PRESS_OUT,
+        height: 40,
         isAnimatingPressIn: false,
-      });
-    }
-  };
+        isAnimatingPressOut: false,
+        rippleStyles: { container: {}, ripple: {} },
+        width: 100,
+      };
+
+      public constructor(props: P) {
+        super(props);
+
+        this.animatedView = animated(View);
+        this.rippleAnimation = Keyframes.Spring({
+          // @ts-ignore
+          // tslint:disable-next-line:ter-arrow-parens
+          pressin: async call => {
+            call({
+              config: { tension: 150, friction: 20 },
+              from: {
+                opacity: 0,
+                scale: 0.001,
+              },
+              to: { opacity: 1, scale: 1 },
+            });
+            await delay(250);
+            if (this.state.isAnimatingPressIn) this.pressInAnimationComplete();
+          },
+          // @ts-ignore
+          // tslint:disable-next-line:ter-arrow-parens
+          pressout: async call => {
+            call({ config: { tension: 75, friction: 20 }, to: { opacity: 0 } });
+            await delay(250);
+            await call({
+              config: { tension: 300, friction: 20 },
+              to: { scale: 0 },
+            });
+            if (this.state.isAnimatingPressOut) {
+              this.pressOutAnimationComplete();
+            }
+          },
+        });
+        // @ts-ignore Property 'displayName' does not exist
+        // on type '(props: {}) => any'. [2339]
+        this.rippleAnimation.displayName = 'RfxRippleAnimation';
+      }
+
+      public onLayoutChanged = (event: LayoutChangeEvent) => {
+        const { height, width } = event.nativeEvent.layout;
+        this.setState({ height, width });
+      };
+
+      public render() {
+        // @ts-ignore [ts] Rest types may only be created from object types.
+        // https://github.com/Microsoft/TypeScript/issues/10727
+        const { children, ...otherProps } = this.props;
+        const RippleAnimation = this.rippleAnimation;
+
+        const { animationKeyframe, rippleStyles } = this.state;
+        const AnimatedView = this.animatedView;
+
+        return (
+          <WrappedComponent {...otherProps} onLayout={this.onLayoutChanged}>
+            <React.Fragment>
+              <View style={rippleStyles.container}>
+                <RippleAnimation native state={animationKeyframe}>
+                  {(styles: { opacity: number; scale: number }) => {
+                    const motionStyles = {
+                      opacity: styles.opacity,
+                      transform: [{ scale: styles.scale || 0 }],
+                    };
+
+                    return (
+                      <AnimatedView
+                        style={{
+                          ...rippleStyles.ripple,
+                          ...motionStyles,
+                        }}
+                      />
+                    );
+                  }}
+                </RippleAnimation>
+              </View>
+            </React.Fragment>
+            {children}
+          </WrappedComponent>
+        );
+      }
+
+      private pressOutAnimationComplete() {
+        this.setState({ isAnimatingPressOut: false });
+      }
+
+      private pressInAnimationComplete() {
+        this.setState({
+          isAnimatingPressIn: false,
+        });
+      }
+    },
+  );

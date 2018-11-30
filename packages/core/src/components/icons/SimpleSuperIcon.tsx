@@ -2,6 +2,7 @@ import * as React from 'react';
 import { TextProps, TextStyle, ViewProps, ViewStyle } from 'react-native';
 
 import { cloneElement } from '../../utils';
+import { reflexComponent } from '../reflexComponent';
 import { getSizedSubProps } from '../subcomponents';
 import { OptionalSuperIconProps, SuperIconProps } from './SuperIconProps';
 import { SuperIconSubProps } from './SuperIconSubProps';
@@ -32,9 +33,9 @@ const handleIconChildren = (
   return styledIcon;
 };
 
-export const SimpleSuperIcon: React.SFC<SuperIconProps> = (
-  props: SuperIconProps,
-): React.ReactElement<{}> | null => {
+export const SimpleSuperIcon = reflexComponent<SuperIconProps>({
+  name: 'SimpleSuperIcon',
+})((props: SuperIconProps) => {
   let children: React.ReactNode;
   const userSubProps = props.getSubProps ? props.getSubProps(props) : {};
   if (props.children) children = handleIconChildren(props, userSubProps);
@@ -58,4 +59,4 @@ export const SimpleSuperIcon: React.SFC<SuperIconProps> = (
       {children}
     </Container>
   );
-};
+});

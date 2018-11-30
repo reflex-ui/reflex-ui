@@ -7,6 +7,7 @@ export * from './PrimitivePropsGetter';
 export * from './PrimitiveStyleObj';
 export * from './PrimitiveTheme';
 export * from './raw';
+export * from './reflexComponent';
 export * from './registerStyle';
 export * from './StyleProps';
 export * from './subcomponents';

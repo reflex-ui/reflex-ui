@@ -10,6 +10,7 @@ import {
 import { cloneElement } from '../../utils';
 import { OptionalSuperIconProps } from '../icons';
 import { PrimitiveTheme } from '../PrimitiveTheme';
+import { reflexComponent } from '../reflexComponent';
 import {
   getSizedInteractiveSubProps,
   InteractiveSubTheme,
@@ -35,6 +36,7 @@ export const extractTouchablePropsFromButtonProps = (
     getSubProps,
     interactivityState,
     leadingIcon,
+    margin,
     paletteTheme,
     trailingIcon,
     size,
@@ -204,7 +206,9 @@ export const handleTrailingIcon = (
     userIconProps: userSubProps.trailingIcon,
   });
 
-export const SimpleButton: React.SFC<ButtonProps> = (props: ButtonProps) => {
+export const SimpleButton = reflexComponent<ButtonProps>({
+  name: 'SimpleButton',
+})((props: ButtonProps) => {
   const { children } = props;
   const userSubProps = props.getSubProps ? props.getSubProps(props) : {};
   const touchableProps = extractTouchablePropsFromButtonProps(props);
@@ -232,4 +236,4 @@ export const SimpleButton: React.SFC<ButtonProps> = (props: ButtonProps) => {
       </Container>
     </Touchable>
   );
-};
+});

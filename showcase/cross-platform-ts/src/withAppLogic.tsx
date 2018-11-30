@@ -4,21 +4,30 @@ import {
   PaletteThemeContext,
 } from '@reflex-ui/core';
 import {
-  // createAnimatedComponentsTheme,
-  createComponentsTheme,
+  createAnimatedComponentsTheme,
+  // createComponentsTheme,
   purpleTealPaletteTheme,
 } from '@reflex-ui/material-design';
 import * as React from 'react';
 
-const MaterialDesignTheme: ComponentsTheme = createComponentsTheme();
-// const MaterialDesignTheme: ComponentsTheme = createAnimatedComponentsTheme();
+// const mdComponentsTheme: ComponentsTheme = createComponentsTheme();
+const mdComponentsTheme: ComponentsTheme = createAnimatedComponentsTheme();
 
-export const withAppLogic = <P extends {}>(
+const withAppLogic = <P extends {}>(
   WrappedComponent: React.ComponentType<P>,
-): React.ComponentType<P> => props => (
-  <PaletteThemeContext.Provider value={purpleTealPaletteTheme}>
-    <ComponentsThemeContext.Provider value={MaterialDesignTheme}>
-      <WrappedComponent {...props} />
-    </ComponentsThemeContext.Provider>
-  </PaletteThemeContext.Provider>
-);
+): React.ComponentType<P> => {
+  const WithAppLogic: React.ComponentType<P> = (props: P): JSX.Element => (
+    <PaletteThemeContext.Provider value={purpleTealPaletteTheme}>
+      <ComponentsThemeContext.Provider value={mdComponentsTheme}>
+        <WrappedComponent {...props} />
+      </ComponentsThemeContext.Provider>
+    </PaletteThemeContext.Provider>
+  );
+
+  WithAppLogic.displayName = `WithAppLogic(${WrappedComponent.displayName ||
+    WrappedComponent.name ||
+    'Component'})`;
+  return WithAppLogic;
+};
+
+export { withAppLogic };

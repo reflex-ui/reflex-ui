@@ -6,7 +6,7 @@ import { DefaultButtonScreen } from '../screens';
 
 const navigator = createBrowserHistory();
 
-export const AppNavigation: React.SFC = () => (
+const AppNavigation: React.SFC = () => (
   <Router history={navigator}>
     <Switch>
       <Route exact path="/buttons" component={DefaultButtonScreen} />
@@ -14,3 +14,7 @@ export const AppNavigation: React.SFC = () => (
     </Switch>
   </Router>
 );
+
+AppNavigation.displayName = 'AppNavigation';
+
+export { AppNavigation };
