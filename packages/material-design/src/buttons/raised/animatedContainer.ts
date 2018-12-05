@@ -9,6 +9,7 @@ import {
   ButtonProps,
   DefaultViewSubcomponent,
   InteractivityType,
+  isTouchDevice,
   OptionalInteractiveSubTheme,
   OptionalSizedSubTheme,
   OptionalViewTheme,
@@ -27,18 +28,45 @@ import {
 import { getContainedButtonRippleColor } from '../contained/getContainedButtonRippleColor';
 import { withRaiseEffect } from '../withRaiseEffect';
 import { withRippleEffect } from '../withRippleEffect';
-import { getRaisedButtonContainerProps } from './container';
+import {
+  getRaisedButtonContainerProps,
+  getRaisedButtonContainerStyle,
+} from './container';
 
 export const getAnimatedRaisedButtonContainerProps: ViewPropsGetter<
   ButtonProps
+  // tslint:disable-next-line:ter-arrow-parens (prettier removes it)
 > = props =>
-  merge(getRaisedButtonContainerProps(props), {
+  merge({}, getRaisedButtonContainerProps(props), {
     style: getAnimatedRaisedButtonContainerStyle(props),
   });
 
 export const getAnimatedRaisedButtonContainerStyle: ViewStyleGetter<
   ButtonProps
 > = () => getLowElevationStylesByInteractivity(InteractivityType.DISABLED);
+
+export const getAnimatedPressedRaisedButtonContainerProps: ViewPropsGetter<
+  ButtonProps
+  // tslint:disable-next-line:ter-arrow-parens (prettier removes it)
+> = props =>
+  merge({}, getRaisedButtonContainerProps(props), {
+    style: getAnimatedPressedRaisedButtonContainerStyle(props),
+  });
+
+export const getAnimatedPressedRaisedButtonContainerStyle: ViewStyleGetter<
+  ButtonProps
+> = props => ({
+  ...getRaisedButtonContainerStyle({
+    ...props,
+    interactivityState: {
+      ...props.interactivityState,
+      type: isTouchDevice
+        ? InteractivityType.ENABLED
+        : InteractivityType.HOVERED,
+    },
+  }),
+  ...getLowElevationStylesByInteractivity(InteractivityType.DISABLED),
+});
 
 export const raisedAnimatedButtonContainerTheme: SubTheme<
   ButtonProps,
@@ -51,6 +79,9 @@ export const raisedAnimatedButtonContainerTheme: SubTheme<
   allSizes: {
     allStates: {
       getProps: getAnimatedRaisedButtonContainerProps,
+    },
+    pressed: {
+      getProps: getAnimatedPressedRaisedButtonContainerProps,
     },
   },
   // tslint:disable-next-line:ter-indent

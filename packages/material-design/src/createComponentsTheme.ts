@@ -15,4 +15,4 @@ import { materialDesignTheme } from './materialDesignTheme';
 
 export const createComponentsTheme = (
   theme: OptionalComponentsTheme = {},
-): ComponentsTheme => createThemeCore(merge(materialDesignTheme, theme));
+): ComponentsTheme => createThemeCore(merge({}, materialDesignTheme, theme));

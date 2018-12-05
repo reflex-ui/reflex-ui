@@ -8,16 +8,39 @@
 import {
   ButtonProps,
   DefaultViewSubcomponent,
+  InteractivityType,
+  isTouchDevice,
   OptionalInteractiveSubTheme,
   OptionalSizedSubTheme,
   OptionalViewTheme,
   SubTheme,
+  ViewPropsGetter,
+  ViewStyleGetter,
 } from '@reflex-ui/core';
 import { ViewProps } from 'react-native';
 
 import { withRippleEffect } from '../withRippleEffect';
-import { getContainedButtonContainerProps } from './container';
+import { getContainedButtonContainerStyle } from './container';
 import { getContainedButtonRippleColor } from './getContainedButtonRippleColor';
+
+export const getAnimatedPressedContainedButtonContainerProps: ViewPropsGetter<
+  ButtonProps
+> = props => ({
+  style: getAnimatedPressedContainedButtonContainerStyle(props),
+});
+
+export const getAnimatedPressedContainedButtonContainerStyle: ViewStyleGetter<
+  ButtonProps
+> = props =>
+  getContainedButtonContainerStyle({
+    ...props,
+    interactivityState: {
+      ...props.interactivityState,
+      type: isTouchDevice
+        ? InteractivityType.ENABLED
+        : InteractivityType.HOVERED,
+    },
+  });
 
 export const containedAnimatedButtonContainerTheme: SubTheme<
   ButtonProps,
@@ -29,7 +52,7 @@ export const containedAnimatedButtonContainerTheme: SubTheme<
   // tslint:disable-next-line:ter-indent
   allSizes: {
     pressed: {
-      getProps: getContainedButtonContainerProps,
+      getProps: getAnimatedPressedContainedButtonContainerProps,
     },
   },
   // tslint:disable-next-line:ter-indent

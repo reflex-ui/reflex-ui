@@ -19,7 +19,7 @@ import { getMidElevationStylesByInteractivity } from '../../elevation';
 import { getRaisedButtonContainerProps } from '../raised/container';
 
 export const getFabButtonContainerProps: ViewPropsGetter<ButtonProps> = props =>
-  merge(getRaisedButtonContainerProps(props), {
+  merge({}, getRaisedButtonContainerProps(props), {
     style: getFabButtonContainerStyle(props),
   });
 

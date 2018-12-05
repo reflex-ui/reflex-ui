@@ -17,7 +17,7 @@ import {
 import { ViewProps } from 'react-native';
 
 import {
-  getDefaultButtonContainerProps,
+  getAnimatedPressedDefaultButtonContainerProps,
   getDefaultButtonRippleColor,
 } from '../default';
 import { withRippleEffect } from '../withRippleEffect';
@@ -33,7 +33,7 @@ export const iconAnimatedButtonContainerTheme: SubTheme<
   allSizes: {
     pressed: {
       getProps: props =>
-        getDefaultButtonContainerProps({
+        getAnimatedPressedDefaultButtonContainerProps({
           ...props,
           interactivityState: {
             ...props.interactivityState,

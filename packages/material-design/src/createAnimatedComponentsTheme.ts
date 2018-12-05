@@ -16,4 +16,4 @@ import { animatedMaterialDesignTheme } from './animatedMaterialDesignTheme';
 export const createAnimatedComponentsTheme = (
   theme: OptionalComponentsTheme = {},
 ): ComponentsTheme =>
-  createComponentsThemeCore(merge(animatedMaterialDesignTheme, theme));
+  createComponentsThemeCore(merge({}, animatedMaterialDesignTheme, theme));

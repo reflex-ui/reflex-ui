@@ -11,14 +11,14 @@ import {
   PaletteThemeContext,
 } from '@reflex-ui/core';
 import {
-  // createAnimatedComponentsTheme,
-  createComponentsTheme,
+  createAnimatedComponentsTheme,
+  // createComponentsTheme,
   purpleTealPaletteTheme,
 } from '@reflex-ui/material-design';
 import * as React from 'react';
 
-const mdComponentsTheme: ComponentsTheme = createComponentsTheme();
-// const mdComponentsTheme: ComponentsTheme = createAnimatedComponentsTheme();
+// const mdComponentsTheme: ComponentsTheme = createComponentsTheme();
+const mdComponentsTheme: ComponentsTheme = createAnimatedComponentsTheme();
 
 const withAppLogic = <P extends {}>(
   WrappedComponent: React.ComponentType<P>,

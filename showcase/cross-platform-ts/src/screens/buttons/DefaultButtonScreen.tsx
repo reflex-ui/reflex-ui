@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
+/*
 import {
   Button,
   ButtonProps,
@@ -6352,9 +6352,10 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
 DefaultButtonScreen.displayName = 'DefaultButtonScreen';
 
 export { DefaultButtonScreen };
+*/
 
-/*
-import { Button, RowView } from '@reflex-ui/core';
+import { Button, ButtonVariant, RowView } from '@reflex-ui/core';
+import { FavoriteIcon } from '@reflex-ui/material-design';
 import * as React from 'react';
 import { ScrollView } from 'react-native';
 
@@ -6366,7 +6367,9 @@ const onButtonPress = () => {
 const DefaultButtonScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
     <RowView>
-      <Button onPress={onButtonPress}>Sign In</Button>
+      <Button onPress={onButtonPress} variant={ButtonVariant.ICON}>
+        <FavoriteIcon />
+      </Button>
     </RowView>
   </ScrollView>
 );
@@ -6374,4 +6377,3 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
 DefaultButtonScreen.displayName = 'DefaultButtonScreen';
 
 export { DefaultButtonScreen };
-*/

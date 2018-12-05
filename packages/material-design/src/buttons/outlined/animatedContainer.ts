@@ -8,17 +8,40 @@
 import {
   ButtonProps,
   DefaultViewSubcomponent,
+  InteractivityType,
+  isTouchDevice,
   OptionalInteractiveSubTheme,
   OptionalSizedSubTheme,
   OptionalViewTheme,
   SubTheme,
+  ViewPropsGetter,
+  ViewStyleGetter,
 } from '@reflex-ui/core';
 import { ViewProps } from 'react-native';
 
 // tslint:disable-next-line:max-line-length
 import { getDefaultButtonRippleColor } from '../default/getDefaultButtonRippleColor';
 import { withRippleEffect } from '../withRippleEffect';
-import { getOutlinedButtonContainerProps } from './container';
+import { getOutlinedButtonContainerStyle } from './container';
+
+export const getAnimatedPressedOutlinedButtonContainerProps: ViewPropsGetter<
+  ButtonProps
+> = props => ({
+  style: getAnimatedPressedOutlinedButtonContainerStyle(props),
+});
+
+export const getAnimatedPressedOutlinedButtonContainerStyle: ViewStyleGetter<
+  ButtonProps
+> = props =>
+  getOutlinedButtonContainerStyle({
+    ...props,
+    interactivityState: {
+      ...props.interactivityState,
+      type: isTouchDevice
+        ? InteractivityType.ENABLED
+        : InteractivityType.HOVERED,
+    },
+  });
 
 export const outlinedAnimatedButtonContainerTheme: SubTheme<
   ButtonProps,
@@ -30,7 +53,7 @@ export const outlinedAnimatedButtonContainerTheme: SubTheme<
   // tslint:disable-next-line:ter-indent
   allSizes: {
     pressed: {
-      getProps: getOutlinedButtonContainerProps,
+      getProps: getAnimatedPressedOutlinedButtonContainerProps,
     },
   },
   // tslint:disable-next-line:ter-indent

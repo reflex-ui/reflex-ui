@@ -14,4 +14,4 @@ import merge from 'lodash/merge';
 import { purpleTealPaletteTheme } from './purpleTealPaletteTheme';
 
 export const createPaletteTheme = (theme: OptionalPaletteTheme): PaletteTheme =>
-  createPaletteThemeCore(merge(purpleTealPaletteTheme, theme));
+  createPaletteThemeCore(merge({}, purpleTealPaletteTheme, theme));

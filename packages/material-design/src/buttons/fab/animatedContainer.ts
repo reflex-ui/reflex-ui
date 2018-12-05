@@ -9,35 +9,91 @@ import {
   ButtonProps,
   DefaultViewSubcomponent,
   InteractivityType,
+  isTouchDevice,
   OptionalInteractiveSubTheme,
   OptionalSizedSubTheme,
+  OptionalSubTheme,
   OptionalViewTheme,
-  SubTheme,
+  ViewPropsGetter,
+  ViewStyleGetter,
 } from '@reflex-ui/core';
+import merge from 'lodash/merge';
 import { ViewProps } from 'react-native';
 
-import { ElevationDegree } from '../../elevation';
+import {
+  ElevationDegree,
+  getMidElevationStylesByInteractivity,
+} from '../../elevation';
 // tslint:disable-next-line:max-line-length
 import { getContainedButtonRippleColor } from '../contained/getContainedButtonRippleColor';
 import { withRaiseEffect } from '../withRaiseEffect';
 import { withRippleEffect } from '../withRippleEffect';
-import { getFabButtonContainerProps } from './container';
+import {
+  getFabButtonContainerProps,
+  getFabButtonContainerStyle,
+} from './container';
 
-export const fabAnimatedButtonContainerTheme: SubTheme<ButtonProps, ViewProps> &
+export const getAnimatedFabButtonContainerProps: ViewPropsGetter<
+  ButtonProps
+  // tslint:disable-next-line:ter-arrow-parens (prettier removes it)
+> = props =>
+  merge({}, getFabButtonContainerProps(props), {
+    style: getAnimatedFabButtonContainerStyle(props),
+  });
+
+export const getAnimatedFabButtonContainerStyle: ViewStyleGetter<
+  ButtonProps
+> = () => getMidElevationStylesByInteractivity(InteractivityType.DISABLED);
+
+export const getAnimatedPressedFabButtonContainerProps: ViewPropsGetter<
+  ButtonProps
+  // tslint:disable-next-line:ter-arrow-parens (prettier removes it)
+> = props =>
+  merge(
+    {},
+    getFabButtonContainerProps({
+      ...props,
+      interactivityState: {
+        ...props.interactivityState,
+        type: isTouchDevice
+          ? InteractivityType.ENABLED
+          : InteractivityType.HOVERED,
+      },
+    }),
+    {
+      style: getAnimatedPressedFabButtonContainerStyle(props),
+    },
+  );
+
+export const getAnimatedPressedFabButtonContainerStyle: ViewStyleGetter<
+  ButtonProps
+> = props => ({
+  ...getFabButtonContainerStyle({
+    ...props,
+    interactivityState: {
+      ...props.interactivityState,
+      type: isTouchDevice
+        ? InteractivityType.ENABLED
+        : InteractivityType.HOVERED,
+    },
+  }),
+  ...getMidElevationStylesByInteractivity(InteractivityType.DISABLED),
+});
+
+export const fabAnimatedButtonContainerTheme: OptionalSubTheme<
+  ButtonProps,
+  ViewProps
+> &
   OptionalSizedSubTheme<
     OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
   > = {
   // tslint:disable-next-line:ter-indent
   allSizes: {
     allStates: {
-      getProps: props =>
-        getFabButtonContainerProps({
-          ...props,
-          interactivityState: {
-            ...props.interactivityState,
-            type: InteractivityType.DISABLED,
-          },
-        }),
+      getProps: getAnimatedFabButtonContainerProps,
+    },
+    pressed: {
+      getProps: getAnimatedPressedFabButtonContainerProps,
     },
   },
   // tslint:disable-next-line:ter-indent

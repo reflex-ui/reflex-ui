@@ -84,7 +84,7 @@ const createMotionRaiseStyles: MotionRaiseStylesCreator = ({
     elevationDegree,
   );
 
-  const styles = getElevationStyles(elevation);
+  const styles = JSON.parse(JSON.stringify(getElevationStyles(elevation)));
 
   if (isIOS && styles.shadowOffset) {
     styles.height = styles.shadowOffset.height;
@@ -348,26 +348,27 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
                       motionStyles.shadowColor = styles.shadowColor;
                       // @ts-ignore
                       /*
-                    motionStyles.shadowOffset = {
-                      // @ts-ignore
-                      height: styles.height || 0,
-                      // @ts-ignore
-                      width: styles.width || 0,
-                    };
-                    */
+                      motionStyles.shadowOffset = {
+                        // @ts-ignore
+                        height: styles.height || 0,
+                        // @ts-ignore
+                        width: styles.width || 0,
+                      };
+                      */
 
                       /*
-                    * Temporary solution. Need to investigate how to animate
-                    * shadowOffset, i.e., an object of values.
-                    */
+                      * Temporary solution. Need to investigate how to animate
+                      * shadowOffset, i.e., an object of values.
+                      */
                       const interactivityType = this.props.componentProps
                         .interactivityState.type;
 
                       const elevation = convertInteractivityToElevation(
                         interactivityType,
-                        ElevationDegree.MID,
+                        elevationDegree,
                       );
                       const elevationStyles = getElevationStyles(elevation);
+
                       const height = elevationStyles.shadowOffset
                         ? elevationStyles.shadowOffset.height
                         : 0;
