@@ -7,99 +7,68 @@
 
 import {
   ButtonProps,
-  OptionalInteractiveSubTheme,
-  OptionalSizedSubTheme,
-  OptionalViewTheme,
-  ViewPropsGetter,
+  InjectableSubTheme,
+  rawInjectableButtonViewSubTheme,
+  Size,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
+import { ViewProps, ViewStyle } from 'react-native';
 
 import { getMidElevationStylesByInteractivity } from '../../elevation';
-import { getRaisedButtonContainerProps } from '../raised/container';
+import { getRaisedButtonContainerStyle } from '../raised/container';
 
-export const getFabButtonContainerProps: ViewPropsGetter<ButtonProps> = props =>
-  merge({}, getRaisedButtonContainerProps(props), {
-    style: getFabButtonContainerStyle(props),
-  });
-
-export const getFabButtonContainerStyle: ViewStyleGetter<ButtonProps> = ({
-  interactivityState,
-}) => ({
-  ...getMidElevationStylesByInteractivity(interactivityState.type),
-});
-
-export const fabButtonContainerTheme: OptionalSizedSubTheme<
-  OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
-> = {
-  allSizes: {
-    allStates: {
-      getProps: getFabButtonContainerProps,
-    },
-  },
+export const fabButtonContainerSizedStyle: { [key in Size]: ViewStyle } = {
   large: {
-    allStates: {
-      props: {
-        style: {
-          borderRadius: 33,
-          height: 66,
-          minWidth: 66,
-          paddingHorizontal: 0,
-          paddingVertical: 0,
-        },
-      },
-    },
+    borderRadius: 33,
+    height: 66,
+    minWidth: 66,
+    paddingHorizontal: 0,
+    paddingVertical: 0,
   },
   medium: {
-    allStates: {
-      props: {
-        style: {
-          borderRadius: 28,
-          height: 56,
-          minWidth: 56,
-          paddingHorizontal: 0,
-          paddingVertical: 0,
-        },
-      },
-    },
+    borderRadius: 28,
+    height: 56,
+    minWidth: 56,
+    paddingHorizontal: 0,
+    paddingVertical: 0,
   },
+  none: {},
   small: {
-    allStates: {
-      props: {
-        style: {
-          borderRadius: 20,
-          height: 40,
-          minWidth: 40,
-          paddingHorizontal: 0,
-          paddingVertical: 0,
-        },
-      },
-    },
+    borderRadius: 20,
+    height: 40,
+    minWidth: 40,
+    paddingHorizontal: 0,
+    paddingVertical: 0,
   },
   xlarge: {
-    allStates: {
-      props: {
-        style: {
-          borderRadius: 40,
-          height: 80,
-          minWidth: 80,
-          paddingHorizontal: 0,
-          paddingVertical: 0,
-        },
-      },
-    },
+    borderRadius: 40,
+    height: 80,
+    minWidth: 80,
+    paddingHorizontal: 0,
+    paddingVertical: 0,
   },
   xsmall: {
-    allStates: {
-      props: {
-        style: {
-          borderRadius: 15,
-          height: 30,
-          minWidth: 30,
-          paddingHorizontal: 0,
-          paddingVertical: 0,
-        },
-      },
-    },
+    borderRadius: 15,
+    height: 30,
+    minWidth: 30,
+    paddingHorizontal: 0,
+    paddingVertical: 0,
   },
 };
+
+export const getFabButtonContainerStyle: ViewStyleGetter<
+  ButtonProps
+> = props => ({
+  ...getRaisedButtonContainerStyle(props),
+  ...getMidElevationStylesByInteractivity(props.interactivityState.type),
+  ...fabButtonContainerSizedStyle[props.size],
+});
+
+export const fabButtonContainerTheme: InjectableSubTheme<
+  ButtonProps,
+  ViewProps,
+  ViewStyle
+> = merge({}, rawInjectableButtonViewSubTheme, {
+  getStyle: getFabButtonContainerStyle,
+});

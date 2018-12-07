@@ -7,67 +7,56 @@
 
 import {
   ButtonProps,
-  OptionalInteractiveSubTheme,
-  OptionalSizedSubTheme,
-  OptionalViewTheme,
+  InjectableSubTheme,
+  rawInjectableButtonViewSubTheme,
+  Size,
+  ViewStyleGetter,
 } from '@reflex-ui/core';
+import merge from 'lodash/merge';
+import { ViewProps, ViewStyle } from 'react-native';
 
-export const iconButtonContainerTheme: OptionalSizedSubTheme<
-  OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
-> = {
+import { getDefaultButtonContainerStyle } from '../default/container';
+
+export const iconButtonContainerSizedStyle: { [key in Size]: ViewStyle } = {
   large: {
-    allStates: {
-      props: {
-        style: {
-          borderRadius: 28,
-          height: 56,
-          minWidth: 56,
-        },
-      },
-    },
+    borderRadius: 28,
+    height: 56,
+    minWidth: 56,
   },
   medium: {
-    allStates: {
-      props: {
-        style: {
-          borderRadius: 24,
-          height: 48,
-          minWidth: 48,
-        },
-      },
-    },
+    borderRadius: 24,
+    height: 48,
+    minWidth: 48,
   },
+  none: {},
   small: {
-    allStates: {
-      props: {
-        style: {
-          borderRadius: 20,
-          height: 40,
-          minWidth: 40,
-        },
-      },
-    },
+    borderRadius: 20,
+    height: 40,
+    minWidth: 40,
   },
   xlarge: {
-    allStates: {
-      props: {
-        style: {
-          borderRadius: 40,
-          height: 80,
-          minWidth: 80,
-        },
-      },
-    },
+    borderRadius: 40,
+    height: 80,
+    minWidth: 80,
   },
   xsmall: {
-    allStates: {
-      props: {
-        style: {
-          borderRadius: 16,
-          height: 32,
-          minWidth: 32,
-        },
-      },
-    },
+    borderRadius: 16,
+    height: 32,
+    minWidth: 32,
   },
 };
+
+export const getIconButtonContainerStyle: ViewStyleGetter<
+  ButtonProps
+> = props => ({
+  ...getDefaultButtonContainerStyle(props),
+  ...iconButtonContainerSizedStyle[props.size],
+});
+
+export const iconButtonContainerTheme: InjectableSubTheme<
+  ButtonProps,
+  ViewProps,
+  ViewStyle
+> = merge({}, rawInjectableButtonViewSubTheme, {
+  getStyle: getIconButtonContainerStyle,
+});

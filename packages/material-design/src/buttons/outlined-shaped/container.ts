@@ -7,58 +7,38 @@
 
 import {
   ButtonProps,
-  OptionalInteractiveSubTheme,
-  OptionalSizedSubTheme,
-  OptionalViewTheme,
+  InjectableSubTheme,
+  rawInjectableButtonViewSubTheme,
+  Size,
+  ViewStyleGetter,
 } from '@reflex-ui/core';
+import merge from 'lodash/merge';
+import { ViewProps, ViewStyle } from 'react-native';
 
-// tslint:disable-next-line:max-line-length
-export const outlinedShapedButtonContainerTheme: OptionalSizedSubTheme<
-  OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
-> = {
-  large: {
-    allStates: {
-      props: {
-        style: {
-          borderRadius: 20,
-        },
-      },
-    },
-  },
-  medium: {
-    allStates: {
-      props: {
-        style: {
-          borderRadius: 18,
-        },
-      },
-    },
-  },
-  small: {
-    allStates: {
-      props: {
-        style: {
-          borderRadius: 16,
-        },
-      },
-    },
-  },
-  xlarge: {
-    allStates: {
-      props: {
-        style: {
-          borderRadius: 24,
-        },
-      },
-    },
-  },
-  xsmall: {
-    allStates: {
-      props: {
-        style: {
-          borderRadius: 14,
-        },
-      },
-    },
-  },
+import { getOutlinedButtonContainerStyle } from '../outlined/container';
+
+export const outlinedShapedButtonContainerSizedStyle: {
+  [key in Size]: ViewStyle
+} = {
+  large: { borderRadius: 20 },
+  medium: { borderRadius: 18 },
+  none: {},
+  small: { borderRadius: 16 },
+  xlarge: { borderRadius: 24 },
+  xsmall: { borderRadius: 14 },
 };
+
+export const getOutlinedShapedButtonContainerStyle: ViewStyleGetter<
+  ButtonProps
+> = props => ({
+  ...getOutlinedButtonContainerStyle(props),
+  ...outlinedShapedButtonContainerSizedStyle[props.size],
+});
+
+export const outlinedShapedButtonContainerTheme: InjectableSubTheme<
+  ButtonProps,
+  ViewProps,
+  ViewStyle
+> = merge({}, rawInjectableButtonViewSubTheme, {
+  getStyle: getOutlinedShapedButtonContainerStyle,
+});

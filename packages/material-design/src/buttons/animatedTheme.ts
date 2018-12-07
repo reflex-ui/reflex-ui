@@ -5,29 +5,27 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { OptionalButtonVariantsTheme } from '@reflex-ui/core';
+import { ButtonVariantsTheme } from '@reflex-ui/core';
 import {
-  allVariantsAnimatedButtonTheme,
-  containedAnimatedButtonTheme,
-  containedShapedAnimatedButtonTheme,
-  defaultAnimatedButtonTheme,
-  fabAnimatedButtonTheme,
-  iconAnimatedButtonTheme,
-  outlinedAnimatedButtonTheme,
-  outlinedShapedAnimatedButtonTheme,
-  raisedAnimatedButtonTheme,
-  xfabAnimatedButtonTheme,
+  animatedContainedButtonTheme,
+  animatedContainedShapedButtonTheme,
+  animatedDefaultButtonTheme,
+  animatedFabButtonTheme,
+  animatedIconButtonTheme,
+  animatedOutlinedButtonTheme,
+  animatedOutlinedShapedButtonTheme,
+  animatedRaisedButtonTheme,
+  animatedXFabButtonTheme,
 } from './';
 
-export const animatedButtonTheme: OptionalButtonVariantsTheme = {
-  allVariants: allVariantsAnimatedButtonTheme,
-  contained: containedAnimatedButtonTheme,
-  containedShaped: containedShapedAnimatedButtonTheme,
-  default: defaultAnimatedButtonTheme,
-  fab: fabAnimatedButtonTheme,
-  highlighted: raisedAnimatedButtonTheme,
-  icon: iconAnimatedButtonTheme,
-  outlined: outlinedAnimatedButtonTheme,
-  outlinedShaped: outlinedShapedAnimatedButtonTheme,
-  xfab: xfabAnimatedButtonTheme,
+export const animatedButtonTheme: ButtonVariantsTheme = {
+  contained: animatedContainedButtonTheme,
+  containedShaped: animatedContainedShapedButtonTheme,
+  default: animatedDefaultButtonTheme,
+  fab: animatedFabButtonTheme,
+  highlighted: animatedRaisedButtonTheme,
+  icon: animatedIconButtonTheme,
+  outlined: animatedOutlinedButtonTheme,
+  outlinedShaped: animatedOutlinedShapedButtonTheme,
+  xfab: animatedXFabButtonTheme,
 };

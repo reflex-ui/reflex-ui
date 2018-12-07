@@ -8,12 +8,14 @@
 import {
   ButtonProps,
   getThemedColor,
-  OptionalInteractiveSubTheme,
-  OptionalSizedSubTheme,
-  OptionalTextTheme,
-  TextPropsGetter,
+  InjectableSubTheme,
+  rawInjectableButtonTextSubTheme,
   TextStyleGetter,
 } from '@reflex-ui/core';
+import merge from 'lodash/merge';
+import { TextProps, TextStyle } from 'react-native';
+
+import { getAllVariantsButtonTextStyle } from '../all-variants/text';
 
 export const getContainedButtonTextColorStyle: TextStyleGetter<ButtonProps> = ({
   colorTheme,
@@ -28,24 +30,17 @@ export const getContainedButtonTextColorStyle: TextStyleGetter<ButtonProps> = ({
   }),
 });
 
-export const getContainedButtonTextProps: TextPropsGetter<ButtonProps> = (
-  props: ButtonProps,
-) => ({
-  style: getContainedButtonTextStyle(props),
-});
-
 export const getContainedButtonTextStyle: TextStyleGetter<ButtonProps> = (
   props: ButtonProps,
 ) => ({
+  ...getAllVariantsButtonTextStyle(props),
   ...getContainedButtonTextColorStyle(props),
 });
 
-export const containedButtonTextTheme: OptionalSizedSubTheme<
-  OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
-> = {
-  allSizes: {
-    allStates: {
-      getProps: getContainedButtonTextProps,
-    },
-  },
-};
+export const containedButtonTextTheme: InjectableSubTheme<
+  ButtonProps,
+  TextProps,
+  TextStyle
+> = merge({}, rawInjectableButtonTextSubTheme, {
+  getStyle: getContainedButtonTextStyle,
+});

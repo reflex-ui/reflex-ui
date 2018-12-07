@@ -7,94 +7,66 @@
 
 import {
   ButtonProps,
-  OptionalInteractiveSubTheme,
-  OptionalSizedSubTheme,
-  OptionalViewTheme,
-  ViewPropsGetter,
+  InjectableSubTheme,
+  rawInjectableButtonViewSubTheme,
+  Size,
   ViewStyleGetter,
 } from '@reflex-ui/core';
+import merge from 'lodash/merge';
+import { ViewProps, ViewStyle } from 'react-native';
 
 import { getThemedOverlayColorByInteractivity } from '../../palette';
+import {
+  getAllVariantsButtonContainerProps,
+  getAllVariantsButtonContainerStyle,
+} from '../all-variants/container';
 
-export const getDefaultButtonContainerProps: ViewPropsGetter<
+export const defaultButtonContainerSizedStyle: { [key in Size]: ViewStyle } = {
+  large: {
+    height: 40,
+    minWidth: 64,
+    paddingHorizontal: 8,
+  },
+  medium: {
+    height: 36,
+    minWidth: 64,
+    paddingHorizontal: 8,
+  },
+  none: {},
+  small: {
+    height: 32,
+    minWidth: 64,
+    paddingHorizontal: 8,
+  },
+  xlarge: {
+    height: 48,
+    minWidth: 70,
+    paddingHorizontal: 12,
+  },
+  xsmall: {
+    height: 28,
+    minWidth: 54,
+    paddingHorizontal: 4,
+  },
+};
+
+export const getDefaultButtonContainerStyle: ViewStyleGetter<
   ButtonProps
 > = props => ({
-  style: getDefaultButtonContainerStyle(props),
-});
-
-export const getDefaultButtonContainerStyle: ViewStyleGetter<ButtonProps> = ({
-  colorTheme,
-  interactivityState,
-  paletteTheme,
-}) => ({
+  ...getAllVariantsButtonContainerStyle(props),
+  ...defaultButtonContainerSizedStyle[props.size],
   backgroundColor: getThemedOverlayColorByInteractivity({
-    colorTheme,
-    interactivityType: interactivityState.type,
-    paletteTheme,
+    colorTheme: props.colorTheme,
+    interactivityType: props.interactivityState.type,
+    paletteTheme: props.paletteTheme,
   }),
 });
 
-export const defaultButtonContainerTheme: OptionalSizedSubTheme<
-  OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
-> = {
-  allSizes: {
-    allStates: {
-      getProps: getDefaultButtonContainerProps,
-    },
-  },
-  large: {
-    allStates: {
-      props: {
-        style: {
-          height: 40,
-          minWidth: 64,
-          paddingHorizontal: 8,
-        },
-      },
-    },
-  },
-  medium: {
-    allStates: {
-      props: {
-        style: {
-          height: 36,
-          minWidth: 64,
-          paddingHorizontal: 8,
-        },
-      },
-    },
-  },
-  small: {
-    allStates: {
-      props: {
-        style: {
-          height: 32,
-          minWidth: 64,
-          paddingHorizontal: 8,
-        },
-      },
-    },
-  },
-  xlarge: {
-    allStates: {
-      props: {
-        style: {
-          height: 48,
-          minWidth: 70,
-          paddingHorizontal: 12,
-        },
-      },
-    },
-  },
-  xsmall: {
-    allStates: {
-      props: {
-        style: {
-          height: 28,
-          minWidth: 54,
-          paddingHorizontal: 4,
-        },
-      },
-    },
-  },
-};
+export const defaultButtonContainerTheme: InjectableSubTheme<
+  ButtonProps,
+  ViewProps,
+  ViewStyle
+> = merge({}, rawInjectableButtonViewSubTheme, {
+  getProps: getAllVariantsButtonContainerProps,
+  getStyle: getDefaultButtonContainerStyle,
+});

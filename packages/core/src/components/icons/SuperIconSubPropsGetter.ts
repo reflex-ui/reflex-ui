@@ -5,11 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { SubPropsGetter } from '../subcomponents/SubPropsGetter';
 import { SuperIconProps } from './SuperIconProps';
 import { SuperIconSubProps } from './SuperIconSubProps';
 
-export type SuperIconSubPropsGetter = SubPropsGetter<
-  SuperIconProps,
-  SuperIconSubProps
->;
+export type SuperIconSubPropsGetter = (
+  props: SuperIconProps,
+) => SuperIconSubProps;

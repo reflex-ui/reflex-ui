@@ -7,63 +7,42 @@
 
 import {
   ButtonProps,
-  OptionalInteractiveSubTheme,
-  OptionalSizedSubTheme,
-  OptionalTextTheme,
+  InjectableSubTheme,
+  rawInjectableButtonTextSubTheme,
+  Size,
+  TextStyleGetter,
 } from '@reflex-ui/core';
+import merge from 'lodash/merge';
+import { TextProps, TextStyle } from 'react-native';
 
-export const xfabButtonLeadingIconTheme: OptionalSizedSubTheme<
-  OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
-> = {
-  large: {
-    allStates: {
-      props: {
-        style: {
-          fontSize: 28,
-        },
-      },
-    },
-  },
-  medium: {
-    allStates: {
-      props: {
-        style: {
-          fontSize: 24,
-        },
-      },
-    },
-  },
-  small: {
-    allStates: {
-      props: {
-        style: {
-          fontSize: 22,
-        },
-      },
-    },
-  },
-  xlarge: {
-    allStates: {
-      props: {
-        style: {
-          fontSize: 32,
-        },
-      },
-    },
-  },
-  xsmall: {
-    allStates: {
-      props: {
-        style: {
-          fontSize: 18,
-        },
-      },
-    },
-  },
+import { getContainedButtonLeadingIconStyle } from '../contained/sideIcons';
+
+export const xfabButtonLeadingIconSizedStyle: { [key in Size]: TextStyle } = {
+  large: { fontSize: 28 },
+  medium: { fontSize: 24 },
+  none: {},
+  small: { fontSize: 22 },
+  xlarge: { fontSize: 32 },
+  xsmall: { fontSize: 18 },
 };
 
-export const xfabButtonTrailingIconTheme: OptionalSizedSubTheme<
-  OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
-> = {
-  ...xfabButtonLeadingIconTheme,
-};
+export const getXFabButtonLeadingIconStyle: TextStyleGetter<
+  ButtonProps
+> = props => ({
+  ...getContainedButtonLeadingIconStyle(props),
+  ...xfabButtonLeadingIconSizedStyle[props.size],
+});
+
+export const xfabButtonLeadingIconTheme: InjectableSubTheme<
+  ButtonProps,
+  TextProps,
+  TextStyle
+> = merge({}, rawInjectableButtonTextSubTheme, {
+  getStyle: getXFabButtonLeadingIconStyle,
+});
+
+export const xfabButtonTrailingIconTheme: InjectableSubTheme<
+  ButtonProps,
+  TextProps,
+  TextStyle
+> = xfabButtonLeadingIconTheme;

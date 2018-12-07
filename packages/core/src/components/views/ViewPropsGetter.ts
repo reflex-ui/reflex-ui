@@ -6,6 +6,9 @@
  */
 
 import { ViewProps } from 'react-native';
-import { PrimitivePropsGetter } from '../PrimitivePropsGetter';
+import { PropsGetter } from '../PropsGetter';
 
-export type ViewPropsGetter<Props> = PrimitivePropsGetter<Props, ViewProps>;
+export type ViewPropsGetter<ComponentProps> = PropsGetter<
+  ComponentProps,
+  ViewProps
+>;

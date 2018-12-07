@@ -5,9 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { OptionalButtonVariantsTheme } from '@reflex-ui/core';
+import { ButtonVariantsTheme } from '@reflex-ui/core';
 import {
-  allVariantsButtonTheme,
   containedButtonTheme,
   containedShapedButtonTheme,
   defaultButtonTheme,
@@ -19,8 +18,7 @@ import {
   xfabButtonTheme,
 } from './';
 
-export const buttonTheme: OptionalButtonVariantsTheme = {
-  allVariants: allVariantsButtonTheme,
+export const buttonTheme: ButtonVariantsTheme = {
   contained: containedButtonTheme,
   containedShaped: containedShapedButtonTheme,
   default: defaultButtonTheme,

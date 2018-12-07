@@ -7,28 +7,27 @@
 
 import {
   ButtonProps,
-  OptionalInteractiveSubTheme,
-  OptionalSizedSubTheme,
-  OptionalTextTheme,
-  TextPropsGetter,
+  OptionalInjectableSubTheme,
+  rawInjectableButtonTextSubTheme,
+  TextStyleGetter,
 } from '@reflex-ui/core';
+import merge from 'lodash/merge';
+import { TextProps, TextStyle } from 'react-native';
 
+import { getAllVariantsButtonTextStyle } from '../all-variants/text';
 import { getDefaultButtonTextColorStyle } from '../default/text';
 
-export const getOutlinedButtonTextProps: TextPropsGetter<ButtonProps> = (
+export const getOutlinedButtonTextStyle: TextStyleGetter<ButtonProps> = (
   props: ButtonProps,
 ) => ({
-  style: {
-    ...getDefaultButtonTextColorStyle(props),
-  },
+  ...getAllVariantsButtonTextStyle(props),
+  ...getDefaultButtonTextColorStyle(props),
 });
 
-export const outlinedButtonTextTheme: OptionalSizedSubTheme<
-  OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
-> = {
-  allSizes: {
-    allStates: {
-      getProps: getOutlinedButtonTextProps,
-    },
-  },
-};
+export const outlinedButtonTextTheme: OptionalInjectableSubTheme<
+  ButtonProps,
+  TextProps,
+  TextStyle
+> = merge({}, rawInjectableButtonTextSubTheme, {
+  getStyle: getOutlinedButtonTextStyle,
+});

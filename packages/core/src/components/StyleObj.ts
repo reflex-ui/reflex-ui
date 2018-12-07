@@ -5,4 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export type SubPropsGetter<Props, SubProps> = (props: Props) => SubProps;
+export interface StyleObj<Style> {
+  readonly style: Style;
+}

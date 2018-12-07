@@ -12,6 +12,5 @@ export * from './getFontWeight';
 export * from './rawTypographyTheme';
 export * from './TextPropsGetter';
 export * from './TextStyleGetter';
-export * from './TextTheme';
 export * from './transformText';
 export * from './TypographyTheme';

@@ -37,7 +37,6 @@ export const withDefaultButtonProps = (
               : Size.M;
 
           const propsWithDefaults: ButtonProps = {
-            allVariantsTheme: componentsTheme.button.allVariants,
             colorTheme: getButtonVariantColorTheme(variant),
             interactivityState: {
               type: InteractivityType.ENABLED,

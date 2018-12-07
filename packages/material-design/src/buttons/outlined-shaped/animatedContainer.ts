@@ -20,9 +20,9 @@ import { ViewProps, ViewStyle } from 'react-native';
 // tslint:disable-next-line:max-line-length
 import { getDefaultButtonRippleColor } from '../default/getDefaultButtonRippleColor';
 import { withRippleEffect } from '../withRippleEffect';
-import { getOutlinedButtonContainerStyle } from './container';
+import { getOutlinedShapedButtonContainerStyle } from './container';
 
-export const getAnimatedOutlinedButtonContainerStyle: ViewStyleGetter<
+export const getAnimatedOutlinedShapedButtonContainerStyle: ViewStyleGetter<
   ButtonProps
   // tslint:disable-next-line:ter-arrow-parens
 > = props => {
@@ -42,10 +42,11 @@ export const getAnimatedOutlinedButtonContainerStyle: ViewStyleGetter<
         }
       : props;
 
-  return getOutlinedButtonContainerStyle(updatedProps);
+  return getOutlinedShapedButtonContainerStyle(updatedProps);
 };
 
-export const animatedOutlinedButtonContainerTheme: InjectableSubTheme<
+// tslint:disable-next-line:max-line-length
+export const animatedOutlinedShapedButtonContainerTheme: InjectableSubTheme<
   ButtonProps,
   ViewProps,
   ViewStyle
@@ -53,5 +54,5 @@ export const animatedOutlinedButtonContainerTheme: InjectableSubTheme<
   component: withRippleEffect({
     getRippleColor: getDefaultButtonRippleColor,
   })(DefaultViewSubcomponent),
-  getStyle: getAnimatedOutlinedButtonContainerStyle,
+  getStyle: getAnimatedOutlinedShapedButtonContainerStyle,
 });

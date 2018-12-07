@@ -7,35 +7,27 @@
 
 import {
   ButtonProps,
-  OptionalInteractiveSubTheme,
-  OptionalSizedSubTheme,
-  OptionalTextTheme,
-  TextPropsGetter,
+  InjectableSubTheme,
+  rawInjectableButtonTextSubTheme,
+  Size,
+  TextStyleGetter,
 } from '@reflex-ui/core';
+import merge from 'lodash/merge';
+import { TextProps, TextStyle } from 'react-native';
 
+import { getAllVariantsButtonIconStyle } from '../all-variants/icon';
 import { getContainedButtonTextColorStyle } from '../contained/text';
 
-export const getFabButtonIconProps: TextPropsGetter<ButtonProps> = props => ({
-  style: {
-    ...getContainedButtonTextColorStyle(props),
-  },
+export const getFabButtonIconStyle: TextStyleGetter<ButtonProps> = props => ({
+  ...getAllVariantsButtonIconStyle(props),
+  ...getContainedButtonTextColorStyle(props),
+  ...(props.size === Size.S ? { fontSize: 24 } : {}),
 });
 
-export const fabButtonIconTheme: OptionalSizedSubTheme<
-  OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
-> = {
-  allSizes: {
-    allStates: {
-      getProps: getFabButtonIconProps,
-    },
-  },
-  small: {
-    allStates: {
-      props: {
-        style: {
-          fontSize: 24,
-        },
-      },
-    },
-  },
-};
+export const fabButtonIconTheme: InjectableSubTheme<
+  ButtonProps,
+  TextProps,
+  TextStyle
+> = merge({}, rawInjectableButtonTextSubTheme, {
+  getStyle: getFabButtonIconStyle,
+});

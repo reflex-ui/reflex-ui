@@ -5,28 +5,26 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { TextProps, ViewProps } from 'react-native';
+import { TextProps, TextStyle, ViewProps, ViewStyle } from 'react-native';
 
-import { OptionalPrimitiveTheme, PrimitiveTheme } from '../PrimitiveTheme';
 import {
-  OptionalSizedSubTheme,
+  InjectableSubTheme,
+  OptionalInjectableSubTheme,
   OptionalSubTheme,
-  SizedSubTheme,
   SubTheme,
 } from '../subcomponents';
-import { OptionalViewTheme, ViewTheme } from '../views';
 import { SuperIconProps } from './SuperIconProps';
 
 export interface SuperIconTheme {
-  readonly container: SubTheme<SuperIconProps, ViewProps> &
-    SizedSubTheme<ViewTheme<SuperIconProps>>;
-  readonly icon: SizedSubTheme<PrimitiveTheme<SuperIconProps, TextProps>>;
+  readonly container: InjectableSubTheme<SuperIconProps, ViewProps, ViewStyle>;
+  readonly icon: SubTheme<SuperIconProps, TextProps, TextStyle>;
 }
 
 export interface OptionalSuperIconTheme {
-  readonly container?: OptionalSubTheme<SuperIconProps, ViewProps> &
-    OptionalSizedSubTheme<OptionalViewTheme<SuperIconProps>>;
-  readonly icon?: OptionalSizedSubTheme<
-    OptionalPrimitiveTheme<SuperIconProps, TextProps>
+  readonly container?: OptionalInjectableSubTheme<
+    SuperIconProps,
+    ViewProps,
+    ViewStyle
   >;
+  readonly icon?: OptionalSubTheme<SuperIconProps, TextProps, TextStyle>;
 }

@@ -5,15 +5,16 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import * as React from 'react';
-import { SubProps } from './SubProps';
+import { PropsGetter } from '../PropsGetter';
+import { StyleGetter } from '../StyleGetter';
 
-export interface SubTheme<ComponentProps, PrimitiveProps> {
-  readonly component: React.ComponentType<
-    SubProps<ComponentProps> & PrimitiveProps
-  >;
+export interface SubTheme<ComponentProps, OutputProps, OutputStyle> {
+  readonly getProps: PropsGetter<ComponentProps, OutputProps>;
+  readonly getStyle: StyleGetter<ComponentProps, OutputStyle>;
 }
 
-export type OptionalSubTheme<ComponentProps, PrimitiveProps> = Partial<
-  SubTheme<ComponentProps, PrimitiveProps>
->;
+export type OptionalSubTheme<
+  ComponentProps,
+  OutputProps,
+  OutputStyle
+> = Partial<SubTheme<ComponentProps, OutputProps, OutputStyle>>;

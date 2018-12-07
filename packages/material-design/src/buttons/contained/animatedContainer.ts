@@ -8,56 +8,49 @@
 import {
   ButtonProps,
   DefaultViewSubcomponent,
+  InjectableSubTheme,
   InteractivityType,
   isTouchDevice,
-  OptionalInteractiveSubTheme,
-  OptionalSizedSubTheme,
-  OptionalViewTheme,
-  SubTheme,
-  ViewPropsGetter,
+  rawInjectableButtonViewSubTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import { ViewProps } from 'react-native';
+import merge from 'lodash/merge';
+import { ViewProps, ViewStyle } from 'react-native';
 
 import { withRippleEffect } from '../withRippleEffect';
 import { getContainedButtonContainerStyle } from './container';
 import { getContainedButtonRippleColor } from './getContainedButtonRippleColor';
 
-export const getAnimatedPressedContainedButtonContainerProps: ViewPropsGetter<
+export const getAnimatedContainedButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = props => ({
-  style: getAnimatedPressedContainedButtonContainerStyle(props),
-});
+  // tslint:disable-next-line:ter-arrow-parens
+> = props => {
+  const updatedProps =
+    props.interactivityState.type === InteractivityType.PRESSED
+      ? {
+          // tslint:disable-next-line:ter-indent
+          ...props,
+          // tslint:disable-next-line:ter-indent
+          interactivityState: {
+            ...props.interactivityState,
+            type: isTouchDevice
+              ? InteractivityType.ENABLED
+              : InteractivityType.HOVERED,
+          },
+          // tslint:disable-next-line:ter-indent
+        }
+      : props;
 
-export const getAnimatedPressedContainedButtonContainerStyle: ViewStyleGetter<
-  ButtonProps
-> = props =>
-  getContainedButtonContainerStyle({
-    ...props,
-    interactivityState: {
-      ...props.interactivityState,
-      type: isTouchDevice
-        ? InteractivityType.ENABLED
-        : InteractivityType.HOVERED,
-    },
-  });
+  return getContainedButtonContainerStyle(updatedProps);
+};
 
-export const containedAnimatedButtonContainerTheme: SubTheme<
+export const animatedContainedButtonContainerTheme: InjectableSubTheme<
   ButtonProps,
-  ViewProps
-> &
-  OptionalSizedSubTheme<
-    OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
-  > = {
-  // tslint:disable-next-line:ter-indent
-  allSizes: {
-    pressed: {
-      getProps: getAnimatedPressedContainedButtonContainerProps,
-    },
-  },
-  // tslint:disable-next-line:ter-indent
+  ViewProps,
+  ViewStyle
+> = merge({}, rawInjectableButtonViewSubTheme, {
   component: withRippleEffect({
     getRippleColor: getContainedButtonRippleColor,
   })(DefaultViewSubcomponent),
-  // tslint:disable-next-line:ter-indent
-};
+  getStyle: getAnimatedContainedButtonContainerStyle,
+});

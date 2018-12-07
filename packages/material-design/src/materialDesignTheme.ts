@@ -5,13 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { OptionalComponentsTheme } from '@reflex-ui/core';
+import { ComponentsTheme } from '@reflex-ui/core';
 
 import { buttonTheme } from './buttons/theme';
 import { iconTheme } from './icons/iconTheme';
 import { typographyTheme } from './typography/typographyTheme';
 
-export const materialDesignTheme: OptionalComponentsTheme = {
+export const materialDesignTheme: ComponentsTheme = {
   button: buttonTheme,
   icon: iconTheme,
   typography: typographyTheme,

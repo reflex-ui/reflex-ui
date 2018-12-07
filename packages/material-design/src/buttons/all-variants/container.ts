@@ -8,71 +8,46 @@
 import {
   ButtonProps,
   getSizedMarginStyle,
-  OptionalInteractiveSubTheme,
-  OptionalSizedSubTheme,
-  OptionalViewTheme,
+  InteractivityType,
+  OptionalInjectableSubTheme,
+  Size,
   ViewPropsGetter,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import { Platform } from 'react-native';
+import { Platform, ViewProps, ViewStyle } from 'react-native';
 import { buttonSizedMarginStyle } from './buttonSizedMarginStyle';
 
-// tslint:disable-next-line:max-line-length
-export const getAllVariantsAllSizesAllStatesButtonContainerProps: ViewPropsGetter<
+export const getAllVariantsButtonContainerProps: ViewPropsGetter<
   ButtonProps
-> = props => ({
-  style: getAllVariantsAllSizesAllStatesButtonContainerStyle(props),
+> = () => ({
+  pointerEvents: 'box-only',
 });
 
-// tslint:disable-next-line:max-line-length
-export const getAllVariantsAllSizesAllStatesButtonContainerStyle: ViewStyleGetter<
+export const getAllVariantsButtonContainerStyle: ViewStyleGetter<
   ButtonProps
 > = props => ({
+  alignItems: 'center',
+  borderRadius: props.size === Size.XL ? 6 : 4,
+  flexDirection: 'row',
   flexGrow: props.fullWidth ? 1 : undefined,
+  justifyContent: 'center',
   ...getSizedMarginStyle(buttonSizedMarginStyle)(props),
+  ...Platform.select({
+    web: {
+      cursor:
+        props.interactivityState.type === InteractivityType.DISABLED
+          ? 'default'
+          : 'pointer',
+      outline: 'none',
+    },
+  }),
 });
 
-export const allVariantsButtonContainerTheme: OptionalSizedSubTheme<
-  OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
+export const allVariantsButtonContainerTheme: OptionalInjectableSubTheme<
+  ButtonProps,
+  ViewProps,
+  ViewStyle
 > = {
-  allSizes: {
-    allStates: {
-      getProps: getAllVariantsAllSizesAllStatesButtonContainerProps,
-      props: {
-        pointerEvents: 'box-only',
-        style: {
-          alignItems: 'center',
-          borderRadius: 4,
-          flexDirection: 'row',
-          justifyContent: 'center',
-          ...Platform.select({
-            web: {
-              cursor: 'pointer',
-              outline: 'none',
-            },
-          }),
-        },
-      },
-    },
-    disabled: {
-      props: {
-        style: {
-          ...Platform.select({
-            web: {
-              cursor: 'default',
-            },
-          }),
-        },
-      },
-    },
-  },
-  xlarge: {
-    allStates: {
-      props: {
-        style: {
-          borderRadius: 6,
-        },
-      },
-    },
-  },
+  getProps: getAllVariantsButtonContainerProps,
+  getStyle: getAllVariantsButtonContainerProps,
 };

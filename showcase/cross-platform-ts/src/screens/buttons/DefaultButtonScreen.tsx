@@ -6353,7 +6353,7 @@ DefaultButtonScreen.displayName = 'DefaultButtonScreen';
 
 export { DefaultButtonScreen };
 */
-
+/*
 import { Button, ButtonVariant, RowView } from '@reflex-ui/core';
 import { FavoriteIcon } from '@reflex-ui/material-design';
 import * as React from 'react';
@@ -6369,6 +6369,128 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
     <RowView>
       <Button onPress={onButtonPress} variant={ButtonVariant.ICON}>
         <FavoriteIcon />
+      </Button>
+    </RowView>
+  </ScrollView>
+);
+
+DefaultButtonScreen.displayName = 'DefaultButtonScreen';
+
+export { DefaultButtonScreen };
+*/
+/*
+import {
+  Button,
+  ButtonProps,
+  ButtonSubProps,
+  ButtonSubPropsGetter,
+  ButtonVariant,
+  InteractivityType,
+  registerStyle,
+  RowView,
+} from '@reflex-ui/core';
+import {
+  disabledPaletteColor,
+  getOverlayColorByInteractivity,
+} from '@reflex-ui/material-design';
+import * as React from 'react';
+import { ScrollView, TextStyle, ViewStyle } from 'react-native';
+
+const getDefaultButtonProps: ButtonSubPropsGetter = (
+  props: ButtonProps,
+): ButtonSubProps => {
+  const subProps: ButtonSubProps = {
+    container: {
+      style: registerStyle<ViewStyle>({
+        backgroundColor: getOverlayColorByInteractivity({
+          color: '#c70ad0',
+          type: props.interactivityState.type,
+        }),
+      }),
+    },
+    text: {
+      style: registerStyle<TextStyle>({
+        color:
+          props.interactivityState.type === InteractivityType.DISABLED
+            ? disabledPaletteColor.normal.onColor
+            : '#c70ad0',
+      }),
+    },
+  };
+
+  return {
+    ...subProps,
+    leadingIcon: subProps.text,
+    trailingIcon: subProps.text,
+  };
+};
+
+const onButtonPress = () => {
+  // tslint:disable-next-line:no-console
+  console.log('DefaultButtonScreen().onButtonPress()');
+};
+
+const DefaultButtonScreen: React.SFC = (): JSX.Element => (
+  <ScrollView>
+    <RowView>
+      <Button
+        getSubProps={getDefaultButtonProps}
+        onPress={onButtonPress}
+        variant={ButtonVariant.DEFAULT}
+      >
+        Sign In
+      </Button>
+    </RowView>
+  </ScrollView>
+);
+
+DefaultButtonScreen.displayName = 'DefaultButtonScreen';
+
+export { DefaultButtonScreen };
+*/
+
+import {
+  Button,
+  ButtonTheme,
+  ButtonVariant,
+  OptionalButtonTheme,
+  RowView,
+} from '@reflex-ui/core';
+import {
+  animatedContainedButtonTheme,
+  getAnimatedContainedButtonContainerStyle,
+} from '@reflex-ui/material-design';
+import merge from 'lodash/merge';
+import * as React from 'react';
+import { ScrollView } from 'react-native';
+
+const myContainedButtonTheme: ButtonTheme = merge<
+  {},
+  ButtonTheme,
+  OptionalButtonTheme
+>({}, animatedContainedButtonTheme, {
+  container: {
+    getStyle: props => ({
+      ...getAnimatedContainedButtonContainerStyle(props),
+      borderRadius: 0,
+    }),
+  },
+});
+
+const onButtonPress = () => {
+  // tslint:disable-next-line:no-console
+  console.log('DefaultButtonScreen().onButtonPress()');
+};
+
+const DefaultButtonScreen: React.SFC = (): JSX.Element => (
+  <ScrollView>
+    <RowView>
+      <Button
+        onPress={onButtonPress}
+        theme={myContainedButtonTheme}
+        variant={ButtonVariant.CONTAINED}
+      >
+        Sign In
       </Button>
     </RowView>
   </ScrollView>

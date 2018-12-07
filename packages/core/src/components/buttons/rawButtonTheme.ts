@@ -5,54 +5,43 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  TextProps,
-  TouchableWithoutFeedbackProps,
-  ViewProps,
-} from 'react-native';
+import { TextProps, TextStyle } from 'react-native';
 
 // tslint:disable-next-line:max-line-length
-import { getRawSizedInteractiveTheme } from '../raw/getRawSizedInteractiveTheme';
+import { getRawInjectableTextSubTheme } from '../raw/getRawInjectableTextSubTheme';
 // tslint:disable-next-line:max-line-length
-import { DefaultTouchableSubcomponent } from '../touchable/DefaultTouchableSubcomponent';
-import { DefaultTextSubcomponent } from '../typography/DefaultTextSubcomponent';
-import { DefaultViewSubcomponent } from '../views/DefaultViewSubcomponent';
+import { getRawInjectableTouchableSubTheme } from '../raw/getRawInjectableTouchableSubTheme';
+// tslint:disable-next-line:max-line-length
+import { getRawInjectableViewSubTheme } from '../raw/getRawInjectableViewSubTheme';
+import { getRawSubTheme } from '../raw/getRawSubTheme';
 import { ButtonProps, ButtonTheme, ButtonVariantsTheme } from './';
 
+export const rawInjectableButtonTextSubTheme = getRawInjectableTextSubTheme<
+  ButtonProps
+>();
+// tslint:disable-next-line:max-line-length
+export const rawInjectableButtonTouchableSubTheme = getRawInjectableTouchableSubTheme<
+  ButtonProps
+>();
+export const rawInjectableButtonViewSubTheme = getRawInjectableViewSubTheme<
+  ButtonProps
+>();
+export const rawButtonTextSubTheme = getRawSubTheme<TextProps, TextStyle>();
+
 export const rawButtonVariantTheme: ButtonTheme = {
-  container: {
-    component: DefaultViewSubcomponent,
-    ...getRawSizedInteractiveTheme<ButtonProps, ViewProps>(),
-  },
-  icon: getRawSizedInteractiveTheme<ButtonProps, TextProps>(),
-  iconContainer: {
-    component: DefaultViewSubcomponent,
-    ...getRawSizedInteractiveTheme<ButtonProps, ViewProps>(),
-  },
-  leadingIcon: getRawSizedInteractiveTheme<ButtonProps, TextProps>(),
-  leadingIconContainer: {
-    component: DefaultViewSubcomponent,
-    ...getRawSizedInteractiveTheme<ButtonProps, ViewProps>(),
-  },
-  text: {
-    component: DefaultTextSubcomponent,
-    ...getRawSizedInteractiveTheme<ButtonProps, TextProps>(),
-  },
+  container: rawInjectableButtonViewSubTheme,
+  icon: rawButtonTextSubTheme,
+  iconContainer: rawInjectableButtonViewSubTheme,
+  leadingIcon: rawButtonTextSubTheme,
+  leadingIconContainer: rawInjectableButtonViewSubTheme,
+  text: rawInjectableButtonTextSubTheme,
   // prettier-ignore
-  touchable: {
-    component: DefaultTouchableSubcomponent,
-    // tslint:disable-next-line:max-line-length
-    ...getRawSizedInteractiveTheme<ButtonProps, TouchableWithoutFeedbackProps>(),
-  },
-  trailingIcon: getRawSizedInteractiveTheme<ButtonProps, TextProps>(),
-  trailingIconContainer: {
-    component: DefaultViewSubcomponent,
-    ...getRawSizedInteractiveTheme<ButtonProps, ViewProps>(),
-  },
+  touchable: rawInjectableButtonTouchableSubTheme,
+  trailingIcon: rawButtonTextSubTheme,
+  trailingIconContainer: rawInjectableButtonViewSubTheme,
 };
 
 export const rawButtonTheme: ButtonVariantsTheme = {
-  allVariants: rawButtonVariantTheme,
   contained: rawButtonVariantTheme,
   containedShaped: rawButtonVariantTheme,
   default: rawButtonVariantTheme,

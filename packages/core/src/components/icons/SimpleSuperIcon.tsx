@@ -10,7 +10,7 @@ import { TextProps, TextStyle, ViewProps, ViewStyle } from 'react-native';
 
 import { cloneElement } from '../../utils';
 import { reflexComponent } from '../reflexComponent';
-import { getSizedSubProps } from '../subcomponents';
+import { getSubProps } from '../subcomponents';
 import { OptionalSuperIconProps, SuperIconProps } from './SuperIconProps';
 import { SuperIconSubProps } from './SuperIconSubProps';
 
@@ -25,13 +25,11 @@ const handleIconChildren = (
     throw new Error('Icon children must be a valid React element.');
   }
 
-  const iconProps: TextProps = {
-    ...getSizedSubProps<SuperIconProps, TextProps, TextStyle>({
-      componentProps: props,
-      themes: [props.theme.icon],
-      userProps: userSubProps.icon,
-    }),
-  };
+  const iconProps = getSubProps<SuperIconProps, TextProps, TextStyle>({
+    componentProps: props,
+    theme: props.theme.icon,
+    userProps: userSubProps.icon,
+  });
 
   const styledIcon = children
     ? cloneElement({ element: children, props: iconProps })
@@ -50,14 +48,9 @@ export const SimpleSuperIcon = reflexComponent<SuperIconProps>({
 
   const Container = props.theme.container.component;
 
-  const containerProps = getSizedSubProps<
-    SuperIconProps,
-    ViewProps,
-    ViewStyle
-    // tslint:disable-next-line:ter-func-call-spacing
-  >({
+  const containerProps = getSubProps<SuperIconProps, ViewProps, ViewStyle>({
     componentProps: props,
-    themes: [props.theme.container],
+    theme: props.theme.container,
     userProps: userSubProps.container,
   });
 

@@ -16,13 +16,12 @@ import {
 
 import { cloneElement } from '../../utils';
 import { OptionalSuperIconProps } from '../icons';
-import { PrimitiveTheme } from '../PrimitiveTheme';
 import { reflexComponent } from '../reflexComponent';
 import {
-  getSizedInteractiveSubProps,
-  InteractiveSubTheme,
-  SizedSubTheme,
+  getSubProps,
+  InjectableSubTheme,
   SubProps,
+  SubTheme,
 } from '../subcomponents';
 // prettier-ignore
 import {
@@ -36,10 +35,10 @@ export const extractTouchablePropsFromButtonProps = (
   props: ButtonProps,
 ): TouchableWithoutFeedbackProps => {
   const {
-    allVariantsTheme,
     children,
     colorTheme,
     fullWidth,
+    // tslint:disable-next-line:no-shadowed-variable
     getSubProps,
     interactivityState,
     leadingIcon,
@@ -80,12 +79,9 @@ export const handleButtonChildren = (
   ) {
     return handleButtonIcon({
       Container: props.theme.iconContainer.component,
-      containerThemes: [
-        props.allVariantsTheme.iconContainer,
-        props.theme.iconContainer,
-      ],
+      containerTheme: props.theme.iconContainer,
       icon: children as React.ReactElement<OptionalSuperIconProps>,
-      iconThemes: [props.allVariantsTheme.icon, props.theme.icon],
+      iconTheme: props.theme.icon,
       props,
       userContainerProps: userSubProps.iconContainer,
       userIconProps: userSubProps.icon,
@@ -102,14 +98,9 @@ export const transformButtonStringChildrenIntoComponent = (
 ): JSX.Element => {
   const Text = props.theme.text.component;
 
-  const textProps = getSizedInteractiveSubProps<
-    ButtonProps,
-    TextProps,
-    TextStyle
-    // tslint:disable-next-line:ter-func-call-spacing
-  >({
+  const textProps = getSubProps<ButtonProps, TextProps, TextStyle>({
     componentProps: props,
-    themes: [props.allVariantsTheme.text, props.theme.text],
+    theme: props.theme.text,
     userProps: userSubProps.text,
   });
 
@@ -122,13 +113,13 @@ export const transformButtonStringChildrenIntoComponent = (
 
 export interface HandleButtonIconData {
   readonly Container: React.ComponentType<SubProps<ButtonProps> & ViewProps>;
-  readonly containerThemes: SizedSubTheme<
-    InteractiveSubTheme<PrimitiveTheme<ButtonProps, ViewProps>>
-  >[];
+  readonly containerTheme: InjectableSubTheme<
+    ButtonProps,
+    ViewProps,
+    ViewStyle
+  >;
   readonly icon: React.ReactElement<OptionalSuperIconProps>;
-  readonly iconThemes: SizedSubTheme<
-    InteractiveSubTheme<PrimitiveTheme<ButtonProps, TextProps>>
-  >[];
+  readonly iconTheme: SubTheme<ButtonProps, TextProps, TextStyle>;
   readonly props: ButtonProps;
   readonly userContainerProps?: ViewProps;
   readonly userIconProps?: TextProps;
@@ -137,28 +128,18 @@ export interface HandleButtonIconData {
 export const handleButtonIcon = (
   data: HandleButtonIconData,
 ): JSX.Element | undefined => {
-  const containerProps = getSizedInteractiveSubProps<
-    ButtonProps,
-    ViewProps,
-    ViewStyle
-    // tslint:disable-next-line:ter-func-call-spacing
-  >({
+  const containerProps = getSubProps<ButtonProps, ViewProps, ViewStyle>({
     componentProps: data.props,
-    themes: data.containerThemes,
+    theme: data.containerTheme,
     userProps: data.userContainerProps,
   });
 
   const iconProps: OptionalSuperIconProps = {
     getSubProps: () => ({
       icon: {
-        ...getSizedInteractiveSubProps<
-          ButtonProps,
-          TextProps,
-          TextStyle
-          // tslint:disable-next-line:ter-func-call-spacing
-        >({
+        ...getSubProps<ButtonProps, TextProps, TextStyle>({
           componentProps: data.props,
-          themes: data.iconThemes,
+          theme: data.iconTheme,
           userProps: data.userIconProps,
         }),
       },
@@ -185,12 +166,9 @@ export const handleLeadingIcon = (
 ): JSX.Element | undefined =>
   handleButtonIcon({
     Container: props.theme.leadingIconContainer.component,
-    containerThemes: [
-      props.allVariantsTheme.leadingIconContainer,
-      props.theme.leadingIconContainer,
-    ],
+    containerTheme: props.theme.leadingIconContainer,
     icon: props.leadingIcon as React.ReactElement<OptionalSuperIconProps>,
-    iconThemes: [props.allVariantsTheme.leadingIcon, props.theme.leadingIcon],
+    iconTheme: props.theme.leadingIcon,
     props,
     userContainerProps: userSubProps.leadingIconContainer,
     userIconProps: userSubProps.leadingIcon,
@@ -202,12 +180,9 @@ export const handleTrailingIcon = (
 ): JSX.Element | undefined =>
   handleButtonIcon({
     Container: props.theme.trailingIconContainer.component,
-    containerThemes: [
-      props.allVariantsTheme.trailingIconContainer,
-      props.theme.trailingIconContainer,
-    ],
+    containerTheme: props.theme.trailingIconContainer,
     icon: props.trailingIcon as React.ReactElement<OptionalSuperIconProps>,
-    iconThemes: [props.allVariantsTheme.trailingIcon, props.theme.trailingIcon],
+    iconTheme: props.theme.trailingIcon,
     props,
     userContainerProps: userSubProps.trailingIconContainer,
     userIconProps: userSubProps.trailingIcon,
@@ -223,14 +198,9 @@ export const SimpleButton = reflexComponent<ButtonProps>({
   const Container = props.theme.container.component;
   const Touchable = props.theme.touchable.component;
 
-  const containerProps = getSizedInteractiveSubProps<
-    ButtonProps,
-    ViewProps,
-    ViewStyle
-    // tslint:disable-next-line:ter-func-call-spacing
-  >({
+  const containerProps = getSubProps<ButtonProps, ViewProps, ViewStyle>({
     componentProps: props,
-    themes: [props.allVariantsTheme.container, props.theme.container],
+    theme: props.theme.container,
     userProps: userSubProps.container,
   });
 

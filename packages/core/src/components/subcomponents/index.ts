@@ -5,10 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './getSizedInteractiveSubProps';
-export * from './getSizedSubProps';
-export * from './InteractiveSubTheme';
-export * from './SizedSubTheme';
+export * from './getSubProps';
+export * from './InjectableSubTheme';
 export * from './SubProps';
-export * from './SubPropsGetter';
 export * from './SubTheme';

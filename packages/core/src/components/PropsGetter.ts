@@ -5,6 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export type PrimitivePropsGetter<ComponentProps, PrimitiveProps> = (
+export type PropsGetter<ComponentProps, OutputProps> = (
   props: ComponentProps,
-) => PrimitiveProps;
+) => OutputProps;

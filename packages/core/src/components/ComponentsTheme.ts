@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ButtonVariantsTheme, OptionalButtonVariantsTheme } from './buttons';
-import { OptionalSuperIconTheme, SuperIconTheme } from './icons';
-import { OptionalTypographyTheme, TypographyTheme } from './typography';
+import { ButtonVariantsTheme } from './buttons';
+import { SuperIconTheme } from './icons';
+import { TypographyTheme } from './typography';
 
 export interface ComponentsTheme {
   readonly button: ButtonVariantsTheme;
@@ -15,8 +15,4 @@ export interface ComponentsTheme {
   readonly typography: TypographyTheme;
 }
 
-export interface OptionalComponentsTheme {
-  readonly button?: OptionalButtonVariantsTheme;
-  readonly icon?: OptionalSuperIconTheme;
-  readonly typography?: OptionalTypographyTheme;
-}
+export type OptionalComponentsTheme = Partial<ComponentsTheme>;

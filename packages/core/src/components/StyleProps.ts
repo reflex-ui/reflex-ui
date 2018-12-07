@@ -7,6 +7,6 @@
 
 import { StyleProp } from 'react-native';
 
-export interface StyleProps<PrimitiveStyle> {
-  readonly style?: StyleProp<PrimitiveStyle>;
+export interface StyleProps<Style> {
+  readonly style?: StyleProp<Style>;
 }

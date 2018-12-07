@@ -9,23 +9,16 @@ import {
   ButtonProps,
   InjectableSubTheme,
   rawInjectableButtonTextSubTheme,
-  TextStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 import { TextProps, TextStyle } from 'react-native';
 
 import { getAllVariantsButtonIconStyle } from '../all-variants/icon';
-import { getDefaultButtonTextColorStyle } from '../default/text';
 
-export const getIconButtonIconStyle: TextStyleGetter<ButtonProps> = props => ({
-  ...getAllVariantsButtonIconStyle(props),
-  ...getDefaultButtonTextColorStyle(props),
-});
-
-export const iconButtonIconTheme: InjectableSubTheme<
+export const defaultButtonIconTheme: InjectableSubTheme<
   ButtonProps,
   TextProps,
   TextStyle
 > = merge({}, rawInjectableButtonTextSubTheme, {
-  getStyle: getIconButtonIconStyle,
+  getStyle: getAllVariantsButtonIconStyle,
 });

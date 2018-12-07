@@ -5,6 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export interface PrimitiveStyleObj<PrimitiveStyle> {
-  readonly style: PrimitiveStyle;
-}
+export type StyleGetter<ComponentProps, OutputStyle> = (
+  props: ComponentProps,
+) => OutputStyle;

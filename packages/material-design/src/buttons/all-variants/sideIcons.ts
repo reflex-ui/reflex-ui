@@ -7,76 +7,51 @@
 
 import {
   ButtonProps,
-  OptionalInteractiveSubTheme,
-  OptionalSizedSubTheme,
-  OptionalTextTheme,
+  OptionalInjectableSubTheme,
+  Size,
+  TextStyleGetter,
 } from '@reflex-ui/core';
+import { Platform, TextProps, TextStyle } from 'react-native';
 
-import { allVariantsButtonIconTheme } from './icon';
+import { getAllVariantsButtonIconStyle } from './icon';
 
-// tslint:disable-next-line:max-line-length
-export const allVariantsButtonLeadingIconTheme: OptionalSizedSubTheme<
-  OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
-> = {
-  allSizes: {
-    allStates: {
-      props:
-        allVariantsButtonIconTheme.allSizes &&
-        allVariantsButtonIconTheme.allSizes.allStates
-          ? allVariantsButtonIconTheme.allSizes.allStates.props
-          : undefined,
-    },
-  },
-  large: {
-    allStates: {
-      props: {
-        style: {
-          fontSize: 19,
-        },
-      },
-    },
-  },
-  medium: {
-    allStates: {
-      props: {
-        style: {
-          fontSize: 18,
-        },
-      },
-    },
-  },
-  small: {
-    allStates: {
-      props: {
-        style: {
-          fontSize: 17,
-        },
-      },
-    },
-  },
-  xlarge: {
-    allStates: {
-      props: {
-        style: {
-          fontSize: 20,
-        },
-      },
-    },
-  },
-  xsmall: {
-    allStates: {
-      props: {
-        style: {
-          fontSize: 15,
-        },
-      },
-    },
-  },
+export const allVariantsButtonLeadingIconSizedStyle: {
+  [key in Size]: TextStyle
+} = {
+  large: { fontSize: 19 },
+  medium: { fontSize: 18 },
+  none: {},
+  small: { fontSize: 17 },
+  xlarge: { fontSize: 20 },
+  xsmall: { fontSize: 15 },
 };
 
-// tslint:disable-next-line:max-line-length
-export const allVariantsButtonTrailingIconTheme: OptionalSizedSubTheme<
-  OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
+export const getAllVariantsButtonLeadingIconStyle: TextStyleGetter<
+  ButtonProps
+> = props => ({
+  ...getAllVariantsButtonIconStyle(props),
+  ...allVariantsButtonLeadingIconSizedStyle[props.size],
+  ...Platform.select<TextStyle>({
+    web: {
+      userSelect: 'none',
+    },
+  }),
+});
+
+// prettier-ignore
+export const getAllVariantsButtonTrailingIconStyle =
+  getAllVariantsButtonLeadingIconStyle;
+
+export const allVariantsButtonLeadingIconTheme: OptionalInjectableSubTheme<
+  ButtonProps,
+  TextProps,
+  TextStyle
 > = {
-  ...allVariantsButtonLeadingIconTheme,
+  getStyle: getAllVariantsButtonLeadingIconStyle,
 };
+
+export const allVariantsButtonTrailingIconTheme: OptionalInjectableSubTheme<
+  ButtonProps,
+  TextProps,
+  TextStyle
+> = allVariantsButtonLeadingIconTheme;

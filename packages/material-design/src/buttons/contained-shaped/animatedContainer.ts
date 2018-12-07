@@ -18,11 +18,11 @@ import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
 // tslint:disable-next-line:max-line-length
-import { getDefaultButtonRippleColor } from '../default/getDefaultButtonRippleColor';
+import { getContainedButtonRippleColor } from '../contained/getContainedButtonRippleColor';
 import { withRippleEffect } from '../withRippleEffect';
-import { getOutlinedButtonContainerStyle } from './container';
+import { getContainedShapedButtonContainerStyle } from './container';
 
-export const getAnimatedOutlinedButtonContainerStyle: ViewStyleGetter<
+export const getAnimatedContainedShapedButtonContainerStyle: ViewStyleGetter<
   ButtonProps
   // tslint:disable-next-line:ter-arrow-parens
 > = props => {
@@ -42,16 +42,17 @@ export const getAnimatedOutlinedButtonContainerStyle: ViewStyleGetter<
         }
       : props;
 
-  return getOutlinedButtonContainerStyle(updatedProps);
+  return getContainedShapedButtonContainerStyle(updatedProps);
 };
 
-export const animatedOutlinedButtonContainerTheme: InjectableSubTheme<
+// tslint:disable-next-line:max-line-length
+export const animatedContainedShapedButtonContainerTheme: InjectableSubTheme<
   ButtonProps,
   ViewProps,
   ViewStyle
 > = merge({}, rawInjectableButtonViewSubTheme, {
   component: withRippleEffect({
-    getRippleColor: getDefaultButtonRippleColor,
+    getRippleColor: getContainedButtonRippleColor,
   })(DefaultViewSubcomponent),
-  getStyle: getAnimatedOutlinedButtonContainerStyle,
+  getStyle: getAnimatedContainedShapedButtonContainerStyle,
 });

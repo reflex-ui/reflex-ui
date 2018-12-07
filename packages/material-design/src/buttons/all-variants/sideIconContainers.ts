@@ -7,119 +7,87 @@
 
 import {
   ButtonProps,
-  OptionalInteractiveSubTheme,
-  OptionalSizedSubTheme,
-  OptionalViewTheme,
+  OptionalInjectableSubTheme,
+  Size,
+  ViewStyleGetter,
 } from '@reflex-ui/core';
 
-// tslint:disable-next-line:max-line-length
-export const allVariantsButtonLeadingIconContainerTheme: OptionalSizedSubTheme<
-  OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
-> = {
+import { TextStyle, ViewProps, ViewStyle } from 'react-native';
+
+export const allVariantsButtonLeadingIconContainerSizedStyle: {
+  [key in Size]: TextStyle
+} = {
   large: {
-    allStates: {
-      props: {
-        style: {
-          marginEnd: 10,
-          marginStart: -6,
-        },
-      },
-    },
+    marginEnd: 10,
+    marginStart: -6,
   },
   medium: {
-    allStates: {
-      props: {
-        style: {
-          marginEnd: 8,
-          marginStart: -4,
-        },
-      },
-    },
+    marginEnd: 8,
+    marginStart: -4,
   },
+  none: {},
   small: {
-    allStates: {
-      props: {
-        style: {
-          marginEnd: 7,
-          marginStart: -3,
-        },
-      },
-    },
+    marginEnd: 7,
+    marginStart: -3,
   },
   xlarge: {
-    allStates: {
-      props: {
-        style: {
-          marginEnd: 12,
-          marginStart: -8,
-        },
-      },
-    },
+    marginEnd: 12,
+    marginStart: -8,
   },
   xsmall: {
-    allStates: {
-      props: {
-        style: {
-          marginEnd: 6,
-          marginStart: -2,
-        },
-      },
-    },
+    marginEnd: 6,
+    marginStart: -2,
   },
 };
 
+export const getAllVariantsButtonLeadingIconContainerStyle: ViewStyleGetter<
+  ButtonProps
+> = props => allVariantsButtonLeadingIconContainerSizedStyle[props.size];
+
 // tslint:disable-next-line:max-line-length
-export const allVariantsButtonTrailingIconContainerTheme: OptionalSizedSubTheme<
-  OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
+export const allVariantsButtonLeadingIconContainerTheme: OptionalInjectableSubTheme<
+  ButtonProps,
+  ViewProps,
+  ViewStyle
 > = {
+  getStyle: getAllVariantsButtonLeadingIconContainerStyle,
+};
+
+export const allVariantsButtonTrailingIconContainerSizedStyle: {
+  [key in Size]: TextStyle
+} = {
   large: {
-    allStates: {
-      props: {
-        style: {
-          marginEnd: -6,
-          marginStart: 10,
-        },
-      },
-    },
+    marginEnd: -6,
+    marginStart: 10,
   },
   medium: {
-    allStates: {
-      props: {
-        style: {
-          marginEnd: -4,
-          marginStart: 8,
-        },
-      },
-    },
+    marginEnd: -4,
+    marginStart: 8,
   },
+  none: {},
   small: {
-    allStates: {
-      props: {
-        style: {
-          marginEnd: -3,
-          marginStart: 7,
-        },
-      },
-    },
+    marginEnd: -3,
+    marginStart: 7,
   },
   xlarge: {
-    allStates: {
-      props: {
-        style: {
-          marginEnd: -8,
-          marginStart: 12,
-        },
-      },
-    },
+    marginEnd: -8,
+    marginStart: 12,
   },
   xsmall: {
-    allStates: {
-      props: {
-        style: {
-          marginEnd: -2,
-          marginStart: 6,
-        },
-      },
-    },
+    marginEnd: -2,
+    marginStart: 6,
   },
+};
+
+export const getAllVariantsButtonTrailingIconContainerStyle: ViewStyleGetter<
+  ButtonProps
+> = ({ size }) => allVariantsButtonTrailingIconContainerSizedStyle[size];
+
+// tslint:disable-next-line:max-line-length
+export const allVariantsButtonTrailingIconContainerTheme: OptionalInjectableSubTheme<
+  ButtonProps,
+  ViewProps,
+  ViewStyle
+> = {
+  getStyle: getAllVariantsButtonTrailingIconContainerStyle,
 };

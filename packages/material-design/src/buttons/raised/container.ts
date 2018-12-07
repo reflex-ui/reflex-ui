@@ -7,21 +7,15 @@
 
 import {
   ButtonProps,
-  OptionalInteractiveSubTheme,
-  OptionalSizedSubTheme,
-  OptionalViewTheme,
-  ViewPropsGetter,
+  InjectableSubTheme,
+  rawInjectableButtonViewSubTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
+import merge from 'lodash/merge';
+import { ViewProps, ViewStyle } from 'react-native';
 
 import { getLowElevationStylesByInteractivity } from '../../elevation';
 import { getContainedButtonContainerStyle } from '../contained/container';
-
-export const getRaisedButtonContainerProps: ViewPropsGetter<
-  ButtonProps
-> = props => ({
-  style: getRaisedButtonContainerStyle(props),
-});
 
 export const getRaisedButtonContainerStyle: ViewStyleGetter<
   ButtonProps
@@ -30,12 +24,10 @@ export const getRaisedButtonContainerStyle: ViewStyleGetter<
   ...getLowElevationStylesByInteractivity(props.interactivityState.type),
 });
 
-export const raisedButtonContainerTheme: OptionalSizedSubTheme<
-  OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
-> = {
-  allSizes: {
-    allStates: {
-      getProps: getRaisedButtonContainerProps,
-    },
-  },
-};
+export const raisedButtonContainerTheme: InjectableSubTheme<
+  ButtonProps,
+  ViewProps,
+  ViewStyle
+> = merge({}, rawInjectableButtonViewSubTheme, {
+  getStyle: getRaisedButtonContainerStyle,
+});

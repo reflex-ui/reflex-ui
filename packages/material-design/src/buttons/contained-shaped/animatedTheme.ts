@@ -5,19 +5,19 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { OptionalButtonTheme } from '@reflex-ui/core';
+import { ButtonTheme, OptionalButtonTheme } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
 // tslint:disable-next-line:max-line-length
-import { containedAnimatedButtonContainerTheme } from '../contained/animatedContainer';
+import { animatedContainedShapedButtonContainerTheme } from './animatedContainer';
 import { containedShapedButtonTheme } from './theme';
 
-export const partialContainedShapedAnimatedButtonTheme: OptionalButtonTheme = {
-  container: containedAnimatedButtonContainerTheme,
+export const partialAnimatedContainedShapedButtonTheme: OptionalButtonTheme = {
+  container: animatedContainedShapedButtonContainerTheme,
 };
 
-export const containedShapedAnimatedButtonTheme: OptionalButtonTheme = merge<
+export const animatedContainedShapedButtonTheme: ButtonTheme = merge<
   {},
-  OptionalButtonTheme,
+  ButtonTheme,
   OptionalButtonTheme
->({}, containedShapedButtonTheme, partialContainedShapedAnimatedButtonTheme);
+>({}, containedShapedButtonTheme, partialAnimatedContainedShapedButtonTheme);

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { OptionalButtonTheme } from '@reflex-ui/core';
+import { ButtonTheme, OptionalButtonTheme } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
 import { fabButtonTheme } from '../fab/theme';
@@ -27,8 +27,8 @@ export const partialXFabButtonTheme: OptionalButtonTheme = {
   trailingIconContainer: xfabButtonTrailingIconContainerTheme,
 };
 
-export const xfabButtonTheme: OptionalButtonTheme = merge<
+export const xfabButtonTheme: ButtonTheme = merge<
   {},
-  OptionalButtonTheme,
+  ButtonTheme,
   OptionalButtonTheme
 >({}, fabButtonTheme, partialXFabButtonTheme);

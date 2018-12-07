@@ -19,7 +19,6 @@ export interface ButtonProps
     MarginProps,
     PaletteThemeProps,
     SizeProps {
-  readonly allVariantsTheme: ButtonTheme;
   readonly children?: React.ReactNode;
   readonly fullWidth?: boolean;
   readonly getSubProps?: ButtonSubPropsGetter;

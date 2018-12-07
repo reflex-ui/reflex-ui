@@ -8,17 +8,14 @@
 import {
   ButtonProps,
   DefaultViewSubcomponent,
+  InjectableSubTheme,
   InteractivityType,
   isTouchDevice,
-  OptionalInteractiveSubTheme,
-  OptionalSizedSubTheme,
-  OptionalViewTheme,
-  SubTheme,
-  ViewPropsGetter,
+  rawInjectableButtonViewSubTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
-import { ViewProps } from 'react-native';
+import { ViewProps, ViewStyle } from 'react-native';
 
 import {
   ElevationDegree,
@@ -28,65 +25,41 @@ import {
 import { getContainedButtonRippleColor } from '../contained/getContainedButtonRippleColor';
 import { withRaiseEffect } from '../withRaiseEffect';
 import { withRippleEffect } from '../withRippleEffect';
-import {
-  getRaisedButtonContainerProps,
-  getRaisedButtonContainerStyle,
-} from './container';
-
-export const getAnimatedRaisedButtonContainerProps: ViewPropsGetter<
-  ButtonProps
-  // tslint:disable-next-line:ter-arrow-parens (prettier removes it)
-> = props =>
-  merge({}, getRaisedButtonContainerProps(props), {
-    style: getAnimatedRaisedButtonContainerStyle(props),
-  });
+import { getRaisedButtonContainerStyle } from './container';
 
 export const getAnimatedRaisedButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-> = () => getLowElevationStylesByInteractivity(InteractivityType.DISABLED);
+  // tslint:disable-next-line:ter-arrow-parens
+> = props => {
+  const updatedProps =
+    props.interactivityState.type === InteractivityType.PRESSED
+      ? {
+          // tslint:disable-next-line:ter-indent
+          ...props,
+          // tslint:disable-next-line:ter-indent
+          interactivityState: {
+            ...props.interactivityState,
+            type: isTouchDevice
+              ? InteractivityType.ENABLED
+              : InteractivityType.HOVERED,
+          },
+          // tslint:disable-next-line:ter-indent
+        }
+      : props;
 
-export const getAnimatedPressedRaisedButtonContainerProps: ViewPropsGetter<
-  ButtonProps
-  // tslint:disable-next-line:ter-arrow-parens (prettier removes it)
-> = props =>
-  merge({}, getRaisedButtonContainerProps(props), {
-    style: getAnimatedPressedRaisedButtonContainerStyle(props),
-  });
+  return {
+    ...getRaisedButtonContainerStyle(updatedProps),
+    ...getLowElevationStylesByInteractivity(InteractivityType.DISABLED),
+  };
+};
 
-export const getAnimatedPressedRaisedButtonContainerStyle: ViewStyleGetter<
-  ButtonProps
-> = props => ({
-  ...getRaisedButtonContainerStyle({
-    ...props,
-    interactivityState: {
-      ...props.interactivityState,
-      type: isTouchDevice
-        ? InteractivityType.ENABLED
-        : InteractivityType.HOVERED,
-    },
-  }),
-  ...getLowElevationStylesByInteractivity(InteractivityType.DISABLED),
-});
-
-export const raisedAnimatedButtonContainerTheme: SubTheme<
+export const animatedRaisedButtonContainerTheme: InjectableSubTheme<
   ButtonProps,
-  ViewProps
-> &
-  OptionalSizedSubTheme<
-    OptionalInteractiveSubTheme<OptionalViewTheme<ButtonProps>>
-  > = {
-  // tslint:disable-next-line:ter-indent
-  allSizes: {
-    allStates: {
-      getProps: getAnimatedRaisedButtonContainerProps,
-    },
-    pressed: {
-      getProps: getAnimatedPressedRaisedButtonContainerProps,
-    },
-  },
-  // tslint:disable-next-line:ter-indent
+  ViewProps,
+  ViewStyle
+> = merge({}, rawInjectableButtonViewSubTheme, {
   component: withRippleEffect({
     getRippleColor: getContainedButtonRippleColor,
   })(withRaiseEffect(ElevationDegree.LOW)(DefaultViewSubcomponent)),
-  // tslint:disable-next-line:ter-indent
-};
+  getStyle: getAnimatedRaisedButtonContainerStyle,
+});

@@ -7,36 +7,34 @@
 
 import {
   ButtonProps,
-  OptionalInteractiveSubTheme,
-  OptionalSizedSubTheme,
-  OptionalTextTheme,
-  TextPropsGetter,
+  InjectableSubTheme,
+  rawButtonTextSubTheme,
+  TextStyleGetter,
 } from '@reflex-ui/core';
+import merge from 'lodash/merge';
+import { TextProps, TextStyle } from 'react-native';
 
+// tslint:disable-next-line:max-line-length
+import { getAllVariantsButtonLeadingIconStyle } from '../all-variants/sideIcons';
 import { getContainedButtonTextColorStyle } from './text';
 
-export const getContainedButtonIconProps: TextPropsGetter<
+export const getContainedButtonLeadingIconStyle: TextStyleGetter<
   ButtonProps
 > = props => ({
-  style: {
-    ...getContainedButtonTextColorStyle(props),
-  },
+  ...getAllVariantsButtonLeadingIconStyle(props),
+  ...getContainedButtonTextColorStyle(props),
 });
 
-// tslint:disable-next-line:max-line-length
-export const containedButtonLeadingIconTheme: OptionalSizedSubTheme<
-  OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
-> = {
-  allSizes: {
-    allStates: {
-      getProps: getContainedButtonIconProps,
-    },
-  },
-};
+export const containedButtonLeadingIconTheme: InjectableSubTheme<
+  ButtonProps,
+  TextProps,
+  TextStyle
+> = merge({}, rawButtonTextSubTheme, {
+  getStyle: getContainedButtonLeadingIconStyle,
+});
 
-// tslint:disable-next-line:max-line-length
-export const containedButtonTrailingIconTheme: OptionalSizedSubTheme<
-  OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
-> = {
-  ...containedButtonLeadingIconTheme,
-};
+export const containedButtonTrailingIconTheme: InjectableSubTheme<
+  ButtonProps,
+  TextProps,
+  TextStyle
+> = containedButtonLeadingIconTheme;

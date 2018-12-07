@@ -5,8 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './getRawInteractiveTheme';
-export * from './getRawPrimitiveTheme';
-export * from './getRawSizedInteractiveTheme';
-export * from './getRawSizedTheme';
+export * from './getRawInjectableTextSubTheme';
+export * from './getRawInjectableTouchableSubTheme';
+export * from './getRawInjectableViewSubTheme';
+export * from './getRawSubTheme';
 export * from './rawComponentsTheme';

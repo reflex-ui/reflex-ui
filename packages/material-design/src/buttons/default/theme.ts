@@ -5,9 +5,14 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { OptionalButtonTheme } from '@reflex-ui/core';
+import {
+  ButtonTheme,
+  rawInjectableButtonTouchableSubTheme,
+  rawInjectableButtonViewSubTheme,
+} from '@reflex-ui/core';
 
 import { defaultButtonContainerTheme } from './container';
+import { defaultButtonIconTheme } from './icon';
 import {
   defaultButtonLeadingIconContainerTheme,
   defaultButtonTrailingIconContainerTheme,
@@ -18,11 +23,14 @@ import {
 } from './sideIcons';
 import { defaultButtonTextTheme } from './text';
 
-export const defaultButtonTheme: OptionalButtonTheme = {
+export const defaultButtonTheme: ButtonTheme = {
   container: defaultButtonContainerTheme,
+  icon: defaultButtonIconTheme,
+  iconContainer: rawInjectableButtonViewSubTheme,
   leadingIcon: defaultButtonLeadingIconTheme,
   leadingIconContainer: defaultButtonLeadingIconContainerTheme,
   text: defaultButtonTextTheme,
+  touchable: rawInjectableButtonTouchableSubTheme,
   trailingIcon: defaultButtonTrailingIconTheme,
   trailingIconContainer: defaultButtonTrailingIconContainerTheme,
 };

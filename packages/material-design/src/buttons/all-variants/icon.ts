@@ -7,71 +7,36 @@
 
 import {
   ButtonProps,
-  OptionalInteractiveSubTheme,
-  OptionalSizedSubTheme,
-  OptionalTextTheme,
+  OptionalInjectableSubTheme,
+  Size,
+  TextStyleGetter,
 } from '@reflex-ui/core';
-import { Platform, TextStyle } from 'react-native';
+import { Platform, TextProps, TextStyle } from 'react-native';
 
-export const allVariantsButtonIconTheme: OptionalSizedSubTheme<
-  OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
+export const allVariantsButtonIconSizedStyle: { [key in Size]: TextStyle } = {
+  large: { fontSize: 30 },
+  medium: { fontSize: 24 },
+  none: {},
+  small: { fontSize: 20 },
+  xlarge: { fontSize: 48 },
+  xsmall: { fontSize: 18 },
+};
+
+export const getAllVariantsButtonIconStyle: TextStyleGetter<ButtonProps> = ({
+  size,
+}) => ({
+  ...allVariantsButtonIconSizedStyle[size],
+  ...Platform.select<TextStyle>({
+    web: {
+      userSelect: 'none',
+    },
+  }),
+});
+
+export const allVariantsButtonIconTheme: OptionalInjectableSubTheme<
+  ButtonProps,
+  TextProps,
+  TextStyle
 > = {
-  allSizes: {
-    allStates: {
-      props: {
-        style: {
-          ...Platform.select<TextStyle>({
-            web: {
-              userSelect: 'none',
-            },
-          }),
-        },
-      },
-    },
-  },
-  large: {
-    allStates: {
-      props: {
-        style: {
-          fontSize: 30,
-        },
-      },
-    },
-  },
-  medium: {
-    allStates: {
-      props: {
-        style: {
-          fontSize: 24,
-        },
-      },
-    },
-  },
-  small: {
-    allStates: {
-      props: {
-        style: {
-          fontSize: 20,
-        },
-      },
-    },
-  },
-  xlarge: {
-    allStates: {
-      props: {
-        style: {
-          fontSize: 48,
-        },
-      },
-    },
-  },
-  xsmall: {
-    allStates: {
-      props: {
-        style: {
-          fontSize: 18,
-        },
-      },
-    },
-  },
+  getStyle: getAllVariantsButtonIconStyle,
 };

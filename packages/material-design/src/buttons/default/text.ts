@@ -8,14 +8,16 @@
 import {
   ButtonProps,
   getThemedColor,
+  InjectableSubTheme,
   InteractivityType,
   isWeb,
-  OptionalInteractiveSubTheme,
-  OptionalSizedSubTheme,
-  OptionalTextTheme,
-  TextPropsGetter,
+  rawInjectableButtonTextSubTheme,
   TextStyleGetter,
 } from '@reflex-ui/core';
+import merge from 'lodash/merge';
+import { TextProps, TextStyle } from 'react-native';
+
+import { getAllVariantsButtonTextStyle } from '../all-variants/text';
 
 export const getDefaultButtonTextColorStyle: TextStyleGetter<ButtonProps> = ({
   colorTheme,
@@ -30,29 +32,18 @@ export const getDefaultButtonTextColorStyle: TextStyleGetter<ButtonProps> = ({
   }),
 });
 
-export const getDefaultButtonTextProps: TextPropsGetter<
-  ButtonProps
-> = props => ({
-  style: getDefaultButtonTextStyle(props),
-});
-
 export const getDefaultButtonTextStyle: TextStyleGetter<ButtonProps> = (
   props: ButtonProps,
 ) => ({
+  ...getAllVariantsButtonTextStyle(props),
   ...getDefaultButtonTextColorStyle(props),
+  marginTop: isWeb ? -3 : 0,
 });
 
-export const defaultButtonTextTheme: OptionalSizedSubTheme<
-  OptionalInteractiveSubTheme<OptionalTextTheme<ButtonProps>>
-> = {
-  allSizes: {
-    allStates: {
-      getProps: getDefaultButtonTextProps,
-      props: {
-        style: {
-          marginTop: isWeb ? -3 : 0,
-        },
-      },
-    },
-  },
-};
+export const defaultButtonTextTheme: InjectableSubTheme<
+  ButtonProps,
+  TextProps,
+  TextStyle
+> = merge({}, rawInjectableButtonTextSubTheme, {
+  getStyle: getDefaultButtonTextStyle,
+});

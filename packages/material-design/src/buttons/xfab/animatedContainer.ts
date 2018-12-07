@@ -17,12 +17,17 @@ import {
 import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
+import {
+  ElevationDegree,
+  getMidElevationStylesByInteractivity,
+} from '../../elevation';
 // tslint:disable-next-line:max-line-length
-import { getDefaultButtonRippleColor } from '../default/getDefaultButtonRippleColor';
+import { getContainedButtonRippleColor } from '../contained/getContainedButtonRippleColor';
+import { withRaiseEffect } from '../withRaiseEffect';
 import { withRippleEffect } from '../withRippleEffect';
-import { getOutlinedButtonContainerStyle } from './container';
+import { getXFabButtonContainerStyle } from './container';
 
-export const getAnimatedOutlinedButtonContainerStyle: ViewStyleGetter<
+export const getAnimatedXFabButtonContainerStyle: ViewStyleGetter<
   ButtonProps
   // tslint:disable-next-line:ter-arrow-parens
 > = props => {
@@ -42,16 +47,19 @@ export const getAnimatedOutlinedButtonContainerStyle: ViewStyleGetter<
         }
       : props;
 
-  return getOutlinedButtonContainerStyle(updatedProps);
+  return {
+    ...getXFabButtonContainerStyle(updatedProps),
+    ...getMidElevationStylesByInteractivity(InteractivityType.DISABLED),
+  };
 };
 
-export const animatedOutlinedButtonContainerTheme: InjectableSubTheme<
+export const animatedXFabButtonContainerTheme: InjectableSubTheme<
   ButtonProps,
   ViewProps,
   ViewStyle
 > = merge({}, rawInjectableButtonViewSubTheme, {
   component: withRippleEffect({
-    getRippleColor: getDefaultButtonRippleColor,
-  })(DefaultViewSubcomponent),
-  getStyle: getAnimatedOutlinedButtonContainerStyle,
+    getRippleColor: getContainedButtonRippleColor,
+  })(withRaiseEffect(ElevationDegree.MID)(DefaultViewSubcomponent)),
+  getStyle: getAnimatedXFabButtonContainerStyle,
 });

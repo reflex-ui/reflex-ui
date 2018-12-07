@@ -8,22 +8,24 @@
 import {
   getSizedMarginStyle,
   getThemedColor,
-  OptionalPrimitiveTheme,
-  OptionalSizedSubTheme,
+  OptionalInjectableSubTheme,
   OptionalSuperIconTheme,
-  OptionalViewTheme,
   rawSuperIconTheme,
   Size,
   SizedMarginStyle,
   SuperIconProps,
   SuperIconTheme,
-  TextPropsGetter,
   TextStyleGetter,
-  ViewPropsGetter,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
-import { Platform, TextProps, TextStyle } from 'react-native';
+import {
+  Platform,
+  TextProps,
+  TextStyle,
+  ViewProps,
+  ViewStyle,
+} from 'react-native';
 
 export const iconSizedMarginStyle: SizedMarginStyle = {
   [Size.L]: {
@@ -52,97 +54,59 @@ export const iconSizedMarginStyle: SizedMarginStyle = {
   },
 };
 
-export const getAllSizesIconProps: TextPropsGetter<SuperIconProps> = props => ({
-  style: getAllSizesIconStyle(props),
-});
+export const superIconIconSizedStyle: { [key in Size]: TextStyle } = {
+  large: { fontSize: 32 },
+  medium: { fontSize: 24 },
+  none: {},
+  small: { fontSize: 16 },
+  xlarge: { fontSize: 48 },
+  xsmall: { fontSize: 12 },
+};
 
-export const getAllSizesIconStyle: TextStyleGetter<SuperIconProps> = ({
+export const getSuperIconIconStyle: TextStyleGetter<SuperIconProps> = ({
   color,
   colorTheme,
   paletteTheme,
+  size,
 }) => ({
+  ...superIconIconSizedStyle[size],
   color: color ? color : getThemedColor({ colorTheme, paletteTheme }),
+  ...Platform.select<TextStyle>({
+    web: {
+      userSelect: 'none',
+    },
+  }),
 });
 
-export const getIconContainerProps: ViewPropsGetter<
-  SuperIconProps
-> = props => ({
-  style: getIconContainerStyle(props),
-});
+export const superIconIconTheme: OptionalInjectableSubTheme<
+  SuperIconProps,
+  TextProps,
+  TextStyle
+> = {
+  getStyle: getSuperIconIconStyle,
+};
 
-export const getIconContainerStyle: ViewStyleGetter<
+export const getSuperIconContainerStyle: ViewStyleGetter<
   SuperIconProps
 > = props => ({
   ...getSizedMarginStyle(iconSizedMarginStyle)(props),
 });
 
-export const iconContainerTheme: OptionalSizedSubTheme<
-  OptionalViewTheme<SuperIconProps>
+export const superIconContainerTheme: OptionalInjectableSubTheme<
+  SuperIconProps,
+  ViewProps,
+  ViewStyle
 > = {
-  allSizes: {
-    getProps: getIconContainerProps,
-  },
+  getStyle: getSuperIconContainerStyle,
 };
 
-export const iconIconTheme: OptionalSizedSubTheme<
-  OptionalPrimitiveTheme<SuperIconProps, TextProps>
-> = {
-  allSizes: {
-    getProps: getAllSizesIconProps,
-    props: {
-      style: {
-        ...Platform.select<TextStyle>({
-          web: {
-            userSelect: 'none',
-          },
-        }),
-      },
-    },
-  },
-  large: {
-    props: {
-      style: {
-        fontSize: 32,
-      },
-    },
-  },
-  medium: {
-    props: {
-      style: {
-        fontSize: 24,
-      },
-    },
-  },
-  small: {
-    props: {
-      style: {
-        fontSize: 16,
-      },
-    },
-  },
-  xlarge: {
-    props: {
-      style: {
-        fontSize: 48,
-      },
-    },
-  },
-  xsmall: {
-    props: {
-      style: {
-        fontSize: 12,
-      },
-    },
-  },
-};
-
-export const optionalIconTheme: OptionalSuperIconTheme = {
-  container: iconContainerTheme,
-  icon: iconIconTheme,
+export const optionalSuperIconTheme: OptionalSuperIconTheme = {
+  container: superIconContainerTheme,
+  icon: superIconIconTheme,
 };
 
 export const iconTheme: SuperIconTheme = merge<
   {},
   SuperIconTheme,
   OptionalSuperIconTheme
->({}, rawSuperIconTheme, optionalIconTheme);
+>({}, rawSuperIconTheme, optionalSuperIconTheme);
