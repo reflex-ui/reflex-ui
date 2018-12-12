@@ -5,6 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './app-bars';
-export * from './buttons';
-export * from './typography';
+import * as React from 'react';
+
+import { ColorTheme } from './ColorTheme';
+
+export const ColorThemeContext = React.createContext<ColorTheme | undefined>(
+  undefined,
+);

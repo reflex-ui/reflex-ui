@@ -562,6 +562,12 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-is@^16.5.0":
+  version "16.5.0"
+  resolved "https://registry.yarnpkg.com/@types/react-is/-/react-is-16.5.0.tgz#6b0dd43e60fa7c82b48faf7b487543079a61015a"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-native-vector-icons@^4.6.4":
   version "4.6.4"
   resolved "https://registry.yarnpkg.com/@types/react-native-vector-icons/-/react-native-vector-icons-4.6.4.tgz#83c2d88f0c2615a44b9059eb75c11f92702c1ee2"
@@ -7411,6 +7417,10 @@ react-error-overlay@^4.0.1:
 react-is@^16.3.2, react-is@^16.5.0:
   version "16.5.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.5.0.tgz#2ec7c192709698591efe13722fab3ef56144ba55"
+
+react-is@^16.6.3:
+  version "16.6.3"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.6.3.tgz#d2d7462fcfcbe6ec0da56ad69047e47e56e7eac0"
 
 react-lifecycles-compat@2.0.0:
   version "2.0.0"

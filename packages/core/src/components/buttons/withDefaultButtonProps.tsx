@@ -8,6 +8,7 @@
 import * as React from 'react';
 
 import { InteractivityType } from '../../interactivity';
+import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
 import { Size } from '../../Size';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
@@ -19,39 +20,45 @@ import { getButtonVariantColorTheme } from './getButtonVariantColorTheme';
 // prettier-ignore
 export const withDefaultButtonProps = (
   WrappedComponent: React.ComponentType<ButtonProps>,
-): React.ComponentType<OptionalButtonProps> => reflexComponent<
-  OptionalButtonProps
->({ name: 'WithDefaultButtonProps', wrapped: WrappedComponent })(props => (
-  <PaletteThemeContext.Consumer>
-    {paletteTheme => (
-      <ComponentsThemeContext.Consumer>
-        {(componentsTheme) => {
-          const variant: ButtonVariant =
-            props.variant || ButtonVariant.DEFAULT;
+): React.ComponentType<OptionalButtonProps> =>
+  reflexComponent<OptionalButtonProps>({
+    name: 'WithDefaultButtonProps',
+    wrapped: WrappedComponent,
+  })(props => (
+    <PaletteThemeContext.Consumer>
+      {paletteTheme => (
+        <ColorThemeContext.Consumer>
+          {colorTheme => (
+            <ComponentsThemeContext.Consumer>
+              {(componentsTheme) => {
+                const variant: ButtonVariant =
+                  props.variant || ButtonVariant.DEFAULT;
 
-          const margin: Size =
-            variant === ButtonVariant.FAB ||
-            variant === ButtonVariant.XFAB ||
-            variant === ButtonVariant.ICON
-              ? Size.NONE
-              : Size.M;
+                const margin: Size =
+                  variant === ButtonVariant.FAB ||
+                  variant === ButtonVariant.XFAB ||
+                  variant === ButtonVariant.ICON
+                    ? Size.NONE
+                    : Size.M;
 
-          const propsWithDefaults: ButtonProps = {
-            colorTheme: getButtonVariantColorTheme(variant),
-            interactivityState: {
-              type: InteractivityType.ENABLED,
-            },
-            margin,
-            paletteTheme,
-            size: Size.M,
-            theme: componentsTheme.button[variant],
-            variant,
-            ...props,
-          };
+                const propsWithDefaults: ButtonProps = {
+                  colorTheme: colorTheme || getButtonVariantColorTheme(variant),
+                  interactivityState: {
+                    type: InteractivityType.ENABLED,
+                  },
+                  margin,
+                  paletteTheme,
+                  size: Size.M,
+                  theme: componentsTheme.button[variant],
+                  variant,
+                  ...props,
+                };
 
-          return <WrappedComponent {...propsWithDefaults} />;
-        }}
-      </ComponentsThemeContext.Consumer>
-    )}
-  </PaletteThemeContext.Consumer>
-));
+                return <WrappedComponent {...propsWithDefaults} />;
+              }}
+            </ComponentsThemeContext.Consumer>
+          )}
+        </ColorThemeContext.Consumer>
+      )}
+    </PaletteThemeContext.Consumer>
+  ));

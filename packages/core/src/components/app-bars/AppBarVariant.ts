@@ -5,6 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './app-bars';
-export * from './buttons';
-export * from './typography';
+export enum AppBarVariant {
+  DEFAULT = 'default',
+  DENSE = 'dense',
+  PROMINENT = 'prominent',
+  PROMINENT_DENSE = 'prominentDense',
+}

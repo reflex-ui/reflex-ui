@@ -5,11 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { AppBarVariantsTheme } from './app-bars';
 import { ButtonVariantsTheme } from './buttons';
 import { SuperIconTheme } from './icons';
 import { TypographyTheme } from './typography';
 
 export interface ComponentsTheme {
+  readonly appBar: AppBarVariantsTheme;
   readonly button: ButtonVariantsTheme;
   readonly icon: SuperIconTheme;
   readonly typography: TypographyTheme;

@@ -38,10 +38,12 @@
     "build/dist"
   ],
   "dependencies": {
-    "lodash": "^4.17.10"
+    "lodash": "^4.17.10",
+    "react-is": "^16.6.3"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.116"
+    "@types/lodash": "^4.14.116",
+    "@types/react-is": "^16.5.0"
   },
   "peerDependencies": {
     "react": "^16.4.2",

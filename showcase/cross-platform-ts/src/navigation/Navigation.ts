@@ -7,13 +7,25 @@
 
 import { Navigation } from 'react-native-navigation';
 
-import { DefaultButtonScreen } from '../screens';
+import {
+  DefaultAppBarScreen,
+  DefaultButtonScreen,
+  TypographyScreen,
+} from '../screens';
 import { withAppLogic } from '../withAppLogic';
 
 const registerScreens = () => {
   Navigation.registerComponent(
+    'navigation.showcase.appBars.DefaultAppBarScreen',
+    () => withAppLogic(DefaultAppBarScreen),
+  );
+  Navigation.registerComponent(
     'navigation.showcase.buttons.DefaultButtonScreen',
     () => withAppLogic(DefaultButtonScreen),
+  );
+  Navigation.registerComponent(
+    'navigation.showcase.typography.TypographyScreen',
+    () => withAppLogic(TypographyScreen),
   );
 };
 
@@ -24,7 +36,9 @@ export const AppNavigation = () => {
     Navigation.setRoot({
       root: {
         component: {
-          name: 'navigation.showcase.buttons.DefaultButtonScreen',
+          name: 'navigation.showcase.appBars.DefaultAppBarScreen',
+          // name: 'navigation.showcase.buttons.DefaultButtonScreen',
+          // name: 'navigation.showcase.typography.TypographyScreen',
         },
       },
     });

@@ -6,4 +6,5 @@
  */
 
 export * from './getFontFamily';
+export * from './typographySizedMarginStyle';
 export * from './typographyTheme';

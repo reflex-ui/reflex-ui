@@ -5,11 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import * as React from 'react';
+
 import { InteractivityProps } from '../../interactivity';
 import { MarginProps } from '../../margin';
 import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
 import { SizeProps } from '../../SizeProps';
-import { ButtonProps } from './ButtonProps';
 import { ButtonSubPropsGetter } from './ButtonSubPropsGetter';
 import { ButtonTheme } from './ButtonTheme';
 import { ButtonVariant } from './ButtonVariant';

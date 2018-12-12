@@ -24,5 +24,6 @@ export const reflexComponent = <Props extends {}>(
   }
 
   Component.displayName = name;
+
   return Component;
 };

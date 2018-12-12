@@ -6,7 +6,7 @@
   "scripts": {
     "web": "react-app-rewired start --scripts-version react-scripts-ts",
     "build": "react-app-rewired build --scripts-version react-scripts-ts",
-    "ios": "react-native run-ios --no-packager",
+    "ios": "react-native run-ios --no-packager --simulator=\"iPhone X\"",
     "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug",
     "android-release": "cd ./android && ./gradlew app:assembleRelease",
     "android-packager": "cd ../../ && node node_modules/react-native/local-cli/cli.js start --reset-cache --port 8082",

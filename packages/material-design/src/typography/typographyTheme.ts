@@ -5,81 +5,146 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { FontWeight, getFontWeight, TypographyTheme } from '@reflex-ui/core';
-import { getFontFamily } from './';
+import {
+  FontWeight,
+  getFontWeight,
+  getSizedMarginStyle,
+  getThemedColor,
+  isWeb,
+  OptionalTypographyTheme,
+  rawTypographyTheme,
+  TextStyleGetter,
+  TypographyProps,
+  TypographyTheme,
+} from '@reflex-ui/core';
+import merge from 'lodash/merge';
+import { Platform } from 'react-native';
 
-export const typographyTheme: TypographyTheme = {
+import { getFontFamily } from './';
+import { typographySizedMarginStyle } from './typographySizedMarginStyle';
+
+export const getCommonTypographyStyle: TextStyleGetter<
+  TypographyProps
+> = props => ({
+  ...getSizedMarginStyle(typographySizedMarginStyle)(props),
+  color: getThemedColor({
+    colorTheme: props.colorTheme,
+    onColor: true,
+    paletteTheme: props.paletteTheme,
+  }),
+  fontFamily: getFontFamily(),
+  fontWeight: getFontWeight(FontWeight.REGULAR),
+  ...Platform.select({
+    web: {
+      MozOsxFontSmoothing: 'grayscale',
+      WebkitFontSmoothing: 'antialiased',
+    },
+  }),
+});
+
+export const partialTypographyTheme: OptionalTypographyTheme = {
+  appBarTitle: {
+    getStyle: props => ({
+      ...getCommonTypographyStyle(props),
+      fontSize: 20,
+      fontWeight: getFontWeight(FontWeight.MEDIUM),
+      letterSpacing: 0.15,
+      marginTop: isWeb ? -1 : 0,
+    }),
+  },
   caption: {
-    fontFamily: getFontFamily(),
-    fontSize: 12,
-    fontWeight: getFontWeight(FontWeight.REGULAR),
-    letterSpacing: 0.4,
+    getStyle: props => ({
+      ...getCommonTypographyStyle(props),
+      fontSize: 12,
+      letterSpacing: 0.4,
+    }),
   },
   headline1: {
-    fontFamily: getFontFamily(),
-    fontSize: 96,
-    fontWeight: getFontWeight(FontWeight.LIGHT),
-    letterSpacing: -1.5,
+    getStyle: props => ({
+      ...getCommonTypographyStyle(props),
+      fontSize: 96,
+      fontWeight: getFontWeight(FontWeight.LIGHT),
+      letterSpacing: -1.5,
+    }),
   },
   headline2: {
-    fontFamily: getFontFamily(),
-    fontSize: 60,
-    fontWeight: getFontWeight(FontWeight.LIGHT),
-    letterSpacing: -0.5,
+    getStyle: props => ({
+      ...getCommonTypographyStyle(props),
+      fontSize: 60,
+      fontWeight: getFontWeight(FontWeight.LIGHT),
+      letterSpacing: -0.5,
+    }),
   },
   headline3: {
-    fontFamily: getFontFamily(),
-    fontSize: 48,
-    fontWeight: getFontWeight(FontWeight.REGULAR),
-    letterSpacing: 0,
+    getStyle: props => ({
+      ...getCommonTypographyStyle(props),
+      fontSize: 48,
+      letterSpacing: 0,
+    }),
   },
   headline4: {
-    fontFamily: getFontFamily(),
-    fontSize: 34,
-    fontWeight: getFontWeight(FontWeight.REGULAR),
-    letterSpacing: 0.25,
+    getStyle: props => ({
+      ...getCommonTypographyStyle(props),
+      fontSize: 34,
+      letterSpacing: 0.25,
+    }),
   },
   headline5: {
-    fontFamily: getFontFamily(),
-    fontSize: 24,
-    fontWeight: getFontWeight(FontWeight.REGULAR),
-    letterSpacing: 0,
+    getStyle: props => ({
+      ...getCommonTypographyStyle(props),
+      fontSize: 24,
+      letterSpacing: 0,
+    }),
   },
   headline6: {
-    fontFamily: getFontFamily(),
-    fontSize: 20,
-    fontWeight: getFontWeight(FontWeight.MEDIUM),
-    letterSpacing: 0.15,
+    getStyle: props => ({
+      ...getCommonTypographyStyle(props),
+      fontSize: 20,
+      fontWeight: getFontWeight(FontWeight.MEDIUM),
+      letterSpacing: 0.15,
+    }),
   },
   overline: {
-    fontFamily: getFontFamily(),
-    fontSize: 10,
-    fontWeight: getFontWeight(FontWeight.REGULAR),
-    letterSpacing: 1.5,
-    textTransform: 'uppercase',
+    getStyle: props => ({
+      ...getCommonTypographyStyle(props),
+      fontSize: 10,
+      letterSpacing: 1.5,
+      textTransform: 'uppercase',
+    }),
   },
   paragraph1: {
-    fontFamily: getFontFamily(),
-    fontSize: 16,
-    fontWeight: getFontWeight(FontWeight.REGULAR),
-    letterSpacing: 0.5,
+    getStyle: props => ({
+      ...getCommonTypographyStyle(props),
+      fontSize: 16,
+      letterSpacing: 0.5,
+    }),
   },
   paragraph2: {
-    fontFamily: getFontFamily(),
-    fontSize: 14,
-    fontWeight: getFontWeight(FontWeight.REGULAR),
-    letterSpacing: 0.25,
+    getStyle: props => ({
+      ...getCommonTypographyStyle(props),
+      fontSize: 14,
+      letterSpacing: 0.25,
+    }),
   },
   subtitle1: {
-    fontFamily: getFontFamily(),
-    fontSize: 16,
-    fontWeight: getFontWeight(FontWeight.REGULAR),
-    letterSpacing: 0.15,
+    getStyle: props => ({
+      ...getCommonTypographyStyle(props),
+      fontSize: 16,
+      letterSpacing: 0.15,
+    }),
   },
   subtitle2: {
-    fontFamily: getFontFamily(),
-    fontSize: 14,
-    fontWeight: getFontWeight(FontWeight.MEDIUM),
-    letterSpacing: 0.1,
+    getStyle: props => ({
+      ...getCommonTypographyStyle(props),
+      fontSize: 14,
+      fontWeight: getFontWeight(FontWeight.MEDIUM),
+      letterSpacing: 0.1,
+    }),
   },
 };
+
+export const typographyTheme: TypographyTheme = merge(
+  {},
+  rawTypographyTheme,
+  partialTypographyTheme,
+);

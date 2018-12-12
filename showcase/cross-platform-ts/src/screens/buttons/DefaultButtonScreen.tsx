@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-/*
+
 import {
   Button,
   ButtonProps,
@@ -6352,7 +6352,7 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
 DefaultButtonScreen.displayName = 'DefaultButtonScreen';
 
 export { DefaultButtonScreen };
-*/
+
 /*
 import { Button, ButtonVariant, RowView } from '@reflex-ui/core';
 import { FavoriteIcon } from '@reflex-ui/material-design';
@@ -6448,7 +6448,7 @@ DefaultButtonScreen.displayName = 'DefaultButtonScreen';
 
 export { DefaultButtonScreen };
 */
-
+/*
 import {
   Button,
   ButtonTheme,
@@ -6499,3 +6499,4 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
 DefaultButtonScreen.displayName = 'DefaultButtonScreen';
 
 export { DefaultButtonScreen };
+*/

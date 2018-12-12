@@ -9,14 +9,20 @@ import createBrowserHistory from 'history/createBrowserHistory';
 import * as React from 'react';
 import { Redirect, Route, Router, Switch } from 'react-router-dom';
 
-import { DefaultButtonScreen } from '../screens';
+import {
+  DefaultAppBarScreen,
+  DefaultButtonScreen,
+  TypographyScreen,
+} from '../screens';
 
 const navigator = createBrowserHistory();
 
 const AppNavigation: React.SFC = () => (
   <Router history={navigator}>
     <Switch>
+      <Route exact path="/app-bars" component={DefaultAppBarScreen} />
       <Route exact path="/buttons" component={DefaultButtonScreen} />
+      <Route exact path="/typography" component={TypographyScreen} />
       <Redirect from="/*" to="/buttons" />
     </Switch>
   </Router>
