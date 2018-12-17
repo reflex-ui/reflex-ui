@@ -8,9 +8,9 @@
 export interface Breakpoints {
   readonly desktop: number;
   readonly laptop: number;
-  readonly laptopLarge: number;
-  readonly smartphone: number;
-  readonly smartphoneLandscape: number;
-  readonly tablet: number;
-  readonly tabletLandscape: number;
+  readonly largeLaptop: number;
+  readonly smallHandset: number;
+  readonly largeHandset: number;
+  readonly smallTablet: number;
+  readonly largeTablet: number;
 }

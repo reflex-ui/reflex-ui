@@ -64,9 +64,7 @@ export const getDefaultAppBarContainerAreaStyle: ViewStyleGetter<
   ...getCommonAppBarContainerAreaStyle(props),
   flexWrap: 'nowrap',
   height:
-    props.dimensions.window.width <= props.breakpoints.tabletLandscape
-      ? 56
-      : 64,
+    props.dimensions.window.width <= props.breakpoints.largeTablet ? 56 : 64,
 });
 
 export const partialDefaultAppBarTheme: OptionalAppBarTheme = {
