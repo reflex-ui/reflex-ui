@@ -16,26 +16,27 @@ import {
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
+/*
+ * COMMON STYLES
+ */
+
 export const getCommonAppBarCenterAreaStyle: ViewStyleGetter<
   AppBarProps
 > = () => ({
-  alignSelf: 'flex-end', // prominent
   flexDirection: 'row',
-  marginBottom: 10, // prominent
+  flexGrow: 1,
+  flexShrink: 1,
   marginLeft: 20,
 });
 
 export const getCommonAppBarContainerAreaStyle: ViewStyleGetter<
   AppBarProps
 > = props => ({
-  // alignItems: 'center', // default
-  alignItems: 'flex-start', // prominent
+  alignItems: 'center',
   backgroundColor: getThemedColor(props),
   flex: 1,
   flexDirection: 'row',
-  // flexGrow: 1, // old, delete
-  // height: 56, // default
-  height: 128, // prominent
+  overflow: 'hidden',
   paddingHorizontal: 4,
   paddingVertical: 4,
 });
@@ -49,9 +50,24 @@ export const getCommonAppBarLeadingAreaStyle: ViewStyleGetter<
 export const getCommonAppBarTrailingAreaStyle: ViewStyleGetter<
   AppBarProps
 > = () => ({
-  flex: 1,
+  // flex: 1,
   flexDirection: 'row',
   justifyContent: 'flex-end',
+});
+
+/*
+ * AppBarVariant.DEFAULT
+ */
+
+export const getDefaultAppBarContainerAreaStyle: ViewStyleGetter<
+  AppBarProps
+> = props => ({
+  ...getCommonAppBarContainerAreaStyle(props),
+  flexWrap: 'nowrap',
+  height:
+    props.dimensions.window.width <= props.breakpoints.tabletLandscape
+      ? 56
+      : 64,
 });
 
 export const partialDefaultAppBarTheme: OptionalAppBarTheme = {
@@ -59,7 +75,7 @@ export const partialDefaultAppBarTheme: OptionalAppBarTheme = {
     getStyle: getCommonAppBarCenterAreaStyle,
   },
   container: {
-    getStyle: getCommonAppBarContainerAreaStyle,
+    getStyle: getDefaultAppBarContainerAreaStyle,
   },
   leadingArea: {
     getStyle: getCommonAppBarLeadingAreaStyle,
@@ -75,23 +91,106 @@ export const defaultAppBarTheme: AppBarTheme = merge(
   partialDefaultAppBarTheme,
 );
 
+/*
+ * AppBarVariant.DENSE
+ */
+
+export const getDenseAppBarContainerAreaStyle: ViewStyleGetter<
+  AppBarProps
+> = props => ({
+  ...getCommonAppBarContainerAreaStyle(props),
+  height: 48,
+  paddingVertical: 0,
+});
+
+export const partialDenseAppBarTheme: OptionalAppBarTheme = {
+  centerArea: {
+    getStyle: getCommonAppBarCenterAreaStyle,
+  },
+  container: {
+    getStyle: getDenseAppBarContainerAreaStyle,
+  },
+  leadingArea: {
+    getStyle: getCommonAppBarLeadingAreaStyle,
+  },
+  trailingArea: {
+    getStyle: getCommonAppBarTrailingAreaStyle,
+  },
+};
+
 export const denseAppBarTheme: AppBarTheme = merge(
   {},
   rawAppBarVariantTheme,
-  partialDefaultAppBarTheme,
+  partialDenseAppBarTheme,
 );
+
+/*
+ * PROMINENT STYLES
+ */
+
+export const getProminentAppBarCenterAreaStyle: ViewStyleGetter<
+  AppBarProps
+> = props => ({
+  ...getCommonAppBarCenterAreaStyle(props),
+  alignSelf: 'flex-end',
+  marginBottom: 10,
+});
+
+export const getProminentAppBarContainerAreaStyle: ViewStyleGetter<
+  AppBarProps
+> = props => ({
+  ...getCommonAppBarContainerAreaStyle(props),
+  alignItems: 'flex-start',
+  height: 128,
+});
+
+export const partialProminentAppBarTheme: OptionalAppBarTheme = {
+  centerArea: {
+    getStyle: getProminentAppBarCenterAreaStyle,
+  },
+  container: {
+    getStyle: getProminentAppBarContainerAreaStyle,
+  },
+  leadingArea: {
+    getStyle: getCommonAppBarLeadingAreaStyle,
+  },
+  trailingArea: {
+    getStyle: getCommonAppBarTrailingAreaStyle,
+  },
+};
 
 export const prominentAppBarTheme: AppBarTheme = merge(
   {},
   rawAppBarVariantTheme,
-  partialDefaultAppBarTheme,
+  partialProminentAppBarTheme,
 );
+
+/*
+ * AppBarVariant.PROMINENT_DENSE
+ */
+
+export const getProminentDenseAppBarContainerAreaStyle: ViewStyleGetter<
+  AppBarProps
+> = props => ({
+  ...getProminentAppBarContainerAreaStyle(props),
+  height: 98,
+});
+
+export const partialProminentDenseAppBarTheme: OptionalAppBarTheme = {
+  container: {
+    getStyle: getProminentDenseAppBarContainerAreaStyle,
+  },
+};
 
 export const prominentDenseAppBarTheme: AppBarTheme = merge(
   {},
-  rawAppBarVariantTheme,
-  partialDefaultAppBarTheme,
+  prominentAppBarTheme,
+  partialProminentDenseAppBarTheme,
 );
+
+/*
+ * AppBarVariantsTheme
+ */
 
 export const appBarTheme: AppBarVariantsTheme = {
   default: defaultAppBarTheme,

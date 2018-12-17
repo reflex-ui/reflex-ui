@@ -58,6 +58,7 @@ export const getDefaultButtonContainerStyle: ViewStyleGetter<
   backgroundColor: getThemedOverlayColorByInteractivity({
     colorTheme: props.colorTheme,
     interactivityType: props.interactivityState.type,
+    onColor: true,
     paletteTheme: props.paletteTheme,
   }),
 });

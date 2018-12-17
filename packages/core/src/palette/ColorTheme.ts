@@ -15,6 +15,7 @@ export enum ColorTheme {
   PRIMARY_DARK = 'primary_dark',
   PRIMARY_LIGHT = 'primary_light',
   PRIMARY_NORMAL = 'primary_normal',
+  PRIMARY_NORMAL_INVERTED = 'primary_normal_inverted',
   SECONDARY_DARK = 'seconday_dark',
   SECONDARY_LIGHT = 'seconday_light',
   SECONDARY_NORMAL = 'seconday_normal',

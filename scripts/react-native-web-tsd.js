@@ -76,6 +76,8 @@ export interface TextStyle {
     /** @platform web */
     WebkitFontSmoothing?: string;
     /** @platform web */
+    whiteSpace?: string;
+    /** @platform web */
     wordWrap?: string;
     /**
      * TextInput only!

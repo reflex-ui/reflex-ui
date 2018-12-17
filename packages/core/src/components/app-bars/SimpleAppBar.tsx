@@ -146,7 +146,11 @@ export const SimpleAppBar = reflexComponent<AppBarProps>({
   });
 
   return (
-    <Container componentProps={props} {...containerProps}>
+    <Container
+      componentProps={props}
+      onLayout={props.onLayout}
+      {...containerProps}
+    >
       {renderLeadingArea(updatedProps)}
       {renderCenterArea(updatedProps)}
       {renderTrailingArea(updatedProps)}

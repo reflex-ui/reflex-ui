@@ -58,6 +58,10 @@ export const getThemedColor: ThemedColorGetter = ({
       return onColor
         ? paletteTheme.primary.normal.onColor
         : paletteTheme.primary.normal.color;
+    case ColorTheme.PRIMARY_NORMAL_INVERTED:
+      return onColor
+        ? paletteTheme.primary.normal.color
+        : paletteTheme.primary.normal.onColor;
     case ColorTheme.SECONDARY_DARK:
       return onColor
         ? paletteTheme.secondary.dark.onColor

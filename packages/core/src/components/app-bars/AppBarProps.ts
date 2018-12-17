@@ -8,11 +8,16 @@
 import * as React from 'react';
 
 import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
+import { DimensionsProps } from '../../responsiveness/DimensionsProps';
+import { ResponsivenessProps } from '../../responsiveness/ResponsivenessProps';
 // import { ButtonSubPropsGetter } from './ButtonSubPropsGetter';
 import { AppBarTheme } from './AppBarTheme';
 import { AppBarVariant } from './AppBarVariant';
 
-export interface AppBarProps extends PaletteThemeProps {
+export interface AppBarProps
+  extends DimensionsProps,
+    PaletteThemeProps,
+    ResponsivenessProps {
   readonly children?:
     | React.ReactNode
     | ((props: AppBarProps) => React.ReactNode);

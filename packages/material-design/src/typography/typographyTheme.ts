@@ -18,7 +18,7 @@ import {
   TypographyTheme,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
-import { Platform } from 'react-native';
+import { Platform, TextStyle } from 'react-native';
 
 import { getFontFamily } from './';
 import { typographySizedMarginStyle } from './typographySizedMarginStyle';
@@ -44,12 +44,13 @@ export const getCommonTypographyStyle: TextStyleGetter<
 
 export const partialTypographyTheme: OptionalTypographyTheme = {
   appBarTitle: {
-    getStyle: props => ({
+    getStyle: (props): TextStyle => ({
       ...getCommonTypographyStyle(props),
       fontSize: 20,
       fontWeight: getFontWeight(FontWeight.MEDIUM),
       letterSpacing: 0.15,
       marginTop: isWeb ? -1 : 0,
+      overflow: 'hidden',
     }),
   },
   caption: {
