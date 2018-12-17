@@ -73,6 +73,24 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
             <Button onPress={onButtonPress} variant={ButtonVariant.ICON}>
               <MenuIcon />
             </Button>
+            <AppBarTitle numberOfLines={1}>My Application</AppBarTitle>
+            <Button onPress={onButtonPress}>Save As</Button>
+          </React.Fragment>
+        )}
+      </AppBar>
+    </RowView>
+    <RowView>
+      <Caption>
+        AppBarVariant.DEAFULT, ColorTheme.PRIMARY_NORMAL (default)
+      </Caption>
+    </RowView>
+    <RowView>
+      <AppBar>
+        {() => (
+          <React.Fragment>
+            <Button onPress={onButtonPress} variant={ButtonVariant.ICON}>
+              <MenuIcon />
+            </Button>
             <AppBarTitle numberOfLines={1}>
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem
               accusantium doloremque laudantium totam rem aperiam eaque ipsa
