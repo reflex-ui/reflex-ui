@@ -50,7 +50,6 @@ export const getCommonAppBarLeadingAreaStyle: ViewStyleGetter<
 export const getCommonAppBarTrailingAreaStyle: ViewStyleGetter<
   AppBarProps
 > = () => ({
-  // flex: 1,
   flexDirection: 'row',
   justifyContent: 'flex-end',
 });

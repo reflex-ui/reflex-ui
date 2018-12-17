@@ -10,7 +10,6 @@ import * as React from 'react';
 import { ColorTheme } from '../../palette/ColorTheme';
 import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
-// import { ResponsivenessProps } from '../../responsiveness/';
 import { DimensionsContext } from '../../responsiveness/DimensionsContext';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { reflexComponent } from '../reflexComponent';
