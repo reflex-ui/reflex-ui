@@ -109,7 +109,7 @@ export const SimpleAppBar = reflexComponent<AppBarProps>({
   const Container = props.theme.container.component;
 
   const containerProps = getSubProps<AppBarProps, ViewProps, ViewStyle>({
-    componentProps: props,
+    componentProps: updatedProps,
     theme: props.theme.container,
     // userProps: userSubProps.container,
   });
