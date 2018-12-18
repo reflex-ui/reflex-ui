@@ -106,18 +106,18 @@ export const SimpleAppBar = reflexComponent<AppBarProps>({
     children,
   };
 
-  const Container = props.theme.container.component;
+  const Container = updatedProps.theme.container.component;
 
   const containerProps = getSubProps<AppBarProps, ViewProps, ViewStyle>({
     componentProps: updatedProps,
-    theme: props.theme.container,
+    theme: updatedProps.theme.container,
     // userProps: userSubProps.container,
   });
 
   return (
     <Container
-      componentProps={props}
-      onLayout={props.onLayout}
+      componentProps={updatedProps}
+      onLayout={updatedProps.onLayout}
       {...containerProps}
     >
       {renderLeadingArea(updatedProps)}
