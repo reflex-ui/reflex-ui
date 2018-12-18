@@ -30,11 +30,11 @@ import {
 export const iconSizedMarginStyle: SizedMarginStyle = {
   [Size.L]: {
     marginHorizontal: 12,
-    marginVertical: 6,
+    marginVertical: 12,
   },
   [Size.M]: {
     marginHorizontal: 8,
-    marginVertical: 4,
+    marginVertical: 8,
   },
   [Size.NONE]: {
     marginHorizontal: 0,
@@ -42,15 +42,15 @@ export const iconSizedMarginStyle: SizedMarginStyle = {
   },
   [Size.S]: {
     marginHorizontal: 4,
-    marginVertical: 2,
+    marginVertical: 4,
   },
   [Size.XL]: {
     marginHorizontal: 16,
-    marginVertical: 8,
+    marginVertical: 16,
   },
   [Size.XS]: {
     marginHorizontal: 2,
-    marginVertical: 1,
+    marginVertical: 2,
   },
 };
 

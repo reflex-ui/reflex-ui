@@ -9,27 +9,27 @@ import { Size, SizedMarginStyle } from '@reflex-ui/core';
 
 export const buttonSizedMarginStyle: SizedMarginStyle = {
   [Size.L]: {
-    marginHorizontal: 20,
-    marginVertical: 12,
+    marginHorizontal: 24,
+    marginVertical: 16,
   },
   [Size.M]: {
     marginHorizontal: 16,
-    marginVertical: 8,
+    marginVertical: 12,
   },
   [Size.NONE]: {
     marginHorizontal: 0,
     marginVertical: 0,
   },
   [Size.S]: {
-    marginHorizontal: 10,
-    marginVertical: 4,
+    marginHorizontal: 8,
+    marginVertical: 8,
   },
   [Size.XL]: {
-    marginHorizontal: 24,
-    marginVertical: 16,
+    marginHorizontal: 32,
+    marginVertical: 20,
   },
   [Size.XS]: {
     marginHorizontal: 4,
-    marginVertical: 2,
+    marginVertical: 4,
   },
 };
