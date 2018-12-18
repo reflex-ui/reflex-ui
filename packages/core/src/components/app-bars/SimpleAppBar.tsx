@@ -13,37 +13,6 @@ import { reflexComponent } from '../reflexComponent';
 import { getSubProps } from '../subcomponents';
 import { AppBarProps } from './AppBarProps';
 
-/*
-const styles = StyleSheet.create({
-  centerArea: {
-    alignSelf: 'flex-end', // prominent
-    flexDirection: 'row',
-    marginBottom: 10, // prominent
-    marginLeft: 20,
-  },
-  container: {
-    // alignItems: 'center', // default
-    alignItems: 'flex-start', // prominent
-    backgroundColor: '#9898ff',
-    flex: 1,
-    flexDirection: 'row',
-    // flexGrow: 1, // old, delete
-    // height: 56, // default
-    height: 128, // prominent
-    paddingHorizontal: 4,
-    paddingVertical: 4,
-  },
-  leadingArea: {
-    flexDirection: 'row',
-  },
-  trailingArea: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-  },
-});
-*/
-
 export const renderCenterArea = (props: AppBarProps): React.ReactNode => {
   const { children } = props;
   if (!children) return children;
