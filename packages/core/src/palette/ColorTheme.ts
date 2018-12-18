@@ -19,6 +19,7 @@ export enum ColorTheme {
   SECONDARY_DARK = 'seconday_dark',
   SECONDARY_LIGHT = 'seconday_light',
   SECONDARY_NORMAL = 'seconday_normal',
+  SECONDARY_NORMAL_INVERTED = 'seconday_normal_inverted',
   SUCCESS_DARK = 'success_dark',
   SUCCESS_LIGHT = 'success_light',
   SUCCESS_NORMAL = 'success_normal',

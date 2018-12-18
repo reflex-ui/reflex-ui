@@ -19,6 +19,7 @@ export * from './StyleGetter';
 export * from './StyleObj';
 export * from './StyleProps';
 export * from './subcomponents';
+export * from './surface';
 export * from './touchable';
 export * from './typography';
 export * from './views';

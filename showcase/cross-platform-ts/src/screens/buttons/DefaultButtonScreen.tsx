@@ -11,11 +11,14 @@ import {
   ButtonSubProps,
   ButtonSubPropsGetter,
   ButtonVariant,
+  Caption,
   ColorTheme,
   InteractivityType,
   registerStyle,
   RowView,
   Size,
+  Surface,
+  SurfaceSubPropsGetter,
 } from '@reflex-ui/core';
 import {
   disabledPaletteColor,
@@ -35,6 +38,15 @@ const onButtonPress = () => {
   // tslint:disable-next-line:no-console
   console.log('DefaultButtonScreen().onButtonPress()');
 };
+
+const getSurfaceProps: SurfaceSubPropsGetter = props => ({
+  container: {
+    style: {
+      backgroundColor: props.dimensions ? 'green' : 'blue',
+      marginTop: 3,
+    },
+  },
+});
 
 const getDefaultButtonProps: ButtonSubPropsGetter = (
   props: ButtonProps,
@@ -234,74 +246,73 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
         Favorite
       </Button>
     </RowView>
-    <RowView>
-      <Text>ColorTheme.SECONDARY_NORMAL</Text>
-    </RowView>
-    <RowView>
-      <Button colorTheme={ColorTheme.SECONDARY_NORMAL} onPress={onButtonPress}>
-        Sign In
-      </Button>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        disabled
-        onPress={onButtonPress}
-      >
-        Sign In
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-      >
-        Favorite
-      </Button>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        disabled
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-      >
-        Favorite
-      </Button>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        disabled
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-      >
-        Favorite
-      </Button>
-      <Button
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        disabled
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-      >
-        Favorite
-      </Button>
-    </RowView>
+    <Surface
+      colorTheme={ColorTheme.SECONDARY_NORMAL_INVERTED}
+      getProps={getSurfaceProps}
+      marginTop={Size.XL}
+    >
+      <RowView>
+        <Caption>ColorTheme.SECONDARY_NORMAL</Caption>
+      </RowView>
+      <RowView>
+        <Button onPress={onButtonPress}>
+          Sign In
+        </Button>
+        <Button
+          disabled
+          onPress={onButtonPress}
+        >
+          Sign In
+        </Button>
+      </RowView>
+      <RowView>
+        <Button
+          leadingIcon={<FavoriteIcon />}
+          onPress={onButtonPress}
+        >
+          Favorite
+        </Button>
+        <Button
+          disabled
+          leadingIcon={<FavoriteIcon />}
+          onPress={onButtonPress}
+        >
+          Favorite
+        </Button>
+      </RowView>
+      <RowView>
+        <Button
+          onPress={onButtonPress}
+          trailingIcon={<FavoriteIcon />}
+        >
+          Favorite
+        </Button>
+        <Button
+          disabled
+          onPress={onButtonPress}
+          trailingIcon={<FavoriteIcon />}
+        >
+          Favorite
+        </Button>
+      </RowView>
+      <RowView>
+        <Button
+          leadingIcon={<FavoriteIcon />}
+          onPress={onButtonPress}
+          trailingIcon={<FavoriteIcon />}
+        >
+          Favorite
+        </Button>
+        <Button
+          disabled
+          leadingIcon={<FavoriteIcon />}
+          onPress={onButtonPress}
+          trailingIcon={<FavoriteIcon />}
+        >
+          Favorite
+        </Button>
+      </RowView>
+    </Surface>
     <RowView>
       <Text>ColorTheme.ERROR_NORMAL</Text>
     </RowView>

@@ -9,11 +9,13 @@ import { rawAppBarTheme } from '../app-bars/rawAppBarTheme';
 import { rawButtonTheme } from '../buttons/rawButtonTheme';
 import { ComponentsTheme } from '../ComponentsTheme';
 import { rawSuperIconTheme } from '../icons/rawSuperIconTheme';
+import { rawSurfaceTheme } from '../surface/rawSurfaceTheme';
 import { rawTypographyTheme } from '../typography/rawTypographyTheme';
 
 export const rawComponentsTheme: ComponentsTheme = {
   appBar: rawAppBarTheme,
   button: rawButtonTheme,
   icon: rawSuperIconTheme,
+  surface: rawSurfaceTheme,
   typography: rawTypographyTheme,
 };

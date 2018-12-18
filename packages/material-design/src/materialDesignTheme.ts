@@ -10,11 +10,13 @@ import { ComponentsTheme } from '@reflex-ui/core';
 import { appBarTheme } from './app-bars/appBarTheme';
 import { buttonTheme } from './buttons/theme';
 import { iconTheme } from './icons/iconTheme';
+import { surfaceTheme } from './surface/theme';
 import { typographyTheme } from './typography/typographyTheme';
 
 export const materialDesignTheme: ComponentsTheme = {
   appBar: appBarTheme,
   button: buttonTheme,
   icon: iconTheme,
+  surface: surfaceTheme,
   typography: typographyTheme,
 };
