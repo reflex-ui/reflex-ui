@@ -8,6 +8,7 @@
 import * as React from 'react';
 
 import { ColorTheme } from '../../palette/ColorTheme';
+import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { reflexComponent } from '../reflexComponent';
@@ -20,18 +21,23 @@ export const Caption = reflexComponent<OptionalTypographyProps>({
 })((props: OptionalTypographyProps) => (
   <PaletteThemeContext.Consumer>
     {paletteTheme => (
-      <ComponentsThemeContext.Consumer>
-        {(componentsTheme) => {
-          const propsWithDefaults: TypographyProps = {
-            colorTheme: ColorTheme.SURFACE_NORMAL,
-            paletteTheme,
-            theme: componentsTheme.typography.caption,
-            ...props,
-          };
+      <ColorThemeContext.Consumer>
+        {colorTheme => (
+          <ComponentsThemeContext.Consumer>
+            {(componentsTheme) => {
+              const propsWithDefaults: TypographyProps = {
+                colorTheme: props.colorTheme || colorTheme ||
+                  ColorTheme.SURFACE_NORMAL,
+                paletteTheme,
+                theme: componentsTheme.typography.caption,
+                ...props,
+              };
 
-          return <SimpleText {...propsWithDefaults} />;
-        }}
-      </ComponentsThemeContext.Consumer>
+              return <SimpleText {...propsWithDefaults} />;
+            }}
+          </ComponentsThemeContext.Consumer>
+        )}
+      </ColorThemeContext.Consumer>
     )}
   </PaletteThemeContext.Consumer>
 ));
