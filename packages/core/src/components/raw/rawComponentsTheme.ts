@@ -11,6 +11,7 @@ import { ComponentsTheme } from '../ComponentsTheme';
 import { rawSuperIconTheme } from '../icons/rawSuperIconTheme';
 import { rawSurfaceTheme } from '../surface/rawSurfaceTheme';
 import { rawTypographyTheme } from '../typography/rawTypographyTheme';
+import { rawSuperViewVariantsTheme } from '../views/rawSuperViewTheme';
 
 export const rawComponentsTheme: ComponentsTheme = {
   appBar: rawAppBarTheme,
@@ -18,4 +19,5 @@ export const rawComponentsTheme: ComponentsTheme = {
   icon: rawSuperIconTheme,
   surface: rawSurfaceTheme,
   typography: rawTypographyTheme,
+  views: rawSuperViewVariantsTheme,
 };
