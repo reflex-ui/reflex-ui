@@ -5,7 +5,15 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+export * from './Column';
 export * from './DefaultViewSubcomponent';
-export * from './layout';
+export * from './rawSuperViewTheme';
+export * from './Row';
+export * from './SimpleSuperView';
+export * from './SuperViewProps';
+export * from './SuperViewSubProps';
+export * from './SuperViewSubPropsGetter';
+export * from './SuperViewTheme';
+export * from './SuperViewVariantsTheme';
 export * from './ViewPropsGetter';
 export * from './ViewStyleGetter';
