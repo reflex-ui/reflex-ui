@@ -10,6 +10,7 @@ import { ButtonVariantsTheme } from './buttons';
 import { SuperIconTheme } from './icons';
 import { SurfaceTheme } from './surface';
 import { TypographyTheme } from './typography';
+import { SuperViewVariantsTheme } from './views';
 
 export interface ComponentsTheme {
   readonly appBar: AppBarVariantsTheme;
@@ -17,6 +18,7 @@ export interface ComponentsTheme {
   readonly icon: SuperIconTheme;
   readonly surface: SurfaceTheme;
   readonly typography: TypographyTheme;
+  readonly views: SuperViewVariantsTheme;
 }
 
 export type OptionalComponentsTheme = Partial<ComponentsTheme>;
