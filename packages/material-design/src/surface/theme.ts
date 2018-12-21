@@ -55,6 +55,7 @@ export const getSurfaceContainerStyle: ViewStyleGetter<
     colorTheme: props.colorTheme,
     paletteTheme: props.paletteTheme,
   }),
+  borderRadius: 4,
 });
 
 export const surfaceContainerTheme: OptionalInjectableSubTheme<
