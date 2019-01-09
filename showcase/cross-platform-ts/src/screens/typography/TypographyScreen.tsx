@@ -9,7 +9,7 @@ import {
   Caption,
   Headline1,
   registerStyle,
-  RowView,
+  Row,
   Size,
 } from '@reflex-ui/core';
 import * as React from 'react';
@@ -22,21 +22,21 @@ const captionStyle = registerStyle<TextStyle>({
 
 const TypographyScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
-    <RowView>
+    <Row>
       <Caption selectable>Caption</Caption>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Caption selectable style={captionStyle}>
         Caption
       </Caption>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Headline1 selectable>Headline1</Headline1>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Headline1>H1</Headline1>
       <Headline1 marginHorizontal={Size.XL}>H1</Headline1>
-    </RowView>
+    </Row>
   </ScrollView>
 );
 

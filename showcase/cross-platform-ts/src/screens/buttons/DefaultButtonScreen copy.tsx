@@ -6,25 +6,25 @@
  */
 
 import {
+  AppBar,
+  AppBarTitle,
   Button,
   ButtonProps,
   ButtonSubProps,
   ButtonSubPropsGetter,
   ButtonVariant,
-  Caption,
   ColorTheme,
   InteractivityType,
   registerStyle,
-  RowView,
+  Row,
   Size,
-  Surface,
-  SurfaceSubPropsGetter,
 } from '@reflex-ui/core';
 import {
   disabledPaletteColor,
   FavoriteIcon,
   getInlayColorByInteractivity,
   getOverlayColorByInteractivity,
+  MenuIcon,
 } from '@reflex-ui/material-design';
 import * as React from 'react';
 import {
@@ -38,15 +38,6 @@ const onButtonPress = () => {
   // tslint:disable-next-line:no-console
   console.log('DefaultButtonScreen().onButtonPress()');
 };
-
-const getSurfaceProps: SurfaceSubPropsGetter = props => ({
-  container: {
-    style: {
-      backgroundColor: props.dimensions ? 'green' : 'blue',
-      marginTop: 3,
-    },
-  },
-});
 
 const getDefaultButtonProps: ButtonSubPropsGetter = (
   props: ButtonProps,
@@ -204,323 +195,20 @@ const getXFabButtonProps: ButtonSubPropsGetter = (
 
 const DefaultButtonScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
-    <RowView>
-      <Text>ColorTheme.PRIMARY_NORMAL (default)</Text>
-    </RowView>
-    <RowView>
-      <Button onPress={onButtonPress}>Sign In</Button>
-      <Button disabled onPress={onButtonPress}>
-        Sign In
-      </Button>
-    </RowView>
-    <RowView>
-      <Button leadingIcon={<FavoriteIcon />} onPress={onButtonPress}>
-        Favorite
-      </Button>
-      <Button disabled leadingIcon={<FavoriteIcon />} onPress={onButtonPress}>
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button onPress={onButtonPress} trailingIcon={<FavoriteIcon />}>
-        Favorite
-      </Button>
-      <Button disabled onPress={onButtonPress} trailingIcon={<FavoriteIcon />}>
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-      >
-        Favorite
-      </Button>
-      <Button
-        disabled
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <Surface
-      colorTheme={ColorTheme.SECONDARY_NORMAL_INVERTED}
-      getProps={getSurfaceProps}
-      marginTop={Size.XL}
-    >
-      <RowView>
-        <Caption>ColorTheme.SECONDARY_NORMAL</Caption>
-      </RowView>
-      <RowView>
-        <Button onPress={onButtonPress}>
-          Sign In
-        </Button>
-        <Button
-          disabled
-          onPress={onButtonPress}
-        >
-          Sign In
-        </Button>
-      </RowView>
-      <RowView>
-        <Button
-          leadingIcon={<FavoriteIcon />}
-          onPress={onButtonPress}
-        >
-          Favorite
-        </Button>
-        <Button
-          disabled
-          leadingIcon={<FavoriteIcon />}
-          onPress={onButtonPress}
-        >
-          Favorite
-        </Button>
-      </RowView>
-      <RowView>
-        <Button
-          onPress={onButtonPress}
-          trailingIcon={<FavoriteIcon />}
-        >
-          Favorite
-        </Button>
-        <Button
-          disabled
-          onPress={onButtonPress}
-          trailingIcon={<FavoriteIcon />}
-        >
-          Favorite
-        </Button>
-      </RowView>
-      <RowView>
-        <Button
-          leadingIcon={<FavoriteIcon />}
-          onPress={onButtonPress}
-          trailingIcon={<FavoriteIcon />}
-        >
-          Favorite
-        </Button>
-        <Button
-          disabled
-          leadingIcon={<FavoriteIcon />}
-          onPress={onButtonPress}
-          trailingIcon={<FavoriteIcon />}
-        >
-          Favorite
-        </Button>
-      </RowView>
-    </Surface>
-    <RowView>
-      <Text>ColorTheme.ERROR_NORMAL</Text>
-    </RowView>
-    <RowView>
-      <Button colorTheme={ColorTheme.ERROR_NORMAL} onPress={onButtonPress}>
-        Sign In
-      </Button>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        disabled
-        onPress={onButtonPress}
-      >
-        Sign In
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-      >
-        Favorite
-      </Button>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        disabled
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-      >
-        Favorite
-      </Button>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        disabled
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-      >
-        Favorite
-      </Button>
-      <Button
-        colorTheme={ColorTheme.ERROR_NORMAL}
-        disabled
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Text>ColorTheme.SUCCESS_NORMAL</Text>
-    </RowView>
-    <RowView>
-      <Button colorTheme={ColorTheme.SUCCESS_NORMAL} onPress={onButtonPress}>
-        Sign In
-      </Button>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        disabled
-        onPress={onButtonPress}
-      >
-        Sign In
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-      >
-        Favorite
-      </Button>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        disabled
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-      >
-        Favorite
-      </Button>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        disabled
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-      >
-        Favorite
-      </Button>
-      <Button
-        colorTheme={ColorTheme.SUCCESS_NORMAL}
-        disabled
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Text>ColorTheme.WARNING_NORMAL</Text>
-    </RowView>
-    <RowView>
-      <Button colorTheme={ColorTheme.WARNING_NORMAL} onPress={onButtonPress}>
-        Sign In
-      </Button>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        disabled
-        onPress={onButtonPress}
-      >
-        Sign In
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-      >
-        Favorite
-      </Button>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        disabled
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-      >
-        Favorite
-      </Button>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        disabled
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-      >
-        Favorite
-      </Button>
-      <Button
-        colorTheme={ColorTheme.WARNING_NORMAL}
-        disabled
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-      >
-        Favorite
-      </Button>
-    </RowView>
-    <RowView>
+    <AppBar>
+      {() => (
+        <React.Fragment>
+          <Button onPress={onButtonPress} variant={ButtonVariant.ICON}>
+            <MenuIcon />
+          </Button>
+          <AppBarTitle numberOfLines={1}>ButtonVariant.DEFAULT</AppBarTitle>
+        </React.Fragment>
+      )}
+    </AppBar>
+    <Row>
       <Text>Custom color</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button getSubProps={getDefaultButtonProps} onPress={onButtonPress}>
         Sign In
       </Button>
@@ -531,8 +219,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getDefaultButtonProps}
         leadingIcon={<FavoriteIcon />}
@@ -548,8 +236,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getDefaultButtonProps}
         onPress={onButtonPress}
@@ -565,8 +253,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getDefaultButtonProps}
         leadingIcon={<FavoriteIcon color="#c70ad0" />}
@@ -584,19 +272,19 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.PRIMARY_NORMAL (default)</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button onPress={onButtonPress} variant={ButtonVariant.OUTLINED}>
         Sign In
       </Button>
       <Button disabled onPress={onButtonPress} variant={ButtonVariant.OUTLINED}>
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
@@ -612,8 +300,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         onPress={onButtonPress}
         trailingIcon={<FavoriteIcon />}
@@ -629,8 +317,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
@@ -648,8 +336,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         onPress={onButtonPress}
@@ -657,8 +345,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -667,8 +355,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         leadingIcon={<FavoriteIcon />}
@@ -677,8 +365,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -688,8 +376,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         onPress={onButtonPress}
@@ -698,8 +386,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -709,8 +397,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         leadingIcon={<FavoriteIcon />}
@@ -720,8 +408,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -732,11 +420,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.SECONDARY_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         onPress={onButtonPress}
@@ -752,8 +440,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -771,8 +459,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         onPress={onButtonPress}
@@ -790,8 +478,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -811,8 +499,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
@@ -821,8 +509,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
@@ -832,8 +520,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
@@ -843,8 +531,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
@@ -855,8 +543,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
@@ -866,8 +554,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
@@ -878,8 +566,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
@@ -890,8 +578,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
@@ -903,11 +591,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.ERROR_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         onPress={onButtonPress}
@@ -923,8 +611,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -942,8 +630,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         onPress={onButtonPress}
@@ -961,8 +649,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -982,8 +670,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
@@ -992,8 +680,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
@@ -1003,8 +691,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
@@ -1014,8 +702,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
@@ -1026,8 +714,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
@@ -1037,8 +725,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
@@ -1049,8 +737,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
@@ -1061,8 +749,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
@@ -1074,11 +762,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.SUCCESS_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         onPress={onButtonPress}
@@ -1094,8 +782,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -1113,8 +801,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         onPress={onButtonPress}
@@ -1132,8 +820,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -1153,8 +841,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
@@ -1163,8 +851,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
@@ -1174,8 +862,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
@@ -1185,8 +873,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
@@ -1197,8 +885,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
@@ -1208,8 +896,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
@@ -1220,8 +908,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
@@ -1232,8 +920,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
@@ -1245,11 +933,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.WARNING_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         onPress={onButtonPress}
@@ -1265,8 +953,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -1284,8 +972,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         onPress={onButtonPress}
@@ -1303,8 +991,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -1324,8 +1012,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
@@ -1334,8 +1022,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
@@ -1345,8 +1033,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
@@ -1356,8 +1044,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
@@ -1368,8 +1056,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
@@ -1379,8 +1067,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
@@ -1391,8 +1079,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
@@ -1403,8 +1091,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
@@ -1416,11 +1104,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>Custom color</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getOutlinedButtonProps}
         onPress={onButtonPress}
@@ -1436,8 +1124,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getOutlinedButtonProps}
         leadingIcon={<FavoriteIcon />}
@@ -1455,8 +1143,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getOutlinedButtonProps}
         onPress={onButtonPress}
@@ -1474,8 +1162,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getOutlinedButtonProps}
         leadingIcon={<FavoriteIcon />}
@@ -1495,8 +1183,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         getSubProps={getOutlinedButtonProps}
@@ -1505,8 +1193,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -1516,8 +1204,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         getSubProps={getOutlinedButtonProps}
@@ -1527,8 +1215,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -1539,8 +1227,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         getSubProps={getOutlinedButtonProps}
@@ -1550,8 +1238,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -1562,8 +1250,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         getSubProps={getOutlinedButtonProps}
@@ -1574,8 +1262,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -1587,11 +1275,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.PRIMARY_NORMAL (default)</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button onPress={onButtonPress} variant={ButtonVariant.OUTLINED_SHAPED}>
         Sign In
       </Button>
@@ -1602,8 +1290,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
@@ -1619,8 +1307,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         onPress={onButtonPress}
         trailingIcon={<FavoriteIcon />}
@@ -1636,8 +1324,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
@@ -1655,8 +1343,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         onPress={onButtonPress}
@@ -1664,8 +1352,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -1674,8 +1362,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         leadingIcon={<FavoriteIcon />}
@@ -1684,8 +1372,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -1695,8 +1383,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         onPress={onButtonPress}
@@ -1705,8 +1393,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -1716,8 +1404,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         leadingIcon={<FavoriteIcon />}
@@ -1727,8 +1415,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -1739,11 +1427,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.SECONDARY_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         onPress={onButtonPress}
@@ -1759,8 +1447,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -1778,8 +1466,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         onPress={onButtonPress}
@@ -1797,8 +1485,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -1818,8 +1506,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
@@ -1828,8 +1516,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
@@ -1839,8 +1527,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
@@ -1850,8 +1538,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
@@ -1862,8 +1550,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
@@ -1873,8 +1561,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
@@ -1885,8 +1573,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
@@ -1897,8 +1585,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
@@ -1910,11 +1598,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.ERROR_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         onPress={onButtonPress}
@@ -1930,8 +1618,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -1949,8 +1637,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         onPress={onButtonPress}
@@ -1968,8 +1656,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -1989,8 +1677,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
@@ -1999,8 +1687,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
@@ -2010,8 +1698,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
@@ -2021,8 +1709,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
@@ -2033,8 +1721,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
@@ -2044,8 +1732,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
@@ -2056,8 +1744,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
@@ -2068,8 +1756,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
@@ -2081,11 +1769,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.SUCCESS_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         onPress={onButtonPress}
@@ -2101,8 +1789,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -2120,8 +1808,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         onPress={onButtonPress}
@@ -2139,8 +1827,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -2160,8 +1848,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
@@ -2170,8 +1858,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
@@ -2181,8 +1869,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
@@ -2192,8 +1880,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
@@ -2204,8 +1892,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
@@ -2215,8 +1903,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
@@ -2227,8 +1915,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
@@ -2239,8 +1927,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
@@ -2252,11 +1940,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.WARNING_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         onPress={onButtonPress}
@@ -2272,8 +1960,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -2291,8 +1979,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         onPress={onButtonPress}
@@ -2310,8 +1998,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -2331,8 +2019,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
@@ -2341,8 +2029,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
@@ -2352,8 +2040,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
@@ -2363,8 +2051,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
@@ -2375,8 +2063,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
@@ -2386,8 +2074,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
@@ -2398,8 +2086,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
@@ -2410,8 +2098,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
@@ -2423,11 +2111,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>Custom color</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getOutlinedButtonProps}
         onPress={onButtonPress}
@@ -2443,8 +2131,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getOutlinedButtonProps}
         leadingIcon={<FavoriteIcon />}
@@ -2462,8 +2150,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getOutlinedButtonProps}
         onPress={onButtonPress}
@@ -2481,8 +2169,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getOutlinedButtonProps}
         leadingIcon={<FavoriteIcon />}
@@ -2502,8 +2190,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         getSubProps={getOutlinedButtonProps}
@@ -2512,8 +2200,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -2523,8 +2211,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         getSubProps={getOutlinedButtonProps}
@@ -2534,8 +2222,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -2546,8 +2234,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         getSubProps={getOutlinedButtonProps}
@@ -2557,8 +2245,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -2569,8 +2257,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         getSubProps={getOutlinedButtonProps}
@@ -2581,8 +2269,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -2594,11 +2282,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.PRIMARY_NORMAL (default)</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button onPress={onButtonPress} variant={ButtonVariant.CONTAINED}>
         Sign In
       </Button>
@@ -2609,8 +2297,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
@@ -2626,8 +2314,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         onPress={onButtonPress}
         trailingIcon={<FavoriteIcon />}
@@ -2643,8 +2331,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
@@ -2662,8 +2350,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         onPress={onButtonPress}
@@ -2671,8 +2359,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -2681,8 +2369,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         leadingIcon={<FavoriteIcon />}
@@ -2691,8 +2379,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -2702,8 +2390,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         onPress={onButtonPress}
@@ -2712,8 +2400,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -2723,8 +2411,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         leadingIcon={<FavoriteIcon />}
@@ -2734,8 +2422,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -2746,11 +2434,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.SECONDARY_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         onPress={onButtonPress}
@@ -2766,8 +2454,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -2785,8 +2473,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         onPress={onButtonPress}
@@ -2804,8 +2492,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -2825,8 +2513,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
@@ -2835,8 +2523,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
@@ -2846,8 +2534,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
@@ -2857,8 +2545,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
@@ -2869,8 +2557,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
@@ -2880,8 +2568,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
@@ -2892,8 +2580,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
@@ -2904,8 +2592,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
@@ -2917,11 +2605,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.ERROR_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         onPress={onButtonPress}
@@ -2937,8 +2625,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -2956,8 +2644,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         onPress={onButtonPress}
@@ -2975,8 +2663,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -2996,8 +2684,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
@@ -3006,8 +2694,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
@@ -3017,8 +2705,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
@@ -3028,8 +2716,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
@@ -3040,8 +2728,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
@@ -3051,8 +2739,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
@@ -3063,8 +2751,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
@@ -3075,8 +2763,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
@@ -3088,11 +2776,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.SUCCESS_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         onPress={onButtonPress}
@@ -3108,8 +2796,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -3127,8 +2815,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         onPress={onButtonPress}
@@ -3146,8 +2834,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -3167,8 +2855,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
@@ -3177,8 +2865,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
@@ -3188,8 +2876,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
@@ -3199,8 +2887,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
@@ -3211,8 +2899,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
@@ -3222,8 +2910,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
@@ -3234,8 +2922,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
@@ -3246,8 +2934,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
@@ -3259,11 +2947,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.WARNING_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         onPress={onButtonPress}
@@ -3279,8 +2967,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -3298,8 +2986,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         onPress={onButtonPress}
@@ -3317,8 +3005,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -3338,8 +3026,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
@@ -3348,8 +3036,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
@@ -3359,8 +3047,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
@@ -3370,8 +3058,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
@@ -3382,8 +3070,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
@@ -3393,8 +3081,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
@@ -3405,8 +3093,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
@@ -3417,8 +3105,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
@@ -3430,11 +3118,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>Custom color</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
@@ -3450,8 +3138,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getContainedButtonProps}
         leadingIcon={<FavoriteIcon />}
@@ -3469,8 +3157,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
@@ -3488,8 +3176,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getContainedButtonProps}
         leadingIcon={<FavoriteIcon />}
@@ -3509,8 +3197,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         getSubProps={getContainedButtonProps}
@@ -3519,8 +3207,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -3530,8 +3218,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         getSubProps={getContainedButtonProps}
@@ -3541,8 +3229,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -3553,8 +3241,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         getSubProps={getContainedButtonProps}
@@ -3564,8 +3252,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -3576,8 +3264,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         getSubProps={getContainedButtonProps}
@@ -3588,8 +3276,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -3601,11 +3289,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.PRIMARY_NORMAL (default)</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button onPress={onButtonPress} variant={ButtonVariant.CONTAINED_SHAPED}>
         Sign In
       </Button>
@@ -3616,8 +3304,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
@@ -3633,8 +3321,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         onPress={onButtonPress}
         trailingIcon={<FavoriteIcon />}
@@ -3650,8 +3338,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
@@ -3669,8 +3357,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         onPress={onButtonPress}
@@ -3678,8 +3366,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -3688,8 +3376,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         leadingIcon={<FavoriteIcon />}
@@ -3698,8 +3386,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -3709,8 +3397,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         onPress={onButtonPress}
@@ -3719,8 +3407,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -3730,8 +3418,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         leadingIcon={<FavoriteIcon />}
@@ -3741,8 +3429,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -3753,11 +3441,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.SECONDARY_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         onPress={onButtonPress}
@@ -3773,8 +3461,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -3792,8 +3480,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         onPress={onButtonPress}
@@ -3811,8 +3499,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -3832,8 +3520,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
@@ -3842,8 +3530,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
@@ -3853,8 +3541,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
@@ -3864,8 +3552,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
@@ -3876,8 +3564,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
@@ -3887,8 +3575,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
@@ -3899,8 +3587,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
@@ -3911,8 +3599,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
@@ -3924,11 +3612,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.ERROR_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         onPress={onButtonPress}
@@ -3944,8 +3632,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -3963,8 +3651,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         onPress={onButtonPress}
@@ -3982,8 +3670,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -4003,8 +3691,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
@@ -4013,8 +3701,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
@@ -4024,8 +3712,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
@@ -4035,8 +3723,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
@@ -4047,8 +3735,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
@@ -4058,8 +3746,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
@@ -4070,8 +3758,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
@@ -4082,8 +3770,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
@@ -4095,11 +3783,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.SUCCESS_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         onPress={onButtonPress}
@@ -4115,8 +3803,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -4134,8 +3822,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         onPress={onButtonPress}
@@ -4153,8 +3841,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -4174,8 +3862,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
@@ -4184,8 +3872,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
@@ -4195,8 +3883,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
@@ -4206,8 +3894,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
@@ -4218,8 +3906,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
@@ -4229,8 +3917,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
@@ -4241,8 +3929,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
@@ -4253,8 +3941,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
@@ -4266,11 +3954,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.WARNING_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         onPress={onButtonPress}
@@ -4286,8 +3974,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -4305,8 +3993,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         onPress={onButtonPress}
@@ -4324,8 +4012,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -4345,8 +4033,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
@@ -4355,8 +4043,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
@@ -4366,8 +4054,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
@@ -4377,8 +4065,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
@@ -4389,8 +4077,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
@@ -4400,8 +4088,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
@@ -4412,8 +4100,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
@@ -4424,8 +4112,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
@@ -4437,11 +4125,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>Custom color</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
@@ -4457,8 +4145,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getContainedButtonProps}
         leadingIcon={<FavoriteIcon />}
@@ -4476,8 +4164,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
@@ -4495,8 +4183,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getContainedButtonProps}
         leadingIcon={<FavoriteIcon />}
@@ -4516,8 +4204,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         getSubProps={getContainedButtonProps}
@@ -4526,8 +4214,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -4537,8 +4225,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         getSubProps={getContainedButtonProps}
@@ -4548,8 +4236,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -4560,8 +4248,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         getSubProps={getContainedButtonProps}
@@ -4571,8 +4259,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -4583,8 +4271,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         getSubProps={getContainedButtonProps}
@@ -4595,8 +4283,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -4608,11 +4296,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.PRIMARY_NORMAL (default)</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button onPress={onButtonPress} variant={ButtonVariant.HIGHLIGHTED}>
         Sign In
       </Button>
@@ -4623,8 +4311,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
@@ -4640,8 +4328,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         onPress={onButtonPress}
         trailingIcon={<FavoriteIcon />}
@@ -4657,8 +4345,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
@@ -4676,8 +4364,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         onPress={onButtonPress}
@@ -4685,8 +4373,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -4695,8 +4383,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         leadingIcon={<FavoriteIcon />}
@@ -4705,8 +4393,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -4716,8 +4404,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         onPress={onButtonPress}
@@ -4726,8 +4414,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -4737,8 +4425,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         leadingIcon={<FavoriteIcon />}
@@ -4748,8 +4436,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -4760,11 +4448,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.SECONDARY_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         onPress={onButtonPress}
@@ -4780,8 +4468,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -4799,8 +4487,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         onPress={onButtonPress}
@@ -4818,8 +4506,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -4839,8 +4527,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
@@ -4849,8 +4537,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
@@ -4860,8 +4548,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
@@ -4871,8 +4559,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
@@ -4883,8 +4571,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
@@ -4894,8 +4582,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
@@ -4906,8 +4594,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         fullWidth
@@ -4918,8 +4606,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         disabled
@@ -4931,11 +4619,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.ERROR_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         onPress={onButtonPress}
@@ -4951,8 +4639,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -4970,8 +4658,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         onPress={onButtonPress}
@@ -4989,8 +4677,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -5010,8 +4698,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
@@ -5020,8 +4708,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
@@ -5031,8 +4719,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
@@ -5042,8 +4730,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
@@ -5054,8 +4742,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
@@ -5065,8 +4753,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
@@ -5077,8 +4765,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         fullWidth
@@ -5089,8 +4777,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         disabled
@@ -5102,11 +4790,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.SUCCESS_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         onPress={onButtonPress}
@@ -5122,8 +4810,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -5141,8 +4829,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         onPress={onButtonPress}
@@ -5160,8 +4848,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -5181,8 +4869,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
@@ -5191,8 +4879,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
@@ -5202,8 +4890,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
@@ -5213,8 +4901,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
@@ -5225,8 +4913,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
@@ -5236,8 +4924,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
@@ -5248,8 +4936,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         fullWidth
@@ -5260,8 +4948,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         disabled
@@ -5273,11 +4961,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.WARNING_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         onPress={onButtonPress}
@@ -5293,8 +4981,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -5312,8 +5000,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         onPress={onButtonPress}
@@ -5331,8 +5019,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -5352,8 +5040,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
@@ -5362,8 +5050,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
@@ -5373,8 +5061,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
@@ -5384,8 +5072,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
@@ -5396,8 +5084,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
@@ -5407,8 +5095,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
@@ -5419,8 +5107,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         fullWidth
@@ -5431,8 +5119,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         disabled
@@ -5444,11 +5132,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>Custom color</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
@@ -5464,8 +5152,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getContainedButtonProps}
         leadingIcon={<FavoriteIcon />}
@@ -5483,8 +5171,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getContainedButtonProps}
         onPress={onButtonPress}
@@ -5502,8 +5190,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getContainedButtonProps}
         leadingIcon={<FavoriteIcon />}
@@ -5523,8 +5211,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         getSubProps={getContainedButtonProps}
@@ -5533,8 +5221,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -5544,8 +5232,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         getSubProps={getContainedButtonProps}
@@ -5555,8 +5243,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -5567,8 +5255,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         getSubProps={getContainedButtonProps}
@@ -5578,8 +5266,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -5590,8 +5278,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         fullWidth
         getSubProps={getContainedButtonProps}
@@ -5602,8 +5290,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         disabled
         fullWidth
@@ -5615,22 +5303,22 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.PRIMARY_NORMAL (default)</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button onPress={onButtonPress} variant={ButtonVariant.ICON}>
         <FavoriteIcon />
       </Button>
       <Button disabled onPress={onButtonPress} variant={ButtonVariant.ICON}>
         <FavoriteIcon />
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.SECONDARY_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         onPress={onButtonPress}
@@ -5646,11 +5334,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         <FavoriteIcon />
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.ERROR_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         onPress={onButtonPress}
@@ -5666,11 +5354,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         <FavoriteIcon />
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.SUCCESS_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         onPress={onButtonPress}
@@ -5686,11 +5374,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         <FavoriteIcon />
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.WARNING_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         onPress={onButtonPress}
@@ -5706,11 +5394,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         <FavoriteIcon />
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>Custom color</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getIconButtonProps}
         onPress={onButtonPress}
@@ -5726,22 +5414,22 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         <FavoriteIcon />
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.SECONDARY_NORMAL (default)</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button onPress={onButtonPress} variant={ButtonVariant.FAB}>
         <FavoriteIcon />
       </Button>
       <Button disabled onPress={onButtonPress} variant={ButtonVariant.FAB}>
         <FavoriteIcon />
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.PRIMARY_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.PRIMARY_NORMAL}
         onPress={onButtonPress}
@@ -5757,11 +5445,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         <FavoriteIcon />
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.ERROR_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         onPress={onButtonPress}
@@ -5777,11 +5465,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         <FavoriteIcon />
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.SUCCESS_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         onPress={onButtonPress}
@@ -5797,11 +5485,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         <FavoriteIcon />
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.WARNING_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         onPress={onButtonPress}
@@ -5817,11 +5505,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         <FavoriteIcon />
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>Custom color</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getFabButtonProps}
         onPress={onButtonPress}
@@ -5837,19 +5525,19 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         <FavoriteIcon />
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.SECONDAY_NORMAL (default)</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button onPress={onButtonPress} variant={ButtonVariant.XFAB}>
         Sign In
       </Button>
       <Button disabled onPress={onButtonPress} variant={ButtonVariant.XFAB}>
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
@@ -5865,8 +5553,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         onPress={onButtonPress}
         trailingIcon={<FavoriteIcon />}
@@ -5882,8 +5570,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
@@ -5901,11 +5589,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.PRIMARY_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.PRIMARY_NORMAL}
         onPress={onButtonPress}
@@ -5921,8 +5609,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.PRIMARY_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -5940,8 +5628,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.PRIMARY_NORMAL}
         onPress={onButtonPress}
@@ -5959,8 +5647,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.PRIMARY_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -5980,11 +5668,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.ERROR_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         onPress={onButtonPress}
@@ -6000,8 +5688,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -6019,8 +5707,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         onPress={onButtonPress}
@@ -6038,8 +5726,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.ERROR_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -6059,11 +5747,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.SUCCESS_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         onPress={onButtonPress}
@@ -6079,8 +5767,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -6098,8 +5786,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         onPress={onButtonPress}
@@ -6117,8 +5805,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.SUCCESS_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -6138,11 +5826,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.WARNING_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         onPress={onButtonPress}
@@ -6158,8 +5846,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -6177,8 +5865,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         onPress={onButtonPress}
@@ -6196,8 +5884,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         colorTheme={ColorTheme.WARNING_NORMAL}
         leadingIcon={<FavoriteIcon />}
@@ -6217,11 +5905,11 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>Custom color</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getXFabButtonProps}
         onPress={onButtonPress}
@@ -6237,8 +5925,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getXFabButtonProps}
         leadingIcon={<FavoriteIcon />}
@@ -6256,8 +5944,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getXFabButtonProps}
         onPress={onButtonPress}
@@ -6275,8 +5963,8 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button
         getSubProps={getXFabButtonProps}
         leadingIcon={<FavoriteIcon />}
@@ -6296,67 +5984,67 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.SECONDARY_NORMAL (default)</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <FavoriteIcon size={Size.XS} />
       <FavoriteIcon size={Size.S} />
       <FavoriteIcon />
       <FavoriteIcon size={Size.L} />
       <FavoriteIcon size={Size.XL} />
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.PRIMARY_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <FavoriteIcon colorTheme={ColorTheme.PRIMARY_NORMAL} size={Size.XS} />
       <FavoriteIcon colorTheme={ColorTheme.PRIMARY_NORMAL} size={Size.S} />
       <FavoriteIcon colorTheme={ColorTheme.PRIMARY_NORMAL} />
       <FavoriteIcon colorTheme={ColorTheme.PRIMARY_NORMAL} size={Size.L} />
       <FavoriteIcon colorTheme={ColorTheme.PRIMARY_NORMAL} size={Size.XL} />
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.ERROR_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <FavoriteIcon colorTheme={ColorTheme.ERROR_NORMAL} size={Size.XS} />
       <FavoriteIcon colorTheme={ColorTheme.ERROR_NORMAL} size={Size.S} />
       <FavoriteIcon colorTheme={ColorTheme.ERROR_NORMAL} />
       <FavoriteIcon colorTheme={ColorTheme.ERROR_NORMAL} size={Size.L} />
       <FavoriteIcon colorTheme={ColorTheme.ERROR_NORMAL} size={Size.XL} />
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.SUCCESS_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <FavoriteIcon colorTheme={ColorTheme.SUCCESS_NORMAL} size={Size.XS} />
       <FavoriteIcon colorTheme={ColorTheme.SUCCESS_NORMAL} size={Size.S} />
       <FavoriteIcon colorTheme={ColorTheme.SUCCESS_NORMAL} />
       <FavoriteIcon colorTheme={ColorTheme.SUCCESS_NORMAL} size={Size.L} />
       <FavoriteIcon colorTheme={ColorTheme.SUCCESS_NORMAL} size={Size.XL} />
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>ColorTheme.WARNING_NORMAL</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <FavoriteIcon colorTheme={ColorTheme.WARNING_NORMAL} size={Size.XS} />
       <FavoriteIcon colorTheme={ColorTheme.WARNING_NORMAL} size={Size.S} />
       <FavoriteIcon colorTheme={ColorTheme.WARNING_NORMAL} />
       <FavoriteIcon colorTheme={ColorTheme.WARNING_NORMAL} size={Size.L} />
       <FavoriteIcon colorTheme={ColorTheme.WARNING_NORMAL} size={Size.XL} />
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Text>Custom color</Text>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <FavoriteIcon color="#c70ad0" size={Size.XS} />
       <FavoriteIcon color="#c70ad0" size={Size.S} />
       <FavoriteIcon color="#c70ad0" />
       <FavoriteIcon color="#c70ad0" size={Size.L} />
       <FavoriteIcon color="#c70ad0" size={Size.XL} />
-    </RowView>
+    </Row>
   </ScrollView>
 );
 
@@ -6365,7 +6053,7 @@ DefaultButtonScreen.displayName = 'DefaultButtonScreen';
 export { DefaultButtonScreen };
 
 /*
-import { Button, ButtonVariant, RowView } from '@reflex-ui/core';
+import { Button, ButtonVariant, Row } from '@reflex-ui/core';
 import { FavoriteIcon } from '@reflex-ui/material-design';
 import * as React from 'react';
 import { ScrollView } from 'react-native';
@@ -6377,11 +6065,11 @@ const onButtonPress = () => {
 
 const DefaultButtonScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
-    <RowView>
+    <Row>
       <Button onPress={onButtonPress} variant={ButtonVariant.ICON}>
         <FavoriteIcon />
       </Button>
-    </RowView>
+    </Row>
   </ScrollView>
 );
 
@@ -6398,7 +6086,7 @@ import {
   ButtonVariant,
   InteractivityType,
   registerStyle,
-  RowView,
+  Row,
 } from '@reflex-ui/core';
 import {
   disabledPaletteColor,
@@ -6443,7 +6131,7 @@ const onButtonPress = () => {
 
 const DefaultButtonScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
-    <RowView>
+    <Row>
       <Button
         getSubProps={getDefaultButtonProps}
         onPress={onButtonPress}
@@ -6451,7 +6139,7 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
+    </Row>
   </ScrollView>
 );
 
@@ -6465,7 +6153,7 @@ import {
   ButtonTheme,
   ButtonVariant,
   OptionalButtonTheme,
-  RowView,
+  Row,
 } from '@reflex-ui/core';
 import {
   animatedContainedButtonTheme,
@@ -6495,7 +6183,7 @@ const onButtonPress = () => {
 
 const DefaultButtonScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
-    <RowView>
+    <Row>
       <Button
         onPress={onButtonPress}
         theme={myContainedButtonTheme}
@@ -6503,7 +6191,7 @@ const DefaultButtonScreen: React.SFC = (): JSX.Element => (
       >
         Sign In
       </Button>
-    </RowView>
+    </Row>
   </ScrollView>
 );
 

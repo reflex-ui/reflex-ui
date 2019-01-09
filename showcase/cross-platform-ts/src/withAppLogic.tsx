@@ -13,9 +13,10 @@ import {
   PaletteThemeContext,
 } from '@reflex-ui/core';
 import {
+  blue500Yellow600PaletteTheme,
   // createAnimatedComponentsTheme,
   createComponentsTheme,
-  purpleTealPaletteTheme,
+  // deepPurple500TealA700PaletteTheme,
 } from '@reflex-ui/material-design';
 import * as React from 'react';
 
@@ -27,7 +28,7 @@ const withAppLogic = <P extends {}>(
 ): React.ComponentType<P> => {
   const WithAppLogic: React.ComponentType<P> = (props: P): JSX.Element => (
     <DimensionsProvider breakpoints={defaultBreakpoints}>
-      <PaletteThemeContext.Provider value={purpleTealPaletteTheme}>
+      <PaletteThemeContext.Provider value={blue500Yellow600PaletteTheme}>
         <ComponentsThemeContext.Provider value={mdComponentsTheme}>
           <WrappedComponent {...props} />
         </ComponentsThemeContext.Provider>

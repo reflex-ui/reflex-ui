@@ -10,8 +10,11 @@ import * as React from 'react';
 import { Redirect, Route, Router, Switch } from 'react-router-dom';
 
 import {
+  ContainedButtonShowcaseScreen,
   DefaultAppBarScreen,
-  DefaultButtonScreen,
+  DefaultButtonShowcaseScreen,
+  OutlinedButtonShowcaseScreen,
+  OutlinedShapedButtonShowcaseScreen,
   TypographyScreen,
 } from '../screens';
 
@@ -21,9 +24,28 @@ const AppNavigation: React.SFC = () => (
   <Router history={navigator}>
     <Switch>
       <Route exact path="/app-bars" component={DefaultAppBarScreen} />
-      <Route exact path="/buttons" component={DefaultButtonScreen} />
+      <Route
+        exact
+        path="/buttons/contained"
+        component={ContainedButtonShowcaseScreen}
+      />
+      <Route
+        exact
+        path="/buttons/default"
+        component={DefaultButtonShowcaseScreen}
+      />
+      <Route
+        exact
+        path="/buttons/outlined"
+        component={OutlinedButtonShowcaseScreen}
+      />
+      <Route
+        exact
+        path="/buttons/outlined-shaped"
+        component={OutlinedShapedButtonShowcaseScreen}
+      />
       <Route exact path="/typography" component={TypographyScreen} />
-      <Redirect from="/*" to="/buttons" />
+      <Redirect from="/*" to="/buttons/default" />
     </Switch>
   </Router>
 );

@@ -8,21 +8,39 @@
 import { Navigation } from 'react-native-navigation';
 
 import {
+  ContainedButtonShowcaseScreen,
   DefaultAppBarScreen,
-  DefaultButtonScreen,
+  DefaultButtonShowcaseScreen,
+  OutlinedButtonShowcaseScreen,
+  OutlinedShapedButtonShowcaseScreen,
   TypographyScreen,
 } from '../screens';
 import { withAppLogic } from '../withAppLogic';
 
 const registerScreens = () => {
+  /* APP BARS */
   Navigation.registerComponent(
     'navigation.showcase.appBars.DefaultAppBarScreen',
     () => withAppLogic(DefaultAppBarScreen),
   );
+  /* BUTTONS */
   Navigation.registerComponent(
-    'navigation.showcase.buttons.DefaultButtonScreen',
-    () => withAppLogic(DefaultButtonScreen),
+    'navigation.showcase.buttons.ContainedButtonShowcaseScreen',
+    () => withAppLogic(ContainedButtonShowcaseScreen),
   );
+  Navigation.registerComponent(
+    'navigation.showcase.buttons.DefaultButtonShowcaseScreen',
+    () => withAppLogic(DefaultButtonShowcaseScreen),
+  );
+  Navigation.registerComponent(
+    'navigation.showcase.buttons.OutlinedButtonShowcaseScreen',
+    () => withAppLogic(OutlinedButtonShowcaseScreen),
+  );
+  Navigation.registerComponent(
+    'navigation.showcase.buttons.OutlinedShapedButtonShowcaseScreen',
+    () => withAppLogic(OutlinedShapedButtonShowcaseScreen),
+  );
+  /* TYPOGRAPHY */
   Navigation.registerComponent(
     'navigation.showcase.typography.TypographyScreen',
     () => withAppLogic(TypographyScreen),
@@ -36,8 +54,15 @@ export const AppNavigation = () => {
     Navigation.setRoot({
       root: {
         component: {
-          name: 'navigation.showcase.appBars.DefaultAppBarScreen',
-          // name: 'navigation.showcase.buttons.DefaultButtonScreen',
+          /* APP BARS */
+          // name: 'navigation.showcase.appBars.DefaultAppBarScreen',
+          /* BUTTONS */
+          name: 'navigation.showcase.buttons.ContainedButtonShowcaseScreen',
+          // name: 'navigation.showcase.buttons.DefaultButtonShowcaseScreen',
+          // name: 'navigation.showcase.buttons.OutlinedButtonShowcaseScreen',
+          /*name:
+            'navigation.showcase.buttons.OutlinedShapedButtonShowcaseScreen',*/
+          /* TYPOGRAPHY */
           // name: 'navigation.showcase.typography.TypographyScreen',
         },
       },

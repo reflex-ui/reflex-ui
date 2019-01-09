@@ -5,4 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './DefaultButtonScreen';
+export * from './ContainedButtonShowcaseScreen';
+export * from './DefaultButtonShowcaseScreen';
+export * from './OutlinedButtonShowcaseScreen';
+export * from './OutlinedShapedButtonShowcaseScreen';

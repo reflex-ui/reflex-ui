@@ -13,7 +13,7 @@ import {
   ButtonVariant,
   Caption,
   ColorTheme,
-  RowView,
+  Row,
 } from '@reflex-ui/core';
 import { FavoriteIcon, MenuIcon } from '@reflex-ui/material-design';
 import * as React from 'react';
@@ -26,7 +26,7 @@ const onButtonPress = () => {
 
 const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
-    <RowView>
+    <Row>
       <Button
         leadingIcon={<FavoriteIcon />}
         onPress={onButtonPress}
@@ -34,19 +34,19 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
       >
         Favorite
       </Button>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Button onPress={onButtonPress} variant={ButtonVariant.ICON}>
         <MenuIcon />
       </Button>
       <FavoriteIcon />
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Caption>
         AppBarVariant.DEAFULT, ColorTheme.PRIMARY_NORMAL (default)
       </Caption>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <AppBar>
         {() => (
           <React.Fragment>
@@ -60,13 +60,13 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
           </React.Fragment>
         )}
       </AppBar>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Caption>
         AppBarVariant.DEAFULT, ColorTheme.PRIMARY_NORMAL (default)
       </Caption>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <AppBar>
         {() => (
           <React.Fragment>
@@ -78,13 +78,13 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
           </React.Fragment>
         )}
       </AppBar>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Caption>
         AppBarVariant.DEAFULT, ColorTheme.PRIMARY_NORMAL (default)
       </Caption>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <AppBar>
         {() => (
           <React.Fragment>
@@ -102,13 +102,13 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
           </React.Fragment>
         )}
       </AppBar>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Caption>
         AppBarVariant.DENSE, ColorTheme.PRIMARY_NORMAL (default)
       </Caption>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <AppBar variant={AppBarVariant.DENSE}>
         {() => (
           <React.Fragment>
@@ -122,13 +122,13 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
           </React.Fragment>
         )}
       </AppBar>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Caption>
         AppBarVariant.PROMINENT, ColorTheme.PRIMARY_NORMAL (default)
       </Caption>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <AppBar variant={AppBarVariant.PROMINENT}>
         {() => (
           <React.Fragment>
@@ -142,13 +142,13 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
           </React.Fragment>
         )}
       </AppBar>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Caption>
         AppBarVariant.PROMINENT, ColorTheme.PRIMARY_NORMAL (default)
       </Caption>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <AppBar variant={AppBarVariant.PROMINENT}>
         {() => (
           <React.Fragment>
@@ -164,13 +164,13 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
           </React.Fragment>
         )}
       </AppBar>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Caption>
         AppBarVariant.PROMINENT, ColorTheme.PRIMARY_NORMAL (default)
       </Caption>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <AppBar variant={AppBarVariant.PROMINENT}>
         {() => (
           <React.Fragment>
@@ -205,13 +205,13 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
           </React.Fragment>
         )}
       </AppBar>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Caption>
         AppBarVariant.PROMINENT_DENSE, ColorTheme.PRIMARY_NORMAL (default)
       </Caption>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <AppBar variant={AppBarVariant.PROMINENT_DENSE}>
         {() => (
           <React.Fragment>
@@ -225,13 +225,13 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
           </React.Fragment>
         )}
       </AppBar>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Caption>
         AppBarVariant.PROMINENT_DENSE, ColorTheme.PRIMARY_NORMAL (default)
       </Caption>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <AppBar variant={AppBarVariant.PROMINENT_DENSE}>
         {() => (
           <React.Fragment>
@@ -247,11 +247,11 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
           </React.Fragment>
         )}
       </AppBar>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Caption>AppBarVariant.DEFAULT, ColorTheme.SECONDARY_NORMAL</Caption>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <AppBar colorTheme={ColorTheme.SECONDARY_NORMAL}>
         {() => (
           <React.Fragment>
@@ -262,35 +262,35 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
               My Application Lorem Ipsum Dolor Sit Amet Consectum Lorem Ipsum
               Dolor Sit Amet Consectum Lorem Ipsum Dolor Sit Amet Consectum
             </AppBarTitle>
-            <RowView>
+            <Row>
               <Button onPress={onButtonPress} variant={ButtonVariant.ICON}>
                 <FavoriteIcon />
               </Button>
               <Button onPress={onButtonPress} variant={ButtonVariant.ICON}>
                 <MenuIcon />
               </Button>
-            </RowView>
+            </Row>
           </React.Fragment>
         )}
       </AppBar>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Caption>AppBarVariant.DEFAULT, ColorTheme.SECONDARY_LIGHT</Caption>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <AppBar colorTheme={ColorTheme.SECONDARY_LIGHT}>
         <Button onPress={onButtonPress} variant={ButtonVariant.ICON}>
           <MenuIcon />
         </Button>
         <AppBarTitle numberOfLines={1}>My Application</AppBarTitle>
       </AppBar>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Caption>
         AppBarVariant.DEFAULT, ColorTheme.PRIMARY_NORMAL (default)
       </Caption>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <AppBar>
         <Button onPress={onButtonPress} variant={ButtonVariant.ICON}>
           <MenuIcon />
@@ -300,33 +300,33 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
           <FavoriteIcon />
         </Button>
       </AppBar>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Caption>
         AppBarVariant.DEFAULT, ColorTheme.PRIMARY_NORMAL (default)
       </Caption>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <AppBar>
         <Button onPress={onButtonPress} variant={ButtonVariant.ICON}>
           <MenuIcon />
         </Button>
       </AppBar>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Caption>AppBarVariant.DEFAULT, ColorTheme.WARNING_NORMAL</Caption>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <AppBar colorTheme={ColorTheme.WARNING_NORMAL}>
         {() => <AppBarTitle numberOfLines={1}>My Application</AppBarTitle>}
       </AppBar>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Caption>
         AppBarVariant.PROMINENT, ColorTheme.PRIMARY_NORMAL (default)
       </Caption>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <AppBar variant={AppBarVariant.PROMINENT}>
         {() => (
           <React.Fragment>
@@ -340,11 +340,11 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
           </React.Fragment>
         )}
       </AppBar>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Caption>AppBarVariant.PROMINENT, ColorTheme.SECONDARY_NORMAL</Caption>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <AppBar
         colorTheme={ColorTheme.SECONDARY_NORMAL}
         variant={AppBarVariant.PROMINENT}
@@ -355,22 +355,22 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
               <MenuIcon />
             </Button>
             <AppBarTitle numberOfLines={1}>My Application</AppBarTitle>
-            <RowView>
+            <Row>
               <Button onPress={onButtonPress} variant={ButtonVariant.ICON}>
                 <FavoriteIcon />
               </Button>
               <Button onPress={onButtonPress} variant={ButtonVariant.ICON}>
                 <MenuIcon />
               </Button>
-            </RowView>
+            </Row>
           </React.Fragment>
         )}
       </AppBar>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <Caption>AppBarVariant.PROMINENT, ColorTheme.SECONDARY_LIGHT</Caption>
-    </RowView>
-    <RowView>
+    </Row>
+    <Row>
       <AppBar
         colorTheme={ColorTheme.SECONDARY_LIGHT}
         variant={AppBarVariant.PROMINENT}
@@ -380,7 +380,7 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
         </Button>
         <AppBarTitle numberOfLines={1}>My Application</AppBarTitle>
       </AppBar>
-    </RowView>
+    </Row>
   </ScrollView>
 );
 
