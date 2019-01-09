@@ -5,17 +5,21 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { PaletteColor } from './PaletteColor';
+import {
+  InteractivityPaletteColor,
+  OptionalInteractivityPaletteColor,
+} from './InteractivityPaletteColor';
 
 export interface PaletteTheme {
-  readonly background: PaletteColor;
-  readonly disabled: PaletteColor;
-  readonly error: PaletteColor;
-  readonly primary: PaletteColor;
-  readonly secondary: PaletteColor;
-  readonly success: PaletteColor;
-  readonly surface: PaletteColor;
-  readonly warning: PaletteColor;
+  readonly background: InteractivityPaletteColor;
+  readonly error: InteractivityPaletteColor;
+  readonly primary: InteractivityPaletteColor;
+  readonly secondary: InteractivityPaletteColor;
+  readonly success: InteractivityPaletteColor;
+  readonly surface: InteractivityPaletteColor;
+  readonly warning: InteractivityPaletteColor;
 }
 
-export type OptionalPaletteTheme = Partial<PaletteTheme>;
+export type OptionalPaletteTheme = {
+  [P in keyof PaletteTheme]?: OptionalInteractivityPaletteColor
+};

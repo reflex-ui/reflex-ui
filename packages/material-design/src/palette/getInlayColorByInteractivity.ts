@@ -13,24 +13,46 @@ export const getInlayColorByInteractivity = ({
   color,
   type,
 }: ColorByInteractivityData): string => {
-  switch (type) {
-    case InteractivityType.DISABLED:
-      return color;
-    case InteractivityType.ENABLED:
-      return color;
-    case InteractivityType.FOCUSED:
-      return Color.rgb(color)
-        .lighten(0.35)
-        .toString();
-    case InteractivityType.HOVERED:
-      return Color.rgb(color)
-        .lighten(0.12)
-        .toString();
-    case InteractivityType.PRESSED:
-      return Color.rgb(color)
-        .lighten(0.6)
-        .toString();
-    default:
-      return color;
+  if (
+    type === InteractivityType.DISABLED ||
+    type === InteractivityType.ENABLED
+  ) {
+    return color;
   }
+
+  const rgbColor: Color = Color.hsl(color);
+  const luminosity = rgbColor.luminosity();
+  let rate;
+
+  if (type === InteractivityType.HOVERED) {
+    if (luminosity > 0.97) {
+      rate = 0.04;
+    } else if (luminosity > 0.7 || luminosity < 0.1) {
+      rate = 0.16;
+    } else {
+      rate = 0.08;
+    }
+  } else if (type === InteractivityType.FOCUSED) {
+    if (luminosity > 0.97) {
+      rate = 0.12;
+    } else if (luminosity > 0.7 || luminosity < 0.1) {
+      rate = 0.36;
+    } else {
+      rate = 0.24;
+    }
+  } else {
+    if (luminosity > 0.97) {
+      rate = 0.16;
+    } else if (luminosity > 0.7 || luminosity < 0.1) {
+      rate = 0.42;
+    } else {
+      rate = 0.32;
+    }
+  }
+
+  if (rgbColor.luminosity() < 0.02) return rgbColor.fade(rate).toString();
+
+  return rgbColor.isLight()
+    ? rgbColor.darken(rate).toString()
+    : rgbColor.lighten(rate).toString();
 };

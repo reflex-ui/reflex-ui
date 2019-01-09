@@ -6,13 +6,9 @@
  */
 
 export * from './ColorByInteractivityData';
-export * from './createPaletteTheme';
-export * from './disabledPaletteColor';
-export * from './errorPaletteColor';
+export * from './colors';
 export * from './getInlayColorByInteractivity';
 export * from './getOverlayColorByInteractivity';
 export * from './getThemedOverlayColorByInteractivity';
-export * from './purpleTealPaletteTheme';
-export * from './successPaletteColor';
 export * from './ThemedColorByInteractivityData';
-export * from './warningPaletteColor';
+export * from './themes';

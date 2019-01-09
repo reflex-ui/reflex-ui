@@ -12,6 +12,7 @@ import { buttonTheme } from './buttons/theme';
 import { iconTheme } from './icons/iconTheme';
 import { surfaceTheme } from './surface/theme';
 import { typographyTheme } from './typography/typographyTheme';
+import { superViewTheme } from './views/theme';
 
 export const materialDesignTheme: ComponentsTheme = {
   appBar: appBarTheme,
@@ -19,4 +20,5 @@ export const materialDesignTheme: ComponentsTheme = {
   icon: iconTheme,
   surface: surfaceTheme,
   typography: typographyTheme,
+  views: superViewTheme,
 };

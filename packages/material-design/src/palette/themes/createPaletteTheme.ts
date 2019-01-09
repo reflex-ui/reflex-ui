@@ -11,7 +11,11 @@ import {
   PaletteTheme,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
-import { purpleTealPaletteTheme } from './purpleTealPaletteTheme';
 
-export const createPaletteTheme = (theme: OptionalPaletteTheme): PaletteTheme =>
-  createPaletteThemeCore(merge({}, purpleTealPaletteTheme, theme));
+export const createPaletteTheme = (
+  baseTheme: PaletteTheme,
+  theme: OptionalPaletteTheme,
+): PaletteTheme =>
+  createPaletteThemeCore(
+    merge<{}, PaletteTheme, OptionalPaletteTheme>({}, baseTheme, theme),
+  );

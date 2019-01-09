@@ -6,9 +6,11 @@
  */
 
 export * from './black';
+export * from './blue';
 export * from './deepPurple';
 export * from './disabledAllNormalPaletteColor';
 export * from './disabledPaletteColor';
+export * from './orange';
 export * from './red';
 export * from './teal';
 export * from './MaterialPaletteColor';

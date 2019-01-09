@@ -6,8 +6,10 @@
  */
 
 export * from './ColorTheme';
+export * from './colorThemes';
 export * from './createPaletteTheme';
 export * from './getThemedColor';
+export * from './InteractivityPaletteColor';
 export * from './PaletteColor';
 export * from './PaletteColorVariant';
 export * from './PaletteTheme';

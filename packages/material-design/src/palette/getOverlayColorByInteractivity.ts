@@ -20,15 +20,15 @@ export const getOverlayColorByInteractivity = ({
       return 'transparent';
     case InteractivityType.FOCUSED:
       return Color.rgb(color)
-        .fade(0.89)
+        .fade(0.81)
         .toString();
     case InteractivityType.HOVERED:
       return Color.rgb(color)
-        .fade(0.94)
+        .fade(0.86)
         .toString();
     case InteractivityType.PRESSED:
       return Color.rgb(color)
-        .fade(0.81)
+        .fade(0.73)
         .toString();
     default:
       return 'transparent';

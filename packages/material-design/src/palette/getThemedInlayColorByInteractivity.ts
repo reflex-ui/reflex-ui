@@ -15,9 +15,15 @@ import {
 export const getThemedInlayColorByInteractivity = ({
   colorTheme,
   interactivityType,
+  onColor,
   paletteTheme,
 }: ThemedColorByInteractivityData): string =>
   getInlayColorByInteractivity({
-    color: getThemedColor({ colorTheme, interactivityType, paletteTheme }),
+    color: getThemedColor({
+      colorTheme,
+      interactivityType,
+      onColor,
+      paletteTheme,
+    }),
     type: interactivityType,
   });
