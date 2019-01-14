@@ -7,9 +7,9 @@
 
 import {
   ButtonProps,
-  InjectableSubTheme,
-  rawInjectableButtonTextSubTheme,
+  rawButtonTextSubTheme,
   Size,
+  SubTheme,
   TextStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
@@ -24,10 +24,10 @@ export const getFabButtonIconStyle: TextStyleGetter<ButtonProps> = props => ({
   ...(props.size === Size.S ? { fontSize: 24 } : {}),
 });
 
-export const fabButtonIconTheme: InjectableSubTheme<
+export const fabButtonIconTheme: SubTheme<
   ButtonProps,
   TextProps,
   TextStyle
-> = merge({}, rawInjectableButtonTextSubTheme, {
+> = merge({}, rawButtonTextSubTheme, {
   getStyle: getFabButtonIconStyle,
 });

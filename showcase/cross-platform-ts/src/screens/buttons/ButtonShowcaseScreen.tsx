@@ -11,10 +11,15 @@ import {
   Button,
   ButtonVariant,
   ColorTheme,
-  colorThemes,
   Column,
+  errorColorThemes,
+  primaryColorThemes,
   Row,
+  secondaryColorThemes,
   Size,
+  successColorThemes,
+  Surface,
+  warningColorThemes,
 } from '@reflex-ui/core';
 import { MenuIcon } from '@reflex-ui/material-design';
 import * as React from 'react';
@@ -31,13 +36,20 @@ const onButtonPress = () => {
 const colorThemesByPairs = colorThemes.map((colorTheme, index, array) => (
   index % 2 === 0 ? { a: colorTheme, b: array[index + 1] } : continue
 ));
-*/
 
 interface ColorPair {
   colorA: ColorTheme;
   colorB: ColorTheme;
 }
-
+*/
+export const colorThemes: ColorTheme[] = [
+  ...primaryColorThemes,
+  ...secondaryColorThemes,
+  ...errorColorThemes,
+  ...successColorThemes,
+  ...warningColorThemes,
+];
+/*
 const colorThemesInPairs = colorThemes.reduce<ColorPair[]>(
   (acc, cur, index, array) => {
     if (index % 2 === 0) acc.push({ colorA: cur, colorB: array[index + 1] });
@@ -45,7 +57,7 @@ const colorThemesInPairs = colorThemes.reduce<ColorPair[]>(
   },
   [],
 );
-
+*/
 export interface ButtonShowcaseScreenProps {
   readonly ButtonCollection: React.ComponentType<ButtonCollectionProps>;
   readonly children?: React.ReactNode;
@@ -61,7 +73,7 @@ const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
 }): JSX.Element => (
   <ScrollView>
     <AppBar>
-      <Button onPress={onButtonPress} variant={ButtonVariant.ICON}>
+      <Button invertColor onPress={onButtonPress} variant={ButtonVariant.ICON}>
         <MenuIcon />
       </Button>
       <AppBarTitle numberOfLines={1}>{title}</AppBarTitle>
@@ -69,9 +81,9 @@ const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
     <Column marginTop={Size.M}>
       {({ breakpoints, layoutRectangle }) => (
         <React.Fragment>
-          {colorThemesInPairs.map(({ colorA, colorB }) => (
+          {colorThemes.map(colorTheme => (
             <Row
-              key={colorA}
+              key={colorTheme}
               marginVertical={
                 layoutRectangle &&
                 layoutRectangle.width > breakpoints.largeHandset
@@ -79,30 +91,38 @@ const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
                   : Size.XS
               }
             >
-              <ButtonCollection
-                colorTheme={colorA}
+              <Surface
                 marginStart={
                   layoutRectangle &&
                   layoutRectangle.width > breakpoints.largeHandset
                     ? Size.M
                     : Size.XS
                 }
-                onPress={onButtonPress}
-                title={colorA}
-                variant={variant}
-              />
-              <ButtonCollection
-                colorTheme={colorB}
+              >
+                <ButtonCollection
+                  colorTheme={colorTheme}
+                  onPress={onButtonPress}
+                  title={colorTheme}
+                  variant={variant}
+                />
+              </Surface>
+              <Surface
+                colorTheme={colorTheme}
                 marginStart={
                   layoutRectangle &&
                   layoutRectangle.width > breakpoints.largeHandset
                     ? Size.M
                     : Size.XS
                 }
-                onPress={onButtonPress}
-                title={colorB}
-                variant={variant}
-              />
+              >
+                <ButtonCollection
+                  colorTheme={colorTheme}
+                  invertColor
+                  onPress={onButtonPress}
+                  title={`${colorTheme} invertColor`}
+                  variant={variant}
+                />
+              </Surface>
             </Row>
           ))}
           {children}

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { Button, Headline6, Row, Size, Surface } from '@reflex-ui/core';
+import { Button, Headline6, Row, Size } from '@reflex-ui/core';
 import { FavoriteIcon } from '@reflex-ui/material-design';
 import * as React from 'react';
 
@@ -14,31 +14,41 @@ import { ButtonCollectionProps } from './ButtonCollectionProps';
 const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
   colorTheme,
   getSubProps,
+  invertColor,
   onPress,
   title,
   variant,
-  ...marginProps
 }): JSX.Element => (
-  <Surface colorTheme={colorTheme} {...marginProps}>
+  <React.Fragment>
     <Row margin={Size.M}>
       <Headline6>{title}</Headline6>
     </Row>
     <Row>
-      <Button getSubProps={getSubProps} onPress={onPress} variant={variant}>
-        Sign In
-      </Button>
       <Button
-        disabled
+        colorTheme={colorTheme}
         getSubProps={getSubProps}
+        invertColor={invertColor}
         onPress={onPress}
         variant={variant}
       >
         Sign In
       </Button>
+      <Button
+        colorTheme={colorTheme}
+        disabled
+        getSubProps={getSubProps}
+        invertColor={invertColor}
+        onPress={onPress}
+        variant={variant}
+      >
+        Sign In
+      </Button>
     </Row>
     <Row>
       <Button
+        colorTheme={colorTheme}
         getSubProps={getSubProps}
+        invertColor={invertColor}
         leadingIcon={<FavoriteIcon />}
         onPress={onPress}
         variant={variant}
@@ -46,29 +56,12 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
         Favorite
       </Button>
       <Button
+        colorTheme={colorTheme}
         disabled
         getSubProps={getSubProps}
+        invertColor={invertColor}
         leadingIcon={<FavoriteIcon />}
         onPress={onPress}
-        variant={variant}
-      >
-        Favorite
-      </Button>
-    </Row>
-    <Row>
-      <Button
-        getSubProps={getSubProps}
-        onPress={onPress}
-        trailingIcon={<FavoriteIcon />}
-        variant={variant}
-      >
-        Favorite
-      </Button>
-      <Button
-        disabled
-        getSubProps={getSubProps}
-        onPress={onPress}
-        trailingIcon={<FavoriteIcon />}
         variant={variant}
       >
         Favorite
@@ -76,7 +69,32 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
     </Row>
     <Row>
       <Button
+        colorTheme={colorTheme}
         getSubProps={getSubProps}
+        invertColor={invertColor}
+        onPress={onPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={variant}
+      >
+        Favorite
+      </Button>
+      <Button
+        colorTheme={colorTheme}
+        disabled
+        getSubProps={getSubProps}
+        invertColor={invertColor}
+        onPress={onPress}
+        trailingIcon={<FavoriteIcon />}
+        variant={variant}
+      >
+        Favorite
+      </Button>
+    </Row>
+    <Row>
+      <Button
+        colorTheme={colorTheme}
+        getSubProps={getSubProps}
+        invertColor={invertColor}
         leadingIcon={<FavoriteIcon />}
         onPress={onPress}
         trailingIcon={<FavoriteIcon />}
@@ -85,8 +103,10 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
         Favorite
       </Button>
       <Button
+        colorTheme={colorTheme}
         disabled
         getSubProps={getSubProps}
+        invertColor={invertColor}
         leadingIcon={<FavoriteIcon />}
         onPress={onPress}
         trailingIcon={<FavoriteIcon />}
@@ -95,7 +115,7 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
         Favorite
       </Button>
     </Row>
-  </Surface>
+  </React.Fragment>
 );
 
 LabelButtonCollection.displayName = 'LabelButtonCollection';

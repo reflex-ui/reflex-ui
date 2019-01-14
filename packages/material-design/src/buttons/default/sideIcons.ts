@@ -7,8 +7,8 @@
 
 import {
   ButtonProps,
-  InjectableSubTheme,
-  rawInjectableButtonTextSubTheme,
+  rawButtonTextSubTheme,
+  SubTheme,
   TextStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
@@ -25,15 +25,15 @@ export const getDefaultButtonLeadingIconStyle: TextStyleGetter<
   ...getDefaultButtonTextColorStyle(props),
 });
 
-export const defaultButtonLeadingIconTheme: InjectableSubTheme<
+export const defaultButtonLeadingIconTheme: SubTheme<
   ButtonProps,
   TextProps,
   TextStyle
-> = merge({}, rawInjectableButtonTextSubTheme, {
+> = merge({}, rawButtonTextSubTheme, {
   getStyle: getDefaultButtonLeadingIconStyle,
 });
 
-export const defaultButtonTrailingIconTheme: InjectableSubTheme<
+export const defaultButtonTrailingIconTheme: SubTheme<
   ButtonProps,
   TextProps,
   TextStyle

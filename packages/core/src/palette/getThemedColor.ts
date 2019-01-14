@@ -9,13 +9,17 @@ import { InteractivityType } from '../interactivity/InteractivityType';
 import { ColorTheme } from './ColorTheme';
 import { InteractivityPaletteColor } from './InteractivityPaletteColor';
 import { PaletteColor } from './PaletteColor';
+import { PaletteColorArrangement } from './PaletteColorArrangement';
+import { PaletteColorContainment } from './PaletteColorContainment';
 import { PaletteColorVariant } from './PaletteColorVariant';
 import { ThemedColorGetter } from './ThemedColorGetter';
 
 export const getThemedColor: ThemedColorGetter = ({
   colorTheme = ColorTheme.PRIMARY_NORMAL,
+  contained = true,
   interactivityType = InteractivityType.ENABLED,
-  onColor,
+  invertColor = false,
+  onColor = false,
   paletteTheme,
 }): string => {
   // tslint:disable-next-line:no-console
@@ -29,10 +33,22 @@ export const getThemedColor: ThemedColorGetter = ({
   // tslint:disable-next-line:no-console
   // console.log('getThemedColor() - colorThemeNames: ', colorThemeNames);
 
-  const interactivityColorTarget: InteractivityPaletteColor =
+  const colorTargetArrangement: PaletteColorArrangement =
     // @ts-ignore Element implicitly has an 'any' type because
     // type 'PaletteTheme' has no index signature.ts(7017)
     paletteTheme[colorThemeNames[0]];
+
+  const isInverted =
+    (colorThemeNames.length > 2 && colorThemeNames[2] === 'inverted') ||
+    invertColor;
+
+  const colorTargetContainment: PaletteColorContainment = isInverted
+    ? colorTargetArrangement.inverted
+    : colorTargetArrangement.regular;
+
+  const colorTargetInteractivity: InteractivityPaletteColor = contained
+    ? colorTargetContainment.contained
+    : colorTargetContainment.uncontained;
 
   // tslint:disable-next-line:no-console
   /* console.log(
@@ -40,10 +56,7 @@ export const getThemedColor: ThemedColorGetter = ({
     interactivityColorTarget,
   );*/
 
-  const colorTarget: PaletteColor =
-    interactivityType === InteractivityType.DISABLED
-      ? interactivityColorTarget.disabled
-      : interactivityColorTarget.enabled;
+  const colorTarget: PaletteColor = colorTargetInteractivity[interactivityType];
 
   // tslint:disable-next-line:no-console
   // console.log('getThemedColor() - colorTarget: ', colorTarget);
@@ -55,12 +68,5 @@ export const getThemedColor: ThemedColorGetter = ({
     // type 'InteractivityPaletteColor' has no index signature.ts(7017)
     colorTarget[variantName];
 
-  const isInverted =
-    interactivityType !== InteractivityType.DISABLED &&
-    colorThemeNames.length > 2 &&
-    colorThemeNames[2] === 'inverted';
-
-  const isOnColor = (onColor && !isInverted) || (isInverted && !onColor);
-
-  return isOnColor ? colorVariant.onColor : colorVariant.color;
+  return onColor ? colorVariant.onColor : colorVariant.color;
 };

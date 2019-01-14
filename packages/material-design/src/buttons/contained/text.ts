@@ -9,7 +9,7 @@ import {
   ButtonProps,
   getThemedColor,
   InjectableSubTheme,
-  InteractivityType,
+  // InteractivityType,
   rawInjectableButtonTextSubTheme,
   TextStyleGetter,
 } from '@reflex-ui/core';
@@ -21,12 +21,15 @@ import { getAllVariantsButtonTextStyle } from '../all-variants/text';
 export const getContainedButtonTextColorStyle: TextStyleGetter<ButtonProps> = ({
   colorTheme,
   interactivityState,
+  invertColor,
   paletteTheme,
 }) => ({
   color: getThemedColor({
     colorTheme,
     interactivityType: interactivityState.type,
-    onColor: interactivityState.type === InteractivityType.DISABLED,
+    // onColor: interactivityState.type === InteractivityType.DISABLED,
+    onColor: true,
+    invertColor: invertColor,
     paletteTheme,
   }),
 });

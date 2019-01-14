@@ -7,7 +7,7 @@
 
 import {
   ButtonProps,
-  OptionalInjectableSubTheme,
+  OptionalSubTheme,
   Size,
   TextStyleGetter,
 } from '@reflex-ui/core';
@@ -33,7 +33,7 @@ export const getAllVariantsButtonIconStyle: TextStyleGetter<ButtonProps> = ({
   }),
 });
 
-export const allVariantsButtonIconTheme: OptionalInjectableSubTheme<
+export const allVariantsButtonIconTheme: OptionalSubTheme<
   ButtonProps,
   TextProps,
   TextStyle

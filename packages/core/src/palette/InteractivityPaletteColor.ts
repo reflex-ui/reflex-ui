@@ -10,9 +10,15 @@ import { PaletteColor } from './PaletteColor';
 export interface InteractivityPaletteColor {
   readonly disabled: PaletteColor;
   readonly enabled: PaletteColor;
+  readonly focused: PaletteColor;
+  readonly hovered: PaletteColor;
+  readonly pressed: PaletteColor;
 }
 
 export interface OptionalInteractivityPaletteColor {
-  readonly disabled?: PaletteColor;
+  readonly disabled: PaletteColor;
   readonly enabled: PaletteColor;
+  readonly focused?: PaletteColor;
+  readonly hovered?: PaletteColor;
+  readonly pressed?: PaletteColor;
 }

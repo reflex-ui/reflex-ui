@@ -9,13 +9,13 @@ import {
   ButtonSubPropsGetter,
   ButtonVariant,
   ColorTheme,
-  MarginProps,
 } from '@reflex-ui/core';
 
-export interface ButtonCollectionProps extends MarginProps {
-  colorTheme: ColorTheme;
-  getSubProps?: ButtonSubPropsGetter;
-  onPress?: () => void;
-  title: string;
-  variant: ButtonVariant;
+export interface ButtonCollectionProps {
+  readonly colorTheme: ColorTheme;
+  readonly getSubProps?: ButtonSubPropsGetter;
+  readonly invertColor?: boolean;
+  readonly onPress?: () => void;
+  readonly title: string;
+  readonly variant: ButtonVariant;
 }

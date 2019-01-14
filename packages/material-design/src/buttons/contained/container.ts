@@ -9,7 +9,7 @@ import {
   ButtonProps,
   getThemedColor,
   InjectableSubTheme,
-  InteractivityType,
+  // InteractivityType,
   rawInjectableButtonViewSubTheme,
   Size,
   ViewStyleGetter,
@@ -24,9 +24,11 @@ import {
 } from '../../palette/getThemedInlayColorByInteractivity';
 */
 // prettier-ignore
+/*
 import {
   getInlayColorByInteractivity,
 } from '../../palette/getInlayColorByInteractivity';
+*/
 import {
   getAllVariantsButtonContainerProps,
   getAllVariantsButtonContainerStyle,
@@ -76,6 +78,7 @@ export const getContainedButtonContainerStyle: ViewStyleGetter<
     paletteTheme: props.paletteTheme,
   }),
   */
+  /*
   backgroundColor: getInlayColorByInteractivity({
     color: getThemedColor({
       colorTheme: props.colorTheme,
@@ -84,6 +87,13 @@ export const getContainedButtonContainerStyle: ViewStyleGetter<
       paletteTheme: props.paletteTheme,
     }),
     type: props.interactivityState.type,
+  }),
+  */
+  backgroundColor: getThemedColor({
+    colorTheme: props.colorTheme,
+    interactivityType: props.interactivityState.type,
+    invertColor: props.invertColor,
+    paletteTheme: props.paletteTheme,
   }),
 });
 

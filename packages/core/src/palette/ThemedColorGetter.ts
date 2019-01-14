@@ -12,7 +12,9 @@ import { PaletteTheme } from './PaletteTheme';
 export type ThemedColorGetter = (
   props: {
     readonly colorTheme?: ColorTheme;
+    readonly contained?: boolean;
     readonly interactivityType?: InteractivityType;
+    readonly invertColor?: boolean;
     readonly onColor?: boolean;
     readonly paletteTheme: PaletteTheme;
   },

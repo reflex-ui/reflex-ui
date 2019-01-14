@@ -5,7 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { InteractivityPaletteColor } from './InteractivityPaletteColor';
 import { PaletteColor } from './PaletteColor';
+import { PaletteColorArrangement } from './PaletteColorArrangement';
 import { PaletteTheme } from './PaletteTheme';
 
 const disabledPaletteColor: PaletteColor = {
@@ -23,124 +25,69 @@ const disabledPaletteColor: PaletteColor = {
   },
 };
 
+const blackPaletteColor: PaletteColor = {
+  dark: {
+    color: '#000000',
+    onColor: '#ffffff',
+  },
+  light: {
+    color: '#000000',
+    onColor: '#ffffff',
+  },
+  normal: {
+    color: '#000000',
+    onColor: '#ffffff',
+  },
+};
+
+const whitePaletteColor: PaletteColor = {
+  dark: {
+    color: '#ffffff',
+    onColor: '#000000',
+  },
+  light: {
+    color: '#ffffff',
+    onColor: '#000000',
+  },
+  normal: {
+    color: '#ffffff',
+    onColor: '#000000',
+  },
+};
+
+const blackInteractivityPaletteColor: InteractivityPaletteColor = {
+  disabled: disabledPaletteColor,
+  enabled: blackPaletteColor,
+  focused: blackPaletteColor,
+  hovered: blackPaletteColor,
+  pressed: blackPaletteColor,
+};
+
+const whiteInteractivityPaletteColor: InteractivityPaletteColor = {
+  disabled: disabledPaletteColor,
+  enabled: whitePaletteColor,
+  focused: whitePaletteColor,
+  hovered: whitePaletteColor,
+  pressed: whitePaletteColor,
+};
+
+const whitePaletteColorArrangement: PaletteColorArrangement = {
+  inverted: {
+    contained: blackInteractivityPaletteColor,
+    uncontained: blackInteractivityPaletteColor,
+  },
+  regular: {
+    contained: whiteInteractivityPaletteColor,
+    uncontained: whiteInteractivityPaletteColor,
+  },
+};
+
 export const purpleTealPaletteTheme: PaletteTheme = {
-  background: {
-    disabled: disabledPaletteColor,
-    enabled: {
-      dark: {
-        color: '#ffffff',
-        onColor: '#000000',
-      },
-      light: {
-        color: '#ffffff',
-        onColor: '#000000',
-      },
-      normal: {
-        color: '#ffffff',
-        onColor: '#000000',
-      },
-    },
-  },
-  error: {
-    disabled: disabledPaletteColor,
-    enabled: {
-      dark: {
-        color: '#b00020',
-        onColor: '#ffffff',
-      },
-      light: {
-        color: '#b00020',
-        onColor: '#ffffff',
-      },
-      normal: {
-        color: '#b00020',
-        onColor: '#ffffff',
-      },
-    },
-  },
-  primary: {
-    disabled: disabledPaletteColor,
-    enabled: {
-      dark: {
-        color: '#0400ba',
-        onColor: '#ffffff',
-      },
-      light: {
-        color: '#9e47ff',
-        onColor: '#ffffff',
-      },
-      normal: {
-        color: '#6200ee',
-        onColor: '#ffffff',
-      },
-    },
-  },
-  secondary: {
-    disabled: disabledPaletteColor,
-    enabled: {
-      dark: {
-        color: '#00a895',
-        onColor: '#000000',
-      },
-      light: {
-        color: '#66fff8',
-        onColor: '#000000',
-      },
-      normal: {
-        color: '#03dac5',
-        onColor: '#000000',
-      },
-    },
-  },
-  success: {
-    disabled: disabledPaletteColor,
-    enabled: {
-      dark: {
-        color: '#087f23',
-        onColor: '#ffffff',
-      },
-      light: {
-        color: '#80e27e',
-        onColor: '#000000',
-      },
-      normal: {
-        color: '#4caf50',
-        onColor: '#000000',
-      },
-    },
-  },
-  surface: {
-    disabled: disabledPaletteColor,
-    enabled: {
-      dark: {
-        color: '#ffffff',
-        onColor: '#000000',
-      },
-      light: {
-        color: '#ffffff',
-        onColor: '#000000',
-      },
-      normal: {
-        color: '#ffffff',
-        onColor: '#000000',
-      },
-    },
-  },
-  warning: {
-    disabled: disabledPaletteColor,
-    enabled: {
-      dark: {
-        color: '#c6a700',
-        onColor: '#000000',
-      },
-      light: {
-        color: '#ffff6b',
-        onColor: '#000000',
-      },
-      normal: {
-        color: '#fdd835',
-        onColor: '#000000',
-      },
-    },
-  },
+  background: whitePaletteColorArrangement,
+  error: whitePaletteColorArrangement,
+  primary: whitePaletteColorArrangement,
+  secondary: whitePaletteColorArrangement,
+  success: whitePaletteColorArrangement,
+  surface: whitePaletteColorArrangement,
+  warning: whitePaletteColorArrangement,
 };

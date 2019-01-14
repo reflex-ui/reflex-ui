@@ -7,16 +7,22 @@
 
 import { PaletteTheme } from '@reflex-ui/core';
 
-// prettier-ignore
-import {
-  disabledAllNormalPaletteColor,
-} from '../colors/disabledAllNormalPaletteColor';
-import { disabledPaletteColor } from '../colors/disabledPaletteColor';
 import { green800 } from '../colors/green';
 import { red900 } from '../colors/red';
-import { whitePaletteColor } from '../colors/whitePaletteColor';
+import { white } from '../colors/white/white';
 import { yellow600 } from '../colors/yellow';
 
+export const defaultPaletteTheme: PaletteTheme = {
+  background: white.color,
+  error: red900.color,
+  primary: white.color,
+  secondary: white.color,
+  success: green800.color,
+  surface: white.color,
+  warning: yellow600.color,
+};
+
+/*
 export const defaultPaletteTheme: PaletteTheme = {
   background: {
     disabled: disabledAllNormalPaletteColor,
@@ -53,3 +59,4 @@ export const defaultPaletteTheme: PaletteTheme = {
     enabled: yellow600.color,
   },
 };
+*/

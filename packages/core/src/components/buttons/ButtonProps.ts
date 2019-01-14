@@ -23,6 +23,7 @@ export interface ButtonProps
   readonly children?: React.ReactNode;
   readonly fullWidth?: boolean;
   readonly getSubProps?: ButtonSubPropsGetter;
+  readonly invertColor?: boolean;
   readonly leadingIcon?: JSX.Element;
   readonly theme: ButtonTheme;
   readonly trailingIcon?: JSX.Element;

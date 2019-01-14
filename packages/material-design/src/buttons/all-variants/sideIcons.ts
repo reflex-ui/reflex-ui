@@ -7,7 +7,7 @@
 
 import {
   ButtonProps,
-  OptionalInjectableSubTheme,
+  OptionalSubTheme,
   Size,
   TextStyleGetter,
 } from '@reflex-ui/core';
@@ -42,7 +42,7 @@ export const getAllVariantsButtonLeadingIconStyle: TextStyleGetter<
 export const getAllVariantsButtonTrailingIconStyle =
   getAllVariantsButtonLeadingIconStyle;
 
-export const allVariantsButtonLeadingIconTheme: OptionalInjectableSubTheme<
+export const allVariantsButtonLeadingIconTheme: OptionalSubTheme<
   ButtonProps,
   TextProps,
   TextStyle
@@ -50,7 +50,7 @@ export const allVariantsButtonLeadingIconTheme: OptionalInjectableSubTheme<
   getStyle: getAllVariantsButtonLeadingIconStyle,
 };
 
-export const allVariantsButtonTrailingIconTheme: OptionalInjectableSubTheme<
+export const allVariantsButtonTrailingIconTheme: OptionalSubTheme<
   ButtonProps,
   TextProps,
   TextStyle

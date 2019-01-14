@@ -6,20 +6,20 @@
  */
 
 import {
-  InteractivityPaletteColor,
-  OptionalInteractivityPaletteColor,
-} from './InteractivityPaletteColor';
+  OptionalPaletteColorArrangement,
+  PaletteColorArrangement,
+} from './PaletteColorArrangement';
 
 export interface PaletteTheme {
-  readonly background: InteractivityPaletteColor;
-  readonly error: InteractivityPaletteColor;
-  readonly primary: InteractivityPaletteColor;
-  readonly secondary: InteractivityPaletteColor;
-  readonly success: InteractivityPaletteColor;
-  readonly surface: InteractivityPaletteColor;
-  readonly warning: InteractivityPaletteColor;
+  readonly background: PaletteColorArrangement;
+  readonly error: PaletteColorArrangement;
+  readonly primary: PaletteColorArrangement;
+  readonly secondary: PaletteColorArrangement;
+  readonly success: PaletteColorArrangement;
+  readonly surface: PaletteColorArrangement;
+  readonly warning: PaletteColorArrangement;
 }
 
 export type OptionalPaletteTheme = {
-  [P in keyof PaletteTheme]?: OptionalInteractivityPaletteColor
+  [P in keyof PaletteTheme]?: OptionalPaletteColorArrangement
 };

@@ -41,6 +41,7 @@ export const extractTouchablePropsFromButtonProps = (
     // tslint:disable-next-line:no-shadowed-variable
     getSubProps,
     interactivityState,
+    invertColor,
     leadingIcon,
     margin,
     marginBottom,

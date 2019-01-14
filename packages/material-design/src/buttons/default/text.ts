@@ -22,11 +22,14 @@ import { getAllVariantsButtonTextStyle } from '../all-variants/text';
 export const getDefaultButtonTextColorStyle: TextStyleGetter<ButtonProps> = ({
   colorTheme,
   interactivityState,
+  invertColor,
   paletteTheme,
 }) => ({
   color: getThemedColor({
     colorTheme,
+    contained: false,
     interactivityType: interactivityState.type,
+    invertColor,
     // onColor: interactivityState.type === InteractivityType.DISABLED,
     onColor: true,
     paletteTheme,

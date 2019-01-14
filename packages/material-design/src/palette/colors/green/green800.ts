@@ -5,23 +5,85 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { black } from '../black';
-import { MaterialPaletteColor } from '../MaterialPaletteColor';
-import { white } from '../white';
+import {
+  createPaletteColorInteraction,
+  fromOnColorOnlyPaletteColor,
+  invertPaletteColor,
+  PaletteColor,
+} from '@reflex-ui/core';
 
-export const green800: MaterialPaletteColor = {
+// prettier-ignore
+import {
+  createContainedPaletteColorVariant,
+} from '../../createContainedPaletteColorVariant';
+// prettier-ignore
+import {
+  createUncontainedPaletteColorVariant,
+} from '../../createUncontainedPaletteColorVariant';
+import { blackNormal } from '../black/black';
+import { disabledPaletteColor } from '../disabledPaletteColor';
+import { MaterialPaletteColorItem } from '../MaterialPaletteColorItem';
+import { whiteNormal } from '../white/white';
+
+export const green800dark = '#005005';
+export const green800light = '#60ad5e';
+export const green800normal = '#2e7d32';
+
+const regularContainedBaseColor: PaletteColor = {
+  dark: {
+    color: green800dark,
+    onColor: whiteNormal,
+  },
+  light: {
+    color: green800light,
+    onColor: blackNormal,
+  },
+  normal: {
+    color: green800normal,
+    onColor: blackNormal,
+  },
+};
+
+const regularUncontainedBaseColor: PaletteColor = {
+  dark: {
+    color: green800dark,
+    onColor: green800dark,
+  },
+  light: {
+    color: green800light,
+    onColor: green800light,
+  },
+  normal: {
+    color: green800normal,
+    onColor: green800normal,
+  },
+};
+
+export const green800: MaterialPaletteColorItem = {
   color: {
-    dark: {
-      color: '#005005',
-      onColor: white,
+    inverted: {
+      contained: createPaletteColorInteraction({
+        baseColor: invertPaletteColor(regularContainedBaseColor),
+        colorVariantFactory: createContainedPaletteColorVariant,
+        disabledColor: disabledPaletteColor,
+      }),
+      uncontained: createPaletteColorInteraction({
+        baseColor: fromOnColorOnlyPaletteColor(regularContainedBaseColor),
+        colorVariantFactory: createUncontainedPaletteColorVariant,
+        disabledColor: disabledPaletteColor,
+      }),
     },
-    light: {
-      color: '#60ad5e',
-      onColor: black,
-    },
-    normal: {
-      color: '#2e7d32',
-      onColor: white,
+    regular: {
+      contained: createPaletteColorInteraction({
+        baseColor: regularContainedBaseColor,
+        colorVariantFactory: createContainedPaletteColorVariant,
+        disabledColor: disabledPaletteColor,
+      }),
+      uncontained: createPaletteColorInteraction({
+        baseColor: regularUncontainedBaseColor,
+        colorVariantFactory: createUncontainedPaletteColorVariant,
+        disabledColor: disabledPaletteColor,
+      }),
     },
   },
   name: 'Green',

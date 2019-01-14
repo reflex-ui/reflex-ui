@@ -13,6 +13,7 @@ import {
   ColorTheme,
   InteractivityType,
   Row,
+  Surface,
 } from '@reflex-ui/core';
 import {
   disabledPaletteColor,
@@ -59,12 +60,14 @@ const DefaultButtonShowcaseScreen: React.SFC = (): JSX.Element => (
     variant={ButtonVariant.DEFAULT}
   >
     <Row>
-      <LabelButtonCollection
-        colorTheme={ColorTheme.SURFACE_NORMAL}
-        getSubProps={getDefaultButtonProps}
-        title="Custom color"
-        variant={ButtonVariant.DEFAULT}
-      />
+      <Surface>
+        <LabelButtonCollection
+          colorTheme={ColorTheme.PRIMARY_NORMAL}
+          getSubProps={getDefaultButtonProps}
+          title="Custom color"
+          variant={ButtonVariant.DEFAULT}
+        />
+      </Surface>
     </Row>
   </ButtonShowcaseScreen>
 );

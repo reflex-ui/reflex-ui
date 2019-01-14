@@ -5,20 +5,16 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  ButtonProps,
-  InjectableSubTheme,
-  rawInjectableButtonTextSubTheme,
-} from '@reflex-ui/core';
+import { ButtonProps, rawButtonTextSubTheme, SubTheme } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 import { TextProps, TextStyle } from 'react-native';
 
 import { getAllVariantsButtonIconStyle } from '../all-variants/icon';
 
-export const defaultButtonIconTheme: InjectableSubTheme<
+export const defaultButtonIconTheme: SubTheme<
   ButtonProps,
   TextProps,
   TextStyle
-> = merge({}, rawInjectableButtonTextSubTheme, {
+> = merge({}, rawButtonTextSubTheme, {
   getStyle: getAllVariantsButtonIconStyle,
 });

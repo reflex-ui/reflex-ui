@@ -7,54 +7,54 @@
 
 import { ColorTheme } from './ColorTheme';
 
-export const colorThemes: ColorTheme[] = [
-  /* PRIMARY */
-  ColorTheme.PRIMARY_NORMAL,
-  ColorTheme.PRIMARY_NORMAL_INVERTED,
-  ColorTheme.PRIMARY_DARK,
-  ColorTheme.PRIMARY_DARK_INVERTED,
-  ColorTheme.PRIMARY_LIGHT,
-  ColorTheme.PRIMARY_LIGHT_INVERTED,
-  /* SECONDARY */
-  ColorTheme.SECONDARY_NORMAL,
-  ColorTheme.SECONDARY_NORMAL_INVERTED,
-  ColorTheme.SECONDARY_DARK,
-  ColorTheme.SECONDARY_DARK_INVERTED,
-  ColorTheme.SECONDARY_LIGHT,
-  ColorTheme.SECONDARY_LIGHT_INVERTED,
-  /* SURFACE */
-  ColorTheme.SURFACE_NORMAL,
-  ColorTheme.SURFACE_NORMAL_INVERTED,
-  ColorTheme.SURFACE_DARK,
-  ColorTheme.SURFACE_DARK_INVERTED,
-  ColorTheme.SURFACE_LIGHT,
-  ColorTheme.SURFACE_LIGHT_INVERTED,
-  /* BACKGROUND */
+export const backgroundColorThemes: ColorTheme[] = [
   ColorTheme.BACKGROUND_NORMAL,
-  ColorTheme.BACKGROUND_NORMAL_INVERTED,
   ColorTheme.BACKGROUND_DARK,
-  ColorTheme.BACKGROUND_DARK_INVERTED,
   ColorTheme.BACKGROUND_LIGHT,
-  ColorTheme.BACKGROUND_LIGHT_INVERTED,
-  /* ERROR */
+];
+
+export const errorColorThemes: ColorTheme[] = [
   ColorTheme.ERROR_NORMAL,
-  ColorTheme.ERROR_NORMAL_INVERTED,
   ColorTheme.ERROR_DARK,
-  ColorTheme.ERROR_DARK_INVERTED,
   ColorTheme.ERROR_LIGHT,
-  ColorTheme.ERROR_LIGHT_INVERTED,
-  /* SUCCESS */
+];
+
+export const primaryColorThemes: ColorTheme[] = [
+  ColorTheme.PRIMARY_NORMAL,
+  ColorTheme.PRIMARY_DARK,
+  ColorTheme.PRIMARY_LIGHT,
+];
+
+export const secondaryColorThemes: ColorTheme[] = [
+  ColorTheme.SECONDARY_NORMAL,
+  ColorTheme.SECONDARY_DARK,
+  ColorTheme.SECONDARY_LIGHT,
+];
+
+export const successColorThemes: ColorTheme[] = [
   ColorTheme.SUCCESS_NORMAL,
-  ColorTheme.SUCCESS_NORMAL_INVERTED,
   ColorTheme.SUCCESS_DARK,
-  ColorTheme.SUCCESS_DARK_INVERTED,
   ColorTheme.SUCCESS_LIGHT,
-  ColorTheme.SUCCESS_LIGHT_INVERTED,
-  /* WARNING */
+];
+
+export const surfaceColorThemes: ColorTheme[] = [
+  ColorTheme.SURFACE_NORMAL,
+  ColorTheme.SURFACE_DARK,
+  ColorTheme.SURFACE_LIGHT,
+];
+
+export const warningColorThemes: ColorTheme[] = [
   ColorTheme.WARNING_NORMAL,
-  ColorTheme.WARNING_NORMAL_INVERTED,
   ColorTheme.WARNING_DARK,
-  ColorTheme.WARNING_DARK_INVERTED,
   ColorTheme.WARNING_LIGHT,
-  ColorTheme.WARNING_LIGHT_INVERTED,
+];
+
+export const allColorThemes: ColorTheme[] = [
+  ...primaryColorThemes,
+  ...secondaryColorThemes,
+  ...surfaceColorThemes,
+  ...backgroundColorThemes,
+  ...errorColorThemes,
+  ...successColorThemes,
+  ...warningColorThemes,
 ];
