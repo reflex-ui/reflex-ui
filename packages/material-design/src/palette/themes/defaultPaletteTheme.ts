@@ -7,56 +7,17 @@
 
 import { PaletteTheme } from '@reflex-ui/core';
 
-import { green800 } from '../colors/green';
-import { red900 } from '../colors/red';
-import { white } from '../colors/white/white';
-import { yellow600 } from '../colors/yellow';
+import { mdGreen800 } from '../colors/green';
+import { mdRed900 } from '../colors/red';
+import { mdWhite } from '../colors/white/white';
+import { mdYellow600 } from '../colors/yellow';
 
 export const defaultPaletteTheme: PaletteTheme = {
-  background: white.color,
-  error: red900.color,
-  primary: white.color,
-  secondary: white.color,
-  success: green800.color,
-  surface: white.color,
-  warning: yellow600.color,
+  background: mdWhite.color,
+  error: mdRed900.color,
+  primary: mdWhite.color,
+  secondary: mdWhite.color,
+  success: mdGreen800.color,
+  surface: mdWhite.color,
+  warning: mdYellow600.color,
 };
-
-/*
-export const defaultPaletteTheme: PaletteTheme = {
-  background: {
-    disabled: disabledAllNormalPaletteColor,
-    enabled: whitePaletteColor,
-  },
-  error: {
-    disabled: disabledPaletteColor,
-    enabled: red900.color,
-  },
-  primary: {
-    disabled: disabledAllNormalPaletteColor,
-    enabled: whitePaletteColor,
-  },
-  secondary: {
-    disabled: disabledAllNormalPaletteColor,
-    enabled: whitePaletteColor,
-  },
-  success: {
-    disabled: {
-      ...disabledAllNormalPaletteColor,
-      light: {
-        color: '#F0F0F0',
-        onColor: '#ccc',
-      },
-    },
-    enabled: green800.color,
-  },
-  surface: {
-    disabled: disabledAllNormalPaletteColor,
-    enabled: whitePaletteColor,
-  },
-  warning: {
-    disabled: disabledAllNormalPaletteColor,
-    enabled: yellow600.color,
-  },
-};
-*/

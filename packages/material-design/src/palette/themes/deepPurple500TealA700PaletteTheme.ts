@@ -7,8 +7,8 @@
 
 import { PaletteTheme } from '@reflex-ui/core';
 
-import { deepPurple500 } from '../colors/deepPurple';
-import { tealA700 } from '../colors/teal';
+import { mdDeepPurple500 } from '../colors/deepPurple';
+import { mdTealA700 } from '../colors/teal';
 import { createPaletteTheme } from './createPaletteTheme';
 import { defaultPaletteTheme } from './defaultPaletteTheme';
 
@@ -16,7 +16,7 @@ import { defaultPaletteTheme } from './defaultPaletteTheme';
 export const deepPurple500TealA700PaletteTheme: PaletteTheme = createPaletteTheme(
   defaultPaletteTheme,
   {
-    primary: deepPurple500.color,
-    secondary: tealA700.color,
+    primary: mdDeepPurple500.color,
+    secondary: mdTealA700.color,
   },
 );

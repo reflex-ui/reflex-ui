@@ -20,7 +20,7 @@ import {
   Size,
 } from '@reflex-ui/core';
 import {
-  disabledPaletteColor,
+  disabledGrey300_500,
   FavoriteIcon,
   getInlayColorByInteractivity,
   getOverlayColorByInteractivity,
@@ -55,7 +55,7 @@ const getDefaultButtonProps: ButtonSubPropsGetter = (
       style: registerStyle<TextStyle>({
         color:
           props.interactivityState.type === InteractivityType.DISABLED
-            ? disabledPaletteColor.normal.onColor
+            ? disabledGrey300_500.normal.onColor
             : '#c70ad0',
       }),
     },
@@ -75,7 +75,7 @@ const getContainedButtonProps: ButtonSubPropsGetter = (
     style: registerStyle<ViewStyle>({
       backgroundColor:
       props.interactivityState.type === InteractivityType.DISABLED
-        ? disabledPaletteColor.normal.color
+        ? disabledGrey300_500.normal.color
         : getInlayColorByInteractivity({
           color: '#c70ad0',
           type: props.interactivityState.type,
@@ -91,7 +91,7 @@ const getFabButtonProps: ButtonSubPropsGetter = (
     style: registerStyle<ViewStyle>({
       backgroundColor:
       props.interactivityState.type === InteractivityType.DISABLED
-        ? disabledPaletteColor.normal.color
+        ? disabledGrey300_500.normal.color
         : getInlayColorByInteractivity({
           color: '#c70ad0',
           type: props.interactivityState.type,
@@ -102,7 +102,7 @@ const getFabButtonProps: ButtonSubPropsGetter = (
     style: registerStyle<TextStyle>({
       color:
         props.interactivityState.type === InteractivityType.DISABLED
-          ? disabledPaletteColor.normal.onColor
+          ? disabledGrey300_500.normal.onColor
           : '#ffffff',
     }),
   },
@@ -123,7 +123,7 @@ const getIconButtonProps: ButtonSubPropsGetter = (
     style: registerStyle<TextStyle>({
       color:
           props.interactivityState.type === InteractivityType.DISABLED
-            ? disabledPaletteColor.normal.onColor
+            ? disabledGrey300_500.normal.onColor
             : '#c70ad0',
     }),
   },
@@ -141,7 +141,7 @@ const getOutlinedButtonProps: ButtonSubPropsGetter = (
         }),
         borderColor:
           props.interactivityState.type === InteractivityType.DISABLED
-            ? disabledPaletteColor.normal.onColor
+            ? disabledGrey300_500.normal.onColor
             : '#c70ad0',
       }),
     },
@@ -149,7 +149,7 @@ const getOutlinedButtonProps: ButtonSubPropsGetter = (
       style: registerStyle<TextStyle>({
         color:
           props.interactivityState.type === InteractivityType.DISABLED
-            ? disabledPaletteColor.normal.onColor
+            ? disabledGrey300_500.normal.onColor
             : '#c70ad0',
       }),
     },
@@ -170,7 +170,7 @@ const getXFabButtonProps: ButtonSubPropsGetter = (
       style: registerStyle<ViewStyle>({
         backgroundColor:
         props.interactivityState.type === InteractivityType.DISABLED
-          ? disabledPaletteColor.normal.color
+          ? disabledGrey300_500.normal.color
           : getInlayColorByInteractivity({
             color: '#c70ad0',
             type: props.interactivityState.type,
@@ -181,7 +181,7 @@ const getXFabButtonProps: ButtonSubPropsGetter = (
       style: registerStyle<TextStyle>({
         color:
           props.interactivityState.type === InteractivityType.DISABLED
-            ? disabledPaletteColor.normal.onColor
+            ? disabledGrey300_500.normal.onColor
             : '#ffffff',
       }),
     },

@@ -20,69 +20,72 @@ import {
 import {
   createUncontainedPaletteColorVariant,
 } from '../../createUncontainedPaletteColorVariant';
-import { blackNormal } from '../black/black';
-import { disabledPaletteColor } from '../disabledPaletteColor';
+import { black } from '../black/black';
+import { disabledGrey300_500 } from '../disabled/contained/disabledGrey300_500';
+import { disabledGrey500 } from '../disabled/uncontained/disabledGrey500';
+// tslint:disable-next-line:max-line-length
+import { disabledGrey500_500_400 } from '../disabled/uncontained/disabledGrey500_500_400';
 import { MaterialPaletteColorItem } from '../MaterialPaletteColorItem';
-import { whiteNormal } from '../white/white';
+import { white } from '../white/white';
 
-export const deepPurple500dark = '#320b86';
-export const deepPurple500light = '#9a67ea';
-export const deepPurple500normal = '#673ab7';
+export const deepPurple500 = '#673ab7';
+export const deepPurple500Dark = '#320b86';
+export const deepPurple500Light = '#9a67ea';
 
 const regularContainedBaseColor: PaletteColor = {
   dark: {
-    color: deepPurple500dark,
-    onColor: whiteNormal,
+    color: deepPurple500Dark,
+    onColor: white,
   },
   light: {
-    color: deepPurple500light,
-    onColor: blackNormal,
+    color: deepPurple500Light,
+    onColor: black,
   },
   normal: {
-    color: deepPurple500normal,
-    onColor: whiteNormal,
+    color: deepPurple500,
+    onColor: white,
   },
 };
 
 const regularUncontainedBaseColor: PaletteColor = {
   dark: {
-    color: deepPurple500dark,
-    onColor: deepPurple500dark,
+    color: deepPurple500Dark,
+    onColor: deepPurple500Dark,
   },
   light: {
-    color: deepPurple500light,
-    onColor: deepPurple500light,
+    color: deepPurple500Light,
+    onColor: deepPurple500Light,
   },
   normal: {
-    color: deepPurple500normal,
-    onColor: deepPurple500normal,
+    color: deepPurple500,
+    onColor: deepPurple500,
   },
 };
 
-export const deepPurple500: MaterialPaletteColorItem = {
+export const mdDeepPurple500: MaterialPaletteColorItem = {
   color: {
     inverted: {
       contained: createPaletteColorInteraction({
         baseColor: invertPaletteColor(regularContainedBaseColor),
         colorVariantFactory: createContainedPaletteColorVariant,
-        disabledColor: disabledPaletteColor,
+        disabledColor: disabledGrey300_500,
       }),
       uncontained: createPaletteColorInteraction({
         baseColor: fromOnColorOnlyPaletteColor(regularContainedBaseColor),
         colorVariantFactory: createUncontainedPaletteColorVariant,
-        disabledColor: disabledPaletteColor,
+        disabledColor: disabledGrey500_500_400,
       }),
     },
     regular: {
       contained: createPaletteColorInteraction({
         baseColor: regularContainedBaseColor,
         colorVariantFactory: createContainedPaletteColorVariant,
-        disabledColor: disabledPaletteColor,
+        disabledColor: disabledGrey300_500,
       }),
       uncontained: createPaletteColorInteraction({
         baseColor: regularUncontainedBaseColor,
         colorVariantFactory: createUncontainedPaletteColorVariant,
-        disabledColor: disabledPaletteColor,
+        disabledColor: disabledGrey500,
       }),
     },
   },

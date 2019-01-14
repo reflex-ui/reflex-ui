@@ -16,7 +16,7 @@ import {
   Surface,
 } from '@reflex-ui/core';
 import {
-  disabledPaletteColor,
+  disabledGrey300_500,
   getInlayColorByInteractivity,
 } from '@reflex-ui/material-design';
 import * as React from 'react';
@@ -32,7 +32,7 @@ const getContainedButtonProps: ButtonSubPropsGetter = (
       backgroundColor:
         // prettier-ignore
         props.interactivityState.type === InteractivityType.DISABLED
-          ? disabledPaletteColor.normal.color
+          ? disabledGrey300_500.normal.color
           : getInlayColorByInteractivity({
             color: '#c70ad0',
             type: props.interactivityState.type,

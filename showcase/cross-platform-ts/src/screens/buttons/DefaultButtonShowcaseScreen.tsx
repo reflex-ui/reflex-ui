@@ -16,7 +16,7 @@ import {
   Surface,
 } from '@reflex-ui/core';
 import {
-  disabledPaletteColor,
+  disabledGrey300_500,
   getOverlayColorByInteractivity,
 } from '@reflex-ui/material-design';
 import * as React from 'react';
@@ -40,7 +40,7 @@ const getDefaultButtonProps: ButtonSubPropsGetter = (
       style: {
         color:
           props.interactivityState.type === InteractivityType.DISABLED
-            ? disabledPaletteColor.normal.onColor
+            ? disabledGrey300_500.normal.onColor
             : '#c70ad0',
       },
     },

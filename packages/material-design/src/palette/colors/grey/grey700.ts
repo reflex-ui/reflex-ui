@@ -24,45 +24,45 @@ import { black } from '../black/black';
 import { disabledGrey300_500 } from '../disabled/contained/disabledGrey300_500';
 import { disabledGrey500 } from '../disabled/uncontained/disabledGrey500';
 // tslint:disable-next-line:max-line-length
-import { disabledGrey500_500_700 } from '../disabled/uncontained/disabledGrey500_500_700';
+import { disabledGrey600_500_600 } from '../disabled/uncontained/disabledGrey600_500_600';
 import { MaterialPaletteColorItem } from '../MaterialPaletteColorItem';
 import { white } from '../white/white';
 
-export const red900 = '#b71c1c';
-export const red900Dark = '#7f0000';
-export const red900Light = '#f05545';
+export const grey700 = '#616161';
+export const grey700Dark = '#373737';
+export const grey700Light = '#8e8e8e';
 
 const regularContainedBaseColor: PaletteColor = {
   dark: {
-    color: red900Dark,
+    color: grey700Dark,
     onColor: white,
   },
   light: {
-    color: red900Light,
+    color: grey700Light,
     onColor: black,
   },
   normal: {
-    color: red900,
-    onColor: black,
+    color: grey700,
+    onColor: white,
   },
 };
 
 const regularUncontainedBaseColor: PaletteColor = {
   dark: {
-    color: red900Dark,
-    onColor: red900Dark,
+    color: grey700Dark,
+    onColor: grey700Dark,
   },
   light: {
-    color: red900Light,
-    onColor: red900Light,
+    color: grey700Light,
+    onColor: grey700Light,
   },
   normal: {
-    color: red900,
-    onColor: red900,
+    color: grey700,
+    onColor: grey700,
   },
 };
 
-export const mdRed900: MaterialPaletteColorItem = {
+export const mdGrey700: MaterialPaletteColorItem = {
   color: {
     inverted: {
       contained: createPaletteColorInteraction({
@@ -73,7 +73,7 @@ export const mdRed900: MaterialPaletteColorItem = {
       uncontained: createPaletteColorInteraction({
         baseColor: fromOnColorOnlyPaletteColor(regularContainedBaseColor),
         colorVariantFactory: createUncontainedPaletteColorVariant,
-        disabledColor: disabledGrey500_500_700,
+        disabledColor: disabledGrey600_500_600,
       }),
     },
     regular: {
@@ -89,6 +89,6 @@ export const mdRed900: MaterialPaletteColorItem = {
       }),
     },
   },
-  name: 'Red',
-  tone: '900',
+  name: 'Grey',
+  tone: '700',
 };
