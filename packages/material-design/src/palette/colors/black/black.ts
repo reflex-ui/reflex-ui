@@ -25,7 +25,14 @@ import { disabledGrey500 } from '../disabled/uncontained/disabledGrey500';
 // tslint:disable-next-line:max-line-length
 import { disabledGrey600_500_600 } from '../disabled/uncontained/disabledGrey600_500_600';
 import { MaterialPaletteColorItem } from '../MaterialPaletteColorItem';
-import { white } from '../white/white';
+
+/*
+ * This is the simplest way (for this specific case) to avoid
+ * circular dependency, since black depends on white,
+ * and white depends on black.
+*/
+const white = '#fff';
+/**/
 
 export const black = '#000';
 
