@@ -142,6 +142,7 @@ export const handleButtonIcon = (
   });
 
   const iconProps: OptionalSuperIconProps = {
+    colorTheme: data.props.colorTheme,
     getSubProps: () => ({
       icon: {
         ...getSubProps<ButtonProps, TextProps, TextStyle>({
