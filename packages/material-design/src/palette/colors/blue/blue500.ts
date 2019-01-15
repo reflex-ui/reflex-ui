@@ -92,5 +92,3 @@ export const mdBlue500: MaterialPaletteColorItem = {
   name: 'Blue',
   tone: '500',
 };
-
-console.log('mdBlue500: ', mdBlue500);
