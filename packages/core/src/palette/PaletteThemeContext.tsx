@@ -6,9 +6,10 @@
  */
 
 import * as React from 'react';
+
+import { defaultPaletteTheme } from './defaultPaletteTheme';
 import { PaletteTheme } from './PaletteTheme';
-import { whiteBlackPaletteTheme } from './whiteBlackPaletteTheme';
 
 export const PaletteThemeContext = React.createContext<PaletteTheme>(
-  whiteBlackPaletteTheme,
+  defaultPaletteTheme,
 );

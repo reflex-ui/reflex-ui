@@ -151,7 +151,7 @@ const whitePaletteColorArrangement: PaletteColorArrangement = {
   },
 };
 
-export const whiteBlackPaletteTheme: PaletteTheme = {
+export const defaultPaletteTheme: PaletteTheme = {
   background: whitePaletteColorArrangement,
   error: whitePaletteColorArrangement,
   primary: whitePaletteColorArrangement,
