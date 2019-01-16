@@ -13,4 +13,4 @@ export const getButtonVariantColorTheme = (
 ): ColorTheme =>
   variant === ButtonVariant.FAB || variant === ButtonVariant.XFAB
     ? ColorTheme.SECONDARY_NORMAL
-    : ColorTheme.PRIMARY_NORMAL_INVERTED;
+    : ColorTheme.PRIMARY_NORMAL;
