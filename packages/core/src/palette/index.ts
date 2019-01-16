@@ -25,5 +25,5 @@ export * from './PaletteColorVariantFactoryConfig';
 export * from './PaletteTheme';
 export * from './PaletteThemeContext';
 export * from './PaletteThemeProps';
-export * from './purpleTealPaletteTheme';
 export * from './ThemedColorGetter';
+export * from './whiteBlackPaletteTheme';

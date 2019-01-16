@@ -8,7 +8,7 @@
 import merge from 'lodash/merge';
 
 import { OptionalPaletteTheme, PaletteTheme } from './PaletteTheme';
-import { purpleTealPaletteTheme } from './purpleTealPaletteTheme';
+import { whiteBlackPaletteTheme } from './whiteBlackPaletteTheme';
 
 export const createPaletteTheme = (theme: OptionalPaletteTheme): PaletteTheme =>
-  merge({}, purpleTealPaletteTheme, theme);
+  merge({}, whiteBlackPaletteTheme, theme);
