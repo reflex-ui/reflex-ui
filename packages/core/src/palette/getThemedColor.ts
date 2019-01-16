@@ -38,11 +38,7 @@ export const getThemedColor: ThemedColorGetter = ({
     // type 'PaletteTheme' has no index signature.ts(7017)
     paletteTheme[colorThemeNames[0]];
 
-  const isInverted =
-    (colorThemeNames.length > 2 && colorThemeNames[2] === 'inverted') ||
-    invertColor;
-
-  const colorTargetContainment: PaletteColorContainment = isInverted
+  const colorTargetContainment: PaletteColorContainment = invertColor
     ? colorTargetArrangement.inverted
     : colorTargetArrangement.regular;
 
