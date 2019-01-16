@@ -22,9 +22,9 @@ import {
 } from '../../createUncontainedPaletteColorVariant';
 import { black } from '../black/black';
 import { disabledGrey300_500 } from '../disabled/contained/disabledGrey300_500';
-import { disabledGrey500 } from '../disabled/uncontained/disabledGrey500';
 // tslint:disable-next-line:max-line-length
 import { disabledGrey400_500_600 } from '../disabled/uncontained/disabledGrey400_500_600';
+import { disabledGrey500 } from '../disabled/uncontained/disabledGrey500';
 import { MaterialPaletteColorItem } from '../MaterialPaletteColorItem';
 import { white } from '../white/white';
 
