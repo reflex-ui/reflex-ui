@@ -7,8 +7,8 @@
 
 import { PaletteTheme } from '@reflex-ui/core';
 
-import { mdDeepPurple500 } from '../colors/deepPurple';
-import { mdTealA700 } from '../colors/teal';
+import { mdDeepPurple500 } from '../colors/deepPurple/mdDeepPurple500';
+import { mdTealA700 } from '../colors/teal/mdTealA700';
 import { createPaletteTheme } from './createPaletteTheme';
 import { defaultPaletteTheme } from './defaultPaletteTheme';
 

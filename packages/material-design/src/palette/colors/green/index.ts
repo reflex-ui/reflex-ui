@@ -6,3 +6,4 @@
  */
 
 export * from './green800';
+export * from './mdGreen800';

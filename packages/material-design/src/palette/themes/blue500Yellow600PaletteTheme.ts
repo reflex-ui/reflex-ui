@@ -7,9 +7,9 @@
 
 import { PaletteTheme } from '@reflex-ui/core';
 
-import { mdBlue500 } from '../colors/blue';
-import { mdOrange600 } from '../colors/orange';
-import { mdYellow600 } from '../colors/yellow';
+import { mdBlue500 } from '../colors/blue/mdBlue500';
+import { mdOrange600 } from '../colors/orange/mdOrange600';
+import { mdYellow600 } from '../colors/yellow/mdYellow600';
 import { createPaletteTheme } from './createPaletteTheme';
 import { defaultPaletteTheme } from './defaultPaletteTheme';
 

@@ -6,3 +6,4 @@
  */
 
 export * from './black';
+export * from './mdBlack';

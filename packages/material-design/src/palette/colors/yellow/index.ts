@@ -5,4 +5,5 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+export * from './mdYellow600';
 export * from './yellow600';

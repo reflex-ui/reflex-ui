@@ -5,4 +5,5 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+export * from './mdRed900';
 export * from './red900';

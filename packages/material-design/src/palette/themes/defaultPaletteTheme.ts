@@ -7,10 +7,10 @@
 
 import { PaletteTheme } from '@reflex-ui/core';
 
-import { mdGreen800 } from '../colors/green';
-import { mdRed900 } from '../colors/red';
-import { mdWhite } from '../colors/white/white';
-import { mdYellow600 } from '../colors/yellow';
+import { mdGreen800 } from '../colors/green/mdGreen800';
+import { mdRed900 } from '../colors/red/mdRed900';
+import { mdWhite } from '../colors/white/mdWhite';
+import { mdYellow600 } from '../colors/yellow/mdYellow600';
 
 export const defaultPaletteTheme: PaletteTheme = {
   background: mdWhite.color,

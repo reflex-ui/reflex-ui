@@ -6,3 +6,4 @@
  */
 
 export * from './deepPurple500';
+export * from './mdDeepPurple500';
