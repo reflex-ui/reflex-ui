@@ -14,7 +14,7 @@ const black = '#000';
 const transparent = 'transparent';
 const white = '#fff';
 
-const disabledPaletteColor: PaletteColor = {
+const disabledContainedPaletteColor: PaletteColor = {
   dark: {
     color: '#e0e0e0',
     onColor: '#9e9e9e',
@@ -29,8 +29,23 @@ const disabledPaletteColor: PaletteColor = {
   },
 };
 
+const disabledUncontainedPaletteColor: PaletteColor = {
+  dark: {
+    color: transparent,
+    onColor: '#9e9e9e',
+  },
+  light: {
+    color: transparent,
+    onColor: '#9e9e9e',
+  },
+  normal: {
+    color: transparent,
+    onColor: '#9e9e9e',
+  },
+};
+
 const whiteRegularContainedColorInteraction: InteractivityPaletteColor = {
-  disabled: disabledPaletteColor,
+  disabled: disabledContainedPaletteColor,
   enabled: {
     dark: { color: white, onColor: black },
     light: { color: white, onColor: black },
@@ -54,7 +69,7 @@ const whiteRegularContainedColorInteraction: InteractivityPaletteColor = {
 };
 
 const whiteRegularUncontainedColorInteraction: InteractivityPaletteColor = {
-  disabled: disabledPaletteColor,
+  disabled: disabledUncontainedPaletteColor,
   enabled: {
     dark: { color: transparent, onColor: white },
     light: { color: transparent, onColor: white },
@@ -78,7 +93,7 @@ const whiteRegularUncontainedColorInteraction: InteractivityPaletteColor = {
 };
 
 const whiteInvertedContainedColorInteraction: InteractivityPaletteColor = {
-  disabled: disabledPaletteColor,
+  disabled: disabledContainedPaletteColor,
   enabled: {
     dark: { color: black, onColor: white },
     light: { color: black, onColor: white },
@@ -102,7 +117,7 @@ const whiteInvertedContainedColorInteraction: InteractivityPaletteColor = {
 };
 
 const whiteInvertedUncontainedColorInteraction: InteractivityPaletteColor = {
-  disabled: disabledPaletteColor,
+  disabled: disabledUncontainedPaletteColor,
   enabled: {
     dark: { color: transparent, onColor: black },
     light: { color: transparent, onColor: black },
