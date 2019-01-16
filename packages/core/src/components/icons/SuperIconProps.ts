@@ -18,6 +18,7 @@ export interface SuperIconProps
   readonly children?: React.ReactNode;
   readonly color?: string;
   readonly getSubProps?: SuperIconSubPropsGetter;
+  readonly invertColor?: boolean;
   readonly skipContainer?: boolean;
   readonly theme: SuperIconTheme;
 }

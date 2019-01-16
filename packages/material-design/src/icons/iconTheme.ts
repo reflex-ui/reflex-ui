@@ -63,14 +63,11 @@ export const superIconIconSizedStyle: { [key in Size]: TextStyle } = {
   xsmall: { fontSize: 12 },
 };
 
-export const getSuperIconIconStyle: TextStyleGetter<SuperIconProps> = ({
-  color,
-  colorTheme,
-  paletteTheme,
-  size,
-}) => ({
-  ...superIconIconSizedStyle[size],
-  color: color ? color : getThemedColor({ colorTheme, paletteTheme }),
+export const getSuperIconIconStyle: TextStyleGetter<
+  SuperIconProps
+> = props => ({
+  ...superIconIconSizedStyle[props.size],
+  color: props.color ? props.color : getThemedColor(props),
   ...Platform.select<TextStyle>({
     web: {
       userSelect: 'none',
