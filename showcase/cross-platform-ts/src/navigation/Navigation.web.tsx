@@ -14,6 +14,7 @@ import {
   ContainedShapedButtonShowcaseScreen,
   DefaultAppBarScreen,
   DefaultButtonShowcaseScreen,
+  FabButtonShowcaseScreen,
   HighlightedButtonShowcaseScreen,
   IconButtonShowcaseScreen,
   OutlinedButtonShowcaseScreen,
@@ -42,6 +43,7 @@ const AppNavigation: React.SFC = () => (
         path="/buttons/default"
         component={DefaultButtonShowcaseScreen}
       />
+      <Route exact path="/buttons/fab" component={FabButtonShowcaseScreen} />
       <Route
         exact
         path="/buttons/highlighted"

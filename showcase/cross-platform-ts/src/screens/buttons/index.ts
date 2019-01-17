@@ -10,6 +10,7 @@ export * from './ButtonShowcaseScreen';
 export * from './ContainedButtonShowcaseScreen';
 export * from './ContainedShapedButtonShowcaseScreen';
 export * from './DefaultButtonShowcaseScreen';
+export * from './FabButtonShowcaseScreen';
 export * from './HighlightedButtonShowcaseScreen';
 export * from './IconButtonCollection';
 export * from './IconButtonShowcaseScreen';

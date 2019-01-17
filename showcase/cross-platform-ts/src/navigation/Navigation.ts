@@ -12,6 +12,7 @@ import {
   ContainedShapedButtonShowcaseScreen,
   DefaultAppBarScreen,
   DefaultButtonShowcaseScreen,
+  FabButtonShowcaseScreen,
   HighlightedButtonShowcaseScreen,
   IconButtonShowcaseScreen,
   OutlinedButtonShowcaseScreen,
@@ -38,6 +39,10 @@ const registerScreens = () => {
   Navigation.registerComponent(
     'navigation.showcase.buttons.DefaultButtonShowcaseScreen',
     () => withAppLogic(DefaultButtonShowcaseScreen),
+  );
+  Navigation.registerComponent(
+    'navigation.showcase.buttons.FabButtonShowcaseScreen',
+    () => withAppLogic(FabButtonShowcaseScreen),
   );
   Navigation.registerComponent(
     'navigation.showcase.buttons.HighlightedButtonShowcaseScreen',
