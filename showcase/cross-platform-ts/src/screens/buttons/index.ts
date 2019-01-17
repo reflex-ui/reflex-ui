@@ -17,3 +17,4 @@ export * from './IconButtonShowcaseScreen';
 export * from './LabelButtonCollection';
 export * from './OutlinedButtonShowcaseScreen';
 export * from './OutlinedShapedButtonShowcaseScreen';
+export * from './XFabButtonShowcaseScreen';

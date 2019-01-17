@@ -18,6 +18,7 @@ import {
   OutlinedButtonShowcaseScreen,
   OutlinedShapedButtonShowcaseScreen,
   TypographyScreen,
+  XFabButtonShowcaseScreen,
 } from '../screens';
 import { withAppLogic } from '../withAppLogic';
 
@@ -60,6 +61,10 @@ const registerScreens = () => {
     'navigation.showcase.buttons.OutlinedShapedButtonShowcaseScreen',
     () => withAppLogic(OutlinedShapedButtonShowcaseScreen),
   );
+  Navigation.registerComponent(
+    'navigation.showcase.buttons.XFabButtonShowcaseScreen',
+    () => withAppLogic(XFabButtonShowcaseScreen),
+  );
   /* TYPOGRAPHY */
   Navigation.registerComponent(
     'navigation.showcase.typography.TypographyScreen',
@@ -77,7 +82,7 @@ export const AppNavigation = () => {
           /* APP BARS */
           // name: 'navigation.showcase.appBars.DefaultAppBarScreen',
           /* BUTTONS */
-          name: 'navigation.showcase.buttons.IconButtonShowcaseScreen',
+          name: 'navigation.showcase.buttons.XFabButtonShowcaseScreen',
           // name: 'navigation.showcase.buttons.DefaultButtonShowcaseScreen',
           // name: 'navigation.showcase.buttons.OutlinedButtonShowcaseScreen',
           /*name:

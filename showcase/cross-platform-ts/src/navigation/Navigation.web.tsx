@@ -20,6 +20,7 @@ import {
   OutlinedButtonShowcaseScreen,
   OutlinedShapedButtonShowcaseScreen,
   TypographyScreen,
+  XFabButtonShowcaseScreen,
 } from '../screens';
 
 const navigator = createBrowserHistory();
@@ -60,6 +61,7 @@ const AppNavigation: React.SFC = () => (
         path="/buttons/outlined-shaped"
         component={OutlinedShapedButtonShowcaseScreen}
       />
+      <Route exact path="/buttons/xfab" component={XFabButtonShowcaseScreen} />
       <Route exact path="/typography" component={TypographyScreen} />
       <Redirect from="/*" to="/buttons/default" />
     </Switch>
