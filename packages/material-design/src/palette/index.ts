@@ -9,6 +9,4 @@ export * from './ColorByInteractivityData';
 export * from './colors';
 export * from './getInlayColorByInteractivity';
 export * from './getOverlayColorByInteractivity';
-export * from './getThemedOverlayColorByInteractivity';
-export * from './ThemedColorByInteractivityData';
 export * from './themes';

@@ -16,7 +16,6 @@ import {
 import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
-// import { getThemedOverlayColorByInteractivity } from '../../palette';
 import {
   getAllVariantsButtonContainerProps,
   getAllVariantsButtonContainerStyle,
@@ -56,14 +55,6 @@ export const getDefaultButtonContainerStyle: ViewStyleGetter<
 > = props => ({
   ...getAllVariantsButtonContainerStyle(props),
   ...defaultButtonContainerSizedStyle[props.size],
-  /*
-  backgroundColor: getThemedOverlayColorByInteractivity({
-    colorTheme: props.colorTheme,
-    interactivityType: props.interactivityState.type,
-    onColor: true,
-    paletteTheme: props.paletteTheme,
-  }),
-  */
   backgroundColor: getThemedColor({
     colorTheme: props.colorTheme,
     contained: false,
