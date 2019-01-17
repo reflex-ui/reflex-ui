@@ -8,5 +8,6 @@
 export * from './ContainedButtonShowcaseScreen';
 export * from './ContainedShapedButtonShowcaseScreen';
 export * from './DefaultButtonShowcaseScreen';
+export * from './HighlightedButtonShowcaseScreen';
 export * from './OutlinedButtonShowcaseScreen';
 export * from './OutlinedShapedButtonShowcaseScreen';

@@ -12,6 +12,7 @@ import {
   ContainedShapedButtonShowcaseScreen,
   DefaultAppBarScreen,
   DefaultButtonShowcaseScreen,
+  HighlightedButtonShowcaseScreen,
   OutlinedButtonShowcaseScreen,
   OutlinedShapedButtonShowcaseScreen,
   TypographyScreen,
@@ -38,6 +39,10 @@ const registerScreens = () => {
     () => withAppLogic(DefaultButtonShowcaseScreen),
   );
   Navigation.registerComponent(
+    'navigation.showcase.buttons.HighlightedButtonShowcaseScreen',
+    () => withAppLogic(HighlightedButtonShowcaseScreen),
+  );
+  Navigation.registerComponent(
     'navigation.showcase.buttons.OutlinedButtonShowcaseScreen',
     () => withAppLogic(OutlinedButtonShowcaseScreen),
   );
@@ -62,8 +67,7 @@ export const AppNavigation = () => {
           /* APP BARS */
           // name: 'navigation.showcase.appBars.DefaultAppBarScreen',
           /* BUTTONS */
-          name:
-            'navigation.showcase.buttons.ContainedShapedButtonShowcaseScreen',
+          name: 'navigation.showcase.buttons.HighlightedButtonShowcaseScreen',
           // name: 'navigation.showcase.buttons.DefaultButtonShowcaseScreen',
           // name: 'navigation.showcase.buttons.OutlinedButtonShowcaseScreen',
           /*name:
