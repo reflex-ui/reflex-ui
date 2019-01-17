@@ -11,6 +11,7 @@ import { Redirect, Route, Router, Switch } from 'react-router-dom';
 
 import {
   ContainedButtonShowcaseScreen,
+  ContainedShapedButtonShowcaseScreen,
   DefaultAppBarScreen,
   DefaultButtonShowcaseScreen,
   OutlinedButtonShowcaseScreen,
@@ -28,6 +29,11 @@ const AppNavigation: React.SFC = () => (
         exact
         path="/buttons/contained"
         component={ContainedButtonShowcaseScreen}
+      />
+      <Route
+        exact
+        path="/buttons/contained-shaped"
+        component={ContainedShapedButtonShowcaseScreen}
       />
       <Route
         exact

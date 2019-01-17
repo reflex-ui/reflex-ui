@@ -6,6 +6,7 @@
  */
 
 export * from './ContainedButtonShowcaseScreen';
+export * from './ContainedShapedButtonShowcaseScreen';
 export * from './DefaultButtonShowcaseScreen';
 export * from './OutlinedButtonShowcaseScreen';
 export * from './OutlinedShapedButtonShowcaseScreen';

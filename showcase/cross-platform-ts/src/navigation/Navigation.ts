@@ -9,6 +9,7 @@ import { Navigation } from 'react-native-navigation';
 
 import {
   ContainedButtonShowcaseScreen,
+  ContainedShapedButtonShowcaseScreen,
   DefaultAppBarScreen,
   DefaultButtonShowcaseScreen,
   OutlinedButtonShowcaseScreen,
@@ -27,6 +28,10 @@ const registerScreens = () => {
   Navigation.registerComponent(
     'navigation.showcase.buttons.ContainedButtonShowcaseScreen',
     () => withAppLogic(ContainedButtonShowcaseScreen),
+  );
+  Navigation.registerComponent(
+    'navigation.showcase.buttons.ContainedShapedButtonShowcaseScreen',
+    () => withAppLogic(ContainedShapedButtonShowcaseScreen),
   );
   Navigation.registerComponent(
     'navigation.showcase.buttons.DefaultButtonShowcaseScreen',
@@ -57,7 +62,8 @@ export const AppNavigation = () => {
           /* APP BARS */
           // name: 'navigation.showcase.appBars.DefaultAppBarScreen',
           /* BUTTONS */
-          name: 'navigation.showcase.buttons.ContainedButtonShowcaseScreen',
+          name:
+            'navigation.showcase.buttons.ContainedShapedButtonShowcaseScreen',
           // name: 'navigation.showcase.buttons.DefaultButtonShowcaseScreen',
           // name: 'navigation.showcase.buttons.OutlinedButtonShowcaseScreen',
           /*name:

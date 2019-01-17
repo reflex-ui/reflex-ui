@@ -13,6 +13,7 @@ import {
   ColorTheme,
   InteractivityType,
   Row,
+  Surface,
 } from '@reflex-ui/core';
 import {
   disabledGrey300_500,
@@ -63,12 +64,14 @@ const OutlinedShapedButtonShowcaseScreen: React.SFC = (): JSX.Element => (
     variant={ButtonVariant.OUTLINED_SHAPED}
   >
     <Row>
-      <LabelButtonCollection
-        colorTheme={ColorTheme.SURFACE_NORMAL}
-        getSubProps={getOutlinedButtonProps}
-        title="Custom color"
-        variant={ButtonVariant.OUTLINED_SHAPED}
-      />
+      <Surface>
+        <LabelButtonCollection
+          colorTheme={ColorTheme.SURFACE_NORMAL}
+          getSubProps={getOutlinedButtonProps}
+          title="Custom color"
+          variant={ButtonVariant.OUTLINED_SHAPED}
+        />
+      </Surface>
     </Row>
   </ButtonShowcaseScreen>
 );
