@@ -15,6 +15,7 @@ import {
   FabButtonShowcaseScreen,
   HighlightedButtonShowcaseScreen,
   IconButtonShowcaseScreen,
+  IconShowcaseScreen,
   OutlinedButtonShowcaseScreen,
   OutlinedShapedButtonShowcaseScreen,
   TypographyScreen,
@@ -23,12 +24,12 @@ import {
 import { withAppLogic } from '../withAppLogic';
 
 const registerScreens = () => {
-  /* APP BARS */
+  /* APP BAR */
   Navigation.registerComponent(
     'navigation.showcase.appBars.DefaultAppBarScreen',
     () => withAppLogic(DefaultAppBarScreen),
   );
-  /* BUTTONS */
+  /* BUTTON */
   Navigation.registerComponent(
     'navigation.showcase.buttons.ContainedButtonShowcaseScreen',
     () => withAppLogic(ContainedButtonShowcaseScreen),
@@ -65,6 +66,11 @@ const registerScreens = () => {
     'navigation.showcase.buttons.XFabButtonShowcaseScreen',
     () => withAppLogic(XFabButtonShowcaseScreen),
   );
+  /* ICON */
+  Navigation.registerComponent(
+    'navigation.showcase.icons.IconShowcaseScreen',
+    () => withAppLogic(IconShowcaseScreen),
+  );
   /* TYPOGRAPHY */
   Navigation.registerComponent(
     'navigation.showcase.typography.TypographyScreen',
@@ -82,11 +88,13 @@ export const AppNavigation = () => {
           /* APP BARS */
           // name: 'navigation.showcase.appBars.DefaultAppBarScreen',
           /* BUTTONS */
-          name: 'navigation.showcase.buttons.XFabButtonShowcaseScreen',
+          // name: 'navigation.showcase.buttons.XFabButtonShowcaseScreen',
           // name: 'navigation.showcase.buttons.DefaultButtonShowcaseScreen',
           // name: 'navigation.showcase.buttons.OutlinedButtonShowcaseScreen',
           /*name:
             'navigation.showcase.buttons.OutlinedShapedButtonShowcaseScreen',*/
+          /* ICONS */
+          name: 'navigation.showcase.icon.IconShowcaseScreen',
           /* TYPOGRAPHY */
           // name: 'navigation.showcase.typography.TypographyScreen',
         },

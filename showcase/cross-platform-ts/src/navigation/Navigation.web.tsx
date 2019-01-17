@@ -17,6 +17,7 @@ import {
   FabButtonShowcaseScreen,
   HighlightedButtonShowcaseScreen,
   IconButtonShowcaseScreen,
+  IconShowcaseScreen,
   OutlinedButtonShowcaseScreen,
   OutlinedShapedButtonShowcaseScreen,
   TypographyScreen,
@@ -62,6 +63,7 @@ const AppNavigation: React.SFC = () => (
         component={OutlinedShapedButtonShowcaseScreen}
       />
       <Route exact path="/buttons/xfab" component={XFabButtonShowcaseScreen} />
+      <Route exact path="/icon" component={IconShowcaseScreen} />
       <Route exact path="/typography" component={TypographyScreen} />
       <Redirect from="/*" to="/buttons/default" />
     </Switch>
