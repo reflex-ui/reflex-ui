@@ -5,17 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { InteractivityType } from '../interactivity/InteractivityType';
-import { ColorTheme } from './ColorTheme';
-import { PaletteTheme } from './PaletteTheme';
+import { ThemedColorGetterInput } from './ThemedColorGetterInput';
 
-export type ThemedColorGetter = (
-  props: {
-    readonly colorTheme?: ColorTheme;
-    readonly contained?: boolean;
-    readonly interactivityType?: InteractivityType;
-    readonly invertColor?: boolean;
-    readonly onColor?: boolean;
-    readonly paletteTheme: PaletteTheme;
-  },
-) => string;
+export type ThemedColorGetter = (input: ThemedColorGetterInput) => string;

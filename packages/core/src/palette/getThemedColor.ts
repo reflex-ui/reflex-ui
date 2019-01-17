@@ -17,7 +17,7 @@ import { ThemedColorGetter } from './ThemedColorGetter';
 export const getThemedColor: ThemedColorGetter = ({
   colorTheme = ColorTheme.PRIMARY_NORMAL,
   contained = true,
-  interactivityType = InteractivityType.ENABLED,
+  interactivityState = { type: InteractivityType.ENABLED },
   invertColor = false,
   onColor = false,
   paletteTheme,
@@ -52,7 +52,8 @@ export const getThemedColor: ThemedColorGetter = ({
     interactivityColorTarget,
   );*/
 
-  const colorTarget: PaletteColor = colorTargetInteractivity[interactivityType];
+  const colorTarget: PaletteColor =
+    colorTargetInteractivity[interactivityState.type];
 
   // tslint:disable-next-line:no-console
   // console.log('getThemedColor() - colorTarget: ', colorTarget);

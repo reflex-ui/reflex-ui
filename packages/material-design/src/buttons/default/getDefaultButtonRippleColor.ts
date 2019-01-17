@@ -5,21 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  ButtonProps,
-  getThemedColor,
-  InteractivityType,
-} from '@reflex-ui/core';
+import { ButtonProps, getThemedColor } from '@reflex-ui/core';
 import { StyleSheet } from 'react-native';
-import { getOverlayColorByInteractivity } from '../../palette';
 
 export const getDefaultButtonRippleColor = (props: ButtonProps): string => {
-  const interactivityState = {
-    ...props.interactivityState,
-    type: InteractivityType.ENABLED,
-  };
   const textProps = props.getSubProps
-    ? props.getSubProps({ ...props, interactivityState }).text || {}
+    ? props.getSubProps(props).text || {}
     : {};
   let color = textProps.style
     ? StyleSheet.flatten(textProps.style).color
@@ -28,12 +19,12 @@ export const getDefaultButtonRippleColor = (props: ButtonProps): string => {
   if (!color) {
     color = getThemedColor({
       colorTheme: props.colorTheme,
+      contained: false,
+      interactivityState: props.interactivityState,
+      invertColor: props.invertColor,
       paletteTheme: props.paletteTheme,
     });
   }
 
-  return getOverlayColorByInteractivity({
-    color,
-    type: props.interactivityState.type,
-  });
+  return color;
 };

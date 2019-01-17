@@ -17,18 +17,6 @@ import {
 import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
-/*
-// prettier-ignore
-import {
-  getThemedInlayColorByInteractivity,
-} from '../../palette/getThemedInlayColorByInteractivity';
-*/
-// prettier-ignore
-/*
-import {
-  getInlayColorByInteractivity,
-} from '../../palette/getInlayColorByInteractivity';
-*/
 import {
   getAllVariantsButtonContainerProps,
   getAllVariantsButtonContainerStyle,
@@ -70,31 +58,7 @@ export const getContainedButtonContainerStyle: ViewStyleGetter<
 > = props => ({
   ...getAllVariantsButtonContainerStyle(props),
   ...containedButtonContainerSizedStyle[props.size],
-  /*
-  backgroundColor: getThemedInlayColorByInteractivity({
-    colorTheme: props.colorTheme,
-    interactivityType: props.interactivityState.type,
-    onColor: true,
-    paletteTheme: props.paletteTheme,
-  }),
-  */
-  /*
-  backgroundColor: getInlayColorByInteractivity({
-    color: getThemedColor({
-      colorTheme: props.colorTheme,
-      interactivityType: props.interactivityState.type,
-      onColor: props.interactivityState.type !== InteractivityType.DISABLED,
-      paletteTheme: props.paletteTheme,
-    }),
-    type: props.interactivityState.type,
-  }),
-  */
-  backgroundColor: getThemedColor({
-    colorTheme: props.colorTheme,
-    interactivityType: props.interactivityState.type,
-    invertColor: props.invertColor,
-    paletteTheme: props.paletteTheme,
-  }),
+  backgroundColor: getThemedColor(props),
 });
 
 export const containedButtonContainerTheme: InjectableSubTheme<

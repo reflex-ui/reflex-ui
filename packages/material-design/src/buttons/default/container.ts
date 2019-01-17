@@ -67,7 +67,7 @@ export const getDefaultButtonContainerStyle: ViewStyleGetter<
   backgroundColor: getThemedColor({
     colorTheme: props.colorTheme,
     contained: false,
-    interactivityType: props.interactivityState.type,
+    interactivityState: props.interactivityState,
     invertColor: props.invertColor,
     paletteTheme: props.paletteTheme,
   }),

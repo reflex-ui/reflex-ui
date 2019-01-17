@@ -26,10 +26,9 @@ export const getContainedButtonTextColorStyle: TextStyleGetter<ButtonProps> = ({
 }) => ({
   color: getThemedColor({
     colorTheme,
-    interactivityType: interactivityState.type,
-    // onColor: interactivityState.type === InteractivityType.DISABLED,
+    interactivityState,
+    invertColor,
     onColor: true,
-    invertColor: invertColor,
     paletteTheme,
   }),
 });

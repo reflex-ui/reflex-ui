@@ -27,3 +27,4 @@ export * from './PaletteTheme';
 export * from './PaletteThemeContext';
 export * from './PaletteThemeProps';
 export * from './ThemedColorGetter';
+export * from './ThemedColorGetterInput';

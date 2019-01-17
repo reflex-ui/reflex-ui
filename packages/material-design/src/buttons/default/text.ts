@@ -28,9 +28,8 @@ export const getDefaultButtonTextColorStyle: TextStyleGetter<ButtonProps> = ({
   color: getThemedColor({
     colorTheme,
     contained: false,
-    interactivityType: interactivityState.type,
+    interactivityState,
     invertColor,
-    // onColor: interactivityState.type === InteractivityType.DISABLED,
     onColor: true,
     paletteTheme,
   }),

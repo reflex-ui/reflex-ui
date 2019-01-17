@@ -5,11 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ColorTheme, InteractivityType, PaletteTheme } from '@reflex-ui/core';
+import { ColorTheme, InteractivityState, PaletteTheme } from '@reflex-ui/core';
 
 export interface ThemedColorByInteractivityData {
   readonly colorTheme: ColorTheme;
-  readonly interactivityType: InteractivityType;
+  readonly interactivityState: InteractivityState;
   readonly onColor?: boolean;
   readonly paletteTheme: PaletteTheme;
 }
