@@ -50,7 +50,22 @@ export const getInlayColorByInteractivity = ({
     }
   }
 
-  if (rgbColor.luminosity() < 0.02) return rgbColor.fade(rate).toString();
+  /*
+   * lighten() doesn't work on black color (it returns black),
+   * so this condition is added specially to fix that.
+   * Using rgbColor.fade(rate) here works well when we are using it
+   * to replace the original target element's background color
+   * by the new one, but it doesn't work well when using this color
+   * in an overlay element, like we do with the ripple effect,
+   * since fade() doesn't return a fully opaque color,
+   * but one with some transparency.
+   * So we opt for mix() here, which returns a fully
+   * opaque color that works well on both cases.
+   */
+  if (luminosity < 0.02) {
+    return rgbColor.mix(Color.rgb('#fff'), rate / 1.5).toString();
+  }
+  /**/
 
   return rgbColor.isLight()
     ? rgbColor.darken(rate).toString()
