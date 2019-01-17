@@ -54,5 +54,6 @@
     "react-dom": "^16.4.2",
     "react-native": "0.56.0",
     "react-native-web": "^0.8.9"
-  }
+  },
+  "sideEffects": false
 }
