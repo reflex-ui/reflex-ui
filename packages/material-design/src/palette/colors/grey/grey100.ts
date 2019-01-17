@@ -5,8 +5,22 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { PaletteColor } from '@reflex-ui/core';
+
+import { black } from '../black/black';
 import { white } from '../white/white';
 
-export const grey100 = '#f5f5f5';
-export const grey100Dark = '#c2c2c2';
-export const grey100Light = white;
+export const grey100: PaletteColor = {
+  dark: {
+    color: '#c2c2c2',
+    onColor: black,
+  },
+  light: {
+    color: white,
+    onColor: black,
+  },
+  normal: {
+    color: '#f5f5f5',
+    onColor: black,
+  },
+};

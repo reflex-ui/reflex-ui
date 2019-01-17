@@ -17,8 +17,8 @@ export const createContainedPaletteColorVariant: PaletteColorVariantFactory = (
   config: PaletteColorVariantFactoryConfig,
 ): PaletteColorVariant => ({
   color: getInlayColorByInteractivity({
-    color: config.baseColor.color,
+    color: config.color.color,
     type: config.interactivityType,
   }),
-  onColor: config.baseColor.onColor,
+  onColor: config.color.onColor,
 });

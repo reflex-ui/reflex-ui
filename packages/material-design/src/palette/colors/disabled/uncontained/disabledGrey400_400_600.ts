@@ -15,14 +15,14 @@ import { transparent } from '../../transparent';
 export const disabledGrey400_400_600: PaletteColor = {
   dark: {
     color: transparent,
-    onColor: grey400,
+    onColor: grey400.normal.color,
   },
   light: {
     color: transparent,
-    onColor: grey600,
+    onColor: grey600.normal.color,
   },
   normal: {
     color: transparent,
-    onColor: grey400,
+    onColor: grey400.normal.color,
   },
 };

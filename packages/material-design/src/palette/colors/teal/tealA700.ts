@@ -5,6 +5,21 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export const tealA700 = '#00bfa5';
-export const tealA700Dark = '#008e76';
-export const tealA700Light = '#5df2d6';
+import { PaletteColor } from '@reflex-ui/core';
+
+import { black } from '../black/black';
+
+export const tealA700: PaletteColor = {
+  dark: {
+    color: '#008e76',
+    onColor: black,
+  },
+  light: {
+    color: '#5df2d6',
+    onColor: black,
+  },
+  normal: {
+    color: '#00bfa5',
+    onColor: black,
+  },
+};

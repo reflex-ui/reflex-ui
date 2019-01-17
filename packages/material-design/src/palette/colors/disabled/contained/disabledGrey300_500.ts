@@ -13,15 +13,15 @@ import { grey500 } from '../../grey/grey500';
 // tslint:disable-next-line:variable-name
 export const disabledGrey300_500: PaletteColor = {
   dark: {
-    color: grey300,
-    onColor: grey500,
+    color: grey300.normal.color,
+    onColor: grey500.normal.color,
   },
   light: {
-    color: grey300,
-    onColor: grey500,
+    color: grey300.normal.color,
+    onColor: grey500.normal.color,
   },
   normal: {
-    color: grey300,
-    onColor: grey500,
+    color: grey300.normal.color,
+    onColor: grey500.normal.color,
   },
 };

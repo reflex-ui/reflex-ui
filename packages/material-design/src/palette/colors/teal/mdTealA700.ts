@@ -7,79 +7,44 @@
 
 import {
   createPaletteColorInteraction,
-  fromOnColorOnlyPaletteColor,
+  createPaletteColorUsingColorOnly,
+  createPaletteColorUsingOnColorOnly,
   invertPaletteColor,
-  PaletteColor,
 } from '@reflex-ui/core';
 
-// prettier-ignore
-import {
-  createContainedPaletteColorVariant,
-} from '../../createContainedPaletteColorVariant';
-// prettier-ignore
-import {
-  createUncontainedPaletteColorVariant,
-} from '../../createUncontainedPaletteColorVariant';
-import { black } from '../black/black';
+// tslint:disable-next-line:max-line-length
+import { createContainedPaletteColorVariant } from '../../createContainedPaletteColorVariant';
+// tslint:disable-next-line:max-line-length
+import { createUncontainedPaletteColorVariant } from '../../createUncontainedPaletteColorVariant';
 import { disabledGrey300_500 } from '../disabled/contained/disabledGrey300_500';
 import { disabledGrey500 } from '../disabled/uncontained/disabledGrey500';
 // tslint:disable-next-line:max-line-length
 import { disabledGrey600_400_600 } from '../disabled/uncontained/disabledGrey600_400_600';
 import { MaterialPaletteColorItem } from '../MaterialPaletteColorItem';
-import { tealA700, tealA700Dark, tealA700Light } from './tealA700';
-
-const regularContainedBaseColor: PaletteColor = {
-  dark: {
-    color: tealA700Dark,
-    onColor: black,
-  },
-  light: {
-    color: tealA700Light,
-    onColor: black,
-  },
-  normal: {
-    color: tealA700,
-    onColor: black,
-  },
-};
-
-const regularUncontainedBaseColor: PaletteColor = {
-  dark: {
-    color: tealA700Dark,
-    onColor: tealA700Dark,
-  },
-  light: {
-    color: tealA700Light,
-    onColor: tealA700Light,
-  },
-  normal: {
-    color: tealA700,
-    onColor: tealA700,
-  },
-};
+import { tealA700 } from './tealA700';
 
 export const mdTealA700: MaterialPaletteColorItem = {
   color: {
     inverted: {
       contained: createPaletteColorInteraction({
-        baseColor: invertPaletteColor(regularContainedBaseColor),
+        color: invertPaletteColor(tealA700),
         colorVariantFactory: createContainedPaletteColorVariant,
         disabledColor: disabledGrey300_500,
       }),
       uncontained: createPaletteColorInteraction({
-        baseColor: fromOnColorOnlyPaletteColor(regularContainedBaseColor),
+        color: createPaletteColorUsingOnColorOnly(tealA700),
         colorVariantFactory: createUncontainedPaletteColorVariant,
         disabledColor: disabledGrey600_400_600,
       }),
     },
     regular: {
       contained: createPaletteColorInteraction({
-        baseColor: regularContainedBaseColor,
+        color: tealA700,
         colorVariantFactory: createContainedPaletteColorVariant,
         disabledColor: disabledGrey300_500,
       }),
       uncontained: createPaletteColorInteraction({
-        baseColor: regularUncontainedBaseColor,
+        color: createPaletteColorUsingColorOnly(tealA700),
         colorVariantFactory: createUncontainedPaletteColorVariant,
         disabledColor: disabledGrey500,
       }),

@@ -7,78 +7,43 @@
 
 import {
   createPaletteColorInteraction,
-  fromOnColorOnlyPaletteColor,
+  createPaletteColorUsingColorOnly,
+  createPaletteColorUsingOnColorOnly,
   invertPaletteColor,
-  PaletteColor,
 } from '@reflex-ui/core';
 
-// prettier-ignore
-import {
-  createContainedPaletteColorVariant,
-} from '../../createContainedPaletteColorVariant';
-// prettier-ignore
-import {
-  createUncontainedPaletteColorVariant,
-} from '../../createUncontainedPaletteColorVariant';
-import { black } from '../black/black';
+// tslint:disable-next-line:max-line-length
+import { createContainedPaletteColorVariant } from '../../createContainedPaletteColorVariant';
+// tslint:disable-next-line:max-line-length
+import { createUncontainedPaletteColorVariant } from '../../createUncontainedPaletteColorVariant';
 import { disabledGrey300_500 } from '../disabled/contained/disabledGrey300_500';
 import { disabledGrey500 } from '../disabled/uncontained/disabledGrey500';
 import { disabledGrey600 } from '../disabled/uncontained/disabledGrey600';
 import { MaterialPaletteColorItem } from '../MaterialPaletteColorItem';
-import { yellow600, yellow600Dark, yellow600Light } from './yellow600';
-
-const regularContainedBaseColor: PaletteColor = {
-  dark: {
-    color: yellow600Dark,
-    onColor: black,
-  },
-  light: {
-    color: yellow600Light,
-    onColor: black,
-  },
-  normal: {
-    color: yellow600,
-    onColor: black,
-  },
-};
-
-const regularUncontainedBaseColor: PaletteColor = {
-  dark: {
-    color: yellow600Dark,
-    onColor: yellow600Dark,
-  },
-  light: {
-    color: yellow600Light,
-    onColor: yellow600Light,
-  },
-  normal: {
-    color: yellow600,
-    onColor: yellow600,
-  },
-};
+import { yellow600 } from './yellow600';
 
 export const mdYellow600: MaterialPaletteColorItem = {
   color: {
     inverted: {
       contained: createPaletteColorInteraction({
-        baseColor: invertPaletteColor(regularContainedBaseColor),
+        color: invertPaletteColor(yellow600),
         colorVariantFactory: createContainedPaletteColorVariant,
         disabledColor: disabledGrey300_500,
       }),
       uncontained: createPaletteColorInteraction({
-        baseColor: fromOnColorOnlyPaletteColor(regularContainedBaseColor),
+        color: createPaletteColorUsingOnColorOnly(yellow600),
         colorVariantFactory: createUncontainedPaletteColorVariant,
         disabledColor: disabledGrey600,
       }),
     },
     regular: {
       contained: createPaletteColorInteraction({
-        baseColor: regularContainedBaseColor,
+        color: yellow600,
         colorVariantFactory: createContainedPaletteColorVariant,
         disabledColor: disabledGrey300_500,
       }),
       uncontained: createPaletteColorInteraction({
-        baseColor: regularUncontainedBaseColor,
+        color: createPaletteColorUsingColorOnly(yellow600),
         colorVariantFactory: createUncontainedPaletteColorVariant,
         disabledColor: disabledGrey500,
       }),
