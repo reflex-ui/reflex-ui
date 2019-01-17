@@ -94,7 +94,7 @@ export const AppNavigation = () => {
           /*name:
             'navigation.showcase.buttons.OutlinedShapedButtonShowcaseScreen',*/
           /* ICONS */
-          name: 'navigation.showcase.icon.IconShowcaseScreen',
+          name: 'navigation.showcase.icons.IconShowcaseScreen',
           /* TYPOGRAPHY */
           // name: 'navigation.showcase.typography.TypographyScreen',
         },
