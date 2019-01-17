@@ -18,22 +18,22 @@ export const createPaletteColorInteraction = (
 ): InteractivityPaletteColor => ({
   disabled: config.disabledColor,
   enabled: createPaletteColor({
-    baseColor: config.baseColor,
+    color: config.color,
     colorVariantFactory: config.colorVariantFactory,
     interactivityType: InteractivityType.ENABLED,
   }),
   focused: createPaletteColor({
-    baseColor: config.baseColor,
+    color: config.color,
     colorVariantFactory: config.colorVariantFactory,
     interactivityType: InteractivityType.FOCUSED,
   }),
   hovered: createPaletteColor({
-    baseColor: config.baseColor,
+    color: config.color,
     colorVariantFactory: config.colorVariantFactory,
     interactivityType: InteractivityType.HOVERED,
   }),
   pressed: createPaletteColor({
-    baseColor: config.baseColor,
+    color: config.color,
     colorVariantFactory: config.colorVariantFactory,
     interactivityType: InteractivityType.PRESSED,
   }),

@@ -7,7 +7,9 @@
 
 import { PaletteColor } from './PaletteColor';
 
-export const fromOnColorOnlyPaletteColor = (paletteColor: PaletteColor) => ({
+export const createPaletteColorUsingOnColorOnly = (
+  paletteColor: PaletteColor,
+) => ({
   dark: {
     color: paletteColor.dark.onColor,
     onColor: paletteColor.dark.onColor,

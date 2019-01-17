@@ -9,6 +9,6 @@ import { InteractivityType } from '../interactivity/InteractivityType';
 import { PaletteColorVariant } from './PaletteColorVariant';
 
 export interface PaletteColorVariantFactoryConfig {
-  readonly baseColor: PaletteColorVariant;
+  readonly color: PaletteColorVariant;
   readonly interactivityType: InteractivityType;
 }

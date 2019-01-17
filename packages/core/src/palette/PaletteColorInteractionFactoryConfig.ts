@@ -9,7 +9,7 @@ import { PaletteColor } from './PaletteColor';
 import { PaletteColorVariantFactory } from './PaletteColorVariantFactory';
 
 export interface PaletteColorInteractionFactoryConfig {
-  readonly baseColor: PaletteColor;
+  readonly color: PaletteColor;
   readonly colorVariantFactory: PaletteColorVariantFactory;
   readonly disabledColor: PaletteColor;
 }

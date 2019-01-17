@@ -12,15 +12,15 @@ export const createPaletteColor = (
   config: PaletteColorFactoryConfig,
 ): PaletteColor => ({
   dark: config.colorVariantFactory({
-    baseColor: config.baseColor.dark,
+    color: config.color.dark,
     interactivityType: config.interactivityType,
   }),
   light: config.colorVariantFactory({
-    baseColor: config.baseColor.light,
+    color: config.color.light,
     interactivityType: config.interactivityType,
   }),
   normal: config.colorVariantFactory({
-    baseColor: config.baseColor.normal,
+    color: config.color.normal,
     interactivityType: config.interactivityType,
   }),
 });
