@@ -24,7 +24,7 @@ import * as React from 'react';
 import { ButtonShowcaseScreen } from './ButtonShowcaseScreen';
 import { LabelButtonCollection } from './LabelButtonCollection';
 
-const getDefaultButtonProps: ButtonSubPropsGetter = (
+const getButtonProps: ButtonSubPropsGetter = (
   props: ButtonProps,
 ): ButtonSubProps => {
   const subProps: ButtonSubProps = {
@@ -63,7 +63,7 @@ const DefaultButtonShowcaseScreen: React.SFC = (): JSX.Element => (
       <Surface>
         <LabelButtonCollection
           colorTheme={ColorTheme.PRIMARY_NORMAL}
-          getSubProps={getDefaultButtonProps}
+          getSubProps={getButtonProps}
           title="Custom color"
           variant={ButtonVariant.DEFAULT}
         />

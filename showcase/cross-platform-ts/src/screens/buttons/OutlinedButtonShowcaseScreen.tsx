@@ -24,7 +24,7 @@ import * as React from 'react';
 import { ButtonShowcaseScreen } from './ButtonShowcaseScreen';
 import { LabelButtonCollection } from './LabelButtonCollection';
 
-const getOutlinedButtonProps: ButtonSubPropsGetter = (
+const getButtonProps: ButtonSubPropsGetter = (
   props: ButtonProps,
 ): ButtonSubProps => {
   const subProps: ButtonSubProps = {
@@ -67,7 +67,7 @@ const OutlinedButtonShowcaseScreen: React.SFC = (): JSX.Element => (
       <Surface>
         <LabelButtonCollection
           colorTheme={ColorTheme.SURFACE_NORMAL}
-          getSubProps={getOutlinedButtonProps}
+          getSubProps={getButtonProps}
           title="Custom color"
           variant={ButtonVariant.OUTLINED}
         />

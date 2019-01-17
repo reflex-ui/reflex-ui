@@ -24,7 +24,7 @@ import * as React from 'react';
 import { ButtonShowcaseScreen } from './ButtonShowcaseScreen';
 import { LabelButtonCollection } from './LabelButtonCollection';
 
-const getContainedButtonProps: ButtonSubPropsGetter = (
+const getButtonProps: ButtonSubPropsGetter = (
   props: ButtonProps,
 ): ButtonSubProps => ({
   container: {
@@ -51,7 +51,7 @@ const ContainedButtonShowcaseScreen: React.SFC = (): JSX.Element => (
       <Surface>
         <LabelButtonCollection
           colorTheme={ColorTheme.SURFACE_NORMAL}
-          getSubProps={getContainedButtonProps}
+          getSubProps={getButtonProps}
           title="Custom color"
           variant={ButtonVariant.CONTAINED}
         />
