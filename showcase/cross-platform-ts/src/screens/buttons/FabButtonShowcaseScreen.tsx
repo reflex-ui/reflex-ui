@@ -52,7 +52,7 @@ const getButtonProps: ButtonSubPropsGetter = (
 const FabButtonShowcaseScreen: React.SFC = (): JSX.Element => (
   <ButtonShowcaseScreen
     ButtonCollection={IconButtonCollection}
-    title="Button: Icon"
+    title="Button: Fab"
     variant={ButtonVariant.FAB}
   >
     <Row>
