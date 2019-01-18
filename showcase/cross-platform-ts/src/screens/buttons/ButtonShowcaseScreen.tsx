@@ -79,55 +79,37 @@ const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
       <AppBarTitle numberOfLines={1}>{title}</AppBarTitle>
     </AppBar>
     <Column marginTop={Size.M}>
-      {({ breakpoints, layoutRectangle }) => (
-        <React.Fragment>
-          {colorThemes.map(colorTheme => (
-            <Row
-              key={colorTheme}
-              marginVertical={
-                layoutRectangle &&
-                layoutRectangle.width > breakpoints.largeHandset
-                  ? Size.M
-                  : Size.XS
-              }
-            >
-              <Surface
-                marginStart={
-                  layoutRectangle &&
-                  layoutRectangle.width > breakpoints.largeHandset
-                    ? Size.M
-                    : Size.XS
-                }
-              >
-                <ButtonCollection
-                  colorTheme={colorTheme}
-                  onPress={onButtonPress}
-                  title={colorTheme}
-                  variant={variant}
-                />
-              </Surface>
-              <Surface
-                colorTheme={colorTheme}
-                marginStart={
-                  layoutRectangle &&
-                  layoutRectangle.width > breakpoints.largeHandset
-                    ? Size.M
-                    : Size.XS
-                }
-              >
-                <ButtonCollection
-                  colorTheme={colorTheme}
-                  invertColor
-                  onPress={onButtonPress}
-                  title={`${colorTheme} invertColor`}
-                  variant={variant}
-                />
-              </Surface>
-            </Row>
-          ))}
-          {children}
-        </React.Fragment>
-      )}
+      {({ breakpoints, dimensions }) => {
+        const marginSize =
+          dimensions.window.width > breakpoints.largeHandset ? Size.M : Size.XS;
+
+        return (
+          <React.Fragment>
+            {colorThemes.map(colorTheme => (
+              <Row key={colorTheme} marginVertical={marginSize}>
+                <Surface marginStart={marginSize}>
+                  <ButtonCollection
+                    colorTheme={colorTheme}
+                    onPress={onButtonPress}
+                    title={colorTheme}
+                    variant={variant}
+                  />
+                </Surface>
+                <Surface colorTheme={colorTheme} marginStart={marginSize}>
+                  <ButtonCollection
+                    colorTheme={colorTheme}
+                    invertColor
+                    onPress={onButtonPress}
+                    title={`${colorTheme} invertColor`}
+                    variant={variant}
+                  />
+                </Surface>
+              </Row>
+            ))}
+            {children}
+          </React.Fragment>
+        );
+      }}
     </Column>
   </ScrollView>
 );

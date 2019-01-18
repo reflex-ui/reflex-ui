@@ -49,54 +49,36 @@ const IconShowcaseScreen: React.SFC<{}> = (): JSX.Element => (
       <AppBarTitle numberOfLines={1}>Icon</AppBarTitle>
     </AppBar>
     <Column marginTop={Size.M}>
-      {({ breakpoints, layoutRectangle }) => (
-        <React.Fragment>
-          {colorThemes.map(colorTheme => (
-            <Row
-              key={colorTheme}
-              marginVertical={
-                layoutRectangle &&
-                layoutRectangle.width > breakpoints.largeHandset
-                  ? Size.M
-                  : Size.XS
-              }
-            >
-              <Surface
-                marginStart={
-                  layoutRectangle &&
-                  layoutRectangle.width > breakpoints.largeHandset
-                    ? Size.M
-                    : Size.XS
-                }
-              >
-                <IconCollection colorTheme={colorTheme} title={colorTheme} />
-              </Surface>
-              <Surface
-                colorTheme={colorTheme}
-                marginStart={
-                  layoutRectangle &&
-                  layoutRectangle.width > breakpoints.largeHandset
-                    ? Size.M
-                    : Size.XS
-                }
-              >
-                <IconCollection
-                  colorTheme={colorTheme}
-                  invertColor
-                  title={`${colorTheme} invertColor`}
-                />
-              </Surface>
+      {({ breakpoints, dimensions }) => {
+        const marginSize =
+          dimensions.window.width > breakpoints.largeHandset ? Size.M : Size.XS;
+
+        return (
+          <React.Fragment>
+            {colorThemes.map(colorTheme => (
+              <Row key={colorTheme} marginVertical={marginSize}>
+                <Surface marginStart={marginSize}>
+                  <IconCollection colorTheme={colorTheme} title={colorTheme} />
+                </Surface>
+                <Surface colorTheme={colorTheme} marginStart={marginSize}>
+                  <IconCollection
+                    colorTheme={colorTheme}
+                    invertColor
+                    title={`${colorTheme} invertColor`}
+                  />
+                </Surface>
+              </Row>
+            ))}
+            <Row>
+              <FavoriteIcon color="#c70ad0" size={Size.XS} />
+              <FavoriteIcon color="#c70ad0" size={Size.S} />
+              <FavoriteIcon color="#c70ad0" />
+              <FavoriteIcon color="#c70ad0" size={Size.L} />
+              <FavoriteIcon color="#c70ad0" size={Size.XL} />
             </Row>
-          ))}
-          <Row>
-            <FavoriteIcon color="#c70ad0" size={Size.XS} />
-            <FavoriteIcon color="#c70ad0" size={Size.S} />
-            <FavoriteIcon color="#c70ad0" />
-            <FavoriteIcon color="#c70ad0" size={Size.L} />
-            <FavoriteIcon color="#c70ad0" size={Size.XL} />
-          </Row>
-        </React.Fragment>
-      )}
+          </React.Fragment>
+        );
+      }}
     </Column>
   </ScrollView>
 );
