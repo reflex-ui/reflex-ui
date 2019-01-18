@@ -6,7 +6,7 @@
  */
 
 export * from './components';
-export * from './interactivity';
+export * from './interaction';
 export * from './margin';
 export * from './palette';
 export * from './responsiveness';

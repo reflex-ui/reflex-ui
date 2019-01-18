@@ -5,28 +5,28 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { InteractivityType } from '@reflex-ui/core';
+import { InteractionType } from '@reflex-ui/core';
 import * as Color from 'color';
-import { ColorByInteractivityData } from './ColorByInteractivityData';
+import { ColorByInteractionData } from './ColorByInteractionData';
 
-export const getOverlayColorByInteractivity = ({
+export const getOverlayColorByInteraction = ({
   color,
   type,
-}: ColorByInteractivityData): string => {
+}: ColorByInteractionData): string => {
   switch (type) {
-    case InteractivityType.DISABLED:
+    case InteractionType.DISABLED:
       return 'transparent';
-    case InteractivityType.ENABLED:
+    case InteractionType.ENABLED:
       return 'transparent';
-    case InteractivityType.FOCUSED:
+    case InteractionType.FOCUSED:
       return Color.rgb(color)
         .fade(0.81)
         .toString();
-    case InteractivityType.HOVERED:
+    case InteractionType.HOVERED:
       return Color.rgb(color)
         .fade(0.86)
         .toString();
-    case InteractivityType.PRESSED:
+    case InteractionType.PRESSED:
       return Color.rgb(color)
         .fade(0.73)
         .toString();

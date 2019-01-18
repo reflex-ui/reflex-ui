@@ -20,7 +20,7 @@ export const getDefaultButtonRippleColor = (props: ButtonProps): string => {
     color = getThemedColor({
       colorTheme: props.colorTheme,
       contained: false,
-      interactivityState: props.interactivityState,
+      interactionState: props.interactionState,
       invertColor: props.invertColor,
       paletteTheme: props.paletteTheme,
     });

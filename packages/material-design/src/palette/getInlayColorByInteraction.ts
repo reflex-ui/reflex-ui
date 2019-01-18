@@ -5,18 +5,15 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { InteractivityType } from '@reflex-ui/core';
+import { InteractionType } from '@reflex-ui/core';
 import * as Color from 'color';
-import { ColorByInteractivityData } from './ColorByInteractivityData';
+import { ColorByInteractionData } from './ColorByInteractionData';
 
-export const getInlayColorByInteractivity = ({
+export const getInlayColorByInteraction = ({
   color,
   type,
-}: ColorByInteractivityData): string => {
-  if (
-    type === InteractivityType.DISABLED ||
-    type === InteractivityType.ENABLED
-  ) {
+}: ColorByInteractionData): string => {
+  if (type === InteractionType.DISABLED || type === InteractionType.ENABLED) {
     return color;
   }
 
@@ -24,7 +21,7 @@ export const getInlayColorByInteractivity = ({
   const luminosity = rgbColor.luminosity();
   let rate;
 
-  if (type === InteractivityType.HOVERED) {
+  if (type === InteractionType.HOVERED) {
     if (luminosity > 0.97) {
       rate = 0.04;
     } else if (luminosity > 0.7 || luminosity < 0.1) {
@@ -32,7 +29,7 @@ export const getInlayColorByInteractivity = ({
     } else {
       rate = 0.08;
     }
-  } else if (type === InteractivityType.FOCUSED) {
+  } else if (type === InteractionType.FOCUSED) {
     if (luminosity > 0.97) {
       rate = 0.12;
     } else if (luminosity > 0.7 || luminosity < 0.1) {

@@ -7,12 +7,12 @@
 
 import * as React from 'react';
 
-import { withInteractivityState } from '../../interactivity';
+import { withInteractionState } from '../../interaction';
 import { OptionalButtonProps } from './ButtonProps';
 import { SimpleButton } from './SimpleButton';
 import { withDefaultButtonProps } from './withDefaultButtonProps';
 
-const Button: React.ComponentType<OptionalButtonProps> = withInteractivityState(
+const Button: React.ComponentType<OptionalButtonProps> = withInteractionState(
   withDefaultButtonProps(SimpleButton),
 );
 

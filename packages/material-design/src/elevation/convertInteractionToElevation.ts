@@ -5,15 +5,15 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { InteractivityType } from '@reflex-ui/core';
+import { InteractionType } from '@reflex-ui/core';
 import { ElevationDegree } from './ElevationDegree';
 
-export const convertInteractivityToElevation = (
-  interactivityType: InteractivityType,
+export const convertInteractionToElevation = (
+  interactionType: InteractionType,
   degree: ElevationDegree,
 ) => {
   let elevation = 0;
-  if (interactivityType === InteractivityType.ENABLED) {
+  if (interactionType === InteractionType.ENABLED) {
     if (degree === ElevationDegree.LOW) {
       elevation = 2;
     } else if (degree === ElevationDegree.MID) {
@@ -22,8 +22,8 @@ export const convertInteractivityToElevation = (
       elevation = 10;
     }
   } else if (
-    interactivityType === InteractivityType.FOCUSED ||
-    interactivityType === InteractivityType.HOVERED
+    interactionType === InteractionType.FOCUSED ||
+    interactionType === InteractionType.HOVERED
   ) {
     if (degree === ElevationDegree.LOW) {
       elevation = 4;
@@ -32,7 +32,7 @@ export const convertInteractivityToElevation = (
     } else {
       elevation = 14;
     }
-  } else if (interactivityType === InteractivityType.PRESSED) {
+  } else if (interactionType === InteractionType.PRESSED) {
     if (degree === ElevationDegree.LOW) {
       elevation = 8;
     } else if (degree === ElevationDegree.MID) {

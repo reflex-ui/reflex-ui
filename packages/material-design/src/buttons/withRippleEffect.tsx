@@ -6,9 +6,9 @@
  */
 
 import {
-  InteractivityEvent,
-  InteractivityStateProps,
-  InteractivityType,
+  InteractionEvent,
+  InteractionStateProps,
+  InteractionType,
   reflexComponent,
   SubProps,
 } from '@reflex-ui/core';
@@ -76,7 +76,7 @@ const calculateRippleDiameter: RippleDiameterCalculator = ({
 
 interface RipplePositionCalculatorData {
   readonly diameter: number;
-  readonly interactivityPosition: Position2D;
+  readonly interactionPosition: Position2D;
 }
 
 type RipplePositionCalculator = (
@@ -85,25 +85,25 @@ type RipplePositionCalculator = (
 
 const calculateRipplePosition: RipplePositionCalculator = ({
   diameter,
-  interactivityPosition,
+  interactionPosition,
 }) => ({
-  x: interactivityPosition.x - diameter / 2,
-  y: interactivityPosition.y - diameter / 2,
+  x: interactionPosition.x - diameter / 2,
+  y: interactionPosition.y - diameter / 2,
 });
 
-type InteractivityPositionGetter = (
-  interactivityEvent?: InteractivityEvent,
+type InteractionPositionGetter = (
+  interactionEvent?: InteractionEvent,
 ) => Position2D;
 
-const getInteractivityPosition: InteractivityPositionGetter = (
-  interactivityEvent?,
+const getInteractionPosition: InteractionPositionGetter = (
+  interactionEvent?,
 ) => {
   let x = 0;
   let y = 0;
 
-  if (interactivityEvent) {
-    x = (interactivityEvent as GestureResponderEvent).nativeEvent.locationX;
-    y = (interactivityEvent as GestureResponderEvent).nativeEvent.locationY;
+  if (interactionEvent) {
+    x = (interactionEvent as GestureResponderEvent).nativeEvent.locationX;
+    y = (interactionEvent as GestureResponderEvent).nativeEvent.locationY;
   }
 
   return { x, y };
@@ -143,7 +143,7 @@ const createRippleStyles: RippleStylesCreator = ({
 interface ComponentRippleStylesCreatorData {
   readonly color: string;
   readonly height: number;
-  readonly interactivityEvent?: InteractivityEvent;
+  readonly interactionEvent?: InteractionEvent;
   readonly maxDiameter: number;
   readonly style: ViewStyle;
   readonly width: number;
@@ -156,20 +156,20 @@ type ComponentRippleStylesCreator = (
 const createComponentRippleStyles: ComponentRippleStylesCreator = ({
   color,
   height,
-  interactivityEvent,
+  interactionEvent,
   maxDiameter,
   style,
   width,
 }) => {
-  const interactivityPosition = getInteractivityPosition(interactivityEvent);
+  const interactionPosition = getInteractionPosition(interactionEvent);
   const diameter = calculateRippleDiameter({
     height,
     maxDiameter,
-    posX: interactivityPosition.x,
+    posX: interactionPosition.x,
     width,
   });
 
-  const position = calculateRipplePosition({ diameter, interactivityPosition });
+  const position = calculateRipplePosition({ diameter, interactionPosition });
 
   return createRippleStyles({
     color,
@@ -185,7 +185,7 @@ interface RippleEffectSettings<P> {
   readonly getRippleColor: RippleColorGetter<P>;
 }
 
-export const withRippleEffect = <S extends InteractivityStateProps>(
+export const withRippleEffect = <S extends InteractionStateProps>(
   settings: RippleEffectSettings<S>,
 ) => <P extends SubProps<S> & ViewProps>(
   WrappedComponent: React.ComponentType<P>,
@@ -196,9 +196,9 @@ export const withRippleEffect = <S extends InteractivityStateProps>(
         props: P,
         state: RippledComponentState,
       ) {
-        const { interactivityState } = props.componentProps;
-        const interactivityType = interactivityState.type;
-        const interactivityEvent = interactivityState.event;
+        const { interactionState } = props.componentProps;
+        const interactionType = interactionState.type;
+        const interactionEvent = interactionState.event;
 
         const {
           animationKeyframe,
@@ -207,7 +207,7 @@ export const withRippleEffect = <S extends InteractivityStateProps>(
         } = state;
 
         if (
-          interactivityType === InteractivityType.PRESSED &&
+          interactionType === InteractionType.PRESSED &&
           animationKeyframe === AnimationKeyframe.PRESS_OUT &&
           !isAnimatingPressOut
         ) {
@@ -221,7 +221,7 @@ export const withRippleEffect = <S extends InteractivityStateProps>(
             rippleStyles: createComponentRippleStyles({
               color: settings.getRippleColor(props.componentProps),
               height,
-              interactivityEvent,
+              interactionEvent,
               maxDiameter,
               style: StyleSheet.flatten(props.style),
               width,
@@ -230,7 +230,7 @@ export const withRippleEffect = <S extends InteractivityStateProps>(
         }
 
         if (
-          interactivityType !== InteractivityType.PRESSED &&
+          interactionType !== InteractionType.PRESSED &&
           animationKeyframe === AnimationKeyframe.PRESS_IN &&
           !isAnimatingPressIn
         ) {

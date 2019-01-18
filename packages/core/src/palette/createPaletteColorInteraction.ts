@@ -5,36 +5,34 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { InteractivityType } from '../interactivity/InteractivityType';
+import { InteractionType } from '../interaction/InteractionType';
 import { createPaletteColor } from './createPaletteColor';
-import { InteractivityPaletteColor } from './InteractivityPaletteColor';
-// prettier-ignore
-import {
-  PaletteColorInteractionFactoryConfig,
-} from './PaletteColorInteractionFactoryConfig';
+import { PaletteColorInteraction } from './PaletteColorInteraction';
+// tslint:disable-next-line:max-line-length
+import { PaletteColorInteractionFactoryConfig } from './PaletteColorInteractionFactoryConfig';
 
 export const createPaletteColorInteraction = (
   config: PaletteColorInteractionFactoryConfig,
-): InteractivityPaletteColor => ({
+): PaletteColorInteraction => ({
   disabled: config.disabledColor,
   enabled: createPaletteColor({
     color: config.color,
     colorVariantFactory: config.colorVariantFactory,
-    interactivityType: InteractivityType.ENABLED,
+    interactionType: InteractionType.ENABLED,
   }),
   focused: createPaletteColor({
     color: config.color,
     colorVariantFactory: config.colorVariantFactory,
-    interactivityType: InteractivityType.FOCUSED,
+    interactionType: InteractionType.FOCUSED,
   }),
   hovered: createPaletteColor({
     color: config.color,
     colorVariantFactory: config.colorVariantFactory,
-    interactivityType: InteractivityType.HOVERED,
+    interactionType: InteractionType.HOVERED,
   }),
   pressed: createPaletteColor({
     color: config.color,
     colorVariantFactory: config.colorVariantFactory,
-    interactivityType: InteractivityType.PRESSED,
+    interactionType: InteractionType.PRESSED,
   }),
 });

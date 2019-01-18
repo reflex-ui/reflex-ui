@@ -6,15 +6,15 @@
  */
 
 import {
-  InteractivityPaletteColor,
-  OptionalInteractivityPaletteColor,
-} from './InteractivityPaletteColor';
+  OptionalPaletteColorInteraction,
+  PaletteColorInteraction,
+} from './PaletteColorInteraction';
 
 export interface PaletteColorContainment {
-  readonly contained: InteractivityPaletteColor;
-  readonly uncontained: InteractivityPaletteColor;
+  readonly contained: PaletteColorInteraction;
+  readonly uncontained: PaletteColorInteraction;
 }
 
 export type OptionalPaletteColorContainment = {
-  [P in keyof PaletteColorContainment]?: OptionalInteractivityPaletteColor
+  [P in keyof PaletteColorContainment]?: OptionalPaletteColorInteraction
 };

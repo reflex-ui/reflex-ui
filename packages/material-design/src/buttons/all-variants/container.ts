@@ -8,7 +8,7 @@
 import {
   ButtonProps,
   getSizedMarginStyle,
-  InteractivityType,
+  InteractionType,
   OptionalInjectableSubTheme,
   Size,
   ViewPropsGetter,
@@ -35,7 +35,7 @@ export const getAllVariantsButtonContainerStyle: ViewStyleGetter<
   ...Platform.select({
     web: {
       cursor:
-        props.interactivityState.type === InteractivityType.DISABLED
+        props.interactionState.type === InteractionType.DISABLED
           ? 'default'
           : 'pointer',
       outline: 'none',

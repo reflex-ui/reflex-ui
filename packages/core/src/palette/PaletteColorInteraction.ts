@@ -7,7 +7,7 @@
 
 import { PaletteColor } from './PaletteColor';
 
-export interface InteractivityPaletteColor {
+export interface PaletteColorInteraction {
   readonly disabled: PaletteColor;
   readonly enabled: PaletteColor;
   readonly focused: PaletteColor;
@@ -15,7 +15,7 @@ export interface InteractivityPaletteColor {
   readonly pressed: PaletteColor;
 }
 
-export interface OptionalInteractivityPaletteColor {
+export interface OptionalPaletteColorInteraction {
   readonly disabled: PaletteColor;
   readonly enabled: PaletteColor;
   readonly focused?: PaletteColor;

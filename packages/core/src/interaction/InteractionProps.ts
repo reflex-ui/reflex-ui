@@ -7,14 +7,14 @@
 
 import { TouchableWithoutFeedbackProps } from 'react-native';
 import {
-  InteractivityStateProps,
-  OptionalInteractivityStateProps,
-} from './InteractivityStateProps';
+  InteractionStateProps,
+  OptionalInteractionStateProps,
+} from './InteractionStateProps';
 
-export interface InteractivityProps
-  extends InteractivityStateProps,
+export interface InteractionProps
+  extends InteractionStateProps,
     TouchableWithoutFeedbackProps {}
 
-export interface OptionalInteractivityProps
-  extends OptionalInteractivityStateProps,
+export interface OptionalInteractionProps
+  extends OptionalInteractionStateProps,
     TouchableWithoutFeedbackProps {}

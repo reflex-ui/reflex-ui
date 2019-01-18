@@ -5,10 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { InteractivityType } from '../interactivity/InteractivityType';
+import { InteractionType } from '../interaction/InteractionType';
 import { PaletteColorVariant } from './PaletteColorVariant';
 
 export interface PaletteColorVariantFactoryConfig {
   readonly color: PaletteColorVariant;
-  readonly interactivityType: InteractivityType;
+  readonly interactionType: InteractionType;
 }

@@ -8,9 +8,9 @@
 import {
   createPaletteColorInteraction,
   createPaletteColorUsingOnColorOnly,
-  InteractivityPaletteColor,
   invertPaletteColor,
   PaletteColor,
+  PaletteColorInteraction,
 } from '@reflex-ui/core';
 
 // tslint:disable-next-line:max-line-length
@@ -41,7 +41,7 @@ const regularContainedBaseColor: PaletteColor = {
   },
 };
 
-const whiteRegularUncontainedColorInteraction: InteractivityPaletteColor = {
+const whiteRegularUncontainedColorInteraction: PaletteColorInteraction = {
   disabled: disabledGrey500,
   enabled: {
     dark: { color: transparent, onColor: white },

@@ -9,7 +9,7 @@ import {
   ButtonProps,
   DefaultViewSubcomponent,
   InjectableSubTheme,
-  InteractivityType,
+  InteractionType,
   isTouchDevice,
   rawInjectableButtonViewSubTheme,
   ViewStyleGetter,
@@ -19,7 +19,7 @@ import { ViewProps, ViewStyle } from 'react-native';
 
 import {
   ElevationDegree,
-  getLowElevationStylesByInteractivity,
+  getLowElevationStylesByInteraction,
 } from '../../elevation';
 // tslint:disable-next-line:max-line-length
 import { getContainedButtonRippleColor } from '../contained/getContainedButtonRippleColor';
@@ -32,16 +32,16 @@ export const getAnimatedRaisedButtonContainerStyle: ViewStyleGetter<
   // tslint:disable-next-line:ter-arrow-parens
 > = props => {
   const updatedProps =
-    props.interactivityState.type === InteractivityType.PRESSED
+    props.interactionState.type === InteractionType.PRESSED
       ? {
           // tslint:disable-next-line:ter-indent
           ...props,
           // tslint:disable-next-line:ter-indent
-          interactivityState: {
-            ...props.interactivityState,
+          interactionState: {
+            ...props.interactionState,
             type: isTouchDevice
-              ? InteractivityType.ENABLED
-              : InteractivityType.HOVERED,
+              ? InteractionType.ENABLED
+              : InteractionType.HOVERED,
           },
           // tslint:disable-next-line:ter-indent
         }
@@ -49,7 +49,7 @@ export const getAnimatedRaisedButtonContainerStyle: ViewStyleGetter<
 
   return {
     ...getRaisedButtonContainerStyle(updatedProps),
-    ...getLowElevationStylesByInteractivity(InteractivityType.DISABLED),
+    ...getLowElevationStylesByInteraction(InteractionType.DISABLED),
   };
 };
 

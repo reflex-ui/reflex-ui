@@ -7,7 +7,7 @@
 
 import * as React from 'react';
 
-import { InteractivityType } from '../../interactivity';
+import { InteractionType } from '../../interaction';
 import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
 import { Size } from '../../Size';
@@ -43,8 +43,8 @@ export const withDefaultButtonProps = (
 
                 const propsWithDefaults: ButtonProps = {
                   colorTheme: colorTheme || getButtonVariantColorTheme(variant),
-                  interactivityState: {
-                    type: InteractivityType.ENABLED,
+                  interactionState: {
+                    type: InteractionType.ENABLED,
                   },
                   margin,
                   paletteTheme,

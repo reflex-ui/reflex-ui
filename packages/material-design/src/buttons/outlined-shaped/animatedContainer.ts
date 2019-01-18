@@ -9,7 +9,7 @@ import {
   ButtonProps,
   DefaultViewSubcomponent,
   InjectableSubTheme,
-  InteractivityType,
+  InteractionType,
   isTouchDevice,
   rawInjectableButtonViewSubTheme,
   ViewStyleGetter,
@@ -27,16 +27,16 @@ export const getAnimatedOutlinedShapedButtonContainerStyle: ViewStyleGetter<
   // tslint:disable-next-line:ter-arrow-parens
 > = props => {
   const updatedProps =
-    props.interactivityState.type === InteractivityType.PRESSED
+    props.interactionState.type === InteractionType.PRESSED
       ? {
           // tslint:disable-next-line:ter-indent
           ...props,
           // tslint:disable-next-line:ter-indent
-          interactivityState: {
-            ...props.interactivityState,
+          interactionState: {
+            ...props.interactionState,
             type: isTouchDevice
-              ? InteractivityType.ENABLED
-              : InteractivityType.HOVERED,
+              ? InteractionType.ENABLED
+              : InteractionType.HOVERED,
           },
           // tslint:disable-next-line:ter-indent
         }

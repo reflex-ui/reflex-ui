@@ -11,13 +11,13 @@ import {
   ButtonSubPropsGetter,
   ButtonVariant,
   ColorTheme,
-  InteractivityType,
+  InteractionType,
   Row,
   Surface,
 } from '@reflex-ui/core';
 import {
   disabledGrey300_500,
-  getInlayColorByInteractivity,
+  getInlayColorByInteraction,
 } from '@reflex-ui/material-design';
 import * as React from 'react';
 
@@ -31,18 +31,18 @@ const getButtonProps: ButtonSubPropsGetter = (
     style: {
       backgroundColor:
         // prettier-ignore
-        props.interactivityState.type === InteractivityType.DISABLED
+        props.interactionState.type === InteractionType.DISABLED
           ? disabledGrey300_500.normal.color
-          : getInlayColorByInteractivity({
+          : getInlayColorByInteraction({
             color: '#c70ad0',
-            type: props.interactivityState.type,
+            type: props.interactionState.type,
           }),
     },
   },
   icon: {
     style: {
       color:
-        props.interactivityState.type === InteractivityType.DISABLED
+        props.interactionState.type === InteractionType.DISABLED
           ? disabledGrey300_500.normal.onColor
           : '#fff',
     },

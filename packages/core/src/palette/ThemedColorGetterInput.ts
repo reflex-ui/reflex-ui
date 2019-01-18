@@ -6,11 +6,11 @@
  */
 
 // tslint:disable-next-line:max-line-length
-import { OptionalInteractivityStateProps } from '../interactivity/InteractivityStateProps';
+import { OptionalInteractionStateProps } from '../interaction/InteractionStateProps';
 import { PaletteThemeProps } from './PaletteThemeProps';
 
 export interface ThemedColorGetterInput
-  extends OptionalInteractivityStateProps,
+  extends OptionalInteractionStateProps,
     PaletteThemeProps {
   readonly contained?: boolean;
   readonly invertColor?: boolean;

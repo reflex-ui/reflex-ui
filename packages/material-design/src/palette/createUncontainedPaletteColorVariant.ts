@@ -12,15 +12,15 @@ import {
 } from '@reflex-ui/core';
 
 // tslint:disable-next-line:max-line-length
-import { getOverlayColorByInteractivity } from './getOverlayColorByInteractivity';
+import { getOverlayColorByInteraction } from './getOverlayColorByInteraction';
 
 // tslint:disable-next-line:max-line-length
 export const createUncontainedPaletteColorVariant: PaletteColorVariantFactory = (
   config: PaletteColorVariantFactoryConfig,
 ): PaletteColorVariant => ({
-  color: getOverlayColorByInteractivity({
+  color: getOverlayColorByInteraction({
     color: config.color.color,
-    type: config.interactivityType,
+    type: config.interactionType,
   }),
   onColor: config.color.onColor,
 });

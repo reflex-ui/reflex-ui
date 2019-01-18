@@ -5,18 +5,18 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { InteractivityType, ViewStyleGetter } from '@reflex-ui/core';
+import { InteractionType, ViewStyleGetter } from '@reflex-ui/core';
 // prettier-ignore
 import {
-  convertInteractivityToElevation,
-} from './convertInteractivityToElevation';
+  convertInteractionToElevation,
+} from './convertInteractionToElevation';
 import { ElevationDegree } from './ElevationDegree';
 import { getElevationStyles } from './getElevationStyles';
 
-export const getHighElevationStylesByInteractivity: ViewStyleGetter<
-  InteractivityType
-> = interactivityType => ({
+export const getMidElevationStylesByInteraction: ViewStyleGetter<
+  InteractionType
+> = interactionType => ({
   ...getElevationStyles(
-    convertInteractivityToElevation(interactivityType, ElevationDegree.HIGH),
+    convertInteractionToElevation(interactionType, ElevationDegree.MID),
   ),
 });

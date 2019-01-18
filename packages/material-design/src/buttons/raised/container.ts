@@ -14,14 +14,14 @@ import {
 import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
-import { getLowElevationStylesByInteractivity } from '../../elevation';
+import { getLowElevationStylesByInteraction } from '../../elevation';
 import { getContainedButtonContainerStyle } from '../contained/container';
 
 export const getRaisedButtonContainerStyle: ViewStyleGetter<
   ButtonProps
 > = props => ({
   ...getContainedButtonContainerStyle(props),
-  ...getLowElevationStylesByInteractivity(props.interactivityState.type),
+  ...getLowElevationStylesByInteraction(props.interactionState.type),
 });
 
 export const raisedButtonContainerTheme: InjectableSubTheme<

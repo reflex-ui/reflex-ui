@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { InteractivityType } from '@reflex-ui/core';
+import { InteractionType } from '@reflex-ui/core';
 
-export interface ColorByInteractivityData {
+export interface ColorByInteractionData {
   readonly color: string;
-  readonly type?: InteractivityType;
+  readonly type?: InteractionType;
 }

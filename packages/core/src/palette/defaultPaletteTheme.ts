@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { InteractivityPaletteColor } from './InteractivityPaletteColor';
 import { PaletteColor } from './PaletteColor';
 import { PaletteColorArrangement } from './PaletteColorArrangement';
+import { PaletteColorInteraction } from './PaletteColorInteraction';
 import { PaletteTheme } from './PaletteTheme';
 
 const black = '#000';
@@ -44,7 +44,7 @@ const disabledUncontainedPaletteColor: PaletteColor = {
   },
 };
 
-const whiteRegularContainedColorInteraction: InteractivityPaletteColor = {
+const whiteRegularContainedColorInteraction: PaletteColorInteraction = {
   disabled: disabledContainedPaletteColor,
   enabled: {
     dark: { color: white, onColor: black },
@@ -68,7 +68,7 @@ const whiteRegularContainedColorInteraction: InteractivityPaletteColor = {
   },
 };
 
-const whiteRegularUncontainedColorInteraction: InteractivityPaletteColor = {
+const whiteRegularUncontainedColorInteraction: PaletteColorInteraction = {
   disabled: disabledUncontainedPaletteColor,
   enabled: {
     dark: { color: transparent, onColor: white },
@@ -92,7 +92,7 @@ const whiteRegularUncontainedColorInteraction: InteractivityPaletteColor = {
   },
 };
 
-const whiteInvertedContainedColorInteraction: InteractivityPaletteColor = {
+const whiteInvertedContainedColorInteraction: PaletteColorInteraction = {
   disabled: disabledContainedPaletteColor,
   enabled: {
     dark: { color: black, onColor: white },
@@ -116,7 +116,7 @@ const whiteInvertedContainedColorInteraction: InteractivityPaletteColor = {
   },
 };
 
-const whiteInvertedUncontainedColorInteraction: InteractivityPaletteColor = {
+const whiteInvertedUncontainedColorInteraction: PaletteColorInteraction = {
   disabled: disabledUncontainedPaletteColor,
   enabled: {
     dark: { color: transparent, onColor: black },

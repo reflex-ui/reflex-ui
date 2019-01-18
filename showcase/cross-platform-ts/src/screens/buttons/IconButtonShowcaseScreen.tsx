@@ -11,13 +11,13 @@ import {
   ButtonSubPropsGetter,
   ButtonVariant,
   ColorTheme,
-  InteractivityType,
+  InteractionType,
   Row,
   Surface,
 } from '@reflex-ui/core';
 import {
   disabledGrey300_500,
-  getOverlayColorByInteractivity,
+  getOverlayColorByInteraction,
 } from '@reflex-ui/material-design';
 import * as React from 'react';
 
@@ -29,16 +29,16 @@ const getButtonProps: ButtonSubPropsGetter = (
 ): ButtonSubProps => ({
   container: {
     style: {
-      backgroundColor: getOverlayColorByInteractivity({
+      backgroundColor: getOverlayColorByInteraction({
         color: '#c70ad0',
-        type: props.interactivityState.type,
+        type: props.interactionState.type,
       }),
     },
   },
   icon: {
     style: {
       color:
-        props.interactivityState.type === InteractivityType.DISABLED
+        props.interactionState.type === InteractionType.DISABLED
           ? disabledGrey300_500.normal.onColor
           : '#c70ad0',
     },

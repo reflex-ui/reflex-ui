@@ -11,14 +11,14 @@ import {
   PaletteColorVariantFactoryConfig,
 } from '@reflex-ui/core';
 
-import { getInlayColorByInteractivity } from './getInlayColorByInteractivity';
+import { getInlayColorByInteraction } from './getInlayColorByInteraction';
 
 export const createContainedPaletteColorVariant: PaletteColorVariantFactory = (
   config: PaletteColorVariantFactoryConfig,
 ): PaletteColorVariant => ({
-  color: getInlayColorByInteractivity({
+  color: getInlayColorByInteraction({
     color: config.color.color,
-    type: config.interactivityType,
+    type: config.interactionType,
   }),
   onColor: config.color.onColor,
 });

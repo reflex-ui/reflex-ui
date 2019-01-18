@@ -5,11 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './convertInteractivityToElevation';
+export * from './convertInteractionToElevation';
 export * from './ElevationDegree';
 export * from './ElevationStyleGetter';
 export * from './elevationStyles';
 export * from './getElevationStyles';
-export * from './getHighElevationStylesByInteractivity';
-export * from './getLowElevationStylesByInteractivity';
-export * from './getMidElevationStylesByInteractivity';
+export * from './getHighElevationStylesByInteraction';
+export * from './getLowElevationStylesByInteraction';
+export * from './getMidElevationStylesByInteraction';

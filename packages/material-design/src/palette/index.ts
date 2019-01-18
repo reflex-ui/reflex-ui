@@ -5,8 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './ColorByInteractivityData';
+export * from './ColorByInteractionData';
 export * from './colors';
-export * from './getInlayColorByInteractivity';
-export * from './getOverlayColorByInteractivity';
+export * from './getInlayColorByInteraction';
+export * from './getOverlayColorByInteraction';
 export * from './themes';

@@ -9,7 +9,7 @@ import {
   ButtonProps,
   getThemedColor,
   InjectableSubTheme,
-  // InteractivityType,
+  // InteractionType,
   isWeb,
   rawInjectableButtonTextSubTheme,
   TextStyleGetter,
@@ -21,14 +21,14 @@ import { getAllVariantsButtonTextStyle } from '../all-variants/text';
 
 export const getDefaultButtonTextColorStyle: TextStyleGetter<ButtonProps> = ({
   colorTheme,
-  interactivityState,
+  interactionState,
   invertColor,
   paletteTheme,
 }) => ({
   color: getThemedColor({
     colorTheme,
     contained: false,
-    interactivityState,
+    interactionState,
     invertColor,
     onColor: true,
     paletteTheme,

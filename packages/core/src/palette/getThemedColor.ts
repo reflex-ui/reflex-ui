@@ -5,19 +5,19 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { InteractivityType } from '../interactivity/InteractivityType';
+import { InteractionType } from '../interaction/InteractionType';
 import { ColorTheme } from './ColorTheme';
-import { InteractivityPaletteColor } from './InteractivityPaletteColor';
 import { PaletteColor } from './PaletteColor';
 import { PaletteColorArrangement } from './PaletteColorArrangement';
 import { PaletteColorContainment } from './PaletteColorContainment';
+import { PaletteColorInteraction } from './PaletteColorInteraction';
 import { PaletteColorVariant } from './PaletteColorVariant';
 import { ThemedColorGetter } from './ThemedColorGetter';
 
 export const getThemedColor: ThemedColorGetter = ({
   colorTheme = ColorTheme.PRIMARY_NORMAL,
   contained = true,
-  interactivityState = { type: InteractivityType.ENABLED },
+  interactionState = { type: InteractionType.ENABLED },
   invertColor = false,
   onColor = false,
   paletteTheme,
@@ -42,18 +42,18 @@ export const getThemedColor: ThemedColorGetter = ({
     ? colorTargetArrangement.inverted
     : colorTargetArrangement.regular;
 
-  const colorTargetInteractivity: InteractivityPaletteColor = contained
+  const colorTargetInteraction: PaletteColorInteraction = contained
     ? colorTargetContainment.contained
     : colorTargetContainment.uncontained;
 
   // tslint:disable-next-line:no-console
   /* console.log(
-    'getThemedColor() - interactivityColorTarget: ',
-    interactivityColorTarget,
+    'getThemedColor() - interactionColorTarget: ',
+    interactionColorTarget,
   );*/
 
   const colorTarget: PaletteColor =
-    colorTargetInteractivity[interactivityState.type];
+    colorTargetInteraction[interactionState.type];
 
   // tslint:disable-next-line:no-console
   // console.log('getThemedColor() - colorTarget: ', colorTarget);
@@ -62,7 +62,7 @@ export const getThemedColor: ThemedColorGetter = ({
 
   const colorVariant: PaletteColorVariant =
     // @ts-ignore Element implicitly has an 'any' type because
-    // type 'InteractivityPaletteColor' has no index signature.ts(7017)
+    // type 'PaletteColorInteraction' has no index signature.ts(7017)
     colorTarget[variantName];
 
   return onColor ? colorVariant.onColor : colorVariant.color;

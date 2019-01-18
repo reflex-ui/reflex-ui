@@ -13,14 +13,14 @@ export const createPaletteColor = (
 ): PaletteColor => ({
   dark: config.colorVariantFactory({
     color: config.color.dark,
-    interactivityType: config.interactivityType,
+    interactionType: config.interactionType,
   }),
   light: config.colorVariantFactory({
     color: config.color.light,
-    interactivityType: config.interactivityType,
+    interactionType: config.interactionType,
   }),
   normal: config.colorVariantFactory({
     color: config.color.normal,
-    interactivityType: config.interactivityType,
+    interactionType: config.interactionType,
   }),
 });

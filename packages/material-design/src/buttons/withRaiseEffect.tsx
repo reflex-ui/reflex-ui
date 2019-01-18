@@ -6,8 +6,8 @@
  */
 
 import {
-  InteractivityStateProps,
-  InteractivityType,
+  InteractionStateProps,
+  InteractionType,
   isAndroid,
   isIOS,
   isWeb,
@@ -27,7 +27,7 @@ import {
 import { animated, Keyframes } from 'react-spring/dist/native';
 
 import {
-  convertInteractivityToElevation,
+  convertInteractionToElevation,
   ElevationDegree,
   getElevationStyles,
 } from '../elevation';
@@ -68,7 +68,7 @@ const createRaiseStyles: RaiseStylesCreator = style => ({
 
 interface MotionRaiseStylesCreatorData {
   readonly elevationDegree: ElevationDegree;
-  readonly interactivityType: InteractivityType;
+  readonly interactionType: InteractionType;
 }
 
 type MotionRaiseStylesCreator = (
@@ -77,10 +77,10 @@ type MotionRaiseStylesCreator = (
 
 const createMotionRaiseStyles: MotionRaiseStylesCreator = ({
   elevationDegree,
-  interactivityType,
+  interactionType,
 }) => {
-  const elevation = convertInteractivityToElevation(
-    interactivityType,
+  const elevation = convertInteractionToElevation(
+    interactionType,
     elevationDegree,
   );
 
@@ -96,7 +96,7 @@ const createMotionRaiseStyles: MotionRaiseStylesCreator = ({
 };
 
 export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
-  P extends SubProps<InteractivityStateProps> & ViewProps
+  P extends SubProps<InteractionStateProps> & ViewProps
 >(
   WrappedComponent: React.ComponentType<P>,
 ): React.ComponentType<P> =>
@@ -106,8 +106,8 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
         props: P,
         state: RaisedComponentState,
       ) {
-        const { interactivityState } = props.componentProps;
-        const interactivityType = interactivityState.type;
+        const { interactionState } = props.componentProps;
+        const interactionType = interactionState.type;
         const { animationKeyframe, isAnimating } = state;
 
         const staticRaiseStyles = createRaiseStyles(
@@ -115,7 +115,7 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
         );
 
         if (
-          interactivityType === InteractivityType.DISABLED &&
+          interactionType === InteractionType.DISABLED &&
           animationKeyframe !== AnimationKeyframe.DISABLED &&
           !isAnimating
         ) {
@@ -128,7 +128,7 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
         }
 
         if (
-          interactivityType === InteractivityType.HOVERED &&
+          interactionType === InteractionType.HOVERED &&
           animationKeyframe !== AnimationKeyframe.HOVERED &&
           !isAnimating
         ) {
@@ -141,7 +141,7 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
         }
 
         if (
-          interactivityType === InteractivityType.FOCUSED &&
+          interactionType === InteractionType.FOCUSED &&
           animationKeyframe !== AnimationKeyframe.FOCUSED &&
           !isAnimating
         ) {
@@ -154,7 +154,7 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
         }
 
         if (
-          interactivityType === InteractivityType.PRESSED &&
+          interactionType === InteractionType.PRESSED &&
           animationKeyframe !== AnimationKeyframe.PRESS_IN &&
           !isAnimating
         ) {
@@ -167,7 +167,7 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
         }
 
         if (
-          interactivityType === InteractivityType.ENABLED &&
+          interactionType === InteractionType.ENABLED &&
           animationKeyframe !== AnimationKeyframe.ENABLED &&
           !isAnimating
         ) {
@@ -206,13 +206,13 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
               from: {
                 ...createMotionRaiseStyles({
                   elevationDegree,
-                  interactivityType: InteractivityType.ENABLED,
+                  interactionType: InteractionType.ENABLED,
                 }),
               },
               to: {
                 ...createMotionRaiseStyles({
                   elevationDegree,
-                  interactivityType: InteractivityType.DISABLED,
+                  interactionType: InteractionType.DISABLED,
                 }),
               },
             });
@@ -227,13 +227,13 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
               from: {
                 ...createMotionRaiseStyles({
                   elevationDegree,
-                  interactivityType: InteractivityType.HOVERED,
+                  interactionType: InteractionType.HOVERED,
                 }),
               },
               to: {
                 ...createMotionRaiseStyles({
                   elevationDegree,
-                  interactivityType: InteractivityType.ENABLED,
+                  interactionType: InteractionType.ENABLED,
                 }),
               },
             });
@@ -248,13 +248,13 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
               from: {
                 ...createMotionRaiseStyles({
                   elevationDegree,
-                  interactivityType: InteractivityType.ENABLED,
+                  interactionType: InteractionType.ENABLED,
                 }),
               },
               to: {
                 ...createMotionRaiseStyles({
                   elevationDegree,
-                  interactivityType: InteractivityType.FOCUSED,
+                  interactionType: InteractionType.FOCUSED,
                 }),
               },
             });
@@ -269,13 +269,13 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
               from: {
                 ...createMotionRaiseStyles({
                   elevationDegree,
-                  interactivityType: InteractivityType.ENABLED,
+                  interactionType: InteractionType.ENABLED,
                 }),
               },
               to: {
                 ...createMotionRaiseStyles({
                   elevationDegree,
-                  interactivityType: InteractivityType.HOVERED,
+                  interactionType: InteractionType.HOVERED,
                 }),
               },
             });
@@ -290,13 +290,13 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
               from: {
                 ...createMotionRaiseStyles({
                   elevationDegree,
-                  interactivityType: InteractivityType.HOVERED,
+                  interactionType: InteractionType.HOVERED,
                 }),
               },
               to: {
                 ...createMotionRaiseStyles({
                   elevationDegree,
-                  interactivityType: InteractivityType.PRESSED,
+                  interactionType: InteractionType.PRESSED,
                 }),
               },
             });
@@ -360,11 +360,11 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
                       * Temporary solution. Need to investigate how to animate
                       * shadowOffset, i.e., an object of values.
                       */
-                      const interactivityType = this.props.componentProps
-                        .interactivityState.type;
+                      const interactionType = this.props.componentProps
+                        .interactionState.type;
 
-                      const elevation = convertInteractivityToElevation(
-                        interactivityType,
+                      const elevation = convertInteractionToElevation(
+                        interactionType,
                         elevationDegree,
                       );
                       const elevationStyles = getElevationStyles(elevation);

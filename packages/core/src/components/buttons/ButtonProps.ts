@@ -7,7 +7,7 @@
 
 import * as React from 'react';
 
-import { InteractivityProps } from '../../interactivity';
+import { InteractionProps } from '../../interaction';
 import { MarginProps } from '../../margin';
 import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
 import { SizeProps } from '../../SizeProps';
@@ -16,7 +16,7 @@ import { ButtonTheme } from './ButtonTheme';
 import { ButtonVariant } from './ButtonVariant';
 
 export interface ButtonProps
-  extends InteractivityProps,
+  extends InteractionProps,
     MarginProps,
     PaletteThemeProps,
     SizeProps {
