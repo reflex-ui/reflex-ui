@@ -9,12 +9,11 @@ import {
   ButtonProps,
   getSizedMarginStyle,
   InteractionType,
-  OptionalInjectableSubTheme,
   Size,
   ViewPropsGetter,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import { Platform, ViewProps, ViewStyle } from 'react-native';
+import { Platform } from 'react-native';
 import { buttonSizedMarginStyle } from './buttonSizedMarginStyle';
 
 export const getAllVariantsButtonContainerProps: ViewPropsGetter<
@@ -42,12 +41,3 @@ export const getAllVariantsButtonContainerStyle: ViewStyleGetter<
     },
   }),
 });
-
-export const allVariantsButtonContainerTheme: OptionalInjectableSubTheme<
-  ButtonProps,
-  ViewProps,
-  ViewStyle
-> = {
-  getProps: getAllVariantsButtonContainerProps,
-  getStyle: getAllVariantsButtonContainerProps,
-};
