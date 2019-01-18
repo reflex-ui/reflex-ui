@@ -6,7 +6,7 @@
  */
 
 import { PaletteThemeProps } from '../../palette';
-import { SizeProps } from '../../SizeProps';
+import { SizeProps } from '../../sizing/SizeProps';
 import { MarginProps } from '../../spacing';
 import { SuperIconSubPropsGetter } from './SuperIconSubPropsGetter';
 import { SuperIconTheme } from './SuperIconTheme';

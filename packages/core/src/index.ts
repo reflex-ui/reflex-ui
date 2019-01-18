@@ -9,7 +9,6 @@ export * from './components';
 export * from './interaction';
 export * from './palette';
 export * from './responsiveness';
-export * from './Size';
-export * from './SizeProps';
+export * from './sizing';
 export * from './spacing';
 export * from './utils';

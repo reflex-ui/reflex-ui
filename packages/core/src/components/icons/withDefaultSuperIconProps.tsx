@@ -8,7 +8,7 @@
 import * as React from 'react';
 
 import { ColorTheme, PaletteThemeContext } from '../../palette';
-import { Size } from '../../Size';
+import { Size } from '../../sizing/Size';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { reflexComponent } from '../reflexComponent';
 import { OptionalSuperIconProps, SuperIconProps } from './SuperIconProps';

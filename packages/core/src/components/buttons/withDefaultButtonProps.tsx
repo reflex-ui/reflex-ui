@@ -10,7 +10,7 @@ import * as React from 'react';
 import { InteractionType } from '../../interaction';
 import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
-import { Size } from '../../Size';
+import { Size } from '../../sizing/Size';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { reflexComponent } from '../reflexComponent';
 import { ButtonProps, OptionalButtonProps } from './ButtonProps';

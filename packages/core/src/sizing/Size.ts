@@ -6,12 +6,12 @@
  */
 
 export enum Size {
-  L = 'large',
-  M = 'medium',
   NONE = 'none',
-  S = 'small',
-  XL = 'xlarge',
-  XS = 'xsmall',
-  XXL = 'xxlarge',
   XXS = 'xxsmall',
+  XS = 'xsmall',
+  S = 'small',
+  M = 'medium',
+  L = 'large',
+  XL = 'xlarge',
+  XXL = 'xxlarge',
 }

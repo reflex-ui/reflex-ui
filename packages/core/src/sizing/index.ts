@@ -5,6 +5,5 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { Size } from '../sizing/Size';
-
-export type SizedSpacing = { [key in Size]: number };
+export * from './Size';
+export * from './SizeProps';

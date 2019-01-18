@@ -9,7 +9,7 @@ import * as React from 'react';
 
 import { InteractionProps } from '../../interaction';
 import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
-import { SizeProps } from '../../SizeProps';
+import { SizeProps } from '../../sizing/SizeProps';
 import { MarginProps } from '../../spacing';
 import { ButtonSubPropsGetter } from './ButtonSubPropsGetter';
 import { ButtonTheme } from './ButtonTheme';
