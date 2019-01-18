@@ -8,11 +8,11 @@
 import { Size } from '../sizing/Size';
 
 export interface MarginProps {
-  readonly margin?: Size;
-  readonly marginBottom?: Size;
-  readonly marginEnd?: Size;
-  readonly marginHorizontal?: Size;
-  readonly marginStart?: Size;
-  readonly marginTop?: Size;
-  readonly marginVertical?: Size;
+  readonly margin?: Size | number;
+  readonly marginBottom?: Size | number;
+  readonly marginEnd?: Size | number;
+  readonly marginHorizontal?: Size | number;
+  readonly marginStart?: Size | number;
+  readonly marginTop?: Size | number;
+  readonly marginVertical?: Size | number;
 }

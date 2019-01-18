@@ -5,8 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { Size } from '../sizing/Size';
 import { MarginProps } from './MarginProps';
+import { SizedSpacing } from './SizedSpacing';
 import { SizedSpacingStyleGetter } from './SizedSpacingStyleGetter';
+
+const getMarginValue = (sizedSpacing: SizedSpacing, size: Size | number) =>
+  Number.isFinite(size as number) ? size : sizedSpacing[size as Size];
 
 export const getSizedMarginStyle: SizedSpacingStyleGetter<
   MarginProps
@@ -22,14 +27,14 @@ export const getSizedMarginStyle: SizedSpacingStyleGetter<
   // prettier-ignore
   ...(m
     ? {
-      marginHorizontal: sizedSpacing[m],
-      marginVertical: sizedSpacing[m],
+      marginHorizontal: getMarginValue(sizedSpacing, m),
+      marginVertical: getMarginValue(sizedSpacing, m),
     }
     : {}),
-  ...(mH ? { marginHorizontal: sizedSpacing[mH] } : {}),
-  ...(mV ? { marginVertical: sizedSpacing[mV] } : {}),
-  ...(mS ? { marginStart: sizedSpacing[mS] } : {}),
-  ...(mE ? { marginEnd: sizedSpacing[mE] } : {}),
-  ...(mT ? { marginTop: sizedSpacing[mT] } : {}),
-  ...(mB ? { marginBottom: sizedSpacing[mB] } : {}),
+  ...(mH ? { marginHorizontal: getMarginValue(sizedSpacing, mH) } : {}),
+  ...(mV ? { marginVertical: getMarginValue(sizedSpacing, mV) } : {}),
+  ...(mS ? { marginStart: getMarginValue(sizedSpacing, mS) } : {}),
+  ...(mE ? { marginEnd: getMarginValue(sizedSpacing, mE) } : {}),
+  ...(mT ? { marginTop: getMarginValue(sizedSpacing, mT) } : {}),
+  ...(mB ? { marginBottom: getMarginValue(sizedSpacing, mB) } : {}),
 });
