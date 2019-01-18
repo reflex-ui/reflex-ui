@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { MarginProps } from '../../margin';
 import { PaletteThemeProps } from '../../palette';
 import { SizeProps } from '../../SizeProps';
+import { MarginProps } from '../../spacing';
 import { SuperIconSubPropsGetter } from './SuperIconSubPropsGetter';
 import { SuperIconTheme } from './SuperIconTheme';
 

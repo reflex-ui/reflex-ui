@@ -7,9 +7,9 @@
 
 export * from './components';
 export * from './interaction';
-export * from './margin';
 export * from './palette';
 export * from './responsiveness';
 export * from './Size';
 export * from './SizeProps';
+export * from './spacing';
 export * from './utils';

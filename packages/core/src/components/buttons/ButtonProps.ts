@@ -8,9 +8,9 @@
 import * as React from 'react';
 
 import { InteractionProps } from '../../interaction';
-import { MarginProps } from '../../margin';
 import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
 import { SizeProps } from '../../SizeProps';
+import { MarginProps } from '../../spacing';
 import { ButtonSubPropsGetter } from './ButtonSubPropsGetter';
 import { ButtonTheme } from './ButtonTheme';
 import { ButtonVariant } from './ButtonVariant';

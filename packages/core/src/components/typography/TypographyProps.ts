@@ -8,8 +8,8 @@
 import * as React from 'react';
 import { TextProps, TextStyle } from 'react-native';
 
-import { MarginProps } from '../../margin';
 import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
+import { MarginProps } from '../../spacing';
 import { InjectableSubTheme } from '../subcomponents';
 
 export interface TypographyProps

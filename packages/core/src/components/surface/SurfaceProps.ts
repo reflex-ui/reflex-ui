@@ -7,10 +7,10 @@
 
 import * as React from 'react';
 
-import { MarginProps } from '../../margin';
 import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
 import { DimensionsProps } from '../../responsiveness/DimensionsProps';
 import { ResponsivenessProps } from '../../responsiveness/ResponsivenessProps';
+import { MarginProps } from '../../spacing';
 import { SurfaceSubPropsGetter } from './SurfaceSubPropsGetter';
 import { SurfaceTheme } from './SurfaceTheme';
 
