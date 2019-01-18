@@ -5,9 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { SizedMarginStyleGetter } from './SizedMarginStyleGetter';
+import { MarginProps } from './MarginProps';
+import { SizedSpacingStyleGetter } from './SizedSpacingStyleGetter';
 
-export const getSizedMarginStyle: SizedMarginStyleGetter = sizedStyle => ({
+export const getSizedMarginStyle: SizedSpacingStyleGetter<
+  MarginProps
+> = sizedSpacing => ({
   margin: m,
   marginBottom: mB,
   marginEnd: mE,
@@ -16,11 +19,17 @@ export const getSizedMarginStyle: SizedMarginStyleGetter = sizedStyle => ({
   marginTop: mT,
   marginVertical: mV,
 }) => ({
-  ...(m ? sizedStyle[m] : {}),
-  ...(mH ? { marginHorizontal: sizedStyle[mH].marginHorizontal } : {}),
-  ...(mV ? { marginVertical: sizedStyle[mV].marginVertical } : {}),
-  ...(mS ? { marginStart: sizedStyle[mS].marginHorizontal } : {}),
-  ...(mE ? { marginEnd: sizedStyle[mE].marginHorizontal } : {}),
-  ...(mT ? { marginTop: sizedStyle[mT].marginVertical } : {}),
-  ...(mB ? { marginBottom: sizedStyle[mB].marginVertical } : {}),
+  // prettier-ignore
+  ...(m
+    ? {
+      marginHorizontal: sizedSpacing[m],
+      marginVertical: sizedSpacing[m],
+    }
+    : {}),
+  ...(mH ? { marginHorizontal: sizedSpacing[mH] } : {}),
+  ...(mV ? { marginVertical: sizedSpacing[mV] } : {}),
+  ...(mS ? { marginStart: sizedSpacing[mS] } : {}),
+  ...(mE ? { marginEnd: sizedSpacing[mE] } : {}),
+  ...(mT ? { marginTop: sizedSpacing[mT] } : {}),
+  ...(mB ? { marginBottom: sizedSpacing[mB] } : {}),
 });

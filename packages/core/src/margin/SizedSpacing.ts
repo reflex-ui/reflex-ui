@@ -5,7 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ViewStyle } from 'react-native';
 import { Size } from '../Size';
 
-export type SizedMarginStyle = { [key in Size]: ViewStyle };
+export type SizedSpacing = { [key in Size]: number };

@@ -12,4 +12,6 @@ export enum Size {
   S = 'small',
   XL = 'xlarge',
   XS = 'xsmall',
+  XXL = 'xxlarge',
+  XXS = 'xxsmall',
 }

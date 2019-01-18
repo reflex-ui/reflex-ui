@@ -6,9 +6,8 @@
  */
 
 import { ViewStyleGetter } from '../components/views';
-import { MarginProps } from './MarginProps';
-import { SizedMarginStyle } from './SizedMarginStyle';
+import { SizedSpacing } from './SizedSpacing';
 
-export type SizedMarginStyleGetter = (
-  style: SizedMarginStyle,
-) => ViewStyleGetter<MarginProps>;
+export type SizedSpacingStyleGetter<Props> = (
+  style: SizedSpacing,
+) => ViewStyleGetter<Props>;

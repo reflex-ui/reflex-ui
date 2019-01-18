@@ -18,12 +18,20 @@ import { getAllVariantsButtonIconStyle } from './icon';
 export const allVariantsButtonLeadingIconSizedStyle: {
   [key in Size]: TextStyle
 } = {
-  large: { fontSize: 19 },
-  medium: { fontSize: 18 },
   none: {},
-  small: { fontSize: 17 },
-  xlarge: { fontSize: 20 },
+  xxsmall: {},
+  /*
+   * Sorting values by size here makes it easier to reason about
+   * the overall scale of values than sorting alphabetically,
+   * so let's just disable this rule here.
+   */
+  // tslint:disable-next-line:object-literal-sort-keys
   xsmall: { fontSize: 15 },
+  small: { fontSize: 17 },
+  medium: { fontSize: 18 },
+  large: { fontSize: 19 },
+  xlarge: { fontSize: 20 },
+  xxlarge: {},
 };
 
 export const getAllVariantsButtonLeadingIconStyle: TextStyleGetter<

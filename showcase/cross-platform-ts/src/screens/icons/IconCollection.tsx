@@ -24,6 +24,11 @@ const IconCollection: React.SFC<IconCollectionProps> = ({
       <FavoriteIcon
         colorTheme={colorTheme}
         invertColor={invertColor}
+        size={Size.XXS}
+      />
+      <FavoriteIcon
+        colorTheme={colorTheme}
+        invertColor={invertColor}
         size={Size.XS}
       />
       <FavoriteIcon
@@ -41,6 +46,11 @@ const IconCollection: React.SFC<IconCollectionProps> = ({
         colorTheme={colorTheme}
         invertColor={invertColor}
         size={Size.XL}
+      />
+      <FavoriteIcon
+        colorTheme={colorTheme}
+        invertColor={invertColor}
+        size={Size.XXL}
       />
     </Row>
   </React.Fragment>

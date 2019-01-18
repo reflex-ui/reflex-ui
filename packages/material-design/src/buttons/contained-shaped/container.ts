@@ -20,12 +20,20 @@ import { getContainedButtonContainerStyle } from '../contained/container';
 export const containedShapedButtonContainerSizedStyle: {
   [key in Size]: ViewStyle
 } = {
-  large: { borderRadius: 20 },
-  medium: { borderRadius: 18 },
   none: {},
-  small: { borderRadius: 16 },
-  xlarge: { borderRadius: 24 },
+  xxsmall: {},
+  /*
+   * Sorting values by size here makes it easier to reason about
+   * the overall scale of values than sorting alphabetically,
+   * so let's just disable this rule here.
+   */
+  // tslint:disable-next-line:object-literal-sort-keys
   xsmall: { borderRadius: 14 },
+  small: { borderRadius: 16 },
+  medium: { borderRadius: 18 },
+  large: { borderRadius: 20 },
+  xlarge: { borderRadius: 24 },
+  xxlarge: {},
 };
 
 export const getContainedShapedButtonContainerStyle: ViewStyleGetter<

@@ -11,8 +11,6 @@ import {
   OptionalInjectableSubTheme,
   OptionalSurfaceTheme,
   rawSurfaceTheme,
-  Size,
-  SizedMarginStyle,
   SurfaceProps,
   SurfaceTheme,
   ViewStyleGetter,
@@ -20,37 +18,12 @@ import {
 import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
-export const surfaceContainerSizedMarginStyle: SizedMarginStyle = {
-  [Size.L]: {
-    marginHorizontal: 16,
-    marginVertical: 16,
-  },
-  [Size.M]: {
-    marginHorizontal: 12,
-    marginVertical: 12,
-  },
-  [Size.NONE]: {
-    marginHorizontal: 0,
-    marginVertical: 0,
-  },
-  [Size.S]: {
-    marginHorizontal: 8,
-    marginVertical: 8,
-  },
-  [Size.XL]: {
-    marginHorizontal: 20,
-    marginVertical: 20,
-  },
-  [Size.XS]: {
-    marginHorizontal: 4,
-    marginVertical: 4,
-  },
-};
+import { sizedSpacing } from '../spacing/sizedSpacing';
 
 export const getSurfaceContainerStyle: ViewStyleGetter<
   SurfaceProps
 > = props => ({
-  ...getSizedMarginStyle(surfaceContainerSizedMarginStyle)(props),
+  ...getSizedMarginStyle(sizedSpacing)(props),
   backgroundColor: getThemedColor({
     colorTheme: props.colorTheme,
     paletteTheme: props.paletteTheme,

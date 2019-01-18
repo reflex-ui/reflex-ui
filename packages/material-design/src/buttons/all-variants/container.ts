@@ -14,7 +14,8 @@ import {
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import { Platform } from 'react-native';
-import { buttonSizedMarginStyle } from './buttonSizedMarginStyle';
+
+import { sizedSpacing } from '../../spacing/sizedSpacing';
 
 export const getAllVariantsButtonContainerProps: ViewPropsGetter<
   ButtonProps
@@ -30,7 +31,7 @@ export const getAllVariantsButtonContainerStyle: ViewStyleGetter<
   flexDirection: 'row',
   flexGrow: props.fullWidth ? 1 : undefined,
   justifyContent: 'center',
-  ...getSizedMarginStyle(buttonSizedMarginStyle)(props),
+  ...getSizedMarginStyle(sizedSpacing)(props),
   ...Platform.select({
     web: {
       cursor:

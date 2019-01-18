@@ -18,32 +18,40 @@ import { ViewProps, ViewStyle } from 'react-native';
 import { getDefaultButtonContainerStyle } from '../default/container';
 
 export const iconButtonContainerSizedStyle: { [key in Size]: ViewStyle } = {
-  large: {
-    borderRadius: 28,
-    height: 56,
-    minWidth: 56,
+  none: {},
+  xxsmall: {},
+  /*
+   * Sorting values by size here makes it easier to reason about
+   * the overall scale of values than sorting alphabetically,
+   * so let's just disable this rule here.
+   */
+  // tslint:disable-next-line:object-literal-sort-keys
+  xsmall: {
+    borderRadius: 16,
+    height: 32,
+    minWidth: 32,
+  },
+  small: {
+    borderRadius: 20,
+    height: 40,
+    minWidth: 40,
   },
   medium: {
     borderRadius: 24,
     height: 48,
     minWidth: 48,
   },
-  none: {},
-  small: {
-    borderRadius: 20,
-    height: 40,
-    minWidth: 40,
+  large: {
+    borderRadius: 28,
+    height: 56,
+    minWidth: 56,
   },
   xlarge: {
     borderRadius: 40,
     height: 80,
     minWidth: 80,
   },
-  xsmall: {
-    borderRadius: 16,
-    height: 32,
-    minWidth: 32,
-  },
+  xxlarge: {},
 };
 
 export const getIconButtonContainerStyle: ViewStyleGetter<

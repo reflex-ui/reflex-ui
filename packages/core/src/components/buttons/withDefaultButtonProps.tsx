@@ -34,19 +34,33 @@ export const withDefaultButtonProps = (
                 const variant: ButtonVariant =
                   props.variant || ButtonVariant.DEFAULT;
 
-                const margin: Size =
+                const marginHorizontal: Size =
                   variant === ButtonVariant.FAB ||
                   variant === ButtonVariant.XFAB ||
                   variant === ButtonVariant.ICON
                     ? Size.NONE
                     : Size.M;
 
+                const marginVertical: Size =
+                    variant === ButtonVariant.FAB ||
+                    variant === ButtonVariant.XFAB ||
+                    variant === ButtonVariant.ICON
+                      ? Size.NONE
+                      : Size.S;
+
                 const propsWithDefaults: ButtonProps = {
                   colorTheme: colorTheme || getButtonVariantColorTheme(variant),
                   interactionState: {
                     type: InteractionType.ENABLED,
                   },
-                  margin,
+                  /*
+                   * marginHorizontal and marginVertical are more specific
+                   * than margin, so we check it here to avoid overriding
+                   * users' margin when provided.
+                   */
+                  marginHorizontal: props.margin ? undefined : marginHorizontal,
+                  marginVertical: props.margin ? undefined : marginVertical,
+                  /**/
                   paletteTheme,
                   size: Size.M,
                   theme: componentsTheme.button[variant],

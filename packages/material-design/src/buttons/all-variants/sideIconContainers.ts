@@ -17,27 +17,35 @@ import { TextStyle, ViewProps, ViewStyle } from 'react-native';
 export const allVariantsButtonLeadingIconContainerSizedStyle: {
   [key in Size]: TextStyle
 } = {
-  large: {
-    marginEnd: 10,
-    marginStart: -6,
+  none: {},
+  xxsmall: {},
+  /*
+   * Sorting values by size here makes it easier to reason about
+   * the overall scale of values than sorting alphabetically,
+   * so let's just disable this rule here.
+   */
+  // tslint:disable-next-line:object-literal-sort-keys
+  xsmall: {
+    marginEnd: 6,
+    marginStart: -2,
+  },
+  small: {
+    marginEnd: 7,
+    marginStart: -3,
   },
   medium: {
     marginEnd: 8,
     marginStart: -4,
   },
-  none: {},
-  small: {
-    marginEnd: 7,
-    marginStart: -3,
+  large: {
+    marginEnd: 10,
+    marginStart: -6,
   },
   xlarge: {
     marginEnd: 12,
     marginStart: -8,
   },
-  xsmall: {
-    marginEnd: 6,
-    marginStart: -2,
-  },
+  xxlarge: {},
 };
 
 export const getAllVariantsButtonLeadingIconContainerStyle: ViewStyleGetter<
@@ -56,27 +64,35 @@ export const allVariantsButtonLeadingIconContainerTheme: OptionalInjectableSubTh
 export const allVariantsButtonTrailingIconContainerSizedStyle: {
   [key in Size]: TextStyle
 } = {
-  large: {
-    marginEnd: -6,
-    marginStart: 10,
+  none: {},
+  xxsmall: {},
+  /*
+   * Sorting values by size here makes it easier to reason about
+   * the overall scale of values than sorting alphabetically,
+   * so let's just disable this rule here.
+   */
+  // tslint:disable-next-line:object-literal-sort-keys
+  xsmall: {
+    marginEnd: -2,
+    marginStart: 6,
+  },
+  small: {
+    marginEnd: -3,
+    marginStart: 7,
   },
   medium: {
     marginEnd: -4,
     marginStart: 8,
   },
-  none: {},
-  small: {
-    marginEnd: -3,
-    marginStart: 7,
+  large: {
+    marginEnd: -6,
+    marginStart: 10,
   },
   xlarge: {
     marginEnd: -8,
     marginStart: 12,
   },
-  xsmall: {
-    marginEnd: -2,
-    marginStart: 6,
-  },
+  xxlarge: {},
 };
 
 export const getAllVariantsButtonTrailingIconContainerStyle: ViewStyleGetter<

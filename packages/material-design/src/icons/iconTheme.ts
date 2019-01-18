@@ -12,7 +12,6 @@ import {
   OptionalSuperIconTheme,
   rawSuperIconTheme,
   Size,
-  SizedMarginStyle,
   SuperIconProps,
   SuperIconTheme,
   TextStyleGetter,
@@ -27,40 +26,23 @@ import {
   ViewStyle,
 } from 'react-native';
 
-export const iconSizedMarginStyle: SizedMarginStyle = {
-  [Size.L]: {
-    marginHorizontal: 12,
-    marginVertical: 12,
-  },
-  [Size.M]: {
-    marginHorizontal: 8,
-    marginVertical: 8,
-  },
-  [Size.NONE]: {
-    marginHorizontal: 0,
-    marginVertical: 0,
-  },
-  [Size.S]: {
-    marginHorizontal: 4,
-    marginVertical: 4,
-  },
-  [Size.XL]: {
-    marginHorizontal: 16,
-    marginVertical: 16,
-  },
-  [Size.XS]: {
-    marginHorizontal: 2,
-    marginVertical: 2,
-  },
-};
+import { sizedSpacing } from '../spacing/sizedSpacing';
 
 export const superIconIconSizedStyle: { [key in Size]: TextStyle } = {
-  large: { fontSize: 32 },
-  medium: { fontSize: 24 },
   none: {},
-  small: { fontSize: 16 },
+  xxsmall: { fontSize: 12 },
+  /*
+   * Sorting values by size here makes it easier to reason about
+   * the overall scale of values than sorting alphabetically,
+   * so let's just disable this rule here.
+   */
+  // tslint:disable-next-line:object-literal-sort-keys
+  xsmall: { fontSize: 16 },
+  small: { fontSize: 20 },
+  medium: { fontSize: 24 },
+  large: { fontSize: 32 },
   xlarge: { fontSize: 48 },
-  xsmall: { fontSize: 12 },
+  xxlarge: { fontSize: 64 },
 };
 
 export const getSuperIconIconStyle: TextStyleGetter<
@@ -86,7 +68,7 @@ export const superIconIconTheme: OptionalInjectableSubTheme<
 export const getSuperIconContainerStyle: ViewStyleGetter<
   SuperIconProps
 > = props => ({
-  ...getSizedMarginStyle(iconSizedMarginStyle)(props),
+  ...getSizedMarginStyle(sizedSpacing)(props),
 });
 
 export const superIconContainerTheme: OptionalInjectableSubTheme<

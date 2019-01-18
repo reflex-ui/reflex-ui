@@ -7,5 +7,5 @@
 
 export * from './getSizedMarginStyle';
 export * from './MarginProps';
-export * from './SizedMarginStyle';
-export * from './SizedMarginStyleGetter';
+export * from './SizedSpacing';
+export * from './SizedSpacingStyleGetter';

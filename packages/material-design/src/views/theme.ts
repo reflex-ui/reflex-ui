@@ -10,8 +10,6 @@ import {
   OptionalInjectableSubTheme,
   OptionalSuperViewTheme,
   rawSuperViewTheme,
-  Size,
-  SizedMarginStyle,
   SuperViewProps,
   SuperViewTheme,
   SuperViewVariantsTheme,
@@ -20,41 +18,16 @@ import {
 import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
+import { sizedSpacing } from '../spacing/sizedSpacing';
+
 /*
  * COMMON STYLES
  */
 
-export const superViewContainerSizedMarginStyle: SizedMarginStyle = {
-  [Size.L]: {
-    marginHorizontal: 16,
-    marginVertical: 16,
-  },
-  [Size.M]: {
-    marginHorizontal: 12,
-    marginVertical: 12,
-  },
-  [Size.NONE]: {
-    marginHorizontal: 0,
-    marginVertical: 0,
-  },
-  [Size.S]: {
-    marginHorizontal: 8,
-    marginVertical: 8,
-  },
-  [Size.XL]: {
-    marginHorizontal: 20,
-    marginVertical: 20,
-  },
-  [Size.XS]: {
-    marginHorizontal: 4,
-    marginVertical: 4,
-  },
-};
-
 export const getCommonSuperViewContainerStyle: ViewStyleGetter<
   SuperViewProps
 > = props => ({
-  ...getSizedMarginStyle(superViewContainerSizedMarginStyle)(props),
+  ...getSizedMarginStyle(sizedSpacing)(props),
   flex: props.flex,
 });
 

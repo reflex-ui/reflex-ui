@@ -19,27 +19,35 @@ import { Platform, TextProps, TextStyle } from 'react-native';
 import { getFontFamily } from '../../typography';
 
 export const allVariantsButtonTextSizedStyle: { [key in Size]: TextStyle } = {
-  large: {
-    fontSize: 15,
-    letterSpacing: 1,
+  none: {},
+  xxsmall: {},
+  /*
+   * Sorting values by size here makes it easier to reason about
+   * the overall scale of values than sorting alphabetically,
+   * so let's just disable this rule here.
+   */
+  // tslint:disable-next-line:object-literal-sort-keys
+  xsmall: {
+    fontSize: 12,
+    letterSpacing: 0.25,
+  },
+  small: {
+    fontSize: 13,
+    letterSpacing: 0.5,
   },
   medium: {
     fontSize: 14,
     letterSpacing: 0.75,
   },
-  none: {},
-  small: {
-    fontSize: 13,
-    letterSpacing: 0.5,
+  large: {
+    fontSize: 15,
+    letterSpacing: 1,
   },
   xlarge: {
     fontSize: 16,
     letterSpacing: 1.25,
   },
-  xsmall: {
-    fontSize: 12,
-    letterSpacing: 0.25,
-  },
+  xxlarge: {},
 };
 
 export const getAllVariantsButtonTextStyle: TextStyleGetter<ButtonProps> = ({

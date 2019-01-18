@@ -18,12 +18,20 @@ import { TextProps, TextStyle } from 'react-native';
 import { getContainedButtonLeadingIconStyle } from '../contained/sideIcons';
 
 export const xfabButtonLeadingIconSizedStyle: { [key in Size]: TextStyle } = {
-  large: { fontSize: 28 },
-  medium: { fontSize: 24 },
   none: {},
-  small: { fontSize: 22 },
-  xlarge: { fontSize: 32 },
+  xxsmall: {},
+  /*
+   * Sorting values by size here makes it easier to reason about
+   * the overall scale of values than sorting alphabetically,
+   * so let's just disable this rule here.
+   */
+  // tslint:disable-next-line:object-literal-sort-keys
   xsmall: { fontSize: 18 },
+  small: { fontSize: 22 },
+  medium: { fontSize: 24 },
+  large: { fontSize: 28 },
+  xlarge: { fontSize: 32 },
+  xxlarge: {},
 };
 
 export const getXFabButtonLeadingIconStyle: TextStyleGetter<

@@ -20,13 +20,13 @@ import {
 import merge from 'lodash/merge';
 import { Platform, TextStyle } from 'react-native';
 
+import { sizedSpacing } from '../spacing/sizedSpacing';
 import { getFontFamily } from './';
-import { typographySizedMarginStyle } from './typographySizedMarginStyle';
 
 export const getCommonTypographyStyle: TextStyleGetter<
   TypographyProps
 > = props => ({
-  ...getSizedMarginStyle(typographySizedMarginStyle)(props),
+  ...getSizedMarginStyle(sizedSpacing)(props),
   color: getThemedColor({
     colorTheme: props.colorTheme,
     onColor: true,
