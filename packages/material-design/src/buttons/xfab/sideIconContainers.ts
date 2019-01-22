@@ -18,7 +18,6 @@ import { ViewProps, ViewStyle } from 'react-native';
 export const xfabButtonLeadingIconContainerSizedStyle: {
   [key in Size]: ViewStyle
 } = {
-  none: {},
   xxsmall: {},
   /*
    * Sorting values by size here makes it easier to reason about
@@ -51,7 +50,6 @@ export const xfabButtonLeadingIconContainerTheme: InjectableSubTheme<
 export const xfabButtonTrailingIconContainerSizedStyle: {
   [key in Size]: ViewStyle
 } = {
-  none: {},
   xxsmall: {},
   /*
    * Sorting values by size here makes it easier to reason about

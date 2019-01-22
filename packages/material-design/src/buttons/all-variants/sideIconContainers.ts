@@ -17,7 +17,6 @@ import { TextStyle, ViewProps, ViewStyle } from 'react-native';
 export const allVariantsButtonLeadingIconContainerSizedStyle: {
   [key in Size]: TextStyle
 } = {
-  none: {},
   xxsmall: {},
   /*
    * Sorting values by size here makes it easier to reason about
@@ -64,7 +63,6 @@ export const allVariantsButtonLeadingIconContainerTheme: OptionalInjectableSubTh
 export const allVariantsButtonTrailingIconContainerSizedStyle: {
   [key in Size]: TextStyle
 } = {
-  none: {},
   xxsmall: {},
   /*
    * Sorting values by size here makes it easier to reason about

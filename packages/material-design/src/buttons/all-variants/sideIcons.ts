@@ -18,7 +18,6 @@ import { getAllVariantsButtonIconStyle } from './icon';
 export const allVariantsButtonLeadingIconSizedStyle: {
   [key in Size]: TextStyle
 } = {
-  none: {},
   xxsmall: {},
   /*
    * Sorting values by size here makes it easier to reason about

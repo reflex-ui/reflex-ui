@@ -34,18 +34,18 @@ export const withDefaultButtonProps = (
                 const variant: ButtonVariant =
                   props.variant || ButtonVariant.DEFAULT;
 
-                const marginHorizontal: Size =
+                const marginHorizontal: Size | number =
                   variant === ButtonVariant.FAB ||
                   variant === ButtonVariant.XFAB ||
                   variant === ButtonVariant.ICON
-                    ? Size.NONE
+                    ? 0
                     : Size.M;
 
-                const marginVertical: Size =
+                const marginVertical: Size | number =
                     variant === ButtonVariant.FAB ||
                     variant === ButtonVariant.XFAB ||
                     variant === ButtonVariant.ICON
-                      ? Size.NONE
+                      ? 0
                       : Size.S;
 
                 const propsWithDefaults: ButtonProps = {

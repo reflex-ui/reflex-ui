@@ -29,7 +29,6 @@ import {
 import { sizedSpacing } from '../spacing/sizedSpacing';
 
 export const superIconIconSizedStyle: { [key in Size]: TextStyle } = {
-  none: {},
   xxsmall: { fontSize: 12 },
   /*
    * Sorting values by size here makes it easier to reason about

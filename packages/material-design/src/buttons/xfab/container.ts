@@ -18,7 +18,6 @@ import { ViewProps, ViewStyle } from 'react-native';
 import { getFabButtonContainerStyle } from '../fab/container';
 
 export const xfabButtonContainerSizedStyle: { [key in Size]: ViewStyle } = {
-  none: {},
   xxsmall: {},
   /*
    * Sorting values by size here makes it easier to reason about

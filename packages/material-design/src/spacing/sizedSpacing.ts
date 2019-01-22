@@ -8,7 +8,6 @@
 import { Size, SizedSpacing } from '@reflex-ui/core';
 
 export const sizedSpacing: SizedSpacing = {
-  [Size.NONE]: 0,
   [Size.XXS]: 4,
   [Size.XS]: 8,
   [Size.S]: 12,

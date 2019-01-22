@@ -6,7 +6,6 @@
  */
 
 export enum Size {
-  NONE = 'none',
   XXS = 'xxsmall',
   XS = 'xsmall',
   S = 'small',

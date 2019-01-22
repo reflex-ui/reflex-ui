@@ -19,7 +19,6 @@ import { getMidElevationStylesByInteraction } from '../../elevation';
 import { getRaisedButtonContainerStyle } from '../raised/container';
 
 export const fabButtonContainerSizedStyle: { [key in Size]: ViewStyle } = {
-  none: {},
   xxsmall: {},
   /*
    * Sorting values by size here makes it easier to reason about

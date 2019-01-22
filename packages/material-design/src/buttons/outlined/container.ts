@@ -19,7 +19,6 @@ import { getDefaultButtonContainerStyle } from '../default/container';
 import { getDefaultButtonTextStyle } from '../default/text';
 
 export const outlinedButtonContainerSizedStyle: { [key in Size]: ViewStyle } = {
-  none: {},
   xxsmall: {},
   /*
    * Sorting values by size here makes it easier to reason about

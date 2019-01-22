@@ -19,7 +19,6 @@ import { Platform, TextProps, TextStyle } from 'react-native';
 import { getFontFamily } from '../../typography';
 
 export const allVariantsButtonTextSizedStyle: { [key in Size]: TextStyle } = {
-  none: {},
   xxsmall: {},
   /*
    * Sorting values by size here makes it easier to reason about

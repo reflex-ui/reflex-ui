@@ -22,7 +22,6 @@ import {
 } from '../all-variants/container';
 
 export const defaultButtonContainerSizedStyle: { [key in Size]: ViewStyle } = {
-  none: {},
   xxsmall: {},
   /*
    * Sorting values by size here makes it easier to reason about

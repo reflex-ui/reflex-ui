@@ -25,7 +25,6 @@ import {
 export const containedButtonContainerSizedStyle: {
   [key in Size]: ViewStyle
 } = {
-  none: {},
   xxsmall: {},
   /*
    * Sorting values by size here makes it easier to reason about

@@ -20,7 +20,6 @@ import { getOutlinedButtonContainerStyle } from '../outlined/container';
 export const outlinedShapedButtonContainerSizedStyle: {
   [key in Size]: ViewStyle
 } = {
-  none: {},
   xxsmall: {},
   /*
    * Sorting values by size here makes it easier to reason about
