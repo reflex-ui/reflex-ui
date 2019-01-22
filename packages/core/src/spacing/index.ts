@@ -6,6 +6,9 @@
  */
 
 export * from './getSizedMarginStyle';
+export * from './getSizedPaddingStyle';
+export * from './getSpacingValue';
 export * from './MarginProps';
+export * from './PaddingProps';
 export * from './SizedSpacing';
 export * from './SizedSpacingStyleGetter';

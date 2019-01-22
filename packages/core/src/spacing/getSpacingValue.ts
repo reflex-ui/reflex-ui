@@ -5,9 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ViewStyleGetter } from '../components/views';
+import { Size } from '../sizing/Size';
 import { SizedSpacing } from './SizedSpacing';
 
-export type SizedSpacingStyleGetter<Props> = (
+export const getSpacingValue = (
   sizedSpacing: SizedSpacing,
-) => ViewStyleGetter<Props>;
+  size: Size | number,
+) => (Number.isFinite(size as number) ? size : sizedSpacing[size as Size]);

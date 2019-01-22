@@ -10,13 +10,15 @@ import * as React from 'react';
 import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
 import { DimensionsProps } from '../../responsiveness/DimensionsProps';
 import { ResponsivenessProps } from '../../responsiveness/ResponsivenessProps';
-import { MarginProps } from '../../spacing';
+import { MarginProps } from '../../spacing/MarginProps';
+import { PaddingProps } from '../../spacing/PaddingProps';
 import { SuperViewSubPropsGetter } from './SuperViewSubPropsGetter';
 import { SuperViewTheme } from './SuperViewTheme';
 
 export interface SuperViewProps
   extends DimensionsProps,
     MarginProps,
+    PaddingProps,
     PaletteThemeProps,
     ResponsivenessProps {
   readonly children?:

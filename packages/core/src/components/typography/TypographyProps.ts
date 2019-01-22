@@ -9,12 +9,14 @@ import * as React from 'react';
 import { TextProps, TextStyle } from 'react-native';
 
 import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
-import { MarginProps } from '../../spacing';
+import { MarginProps } from '../../spacing/MarginProps';
+import { PaddingProps } from '../../spacing/PaddingProps';
 import { InjectableSubTheme } from '../subcomponents';
 
 export interface TypographyProps
   extends TextProps,
     MarginProps,
+    PaddingProps,
     PaletteThemeProps {
   readonly children?: React.ReactNode;
   readonly theme: InjectableSubTheme<TypographyProps, TextProps, TextStyle>;
