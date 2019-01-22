@@ -20,14 +20,14 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
   variant,
 }): JSX.Element => (
   <React.Fragment>
-    <Row margin={Size.M}>
-      <Headline6>{title}</Headline6>
-    </Row>
+    <Headline6 margin={Size.M}>{title}</Headline6>
     <Row>
       <Button
         colorTheme={colorTheme}
         getSubProps={getSubProps}
         invertColor={invertColor}
+        marginHorizontal={Size.M}
+        marginVertical={Size.S}
         onPress={onPress}
         variant={variant}
       >
@@ -38,6 +38,8 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
         disabled
         getSubProps={getSubProps}
         invertColor={invertColor}
+        marginHorizontal={Size.M}
+        marginVertical={Size.S}
         onPress={onPress}
         variant={variant}
       >
@@ -50,6 +52,8 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
         getSubProps={getSubProps}
         invertColor={invertColor}
         leadingIcon={<FavoriteIcon />}
+        marginHorizontal={Size.M}
+        marginVertical={Size.S}
         onPress={onPress}
         variant={variant}
       >
@@ -61,6 +65,8 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
         getSubProps={getSubProps}
         invertColor={invertColor}
         leadingIcon={<FavoriteIcon />}
+        marginHorizontal={Size.M}
+        marginVertical={Size.S}
         onPress={onPress}
         variant={variant}
       >
@@ -72,6 +78,8 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
         colorTheme={colorTheme}
         getSubProps={getSubProps}
         invertColor={invertColor}
+        marginHorizontal={Size.M}
+        marginVertical={Size.S}
         onPress={onPress}
         trailingIcon={<FavoriteIcon />}
         variant={variant}
@@ -83,6 +91,8 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
         disabled
         getSubProps={getSubProps}
         invertColor={invertColor}
+        marginHorizontal={Size.M}
+        marginVertical={Size.S}
         onPress={onPress}
         trailingIcon={<FavoriteIcon />}
         variant={variant}
@@ -96,6 +106,8 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
         getSubProps={getSubProps}
         invertColor={invertColor}
         leadingIcon={<FavoriteIcon />}
+        marginHorizontal={Size.M}
+        marginVertical={Size.S}
         onPress={onPress}
         trailingIcon={<FavoriteIcon />}
         variant={variant}
@@ -108,6 +120,8 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
         getSubProps={getSubProps}
         invertColor={invertColor}
         leadingIcon={<FavoriteIcon />}
+        marginHorizontal={Size.M}
+        marginVertical={Size.S}
         onPress={onPress}
         trailingIcon={<FavoriteIcon />}
         variant={variant}

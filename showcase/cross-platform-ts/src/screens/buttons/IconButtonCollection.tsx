@@ -20,14 +20,13 @@ const IconButtonCollection: React.SFC<ButtonCollectionProps> = ({
   variant,
 }): JSX.Element => (
   <React.Fragment>
-    <Row margin={Size.M}>
-      <Headline6>{title}</Headline6>
-    </Row>
+    <Headline6 margin={Size.M}>{title}</Headline6>
     <Row>
       <Button
         colorTheme={colorTheme}
         getSubProps={getSubProps}
         invertColor={invertColor}
+        margin={Size.M}
         onPress={onPress}
         variant={variant}
       >
@@ -38,6 +37,7 @@ const IconButtonCollection: React.SFC<ButtonCollectionProps> = ({
         disabled
         getSubProps={getSubProps}
         invertColor={invertColor}
+        margin={Size.M}
         onPress={onPress}
         variant={variant}
       >

@@ -88,13 +88,14 @@ export const AppNavigation = () => {
           /* APP BARS */
           // name: 'navigation.showcase.appBars.DefaultAppBarScreen',
           /* BUTTONS */
-          // name: 'navigation.showcase.buttons.XFabButtonShowcaseScreen',
           // name: 'navigation.showcase.buttons.DefaultButtonShowcaseScreen',
+          // name: 'navigation.showcase.buttons.FabButtonShowcaseScreen',
           // name: 'navigation.showcase.buttons.OutlinedButtonShowcaseScreen',
+          name: 'navigation.showcase.buttons.XFabButtonShowcaseScreen',
           /*name:
             'navigation.showcase.buttons.OutlinedShapedButtonShowcaseScreen',*/
           /* ICONS */
-          name: 'navigation.showcase.icons.IconShowcaseScreen',
+          // name: 'navigation.showcase.icons.IconShowcaseScreen',
           /* TYPOGRAPHY */
           // name: 'navigation.showcase.typography.TypographyScreen',
         },
