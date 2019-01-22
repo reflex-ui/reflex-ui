@@ -7,6 +7,7 @@
 
 import {
   getSizedMarginStyle,
+  getSizedPaddingStyle,
   OptionalInjectableSubTheme,
   OptionalSuperViewTheme,
   rawSuperViewTheme,
@@ -28,6 +29,7 @@ export const getCommonSuperViewContainerStyle: ViewStyleGetter<
   SuperViewProps
 > = props => ({
   ...getSizedMarginStyle(sizedSpacing)(props),
+  ...getSizedPaddingStyle(sizedSpacing)(props),
   flex: props.flex,
 });
 

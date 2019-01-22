@@ -9,6 +9,7 @@ import {
   FontWeight,
   getFontWeight,
   getSizedMarginStyle,
+  getSizedPaddingStyle,
   getThemedColor,
   isWeb,
   OptionalTypographyTheme,
@@ -27,6 +28,7 @@ export const getCommonTypographyStyle: TextStyleGetter<
   TypographyProps
 > = props => ({
   ...getSizedMarginStyle(sizedSpacing)(props),
+  ...getSizedPaddingStyle(sizedSpacing)(props),
   color: getThemedColor({
     colorTheme: props.colorTheme,
     onColor: true,

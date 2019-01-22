@@ -7,6 +7,7 @@
 
 import {
   getSizedMarginStyle,
+  getSizedPaddingStyle,
   getThemedColor,
   OptionalInjectableSubTheme,
   OptionalSurfaceTheme,
@@ -24,6 +25,7 @@ export const getSurfaceContainerStyle: ViewStyleGetter<
   SurfaceProps
 > = props => ({
   ...getSizedMarginStyle(sizedSpacing)(props),
+  ...getSizedPaddingStyle(sizedSpacing)(props),
   backgroundColor: getThemedColor({
     colorTheme: props.colorTheme,
     paletteTheme: props.paletteTheme,
