@@ -6,4 +6,4 @@
  */
 
 export * from './getFontFamily';
-export * from './typographyTheme';
+export * from './theme';

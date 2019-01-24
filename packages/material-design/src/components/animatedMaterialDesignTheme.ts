@@ -7,11 +7,11 @@
 
 import { OptionalComponentsTheme } from '@reflex-ui/core';
 
-import { appBarTheme } from './app-bars/appBarTheme';
+import { appBarTheme } from './app-bars/theme';
 import { animatedButtonTheme } from './buttons/animatedTheme';
-import { iconTheme } from './icons/iconTheme';
+import { iconTheme } from './icons/theme';
 import { surfaceTheme } from './surface/theme';
-import { typographyTheme } from './typography/typographyTheme';
+import { typographyTheme } from './typography/theme';
 import { superViewTheme } from './views/theme';
 
 export const animatedMaterialDesignTheme: OptionalComponentsTheme = {
