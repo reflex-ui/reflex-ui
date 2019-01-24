@@ -13,6 +13,8 @@ import {
   ColorTheme,
   Column,
   errorColorThemes,
+  Headline6,
+  JustifyContent,
   primaryColorThemes,
   Row,
   secondaryColorThemes,
@@ -51,12 +53,21 @@ const IconShowcaseScreen: React.SFC<{}> = (): JSX.Element => (
     <Column marginTop={Size.M}>
       {({ breakpoints, dimensions }) => {
         const marginSize =
-          dimensions.window.width > breakpoints.largeHandset ? Size.M : Size.XS;
+          dimensions.window.width > breakpoints.largeHandset ? Size.M : 0;
+
+        const justifyContent =
+          dimensions.window.width <= breakpoints.smallTablet
+            ? JustifyContent.Center
+            : undefined;
 
         return (
           <React.Fragment>
             {colorThemes.map(colorTheme => (
-              <Row key={colorTheme} marginVertical={marginSize}>
+              <Row
+                key={colorTheme}
+                justifyContent={justifyContent}
+                marginVertical={marginSize}
+              >
                 <Surface marginStart={marginSize}>
                   <IconCollection colorTheme={colorTheme} title={colorTheme} />
                 </Surface>
@@ -69,12 +80,21 @@ const IconShowcaseScreen: React.SFC<{}> = (): JSX.Element => (
                 </Surface>
               </Row>
             ))}
-            <Row>
-              <FavoriteIcon color="#c70ad0" size={Size.XS} />
-              <FavoriteIcon color="#c70ad0" size={Size.S} />
-              <FavoriteIcon color="#c70ad0" />
-              <FavoriteIcon color="#c70ad0" size={Size.L} />
-              <FavoriteIcon color="#c70ad0" size={Size.XL} />
+            <Row justifyContent={justifyContent} marginVertical={marginSize}>
+              <Surface marginStart={marginSize}>
+                <Row margin={Size.M}>
+                  <Headline6>Custom color</Headline6>
+                </Row>
+                <Row>
+                  <FavoriteIcon color="#c70ad0" size={Size.XXS} />
+                  <FavoriteIcon color="#c70ad0" size={Size.XS} />
+                  <FavoriteIcon color="#c70ad0" size={Size.S} />
+                  <FavoriteIcon color="#c70ad0" />
+                  <FavoriteIcon color="#c70ad0" size={Size.L} />
+                  <FavoriteIcon color="#c70ad0" size={Size.XL} />
+                  <FavoriteIcon color="#c70ad0" size={Size.XXL} />
+                </Row>
+              </Surface>
             </Row>
           </React.Fragment>
         );

@@ -12,8 +12,6 @@ import {
   ButtonVariant,
   ColorTheme,
   InteractionType,
-  Row,
-  Surface,
 } from '@reflex-ui/core';
 import {
   disabledGrey300_500,
@@ -60,20 +58,18 @@ const getButtonProps: ButtonSubPropsGetter = (
 const OutlinedShapedButtonShowcaseScreen: React.SFC = (): JSX.Element => (
   <ButtonShowcaseScreen
     ButtonCollection={LabelButtonCollection}
+    customCollections={[
+      {
+        colorTheme: ColorTheme.PRIMARY_NORMAL,
+        getSubProps: getButtonProps,
+        surfaceColorTheme: ColorTheme.SURFACE_NORMAL,
+        title: 'Custom color',
+        variant: ButtonVariant.OUTLINED_SHAPED,
+      },
+    ]}
     title="Button: Outlined Shaped"
     variant={ButtonVariant.OUTLINED_SHAPED}
-  >
-    <Row>
-      <Surface>
-        <LabelButtonCollection
-          colorTheme={ColorTheme.SURFACE_NORMAL}
-          getSubProps={getButtonProps}
-          title="Custom color"
-          variant={ButtonVariant.OUTLINED_SHAPED}
-        />
-      </Surface>
-    </Row>
-  </ButtonShowcaseScreen>
+  />
 );
 
 OutlinedShapedButtonShowcaseScreen.displayName =

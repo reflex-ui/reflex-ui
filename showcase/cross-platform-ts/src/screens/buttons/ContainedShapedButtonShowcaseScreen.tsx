@@ -12,8 +12,6 @@ import {
   ButtonVariant,
   ColorTheme,
   InteractionType,
-  Row,
-  Surface,
 } from '@reflex-ui/core';
 import {
   disabledGrey300_500,
@@ -26,38 +24,52 @@ import { LabelButtonCollection } from './LabelButtonCollection';
 
 const getButtonProps: ButtonSubPropsGetter = (
   props: ButtonProps,
-): ButtonSubProps => ({
-  container: {
-    style: {
-      backgroundColor:
-        // prettier-ignore
-        props.interactionState.type === InteractionType.DISABLED
-          ? disabledGrey300_500.normal.color
-          : getInlayColorByInteraction({
-            color: '#c70ad0',
-            type: props.interactionState.type,
-          }),
+): ButtonSubProps => {
+  const subProps: ButtonSubProps = {
+    container: {
+      style: {
+        backgroundColor:
+          // prettier-ignore
+          props.interactionState.type === InteractionType.DISABLED
+            ? disabledGrey300_500.normal.color
+            : getInlayColorByInteraction({
+              color: '#c70ad0',
+              type: props.interactionState.type,
+            }),
+      },
     },
-  },
-});
+    text: {
+      style: {
+        color:
+          props.interactionState.type === InteractionType.DISABLED
+            ? disabledGrey300_500.normal.onColor
+            : '#fff',
+      },
+    },
+  };
+
+  return {
+    ...subProps,
+    leadingIcon: subProps.text,
+    trailingIcon: subProps.text,
+  };
+};
 
 const ContainedShapedButtonShowcaseScreen: React.SFC = (): JSX.Element => (
   <ButtonShowcaseScreen
     ButtonCollection={LabelButtonCollection}
+    customCollections={[
+      {
+        colorTheme: ColorTheme.PRIMARY_NORMAL,
+        getSubProps: getButtonProps,
+        surfaceColorTheme: ColorTheme.SURFACE_NORMAL,
+        title: 'Custom color',
+        variant: ButtonVariant.CONTAINED_SHAPED,
+      },
+    ]}
     title="Button: Contained Shaped"
     variant={ButtonVariant.CONTAINED_SHAPED}
-  >
-    <Row>
-      <Surface>
-        <LabelButtonCollection
-          colorTheme={ColorTheme.SURFACE_NORMAL}
-          getSubProps={getButtonProps}
-          title="Custom color"
-          variant={ButtonVariant.CONTAINED_SHAPED}
-        />
-      </Surface>
-    </Row>
-  </ButtonShowcaseScreen>
+  />
 );
 
 ContainedShapedButtonShowcaseScreen.displayName =

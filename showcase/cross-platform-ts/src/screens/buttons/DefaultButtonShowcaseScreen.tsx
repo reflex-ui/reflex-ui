@@ -12,8 +12,6 @@ import {
   ButtonVariant,
   ColorTheme,
   InteractionType,
-  Row,
-  Surface,
 } from '@reflex-ui/core';
 import {
   disabledGrey300_500,
@@ -56,20 +54,18 @@ const getButtonProps: ButtonSubPropsGetter = (
 const DefaultButtonShowcaseScreen: React.SFC = (): JSX.Element => (
   <ButtonShowcaseScreen
     ButtonCollection={LabelButtonCollection}
+    customCollections={[
+      {
+        colorTheme: ColorTheme.PRIMARY_NORMAL,
+        getSubProps: getButtonProps,
+        surfaceColorTheme: ColorTheme.SURFACE_NORMAL,
+        title: 'Custom color',
+        variant: ButtonVariant.DEFAULT,
+      },
+    ]}
     title="Button: Default"
     variant={ButtonVariant.DEFAULT}
-  >
-    <Row>
-      <Surface>
-        <LabelButtonCollection
-          colorTheme={ColorTheme.PRIMARY_NORMAL}
-          getSubProps={getButtonProps}
-          title="Custom color"
-          variant={ButtonVariant.DEFAULT}
-        />
-      </Surface>
-    </Row>
-  </ButtonShowcaseScreen>
+  />
 );
 
 DefaultButtonShowcaseScreen.displayName = 'DefaultButtonShowcaseScreen';

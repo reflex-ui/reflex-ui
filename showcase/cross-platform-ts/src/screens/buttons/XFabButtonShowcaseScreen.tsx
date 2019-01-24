@@ -12,8 +12,6 @@ import {
   ButtonVariant,
   ColorTheme,
   InteractionType,
-  Row,
-  Surface,
 } from '@reflex-ui/core';
 import {
   disabledGrey300_500,
@@ -59,20 +57,18 @@ const getButtonProps: ButtonSubPropsGetter = (
 const XFabButtonShowcaseScreen: React.SFC = (): JSX.Element => (
   <ButtonShowcaseScreen
     ButtonCollection={LabelButtonCollection}
+    customCollections={[
+      {
+        colorTheme: ColorTheme.PRIMARY_NORMAL,
+        getSubProps: getButtonProps,
+        surfaceColorTheme: ColorTheme.SURFACE_NORMAL,
+        title: 'Custom color',
+        variant: ButtonVariant.XFAB,
+      },
+    ]}
     title="Button: XFab"
     variant={ButtonVariant.XFAB}
-  >
-    <Row>
-      <Surface>
-        <LabelButtonCollection
-          colorTheme={ColorTheme.SURFACE_NORMAL}
-          getSubProps={getButtonProps}
-          title="Custom color"
-          variant={ButtonVariant.XFAB}
-        />
-      </Surface>
-    </Row>
-  </ButtonShowcaseScreen>
+  />
 );
 
 XFabButtonShowcaseScreen.displayName = 'XFabButtonShowcaseScreen';

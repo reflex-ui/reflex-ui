@@ -86,14 +86,20 @@ export const AppNavigation = () => {
       root: {
         component: {
           /* APP BARS */
-          // name: 'navigation.showcase.appBars.DefaultAppBarScreen',
+          name: 'navigation.showcase.appBars.DefaultAppBarScreen',
           /* BUTTONS */
+          // name: 'navigation.showcase.buttons.ContainedButtonShowcaseScreen',
+          /*name:
+            'navigation.showcase.buttons.ContainedShapedButtonShowcaseScreen',*/
           // name: 'navigation.showcase.buttons.DefaultButtonShowcaseScreen',
           // name: 'navigation.showcase.buttons.FabButtonShowcaseScreen',
+          /*name:
+            'navigation.showcase.buttons.HighlightedButtonShowcaseScreen',*/
+          // name: 'navigation.showcase.buttons.IconButtonShowcaseScreen',
           // name: 'navigation.showcase.buttons.OutlinedButtonShowcaseScreen',
-          name: 'navigation.showcase.buttons.XFabButtonShowcaseScreen',
           /*name:
             'navigation.showcase.buttons.OutlinedShapedButtonShowcaseScreen',*/
+          // name: 'navigation.showcase.buttons.XFabButtonShowcaseScreen',
           /* ICONS */
           // name: 'navigation.showcase.icons.IconShowcaseScreen',
           /* TYPOGRAPHY */

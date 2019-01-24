@@ -9,10 +9,12 @@ import {
   AppBar,
   AppBarTitle,
   Button,
+  ButtonSubPropsGetter,
   ButtonVariant,
   ColorTheme,
   Column,
   errorColorThemes,
+  JustifyContent,
   primaryColorThemes,
   Row,
   secondaryColorThemes,
@@ -58,16 +60,25 @@ const colorThemesInPairs = colorThemes.reduce<ColorPair[]>(
   [],
 );
 */
+
+export interface CustomButtonCollection {
+  readonly colorTheme: ColorTheme;
+  readonly getSubProps?: ButtonSubPropsGetter;
+  readonly surfaceColorTheme: ColorTheme;
+  readonly title: string;
+  readonly variant: ButtonVariant;
+}
+
 export interface ButtonShowcaseScreenProps {
   readonly ButtonCollection: React.ComponentType<ButtonCollectionProps>;
-  readonly children?: React.ReactNode;
+  readonly customCollections?: CustomButtonCollection[];
   readonly title: string;
   readonly variant: ButtonVariant;
 }
 
 const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
   ButtonCollection,
-  children,
+  customCollections,
   title,
   variant,
 }): JSX.Element => (
@@ -81,12 +92,21 @@ const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
     <Column marginTop={Size.M}>
       {({ breakpoints, dimensions }) => {
         const marginSize =
-          dimensions.window.width > breakpoints.largeHandset ? Size.M : Size.XS;
+          dimensions.window.width > breakpoints.largeHandset ? Size.M : 0;
+
+        const justifyContent =
+          dimensions.window.width <= breakpoints.smallTablet
+            ? JustifyContent.Center
+            : undefined;
 
         return (
           <React.Fragment>
             {colorThemes.map(colorTheme => (
-              <Row key={colorTheme} marginVertical={marginSize}>
+              <Row
+                key={colorTheme}
+                justifyContent={justifyContent}
+                marginVertical={marginSize}
+              >
                 <Surface marginStart={marginSize}>
                   <ButtonCollection
                     colorTheme={colorTheme}
@@ -106,7 +126,29 @@ const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
                 </Surface>
               </Row>
             ))}
-            {children}
+            {customCollections &&
+              customCollections.length > 0 &&
+              customCollections.map(custom => (
+                <Row
+                  justifyContent={justifyContent}
+                  key={custom.title}
+                  marginVertical={marginSize}
+                >
+                  <Surface
+                    colorTheme={custom.surfaceColorTheme}
+                    marginStart={marginSize}
+                  >
+                    <ButtonCollection
+                      colorTheme={custom.colorTheme}
+                      getSubProps={custom.getSubProps}
+                      invertColor
+                      onPress={onButtonPress}
+                      title={custom.title}
+                      variant={custom.variant}
+                    />
+                  </Surface>
+                </Row>
+              ))}
           </React.Fragment>
         );
       }}

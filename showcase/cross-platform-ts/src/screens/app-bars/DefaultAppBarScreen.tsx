@@ -14,6 +14,7 @@ import {
   Caption,
   ColorTheme,
   Row,
+  Size,
 } from '@reflex-ui/core';
 import { FavoriteIcon, MenuIcon } from '@reflex-ui/material-design';
 import * as React from 'react';
@@ -26,26 +27,9 @@ const onButtonPress = () => {
 
 const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
-    <Row>
-      <Button
-        leadingIcon={<FavoriteIcon />}
-        onPress={onButtonPress}
-        trailingIcon={<FavoriteIcon />}
-      >
-        Favorite
-      </Button>
-    </Row>
-    <Row>
-      <Button onPress={onButtonPress} variant={ButtonVariant.ICON}>
-        <MenuIcon />
-      </Button>
-      <FavoriteIcon />
-    </Row>
-    <Row>
-      <Caption>
-        AppBarVariant.DEAFULT, ColorTheme.PRIMARY_NORMAL (default)
-      </Caption>
-    </Row>
+    <Caption margin={Size.L}>
+      AppBarVariant.DEFAULT, ColorTheme.PRIMARY_NORMAL (default)
+    </Caption>
     <Row>
       <AppBar>
         {() => (
@@ -69,11 +53,9 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
         )}
       </AppBar>
     </Row>
-    <Row>
-      <Caption>
-        AppBarVariant.DEAFULT, ColorTheme.PRIMARY_NORMAL (default)
-      </Caption>
-    </Row>
+    <Caption margin={Size.L}>
+      AppBarVariant.DEFAULT, ColorTheme.PRIMARY_NORMAL (default)
+    </Caption>
     <Row>
       <AppBar>
         {() => (
@@ -93,11 +75,9 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
         )}
       </AppBar>
     </Row>
-    <Row>
-      <Caption>
-        AppBarVariant.DEAFULT, ColorTheme.PRIMARY_NORMAL (default)
-      </Caption>
-    </Row>
+    <Caption margin={Size.L}>
+      AppBarVariant.DEFAULT, ColorTheme.PRIMARY_NORMAL (default)
+    </Caption>
     <Row>
       <AppBar>
         {() => (
@@ -121,11 +101,9 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
         )}
       </AppBar>
     </Row>
-    <Row>
-      <Caption>
-        AppBarVariant.DEAFULT, ColorTheme.PRIMARY_NORMAL (default)
-      </Caption>
-    </Row>
+    <Caption margin={Size.L}>
+      AppBarVariant.DEFAULT, ColorTheme.PRIMARY_NORMAL (default)
+    </Caption>
     <Row>
       <AppBar>
         {() => (
@@ -153,11 +131,9 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
         )}
       </AppBar>
     </Row>
-    <Row>
-      <Caption>
-        AppBarVariant.DENSE, ColorTheme.PRIMARY_NORMAL (default)
-      </Caption>
-    </Row>
+    <Caption margin={Size.L}>
+      AppBarVariant.DENSE, ColorTheme.PRIMARY_NORMAL (default)
+    </Caption>
     <Row>
       <AppBar variant={AppBarVariant.DENSE}>
         {() => (
@@ -181,11 +157,9 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
         )}
       </AppBar>
     </Row>
-    <Row>
-      <Caption>
-        AppBarVariant.PROMINENT, ColorTheme.PRIMARY_NORMAL (default)
-      </Caption>
-    </Row>
+    <Caption margin={Size.L}>
+      AppBarVariant.PROMINENT, ColorTheme.PRIMARY_NORMAL (default)
+    </Caption>
     <Row>
       <AppBar variant={AppBarVariant.PROMINENT}>
         {() => (
@@ -209,11 +183,9 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
         )}
       </AppBar>
     </Row>
-    <Row>
-      <Caption>
-        AppBarVariant.PROMINENT, ColorTheme.PRIMARY_NORMAL (default)
-      </Caption>
-    </Row>
+    <Caption margin={Size.L}>
+      AppBarVariant.PROMINENT, ColorTheme.PRIMARY_NORMAL (default)
+    </Caption>
     <Row>
       <AppBar variant={AppBarVariant.PROMINENT}>
         {() => (
@@ -239,11 +211,9 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
         )}
       </AppBar>
     </Row>
-    <Row>
-      <Caption>
-        AppBarVariant.PROMINENT, ColorTheme.PRIMARY_NORMAL (default)
-      </Caption>
-    </Row>
+    <Caption margin={Size.L}>
+      AppBarVariant.PROMINENT, ColorTheme.PRIMARY_NORMAL (default)
+    </Caption>
     <Row>
       <AppBar variant={AppBarVariant.PROMINENT}>
         {() => (
@@ -288,11 +258,9 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
         )}
       </AppBar>
     </Row>
-    <Row>
-      <Caption>
-        AppBarVariant.PROMINENT_DENSE, ColorTheme.PRIMARY_NORMAL (default)
-      </Caption>
-    </Row>
+    <Caption margin={Size.L}>
+      AppBarVariant.PROMINENT_DENSE, ColorTheme.PRIMARY_NORMAL (default)
+    </Caption>
     <Row>
       <AppBar variant={AppBarVariant.PROMINENT_DENSE}>
         {() => (
@@ -316,11 +284,9 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
         )}
       </AppBar>
     </Row>
-    <Row>
-      <Caption>
-        AppBarVariant.PROMINENT_DENSE, ColorTheme.PRIMARY_NORMAL (default)
-      </Caption>
-    </Row>
+    <Caption margin={Size.L}>
+      AppBarVariant.PROMINENT_DENSE, ColorTheme.PRIMARY_NORMAL (default)
+    </Caption>
     <Row>
       <AppBar variant={AppBarVariant.PROMINENT_DENSE}>
         {() => (
@@ -346,9 +312,9 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
         )}
       </AppBar>
     </Row>
-    <Row>
-      <Caption>AppBarVariant.DEFAULT, ColorTheme.SECONDARY_NORMAL</Caption>
-    </Row>
+    <Caption margin={Size.L}>
+      AppBarVariant.DEFAULT, ColorTheme.SECONDARY_NORMAL
+    </Caption>
     <Row>
       <AppBar colorTheme={ColorTheme.SECONDARY_NORMAL}>
         {() => (
@@ -384,9 +350,9 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
         )}
       </AppBar>
     </Row>
-    <Row>
-      <Caption>AppBarVariant.DEFAULT, ColorTheme.SECONDARY_LIGHT</Caption>
-    </Row>
+    <Caption margin={Size.L}>
+      AppBarVariant.DEFAULT, ColorTheme.SECONDARY_LIGHT
+    </Caption>
     <Row>
       <AppBar colorTheme={ColorTheme.SECONDARY_LIGHT}>
         <Button
@@ -399,11 +365,9 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
         <AppBarTitle numberOfLines={1}>My Application</AppBarTitle>
       </AppBar>
     </Row>
-    <Row>
-      <Caption>
-        AppBarVariant.DEFAULT, ColorTheme.PRIMARY_NORMAL (default)
-      </Caption>
-    </Row>
+    <Caption margin={Size.L}>
+      AppBarVariant.DEFAULT, ColorTheme.PRIMARY_NORMAL (default)
+    </Caption>
     <Row>
       <AppBar>
         <Button
@@ -423,11 +387,9 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
         </Button>
       </AppBar>
     </Row>
-    <Row>
-      <Caption>
-        AppBarVariant.DEFAULT, ColorTheme.PRIMARY_NORMAL (default)
-      </Caption>
-    </Row>
+    <Caption margin={Size.L}>
+      AppBarVariant.DEFAULT, ColorTheme.PRIMARY_NORMAL (default)
+    </Caption>
     <Row>
       <AppBar>
         <Button
@@ -439,19 +401,17 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
         </Button>
       </AppBar>
     </Row>
-    <Row>
-      <Caption>AppBarVariant.DEFAULT, ColorTheme.WARNING_NORMAL</Caption>
-    </Row>
+    <Caption margin={Size.L}>
+      AppBarVariant.DEFAULT, ColorTheme.WARNING_NORMAL
+    </Caption>
     <Row>
       <AppBar colorTheme={ColorTheme.WARNING_NORMAL}>
         {() => <AppBarTitle numberOfLines={1}>My Application</AppBarTitle>}
       </AppBar>
     </Row>
-    <Row>
-      <Caption>
-        AppBarVariant.PROMINENT, ColorTheme.PRIMARY_NORMAL (default)
-      </Caption>
-    </Row>
+    <Caption margin={Size.L}>
+      AppBarVariant.PROMINENT, ColorTheme.PRIMARY_NORMAL (default)
+    </Caption>
     <Row>
       <AppBar variant={AppBarVariant.PROMINENT}>
         {() => (
@@ -475,9 +435,9 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
         )}
       </AppBar>
     </Row>
-    <Row>
-      <Caption>AppBarVariant.PROMINENT, ColorTheme.SECONDARY_NORMAL</Caption>
-    </Row>
+    <Caption margin={Size.L}>
+      AppBarVariant.PROMINENT, ColorTheme.SECONDARY_NORMAL
+    </Caption>
     <Row>
       <AppBar
         colorTheme={ColorTheme.SECONDARY_NORMAL}
@@ -513,9 +473,9 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
         )}
       </AppBar>
     </Row>
-    <Row>
-      <Caption>AppBarVariant.PROMINENT, ColorTheme.SECONDARY_LIGHT</Caption>
-    </Row>
+    <Caption margin={Size.L}>
+      AppBarVariant.PROMINENT, ColorTheme.SECONDARY_LIGHT
+    </Caption>
     <Row>
       <AppBar
         colorTheme={ColorTheme.SECONDARY_LIGHT}
