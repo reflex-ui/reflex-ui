@@ -7,12 +7,12 @@
 
 import { InteractionType } from '@reflex-ui/core';
 import * as Color from 'color';
-import { ColorByInteractionData } from './ColorByInteractionData';
+import { ColorByInteractionGetterInput } from './ColorByInteractionGetterInput';
 
 export const getInlayColorByInteraction = ({
   color,
   type,
-}: ColorByInteractionData): string => {
+}: ColorByInteractionGetterInput): string => {
   if (type === InteractionType.DISABLED || type === InteractionType.ENABLED) {
     return color;
   }

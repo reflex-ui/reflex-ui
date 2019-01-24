@@ -7,12 +7,12 @@
 
 import { InteractionType } from '@reflex-ui/core';
 import * as Color from 'color';
-import { ColorByInteractionData } from './ColorByInteractionData';
+import { ColorByInteractionGetterInput } from './ColorByInteractionGetterInput';
 
 export const getOverlayColorByInteraction = ({
   color,
   type,
-}: ColorByInteractionData): string => {
+}: ColorByInteractionGetterInput): string => {
   switch (type) {
     case InteractionType.DISABLED:
       return 'transparent';

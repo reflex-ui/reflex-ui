@@ -8,7 +8,7 @@
 import {
   PaletteColorVariant,
   PaletteColorVariantFactory,
-  PaletteColorVariantFactoryConfig,
+  PaletteColorVariantFactoryInput,
 } from '@reflex-ui/core';
 
 // tslint:disable-next-line:max-line-length
@@ -16,7 +16,7 @@ import { getOverlayColorByInteraction } from './getOverlayColorByInteraction';
 
 // tslint:disable-next-line:max-line-length
 export const createUncontainedPaletteColorVariant: PaletteColorVariantFactory = (
-  config: PaletteColorVariantFactoryConfig,
+  config: PaletteColorVariantFactoryInput,
 ): PaletteColorVariant => ({
   color: getOverlayColorByInteraction({
     color: config.color.color,

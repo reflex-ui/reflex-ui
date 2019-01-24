@@ -7,7 +7,7 @@
 
 import { InteractionType } from '@reflex-ui/core';
 
-export interface ColorByInteractionData {
+export interface ColorByInteractionGetterInput {
   readonly color: string;
   readonly type?: InteractionType;
 }
