@@ -6,6 +6,7 @@
  */
 
 export * from './components';
+export * from './flexbox';
 export * from './interaction';
 export * from './palette';
 export * from './responsiveness';
