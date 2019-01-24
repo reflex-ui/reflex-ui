@@ -21,8 +21,8 @@ import {
 import merge from 'lodash/merge';
 import { Platform, TextStyle } from 'react-native';
 
-import { sizedSpacing } from '../spacing/sizedSpacing';
-import { getFontFamily } from './';
+import { sizedSpacing } from '../../spacing/sizedSpacing';
+import { getFontFamily } from './getFontFamily';
 
 export const getCommonTypographyStyle: TextStyleGetter<
   TypographyProps

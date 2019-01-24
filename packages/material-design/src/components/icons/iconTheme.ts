@@ -26,7 +26,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { sizedSpacing } from '../spacing/sizedSpacing';
+import { sizedSpacing } from '../../spacing/sizedSpacing';
 
 export const superIconIconSizedStyle: { [key in Size]: TextStyle } = {
   xxsmall: { fontSize: 12 },

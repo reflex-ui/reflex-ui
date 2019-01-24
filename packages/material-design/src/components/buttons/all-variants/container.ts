@@ -15,7 +15,7 @@ import {
 } from '@reflex-ui/core';
 import { Platform } from 'react-native';
 
-import { sizedSpacing } from '../../spacing/sizedSpacing';
+import { sizedSpacing } from '../../../spacing/sizedSpacing';
 
 export const getAllVariantsButtonContainerProps: ViewPropsGetter<
   ButtonProps

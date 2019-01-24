@@ -30,7 +30,7 @@ import {
   convertInteractionToElevation,
   ElevationDegree,
   getElevationStyles,
-} from '../elevation';
+} from '../../elevation';
 
 interface RaiseStyles {
   container: ViewStyle;

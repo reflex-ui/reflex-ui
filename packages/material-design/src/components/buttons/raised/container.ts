@@ -14,7 +14,7 @@ import {
 import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
-import { getLowElevationStylesByInteraction } from '../../elevation';
+import { getLowElevationStylesByInteraction } from '../../../elevation';
 import { getContainedButtonContainerStyle } from '../contained/container';
 
 export const getRaisedButtonContainerStyle: ViewStyleGetter<

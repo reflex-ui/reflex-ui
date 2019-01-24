@@ -19,15 +19,15 @@ import { ViewProps, ViewStyle } from 'react-native';
 
 import {
   ElevationDegree,
-  getMidElevationStylesByInteraction,
-} from '../../elevation';
+  getLowElevationStylesByInteraction,
+} from '../../../elevation';
 // tslint:disable-next-line:max-line-length
 import { getContainedButtonRippleColor } from '../contained/getContainedButtonRippleColor';
 import { withRaiseEffect } from '../withRaiseEffect';
 import { withRippleEffect } from '../withRippleEffect';
-import { getXFabButtonContainerStyle } from './container';
+import { getRaisedButtonContainerStyle } from './container';
 
-export const getAnimatedXFabButtonContainerStyle: ViewStyleGetter<
+export const getAnimatedRaisedButtonContainerStyle: ViewStyleGetter<
   ButtonProps
   // tslint:disable-next-line:ter-arrow-parens
 > = props => {
@@ -48,18 +48,18 @@ export const getAnimatedXFabButtonContainerStyle: ViewStyleGetter<
       : props;
 
   return {
-    ...getXFabButtonContainerStyle(updatedProps),
-    ...getMidElevationStylesByInteraction(InteractionType.DISABLED),
+    ...getRaisedButtonContainerStyle(updatedProps),
+    ...getLowElevationStylesByInteraction(InteractionType.DISABLED),
   };
 };
 
-export const animatedXFabButtonContainerTheme: InjectableSubTheme<
+export const animatedRaisedButtonContainerTheme: InjectableSubTheme<
   ButtonProps,
   ViewProps,
   ViewStyle
 > = merge({}, rawInjectableButtonViewSubTheme, {
   component: withRippleEffect({
     getRippleColor: getContainedButtonRippleColor,
-  })(withRaiseEffect(ElevationDegree.MID)(DefaultViewSubcomponent)),
-  getStyle: getAnimatedXFabButtonContainerStyle,
+  })(withRaiseEffect(ElevationDegree.LOW)(DefaultViewSubcomponent)),
+  getStyle: getAnimatedRaisedButtonContainerStyle,
 });

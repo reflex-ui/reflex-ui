@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import '@reflex-ui/material-design/src/icons/Font';
+import '@reflex-ui/material-design/src/components/icons/Font';
 import * as React from 'react';
 
 import { AppNavigation } from './navigation/Navigation.web';

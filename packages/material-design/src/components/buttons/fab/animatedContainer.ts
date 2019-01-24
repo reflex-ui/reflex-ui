@@ -20,7 +20,7 @@ import { ViewProps, ViewStyle } from 'react-native';
 import {
   ElevationDegree,
   getMidElevationStylesByInteraction,
-} from '../../elevation';
+} from '../../../elevation';
 // tslint:disable-next-line:max-line-length
 import { getContainedButtonRippleColor } from '../contained/getContainedButtonRippleColor';
 import { withRaiseEffect } from '../withRaiseEffect';
