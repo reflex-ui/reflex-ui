@@ -19,6 +19,7 @@ import {
 import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
+import { getFlexboxStyle } from '../flexbox/getFlexboxStyle';
 import { sizedSpacing } from '../spacing/sizedSpacing';
 
 /*
@@ -28,9 +29,9 @@ import { sizedSpacing } from '../spacing/sizedSpacing';
 export const getCommonSuperViewContainerStyle: ViewStyleGetter<
   SuperViewProps
 > = props => ({
+  ...getFlexboxStyle(props),
   ...getSizedMarginStyle(sizedSpacing)(props),
   ...getSizedPaddingStyle(sizedSpacing)(props),
-  flex: props.flex,
 });
 
 /*
@@ -41,7 +42,6 @@ export const getColumnContainerStyle: ViewStyleGetter<
   SuperViewProps
 > = props => ({
   ...getCommonSuperViewContainerStyle(props),
-  flex: props.flex,
   flexDirection: 'column',
   flexWrap: 'wrap',
 });

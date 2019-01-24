@@ -9,6 +9,7 @@ export * from './animatedMaterialDesignTheme';
 export * from './buttons';
 export * from './createAnimatedComponentsTheme';
 export * from './createComponentsTheme';
+export * from './flexbox';
 export * from './icons';
 export * from './palette';
 export * from './materialDesignTheme';

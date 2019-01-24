@@ -19,11 +19,13 @@ import {
 import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
+import { getFlexboxStyle } from '../flexbox/getFlexboxStyle';
 import { sizedSpacing } from '../spacing/sizedSpacing';
 
 export const getSurfaceContainerStyle: ViewStyleGetter<
   SurfaceProps
 > = props => ({
+  ...getFlexboxStyle(props),
   ...getSizedMarginStyle(sizedSpacing)(props),
   ...getSizedPaddingStyle(sizedSpacing)(props),
   backgroundColor: getThemedColor({
