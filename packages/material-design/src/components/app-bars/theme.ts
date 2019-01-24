@@ -26,7 +26,7 @@ export const getCommonAppBarCenterAreaStyle: ViewStyleGetter<
   flexDirection: 'row',
   flexGrow: 1,
   flexShrink: 1,
-  marginLeft: 20,
+  marginStart: 20,
 });
 
 export const getCommonAppBarContainerAreaStyle: ViewStyleGetter<
