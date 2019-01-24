@@ -7,6 +7,7 @@
 
 import * as React from 'react';
 
+import { FlexboxProps } from '../../flexbox/FlexboxProps';
 import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
 import { DimensionsProps } from '../../responsiveness/DimensionsProps';
 import { ResponsivenessProps } from '../../responsiveness/ResponsivenessProps';
@@ -17,6 +18,7 @@ import { SurfaceTheme } from './SurfaceTheme';
 
 export interface SurfaceProps
   extends DimensionsProps,
+    FlexboxProps,
     MarginProps,
     PaddingProps,
     PaletteThemeProps,
