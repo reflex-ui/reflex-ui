@@ -6,13 +6,13 @@
  */
 
 export enum ButtonVariant {
-  CONTAINED = 'contained',
-  CONTAINED_SHAPED = 'containedShaped',
-  DEFAULT = 'default',
-  FAB = 'fab',
-  HIGHLIGHTED = 'highlighted',
-  ICON = 'icon',
-  OUTLINED = 'outlined',
-  OUTLINED_SHAPED = 'outlinedShaped',
-  XFAB = 'xfab',
+  Contained = 'contained',
+  ContainedShaped = 'containedShaped',
+  Default = 'default',
+  Fab = 'fab',
+  Highlighted = 'highlighted',
+  Icon = 'icon',
+  Outlined = 'outlined',
+  OutlinedShaped = 'outlinedShaped',
+  XFab = 'xfab',
 }

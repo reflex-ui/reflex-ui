@@ -33,7 +33,7 @@ const getButtonProps: ButtonSubPropsGetter = (
           type: props.interactionState.type,
         }),
         borderColor:
-          props.interactionState.type === InteractionType.DISABLED
+          props.interactionState.type === InteractionType.Disabled
             ? disabledGrey300_500.normal.onColor
             : '#c70ad0',
       },
@@ -41,7 +41,7 @@ const getButtonProps: ButtonSubPropsGetter = (
     text: {
       style: {
         color:
-          props.interactionState.type === InteractionType.DISABLED
+          props.interactionState.type === InteractionType.Disabled
             ? disabledGrey300_500.normal.onColor
             : '#c70ad0',
       },
@@ -60,15 +60,15 @@ const OutlinedButtonShowcaseScreen: React.SFC = (): JSX.Element => (
     ButtonCollection={LabelButtonCollection}
     customCollections={[
       {
-        colorTheme: ColorTheme.PRIMARY_NORMAL,
+        colorTheme: ColorTheme.PrimaryNormal,
         getSubProps: getButtonProps,
-        surfaceColorTheme: ColorTheme.SURFACE_NORMAL,
+        surfaceColorTheme: ColorTheme.SurfaceNormal,
         title: 'Custom color',
-        variant: ButtonVariant.OUTLINED,
+        variant: ButtonVariant.Outlined,
       },
     ]}
     title="Button: Outlined"
-    variant={ButtonVariant.OUTLINED}
+    variant={ButtonVariant.Outlined}
   />
 );
 

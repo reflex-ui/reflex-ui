@@ -54,7 +54,7 @@ export const getAllVariantsButtonTextStyle: TextStyleGetter<ButtonProps> = ({
 }) => ({
   ...allVariantsButtonTextSizedStyle[size],
   fontFamily: getFontFamily(),
-  fontWeight: getFontWeight(FontWeight.MEDIUM),
+  fontWeight: getFontWeight(FontWeight.Medium),
   position: 'relative',
   textTransform: 'uppercase',
   ...Platform.select({

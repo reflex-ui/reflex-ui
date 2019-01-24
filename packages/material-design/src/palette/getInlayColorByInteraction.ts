@@ -13,7 +13,7 @@ export const getInlayColorByInteraction = ({
   color,
   type,
 }: ColorByInteractionGetterInput): string => {
-  if (type === InteractionType.DISABLED || type === InteractionType.ENABLED) {
+  if (type === InteractionType.Disabled || type === InteractionType.Enabled) {
     return color;
   }
 
@@ -21,7 +21,7 @@ export const getInlayColorByInteraction = ({
   const luminosity = rgbColor.luminosity();
   let rate;
 
-  if (type === InteractionType.HOVERED) {
+  if (type === InteractionType.Hovered) {
     if (luminosity > 0.97) {
       rate = 0.04;
     } else if (luminosity > 0.7 || luminosity < 0.1) {
@@ -29,7 +29,7 @@ export const getInlayColorByInteraction = ({
     } else {
       rate = 0.08;
     }
-  } else if (type === InteractionType.FOCUSED) {
+  } else if (type === InteractionType.Focused) {
     if (luminosity > 0.97) {
       rate = 0.12;
     } else if (luminosity > 0.7 || luminosity < 0.1) {

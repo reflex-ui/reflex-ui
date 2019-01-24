@@ -32,26 +32,26 @@ export const withDefaultButtonProps = (
             <ComponentsThemeContext.Consumer>
               {(componentsTheme) => {
                 const variant: ButtonVariant =
-                  props.variant || ButtonVariant.DEFAULT;
+                  props.variant || ButtonVariant.Default;
 
                 const marginHorizontal: Size | number =
-                  variant === ButtonVariant.FAB ||
-                  variant === ButtonVariant.XFAB ||
-                  variant === ButtonVariant.ICON
+                  variant === ButtonVariant.Fab ||
+                  variant === ButtonVariant.XFab ||
+                  variant === ButtonVariant.Icon
                     ? 0
                     : Size.M;
 
                 const marginVertical: Size | number =
-                    variant === ButtonVariant.FAB ||
-                    variant === ButtonVariant.XFAB ||
-                    variant === ButtonVariant.ICON
+                    variant === ButtonVariant.Fab ||
+                    variant === ButtonVariant.XFab ||
+                    variant === ButtonVariant.Icon
                       ? 0
                       : Size.S;
 
                 const propsWithDefaults: ButtonProps = {
                   colorTheme: colorTheme || getButtonVariantColorTheme(variant),
                   interactionState: {
-                    type: InteractionType.ENABLED,
+                    type: InteractionType.Enabled,
                   },
                   /*
                    * marginHorizontal and marginVertical are more specific

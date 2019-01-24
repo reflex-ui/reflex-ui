@@ -32,7 +32,7 @@ export const getAnimatedRaisedButtonContainerStyle: ViewStyleGetter<
   // tslint:disable-next-line:ter-arrow-parens
 > = props => {
   const updatedProps =
-    props.interactionState.type === InteractionType.PRESSED
+    props.interactionState.type === InteractionType.Pressed
       ? {
           // tslint:disable-next-line:ter-indent
           ...props,
@@ -40,8 +40,8 @@ export const getAnimatedRaisedButtonContainerStyle: ViewStyleGetter<
           interactionState: {
             ...props.interactionState,
             type: isTouchDevice
-              ? InteractionType.ENABLED
-              : InteractionType.HOVERED,
+              ? InteractionType.Enabled
+              : InteractionType.Hovered,
           },
           // tslint:disable-next-line:ter-indent
         }
@@ -49,7 +49,7 @@ export const getAnimatedRaisedButtonContainerStyle: ViewStyleGetter<
 
   return {
     ...getRaisedButtonContainerStyle(updatedProps),
-    ...getLowElevationStylesByInteraction(InteractionType.DISABLED),
+    ...getLowElevationStylesByInteraction(InteractionType.Disabled),
   };
 };
 
@@ -60,6 +60,6 @@ export const animatedRaisedButtonContainerTheme: InjectableSubTheme<
 > = merge({}, rawInjectableButtonViewSubTheme, {
   component: withRippleEffect({
     getRippleColor: getContainedButtonRippleColor,
-  })(withRaiseEffect(ElevationDegree.LOW)(DefaultViewSubcomponent)),
+  })(withRaiseEffect(ElevationDegree.Low)(DefaultViewSubcomponent)),
   getStyle: getAnimatedRaisedButtonContainerStyle,
 });

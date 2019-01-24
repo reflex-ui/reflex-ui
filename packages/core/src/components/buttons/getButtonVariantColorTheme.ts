@@ -11,6 +11,6 @@ import { ButtonVariant } from './ButtonVariant';
 export const getButtonVariantColorTheme = (
   variant: ButtonVariant,
 ): ColorTheme =>
-  variant === ButtonVariant.FAB || variant === ButtonVariant.XFAB
-    ? ColorTheme.SECONDARY_NORMAL
-    : ColorTheme.PRIMARY_NORMAL;
+  variant === ButtonVariant.Fab || variant === ButtonVariant.XFab
+    ? ColorTheme.SecondaryNormal
+    : ColorTheme.PrimaryNormal;

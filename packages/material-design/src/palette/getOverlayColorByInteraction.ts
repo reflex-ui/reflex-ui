@@ -14,19 +14,19 @@ export const getOverlayColorByInteraction = ({
   type,
 }: ColorByInteractionGetterInput): string => {
   switch (type) {
-    case InteractionType.DISABLED:
+    case InteractionType.Disabled:
       return 'transparent';
-    case InteractionType.ENABLED:
+    case InteractionType.Enabled:
       return 'transparent';
-    case InteractionType.FOCUSED:
+    case InteractionType.Focused:
       return Color.rgb(color)
         .fade(0.81)
         .toString();
-    case InteractionType.HOVERED:
+    case InteractionType.Hovered:
       return Color.rgb(color)
         .fade(0.86)
         .toString();
-    case InteractionType.PRESSED:
+    case InteractionType.Pressed:
       return Color.rgb(color)
         .fade(0.73)
         .toString();

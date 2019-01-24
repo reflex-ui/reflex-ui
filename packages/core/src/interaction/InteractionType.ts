@@ -6,9 +6,9 @@
  */
 
 export enum InteractionType {
-  DISABLED = 'disabled',
-  ENABLED = 'enabled',
-  FOCUSED = 'focused',
-  HOVERED = 'hovered',
-  PRESSED = 'pressed',
+  Disabled = 'disabled',
+  Enabled = 'enabled',
+  Focused = 'focused',
+  Hovered = 'hovered',
+  Pressed = 'pressed',
 }

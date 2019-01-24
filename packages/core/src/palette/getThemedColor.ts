@@ -15,9 +15,9 @@ import { PaletteColorVariant } from './PaletteColorVariant';
 import { ThemedColorGetter } from './ThemedColorGetter';
 
 export const getThemedColor: ThemedColorGetter = ({
-  colorTheme = ColorTheme.PRIMARY_NORMAL,
+  colorTheme = ColorTheme.PrimaryNormal,
   contained = true,
-  interactionState = { type: InteractionType.ENABLED },
+  interactionState = { type: InteractionType.Enabled },
   invertColor = false,
   onColor = false,
   paletteTheme,

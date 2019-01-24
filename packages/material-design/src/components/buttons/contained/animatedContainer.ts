@@ -26,7 +26,7 @@ export const getAnimatedContainedButtonContainerStyle: ViewStyleGetter<
   // tslint:disable-next-line:ter-arrow-parens
 > = props => {
   const updatedProps =
-    props.interactionState.type === InteractionType.PRESSED
+    props.interactionState.type === InteractionType.Pressed
       ? {
           // tslint:disable-next-line:ter-indent
           ...props,
@@ -34,8 +34,8 @@ export const getAnimatedContainedButtonContainerStyle: ViewStyleGetter<
           interactionState: {
             ...props.interactionState,
             type: isTouchDevice
-              ? InteractionType.ENABLED
-              : InteractionType.HOVERED,
+              ? InteractionType.Enabled
+              : InteractionType.Hovered,
           },
           // tslint:disable-next-line:ter-indent
         }

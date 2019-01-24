@@ -17,6 +17,6 @@ export const getMidElevationStylesByInteraction: ViewStyleGetter<
   InteractionType
 > = interactionType => ({
   ...getElevationStyles(
-    convertInteractionToElevation(interactionType, ElevationDegree.MID),
+    convertInteractionToElevation(interactionType, ElevationDegree.Mid),
   ),
 });

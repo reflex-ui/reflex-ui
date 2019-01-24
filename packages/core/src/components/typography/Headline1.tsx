@@ -27,7 +27,7 @@ export const Headline1 = reflexComponent<OptionalTypographyProps>({
             {(componentsTheme) => {
               const propsWithDefaults: TypographyProps = {
                 colorTheme: props.colorTheme || colorTheme ||
-                  ColorTheme.SURFACE_NORMAL,
+                  ColorTheme.SurfaceNormal,
                 paletteTheme,
                 theme: componentsTheme.typography.headline1,
                 ...props,

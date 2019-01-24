@@ -28,7 +28,7 @@ const onButtonPress = () => {
 const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
     <Caption margin={Size.L}>
-      AppBarVariant.DEFAULT, ColorTheme.PRIMARY_NORMAL (default)
+      AppBarVariant.Default, ColorTheme.PrimaryNormal (default)
     </Caption>
     <Row>
       <AppBar>
@@ -37,7 +37,7 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
             <Button
               invertColor
               onPress={onButtonPress}
-              variant={ButtonVariant.ICON}
+              variant={ButtonVariant.Icon}
             >
               <MenuIcon />
             </Button>
@@ -45,7 +45,7 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
             <Button
               invertColor
               onPress={onButtonPress}
-              variant={ButtonVariant.ICON}
+              variant={ButtonVariant.Icon}
             >
               <FavoriteIcon />
             </Button>
@@ -54,7 +54,7 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
       </AppBar>
     </Row>
     <Caption margin={Size.L}>
-      AppBarVariant.DEFAULT, ColorTheme.PRIMARY_NORMAL (default)
+      AppBarVariant.Default, ColorTheme.PrimaryNormal (default)
     </Caption>
     <Row>
       <AppBar>
@@ -63,7 +63,7 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
             <Button
               invertColor
               onPress={onButtonPress}
-              variant={ButtonVariant.ICON}
+              variant={ButtonVariant.Icon}
             >
               <MenuIcon />
             </Button>
@@ -76,7 +76,7 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
       </AppBar>
     </Row>
     <Caption margin={Size.L}>
-      AppBarVariant.DEFAULT, ColorTheme.PRIMARY_NORMAL (default)
+      AppBarVariant.Default, ColorTheme.PrimaryNormal (default)
     </Caption>
     <Row>
       <AppBar>
@@ -85,7 +85,7 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
             <Button
               invertColor
               onPress={onButtonPress}
-              variant={ButtonVariant.ICON}
+              variant={ButtonVariant.Icon}
             >
               <MenuIcon />
             </Button>
@@ -93,7 +93,7 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
             <Button
               invertColor
               onPress={onButtonPress}
-              variant={ButtonVariant.CONTAINED}
+              variant={ButtonVariant.Contained}
             >
               Save As
             </Button>
@@ -102,7 +102,7 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
       </AppBar>
     </Row>
     <Caption margin={Size.L}>
-      AppBarVariant.DEFAULT, ColorTheme.PRIMARY_NORMAL (default)
+      AppBarVariant.Default, ColorTheme.PrimaryNormal (default)
     </Caption>
     <Row>
       <AppBar>
@@ -111,7 +111,7 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
             <Button
               invertColor
               onPress={onButtonPress}
-              variant={ButtonVariant.ICON}
+              variant={ButtonVariant.Icon}
             >
               <MenuIcon />
             </Button>
@@ -123,7 +123,7 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
             <Button
               invertColor
               onPress={onButtonPress}
-              variant={ButtonVariant.ICON}
+              variant={ButtonVariant.Icon}
             >
               <FavoriteIcon />
             </Button>
@@ -132,16 +132,16 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
       </AppBar>
     </Row>
     <Caption margin={Size.L}>
-      AppBarVariant.DENSE, ColorTheme.PRIMARY_NORMAL (default)
+      AppBarVariant.Dense, ColorTheme.PrimaryNormal (default)
     </Caption>
     <Row>
-      <AppBar variant={AppBarVariant.DENSE}>
+      <AppBar variant={AppBarVariant.Dense}>
         {() => (
           <React.Fragment>
             <Button
               invertColor
               onPress={onButtonPress}
-              variant={ButtonVariant.ICON}
+              variant={ButtonVariant.Icon}
             >
               <MenuIcon />
             </Button>
@@ -149,7 +149,7 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
             <Button
               invertColor
               onPress={onButtonPress}
-              variant={ButtonVariant.ICON}
+              variant={ButtonVariant.Icon}
             >
               <FavoriteIcon />
             </Button>
@@ -158,16 +158,16 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
       </AppBar>
     </Row>
     <Caption margin={Size.L}>
-      AppBarVariant.PROMINENT, ColorTheme.PRIMARY_NORMAL (default)
+      AppBarVariant.Prominent, ColorTheme.PrimaryNormal (default)
     </Caption>
     <Row>
-      <AppBar variant={AppBarVariant.PROMINENT}>
+      <AppBar variant={AppBarVariant.Prominent}>
         {() => (
           <React.Fragment>
             <Button
               invertColor
               onPress={onButtonPress}
-              variant={ButtonVariant.ICON}
+              variant={ButtonVariant.Icon}
             >
               <MenuIcon />
             </Button>
@@ -175,7 +175,7 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
             <Button
               invertColor
               onPress={onButtonPress}
-              variant={ButtonVariant.ICON}
+              variant={ButtonVariant.Icon}
             >
               <FavoriteIcon />
             </Button>
@@ -184,16 +184,16 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
       </AppBar>
     </Row>
     <Caption margin={Size.L}>
-      AppBarVariant.PROMINENT, ColorTheme.PRIMARY_NORMAL (default)
+      AppBarVariant.Prominent, ColorTheme.PrimaryNormal (default)
     </Caption>
     <Row>
-      <AppBar variant={AppBarVariant.PROMINENT}>
+      <AppBar variant={AppBarVariant.Prominent}>
         {() => (
           <React.Fragment>
             <Button
               invertColor
               onPress={onButtonPress}
-              variant={ButtonVariant.ICON}
+              variant={ButtonVariant.Icon}
             >
               <MenuIcon />
             </Button>
@@ -203,7 +203,7 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
             <Button
               invertColor
               onPress={onButtonPress}
-              variant={ButtonVariant.ICON}
+              variant={ButtonVariant.Icon}
             >
               <FavoriteIcon />
             </Button>
@@ -212,16 +212,16 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
       </AppBar>
     </Row>
     <Caption margin={Size.L}>
-      AppBarVariant.PROMINENT, ColorTheme.PRIMARY_NORMAL (default)
+      AppBarVariant.Prominent, ColorTheme.PrimaryNormal (default)
     </Caption>
     <Row>
-      <AppBar variant={AppBarVariant.PROMINENT}>
+      <AppBar variant={AppBarVariant.Prominent}>
         {() => (
           <React.Fragment>
             <Button
               invertColor
               onPress={onButtonPress}
-              variant={ButtonVariant.ICON}
+              variant={ButtonVariant.Icon}
             >
               <MenuIcon />
             </Button>
@@ -250,7 +250,7 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
             <Button
               invertColor
               onPress={onButtonPress}
-              variant={ButtonVariant.ICON}
+              variant={ButtonVariant.Icon}
             >
               <FavoriteIcon />
             </Button>
@@ -259,16 +259,16 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
       </AppBar>
     </Row>
     <Caption margin={Size.L}>
-      AppBarVariant.PROMINENT_DENSE, ColorTheme.PRIMARY_NORMAL (default)
+      AppBarVariant.ProminentDense, ColorTheme.PrimaryNormal (default)
     </Caption>
     <Row>
-      <AppBar variant={AppBarVariant.PROMINENT_DENSE}>
+      <AppBar variant={AppBarVariant.ProminentDense}>
         {() => (
           <React.Fragment>
             <Button
               invertColor
               onPress={onButtonPress}
-              variant={ButtonVariant.ICON}
+              variant={ButtonVariant.Icon}
             >
               <MenuIcon />
             </Button>
@@ -276,7 +276,7 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
             <Button
               invertColor
               onPress={onButtonPress}
-              variant={ButtonVariant.ICON}
+              variant={ButtonVariant.Icon}
             >
               <FavoriteIcon />
             </Button>
@@ -285,16 +285,16 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
       </AppBar>
     </Row>
     <Caption margin={Size.L}>
-      AppBarVariant.PROMINENT_DENSE, ColorTheme.PRIMARY_NORMAL (default)
+      AppBarVariant.ProminentDense, ColorTheme.PrimaryNormal (default)
     </Caption>
     <Row>
-      <AppBar variant={AppBarVariant.PROMINENT_DENSE}>
+      <AppBar variant={AppBarVariant.ProminentDense}>
         {() => (
           <React.Fragment>
             <Button
               invertColor
               onPress={onButtonPress}
-              variant={ButtonVariant.ICON}
+              variant={ButtonVariant.Icon}
             >
               <MenuIcon />
             </Button>
@@ -304,7 +304,7 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
             <Button
               invertColor
               onPress={onButtonPress}
-              variant={ButtonVariant.ICON}
+              variant={ButtonVariant.Icon}
             >
               <FavoriteIcon />
             </Button>
@@ -313,16 +313,16 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
       </AppBar>
     </Row>
     <Caption margin={Size.L}>
-      AppBarVariant.DEFAULT, ColorTheme.SECONDARY_NORMAL
+      AppBarVariant.Default, ColorTheme.SecondaryNormal
     </Caption>
     <Row>
-      <AppBar colorTheme={ColorTheme.SECONDARY_NORMAL}>
+      <AppBar colorTheme={ColorTheme.SecondaryNormal}>
         {() => (
           <React.Fragment>
             <Button
               invertColor
               onPress={onButtonPress}
-              variant={ButtonVariant.ICON}
+              variant={ButtonVariant.Icon}
             >
               <MenuIcon />
             </Button>
@@ -334,14 +334,14 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
               <Button
                 invertColor
                 onPress={onButtonPress}
-                variant={ButtonVariant.ICON}
+                variant={ButtonVariant.Icon}
               >
                 <FavoriteIcon />
               </Button>
               <Button
                 invertColor
                 onPress={onButtonPress}
-                variant={ButtonVariant.ICON}
+                variant={ButtonVariant.Icon}
               >
                 <MenuIcon />
               </Button>
@@ -351,14 +351,14 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
       </AppBar>
     </Row>
     <Caption margin={Size.L}>
-      AppBarVariant.DEFAULT, ColorTheme.SECONDARY_LIGHT
+      AppBarVariant.Default, ColorTheme.SecondaryLight
     </Caption>
     <Row>
-      <AppBar colorTheme={ColorTheme.SECONDARY_LIGHT}>
+      <AppBar colorTheme={ColorTheme.SecondaryLight}>
         <Button
           invertColor
           onPress={onButtonPress}
-          variant={ButtonVariant.ICON}
+          variant={ButtonVariant.Icon}
         >
           <MenuIcon />
         </Button>
@@ -366,14 +366,14 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
       </AppBar>
     </Row>
     <Caption margin={Size.L}>
-      AppBarVariant.DEFAULT, ColorTheme.PRIMARY_NORMAL (default)
+      AppBarVariant.Default, ColorTheme.PrimaryNormal (default)
     </Caption>
     <Row>
       <AppBar>
         <Button
           invertColor
           onPress={onButtonPress}
-          variant={ButtonVariant.ICON}
+          variant={ButtonVariant.Icon}
         >
           <MenuIcon />
         </Button>
@@ -381,45 +381,45 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
         <Button
           invertColor
           onPress={onButtonPress}
-          variant={ButtonVariant.ICON}
+          variant={ButtonVariant.Icon}
         >
           <FavoriteIcon />
         </Button>
       </AppBar>
     </Row>
     <Caption margin={Size.L}>
-      AppBarVariant.DEFAULT, ColorTheme.PRIMARY_NORMAL (default)
+      AppBarVariant.Default, ColorTheme.PrimaryNormal (default)
     </Caption>
     <Row>
       <AppBar>
         <Button
           invertColor
           onPress={onButtonPress}
-          variant={ButtonVariant.ICON}
+          variant={ButtonVariant.Icon}
         >
           <MenuIcon />
         </Button>
       </AppBar>
     </Row>
     <Caption margin={Size.L}>
-      AppBarVariant.DEFAULT, ColorTheme.WARNING_NORMAL
+      AppBarVariant.Default, ColorTheme.WarningNormal
     </Caption>
     <Row>
-      <AppBar colorTheme={ColorTheme.WARNING_NORMAL}>
+      <AppBar colorTheme={ColorTheme.WarningNormal}>
         {() => <AppBarTitle numberOfLines={1}>My Application</AppBarTitle>}
       </AppBar>
     </Row>
     <Caption margin={Size.L}>
-      AppBarVariant.PROMINENT, ColorTheme.PRIMARY_NORMAL (default)
+      AppBarVariant.Prominent, ColorTheme.PrimaryNormal (default)
     </Caption>
     <Row>
-      <AppBar variant={AppBarVariant.PROMINENT}>
+      <AppBar variant={AppBarVariant.Prominent}>
         {() => (
           <React.Fragment>
             <Button
               invertColor
               onPress={onButtonPress}
-              variant={ButtonVariant.ICON}
+              variant={ButtonVariant.Icon}
             >
               <MenuIcon />
             </Button>
@@ -427,7 +427,7 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
             <Button
               invertColor
               onPress={onButtonPress}
-              variant={ButtonVariant.ICON}
+              variant={ButtonVariant.Icon}
             >
               <FavoriteIcon />
             </Button>
@@ -436,19 +436,19 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
       </AppBar>
     </Row>
     <Caption margin={Size.L}>
-      AppBarVariant.PROMINENT, ColorTheme.SECONDARY_NORMAL
+      AppBarVariant.Prominent, ColorTheme.SecondaryNormal
     </Caption>
     <Row>
       <AppBar
-        colorTheme={ColorTheme.SECONDARY_NORMAL}
-        variant={AppBarVariant.PROMINENT}
+        colorTheme={ColorTheme.SecondaryNormal}
+        variant={AppBarVariant.Prominent}
       >
         {() => (
           <React.Fragment>
             <Button
               invertColor
               onPress={onButtonPress}
-              variant={ButtonVariant.ICON}
+              variant={ButtonVariant.Icon}
             >
               <MenuIcon />
             </Button>
@@ -457,14 +457,14 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
               <Button
                 invertColor
                 onPress={onButtonPress}
-                variant={ButtonVariant.ICON}
+                variant={ButtonVariant.Icon}
               >
                 <FavoriteIcon />
               </Button>
               <Button
                 invertColor
                 onPress={onButtonPress}
-                variant={ButtonVariant.ICON}
+                variant={ButtonVariant.Icon}
               >
                 <MenuIcon />
               </Button>
@@ -474,17 +474,17 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
       </AppBar>
     </Row>
     <Caption margin={Size.L}>
-      AppBarVariant.PROMINENT, ColorTheme.SECONDARY_LIGHT
+      AppBarVariant.Prominent, ColorTheme.SecondaryLight
     </Caption>
     <Row>
       <AppBar
-        colorTheme={ColorTheme.SECONDARY_LIGHT}
-        variant={AppBarVariant.PROMINENT}
+        colorTheme={ColorTheme.SecondaryLight}
+        variant={AppBarVariant.Prominent}
       >
         <Button
           invertColor
           onPress={onButtonPress}
-          variant={ButtonVariant.ICON}
+          variant={ButtonVariant.Icon}
         >
           <MenuIcon />
         </Button>

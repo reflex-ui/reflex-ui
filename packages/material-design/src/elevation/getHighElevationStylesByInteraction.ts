@@ -17,6 +17,6 @@ export const getHighElevationStylesByInteraction: ViewStyleGetter<
   InteractionType
 > = interactionType => ({
   ...getElevationStyles(
-    convertInteractionToElevation(interactionType, ElevationDegree.HIGH),
+    convertInteractionToElevation(interactionType, ElevationDegree.High),
   ),
 });

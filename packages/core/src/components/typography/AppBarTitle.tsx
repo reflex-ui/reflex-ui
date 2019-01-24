@@ -27,7 +27,7 @@ export const AppBarTitle = reflexComponent<OptionalTypographyProps>({
             {(componentsTheme) => {
               const propsWithDefaults: TypographyProps = {
                 colorTheme: props.colorTheme || colorTheme ||
-                  ColorTheme.SURFACE_NORMAL,
+                  ColorTheme.SurfaceNormal,
                 paletteTheme,
                 theme: componentsTheme.typography.appBarTitle,
                 ...props,

@@ -18,21 +18,21 @@ export const createPaletteColorInteraction = (
   enabled: createPaletteColor({
     color: config.color,
     colorVariantFactory: config.colorVariantFactory,
-    interactionType: InteractionType.ENABLED,
+    interactionType: InteractionType.Enabled,
   }),
   focused: createPaletteColor({
     color: config.color,
     colorVariantFactory: config.colorVariantFactory,
-    interactionType: InteractionType.FOCUSED,
+    interactionType: InteractionType.Focused,
   }),
   hovered: createPaletteColor({
     color: config.color,
     colorVariantFactory: config.colorVariantFactory,
-    interactionType: InteractionType.HOVERED,
+    interactionType: InteractionType.Hovered,
   }),
   pressed: createPaletteColor({
     color: config.color,
     colorVariantFactory: config.colorVariantFactory,
-    interactionType: InteractionType.PRESSED,
+    interactionType: InteractionType.Pressed,
   }),
 });

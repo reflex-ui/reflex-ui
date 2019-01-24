@@ -6,8 +6,8 @@
  */
 
 export enum AppBarVariant {
-  DEFAULT = 'default',
-  DENSE = 'dense',
-  PROMINENT = 'prominent',
-  PROMINENT_DENSE = 'prominentDense',
+  Default = 'default',
+  Dense = 'dense',
+  Prominent = 'prominent',
+  ProminentDense = 'prominentDense',
 }

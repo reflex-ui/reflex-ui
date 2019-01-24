@@ -38,12 +38,12 @@ interface RaiseStyles {
 }
 
 enum AnimationKeyframe {
-  DISABLED = 'disabled',
-  ENABLED = 'enabled',
-  FOCUSED = 'focused',
-  HOVERED = 'hovered',
-  PRESS_IN = 'pressin',
-  PRESS_OUT = 'pressout',
+  Disabled = 'disabled',
+  Enabled = 'enabled',
+  Focused = 'focused',
+  Hovered = 'hovered',
+  PressIn = 'pressin',
+  PressOut = 'pressout',
 }
 
 interface RaisedComponentState {
@@ -115,65 +115,65 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
         );
 
         if (
-          interactionType === InteractionType.DISABLED &&
-          animationKeyframe !== AnimationKeyframe.DISABLED &&
+          interactionType === InteractionType.Disabled &&
+          animationKeyframe !== AnimationKeyframe.Disabled &&
           !isAnimating
         ) {
           return {
             ...state,
-            animationKeyframe: AnimationKeyframe.DISABLED,
+            animationKeyframe: AnimationKeyframe.Disabled,
             isAnimating: true,
             staticRaiseStyles,
           };
         }
 
         if (
-          interactionType === InteractionType.HOVERED &&
-          animationKeyframe !== AnimationKeyframe.HOVERED &&
+          interactionType === InteractionType.Hovered &&
+          animationKeyframe !== AnimationKeyframe.Hovered &&
           !isAnimating
         ) {
           return {
             ...state,
-            animationKeyframe: AnimationKeyframe.HOVERED,
+            animationKeyframe: AnimationKeyframe.Hovered,
             isAnimating: true,
             staticRaiseStyles,
           };
         }
 
         if (
-          interactionType === InteractionType.FOCUSED &&
-          animationKeyframe !== AnimationKeyframe.FOCUSED &&
+          interactionType === InteractionType.Focused &&
+          animationKeyframe !== AnimationKeyframe.Focused &&
           !isAnimating
         ) {
           return {
             ...state,
-            animationKeyframe: AnimationKeyframe.FOCUSED,
+            animationKeyframe: AnimationKeyframe.Focused,
             isAnimating: true,
             staticRaiseStyles,
           };
         }
 
         if (
-          interactionType === InteractionType.PRESSED &&
-          animationKeyframe !== AnimationKeyframe.PRESS_IN &&
+          interactionType === InteractionType.Pressed &&
+          animationKeyframe !== AnimationKeyframe.PressIn &&
           !isAnimating
         ) {
           return {
             ...state,
-            animationKeyframe: AnimationKeyframe.PRESS_IN,
+            animationKeyframe: AnimationKeyframe.PressIn,
             isAnimating: true,
             staticRaiseStyles,
           };
         }
 
         if (
-          interactionType === InteractionType.ENABLED &&
-          animationKeyframe !== AnimationKeyframe.ENABLED &&
+          interactionType === InteractionType.Enabled &&
+          animationKeyframe !== AnimationKeyframe.Enabled &&
           !isAnimating
         ) {
           return {
             ...state,
-            animationKeyframe: AnimationKeyframe.ENABLED,
+            animationKeyframe: AnimationKeyframe.Enabled,
             isAnimatingPressOut: true,
             staticRaiseStyles,
           };
@@ -188,7 +188,7 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
       public raiseAnimation: (props: {}) => Keyframes<any, any>;
 
       public readonly state: RaisedComponentState = {
-        animationKeyframe: AnimationKeyframe.DISABLED,
+        animationKeyframe: AnimationKeyframe.Disabled,
         isAnimating: false,
         staticRaiseStyles: { container: {}, shadow: {} },
       };
@@ -206,13 +206,13 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
               from: {
                 ...createMotionRaiseStyles({
                   elevationDegree,
-                  interactionType: InteractionType.ENABLED,
+                  interactionType: InteractionType.Enabled,
                 }),
               },
               to: {
                 ...createMotionRaiseStyles({
                   elevationDegree,
-                  interactionType: InteractionType.DISABLED,
+                  interactionType: InteractionType.Disabled,
                 }),
               },
             });
@@ -227,13 +227,13 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
               from: {
                 ...createMotionRaiseStyles({
                   elevationDegree,
-                  interactionType: InteractionType.HOVERED,
+                  interactionType: InteractionType.Hovered,
                 }),
               },
               to: {
                 ...createMotionRaiseStyles({
                   elevationDegree,
-                  interactionType: InteractionType.ENABLED,
+                  interactionType: InteractionType.Enabled,
                 }),
               },
             });
@@ -248,13 +248,13 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
               from: {
                 ...createMotionRaiseStyles({
                   elevationDegree,
-                  interactionType: InteractionType.ENABLED,
+                  interactionType: InteractionType.Enabled,
                 }),
               },
               to: {
                 ...createMotionRaiseStyles({
                   elevationDegree,
-                  interactionType: InteractionType.FOCUSED,
+                  interactionType: InteractionType.Focused,
                 }),
               },
             });
@@ -269,13 +269,13 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
               from: {
                 ...createMotionRaiseStyles({
                   elevationDegree,
-                  interactionType: InteractionType.ENABLED,
+                  interactionType: InteractionType.Enabled,
                 }),
               },
               to: {
                 ...createMotionRaiseStyles({
                   elevationDegree,
-                  interactionType: InteractionType.HOVERED,
+                  interactionType: InteractionType.Hovered,
                 }),
               },
             });
@@ -290,13 +290,13 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
               from: {
                 ...createMotionRaiseStyles({
                   elevationDegree,
-                  interactionType: InteractionType.HOVERED,
+                  interactionType: InteractionType.Hovered,
                 }),
               },
               to: {
                 ...createMotionRaiseStyles({
                   elevationDegree,
-                  interactionType: InteractionType.PRESSED,
+                  interactionType: InteractionType.Pressed,
                 }),
               },
             });

@@ -10,22 +10,22 @@ import { FontWeight } from './FontWeight';
 import { FontWeightValues } from './FontWeightValues';
 
 const androidWeight: FontWeightValues[] = [];
-androidWeight[FontWeight.LIGHT] = '300';
-androidWeight[FontWeight.REGULAR] = '400';
-androidWeight[FontWeight.MEDIUM] = '500';
-androidWeight[FontWeight.BOLD] = '700';
+androidWeight[FontWeight.Light] = '300';
+androidWeight[FontWeight.Regular] = '400';
+androidWeight[FontWeight.Medium] = '500';
+androidWeight[FontWeight.Bold] = '700';
 
 const iosWeight: FontWeightValues[] = [];
-iosWeight[FontWeight.LIGHT] = '300';
-iosWeight[FontWeight.REGULAR] = '400';
-iosWeight[FontWeight.MEDIUM] = '500';
-iosWeight[FontWeight.BOLD] = '700';
+iosWeight[FontWeight.Light] = '300';
+iosWeight[FontWeight.Regular] = '400';
+iosWeight[FontWeight.Medium] = '500';
+iosWeight[FontWeight.Bold] = '700';
 
 const webWeight: FontWeightValues[] = [];
-webWeight[FontWeight.LIGHT] = '300';
-webWeight[FontWeight.REGULAR] = '400';
-webWeight[FontWeight.MEDIUM] = '500';
-webWeight[FontWeight.BOLD] = '700';
+webWeight[FontWeight.Light] = '300';
+webWeight[FontWeight.Regular] = '400';
+webWeight[FontWeight.Medium] = '500';
+webWeight[FontWeight.Bold] = '700';
 
 export const getFontWeight = (weight: FontWeight): FontWeightValues => {
   if (isAndroid) return androidWeight[weight];

@@ -35,7 +35,7 @@ export const getCommonTypographyStyle: TextStyleGetter<
     paletteTheme: props.paletteTheme,
   }),
   fontFamily: getFontFamily(),
-  fontWeight: getFontWeight(FontWeight.REGULAR),
+  fontWeight: getFontWeight(FontWeight.Regular),
   ...Platform.select({
     web: {
       MozOsxFontSmoothing: 'grayscale',
@@ -49,7 +49,7 @@ export const partialTypographyTheme: OptionalTypographyTheme = {
     getStyle: (props): TextStyle => ({
       ...getCommonTypographyStyle(props),
       fontSize: 20,
-      fontWeight: getFontWeight(FontWeight.MEDIUM),
+      fontWeight: getFontWeight(FontWeight.Medium),
       letterSpacing: 0.15,
       marginTop: isWeb ? -1 : 0,
       overflow: 'hidden',
@@ -66,7 +66,7 @@ export const partialTypographyTheme: OptionalTypographyTheme = {
     getStyle: props => ({
       ...getCommonTypographyStyle(props),
       fontSize: 96,
-      fontWeight: getFontWeight(FontWeight.LIGHT),
+      fontWeight: getFontWeight(FontWeight.Light),
       letterSpacing: -1.5,
     }),
   },
@@ -74,7 +74,7 @@ export const partialTypographyTheme: OptionalTypographyTheme = {
     getStyle: props => ({
       ...getCommonTypographyStyle(props),
       fontSize: 60,
-      fontWeight: getFontWeight(FontWeight.LIGHT),
+      fontWeight: getFontWeight(FontWeight.Light),
       letterSpacing: -0.5,
     }),
   },
@@ -103,7 +103,7 @@ export const partialTypographyTheme: OptionalTypographyTheme = {
     getStyle: props => ({
       ...getCommonTypographyStyle(props),
       fontSize: 20,
-      fontWeight: getFontWeight(FontWeight.MEDIUM),
+      fontWeight: getFontWeight(FontWeight.Medium),
       letterSpacing: 0.15,
     }),
   },
@@ -140,7 +140,7 @@ export const partialTypographyTheme: OptionalTypographyTheme = {
     getStyle: props => ({
       ...getCommonTypographyStyle(props),
       fontSize: 14,
-      fontWeight: getFontWeight(FontWeight.MEDIUM),
+      fontWeight: getFontWeight(FontWeight.Medium),
       letterSpacing: 0.1,
     }),
   },

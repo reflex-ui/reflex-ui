@@ -30,7 +30,7 @@ const getButtonProps: ButtonSubPropsGetter = (
       style: {
         backgroundColor:
           // prettier-ignore
-          props.interactionState.type === InteractionType.DISABLED
+          props.interactionState.type === InteractionType.Disabled
             ? disabledGrey300_500.normal.color
             : getInlayColorByInteraction({
               color: '#c70ad0',
@@ -41,7 +41,7 @@ const getButtonProps: ButtonSubPropsGetter = (
     text: {
       style: {
         color:
-          props.interactionState.type === InteractionType.DISABLED
+          props.interactionState.type === InteractionType.Disabled
             ? disabledGrey300_500.normal.onColor
             : '#fff',
       },
@@ -60,15 +60,15 @@ const ContainedShapedButtonShowcaseScreen: React.SFC = (): JSX.Element => (
     ButtonCollection={LabelButtonCollection}
     customCollections={[
       {
-        colorTheme: ColorTheme.PRIMARY_NORMAL,
+        colorTheme: ColorTheme.PrimaryNormal,
         getSubProps: getButtonProps,
-        surfaceColorTheme: ColorTheme.SURFACE_NORMAL,
+        surfaceColorTheme: ColorTheme.SurfaceNormal,
         title: 'Custom color',
-        variant: ButtonVariant.CONTAINED_SHAPED,
+        variant: ButtonVariant.ContainedShaped,
       },
     ]}
     title="Button: Contained Shaped"
-    variant={ButtonVariant.CONTAINED_SHAPED}
+    variant={ButtonVariant.ContainedShaped}
   />
 );
 

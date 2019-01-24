@@ -6,8 +6,8 @@
  */
 
 export enum FontWeight {
-  LIGHT,
-  REGULAR,
-  MEDIUM,
-  BOLD,
+  Light,
+  Regular,
+  Medium,
+  Bold,
 }

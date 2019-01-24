@@ -13,29 +13,29 @@ export const convertInteractionToElevation = (
   degree: ElevationDegree,
 ) => {
   let elevation = 0;
-  if (interactionType === InteractionType.ENABLED) {
-    if (degree === ElevationDegree.LOW) {
+  if (interactionType === InteractionType.Enabled) {
+    if (degree === ElevationDegree.Low) {
       elevation = 2;
-    } else if (degree === ElevationDegree.MID) {
+    } else if (degree === ElevationDegree.Mid) {
       elevation = 6;
     } else {
       elevation = 10;
     }
   } else if (
-    interactionType === InteractionType.FOCUSED ||
-    interactionType === InteractionType.HOVERED
+    interactionType === InteractionType.Focused ||
+    interactionType === InteractionType.Hovered
   ) {
-    if (degree === ElevationDegree.LOW) {
+    if (degree === ElevationDegree.Low) {
       elevation = 4;
-    } else if (degree === ElevationDegree.MID) {
+    } else if (degree === ElevationDegree.Mid) {
       elevation = 8;
     } else {
       elevation = 14;
     }
-  } else if (interactionType === InteractionType.PRESSED) {
-    if (degree === ElevationDegree.LOW) {
+  } else if (interactionType === InteractionType.Pressed) {
+    if (degree === ElevationDegree.Low) {
       elevation = 8;
-    } else if (degree === ElevationDegree.MID) {
+    } else if (degree === ElevationDegree.Mid) {
       elevation = 12;
     } else {
       elevation = 20;

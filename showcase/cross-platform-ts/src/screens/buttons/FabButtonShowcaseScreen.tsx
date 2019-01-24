@@ -29,7 +29,7 @@ const getButtonProps: ButtonSubPropsGetter = (
     style: {
       backgroundColor:
         // prettier-ignore
-        props.interactionState.type === InteractionType.DISABLED
+        props.interactionState.type === InteractionType.Disabled
           ? disabledGrey300_500.normal.color
           : getInlayColorByInteraction({
             color: '#c70ad0',
@@ -40,7 +40,7 @@ const getButtonProps: ButtonSubPropsGetter = (
   icon: {
     style: {
       color:
-        props.interactionState.type === InteractionType.DISABLED
+        props.interactionState.type === InteractionType.Disabled
           ? disabledGrey300_500.normal.onColor
           : '#fff',
     },
@@ -52,15 +52,15 @@ const FabButtonShowcaseScreen: React.SFC = (): JSX.Element => (
     ButtonCollection={IconButtonCollection}
     customCollections={[
       {
-        colorTheme: ColorTheme.PRIMARY_NORMAL,
+        colorTheme: ColorTheme.PrimaryNormal,
         getSubProps: getButtonProps,
-        surfaceColorTheme: ColorTheme.SURFACE_NORMAL,
+        surfaceColorTheme: ColorTheme.SurfaceNormal,
         title: 'Custom color',
-        variant: ButtonVariant.FAB,
+        variant: ButtonVariant.Fab,
       },
     ]}
     title="Button: Fab"
-    variant={ButtonVariant.FAB}
+    variant={ButtonVariant.Fab}
   />
 );
 

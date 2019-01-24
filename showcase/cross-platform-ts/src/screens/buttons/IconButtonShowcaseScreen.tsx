@@ -36,7 +36,7 @@ const getButtonProps: ButtonSubPropsGetter = (
   icon: {
     style: {
       color:
-        props.interactionState.type === InteractionType.DISABLED
+        props.interactionState.type === InteractionType.Disabled
           ? disabledGrey300_500.normal.onColor
           : '#c70ad0',
     },
@@ -48,15 +48,15 @@ const IconButtonShowcaseScreen: React.SFC = (): JSX.Element => (
     ButtonCollection={IconButtonCollection}
     customCollections={[
       {
-        colorTheme: ColorTheme.PRIMARY_NORMAL,
+        colorTheme: ColorTheme.PrimaryNormal,
         getSubProps: getButtonProps,
-        surfaceColorTheme: ColorTheme.SURFACE_NORMAL,
+        surfaceColorTheme: ColorTheme.SurfaceNormal,
         title: 'Custom color',
-        variant: ButtonVariant.ICON,
+        variant: ButtonVariant.Icon,
       },
     ]}
     title="Button: Icon"
-    variant={ButtonVariant.ICON}
+    variant={ButtonVariant.Icon}
   />
 );
 

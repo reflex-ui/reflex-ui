@@ -36,8 +36,8 @@ interface Position2D {
 }
 
 enum AnimationKeyframe {
-  PRESS_IN = 'pressin',
-  PRESS_OUT = 'pressout',
+  PressIn = 'pressin',
+  PressOut = 'pressout',
 }
 
 interface RippledComponentState {
@@ -207,8 +207,8 @@ export const withRippleEffect = <S extends InteractionStateProps>(
         } = state;
 
         if (
-          interactionType === InteractionType.PRESSED &&
-          animationKeyframe === AnimationKeyframe.PRESS_OUT &&
+          interactionType === InteractionType.Pressed &&
+          animationKeyframe === AnimationKeyframe.PressOut &&
           !isAnimatingPressOut
         ) {
           const { height, width } = state;
@@ -216,7 +216,7 @@ export const withRippleEffect = <S extends InteractionStateProps>(
 
           return {
             ...state,
-            animationKeyframe: AnimationKeyframe.PRESS_IN,
+            animationKeyframe: AnimationKeyframe.PressIn,
             isAnimatingPressIn: true,
             rippleStyles: createComponentRippleStyles({
               color: settings.getRippleColor(props.componentProps),
@@ -230,13 +230,13 @@ export const withRippleEffect = <S extends InteractionStateProps>(
         }
 
         if (
-          interactionType !== InteractionType.PRESSED &&
-          animationKeyframe === AnimationKeyframe.PRESS_IN &&
+          interactionType !== InteractionType.Pressed &&
+          animationKeyframe === AnimationKeyframe.PressIn &&
           !isAnimatingPressIn
         ) {
           return {
             ...state,
-            animationKeyframe: AnimationKeyframe.PRESS_OUT,
+            animationKeyframe: AnimationKeyframe.PressOut,
             isAnimatingPressOut: true,
           };
         }
@@ -250,7 +250,7 @@ export const withRippleEffect = <S extends InteractionStateProps>(
       public rippleAnimation: (props: {}) => Keyframes<any, any>;
 
       public readonly state: RippledComponentState = {
-        animationKeyframe: AnimationKeyframe.PRESS_OUT,
+        animationKeyframe: AnimationKeyframe.PressOut,
         height: 40,
         isAnimatingPressIn: false,
         isAnimatingPressOut: false,

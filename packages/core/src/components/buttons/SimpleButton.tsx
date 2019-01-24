@@ -81,8 +81,8 @@ export const handleButtonChildren = (
   }
 
   if (
-    props.variant === ButtonVariant.FAB ||
-    props.variant === ButtonVariant.ICON
+    props.variant === ButtonVariant.Fab ||
+    props.variant === ButtonVariant.Icon
   ) {
     return handleButtonIcon({
       Container: props.theme.iconContainer.component,

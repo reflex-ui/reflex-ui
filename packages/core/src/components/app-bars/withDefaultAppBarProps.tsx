@@ -31,10 +31,10 @@ export const withDefaultAppBarProps = (
           <ComponentsThemeContext.Consumer>
             {(componentsTheme) => {
               const colorTheme: ColorTheme =
-                props.colorTheme || ColorTheme.PRIMARY_NORMAL;
+                props.colorTheme || ColorTheme.PrimaryNormal;
 
               const variant: AppBarVariant =
-                props.variant || AppBarVariant.DEFAULT;
+                props.variant || AppBarVariant.Default;
 
               const propsWithDefaults: AppBarProps = {
                 ...dimensionsProps,

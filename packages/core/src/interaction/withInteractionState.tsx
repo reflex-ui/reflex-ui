@@ -30,7 +30,7 @@ export const withInteractionState = <P extends OptionalInteractionProps>(
     class WithInteractionState extends React.Component<P, State> {
       public readonly state: State = {
         interactionEvent: undefined,
-        interactionState: { type: InteractionType.DISABLED },
+        interactionState: { type: InteractionType.Disabled },
         isFocusing: false,
         isHovering: false,
         isPressing: false,
@@ -54,30 +54,30 @@ export const withInteractionState = <P extends OptionalInteractionProps>(
         if (this.props.disabled) {
           return {
             event: this.state.interactionEvent,
-            type: InteractionType.DISABLED,
+            type: InteractionType.Disabled,
           };
         }
         if (this.state.isPressing) {
           return {
             event: this.state.interactionEvent,
-            type: InteractionType.PRESSED,
+            type: InteractionType.Pressed,
           };
         }
         if (this.state.isFocusing) {
           return {
             event: this.state.interactionEvent,
-            type: InteractionType.FOCUSED,
+            type: InteractionType.Focused,
           };
         }
         if (this.state.isHovering) {
           return {
             event: this.state.interactionEvent,
-            type: InteractionType.HOVERED,
+            type: InteractionType.Hovered,
           };
         }
         return {
           event: this.state.interactionEvent,
-          type: InteractionType.ENABLED,
+          type: InteractionType.Enabled,
         };
       };
 

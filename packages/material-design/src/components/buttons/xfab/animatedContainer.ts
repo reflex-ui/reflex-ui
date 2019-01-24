@@ -32,7 +32,7 @@ export const getAnimatedXFabButtonContainerStyle: ViewStyleGetter<
   // tslint:disable-next-line:ter-arrow-parens
 > = props => {
   const updatedProps =
-    props.interactionState.type === InteractionType.PRESSED
+    props.interactionState.type === InteractionType.Pressed
       ? {
           // tslint:disable-next-line:ter-indent
           ...props,
@@ -40,8 +40,8 @@ export const getAnimatedXFabButtonContainerStyle: ViewStyleGetter<
           interactionState: {
             ...props.interactionState,
             type: isTouchDevice
-              ? InteractionType.ENABLED
-              : InteractionType.HOVERED,
+              ? InteractionType.Enabled
+              : InteractionType.Hovered,
           },
           // tslint:disable-next-line:ter-indent
         }
@@ -49,7 +49,7 @@ export const getAnimatedXFabButtonContainerStyle: ViewStyleGetter<
 
   return {
     ...getXFabButtonContainerStyle(updatedProps),
-    ...getMidElevationStylesByInteraction(InteractionType.DISABLED),
+    ...getMidElevationStylesByInteraction(InteractionType.Disabled),
   };
 };
 
@@ -60,6 +60,6 @@ export const animatedXFabButtonContainerTheme: InjectableSubTheme<
 > = merge({}, rawInjectableButtonViewSubTheme, {
   component: withRippleEffect({
     getRippleColor: getContainedButtonRippleColor,
-  })(withRaiseEffect(ElevationDegree.MID)(DefaultViewSubcomponent)),
+  })(withRaiseEffect(ElevationDegree.Mid)(DefaultViewSubcomponent)),
   getStyle: getAnimatedXFabButtonContainerStyle,
 });

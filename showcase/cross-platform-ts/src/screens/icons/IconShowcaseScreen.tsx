@@ -45,7 +45,7 @@ const colorThemes: ColorTheme[] = [
 const IconShowcaseScreen: React.SFC<{}> = (): JSX.Element => (
   <ScrollView>
     <AppBar>
-      <Button invertColor onPress={onButtonPress} variant={ButtonVariant.ICON}>
+      <Button invertColor onPress={onButtonPress} variant={ButtonVariant.Icon}>
         <MenuIcon />
       </Button>
       <AppBarTitle numberOfLines={1}>Icon</AppBarTitle>

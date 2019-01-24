@@ -30,7 +30,7 @@ export const withDefaultSurfaceProps = (
           <ComponentsThemeContext.Consumer>
             {(componentsTheme) => {
               const colorTheme: ColorTheme =
-                props.colorTheme || ColorTheme.SURFACE_NORMAL;
+                props.colorTheme || ColorTheme.SurfaceNormal;
 
               const propsWithDefaults: SurfaceProps = {
                 ...dimensionsProps,

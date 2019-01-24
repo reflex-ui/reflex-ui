@@ -6,6 +6,6 @@
  */
 
 export enum IconName {
-  FAVORITE = 'favorite',
-  MENU = 'menu',
+  Favorite = 'favorite',
+  Menu = 'menu',
 }

@@ -24,7 +24,7 @@ OptionalSuperIconProps
       <ComponentsThemeContext.Consumer>
         {(componentsTheme) => {
           const propsWithDefaults: SuperIconProps = {
-            colorTheme: ColorTheme.SECONDARY_NORMAL,
+            colorTheme: ColorTheme.SecondaryNormal,
             paletteTheme,
             size: Size.M,
             theme: componentsTheme.icon,

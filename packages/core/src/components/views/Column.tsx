@@ -34,7 +34,7 @@ export const Column = withResponsivenessProps(
                     const colorTheme: ColorTheme =
                       props.colorTheme ||
                       ctxColorTheme ||
-                      ColorTheme.SURFACE_NORMAL;
+                      ColorTheme.SurfaceNormal;
 
                     const propsWithDefaults: SuperViewProps = {
                       ...dimensionsProps,

@@ -35,7 +35,7 @@ export const getAllVariantsButtonContainerStyle: ViewStyleGetter<
   ...Platform.select({
     web: {
       cursor:
-        props.interactionState.type === InteractionType.DISABLED
+        props.interactionState.type === InteractionType.Disabled
           ? 'default'
           : 'pointer',
       outline: 'none',

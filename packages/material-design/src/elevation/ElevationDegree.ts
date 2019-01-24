@@ -6,7 +6,7 @@
  */
 
 export enum ElevationDegree {
-  HIGH = 'highElevation',
-  LOW = 'lowElevation',
-  MID = 'midElevation',
+  High = 'high',
+  Low = 'low',
+  Mid = 'mid',
 }

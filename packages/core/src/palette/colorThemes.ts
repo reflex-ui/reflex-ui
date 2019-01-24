@@ -8,45 +8,45 @@
 import { ColorTheme } from './ColorTheme';
 
 export const backgroundColorThemes: ColorTheme[] = [
-  ColorTheme.BACKGROUND_NORMAL,
-  ColorTheme.BACKGROUND_DARK,
-  ColorTheme.BACKGROUND_LIGHT,
+  ColorTheme.BackgroundNormal,
+  ColorTheme.BackgroundDark,
+  ColorTheme.BackgroundLight,
 ];
 
 export const errorColorThemes: ColorTheme[] = [
-  ColorTheme.ERROR_NORMAL,
-  ColorTheme.ERROR_DARK,
-  ColorTheme.ERROR_LIGHT,
+  ColorTheme.ErrorNormal,
+  ColorTheme.ErrorDark,
+  ColorTheme.ErrorLight,
 ];
 
 export const primaryColorThemes: ColorTheme[] = [
-  ColorTheme.PRIMARY_NORMAL,
-  ColorTheme.PRIMARY_DARK,
-  ColorTheme.PRIMARY_LIGHT,
+  ColorTheme.PrimaryNormal,
+  ColorTheme.PrimaryDark,
+  ColorTheme.PrimaryLight,
 ];
 
 export const secondaryColorThemes: ColorTheme[] = [
-  ColorTheme.SECONDARY_NORMAL,
-  ColorTheme.SECONDARY_DARK,
-  ColorTheme.SECONDARY_LIGHT,
+  ColorTheme.SecondaryNormal,
+  ColorTheme.SecondaryDark,
+  ColorTheme.SecondaryLight,
 ];
 
 export const successColorThemes: ColorTheme[] = [
-  ColorTheme.SUCCESS_NORMAL,
-  ColorTheme.SUCCESS_DARK,
-  ColorTheme.SUCCESS_LIGHT,
+  ColorTheme.SuccessNormal,
+  ColorTheme.SuccessDark,
+  ColorTheme.SuccessLight,
 ];
 
 export const surfaceColorThemes: ColorTheme[] = [
-  ColorTheme.SURFACE_NORMAL,
-  ColorTheme.SURFACE_DARK,
-  ColorTheme.SURFACE_LIGHT,
+  ColorTheme.SurfaceNormal,
+  ColorTheme.SurfaceDark,
+  ColorTheme.SurfaceLight,
 ];
 
 export const warningColorThemes: ColorTheme[] = [
-  ColorTheme.WARNING_NORMAL,
-  ColorTheme.WARNING_DARK,
-  ColorTheme.WARNING_LIGHT,
+  ColorTheme.WarningNormal,
+  ColorTheme.WarningDark,
+  ColorTheme.WarningLight,
 ];
 
 export const allColorThemes: ColorTheme[] = [
