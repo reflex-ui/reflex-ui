@@ -5,10 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { InteractionType } from '../interaction/InteractionType';
 import { PaletteColorVariant } from './PaletteColorVariant';
-// tslint:disable-next-line:max-line-length
-import { PaletteColorVariantFactoryInput } from './PaletteColorVariantFactoryInput';
 
-export type PaletteColorVariantFactory = (
-  config: PaletteColorVariantFactoryInput,
-) => PaletteColorVariant;
+export interface PaletteColorVariantFactoryInput {
+  readonly color: PaletteColorVariant;
+  readonly interactionType: InteractionType;
+}

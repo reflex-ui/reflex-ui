@@ -6,9 +6,11 @@
  */
 
 import { InteractionType } from '../interaction/InteractionType';
-import { PaletteColorVariant } from './PaletteColorVariant';
+import { PaletteColor } from './PaletteColor';
+import { PaletteColorVariantFactory } from './PaletteColorVariantFactory';
 
-export interface PaletteColorVariantFactoryConfig {
-  readonly color: PaletteColorVariant;
+export interface PaletteColorFactoryInput {
+  readonly color: PaletteColor;
+  readonly colorVariantFactory: PaletteColorVariantFactory;
   readonly interactionType: InteractionType;
 }

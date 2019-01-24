@@ -6,10 +6,10 @@
  */
 
 import { PaletteColor } from './PaletteColor';
-import { PaletteColorFactoryConfig } from './PaletteColorFactoryConfig';
+import { PaletteColorFactoryInput } from './PaletteColorFactoryInput';
 
 export const createPaletteColor = (
-  config: PaletteColorFactoryConfig,
+  config: PaletteColorFactoryInput,
 ): PaletteColor => ({
   dark: config.colorVariantFactory({
     color: config.color.dark,

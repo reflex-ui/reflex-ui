@@ -9,10 +9,10 @@ import { InteractionType } from '../interaction/InteractionType';
 import { createPaletteColor } from './createPaletteColor';
 import { PaletteColorInteraction } from './PaletteColorInteraction';
 // tslint:disable-next-line:max-line-length
-import { PaletteColorInteractionFactoryConfig } from './PaletteColorInteractionFactoryConfig';
+import { PaletteColorInteractionFactoryInput } from './PaletteColorInteractionFactoryInput';
 
 export const createPaletteColorInteraction = (
-  config: PaletteColorInteractionFactoryConfig,
+  config: PaletteColorInteractionFactoryInput,
 ): PaletteColorInteraction => ({
   disabled: config.disabledColor,
   enabled: createPaletteColor({
