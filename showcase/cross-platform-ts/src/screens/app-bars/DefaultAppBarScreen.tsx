@@ -7,6 +7,8 @@
 
 import {
   AppBar,
+  AppBarSubProps,
+  AppBarSubPropsGetter,
   AppBarTitle,
   AppBarVariant,
   Button,
@@ -24,6 +26,17 @@ const onButtonPress = () => {
   // tslint:disable-next-line:no-console
   console.log('DefaultButtonScreen().onButtonPress()');
 };
+
+const getAppBarSubProps: AppBarSubPropsGetter = ({
+  dimensions,
+  breakpoints,
+}): AppBarSubProps => ({
+  centerArea: {
+    style: {
+      marginStart: dimensions.window.width > breakpoints.largeHandset ? 10 : 4,
+    },
+  },
+});
 
 const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
@@ -51,6 +64,21 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
             </Button>
           </React.Fragment>
         )}
+      </AppBar>
+    </Row>
+    <Caption margin={Size.L}>
+      AppBarVariant.Default, ColorTheme.PrimaryNormal (default)
+    </Caption>
+    <Row>
+      <AppBar getSubProps={getAppBarSubProps} variant={AppBarVariant.Default}>
+        <Button
+          invertColor
+          onPress={onButtonPress}
+          variant={ButtonVariant.Icon}
+        >
+          <MenuIcon />
+        </Button>
+        <AppBarTitle numberOfLines={1}>My Application</AppBarTitle>
       </AppBar>
     </Row>
     <Caption margin={Size.L}>

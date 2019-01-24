@@ -10,7 +10,7 @@ import * as React from 'react';
 import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
 import { DimensionsProps } from '../../responsiveness/DimensionsProps';
 import { ResponsivenessProps } from '../../responsiveness/ResponsivenessProps';
-// import { ButtonSubPropsGetter } from './ButtonSubPropsGetter';
+import { AppBarSubPropsGetter } from './AppBarSubPropsGetter';
 import { AppBarTheme } from './AppBarTheme';
 import { AppBarVariant } from './AppBarVariant';
 
@@ -21,7 +21,7 @@ export interface AppBarProps
   readonly children?:
     | React.ReactNode
     | ((props: AppBarProps) => React.ReactNode);
-  // readonly getSubProps?: ButtonSubPropsGetter;
+  readonly getSubProps?: AppBarSubPropsGetter;
   readonly theme: AppBarTheme;
   readonly variant: AppBarVariant;
 }

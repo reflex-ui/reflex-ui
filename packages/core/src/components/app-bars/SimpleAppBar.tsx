@@ -12,8 +12,12 @@ import { ViewProps, ViewStyle } from 'react-native';
 import { reflexComponent } from '../reflexComponent';
 import { getSubProps } from '../subcomponents';
 import { AppBarProps } from './AppBarProps';
+import { AppBarSubProps } from './AppBarSubProps';
 
-export const renderCenterArea = (props: AppBarProps): React.ReactNode => {
+export const renderCenterArea = (
+  props: AppBarProps,
+  userSubProps: AppBarSubProps,
+): React.ReactNode => {
   const { children } = props;
   if (!children) return children;
 
@@ -23,7 +27,7 @@ export const renderCenterArea = (props: AppBarProps): React.ReactNode => {
     const containerProps = getSubProps<AppBarProps, ViewProps, ViewStyle>({
       componentProps: props,
       theme: props.theme.centerArea,
-      // userProps: userSubProps.centerArea,
+      userProps: userSubProps.centerArea,
     });
 
     return (
@@ -36,7 +40,10 @@ export const renderCenterArea = (props: AppBarProps): React.ReactNode => {
   return undefined;
 };
 
-export const renderLeadingArea = (props: AppBarProps): React.ReactNode => {
+export const renderLeadingArea = (
+  props: AppBarProps,
+  userSubProps: AppBarSubProps,
+): React.ReactNode => {
   const { children } = props;
   if (!children) return children;
   if (typeof children === 'function') return children(props);
@@ -47,7 +54,7 @@ export const renderLeadingArea = (props: AppBarProps): React.ReactNode => {
   const containerProps = getSubProps<AppBarProps, ViewProps, ViewStyle>({
     componentProps: props,
     theme: props.theme.leadingArea,
-    // userProps: userSubProps.leadingArea,
+    userProps: userSubProps.leadingArea,
   });
 
   return (
@@ -57,7 +64,10 @@ export const renderLeadingArea = (props: AppBarProps): React.ReactNode => {
   );
 };
 
-export const renderTrailingArea = (props: AppBarProps): React.ReactNode => {
+export const renderTrailingArea = (
+  props: AppBarProps,
+  userSubProps: AppBarSubProps,
+): React.ReactNode => {
   const { children } = props;
   if (!children) return children;
 
@@ -67,7 +77,7 @@ export const renderTrailingArea = (props: AppBarProps): React.ReactNode => {
     const containerProps = getSubProps<AppBarProps, ViewProps, ViewStyle>({
       componentProps: props,
       theme: props.theme.trailingArea,
-      // userProps: userSubProps.trailingArea,
+      userProps: userSubProps.trailingArea,
     });
 
     return (
@@ -101,6 +111,8 @@ export const SimpleAppBar = reflexComponent<AppBarProps>({
     );
   }
 
+  const userSubProps = props.getSubProps ? props.getSubProps(props) : {};
+
   const updatedProps = {
     ...props,
     children,
@@ -111,7 +123,7 @@ export const SimpleAppBar = reflexComponent<AppBarProps>({
   const containerProps = getSubProps<AppBarProps, ViewProps, ViewStyle>({
     componentProps: updatedProps,
     theme: updatedProps.theme.container,
-    // userProps: userSubProps.container,
+    userProps: userSubProps.container,
   });
 
   return (
@@ -120,9 +132,9 @@ export const SimpleAppBar = reflexComponent<AppBarProps>({
       onLayout={updatedProps.onLayout}
       {...containerProps}
     >
-      {renderLeadingArea(updatedProps)}
-      {renderCenterArea(updatedProps)}
-      {renderTrailingArea(updatedProps)}
+      {renderLeadingArea(updatedProps, userSubProps)}
+      {renderCenterArea(updatedProps, userSubProps)}
+      {renderTrailingArea(updatedProps, userSubProps)}
     </Container>
   );
 });
