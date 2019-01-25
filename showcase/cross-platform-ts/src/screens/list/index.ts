@@ -5,8 +5,4 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './app-bars';
-export * from './buttons';
-export * from './icons';
-export * from './list';
-export * from './typography';
+export * from './ListShowcaseScreen';
