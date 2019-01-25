@@ -5,19 +5,21 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { OptionalComponentsTheme } from '@reflex-ui/core';
+import { ComponentsTheme } from '@reflex-ui/core';
 
 import { appBarTheme } from './app-bars/theme';
 import { animatedButtonTheme } from './buttons/animatedTheme';
 import { iconTheme } from './icons/theme';
+import { listTheme } from './list/theme';
 import { surfaceTheme } from './surface/theme';
 import { typographyTheme } from './typography/theme';
 import { superViewTheme } from './views/theme';
 
-export const animatedMaterialDesignTheme: OptionalComponentsTheme = {
+export const animatedMaterialDesignTheme: ComponentsTheme = {
   appBar: appBarTheme,
   button: animatedButtonTheme,
   icon: iconTheme,
+  list: listTheme,
   surface: surfaceTheme,
   typography: typographyTheme,
   views: superViewTheme,
