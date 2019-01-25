@@ -9,5 +9,18 @@ import { LayoutChangeEvent, LayoutRectangle } from 'react-native';
 
 export interface ResponsivenessProps {
   readonly layoutRectangle?: LayoutRectangle;
-  readonly onLayout?: (event: LayoutChangeEvent) => void;
+  /*
+   * We cannot use 'readonly' here because it causes
+   * a TypeScript error, since other react-native interfaces
+   * (e.g. TouchableWithoutFeedbackProps) also declares onLayout,
+   * but without 'readonly', so if we want to extend such an interface
+   * AND this one we get an error if this one has 'readonly'.
+   * Example error:
+   * [ts] Interface 'SomeComponentProps' cannot simultaneously
+   * extend types 'InteractionProps' and 'ResponsivenessProps'.
+   * Named property 'onLayout' of types 'InteractionProps' and
+   * 'ResponsivenessProps' are not identical. [2320]
+   */
+  onLayout?: (event: LayoutChangeEvent) => void;
+  /**/
 }
