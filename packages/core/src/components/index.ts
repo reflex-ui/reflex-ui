@@ -11,6 +11,7 @@ export * from './ComponentsTheme';
 export * from './ComponentsThemeContext';
 export * from './createComponentsTheme';
 export * from './icons';
+export * from './list';
 export * from './PropsGetter';
 export * from './raw';
 export * from './reflexComponent';

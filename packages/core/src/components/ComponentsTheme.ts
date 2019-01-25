@@ -8,6 +8,7 @@
 import { AppBarVariantsTheme } from './app-bars';
 import { ButtonVariantsTheme } from './buttons';
 import { SuperIconTheme } from './icons';
+import { ListTheme } from './list';
 import { SurfaceTheme } from './surface';
 import { TypographyTheme } from './typography';
 import { SuperViewVariantsTheme } from './views';
@@ -16,6 +17,7 @@ export interface ComponentsTheme {
   readonly appBar: AppBarVariantsTheme;
   readonly button: ButtonVariantsTheme;
   readonly icon: SuperIconTheme;
+  readonly list: ListTheme;
   readonly surface: SurfaceTheme;
   readonly typography: TypographyTheme;
   readonly views: SuperViewVariantsTheme;
