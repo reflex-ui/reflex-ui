@@ -11,6 +11,8 @@ export * from './buttons';
 export * from './createAnimatedComponentsTheme';
 export * from './createComponentsTheme';
 export * from './icons';
+export * from './list';
+export * from './list-item';
 export * from './materialDesignTheme';
 export * from './surface';
 export * from './typography';
