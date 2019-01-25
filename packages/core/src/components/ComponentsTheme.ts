@@ -9,6 +9,7 @@ import { AppBarVariantsTheme } from './app-bars';
 import { ButtonVariantsTheme } from './buttons';
 import { SuperIconTheme } from './icons';
 import { ListTheme } from './list';
+import { ListItemTheme } from './list-item';
 import { SurfaceTheme } from './surface';
 import { TypographyTheme } from './typography';
 import { SuperViewVariantsTheme } from './views';
@@ -18,6 +19,7 @@ export interface ComponentsTheme {
   readonly button: ButtonVariantsTheme;
   readonly icon: SuperIconTheme;
   readonly list: ListTheme;
+  readonly listItem: ListItemTheme;
   readonly surface: SurfaceTheme;
   readonly typography: TypographyTheme;
   readonly views: SuperViewVariantsTheme;
