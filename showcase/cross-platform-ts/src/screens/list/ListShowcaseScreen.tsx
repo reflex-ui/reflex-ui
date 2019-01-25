@@ -5,16 +5,22 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { Headline6, List } from '@reflex-ui/core';
+import { Headline6, List, ListItem } from '@reflex-ui/core';
 import * as React from 'react';
 import { ScrollView } from 'react-native';
 
 const ListShowcaseScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
     <List>
-      <Headline6>Inbox</Headline6>
-      <Headline6>Starred</Headline6>
-      <Headline6>Snoozed</Headline6>
+      <ListItem>
+        <Headline6>Inbox</Headline6>
+      </ListItem>
+      <ListItem>
+        <Headline6>Starred</Headline6>
+      </ListItem>
+      <ListItem>
+        <Headline6>Snoozed</Headline6>
+      </ListItem>
     </List>
   </ScrollView>
 );
