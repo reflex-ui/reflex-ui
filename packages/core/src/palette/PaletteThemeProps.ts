@@ -10,6 +10,7 @@ import { PaletteTheme } from './PaletteTheme';
 
 export interface PaletteThemeProps {
   readonly colorTheme: ColorTheme;
+  readonly invertColor?: boolean;
   readonly paletteTheme: PaletteTheme;
 }
 
