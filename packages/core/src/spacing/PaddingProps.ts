@@ -8,11 +8,11 @@
 import { Size } from '../sizing/Size';
 
 export interface PaddingProps {
-  readonly padding?: Size | number;
-  readonly paddingBottom?: Size | number;
-  readonly paddingEnd?: Size | number;
-  readonly paddingHorizontal?: Size | number;
-  readonly paddingStart?: Size | number;
-  readonly paddingTop?: Size | number;
-  readonly paddingVertical?: Size | number;
+  readonly padding?: Size | number | string;
+  readonly paddingBottom?: Size | number | string;
+  readonly paddingEnd?: Size | number | string;
+  readonly paddingHorizontal?: Size | number | string;
+  readonly paddingStart?: Size | number | string;
+  readonly paddingTop?: Size | number | string;
+  readonly paddingVertical?: Size | number | string;
 }

@@ -11,5 +11,5 @@ import { SizedSpacing } from './SizedSpacing';
 
 export const getSpacingValue = (
   sizedSpacing: SizedSpacing,
-  size: Size | number,
+  size: Size | number | string,
 ) => (isSizeEnumValue(size as string) ? sizedSpacing[size as Size] : size);
