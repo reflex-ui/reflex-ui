@@ -11,6 +11,7 @@ import { SuperIconTheme } from './icons';
 import { ListTheme } from './list';
 import { ListItemTheme } from './list-item';
 import { SurfaceTheme } from './surface';
+import { TouchableSurfaceTheme } from './touchable-surface';
 import { TypographyTheme } from './typography';
 import { SuperViewVariantsTheme } from './views';
 
@@ -21,6 +22,7 @@ export interface ComponentsTheme {
   readonly list: ListTheme;
   readonly listItem: ListItemTheme;
   readonly surface: SurfaceTheme;
+  readonly touchableSurface: TouchableSurfaceTheme;
   readonly typography: TypographyTheme;
   readonly views: SuperViewVariantsTheme;
 }
