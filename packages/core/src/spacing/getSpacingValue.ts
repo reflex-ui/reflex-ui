@@ -5,10 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { isSizeEnumValue } from '../sizing/isSizeEnumValue';
 import { Size } from '../sizing/Size';
 import { SizedSpacing } from './SizedSpacing';
 
 export const getSpacingValue = (
   sizedSpacing: SizedSpacing,
   size: Size | number,
-) => (Number.isFinite(size as number) ? size : sizedSpacing[size as Size]);
+) => (isSizeEnumValue(size as string) ? sizedSpacing[size as Size] : size);
