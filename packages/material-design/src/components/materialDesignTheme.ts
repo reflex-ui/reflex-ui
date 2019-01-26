@@ -13,6 +13,7 @@ import { iconTheme } from './icons/theme';
 import { listItemTheme } from './list-item/theme';
 import { listTheme } from './list/theme';
 import { surfaceTheme } from './surface/theme';
+import { touchableSurfaceTheme } from './touchable-surface/theme';
 import { typographyTheme } from './typography/theme';
 import { superViewTheme } from './views/theme';
 
@@ -23,6 +24,7 @@ export const materialDesignTheme: ComponentsTheme = {
   list: listTheme,
   listItem: listItemTheme,
   surface: surfaceTheme,
+  touchableSurface: touchableSurfaceTheme,
   typography: typographyTheme,
   views: superViewTheme,
 };
