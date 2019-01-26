@@ -34,29 +34,30 @@ export const withDefaultTouchableSurfaceProps = (
     {dimensionsProps => (
       <PaletteThemeContext.Consumer>
         {paletteTheme => (
-          <ComponentsThemeContext.Consumer>
-            {(componentsTheme) => {
-              const colorTheme: ColorTheme =
-                props.colorTheme || ColorTheme.SurfaceNormal;
+          <ColorThemeContext.Consumer>
+            {colorTheme => (
+              <ComponentsThemeContext.Consumer>
+                {(componentsTheme) => {
+                  const propsWithDefaults: TouchableSurfaceProps = {
+                    ...dimensionsProps,
+                    colorTheme: colorTheme || ColorTheme.SurfaceNormal,
+                    interactionState: {
+                      type: InteractionType.Enabled,
+                    },
+                    paletteTheme,
+                    theme: componentsTheme.touchableSurface,
+                    ...props,
+                  };
 
-              const propsWithDefaults: TouchableSurfaceProps = {
-                ...dimensionsProps,
-                colorTheme,
-                interactionState: {
-                  type: InteractionType.Enabled,
-                },
-                paletteTheme,
-                theme: componentsTheme.touchableSurface,
-                ...props,
-              };
-
-              return (
-                <ColorThemeContext.Provider value={colorTheme}>
-                  <WrappedComponent {...propsWithDefaults} />
-                </ColorThemeContext.Provider>
-              );
-            }}
-          </ComponentsThemeContext.Consumer>
+                  return (
+                    <ColorThemeContext.Provider value={colorTheme}>
+                      <WrappedComponent {...propsWithDefaults} />
+                    </ColorThemeContext.Provider>
+                  );
+                }}
+              </ComponentsThemeContext.Consumer>
+            )}
+          </ColorThemeContext.Consumer>
         )}
       </PaletteThemeContext.Consumer>
     )}
