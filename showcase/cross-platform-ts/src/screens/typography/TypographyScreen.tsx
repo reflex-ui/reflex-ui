@@ -46,12 +46,12 @@ const TypographyScreen: React.SFC = (): JSX.Element => (
       Hello Paragraph2 lorem ipsum dolor sit amet.
     </Paragraph2>
     <Caption marginVertical={Size.XS} selectable>
-      Caption lorem ipsum
+      Caption lorem ipsum.
     </Caption>
     <Caption marginVertical={Size.XS} selectable style={captionStyle}>
-      Caption
+      Caption lorem ipsum.
     </Caption>
-    <Overline marginVertical={Size.XS}>Hellow Overline</Overline>
+    <Overline marginVertical={Size.XS}>Hello Overline</Overline>
   </ScrollView>
 );
 
