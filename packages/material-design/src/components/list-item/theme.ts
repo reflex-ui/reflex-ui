@@ -6,7 +6,6 @@
  */
 
 import {
-  getThemedColor,
   ListItemProps,
   ListItemTheme,
   OptionalListItemTheme,
@@ -17,10 +16,8 @@ import merge from 'lodash/merge';
 
 export const getListItemContainerStyle: ViewStyleGetter<
   ListItemProps
-> = props => ({
-  backgroundColor: getThemedColor(props),
-  flexGrow: 1,
-  flexShrink: 1,
+> = () => ({
+  backgroundColor: 'transparent',
   justifyContent: 'center',
   minHeight: 48,
 });
