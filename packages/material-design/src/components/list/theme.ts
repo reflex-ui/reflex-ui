@@ -17,8 +17,6 @@ import merge from 'lodash/merge';
 
 export const getListContainerStyle: ViewStyleGetter<ListProps> = props => ({
   backgroundColor: getThemedColor(props),
-  flexGrow: 1,
-  flexShrink: 1,
   paddingVertical: 8,
 });
 
