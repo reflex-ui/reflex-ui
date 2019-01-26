@@ -13,6 +13,5 @@ export interface ThemedColorGetterInput
   extends OptionalInteractionStateProps,
     PaletteThemeProps {
   readonly contained?: boolean;
-  readonly invertColor?: boolean;
   readonly onColor?: boolean;
 }
