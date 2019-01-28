@@ -7,7 +7,6 @@
 
 import {
   getSizedMarginStyle,
-  getThemedColor,
   OptionalInjectableSubTheme,
   OptionalSuperIconTheme,
   rawSuperIconTheme,
@@ -27,6 +26,7 @@ import {
 } from 'react-native';
 
 import { sizedSpacing } from '../../spacing/sizedSpacing';
+import { getDefaultTypographyColorStyle } from '../typography/theme';
 
 export const superIconIconSizedStyle: { [key in Size]: TextStyle } = {
   xxsmall: { fontSize: 12 },
@@ -48,7 +48,9 @@ export const getSuperIconIconStyle: TextStyleGetter<
   SuperIconProps
 > = props => ({
   ...superIconIconSizedStyle[props.size],
-  color: props.color ? props.color : getThemedColor(props),
+  color: props.color
+    ? props.color
+    : getDefaultTypographyColorStyle(props).color,
   ...Platform.select<TextStyle>({
     web: {
       userSelect: 'none',
