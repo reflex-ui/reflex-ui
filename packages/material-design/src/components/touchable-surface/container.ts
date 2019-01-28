@@ -17,12 +17,13 @@ import { ViewProps, ViewStyle } from 'react-native';
 
 export const getTouchableSurfaceContainerStyle: ViewStyleGetter<
   TouchableSurfaceProps
-> = props => ({
+> = ({ colorTheme, interactionState, invertColor, paletteTheme }) => ({
   backgroundColor: getThemedColor({
-    colorTheme: props.colorTheme,
+    colorTheme,
     contained: false,
-    interactionState: props.interactionState,
-    paletteTheme: props.paletteTheme,
+    interactionState,
+    invertColor,
+    paletteTheme,
   }),
 });
 
