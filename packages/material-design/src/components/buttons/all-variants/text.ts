@@ -28,23 +28,23 @@ export const allVariantsButtonTextSizedStyle: { [key in Size]: TextStyle } = {
   // tslint:disable-next-line:object-literal-sort-keys
   xsmall: {
     fontSize: 12,
-    letterSpacing: 0.25,
+    letterSpacing: 0.0833,
   },
   small: {
     fontSize: 13,
-    letterSpacing: 0.5,
+    letterSpacing: 0.08692,
   },
   medium: {
     fontSize: 14,
-    letterSpacing: 0.75,
+    letterSpacing: 0.0892,
   },
   large: {
     fontSize: 15,
-    letterSpacing: 1,
+    letterSpacing: 0.092,
   },
   xlarge: {
     fontSize: 16,
-    letterSpacing: 1.25,
+    letterSpacing: 0.09375,
   },
   xxlarge: {},
 };
