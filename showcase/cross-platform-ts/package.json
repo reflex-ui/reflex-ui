@@ -17,11 +17,11 @@
     "rebuild": "rm -rf ios; rm -rf android; react-native upgrade; rm -f .babelrc; rm -f .buckconfig; rm -f .flowconfig; rm -f .watchmanconfig; rm -f .gitattributes;"
   },
   "dependencies": {
-    "react": "16.4.2",
-    "react-dom": "16.4.2",
+    "react": "16.7.0",
+    "react-dom": "16.7.0",
     "react-native": "0.56.0",
-    "react-native-navigation": "^2.0.2461",
-    "react-native-web": "^0.8.9",
+    "react-native-navigation": "^2.8.0",
+    "react-native-web": "^0.9.13",
     "react-router-dom": "^4.3.1",
     "@reflex-ui/core": "^0.1.0",
     "@reflex-ui/material-design": "^0.1.0"
