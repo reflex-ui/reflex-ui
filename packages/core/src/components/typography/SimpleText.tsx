@@ -10,10 +10,6 @@ import { TextProps, TextStyle } from 'react-native';
 
 import { reflexComponent } from '../reflexComponent';
 import { getSubProps } from '../subcomponents';
-// prettier-ignore
-import {
-  handleAndroidTextTransformation,
-} from '../typography/handleAndroidTextTransformation';
 import { TypographyProps } from './TypographyProps';
 
 export const extractTextPropsFromTypographyProps = (
@@ -38,7 +34,7 @@ export const extractTextPropsFromTypographyProps = (
 };
 
 export const transformTypographyStringChildrenIntoComponent = (
-  children: string,
+  children: React.ReactNode,
   props: TypographyProps,
 ): JSX.Element => {
   const Text = props.theme.component;
@@ -52,7 +48,7 @@ export const transformTypographyStringChildrenIntoComponent = (
 
   return (
     <Text componentProps={props} {...textProps}>
-      {handleAndroidTextTransformation(children, textProps.style)}
+      {children}
     </Text>
   );
 };
@@ -65,17 +61,14 @@ export const SimpleText = reflexComponent<TypographyProps>({
   if (
     typeof children === 'string' ||
     typeof children === 'number' ||
-    typeof children === 'boolean'
+    typeof children === 'boolean' ||
+    Array.isArray(children)
   ) {
-    return transformTypographyStringChildrenIntoComponent(
-      children.toString(),
-      props,
-    );
+    return transformTypographyStringChildrenIntoComponent(children, props);
   }
 
   if (children === undefined || children === null) return null;
   if ('type' in children) return children;
-  if (Array.isArray(children)) return <React.Fragment>children</React.Fragment>;
 
   return null;
 });
