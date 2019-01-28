@@ -40,7 +40,13 @@ const TypographyScreen: React.SFC = (): JSX.Element => (
     <Subtitle1 marginVertical={Size.XS}>Hello Subtitle 1</Subtitle1>
     <Subtitle2 marginVertical={Size.XS}>Hello Subtitle 2</Subtitle2>
     <Paragraph1 marginVertical={Size.XS}>
-      Hello Paragraph1 lorem ipsum dolor sit amet.
+      Hello Paragraph1. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+      ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+      ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+      voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+      sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+      mollit anim id est laborum.
     </Paragraph1>
     <Paragraph2 marginVertical={Size.XS}>
       Hello Paragraph2 lorem ipsum dolor sit amet.
