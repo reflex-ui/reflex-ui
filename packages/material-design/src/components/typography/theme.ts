@@ -13,6 +13,7 @@ import {
   getThemedColor,
   isWeb,
   OptionalTypographyTheme,
+  PaletteThemeProps,
   rawTypographyTheme,
   TextStyleGetter,
   TypographyProps,
@@ -24,16 +25,22 @@ import { Platform, TextStyle } from 'react-native';
 import { sizedSpacing } from '../../spacing/sizedSpacing';
 import { getFontFamily } from './getFontFamily';
 
+export const getDefaultTypographyColorStyle: TextStyleGetter<
+  PaletteThemeProps
+> = ({ colorTheme, paletteTheme }) => ({
+  color: getThemedColor({
+    colorTheme,
+    onColor: true,
+    paletteTheme,
+  }),
+});
+
 export const getCommonTypographyStyle: TextStyleGetter<
   TypographyProps
 > = props => ({
   ...getSizedMarginStyle(sizedSpacing)(props),
   ...getSizedPaddingStyle(sizedSpacing)(props),
-  color: getThemedColor({
-    colorTheme: props.colorTheme,
-    onColor: true,
-    paletteTheme: props.paletteTheme,
-  }),
+  ...getDefaultTypographyColorStyle(props),
   fontFamily: getFontFamily(),
   fontWeight: getFontWeight(FontWeight.Regular),
   ...Platform.select({
@@ -50,7 +57,7 @@ export const partialTypographyTheme: OptionalTypographyTheme = {
       ...getCommonTypographyStyle(props),
       fontSize: 20,
       fontWeight: getFontWeight(FontWeight.Medium),
-      letterSpacing: 0.15,
+      letterSpacing: 0.0075,
       marginTop: isWeb ? -1 : 0,
       overflow: 'hidden',
     }),
@@ -59,7 +66,7 @@ export const partialTypographyTheme: OptionalTypographyTheme = {
     getStyle: props => ({
       ...getCommonTypographyStyle(props),
       fontSize: 12,
-      letterSpacing: 0.4,
+      letterSpacing: 0.033,
     }),
   },
   headline1: {
@@ -67,7 +74,7 @@ export const partialTypographyTheme: OptionalTypographyTheme = {
       ...getCommonTypographyStyle(props),
       fontSize: 96,
       fontWeight: getFontWeight(FontWeight.Light),
-      letterSpacing: -1.5,
+      letterSpacing: -0.015625,
     }),
   },
   headline2: {
@@ -75,7 +82,7 @@ export const partialTypographyTheme: OptionalTypographyTheme = {
       ...getCommonTypographyStyle(props),
       fontSize: 60,
       fontWeight: getFontWeight(FontWeight.Light),
-      letterSpacing: -0.5,
+      letterSpacing: -0.0083,
     }),
   },
   headline3: {
@@ -89,7 +96,7 @@ export const partialTypographyTheme: OptionalTypographyTheme = {
     getStyle: props => ({
       ...getCommonTypographyStyle(props),
       fontSize: 34,
-      letterSpacing: 0.25,
+      letterSpacing: 0.0073,
     }),
   },
   headline5: {
@@ -104,14 +111,14 @@ export const partialTypographyTheme: OptionalTypographyTheme = {
       ...getCommonTypographyStyle(props),
       fontSize: 20,
       fontWeight: getFontWeight(FontWeight.Medium),
-      letterSpacing: 0.15,
+      letterSpacing: 0.0075,
     }),
   },
   overline: {
     getStyle: props => ({
       ...getCommonTypographyStyle(props),
       fontSize: 10,
-      letterSpacing: 1.5,
+      letterSpacing: 0.15,
       textTransform: 'uppercase',
     }),
   },
@@ -119,21 +126,21 @@ export const partialTypographyTheme: OptionalTypographyTheme = {
     getStyle: props => ({
       ...getCommonTypographyStyle(props),
       fontSize: 16,
-      letterSpacing: 0.5,
+      letterSpacing: 0.03125,
     }),
   },
   paragraph2: {
     getStyle: props => ({
       ...getCommonTypographyStyle(props),
       fontSize: 14,
-      letterSpacing: 0.25,
+      letterSpacing: 0.01785,
     }),
   },
   subtitle1: {
     getStyle: props => ({
       ...getCommonTypographyStyle(props),
       fontSize: 16,
-      letterSpacing: 0.15,
+      letterSpacing: 0.009375,
     }),
   },
   subtitle2: {
@@ -141,7 +148,7 @@ export const partialTypographyTheme: OptionalTypographyTheme = {
       ...getCommonTypographyStyle(props),
       fontSize: 14,
       fontWeight: getFontWeight(FontWeight.Medium),
-      letterSpacing: 0.1,
+      letterSpacing: 0.0071,
     }),
   },
 };
