@@ -17,8 +17,9 @@ import merge from 'lodash/merge';
 export const getListItemContainerStyle: ViewStyleGetter<
   ListItemProps
 > = () => ({
+  alignItems: 'center',
   backgroundColor: 'transparent',
-  justifyContent: 'center',
+  flexDirection: 'row',
   minHeight: 48,
 });
 
