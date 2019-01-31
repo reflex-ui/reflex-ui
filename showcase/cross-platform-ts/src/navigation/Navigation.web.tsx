@@ -30,44 +30,44 @@ const navigator = createBrowserHistory();
 const AppNavigation: React.SFC = () => (
   <Router history={navigator}>
     <Switch>
-      <Route exact path="/app-bars" component={DefaultAppBarScreen} />
+      <Route exact path="/app-bar" component={DefaultAppBarScreen} />
       <Route
         exact
-        path="/buttons/contained"
+        path="/button/contained"
         component={ContainedButtonShowcaseScreen}
       />
       <Route
         exact
-        path="/buttons/contained-shaped"
+        path="/button/contained-shaped"
         component={ContainedShapedButtonShowcaseScreen}
       />
       <Route
         exact
-        path="/buttons/default"
+        path="/button/default"
         component={DefaultButtonShowcaseScreen}
       />
-      <Route exact path="/buttons/fab" component={FabButtonShowcaseScreen} />
+      <Route exact path="/button/fab" component={FabButtonShowcaseScreen} />
       <Route
         exact
-        path="/buttons/highlighted"
+        path="/button/highlighted"
         component={HighlightedButtonShowcaseScreen}
       />
-      <Route exact path="/buttons/icon" component={IconButtonShowcaseScreen} />
+      <Route exact path="/button/icon" component={IconButtonShowcaseScreen} />
       <Route
         exact
-        path="/buttons/outlined"
+        path="/button/outlined"
         component={OutlinedButtonShowcaseScreen}
       />
       <Route
         exact
-        path="/buttons/outlined-shaped"
+        path="/button/outlined-shaped"
         component={OutlinedShapedButtonShowcaseScreen}
       />
-      <Route exact path="/buttons/xfab" component={XFabButtonShowcaseScreen} />
+      <Route exact path="/button/xfab" component={XFabButtonShowcaseScreen} />
       <Route exact path="/icon" component={IconShowcaseScreen} />
       <Route exact path="/list" component={ListShowcaseScreen} />
       <Route exact path="/typography" component={TypographyScreen} />
-      <Redirect from="/*" to="/buttons/default" />
+      <Redirect from="/*" to="/button/default" />
     </Switch>
   </Router>
 );
