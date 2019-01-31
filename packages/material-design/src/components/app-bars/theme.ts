@@ -11,7 +11,7 @@ import {
   AppBarVariantsTheme,
   getThemedColor,
   OptionalAppBarTheme,
-  rawAppBarVariantTheme,
+  rawAppBarTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
@@ -84,7 +84,7 @@ export const partialDefaultAppBarTheme: OptionalAppBarTheme = {
 
 export const defaultAppBarTheme: AppBarTheme = merge(
   {},
-  rawAppBarVariantTheme,
+  rawAppBarTheme,
   partialDefaultAppBarTheme,
 );
 
@@ -117,7 +117,7 @@ export const partialDenseAppBarTheme: OptionalAppBarTheme = {
 
 export const denseAppBarTheme: AppBarTheme = merge(
   {},
-  rawAppBarVariantTheme,
+  rawAppBarTheme,
   partialDenseAppBarTheme,
 );
 
@@ -158,7 +158,7 @@ export const partialProminentAppBarTheme: OptionalAppBarTheme = {
 
 export const prominentAppBarTheme: AppBarTheme = merge(
   {},
-  rawAppBarVariantTheme,
+  rawAppBarTheme,
   partialProminentAppBarTheme,
 );
 
@@ -189,7 +189,7 @@ export const prominentDenseAppBarTheme: AppBarTheme = merge(
  * AppBarVariantsTheme
  */
 
-export const appBarTheme: AppBarVariantsTheme = {
+export const appBarVariantsTheme: AppBarVariantsTheme = {
   default: defaultAppBarTheme,
   dense: denseAppBarTheme,
   prominent: prominentAppBarTheme,

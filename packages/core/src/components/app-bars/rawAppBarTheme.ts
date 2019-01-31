@@ -13,16 +13,16 @@ export const rawInjectableAppBarViewSubTheme = getRawInjectableViewSubTheme<
   AppBarProps
 >();
 
-export const rawAppBarVariantTheme: AppBarTheme = {
+export const rawAppBarTheme: AppBarTheme = {
   centerArea: rawInjectableAppBarViewSubTheme,
   container: rawInjectableAppBarViewSubTheme,
   leadingArea: rawInjectableAppBarViewSubTheme,
   trailingArea: rawInjectableAppBarViewSubTheme,
 };
 
-export const rawAppBarTheme: AppBarVariantsTheme = {
-  default: rawAppBarVariantTheme,
-  dense: rawAppBarVariantTheme,
-  prominent: rawAppBarVariantTheme,
-  prominentDense: rawAppBarVariantTheme,
+export const rawAppBarVariantsTheme: AppBarVariantsTheme = {
+  default: rawAppBarTheme,
+  dense: rawAppBarTheme,
+  prominent: rawAppBarTheme,
+  prominentDense: rawAppBarTheme,
 };

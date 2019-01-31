@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { rawAppBarTheme } from '../app-bars/rawAppBarTheme';
+import { rawAppBarVariantsTheme } from '../app-bars/rawAppBarTheme';
 import { rawButtonTheme } from '../buttons/rawButtonTheme';
 import { ComponentsTheme } from '../ComponentsTheme';
 import { rawSuperIconTheme } from '../icons/rawSuperIconTheme';
@@ -18,7 +18,7 @@ import { rawTypographyTheme } from '../typography/rawTypographyTheme';
 import { rawSuperViewVariantsTheme } from '../views/rawSuperViewTheme';
 
 export const rawComponentsTheme: ComponentsTheme = {
-  appBar: rawAppBarTheme,
+  appBar: rawAppBarVariantsTheme,
   button: rawButtonTheme,
   icon: rawSuperIconTheme,
   list: rawListTheme,
