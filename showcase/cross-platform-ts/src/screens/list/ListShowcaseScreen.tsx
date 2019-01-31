@@ -193,7 +193,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
           <Paragraph1 marginHorizontal={Size.XS}>Starred</Paragraph1>
         </ListItem>
       </TouchableSurface>
-      <TouchableSurface onPress={onListItemPress}>
+      <TouchableSurface disabled onPress={onListItemPress}>
         <ListItem size={Size.S}>
           <FavoriteIcon marginHorizontal={Size.XS} />
           <Paragraph1 marginHorizontal={Size.XS}>Snoozed</Paragraph1>
