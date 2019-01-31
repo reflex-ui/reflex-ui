@@ -25,6 +25,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import { getSizingStyle } from '../../sizing/getSizingStyle';
 import { sizedSpacing } from '../../spacing/sizedSpacing';
 import { getDefaultTypographyColorStyle } from '../typography/theme';
 
@@ -70,6 +71,7 @@ export const getSuperIconContainerStyle: ViewStyleGetter<
   SuperIconProps
 > = props => ({
   ...getSizedMarginStyle(sizedSpacing)(props),
+  ...getSizingStyle(props),
 });
 
 export const superIconContainerTheme: OptionalInjectableSubTheme<

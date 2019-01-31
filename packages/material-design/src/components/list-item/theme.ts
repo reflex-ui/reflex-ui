@@ -16,6 +16,8 @@ import {
 import merge from 'lodash/merge';
 import { ViewStyle } from 'react-native';
 
+import { getSizingStyle } from '../../sizing/getSizingStyle';
+
 export const listItemContainerSizedStyle: { [key in Size]: ViewStyle } = {
   xxsmall: { minHeight: 32 },
   /*
@@ -32,14 +34,15 @@ export const listItemContainerSizedStyle: { [key in Size]: ViewStyle } = {
   xxlarge: { minHeight: 88 },
 };
 
-export const getListItemContainerStyle: ViewStyleGetter<ListItemProps> = ({
-  size,
-}) => ({
-  ...listItemContainerSizedStyle[size],
+export const getListItemContainerStyle: ViewStyleGetter<
+  ListItemProps
+> = props => ({
+  ...listItemContainerSizedStyle[props.size],
   alignItems: 'center',
   backgroundColor: 'transparent',
   flexDirection: 'row',
   paddingHorizontal: 8,
+  ...getSizingStyle(props),
 });
 
 export const partialListItemTheme: OptionalListItemTheme = {
