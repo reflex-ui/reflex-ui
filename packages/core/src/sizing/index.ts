@@ -7,4 +7,4 @@
 
 export * from './allSizes';
 export * from './Size';
-export * from './SizeProps';
+export * from './SizingProps';

@@ -9,7 +9,7 @@ import * as React from 'react';
 
 import { InteractionProps } from '../../interaction';
 import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
-import { SizeProps } from '../../sizing/SizeProps';
+import { SizingProps } from '../../sizing/SizingProps';
 import { MarginProps } from '../../spacing/MarginProps';
 import { ButtonSubPropsGetter } from './ButtonSubPropsGetter';
 import { ButtonTheme } from './ButtonTheme';
@@ -19,7 +19,7 @@ export interface ButtonProps
   extends InteractionProps,
     MarginProps,
     PaletteThemeProps,
-    SizeProps {
+    SizingProps {
   readonly children?: React.ReactNode;
   readonly fullWidth?: boolean;
   readonly getSubProps?: ButtonSubPropsGetter;

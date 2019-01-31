@@ -10,7 +10,7 @@ import * as React from 'react';
 import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
 import { DimensionsProps } from '../../responsiveness/DimensionsProps';
 import { ResponsivenessProps } from '../../responsiveness/ResponsivenessProps';
-import { SizeProps } from '../../sizing/SizeProps';
+import { SizingProps } from '../../sizing/SizingProps';
 import { ListItemSubPropsGetter } from './ListItemSubPropsGetter';
 import { ListItemTheme } from './ListItemTheme';
 
@@ -18,7 +18,7 @@ export interface ListItemProps
   extends DimensionsProps,
     PaletteThemeProps,
     ResponsivenessProps,
-    SizeProps {
+    SizingProps {
   readonly children?:
     | React.ReactNode
     | ((props: ListItemProps) => React.ReactNode);

@@ -6,7 +6,7 @@
  */
 
 import { PaletteThemeProps } from '../../palette';
-import { SizeProps } from '../../sizing/SizeProps';
+import { SizingProps } from '../../sizing/SizingProps';
 import { MarginProps } from '../../spacing';
 import { SuperIconSubPropsGetter } from './SuperIconSubPropsGetter';
 import { SuperIconTheme } from './SuperIconTheme';
@@ -14,7 +14,7 @@ import { SuperIconTheme } from './SuperIconTheme';
 export interface SuperIconProps
   extends MarginProps,
     PaletteThemeProps,
-    SizeProps {
+    SizingProps {
   readonly children?: React.ReactNode;
   readonly color?: string;
   readonly getSubProps?: SuperIconSubPropsGetter;
