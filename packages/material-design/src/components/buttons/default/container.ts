@@ -21,8 +21,24 @@ import {
   getAllVariantsButtonContainerStyle,
 } from '../all-variants/container';
 
+export const getDefaultButtonContainerBackgroundColorStyle: ViewStyleGetter<
+  ButtonProps
+> = ({ colorTheme, interactionState, invertColor, paletteTheme }) => ({
+  backgroundColor: getThemedColor({
+    colorTheme,
+    contained: false,
+    interactionState,
+    invertColor,
+    paletteTheme,
+  }),
+});
+
 export const defaultButtonContainerSizedStyle: { [key in Size]: ViewStyle } = {
-  xxsmall: {},
+  xxsmall: {
+    height: 24,
+    minWidth: 40,
+    paddingHorizontal: 4,
+  },
   /*
    * Sorting values by size here makes it easier to reason about
    * the overall scale of values than sorting alphabetically,
@@ -31,12 +47,12 @@ export const defaultButtonContainerSizedStyle: { [key in Size]: ViewStyle } = {
   // tslint:disable-next-line:object-literal-sort-keys
   xsmall: {
     height: 28,
-    minWidth: 54,
+    minWidth: 52,
     paddingHorizontal: 4,
   },
   small: {
     height: 32,
-    minWidth: 64,
+    minWidth: 56,
     paddingHorizontal: 8,
   },
   medium: {
@@ -46,15 +62,19 @@ export const defaultButtonContainerSizedStyle: { [key in Size]: ViewStyle } = {
   },
   large: {
     height: 40,
-    minWidth: 64,
+    minWidth: 72,
     paddingHorizontal: 8,
   },
   xlarge: {
     height: 48,
-    minWidth: 70,
+    minWidth: 80,
     paddingHorizontal: 12,
   },
-  xxlarge: {},
+  xxlarge: {
+    height: 64,
+    minWidth: 96,
+    paddingHorizontal: 16,
+  },
 };
 
 export const getDefaultButtonContainerStyle: ViewStyleGetter<
@@ -62,13 +82,7 @@ export const getDefaultButtonContainerStyle: ViewStyleGetter<
 > = props => ({
   ...getAllVariantsButtonContainerStyle(props),
   ...defaultButtonContainerSizedStyle[props.size],
-  backgroundColor: getThemedColor({
-    colorTheme: props.colorTheme,
-    contained: false,
-    interactionState: props.interactionState,
-    invertColor: props.invertColor,
-    paletteTheme: props.paletteTheme,
-  }),
+  ...getDefaultButtonContainerBackgroundColorStyle(props),
 });
 
 export const defaultButtonContainerTheme: InjectableSubTheme<

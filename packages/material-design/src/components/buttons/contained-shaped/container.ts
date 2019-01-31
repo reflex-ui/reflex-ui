@@ -20,7 +20,7 @@ import { getContainedButtonContainerStyle } from '../contained/container';
 export const containedShapedButtonContainerSizedStyle: {
   [key in Size]: ViewStyle
 } = {
-  xxsmall: {},
+  xxsmall: { borderRadius: 12 },
   /*
    * Sorting values by size here makes it easier to reason about
    * the overall scale of values than sorting alphabetically,
@@ -32,7 +32,7 @@ export const containedShapedButtonContainerSizedStyle: {
   medium: { borderRadius: 18 },
   large: { borderRadius: 20 },
   xlarge: { borderRadius: 24 },
-  xxlarge: {},
+  xxlarge: { borderRadius: 32 },
 };
 
 export const getContainedShapedButtonContainerStyle: ViewStyleGetter<

@@ -14,12 +14,16 @@ import {
 import merge from 'lodash/merge';
 import { TextProps, TextStyle } from 'react-native';
 
-import { getAllVariantsButtonIconStyle } from '../all-variants/icon';
+import {
+  allVariantsButtonIconSizedStyle,
+  getAllVariantsButtonIconStyle,
+} from '../all-variants/icon';
 import { getDefaultButtonTextColorStyle } from '../default/text';
 
 export const getIconButtonIconStyle: TextStyleGetter<ButtonProps> = props => ({
   ...getAllVariantsButtonIconStyle(props),
   ...getDefaultButtonTextColorStyle(props),
+  ...allVariantsButtonIconSizedStyle[props.size],
 });
 
 export const iconButtonIconTheme: SubTheme<

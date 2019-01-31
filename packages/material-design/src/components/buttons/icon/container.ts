@@ -15,10 +15,16 @@ import {
 import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
-import { getDefaultButtonContainerStyle } from '../default/container';
+import { getAllVariantsButtonContainerStyle } from '../all-variants/container';
+// tslint:disable-next-line:max-line-length
+import { getDefaultButtonContainerBackgroundColorStyle } from '../default/container';
 
 export const iconButtonContainerSizedStyle: { [key in Size]: ViewStyle } = {
-  xxsmall: {},
+  xxsmall: {
+    borderRadius: 14,
+    height: 28,
+    minWidth: 28,
+  },
   /*
    * Sorting values by size here makes it easier to reason about
    * the overall scale of values than sorting alphabetically,
@@ -46,17 +52,50 @@ export const iconButtonContainerSizedStyle: { [key in Size]: ViewStyle } = {
     minWidth: 56,
   },
   xlarge: {
+    borderRadius: 36,
+    height: 72,
+    minWidth: 72,
+  },
+  xxlarge: {
+    borderRadius: 44,
+    height: 88,
+    minWidth: 88,
+  },
+  /*
+  xsmall: {
+    borderRadius: 16,
+    height: 32,
+    minWidth: 32,
+  },
+  small: {
+    borderRadius: 20,
+    height: 40,
+    minWidth: 40,
+  },
+  medium: {
+    borderRadius: 24,
+    height: 48,
+    minWidth: 48,
+  },
+  large: {
+    borderRadius: 28,
+    height: 56,
+    minWidth: 56,
+  },
+  xlarge: {
     borderRadius: 40,
     height: 80,
     minWidth: 80,
   },
   xxlarge: {},
+  */
 };
 
 export const getIconButtonContainerStyle: ViewStyleGetter<
   ButtonProps
 > = props => ({
-  ...getDefaultButtonContainerStyle(props),
+  ...getAllVariantsButtonContainerStyle(props),
+  ...getDefaultButtonContainerBackgroundColorStyle(props),
   ...iconButtonContainerSizedStyle[props.size],
 });
 

@@ -18,7 +18,7 @@ import { ViewProps, ViewStyle } from 'react-native';
 export const xfabButtonLeadingIconContainerSizedStyle: {
   [key in Size]: ViewStyle
 } = {
-  xxsmall: {},
+  xxsmall: { marginEnd: 6, marginStart: -2 },
   /*
    * Sorting values by size here makes it easier to reason about
    * the overall scale of values than sorting alphabetically,
@@ -29,8 +29,8 @@ export const xfabButtonLeadingIconContainerSizedStyle: {
   small: { marginEnd: 10, marginStart: -6 },
   medium: { marginEnd: 12, marginStart: -8 },
   large: { marginEnd: 14, marginStart: -10 },
-  xlarge: { marginEnd: 18, marginStart: -12 },
-  xxlarge: {},
+  xlarge: { marginEnd: 16, marginStart: -12 },
+  xxlarge: { marginEnd: 18, marginStart: -14 },
 };
 
 export const getXFabButtonLeadingIconContainerStyle: ViewStyleGetter<
@@ -50,7 +50,7 @@ export const xfabButtonLeadingIconContainerTheme: InjectableSubTheme<
 export const xfabButtonTrailingIconContainerSizedStyle: {
   [key in Size]: ViewStyle
 } = {
-  xxsmall: {},
+  xxsmall: { marginEnd: -2, marginStart: 6 },
   /*
    * Sorting values by size here makes it easier to reason about
    * the overall scale of values than sorting alphabetically,
@@ -61,8 +61,8 @@ export const xfabButtonTrailingIconContainerSizedStyle: {
   small: { marginEnd: -6, marginStart: 10 },
   medium: { marginEnd: -8, marginStart: 12 },
   large: { marginEnd: -10, marginStart: 14 },
-  xlarge: { marginEnd: -12, marginStart: 18 },
-  xxlarge: {},
+  xlarge: { marginEnd: -12, marginStart: 16 },
+  xxlarge: { marginEnd: -14, marginStart: 18 },
 };
 
 export const getXFabButtonTrailingIconContainerStyle: ViewStyleGetter<

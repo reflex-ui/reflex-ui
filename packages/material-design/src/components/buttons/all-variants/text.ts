@@ -19,7 +19,10 @@ import { Platform, TextProps, TextStyle } from 'react-native';
 import { getFontFamily } from '../../typography';
 
 export const allVariantsButtonTextSizedStyle: { [key in Size]: TextStyle } = {
-  xxsmall: {},
+  xxsmall: {
+    fontSize: 11,
+    letterSpacing: 0.0772,
+  },
   /*
    * Sorting values by size here makes it easier to reason about
    * the overall scale of values than sorting alphabetically,
@@ -46,7 +49,10 @@ export const allVariantsButtonTextSizedStyle: { [key in Size]: TextStyle } = {
     fontSize: 16,
     letterSpacing: 0.09375,
   },
-  xxlarge: {},
+  xxlarge: {
+    fontSize: 22,
+    letterSpacing: 0.1125,
+  },
 };
 
 export const getAllVariantsButtonTextStyle: TextStyleGetter<ButtonProps> = ({

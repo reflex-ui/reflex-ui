@@ -19,7 +19,13 @@ import { getMidElevationStylesByInteraction } from '../../../elevation';
 import { getRaisedButtonContainerStyle } from '../raised/container';
 
 export const fabButtonContainerSizedStyle: { [key in Size]: ViewStyle } = {
-  xxsmall: {},
+  xxsmall: {
+    borderRadius: 16,
+    height: 32,
+    minWidth: 32,
+    paddingHorizontal: 0,
+    paddingVertical: 0,
+  },
   /*
    * Sorting values by size here makes it easier to reason about
    * the overall scale of values than sorting alphabetically,
@@ -27,16 +33,16 @@ export const fabButtonContainerSizedStyle: { [key in Size]: ViewStyle } = {
    */
   // tslint:disable-next-line:object-literal-sort-keys
   xsmall: {
-    borderRadius: 15,
-    height: 30,
-    minWidth: 30,
+    borderRadius: 20,
+    height: 40,
+    minWidth: 40,
     paddingHorizontal: 0,
     paddingVertical: 0,
   },
   small: {
-    borderRadius: 20,
-    height: 40,
-    minWidth: 40,
+    borderRadius: 24,
+    height: 48,
+    minWidth: 48,
     paddingHorizontal: 0,
     paddingVertical: 0,
   },
@@ -48,20 +54,26 @@ export const fabButtonContainerSizedStyle: { [key in Size]: ViewStyle } = {
     paddingVertical: 0,
   },
   large: {
-    borderRadius: 33,
-    height: 66,
-    minWidth: 66,
+    borderRadius: 32,
+    height: 64,
+    minWidth: 64,
     paddingHorizontal: 0,
     paddingVertical: 0,
   },
   xlarge: {
-    borderRadius: 40,
-    height: 80,
-    minWidth: 80,
+    borderRadius: 36,
+    height: 72,
+    minWidth: 72,
     paddingHorizontal: 0,
     paddingVertical: 0,
   },
-  xxlarge: {},
+  xxlarge: {
+    borderRadius: 44,
+    height: 88,
+    minWidth: 88,
+    paddingHorizontal: 0,
+    paddingVertical: 0,
+  },
 };
 
 export const getFabButtonContainerStyle: ViewStyleGetter<

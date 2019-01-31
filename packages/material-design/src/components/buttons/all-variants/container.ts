@@ -27,7 +27,7 @@ export const getAllVariantsButtonContainerStyle: ViewStyleGetter<
   ButtonProps
 > = props => ({
   alignItems: 'center',
-  borderRadius: props.size === Size.XL ? 6 : 4,
+  borderRadius: props.size === Size.XL || props.size === Size.XXL ? 6 : 4,
   flexDirection: 'row',
   flexGrow: props.fullWidth ? 1 : undefined,
   justifyContent: 'center',

@@ -17,7 +17,10 @@ import { TextStyle, ViewProps, ViewStyle } from 'react-native';
 export const allVariantsButtonLeadingIconContainerSizedStyle: {
   [key in Size]: TextStyle
 } = {
-  xxsmall: {},
+  xxsmall: {
+    marginEnd: 5,
+    marginStart: -1,
+  },
   /*
    * Sorting values by size here makes it easier to reason about
    * the overall scale of values than sorting alphabetically,
@@ -44,7 +47,10 @@ export const allVariantsButtonLeadingIconContainerSizedStyle: {
     marginEnd: 12,
     marginStart: -8,
   },
-  xxlarge: {},
+  xxlarge: {
+    marginEnd: 20,
+    marginStart: -10,
+  },
 };
 
 export const getAllVariantsButtonLeadingIconContainerStyle: ViewStyleGetter<
@@ -63,7 +69,10 @@ export const allVariantsButtonLeadingIconContainerTheme: OptionalInjectableSubTh
 export const allVariantsButtonTrailingIconContainerSizedStyle: {
   [key in Size]: TextStyle
 } = {
-  xxsmall: {},
+  xxsmall: {
+    marginEnd: -1,
+    marginStart: 5,
+  },
   /*
    * Sorting values by size here makes it easier to reason about
    * the overall scale of values than sorting alphabetically,
@@ -90,7 +99,10 @@ export const allVariantsButtonTrailingIconContainerSizedStyle: {
     marginEnd: -8,
     marginStart: 12,
   },
-  xxlarge: {},
+  xxlarge: {
+    marginEnd: -10,
+    marginStart: 20,
+  },
 };
 
 export const getAllVariantsButtonTrailingIconContainerStyle: ViewStyleGetter<

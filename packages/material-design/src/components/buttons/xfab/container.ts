@@ -18,7 +18,12 @@ import { ViewProps, ViewStyle } from 'react-native';
 import { getFabButtonContainerStyle } from '../fab/container';
 
 export const xfabButtonContainerSizedStyle: { [key in Size]: ViewStyle } = {
-  xxsmall: {},
+  xxsmall: {
+    borderRadius: 12,
+    height: 24,
+    minWidth: 40,
+    paddingHorizontal: 10,
+  },
   /*
    * Sorting values by size here makes it easier to reason about
    * the overall scale of values than sorting alphabetically,
@@ -26,9 +31,9 @@ export const xfabButtonContainerSizedStyle: { [key in Size]: ViewStyle } = {
    */
   // tslint:disable-next-line:object-literal-sort-keys
   xsmall: {
-    borderRadius: 15,
-    height: 30,
-    minWidth: 40,
+    borderRadius: 16,
+    height: 32,
+    minWidth: 48,
     paddingHorizontal: 14,
   },
   small: {
@@ -46,16 +51,21 @@ export const xfabButtonContainerSizedStyle: { [key in Size]: ViewStyle } = {
   large: {
     borderRadius: 28,
     height: 56,
-    minWidth: 56,
+    minWidth: 64,
     paddingHorizontal: 24,
   },
   xlarge: {
-    borderRadius: 36,
-    height: 72,
-    minWidth: 70,
-    paddingHorizontal: 32,
+    borderRadius: 32,
+    height: 64,
+    minWidth: 72,
+    paddingHorizontal: 28,
   },
-  xxlarge: {},
+  xxlarge: {
+    borderRadius: 40,
+    height: 80,
+    minWidth: 88,
+    paddingHorizontal: 36,
+  },
 };
 
 export const getXFabButtonContainerStyle: ViewStyleGetter<

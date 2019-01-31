@@ -19,7 +19,10 @@ import { getDefaultButtonContainerStyle } from '../default/container';
 import { getDefaultButtonTextStyle } from '../default/text';
 
 export const outlinedButtonContainerSizedStyle: { [key in Size]: ViewStyle } = {
-  xxsmall: {},
+  xxsmall: {
+    borderWidth: 1,
+    paddingHorizontal: 4,
+  },
   /*
    * Sorting values by size here makes it easier to reason about
    * the overall scale of values than sorting alphabetically,
@@ -40,13 +43,16 @@ export const outlinedButtonContainerSizedStyle: { [key in Size]: ViewStyle } = {
   },
   large: {
     borderWidth: 2,
-    paddingHorizontal: 18,
+    paddingHorizontal: 20,
   },
   xlarge: {
     borderWidth: 3,
     paddingHorizontal: 24,
   },
-  xxlarge: {},
+  xxlarge: {
+    borderWidth: 3,
+    paddingHorizontal: 32,
+  },
 };
 
 export const getOutlinedButtonContainerStyle: ViewStyleGetter<

@@ -8,7 +8,6 @@
 import {
   ButtonProps,
   rawButtonTextSubTheme,
-  Size,
   SubTheme,
   TextStyleGetter,
 } from '@reflex-ui/core';
@@ -21,7 +20,6 @@ import { getContainedButtonTextColorStyle } from '../contained/text';
 export const getFabButtonIconStyle: TextStyleGetter<ButtonProps> = props => ({
   ...getAllVariantsButtonIconStyle(props),
   ...getContainedButtonTextColorStyle(props),
-  ...(props.size === Size.S ? { fontSize: 24 } : {}),
 });
 
 export const fabButtonIconTheme: SubTheme<

@@ -25,7 +25,11 @@ import {
 export const containedButtonContainerSizedStyle: {
   [key in Size]: ViewStyle
 } = {
-  xxsmall: {},
+  xxsmall: {
+    height: 24,
+    minWidth: 40,
+    paddingHorizontal: 6,
+  },
   /*
    * Sorting values by size here makes it easier to reason about
    * the overall scale of values than sorting alphabetically,
@@ -34,13 +38,13 @@ export const containedButtonContainerSizedStyle: {
   // tslint:disable-next-line:object-literal-sort-keys
   xsmall: {
     height: 28,
-    minWidth: 54,
+    minWidth: 52,
     paddingHorizontal: 8,
   },
   small: {
     height: 32,
-    minWidth: 64,
-    paddingHorizontal: 16,
+    minWidth: 56,
+    paddingHorizontal: 12,
   },
   medium: {
     height: 36,
@@ -54,10 +58,14 @@ export const containedButtonContainerSizedStyle: {
   },
   xlarge: {
     height: 48,
-    minWidth: 82,
-    paddingHorizontal: 28,
+    minWidth: 80,
+    paddingHorizontal: 24,
   },
-  xxlarge: {},
+  xxlarge: {
+    height: 64,
+    minWidth: 96,
+    paddingHorizontal: 40,
+  },
 };
 
 export const getContainedButtonContainerStyle: ViewStyleGetter<
