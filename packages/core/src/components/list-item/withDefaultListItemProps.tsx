@@ -28,27 +28,29 @@ export const withDefaultListItemProps = (
     {dimensionsProps => (
       <PaletteThemeContext.Consumer>
         {paletteTheme => (
-          <ComponentsThemeContext.Consumer>
-            {(componentsTheme) => {
-              const colorTheme: ColorTheme =
-                props.colorTheme || ColorTheme.SurfaceNormal;
+          <ColorThemeContext.Consumer>
+            {colorTheme => (
+              <ComponentsThemeContext.Consumer>
+                {(componentsTheme) => {
+                  const propsWithDefaults: ListItemProps = {
+                    ...dimensionsProps,
+                    colorTheme: props.colorTheme || colorTheme ||
+                      ColorTheme.SurfaceNormal,
+                    paletteTheme,
+                    size: Size.M,
+                    theme: componentsTheme.listItem,
+                    ...props,
+                  };
 
-              const propsWithDefaults: ListItemProps = {
-                ...dimensionsProps,
-                colorTheme,
-                paletteTheme,
-                size: Size.M,
-                theme: componentsTheme.listItem,
-                ...props,
-              };
-
-              return (
-                <ColorThemeContext.Provider value={colorTheme}>
-                  <WrappedComponent {...propsWithDefaults} />
-                </ColorThemeContext.Provider>
-              );
-            }}
-          </ComponentsThemeContext.Consumer>
+                  return (
+                    <ColorThemeContext.Provider value={colorTheme}>
+                      <WrappedComponent {...propsWithDefaults} />
+                    </ColorThemeContext.Provider>
+                  );
+                }}
+              </ComponentsThemeContext.Consumer>
+            )}
+          </ColorThemeContext.Consumer>
         )}
       </PaletteThemeContext.Consumer>
     )}
