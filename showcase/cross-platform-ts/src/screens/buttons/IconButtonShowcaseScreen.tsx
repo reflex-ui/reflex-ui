@@ -6,15 +6,18 @@
  */
 
 import {
+  Button,
   ButtonProps,
   ButtonSubProps,
   ButtonSubPropsGetter,
   ButtonVariant,
   ColorTheme,
   InteractionType,
+  OptionalButtonProps,
 } from '@reflex-ui/core';
 import {
   disabledGrey300_500,
+  FavoriteIcon,
   getOverlayColorByInteraction,
 } from '@reflex-ui/material-design';
 import * as React from 'react';
@@ -43,6 +46,12 @@ const getButtonProps: ButtonSubPropsGetter = (
   },
 });
 
+const ScaleButton: React.SFC<OptionalButtonProps> = (props): JSX.Element => (
+  <Button {...props}>
+    <FavoriteIcon />
+  </Button>
+);
+
 const IconButtonShowcaseScreen: React.SFC = (): JSX.Element => (
   <ButtonShowcaseScreen
     ButtonCollection={IconButtonCollection}
@@ -55,6 +64,7 @@ const IconButtonShowcaseScreen: React.SFC = (): JSX.Element => (
         variant: ButtonVariant.Icon,
       },
     ]}
+    scaleButtons={[ScaleButton]}
     title="Button: Icon"
     variant={ButtonVariant.Icon}
   />

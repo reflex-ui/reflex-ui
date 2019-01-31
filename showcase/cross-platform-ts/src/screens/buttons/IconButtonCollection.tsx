@@ -16,6 +16,7 @@ const IconButtonCollection: React.SFC<ButtonCollectionProps> = ({
   getSubProps,
   invertColor,
   onPress,
+  showDisabled = true,
   title,
   variant,
 }): JSX.Element => (
@@ -32,17 +33,19 @@ const IconButtonCollection: React.SFC<ButtonCollectionProps> = ({
       >
         <FavoriteIcon />
       </Button>
-      <Button
-        colorTheme={colorTheme}
-        disabled
-        getSubProps={getSubProps}
-        invertColor={invertColor}
-        margin={Size.M}
-        onPress={onPress}
-        variant={variant}
-      >
-        <FavoriteIcon />
-      </Button>
+      {showDisabled && (
+        <Button
+          colorTheme={colorTheme}
+          disabled
+          getSubProps={getSubProps}
+          invertColor={invertColor}
+          margin={Size.M}
+          onPress={onPress}
+          variant={variant}
+        >
+          <FavoriteIcon />
+        </Button>
+      )}
     </Row>
   </React.Fragment>
 );

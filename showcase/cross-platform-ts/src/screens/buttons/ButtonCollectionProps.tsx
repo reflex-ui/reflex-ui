@@ -9,6 +9,7 @@ import {
   ButtonSubPropsGetter,
   ButtonVariant,
   ColorTheme,
+  Size,
 } from '@reflex-ui/core';
 
 export interface ButtonCollectionProps {
@@ -16,6 +17,8 @@ export interface ButtonCollectionProps {
   readonly getSubProps?: ButtonSubPropsGetter;
   readonly invertColor?: boolean;
   readonly onPress?: () => void;
+  readonly showDisabled?: boolean;
+  readonly size?: Size;
   readonly title: string;
   readonly variant: ButtonVariant;
 }

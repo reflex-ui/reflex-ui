@@ -6,15 +6,22 @@
  */
 
 import {
+  AlignItems,
+  allSizes,
   AppBar,
   AppBarTitle,
   Button,
   ButtonSubPropsGetter,
   ButtonVariant,
+  Caption,
   ColorTheme,
   Column,
   errorColorThemes,
+  FlexDirection,
+  Headline6,
+  isWeb,
   JustifyContent,
+  OptionalButtonProps,
   primaryColorThemes,
   Row,
   secondaryColorThemes,
@@ -72,6 +79,7 @@ export interface CustomButtonCollection {
 export interface ButtonShowcaseScreenProps {
   readonly ButtonCollection: React.ComponentType<ButtonCollectionProps>;
   readonly customCollections?: CustomButtonCollection[];
+  readonly scaleButtons?: React.ComponentType<OptionalButtonProps>[];
   readonly title: string;
   readonly variant: ButtonVariant;
 }
@@ -79,6 +87,7 @@ export interface ButtonShowcaseScreenProps {
 const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
   ButtonCollection,
   customCollections,
+  scaleButtons,
   title,
   variant,
 }): JSX.Element => (
@@ -101,6 +110,38 @@ const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
 
         return (
           <React.Fragment>
+            {scaleButtons &&
+              scaleButtons.map((ScaleButton, index) => (
+                <Row key={index} marginVertical={marginSize}>
+                  <Column>
+                    <Headline6 margin={Size.M}>Size Scale</Headline6>
+                    <Surface
+                      flexDirection={
+                        isWeb ? FlexDirection.Row : FlexDirection.Column
+                      }
+                      marginStart={marginSize}
+                    >
+                      {allSizes.map((size, sizeIndex) => (
+                        <Column
+                          alignItems={AlignItems.Center}
+                          key={size}
+                          marginStart={sizeIndex > 0 ? Size.S : 0}
+                        >
+                          <Caption>{size}</Caption>
+                          <Row>
+                            <ScaleButton
+                              colorTheme={ColorTheme.PrimaryNormal}
+                              onPress={onButtonPress}
+                              size={size}
+                              variant={variant}
+                            />
+                          </Row>
+                        </Column>
+                      ))}
+                    </Surface>
+                  </Column>
+                </Row>
+              ))}
             {colorThemes.map(colorTheme => (
               <Row
                 key={colorTheme}

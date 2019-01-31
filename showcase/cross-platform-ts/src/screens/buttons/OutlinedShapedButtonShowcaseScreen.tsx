@@ -6,15 +6,18 @@
  */
 
 import {
+  Button,
   ButtonProps,
   ButtonSubProps,
   ButtonSubPropsGetter,
   ButtonVariant,
   ColorTheme,
   InteractionType,
+  OptionalButtonProps,
 } from '@reflex-ui/core';
 import {
   disabledGrey300_500,
+  FavoriteIcon,
   getOverlayColorByInteraction,
 } from '@reflex-ui/material-design';
 import * as React from 'react';
@@ -55,6 +58,16 @@ const getButtonProps: ButtonSubPropsGetter = (
   };
 };
 
+const ScaleButton1: React.SFC<OptionalButtonProps> = (props): JSX.Element => (
+  <Button {...props}>OK</Button>
+);
+
+const ScaleButton2: React.SFC<OptionalButtonProps> = (props): JSX.Element => (
+  <Button leadingIcon={<FavoriteIcon />} {...props}>
+    Favorite
+  </Button>
+);
+
 const OutlinedShapedButtonShowcaseScreen: React.SFC = (): JSX.Element => (
   <ButtonShowcaseScreen
     ButtonCollection={LabelButtonCollection}
@@ -67,6 +80,7 @@ const OutlinedShapedButtonShowcaseScreen: React.SFC = (): JSX.Element => (
         variant: ButtonVariant.OutlinedShaped,
       },
     ]}
+    scaleButtons={[ScaleButton1, ScaleButton2]}
     title="Button: Outlined Shaped"
     variant={ButtonVariant.OutlinedShaped}
   />
