@@ -11,6 +11,7 @@ import { ColorTheme } from '../../palette/ColorTheme';
 import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
 import { DimensionsContext } from '../../responsiveness/DimensionsContext';
+import { Size } from '../../sizing/Size';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { reflexComponent } from '../reflexComponent';
 import { ListItemProps, OptionalListItemProps } from './ListItemProps';
@@ -36,6 +37,7 @@ export const withDefaultListItemProps = (
                 ...dimensionsProps,
                 colorTheme,
                 paletteTheme,
+                size: Size.M,
                 theme: componentsTheme.listItem,
                 ...props,
               };
