@@ -24,63 +24,83 @@ import {
 } from '../screens';
 import { withAppLogic } from '../withAppLogic';
 
+const appNavigationPrefix = 'reflexui.showcase.navigation';
+
+const createNavScreenId = (screenId: string) =>
+  `${appNavigationPrefix}.${screenId}`;
+
+const AppBarNavigation = {
+  default: `${appNavigationPrefix}appBar.DefaultAppBarScreen`,
+};
+
+const ButtonNavigation = {
+  contained: createNavScreenId('button.ContainedButtonScreen'),
+  containedShaped: createNavScreenId('button.ContainedShapedButtonScreen'),
+  default: createNavScreenId('button.DefaultButtonScreen'),
+  fab: createNavScreenId('button.FabButtonScreen'),
+  highlighted: createNavScreenId('button.HighlightedButtonScreen'),
+  icon: createNavScreenId('button.IconButtonScreen'),
+  outlined: createNavScreenId('button.OutlinedButtonScreen'),
+  outlinedShaped: createNavScreenId('button.OutlinedShapedButtonScreen'),
+  xfab: createNavScreenId('button.XFabButtonScreen'),
+};
+
+const IconNavigation = {
+  default: `${appNavigationPrefix}icon.IconScreen`,
+};
+
+const ListNavigation = {
+  default: `${appNavigationPrefix}list.ListScreen`,
+};
+
+const TypographyNavigation = {
+  default: `${appNavigationPrefix}typography.TypographyScreen`,
+};
+
 const registerScreens = () => {
   /* APP BAR */
-  Navigation.registerComponent(
-    'navigation.showcase.appBars.DefaultAppBarScreen',
-    () => withAppLogic(DefaultAppBarScreen),
+  Navigation.registerComponent(AppBarNavigation.default, () =>
+    withAppLogic(DefaultAppBarScreen),
   );
   /* BUTTON */
-  Navigation.registerComponent(
-    'navigation.showcase.buttons.ContainedButtonShowcaseScreen',
-    () => withAppLogic(ContainedButtonShowcaseScreen),
+  Navigation.registerComponent(ButtonNavigation.contained, () =>
+    withAppLogic(ContainedButtonShowcaseScreen),
   );
-  Navigation.registerComponent(
-    'navigation.showcase.buttons.ContainedShapedButtonShowcaseScreen',
-    () => withAppLogic(ContainedShapedButtonShowcaseScreen),
+  Navigation.registerComponent(ButtonNavigation.containedShaped, () =>
+    withAppLogic(ContainedShapedButtonShowcaseScreen),
   );
-  Navigation.registerComponent(
-    'navigation.showcase.buttons.DefaultButtonShowcaseScreen',
-    () => withAppLogic(DefaultButtonShowcaseScreen),
+  Navigation.registerComponent(ButtonNavigation.default, () =>
+    withAppLogic(DefaultButtonShowcaseScreen),
   );
-  Navigation.registerComponent(
-    'navigation.showcase.buttons.FabButtonShowcaseScreen',
-    () => withAppLogic(FabButtonShowcaseScreen),
+  Navigation.registerComponent(ButtonNavigation.fab, () =>
+    withAppLogic(FabButtonShowcaseScreen),
   );
-  Navigation.registerComponent(
-    'navigation.showcase.buttons.HighlightedButtonShowcaseScreen',
-    () => withAppLogic(HighlightedButtonShowcaseScreen),
+  Navigation.registerComponent(ButtonNavigation.highlighted, () =>
+    withAppLogic(HighlightedButtonShowcaseScreen),
   );
-  Navigation.registerComponent(
-    'navigation.showcase.buttons.IconButtonShowcaseScreen',
-    () => withAppLogic(IconButtonShowcaseScreen),
+  Navigation.registerComponent(ButtonNavigation.icon, () =>
+    withAppLogic(IconButtonShowcaseScreen),
   );
-  Navigation.registerComponent(
-    'navigation.showcase.buttons.OutlinedButtonShowcaseScreen',
-    () => withAppLogic(OutlinedButtonShowcaseScreen),
+  Navigation.registerComponent(ButtonNavigation.outlined, () =>
+    withAppLogic(OutlinedButtonShowcaseScreen),
   );
-  Navigation.registerComponent(
-    'navigation.showcase.buttons.OutlinedShapedButtonShowcaseScreen',
-    () => withAppLogic(OutlinedShapedButtonShowcaseScreen),
+  Navigation.registerComponent(ButtonNavigation.outlinedShaped, () =>
+    withAppLogic(OutlinedShapedButtonShowcaseScreen),
   );
-  Navigation.registerComponent(
-    'navigation.showcase.buttons.XFabButtonShowcaseScreen',
-    () => withAppLogic(XFabButtonShowcaseScreen),
+  Navigation.registerComponent(ButtonNavigation.xfab, () =>
+    withAppLogic(XFabButtonShowcaseScreen),
   );
   /* ICON */
-  Navigation.registerComponent(
-    'navigation.showcase.icons.IconShowcaseScreen',
-    () => withAppLogic(IconShowcaseScreen),
+  Navigation.registerComponent(IconNavigation.default, () =>
+    withAppLogic(IconShowcaseScreen),
   );
   /* LIST */
-  Navigation.registerComponent(
-    'navigation.showcase.list.ListShowcaseScreen',
-    () => withAppLogic(ListShowcaseScreen),
+  Navigation.registerComponent(ListNavigation.default, () =>
+    withAppLogic(ListShowcaseScreen),
   );
   /* TYPOGRAPHY */
-  Navigation.registerComponent(
-    'navigation.showcase.typography.TypographyScreen',
-    () => withAppLogic(TypographyScreen),
+  Navigation.registerComponent(TypographyNavigation.default, () =>
+    withAppLogic(TypographyScreen),
   );
 };
 
@@ -91,27 +111,7 @@ export const AppNavigation = () => {
     Navigation.setRoot({
       root: {
         component: {
-          /* APP BARS */
-          // name: 'navigation.showcase.appBars.DefaultAppBarScreen',
-          /* BUTTONS */
-          // name: 'navigation.showcase.buttons.ContainedButtonShowcaseScreen',
-          /*name:
-            'navigation.showcase.buttons.ContainedShapedButtonShowcaseScreen',*/
-          // name: 'navigation.showcase.buttons.DefaultButtonShowcaseScreen',
-          // name: 'navigation.showcase.buttons.FabButtonShowcaseScreen',
-          /*name:
-            'navigation.showcase.buttons.HighlightedButtonShowcaseScreen',*/
-          // name: 'navigation.showcase.buttons.IconButtonShowcaseScreen',
-          // name: 'navigation.showcase.buttons.OutlinedButtonShowcaseScreen',
-          /*name:
-            'navigation.showcase.buttons.OutlinedShapedButtonShowcaseScreen',*/
-          // name: 'navigation.showcase.buttons.XFabButtonShowcaseScreen',
-          /* ICONS */
-          // name: 'navigation.showcase.icons.IconShowcaseScreen',
-          /* LIST */
-          name: 'navigation.showcase.list.ListShowcaseScreen',
-          /* TYPOGRAPHY */
-          // name: 'navigation.showcase.typography.TypographyScreen',
+          name: ButtonNavigation.contained,
         },
       },
     });
