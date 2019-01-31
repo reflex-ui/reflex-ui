@@ -41,7 +41,7 @@ const onListItemIconPress = () => {
 
 const ListShowcaseScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
-    <AppBar colorTheme={ColorTheme.PrimaryDark}>
+    <AppBar>
       <Button invertColor onPress={onButtonPress} variant={ButtonVariant.Icon}>
         <MenuIcon />
       </Button>
