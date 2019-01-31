@@ -25,6 +25,7 @@ import { sizedSpacing } from '../../spacing/sizedSpacing';
 export const getSurfaceContainerStyle: ViewStyleGetter<
   SurfaceProps
 > = props => ({
+  flexWrap: 'wrap',
   ...getFlexboxStyle(props),
   ...getSizedMarginStyle(sizedSpacing)(props),
   ...getSizedPaddingStyle(sizedSpacing)(props),
