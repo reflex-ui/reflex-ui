@@ -8,12 +8,13 @@
 import {
   getThemedColor,
   InjectableSubTheme,
+  InteractionType,
   rawInjectableTouchableSurfaceViewSubTheme,
   TouchableSurfaceProps,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
-import { ViewProps, ViewStyle } from 'react-native';
+import { Platform, ViewProps, ViewStyle } from 'react-native';
 
 export const getTouchableSurfaceContainerStyle: ViewStyleGetter<
   TouchableSurfaceProps
@@ -24,6 +25,15 @@ export const getTouchableSurfaceContainerStyle: ViewStyleGetter<
     interactionState,
     invertColor,
     paletteTheme,
+  }),
+  ...Platform.select({
+    web: {
+      cursor:
+        interactionState.type === InteractionType.Disabled
+          ? 'default'
+          : 'pointer',
+      outline: 'none',
+    },
   }),
 });
 
