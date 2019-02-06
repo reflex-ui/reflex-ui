@@ -1,7 +1,12 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "build/dist"
+    "allowJs": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "noEmit": true,
+    "outDir": "build/dist",
+    "resolveJsonModule": true
   },
   "extends": "../../tsconfig.json",
   "include": ["src"]
