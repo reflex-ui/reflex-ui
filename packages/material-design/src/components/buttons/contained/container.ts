@@ -9,7 +9,6 @@ import {
   ButtonProps,
   getThemedColor,
   InjectableSubTheme,
-  // InteractionType,
   rawInjectableButtonViewSubTheme,
   Size,
   ViewStyleGetter,
