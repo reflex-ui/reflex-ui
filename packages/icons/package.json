@@ -1,6 +1,6 @@
 {
-  "name": "@reflex-ui/core",
-  "description": "Cross-Platform React Native & Web components for iOS, Android & Web based on Google's Material Design.",
+  "name": "@reflex-ui/icons",
+  "description": "Cross-Platform iOS, Adnroid and Web icons based on ReflexUI.",
   "author": {
     "name": "Flavio Silva",
     "email": "flsilva7@gmail.com",
@@ -37,19 +37,21 @@
   "files": [
     "build/dist"
   ],
-  "dependencies": {
-    "lodash": "^4.17.11",
-    "react-is": "^16.7.0"
+  "scripts": {
+    "generate-md": "node ./scripts/generate.js && tsc -p tsconfig.json"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.120",
-    "@types/react-is": "^16.7.0"
+    "@svgr/core": "^4.1.0",
+    "@svgr/plugin-prettier": "^4.0.3",
+    "material-design-icons": "^3.0.1"
   },
   "peerDependencies": {
     "react": ">=16.7.0",
     "react-dom": ">=16.7.0",
     "react-native": ">=0.58.3",
-    "react-native-web": ">=0.10.0"
+    "react-native-svg": ">=9.2.3",
+    "react-native-web": ">=0.10.0",
+    "swgs": ">=3.3.0"
   },
   "sideEffects": false
 }

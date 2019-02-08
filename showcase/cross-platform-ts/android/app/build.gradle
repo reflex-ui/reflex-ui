@@ -154,6 +154,7 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation project(':react-native-navigation')
     implementation project(':react-native-vector-icons')
+    implementation project(':react-native-svg')
 }
 
 // Run this once to be able to run the application with BUCK

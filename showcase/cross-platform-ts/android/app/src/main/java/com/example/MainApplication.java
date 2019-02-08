@@ -3,6 +3,8 @@ package com.example;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 
+import com.horcrux.svg.SvgPackage;
+
 import com.oblador.vectoricons.VectorIconsPackage;
 
 import com.reactnativenavigation.BuildConfig;
@@ -35,7 +37,8 @@ public class MainApplication extends NavigationApplication {
         // No need to add RnnPackage and MainReactPackage
         return Arrays.<ReactPackage>asList(
             // eg. new VectorIconsPackage()
-            new VectorIconsPackage()
+            new VectorIconsPackage(),
+            new SvgPackage()
         );
     }
 

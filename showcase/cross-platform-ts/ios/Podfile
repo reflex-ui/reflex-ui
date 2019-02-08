@@ -31,6 +31,7 @@ target 'example' do
   pod 'glog', :podspec => '../../../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'ReactNativeNavigation', :podspec => '../../../node_modules/react-native-navigation/ReactNativeNavigation.podspec'
   pod 'RNVectorIcons', :path => '../../../node_modules/react-native-vector-icons'
+  pod 'RNSVG', :path => '../../../node_modules/react-native-svg'
 
   target 'exampleTests' do
     inherit! :search_paths
