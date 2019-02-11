@@ -24,7 +24,6 @@ import { getContainedShapedButtonContainerStyle } from './container';
 
 export const getAnimatedContainedShapedButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-  // tslint:disable-next-line:ter-arrow-parens
 > = props => {
   const updatedProps =
     props.interactionState.type === InteractionType.Pressed

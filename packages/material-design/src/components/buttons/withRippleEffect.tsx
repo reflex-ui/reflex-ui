@@ -264,7 +264,6 @@ export const withRippleEffect = <S extends InteractionStateProps>(
         this.animatedView = animated(View);
         this.rippleAnimation = Keyframes.Spring({
           // @ts-ignore
-          // tslint:disable-next-line:ter-arrow-parens
           pressin: async call => {
             call({
               config: { tension: 150, friction: 20 },
@@ -278,7 +277,6 @@ export const withRippleEffect = <S extends InteractionStateProps>(
             if (this.state.isAnimatingPressIn) this.pressInAnimationComplete();
           },
           // @ts-ignore
-          // tslint:disable-next-line:ter-arrow-parens
           pressout: async call => {
             call({ config: { tension: 75, friction: 20 }, to: { opacity: 0 } });
             await delay(250);

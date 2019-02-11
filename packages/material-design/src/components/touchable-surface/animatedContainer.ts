@@ -24,7 +24,6 @@ import { getTouchableSurfaceContainerStyle } from './container';
 
 export const getAnimatedTouchableSurfaceContainerStyle: ViewStyleGetter<
   TouchableSurfaceProps
-  // tslint:disable-next-line:ter-arrow-parens
 > = props => {
   const updatedProps =
     props.interactionState.type === InteractionType.Pressed

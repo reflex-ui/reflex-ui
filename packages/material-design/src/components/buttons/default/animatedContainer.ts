@@ -23,7 +23,6 @@ import { getDefaultButtonRippleColor } from './getDefaultButtonRippleColor';
 
 export const getAnimatedDefaultButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-  // tslint:disable-next-line:ter-arrow-parens
 > = props => {
   const updatedProps =
     props.interactionState.type === InteractionType.Pressed

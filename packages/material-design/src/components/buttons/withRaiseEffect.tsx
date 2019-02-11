@@ -199,7 +199,6 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
         this.animatedView = animated(View);
         this.raiseAnimation = Keyframes.Spring({
           // @ts-ignore
-          // tslint:disable-next-line:ter-arrow-parens
           disabled: async call => {
             call({
               config: { tension: 75, friction: 20 },
@@ -220,7 +219,6 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
             if (this.state.isAnimating) this.animationComplete();
           },
           // @ts-ignore
-          // tslint:disable-next-line:ter-arrow-parens
           enabled: async call => {
             call({
               config: { tension: 75, friction: 20 },
@@ -241,7 +239,6 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
             if (this.state.isAnimating) this.animationComplete();
           },
           // @ts-ignore
-          // tslint:disable-next-line:ter-arrow-parens
           focused: async call => {
             call({
               config: { tension: 75, friction: 20 },
@@ -262,7 +259,6 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
             if (this.state.isAnimating) this.animationComplete();
           },
           // @ts-ignore
-          // tslint:disable-next-line:ter-arrow-parens
           hovered: async call => {
             call({
               config: { tension: 150, friction: 20 },
@@ -283,7 +279,6 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
             if (this.state.isAnimating) this.animationComplete();
           },
           // @ts-ignore
-          // tslint:disable-next-line:ter-arrow-parens
           pressin: async call => {
             call({
               config: { tension: 150, friction: 20 },

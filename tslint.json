@@ -67,6 +67,7 @@
     "prefer-const": true,
     "semicolon": [true, "always", "ignore-bound-class-methods"],
     "switch-default": true,
+    "ter-arrow-parens": [true, "as-needed"],
     "triple-equals": [true, "allow-null-check", "allow-undefined-check"],
     "use-isnan": true,
     "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case"]

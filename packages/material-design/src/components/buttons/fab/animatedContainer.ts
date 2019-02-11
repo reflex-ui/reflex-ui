@@ -29,7 +29,6 @@ import { getFabButtonContainerStyle } from './container';
 
 export const getAnimatedFabButtonContainerStyle: ViewStyleGetter<
   ButtonProps
-  // tslint:disable-next-line:ter-arrow-parens
 > = props => {
   const updatedProps =
     props.interactionState.type === InteractionType.Pressed
