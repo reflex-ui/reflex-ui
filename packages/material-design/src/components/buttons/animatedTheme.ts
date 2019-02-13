@@ -6,17 +6,18 @@
  */
 
 import { ButtonVariantsTheme } from '@reflex-ui/core';
-import {
-  animatedContainedButtonTheme,
-  animatedContainedShapedButtonTheme,
-  animatedDefaultButtonTheme,
-  animatedFabButtonTheme,
-  animatedIconButtonTheme,
-  animatedOutlinedButtonTheme,
-  animatedOutlinedShapedButtonTheme,
-  animatedRaisedButtonTheme,
-  animatedXFabButtonTheme,
-} from './';
+
+// tslint:disable-next-line:max-line-length
+import { animatedContainedShapedButtonTheme } from './contained-shaped/animatedTheme';
+import { animatedContainedButtonTheme } from './contained/animatedTheme';
+import { animatedDefaultButtonTheme } from './default/animatedTheme';
+import { animatedFabButtonTheme } from './fab/animatedTheme';
+import { animatedIconButtonTheme } from './icon/animatedTheme';
+// tslint:disable-next-line:max-line-length
+import { animatedOutlinedShapedButtonTheme } from './outlined-shaped/animatedTheme';
+import { animatedOutlinedButtonTheme } from './outlined/animatedTheme';
+import { animatedRaisedButtonTheme } from './raised/animatedTheme';
+import { animatedXFabButtonTheme } from './xfab/animatedTheme';
 
 export const animatedButtonTheme: ButtonVariantsTheme = {
   contained: animatedContainedButtonTheme,

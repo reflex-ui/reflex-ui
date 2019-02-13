@@ -6,17 +6,16 @@
  */
 
 import { ButtonVariantsTheme } from '@reflex-ui/core';
-import {
-  containedButtonTheme,
-  containedShapedButtonTheme,
-  defaultButtonTheme,
-  fabButtonTheme,
-  iconButtonTheme,
-  outlinedButtonTheme,
-  outlinedShapedButtonTheme,
-  raisedButtonTheme,
-  xfabButtonTheme,
-} from './';
+
+import { containedShapedButtonTheme } from './contained-shaped/theme';
+import { containedButtonTheme } from './contained/theme';
+import { defaultButtonTheme } from './default/theme';
+import { fabButtonTheme } from './fab/theme';
+import { iconButtonTheme } from './icon/theme';
+import { outlinedShapedButtonTheme } from './outlined-shaped/theme';
+import { outlinedButtonTheme } from './outlined/theme';
+import { raisedButtonTheme } from './raised/theme';
+import { xfabButtonTheme } from './xfab/theme';
 
 export const buttonTheme: ButtonVariantsTheme = {
   contained: containedButtonTheme,
