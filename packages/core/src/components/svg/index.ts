@@ -5,7 +5,4 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './allSizes';
-export * from './isSizeEnumValue';
-export * from './Size';
-export * from './SizingProps';
+export * from './SvgPropsGetter';

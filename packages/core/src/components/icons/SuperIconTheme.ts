@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { TextProps, TextStyle, ViewProps, ViewStyle } from 'react-native';
+import { ViewProps, ViewStyle } from 'react-native';
+import { SvgProps } from 'react-native-svg';
 
 import {
   InjectableSubTheme,
@@ -17,7 +18,7 @@ import { SuperIconProps } from './SuperIconProps';
 
 export interface SuperIconTheme {
   readonly container: InjectableSubTheme<SuperIconProps, ViewProps, ViewStyle>;
-  readonly icon: SubTheme<SuperIconProps, TextProps, TextStyle>;
+  readonly icon: SubTheme<SuperIconProps, SvgProps, ViewProps>;
 }
 
 export interface OptionalSuperIconTheme {
@@ -26,5 +27,5 @@ export interface OptionalSuperIconTheme {
     ViewProps,
     ViewStyle
   >;
-  readonly icon?: OptionalSubTheme<SuperIconProps, TextProps, TextStyle>;
+  readonly icon?: OptionalSubTheme<SuperIconProps, SvgProps, ViewProps>;
 }

@@ -23,7 +23,8 @@ import {
   Surface,
   warningColorThemes,
 } from '@reflex-ui/core';
-import { FavoriteIcon, MenuIcon } from '@reflex-ui/material-design';
+import { AlarmIcon } from '@reflex-ui/icons/build/dist/material-design';
+import { MenuIcon } from '@reflex-ui/material-design';
 import * as React from 'react';
 import { ScrollView } from 'react-native';
 
@@ -86,13 +87,13 @@ const IconShowcaseScreen: React.SFC<{}> = (): JSX.Element => (
                   <Headline6>Custom color</Headline6>
                 </Row>
                 <Row>
-                  <FavoriteIcon color="#c70ad0" size={Size.XXS} />
-                  <FavoriteIcon color="#c70ad0" size={Size.XS} />
-                  <FavoriteIcon color="#c70ad0" size={Size.S} />
-                  <FavoriteIcon color="#c70ad0" />
-                  <FavoriteIcon color="#c70ad0" size={Size.L} />
-                  <FavoriteIcon color="#c70ad0" size={Size.XL} />
-                  <FavoriteIcon color="#c70ad0" size={Size.XXL} />
+                  <AlarmIcon color="#c70ad0" size={Size.XXS} />
+                  <AlarmIcon color="#c70ad0" size={Size.XS} />
+                  <AlarmIcon color="#c70ad0" size={Size.S} />
+                  <AlarmIcon color="#c70ad0" />
+                  <AlarmIcon color="#c70ad0" size={Size.L} />
+                  <AlarmIcon color="#c70ad0" size={Size.XL} />
+                  <AlarmIcon color="#c70ad0" size={Size.XXL} />
                 </Row>
               </Surface>
             </Row>

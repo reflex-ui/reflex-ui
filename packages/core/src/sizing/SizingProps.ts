@@ -8,13 +8,13 @@
 import { Size } from './Size';
 
 export interface SizingProps {
-  readonly height?: number | string;
-  readonly maxHeight?: number | string;
-  readonly maxWidth?: number | string;
-  readonly minHeight?: number | string;
-  readonly minWidth?: number | string;
-  readonly size: Size;
-  readonly width?: number | string;
+  height?: number | string;
+  maxHeight?: number | string;
+  maxWidth?: number | string;
+  minHeight?: number | string;
+  minWidth?: number | string;
+  size: Size;
+  width?: number | string;
 }
 
 export type OptionalSizingProps = Partial<SizingProps>;

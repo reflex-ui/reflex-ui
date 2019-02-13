@@ -5,6 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { SvgProps } from 'react-native-svg';
+
 import { PaletteThemeProps } from '../../palette';
 import { SizingProps } from '../../sizing/SizingProps';
 import { MarginProps } from '../../spacing';
@@ -14,7 +16,8 @@ import { SuperIconTheme } from './SuperIconTheme';
 export interface SuperIconProps
   extends MarginProps,
     PaletteThemeProps,
-    SizingProps {
+    SizingProps,
+    SvgProps {
   readonly children?: React.ReactNode;
   readonly color?: string;
   readonly getSubProps?: SuperIconSubPropsGetter;

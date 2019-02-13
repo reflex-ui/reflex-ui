@@ -5,7 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './allSizes';
-export * from './isSizeEnumValue';
-export * from './Size';
-export * from './SizingProps';
+import { SvgProps } from 'react-native-svg';
+
+import { PropsGetter } from '../PropsGetter';
+
+export type SvgPropsGetter<ComponentProps> = PropsGetter<
+  ComponentProps,
+  SvgProps
+>;

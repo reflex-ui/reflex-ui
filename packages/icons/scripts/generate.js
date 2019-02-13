@@ -76,7 +76,7 @@ const createIcon = (file, destPath, getFileName) => {
      * There's no built-in SVGR template that works for both
      * React Native and TypeScript. So it seems easier
      * to use the React Native one and make some
-     * clunky "manual" replaces to the output.
+     * clunky manual replaces to the outputed content.
      */
     let parsedSvg = svgr.sync(data, {
       native: true,
@@ -85,8 +85,6 @@ const createIcon = (file, destPath, getFileName) => {
     });
     console.log('createIcon() - parsedSvg: ', parsedSvg);
 
-    parsedSvg = parsedSvg.replace(/react-native-svg/g, 'swgs');
-
     parsedSvg = parsedSvg.replace(
       'import React from "react";',
       `import * as React from 'react';
@@ -94,15 +92,25 @@ const createIcon = (file, destPath, getFileName) => {
       // tslint:disable-next-line:import-name`,
     );
 
+    parsedSvg = parsedSvg.replace(/react-native-svg/g, 'swgs');
+
     parsedSvg = parsedSvg.replace(
-      'SvgComponent = props',
-      'SvgComponent = (props: React.SVGProps<SVGSVGElement>)',
+      'const SvgComponent = props => ',
+      `import { OptionalSuperIconProps, reflexComponent, SuperIcon } from '@reflex-ui/core';\n
+      export const SvgComponent = reflexComponent<OptionalSuperIconProps>({
+        name: 'SvgComponent',
+      })((props: OptionalSuperIconProps) => (
+        <SuperIcon {...props}>
+      `,
     );
 
     parsedSvg = parsedSvg.replace(
-      'export default SvgComponent;',
-      'export { SvgComponent };',
+      ' width={24} height={24} viewBox="0 0 24 24" {...props}',
+      '',
     );
+
+    parsedSvg = parsedSvg.replace('</Svg>;', '</Svg></SuperIcon>));');
+    parsedSvg = parsedSvg.replace('export default SvgComponent;', '');
 
     const filename = getFileName(file);
 

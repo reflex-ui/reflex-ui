@@ -30,7 +30,6 @@ import {
   Surface,
   warningColorThemes,
 } from '@reflex-ui/core';
-import { AlarmIcon } from '@reflex-ui/icons/build/dist/material-design';
 import { MenuIcon } from '@reflex-ui/material-design';
 import * as React from 'react';
 import { ScrollView } from 'react-native';
@@ -99,7 +98,6 @@ const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
       </Button>
       <AppBarTitle numberOfLines={1}>{title}</AppBarTitle>
     </AppBar>
-    <AlarmIcon />
     <Column marginTop={Size.M}>
       {({ breakpoints, dimensions }) => {
         const marginSize =

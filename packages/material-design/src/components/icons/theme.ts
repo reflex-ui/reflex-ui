@@ -7,64 +7,60 @@
 
 import {
   getSizedMarginStyle,
+  isSizeEnumValue,
   OptionalInjectableSubTheme,
   OptionalSuperIconTheme,
   rawSuperIconTheme,
   Size,
   SuperIconProps,
   SuperIconTheme,
-  TextStyleGetter,
+  SvgPropsGetter,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
-import {
-  Platform,
-  TextProps,
-  TextStyle,
-  ViewProps,
-  ViewStyle,
-} from 'react-native';
+import { ViewProps, ViewStyle } from 'react-native';
+import { SvgProps } from 'react-native-svg';
 
 import { getSizingStyle } from '../../sizing/getSizingStyle';
 import { sizedSpacing } from '../../spacing/sizedSpacing';
 import { getDefaultTypographyColorStyle } from '../typography/theme';
 
-export const superIconIconSizedStyle: { [key in Size]: TextStyle } = {
-  xxsmall: { fontSize: 12 },
+export const superIconIconSizedProps: { [key in Size]: SvgProps } = {
+  xxsmall: { height: 12, width: 12 },
   /*
    * Sorting values by size here makes it easier to reason about
    * the overall scale of values than sorting alphabetically,
    * so let's just disable this rule here.
    */
   // tslint:disable-next-line:object-literal-sort-keys
-  xsmall: { fontSize: 16 },
-  small: { fontSize: 20 },
-  medium: { fontSize: 24 },
-  large: { fontSize: 32 },
-  xlarge: { fontSize: 48 },
-  xxlarge: { fontSize: 64 },
+  xsmall: { height: 16, width: 16 },
+  small: { height: 20, width: 20 },
+  medium: { height: 24, width: 24 },
+  large: { height: 32, width: 32 },
+  xlarge: { height: 48, width: 48 },
+  xxlarge: { height: 64, width: 64 },
 };
 
-export const getSuperIconIconStyle: TextStyleGetter<
-  SuperIconProps
-> = props => ({
-  ...superIconIconSizedStyle[props.size],
-  color: props.color
-    ? props.color
-    : getDefaultTypographyColorStyle(props).color,
-  ...Platform.select<TextStyle>({
-    web: {
-      userSelect: 'none',
-    },
-  }),
+export const getSvgIconSize = (props: SuperIconProps) => ({
+  ...(isSizeEnumValue(props.size as string)
+    ? superIconIconSizedProps[props.size]
+    : { height: props.size, width: props.size }),
+  ...(props.height ? { height: props.height } : {}),
+  ...(props.width ? { width: props.width } : {}),
+});
+
+export const getSuperIconIconProps: SvgPropsGetter<SuperIconProps> = props => ({
+  ...getSvgIconSize(props),
+  fill: props.color ? props.color : getDefaultTypographyColorStyle(props).color,
+  viewBox: '0 0 24 24',
 });
 
 export const superIconIconTheme: OptionalInjectableSubTheme<
   SuperIconProps,
-  TextProps,
-  TextStyle
+  SvgProps,
+  ViewStyle
 > = {
-  getStyle: getSuperIconIconStyle,
+  getProps: getSuperIconIconProps,
 };
 
 export const getSuperIconContainerStyle: ViewStyleGetter<

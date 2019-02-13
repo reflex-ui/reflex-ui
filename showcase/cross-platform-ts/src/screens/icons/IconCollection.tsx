@@ -6,7 +6,7 @@
  */
 
 import { Headline6, Row, Size } from '@reflex-ui/core';
-import { FavoriteIcon } from '@reflex-ui/material-design';
+import { AlarmIcon } from '@reflex-ui/icons/build/dist/material-design';
 import * as React from 'react';
 
 import { IconCollectionProps } from './IconCollectionProps';
@@ -21,33 +21,33 @@ const IconCollection: React.SFC<IconCollectionProps> = ({
       <Headline6>{title}</Headline6>
     </Row>
     <Row>
-      <FavoriteIcon
+      <AlarmIcon
         colorTheme={colorTheme}
         invertColor={invertColor}
         size={Size.XXS}
       />
-      <FavoriteIcon
+      <AlarmIcon
         colorTheme={colorTheme}
         invertColor={invertColor}
         size={Size.XS}
       />
-      <FavoriteIcon
+      <AlarmIcon
         colorTheme={colorTheme}
         invertColor={invertColor}
         size={Size.S}
       />
-      <FavoriteIcon colorTheme={colorTheme} invertColor={invertColor} />
-      <FavoriteIcon
+      <AlarmIcon colorTheme={colorTheme} invertColor={invertColor} />
+      <AlarmIcon
         colorTheme={colorTheme}
         invertColor={invertColor}
         size={Size.L}
       />
-      <FavoriteIcon
+      <AlarmIcon
         colorTheme={colorTheme}
         invertColor={invertColor}
         size={Size.XL}
       />
-      <FavoriteIcon
+      <AlarmIcon
         colorTheme={colorTheme}
         invertColor={invertColor}
         size={Size.XXL}
