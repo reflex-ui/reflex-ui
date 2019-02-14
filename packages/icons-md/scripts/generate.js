@@ -18,7 +18,7 @@ const iconsRoot = path.resolve(
   __dirname,
   '../../../node_modules/material-design-icons',
 );
-const targetRoot = path.resolve(__dirname, '../src/material-design');
+const targetRoot = path.resolve(__dirname, '../src');
 
 const getFileName = filePath => {
   console.log('getFileName() - filePath: ', filePath);
@@ -40,6 +40,11 @@ const config = {
       destPath: path.resolve(targetRoot, 'action'),
       getFileName: getFileName,
     },
+    {
+      pattern: path.resolve(iconsRoot, 'navigation/svg/production/*24px.svg'),
+      destPath: path.resolve(targetRoot, 'navigation'),
+      getFileName: getFileName,
+    },
   ],
 };
 
@@ -57,7 +62,11 @@ config.dirs.forEach(dir => {
 
 const createIcons = (files, destPath, getFileName) => {
   files.forEach(file => {
-    if (file.indexOf('ic_alarm_24') !== -1) {
+    if (
+      file.indexOf('ic_alarm_24') !== -1 ||
+      file.indexOf('ic_favorite_24') !== -1 ||
+      file.indexOf('ic_menu_24') !== -1
+    ) {
       createIcon(file, destPath, getFileName);
     }
   });
@@ -96,11 +105,11 @@ const createIcon = (file, destPath, getFileName) => {
 
     parsedSvg = parsedSvg.replace(
       'const SvgComponent = props => ',
-      `import { OptionalSuperIconProps, reflexComponent, SuperIcon } from '@reflex-ui/core';\n
-      export const SvgComponent = reflexComponent<OptionalSuperIconProps>({
+      `import { OptionalFlexSvgProps, reflexComponent, SvgIcon } from '@reflex-ui/core';\n
+      export const SvgComponent = reflexComponent<OptionalFlexSvgProps>({
         name: 'SvgComponent',
-      })((props: OptionalSuperIconProps) => (
-        <SuperIcon {...props}>
+      })((props: OptionalFlexSvgProps) => (
+        <SvgIcon {...props}>
       `,
     );
 
@@ -109,7 +118,7 @@ const createIcon = (file, destPath, getFileName) => {
       '',
     );
 
-    parsedSvg = parsedSvg.replace('</Svg>;', '</Svg></SuperIcon>));');
+    parsedSvg = parsedSvg.replace('</Svg>;', '</Svg></SvgIcon>));');
     parsedSvg = parsedSvg.replace('export default SvgComponent;', '');
 
     const filename = getFileName(file);

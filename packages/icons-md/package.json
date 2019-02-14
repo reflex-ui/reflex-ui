@@ -1,5 +1,5 @@
 {
-  "name": "@reflex-ui/icons",
+  "name": "@reflex-ui/icons-md",
   "description": "Cross-Platform iOS, Adnroid and Web icons based on ReflexUI.",
   "author": {
     "name": "Flavio Silva",
@@ -38,7 +38,7 @@
     "build/dist"
   ],
   "scripts": {
-    "generate-md": "node ./scripts/generate.js && tsc -p tsconfig.json"
+    "generate": "node ./scripts/generate.js && tsc -p tsconfig.json"
   },
   "devDependencies": {
     "@svgr/core": "^4.1.0",
