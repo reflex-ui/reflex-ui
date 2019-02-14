@@ -9,7 +9,7 @@ import {
   FlexSvgProps,
   FlexSvgTheme,
   getSizedMarginStyle,
-  isSizeEnumValue,
+  getSizedSvgProps,
   OptionalFlexSvgTheme,
   OptionalInjectableSubTheme,
   rawFlexSvgTheme,
@@ -41,16 +41,8 @@ export const flexSvgSvgSizedProps: { [key in Size]: SvgProps } = {
   xxlarge: { height: 400, width: 400 },
 };
 
-export const getFlexSvgSvgSize = (props: FlexSvgProps) => ({
-  ...(isSizeEnumValue(props.size as string)
-    ? flexSvgSvgSizedProps[props.size]
-    : { height: props.size, width: props.size }),
-  ...(props.height ? { height: props.height } : {}),
-  ...(props.width ? { width: props.width } : {}),
-});
-
 export const getFlexSvgSvgProps: SvgPropsGetter<FlexSvgProps> = props => ({
-  ...getFlexSvgSvgSize(props),
+  ...getSizedSvgProps(flexSvgSvgSizedProps)(props),
   fill: props.color ? props.color : getDefaultTypographyColorStyle(props).color,
   viewBox: '0 0 200 200',
 });
