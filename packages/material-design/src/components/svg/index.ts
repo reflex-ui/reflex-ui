@@ -5,7 +5,5 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { createIconComponent } from './createIconComponent';
-import { IconName } from './IconName';
-
-export const MenuIcon = createIconComponent(IconName.Menu);
+export * from './flexSvgTheme';
+export * from './svgIconTheme';

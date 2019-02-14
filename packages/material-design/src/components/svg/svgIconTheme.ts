@@ -6,26 +6,26 @@
  */
 
 import {
+  FlexSvgProps,
+  FlexSvgTheme,
   getSizedMarginStyle,
   isSizeEnumValue,
+  OptionalFlexSvgTheme,
   OptionalInjectableSubTheme,
-  OptionalSuperIconTheme,
-  rawSuperIconTheme,
+  rawFlexSvgTheme,
   Size,
-  SuperIconProps,
-  SuperIconTheme,
   SvgPropsGetter,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
-import { ViewProps, ViewStyle } from 'react-native';
+import { ViewStyle } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 
 import { getSizingStyle } from '../../sizing/getSizingStyle';
 import { sizedSpacing } from '../../spacing/sizedSpacing';
 import { getDefaultTypographyColorStyle } from '../typography/theme';
 
-export const superIconIconSizedProps: { [key in Size]: SvgProps } = {
+export const svgIconSvgSizedProps: { [key in Size]: SvgProps } = {
   xxsmall: { height: 12, width: 12 },
   /*
    * Sorting values by size here makes it easier to reason about
@@ -41,50 +41,50 @@ export const superIconIconSizedProps: { [key in Size]: SvgProps } = {
   xxlarge: { height: 64, width: 64 },
 };
 
-export const getSvgIconSize = (props: SuperIconProps) => ({
+export const getSvgIconSvgSize = (props: FlexSvgProps) => ({
   ...(isSizeEnumValue(props.size as string)
-    ? superIconIconSizedProps[props.size]
+    ? svgIconSvgSizedProps[props.size]
     : { height: props.size, width: props.size }),
   ...(props.height ? { height: props.height } : {}),
   ...(props.width ? { width: props.width } : {}),
 });
 
-export const getSuperIconIconProps: SvgPropsGetter<SuperIconProps> = props => ({
-  ...getSvgIconSize(props),
+export const getSvgIconSvgProps: SvgPropsGetter<FlexSvgProps> = props => ({
+  ...getSvgIconSvgSize(props),
   fill: props.color ? props.color : getDefaultTypographyColorStyle(props).color,
   viewBox: '0 0 24 24',
 });
 
-export const superIconIconTheme: OptionalInjectableSubTheme<
-  SuperIconProps,
+export const svgIconSvgTheme: OptionalInjectableSubTheme<
+  FlexSvgProps,
   SvgProps,
   ViewStyle
 > = {
-  getProps: getSuperIconIconProps,
+  getProps: getSvgIconSvgProps,
 };
 
-export const getSuperIconContainerStyle: ViewStyleGetter<
-  SuperIconProps
+export const getSvgIconContainerStyle: ViewStyleGetter<
+  FlexSvgProps
 > = props => ({
   ...getSizedMarginStyle(sizedSpacing)(props),
   ...getSizingStyle(props),
 });
 
-export const superIconContainerTheme: OptionalInjectableSubTheme<
-  SuperIconProps,
-  ViewProps,
+export const svgIconContainerTheme: OptionalInjectableSubTheme<
+  FlexSvgProps,
+  SvgProps,
   ViewStyle
 > = {
-  getStyle: getSuperIconContainerStyle,
+  getStyle: getSvgIconContainerStyle,
 };
 
-export const optionalSuperIconTheme: OptionalSuperIconTheme = {
-  container: superIconContainerTheme,
-  icon: superIconIconTheme,
+export const optionalSvgIconTheme: OptionalFlexSvgTheme = {
+  container: svgIconContainerTheme,
+  svg: svgIconSvgTheme,
 };
 
-export const iconTheme: SuperIconTheme = merge<
+export const svgIconTheme: FlexSvgTheme = merge<
   {},
-  SuperIconTheme,
-  OptionalSuperIconTheme
->({}, rawSuperIconTheme, optionalSuperIconTheme);
+  FlexSvgTheme,
+  OptionalFlexSvgTheme
+>({}, rawFlexSvgTheme, optionalSvgIconTheme);

@@ -9,10 +9,10 @@ import { ComponentsTheme } from '@reflex-ui/core';
 
 import { appBarVariantsTheme } from './app-bars/theme';
 import { animatedButtonTheme } from './buttons/animatedTheme';
-import { iconTheme } from './icons/theme';
 import { listItemTheme } from './list-item/theme';
 import { listTheme } from './list/theme';
 import { surfaceTheme } from './surface/theme';
+import { flexSvgVariantsTheme } from './svg/theme';
 // tslint:disable-next-line:max-line-length
 import { animatedTouchableSurfaceTheme } from './touchable-surface/animatedTheme';
 import { typographyTheme } from './typography/theme';
@@ -21,10 +21,10 @@ import { superViewTheme } from './views/theme';
 export const animatedMaterialDesignTheme: ComponentsTheme = {
   appBar: appBarVariantsTheme,
   button: animatedButtonTheme,
-  icon: iconTheme,
   list: listTheme,
   listItem: listItemTheme,
   surface: surfaceTheme,
+  svg: flexSvgVariantsTheme,
   touchableSurface: animatedTouchableSurfaceTheme,
   typography: typographyTheme,
   views: superViewTheme,
