@@ -14,18 +14,18 @@ import {
   OptionalSubTheme,
   SubTheme,
 } from '../subcomponents';
-import { SuperIconProps } from './SuperIconProps';
+import { FlexSvgProps } from './FlexSvgProps';
 
-export interface SuperIconTheme {
-  readonly container: InjectableSubTheme<SuperIconProps, ViewProps, ViewStyle>;
-  readonly icon: SubTheme<SuperIconProps, SvgProps, ViewProps>;
+export interface FlexSvgTheme {
+  readonly container: InjectableSubTheme<FlexSvgProps, ViewProps, ViewStyle>;
+  readonly svg: SubTheme<FlexSvgProps, SvgProps, ViewStyle>;
 }
 
-export interface OptionalSuperIconTheme {
+export interface OptionalFlexSvgTheme {
   readonly container?: OptionalInjectableSubTheme<
-    SuperIconProps,
+    FlexSvgProps,
     ViewProps,
     ViewStyle
   >;
-  readonly icon?: OptionalSubTheme<SuperIconProps, SvgProps, ViewProps>;
+  readonly svg?: OptionalSubTheme<FlexSvgProps, SvgProps, ViewStyle>;
 }

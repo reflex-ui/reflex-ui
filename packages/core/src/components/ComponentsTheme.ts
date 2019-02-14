@@ -7,10 +7,10 @@
 
 import { AppBarVariantsTheme } from './app-bars';
 import { ButtonVariantsTheme } from './buttons';
-import { SuperIconTheme } from './icons';
 import { ListTheme } from './list';
 import { ListItemTheme } from './list-item';
 import { SurfaceTheme } from './surface';
+import { FlexSvgVariantsTheme } from './svg';
 import { TouchableSurfaceTheme } from './touchable-surface';
 import { TypographyTheme } from './typography';
 import { SuperViewVariantsTheme } from './views';
@@ -18,10 +18,10 @@ import { SuperViewVariantsTheme } from './views';
 export interface ComponentsTheme {
   readonly appBar: AppBarVariantsTheme;
   readonly button: ButtonVariantsTheme;
-  readonly icon: SuperIconTheme;
   readonly list: ListTheme;
   readonly listItem: ListItemTheme;
   readonly surface: SurfaceTheme;
+  readonly svg: FlexSvgVariantsTheme;
   readonly touchableSurface: TouchableSurfaceTheme;
   readonly typography: TypographyTheme;
   readonly views: SuperViewVariantsTheme;

@@ -13,25 +13,25 @@ import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
 import { Size } from '../../sizing/Size';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { reflexComponent } from '../reflexComponent';
-import { OptionalSuperIconProps, SuperIconProps } from './SuperIconProps';
+import { FlexSvgProps, OptionalFlexSvgProps } from './FlexSvgProps';
 
 // prettier-ignore
-export const withDefaultSuperIconProps = (
-  WrappedComponent: React.ComponentType<SuperIconProps>,
-): React.ComponentType<OptionalSuperIconProps> => reflexComponent<
-OptionalSuperIconProps
->({ name: 'WithDefaultSuperIconProps', wrapped: WrappedComponent })(props => (
+export const withDefaultSvgIconProps = (
+  WrappedComponent: React.ComponentType<FlexSvgProps>,
+): React.ComponentType<OptionalFlexSvgProps> => reflexComponent<
+OptionalFlexSvgProps
+>({ name: 'WithDefaultSvgIconProps', wrapped: WrappedComponent })(props => (
   <PaletteThemeContext.Consumer>
     {paletteTheme => (
       <ColorThemeContext.Consumer>
         {colorTheme => (
           <ComponentsThemeContext.Consumer>
-            {(componentsTheme) => {
-              const propsWithDefaults: SuperIconProps = {
+            {componentsTheme => {
+              const propsWithDefaults: FlexSvgProps = {
                 colorTheme: colorTheme || ColorTheme.SecondaryNormal,
                 paletteTheme,
                 size: Size.M,
-                theme: componentsTheme.icon,
+                theme: componentsTheme.svg.svgIcon,
                 ...props,
               };
 

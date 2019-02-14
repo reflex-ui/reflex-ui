@@ -5,9 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { TextProps, ViewProps } from 'react-native';
+import { FlexSvgProps } from './FlexSvgProps';
+import { FlexSvgSubProps } from './FlexSvgSubProps';
 
-export interface SuperIconSubProps {
-  readonly container?: ViewProps;
-  readonly icon?: TextProps;
-}
+export type FlexSvgSubPropsGetter = (props: FlexSvgProps) => FlexSvgSubProps;

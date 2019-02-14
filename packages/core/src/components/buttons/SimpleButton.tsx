@@ -13,9 +13,9 @@ import {
   ViewProps,
   ViewStyle,
 } from 'react-native';
+import { SvgProps } from 'react-native-svg';
 
 import { cloneElement } from '../../utils';
-import { OptionalSuperIconProps } from '../icons';
 import { reflexComponent } from '../reflexComponent';
 import {
   getSubProps,
@@ -23,10 +23,9 @@ import {
   SubProps,
   SubTheme,
 } from '../subcomponents';
-// prettier-ignore
-import {
-  handleAndroidTextTransformation,
-} from '../typography/handleAndroidTextTransformation';
+import { OptionalFlexSvgProps } from '../svg/FlexSvgProps';
+// tslint:disable-next-line:max-line-length
+import { handleAndroidTextTransformation } from '../typography/handleAndroidTextTransformation';
 import { ButtonProps } from './ButtonProps';
 import { ButtonSubProps } from './ButtonSubProps';
 import { ButtonVariant } from './ButtonVariant';
@@ -87,7 +86,7 @@ export const handleButtonChildren = (
     return handleButtonIcon({
       Container: props.theme.iconContainer.component,
       containerTheme: props.theme.iconContainer,
-      icon: children as React.ReactElement<OptionalSuperIconProps>,
+      icon: children as React.ReactElement<OptionalFlexSvgProps>,
       iconTheme: props.theme.icon,
       props,
       userContainerProps: userSubProps.iconContainer,
@@ -125,7 +124,7 @@ export interface HandleButtonIconData {
     ViewProps,
     ViewStyle
   >;
-  readonly icon: React.ReactElement<OptionalSuperIconProps>;
+  readonly icon: React.ReactElement<OptionalFlexSvgProps>;
   readonly iconTheme: SubTheme<ButtonProps, TextProps, TextStyle>;
   readonly props: ButtonProps;
   readonly userContainerProps?: ViewProps;
@@ -141,11 +140,11 @@ export const handleButtonIcon = (
     userProps: data.userContainerProps,
   });
 
-  const iconProps: OptionalSuperIconProps = {
+  const iconProps: OptionalFlexSvgProps = {
     colorTheme: data.props.colorTheme,
     getSubProps: () => ({
-      icon: {
-        ...getSubProps<ButtonProps, TextProps, TextStyle>({
+      svg: {
+        ...getSubProps<ButtonProps, SvgProps, ViewStyle>({
           componentProps: data.props,
           theme: data.iconTheme,
           userProps: data.userIconProps,
@@ -175,7 +174,7 @@ export const handleLeadingIcon = (
   handleButtonIcon({
     Container: props.theme.leadingIconContainer.component,
     containerTheme: props.theme.leadingIconContainer,
-    icon: props.leadingIcon as React.ReactElement<OptionalSuperIconProps>,
+    icon: props.leadingIcon as React.ReactElement<OptionalFlexSvgProps>,
     iconTheme: props.theme.leadingIcon,
     props,
     userContainerProps: userSubProps.leadingIconContainer,
@@ -189,7 +188,7 @@ export const handleTrailingIcon = (
   handleButtonIcon({
     Container: props.theme.trailingIconContainer.component,
     containerTheme: props.theme.trailingIconContainer,
-    icon: props.trailingIcon as React.ReactElement<OptionalSuperIconProps>,
+    icon: props.trailingIcon as React.ReactElement<OptionalFlexSvgProps>,
     iconTheme: props.theme.trailingIcon,
     props,
     userContainerProps: userSubProps.trailingIconContainer,

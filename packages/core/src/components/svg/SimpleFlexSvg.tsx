@@ -13,11 +13,11 @@ import { SvgProps } from 'react-native-svg';
 import { cloneElement } from '../../utils';
 import { reflexComponent } from '../reflexComponent';
 import { getSubProps } from '../subcomponents';
-import { OptionalSuperIconProps, SuperIconProps } from './SuperIconProps';
-import { SuperIconSubProps } from './SuperIconSubProps';
+import { FlexSvgProps, OptionalFlexSvgProps } from './FlexSvgProps';
+import { FlexSvgSubProps } from './FlexSvgSubProps';
 
-export const extractSvgPropsFromSvgIconProps = (
-  props: SuperIconProps,
+export const extractSvgPropsFromFlexSvgProps = (
+  props: FlexSvgProps,
 ): SvgProps => {
   const {
     children,
@@ -42,45 +42,45 @@ export const extractSvgPropsFromSvgIconProps = (
   return svgProps;
 };
 
-const handleIconChildren = (
-  props: SuperIconProps,
-  userSubProps: SuperIconSubProps,
+const handleSvgChildren = (
+  props: FlexSvgProps,
+  userSubProps: FlexSvgSubProps,
 ): React.ReactNode => {
-  const children = props.children as React.ReactElement<OptionalSuperIconProps>;
+  const children = props.children as React.ReactElement<OptionalFlexSvgProps>;
   if (!children) return undefined;
 
   if (typeof children !== 'object') {
-    throw new Error('Icon children must be a valid React element.');
+    throw new Error('SVG children must be a valid React element.');
   }
 
-  const svgProps = extractSvgPropsFromSvgIconProps(props);
+  const svgProps = extractSvgPropsFromFlexSvgProps(props);
 
-  const iconProps = getSubProps<SuperIconProps, SvgProps, ViewStyle>({
+  const themeProps = getSubProps<FlexSvgProps, SvgProps, ViewStyle>({
     componentProps: props,
-    theme: props.theme.icon,
-    userProps: userSubProps.icon,
+    theme: props.theme.svg,
+    userProps: userSubProps.svg,
   });
 
-  const mergedProps = merge({}, iconProps, svgProps);
+  const mergedProps = merge({}, themeProps, svgProps);
 
-  const styledIcon = children
+  const styledSvg = children
     ? cloneElement({ element: children, props: mergedProps })
     : undefined;
 
-  return styledIcon;
+  return styledSvg;
 };
 
-export const SimpleSuperIcon = reflexComponent<SuperIconProps>({
-  name: 'SimpleSuperIcon',
-})((props: SuperIconProps) => {
+export const SimpleFlexSvg = reflexComponent<FlexSvgProps>({
+  name: 'SimpleFlexSvg',
+})((props: FlexSvgProps) => {
   let children: React.ReactNode;
   const userSubProps = props.getSubProps ? props.getSubProps(props) : {};
-  if (props.children) children = handleIconChildren(props, userSubProps);
+  if (props.children) children = handleSvgChildren(props, userSubProps);
   if (props.skipContainer) return <React.Fragment>{children}</React.Fragment>;
 
   const Container = props.theme.container.component;
 
-  const containerProps = getSubProps<SuperIconProps, ViewProps, ViewStyle>({
+  const containerProps = getSubProps<FlexSvgProps, ViewProps, ViewStyle>({
     componentProps: props,
     theme: props.theme.container,
     userProps: userSubProps.container,

@@ -10,19 +10,19 @@ import { SvgProps } from 'react-native-svg';
 import { PaletteThemeProps } from '../../palette';
 import { SizingProps } from '../../sizing/SizingProps';
 import { MarginProps } from '../../spacing';
-import { SuperIconSubPropsGetter } from './SuperIconSubPropsGetter';
-import { SuperIconTheme } from './SuperIconTheme';
+import { FlexSvgSubPropsGetter } from './FlexSvgSubPropsGetter';
+import { FlexSvgTheme } from './FlexSvgTheme';
 
-export interface SuperIconProps
+export interface FlexSvgProps
   extends MarginProps,
     PaletteThemeProps,
     SizingProps,
     SvgProps {
   readonly children?: React.ReactNode;
   readonly color?: string;
-  readonly getSubProps?: SuperIconSubPropsGetter;
+  readonly getSubProps?: FlexSvgSubPropsGetter;
   readonly skipContainer?: boolean;
-  readonly theme: SuperIconTheme;
+  readonly theme: FlexSvgTheme;
 }
 
-export type OptionalSuperIconProps = Partial<SuperIconProps>;
+export type OptionalFlexSvgProps = Partial<FlexSvgProps>;
