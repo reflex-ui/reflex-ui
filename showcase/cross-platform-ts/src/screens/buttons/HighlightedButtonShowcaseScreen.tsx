@@ -15,9 +15,9 @@ import {
   InteractionType,
   OptionalButtonProps,
 } from '@reflex-ui/core';
+import { FavoriteIcon } from '@reflex-ui/icons-md';
 import {
   disabledGrey300_500,
-  FavoriteIcon,
   getInlayColorByInteraction,
 } from '@reflex-ui/material-design';
 import * as React from 'react';

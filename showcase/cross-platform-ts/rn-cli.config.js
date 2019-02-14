@@ -9,7 +9,7 @@ const path = require('path');
  */
 const packagesPaths = [
   path.resolve(__dirname, '../../packages/core'),
-  path.resolve(__dirname, '../../packages/icons'),
+  path.resolve(__dirname, '../../packages/icons-md'),
   path.resolve(__dirname, '../../packages/material-design'),
 ];
 /**/

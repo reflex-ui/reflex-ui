@@ -6,7 +6,7 @@
  */
 
 import { Headline6, Row, Size } from '@reflex-ui/core';
-import { AlarmIcon } from '@reflex-ui/icons/build/dist/material-design';
+import { AlarmIcon } from '@reflex-ui/icons-md';
 import * as React from 'react';
 
 import { IconCollectionProps } from './IconCollectionProps';

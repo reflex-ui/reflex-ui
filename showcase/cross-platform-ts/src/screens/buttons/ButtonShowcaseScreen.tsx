@@ -30,7 +30,7 @@ import {
   Surface,
   warningColorThemes,
 } from '@reflex-ui/core';
-import { MenuIcon } from '@reflex-ui/material-design';
+import { MenuIcon } from '@reflex-ui/icons-md';
 import * as React from 'react';
 import { ScrollView } from 'react-native';
 

@@ -6,7 +6,7 @@
  */
 
 import { Button, Headline6, JustifyContent, Row, Size } from '@reflex-ui/core';
-import { FavoriteIcon } from '@reflex-ui/material-design';
+import { FavoriteIcon } from '@reflex-ui/icons-md';
 import * as React from 'react';
 
 import { ButtonCollectionProps } from './ButtonCollectionProps';
