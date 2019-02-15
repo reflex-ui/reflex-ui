@@ -1,0 +1,23 @@
+import * as React from 'react';
+// @ts-ignore Could not find a declaration file for module 'swgs'.
+// tslint:disable-next-line:import-name
+import Svg, { Path } from 'swgs';
+
+import {
+  OptionalFlexSvgProps,
+  reflexComponent,
+  SvgIcon,
+} from '@reflex-ui/core';
+
+export const WebAssetIcon = reflexComponent<OptionalFlexSvgProps>({
+  name: 'WebAssetIcon',
+})((props: OptionalFlexSvgProps) => (
+  <SvgIcon {...props}>
+    <Svg>
+      <Path
+        fill="#010101"
+        d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm0 14H5V8h14v10z"
+      />
+    </Svg>
+  </SvgIcon>
+));

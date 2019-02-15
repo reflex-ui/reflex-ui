@@ -7,22 +7,31 @@
 
 const generate = require('@reflex-ui/svg2jsx').generate;
 const replaceComponentName = require('@reflex-ui/svg2jsx').replaceComponentName;
-const runPrettier = require('@reflex-ui/svg2jsx').runPrettier;
 const svg2jsx = require('@reflex-ui/svg2jsx').svg2jsx;
 const svgr2SvgIcon = require('@reflex-ui/svg2jsx').svgr2SvgIcon;
 const camelcase = require('camelcase');
 const path = require('path');
 
+const renameInvalidComponentName = name => {
+  switch (name) {
+    case '3dRotation':
+      return 'Rotation3d';
+    default:
+      return name;
+  }
+};
+
 const getComponentName = filePath => {
-  console.log('getComponentName() - filePath: ', filePath);
   let filename = filePath.substring(
-    filePath.lastIndexOf('ic_'),
+    filePath.lastIndexOf('/ic_'),
     filePath.lastIndexOf('_'),
   );
-  filename = filename.replace('ic_', '');
+
+  filename = filename.replace('/ic_', '');
   filename = camelcase(filename, { pascalCase: true });
+  filename = renameInvalidComponentName(filename);
   filename = `${filename}Icon`;
-  console.log('getComponentName() - filename: ', filename);
+
   return filename;
 };
 
@@ -61,33 +70,45 @@ const fileDataTransformerPipe = [
   // log('############ END OF PIPE ############'),
 ];
 
+const createTarget = (moduleName, patternMatchIgnore) => ({
+  destPath: path.resolve(targetRoot, moduleName),
+  fileDataTransformerPipe,
+  getFileName,
+  patternMatch: path.resolve(
+    iconsRoot,
+    `${moduleName}/svg/production/*24px.svg`,
+  ),
+  patternMatchIgnore,
+  prettierConfig: {
+    configPath: `${monorepoRoot}/.prettierrc`,
+    shouldRun: true,
+  },
+});
+
 const config = {
   targets: [
-    {
-      destPath: path.resolve(targetRoot, 'action'),
-      fileDataTransformerPipe,
-      // getComponentName,
-      getFileName,
-      patternMatch: path.resolve(iconsRoot, 'action/svg/production/*24px.svg'),
-      prettierConfig: {
-        configPath: `${monorepoRoot}/.prettierrc`,
-        shouldRun: true,
-      },
-    },
-    {
-      destPath: path.resolve(targetRoot, 'navigation'),
-      fileDataTransformerPipe,
-      // getComponentName,
-      getFileName,
-      patternMatch: path.resolve(
-        iconsRoot,
-        'navigation/svg/production/*24px.svg',
-      ),
-      prettierConfig: {
-        configPath: `${monorepoRoot}/.prettierrc`,
-        shouldRun: true,
-      },
-    },
+    createTarget('action'),
+    createTarget('alert'),
+    createTarget('av'),
+    createTarget('communication'),
+    createTarget('content'),
+    createTarget('device'),
+    createTarget('editor'),
+    createTarget('file'),
+    createTarget('hardware'),
+    createTarget('image'),
+    createTarget('maps'),
+    createTarget('navigation'),
+    createTarget('notification'),
+    /*
+     * This exact same icon with this exact same name
+     * is also present in /notification module,
+     * which results in a conflic since we export all icons
+     * from root of package. An easy fix is just ignoring it here.
+     */
+    createTarget('places', ['**/ic_rv_hookup_24px.svg']),
+    createTarget('social'),
+    createTarget('toggle'),
   ],
 };
 

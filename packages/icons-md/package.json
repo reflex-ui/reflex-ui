@@ -38,7 +38,7 @@
     "build/dist"
   ],
   "scripts": {
-    "generate": "node ./scripts/generate.js && tsc -p tsconfig.json"
+    "generate": "node ./scripts/generate.js && echo 'Running tsc.' && tsc -p tsconfig.json"
   },
   "devDependencies": {
     "@svgr/core": "^4.1.0",
