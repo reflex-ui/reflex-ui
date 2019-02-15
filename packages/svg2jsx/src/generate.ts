@@ -13,6 +13,7 @@ import * as glob from 'glob';
 import { pipe } from 'lodash/fp';
 import * as path from 'path';
 import * as prettier from 'prettier';
+import * as process from 'process';
 
 export const monorepoRoot = path.resolve(__dirname, '../../../../');
 
@@ -40,6 +41,7 @@ export interface Target {
   // readonly getComponentName?: ComponentNameGetter;
   readonly getFileName?: FileNameGetter;
   readonly patternMatch: string;
+  readonly patternMatchIgnore?: string[];
   readonly prettierConfig?: PrettierConfig;
 }
 
@@ -48,69 +50,77 @@ export interface Config {
 }
 
 export const generate = (config: Config) => {
+  const startTime = process.hrtime();
   let rootIndexPath: string = '';
   let rootIndexData: string = '';
   const moduleNames: string[] = [];
   let targetsProcessedCount: number = 0;
 
   config.targets.forEach(target => {
-    glob(target.patternMatch, {}, (error, filePaths) => {
-      if (error) {
-        throw error;
-      } else {
-        generateComponents(filePaths, target);
-        if (rootIndexPath === '') {
-          rootIndexPath = path.resolve(target.destPath, '../');
-          rootIndexPath = `${rootIndexPath}/index.ts`;
+    glob(
+      target.patternMatch,
+      { ignore: target.patternMatchIgnore },
+      (error, filePaths) => {
+        if (error) {
+          throw error;
+        } else {
+          generateComponents(filePaths, target);
+          if (rootIndexPath === '') {
+            rootIndexPath = path.resolve(target.destPath, '../');
+            rootIndexPath = `${rootIndexPath}/index.ts`;
+          }
+
+          moduleNames.push(
+            target.destPath.substring(
+              target.destPath.lastIndexOf('/') + 1,
+              target.destPath.length,
+            ),
+          );
+
+          targetsProcessedCount = targetsProcessedCount + 1;
+
+          if (targetsProcessedCount === config.targets.length) {
+            // sort module names alphabetically
+            moduleNames.sort((a, b) => {
+              if (a < b) return -1;
+              if (a > b) return 1;
+              return 0;
+            });
+
+            moduleNames.forEach(moduleName => {
+              // tslint:disable-next-line:max-line-length
+              rootIndexData = `${rootIndexData} export * from './${moduleName}';`;
+
+              if (target.prettierConfig && target.prettierConfig.shouldRun) {
+                rootIndexData = runPrettier(target.prettierConfig.configPath)(
+                  rootIndexData,
+                );
+              }
+            });
+
+            fsExtra.writeFileSync(rootIndexPath, rootIndexData, 'utf-8');
+
+            const [durationTime] = process.hrtime(startTime);
+
+            // tslint:disable-next-line:no-console
+            console.log(`Processing done in ${durationTime}s.`);
+          }
         }
-
-        moduleNames.push(
-          target.destPath.substring(
-            target.destPath.lastIndexOf('/') + 1,
-            target.destPath.length,
-          ),
-        );
-
-        targetsProcessedCount = targetsProcessedCount + 1;
-
-        if (targetsProcessedCount === config.targets.length) {
-          // sort module names alphabetically
-          moduleNames.sort((a, b) => {
-            if (a < b) return -1;
-            if (a > b) return 1;
-            return 0;
-          });
-
-          moduleNames.forEach(moduleName => {
-            rootIndexData = `${rootIndexData} export * from './${moduleName}';`;
-
-            if (target.prettierConfig && target.prettierConfig.shouldRun) {
-              rootIndexData = runPrettier(target.prettierConfig.configPath)(
-                rootIndexData,
-              );
-            }
-          });
-
-          fsExtra.writeFileSync(rootIndexPath, rootIndexData, 'utf-8');
-        }
-      }
-    });
+      },
+    );
   });
 };
 
 export const generateComponents = (filePaths: string[], target: Target) => {
+  // tslint:disable-next-line:no-console
+  console.log(`Processing pattern match: ${target.patternMatch}`);
+
   const generatedFilePaths: string[] = [];
   let generatedFilePath: string;
 
   filePaths.forEach(filePath => {
-    if (
-      filePath.indexOf('ic_alarm_24') !== -1 ||
-      filePath.indexOf('ic_favorite_24') !== -1 ||
-      filePath.indexOf('ic_menu_24') !== -1
-    ) {
-      generatedFilePath = generateComponent(filePath, target);
-      if (generatedFilePath) generatedFilePaths.push(generatedFilePath);
-    }
+    generatedFilePath = generateComponent(filePath, target);
+    if (generatedFilePath) generatedFilePaths.push(generatedFilePath);
   });
 
   let indexFileData: string = '';
