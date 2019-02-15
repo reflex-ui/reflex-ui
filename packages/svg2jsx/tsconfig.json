@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "declaration": true,
+    "module": "commonjs",
+    "outDir": "build/dist",
+    "target": "es5"
+  },
+  "extends": "../../tsconfig.json",
+  "include": ["src"]
+}

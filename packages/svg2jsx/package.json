@@ -1,0 +1,48 @@
+{
+  "name": "@reflex-ui/svg2jsx",
+  "description": "Cross-Platform iOS, Adnroid and Web icons based on ReflexUI.",
+  "author": {
+    "name": "Flavio Silva",
+    "email": "flsilva7@gmail.com",
+    "url": "http://flsilva.com/"
+  },
+  "version": "0.1.0",
+  "private": false,
+  "keywords": [
+    "react",
+    "react-dom",
+    "react-native",
+    "react-native-web",
+    "react-platform",
+    "material-design",
+    "cross-platform",
+    "ui-components",
+    "ui-toolkit",
+    "user-interface"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flsilva/react-platform-material-design.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flsilva/react-platform-material-design.git/issues"
+  },
+  "homepage": "https://github.com/flsilva/react-platform-material-design",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "build/dist/index.js",
+  "types": "build/dist/index.d.ts",
+  "files": [
+    "build/dist"
+  ],
+  "dependencies": {
+    "lodash": "^4.17.11"
+  },
+  "devDependencies": {
+    "@svgr/core": "^4.1.0",
+    "@svgr/plugin-prettier": "^4.0.3"
+  },
+  "sideEffects": false
+}

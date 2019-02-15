@@ -2,7 +2,7 @@
   "private": true,
   "license": "MIT",
   "engines": {
-    "node": "^8.0.0",
+    "node": "^10.0.0",
     "yarn": "^1.9.4"
   },
   "workspaces": [
@@ -12,11 +12,16 @@
   "scripts": {
     "postinstall": "node ./scripts/react-native-web-tsd.js",
     "tsc-core": "tsc -w -p packages/core/tsconfig.json",
-    "tsc-md": "tsc -w -p packages/material-design/tsconfig.json"
+    "tsc-md": "tsc -w -p packages/material-design/tsconfig.json",
+    "tsc-svg2jsx": "tsc -w -p packages/svg2jsx/tsconfig.json"
   },
   "devDependencies": {
+    "@types/camelcase": "^4.1.0",
+    "@types/fs-extra": "^5.0.5",
+    "@types/glob": "^7.1.1",
     "@types/history": "^4.7.2",
     "@types/jest": "^23.3.13",
+    "@types/prettier": "1.16.1",
     "@types/react": "16.4.14",
     "@types/react-native": "0.56.18",
     "@types/react-router-dom": "^4.3.1",
