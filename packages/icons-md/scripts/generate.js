@@ -52,15 +52,13 @@ const log = message => input => {
 };
 
 const fileDataTransformerPipe = [
-  log('############ BEGIN svg2jsx() ############'),
+  // log('############ BEGIN svg2jsx() ############'),
   svg2jsx,
-  log('############ BEGIN svgr2SvgIcon() ############'),
+  // log('############ BEGIN svgr2SvgIcon() ############'),
   svgr2SvgIcon,
-  log('############ BEGIN componentNameTransformer() ############'),
+  // log('############ BEGIN componentNameTransformer() ############'),
   componentNameTransformer,
-  log('############ BEGIN runPrettier() ############'),
-  runPrettier(`${monorepoRoot}/.prettierrc`),
-  log('############ END OF PIPE ############'),
+  // log('############ END OF PIPE ############'),
 ];
 
 const config = {
@@ -71,6 +69,10 @@ const config = {
       // getComponentName,
       getFileName,
       patternMatch: path.resolve(iconsRoot, 'action/svg/production/*24px.svg'),
+      prettierConfig: {
+        configPath: `${monorepoRoot}/.prettierrc`,
+        shouldRun: true,
+      },
     },
     {
       destPath: path.resolve(targetRoot, 'navigation'),
@@ -81,6 +83,10 @@ const config = {
         iconsRoot,
         'navigation/svg/production/*24px.svg',
       ),
+      prettierConfig: {
+        configPath: `${monorepoRoot}/.prettierrc`,
+        shouldRun: true,
+      },
     },
   ],
 };

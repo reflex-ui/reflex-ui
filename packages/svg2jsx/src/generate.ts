@@ -29,12 +29,18 @@ export type FileDataTransformer = (
   input: FileDataTransformerInput,
 ) => FileDataTransformerInput;
 
+export interface PrettierConfig {
+  readonly configPath?: string;
+  readonly shouldRun: boolean;
+}
+
 export interface Target {
   readonly destPath: string;
   readonly fileDataTransformerPipe: FileDataTransformer[];
   // readonly getComponentName?: ComponentNameGetter;
   readonly getFileName?: FileNameGetter;
   readonly patternMatch: string;
+  readonly prettierConfig?: PrettierConfig;
 }
 
 export interface Config {
@@ -42,27 +48,90 @@ export interface Config {
 }
 
 export const generate = (config: Config) => {
+  let rootIndexPath: string = '';
+  let rootIndexData: string = '';
+  const moduleNames: string[] = [];
+  let targetsProcessedCount: number = 0;
+
   config.targets.forEach(target => {
     glob(target.patternMatch, {}, (error, filePaths) => {
       if (error) {
         throw error;
       } else {
         generateComponents(filePaths, target);
+        if (rootIndexPath === '') {
+          rootIndexPath = path.resolve(target.destPath, '../');
+          rootIndexPath = `${rootIndexPath}/index.ts`;
+        }
+
+        moduleNames.push(
+          target.destPath.substring(
+            target.destPath.lastIndexOf('/') + 1,
+            target.destPath.length,
+          ),
+        );
+
+        targetsProcessedCount = targetsProcessedCount + 1;
+
+        if (targetsProcessedCount === config.targets.length) {
+          // sort module names alphabetically
+          moduleNames.sort((a, b) => {
+            if (a < b) return -1;
+            if (a > b) return 1;
+            return 0;
+          });
+
+          moduleNames.forEach(moduleName => {
+            rootIndexData = `${rootIndexData} export * from './${moduleName}';`;
+
+            if (target.prettierConfig && target.prettierConfig.shouldRun) {
+              rootIndexData = runPrettier(target.prettierConfig.configPath)(
+                rootIndexData,
+              );
+            }
+          });
+
+          fsExtra.writeFileSync(rootIndexPath, rootIndexData, 'utf-8');
+        }
       }
     });
   });
 };
 
 export const generateComponents = (filePaths: string[], target: Target) => {
+  const generatedFilePaths: string[] = [];
+  let generatedFilePath: string;
+
   filePaths.forEach(filePath => {
     if (
       filePath.indexOf('ic_alarm_24') !== -1 ||
       filePath.indexOf('ic_favorite_24') !== -1 ||
       filePath.indexOf('ic_menu_24') !== -1
     ) {
-      generateComponent(filePath, target);
+      generatedFilePath = generateComponent(filePath, target);
+      if (generatedFilePath) generatedFilePaths.push(generatedFilePath);
     }
   });
+
+  let indexFileData: string = '';
+
+  generatedFilePaths.forEach(filePath => {
+    indexFileData = `
+    ${indexFileData}
+    export * from '.${filePath.substring(
+      filePath.lastIndexOf('/'),
+      filePath.lastIndexOf('.'),
+    )}';`;
+  });
+
+  if (target.prettierConfig && target.prettierConfig.shouldRun) {
+    indexFileData = runPrettier(target.prettierConfig.configPath)(
+      indexFileData,
+    );
+  }
+
+  const indexFilePath = `${target.destPath}/index.ts`;
+  fsExtra.writeFileSync(indexFilePath, indexFileData, 'utf-8');
 };
 
 export const svg2jsx: FileDataTransformer = ({ fileData, filePath }) => {
@@ -120,22 +189,17 @@ export const svgr2SvgIcon: FileDataTransformer = ({ fileData, filePath }) => {
   };
 };
 
-export const runPrettier = (optionsPath?: string): FileDataTransformer => ({
-  fileData,
-  filePath,
-}) => {
+export const runPrettier = (optionsPath?: string) => (data: string) => {
   let options = {};
   if (optionsPath) {
     const optionsStr: string = fsExtra.readFileSync(optionsPath, 'utf-8');
     options = JSON.parse(optionsStr);
   }
 
-  const formatedData: string = prettier.format(fileData, {
+  return prettier.format(data, {
     ...options,
     parser: 'typescript',
   });
-
-  return { fileData: formatedData, filePath };
 };
 
 export const replaceComponentName = (
@@ -143,22 +207,21 @@ export const replaceComponentName = (
   componentName: string,
 ): string => data.replace(/SvgComponent/g, componentName);
 
-export const generateComponent = (filePath: string, target: Target) => {
-  // tslint:disable-next-line:no-console
-  console.log('generateComponent() - filePath: ', filePath);
-
+export const generateComponent = (filePath: string, target: Target): string => {
   const data: string = fsExtra.readFileSync(filePath, 'utf-8');
 
   if (!data) {
     throw new Error(`Error trying to read file: ${filePath}`);
   }
-  // tslint:disable-next-line:no-console
-  // console.log('generateComponent() - data: ', data);
 
-  const jsx = pipe(target.fileDataTransformerPipe)({
+  let jsx = pipe(target.fileDataTransformerPipe)({
     fileData: data,
     filePath,
   }).fileData;
+
+  if (target.prettierConfig && target.prettierConfig.shouldRun) {
+    jsx = runPrettier(target.prettierConfig.configPath)(jsx);
+  }
 
   let fileName = filePath.substring(
     filePath.lastIndexOf('/'),
@@ -171,17 +234,7 @@ export const generateComponent = (filePath: string, target: Target) => {
   const destFileName = `${destPath}/${fileName}`;
 
   fsExtra.ensureDirSync(destPath);
+  fsExtra.writeFileSync(destFileName, jsx, 'utf-8');
 
-  fsExtra.writeFile(destFileName, jsx, 'utf-8', writeError => {
-    if (writeError) {
-      // tslint:disable-next-line:no-console
-      console.log(
-        'generateComponent() fsExtra.writeFile() - writeError: ',
-        writeError,
-      );
-    } else {
-      // tslint:disable-next-line:no-console
-      console.log('generateComponent() file saved: ', destFileName);
-    }
-  });
+  return destFileName;
 };
