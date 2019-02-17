@@ -44,7 +44,6 @@ export const flexSvgSvgSizedProps: { [key in Size]: SvgProps } = {
 export const getFlexSvgSvgProps: SvgPropsGetter<FlexSvgProps> = props => ({
   ...getSizedSvgProps(flexSvgSvgSizedProps)(props),
   fill: props.color ? props.color : getDefaultTypographyColorStyle(props).color,
-  viewBox: '0 0 200 200',
 });
 
 export const flexSvgSvgTheme: OptionalInjectableSubTheme<

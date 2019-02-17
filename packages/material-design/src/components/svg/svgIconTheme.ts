@@ -44,7 +44,6 @@ export const svgIconSvgSizedProps: { [key in Size]: SvgProps } = {
 export const getSvgIconSvgProps: SvgPropsGetter<FlexSvgProps> = props => ({
   ...getSizedSvgProps(svgIconSvgSizedProps)(props),
   fill: props.color ? props.color : getDefaultTypographyColorStyle(props).color,
-  viewBox: '0 0 24 24',
 });
 
 export const svgIconSvgTheme: OptionalInjectableSubTheme<
