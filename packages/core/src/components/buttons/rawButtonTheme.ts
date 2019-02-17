@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { TextProps, TextStyle } from 'react-native';
+import { ViewStyle } from 'react-native';
+import { SvgProps } from 'react-native-svg';
 
 // tslint:disable-next-line:max-line-length
 import { getRawInjectableTextSubTheme } from '../raw/getRawInjectableTextSubTheme';
@@ -26,18 +27,17 @@ export const rawInjectableButtonTouchableSubTheme = getRawInjectableTouchableSub
 export const rawInjectableButtonViewSubTheme = getRawInjectableViewSubTheme<
   ButtonProps
 >();
-export const rawButtonTextSubTheme = getRawSubTheme<TextProps, TextStyle>();
+export const rawButtonIconSubTheme = getRawSubTheme<SvgProps, ViewStyle>();
 
 export const rawButtonVariantTheme: ButtonTheme = {
   container: rawInjectableButtonViewSubTheme,
-  icon: rawButtonTextSubTheme,
+  icon: rawButtonIconSubTheme,
   iconContainer: rawInjectableButtonViewSubTheme,
-  leadingIcon: rawButtonTextSubTheme,
+  leadingIcon: rawButtonIconSubTheme,
   leadingIconContainer: rawInjectableButtonViewSubTheme,
   text: rawInjectableButtonTextSubTheme,
-  // prettier-ignore
   touchable: rawInjectableButtonTouchableSubTheme,
-  trailingIcon: rawButtonTextSubTheme,
+  trailingIcon: rawButtonIconSubTheme,
   trailingIconContainer: rawInjectableButtonViewSubTheme,
 };
 
