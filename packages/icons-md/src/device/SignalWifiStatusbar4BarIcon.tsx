@@ -15,7 +15,7 @@ export const SignalWifiStatusbar4BarIcon = reflexComponent<
   name: 'SignalWifiStatusbar4BarIcon',
 })((props: OptionalFlexSvgProps) => (
   <SvgIcon {...props}>
-    <Svg width={26} height={24} viewBox="0 0 26 24" {...props}>
+    <Svg viewBox="0 0 26 24">
       <Path d="M13.01 21.99L25.58 6.32C25.1 5.96 20.26 2 13 2S.9 5.96.42 6.32l12.57 15.66.01.02.01-.01z" />
     </Svg>
   </SvgIcon>

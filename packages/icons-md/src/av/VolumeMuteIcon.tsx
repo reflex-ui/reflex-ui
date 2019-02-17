@@ -13,7 +13,7 @@ export const VolumeMuteIcon = reflexComponent<OptionalFlexSvgProps>({
   name: 'VolumeMuteIcon',
 })((props: OptionalFlexSvgProps) => (
   <SvgIcon {...props}>
-    <Svg>
+    <Svg viewBox="0 0 24 24">
       <Path d="M7 9v6h4l5 5V4l-5 5H7z" />
     </Svg>
   </SvgIcon>

@@ -13,7 +13,7 @@ export const Brightness1Icon = reflexComponent<OptionalFlexSvgProps>({
   name: 'Brightness1Icon',
 })((props: OptionalFlexSvgProps) => (
   <SvgIcon {...props}>
-    <Svg>
+    <Svg viewBox="0 0 24 24">
       <Circle cx={12} cy={12} r={10} />
     </Svg>
   </SvgIcon>

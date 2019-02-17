@@ -13,7 +13,7 @@ export const SignalCellular0BarIcon = reflexComponent<OptionalFlexSvgProps>({
   name: 'SignalCellular0BarIcon',
 })((props: OptionalFlexSvgProps) => (
   <SvgIcon {...props}>
-    <Svg>
+    <Svg viewBox="0 0 24 24">
       <Path fillOpacity={0.3} d="M2 22h20V2z" />
     </Svg>
   </SvgIcon>

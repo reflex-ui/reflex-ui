@@ -13,7 +13,7 @@ export const DehazeIcon = reflexComponent<OptionalFlexSvgProps>({
   name: 'DehazeIcon',
 })((props: OptionalFlexSvgProps) => (
   <SvgIcon {...props}>
-    <Svg>
+    <Svg viewBox="0 0 24 24">
       <Path d="M2 15.5v2h20v-2H2zm0-5v2h20v-2H2zm0-5v2h20v-2H2z" />
     </Svg>
   </SvgIcon>

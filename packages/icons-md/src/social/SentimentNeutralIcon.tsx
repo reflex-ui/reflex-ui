@@ -13,7 +13,7 @@ export const SentimentNeutralIcon = reflexComponent<OptionalFlexSvgProps>({
   name: 'SentimentNeutralIcon',
 })((props: OptionalFlexSvgProps) => (
   <SvgIcon {...props}>
-    <Svg>
+    <Svg viewBox="0 0 24 24">
       <Path d="M9 14h6v1.5H9z" />
       <Circle cx={15.5} cy={9.5} r={1.5} />
       <Circle cx={8.5} cy={9.5} r={1.5} />

@@ -77,6 +77,7 @@ const createTarget = (moduleName, patternMatchIgnore) => ({
   patternMatch: path.resolve(
     iconsRoot,
     `${moduleName}/svg/production/*24px.svg`,
+    // `${moduleName}/svg/production/ic_alarm_24px.svg`,
   ),
   patternMatchIgnore,
   prettierConfig: {

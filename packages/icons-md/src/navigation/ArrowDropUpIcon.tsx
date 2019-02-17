@@ -13,7 +13,7 @@ export const ArrowDropUpIcon = reflexComponent<OptionalFlexSvgProps>({
   name: 'ArrowDropUpIcon',
 })((props: OptionalFlexSvgProps) => (
   <SvgIcon {...props}>
-    <Svg>
+    <Svg viewBox="0 0 24 24">
       <Path d="M7 14l5-5 5 5z" />
     </Svg>
   </SvgIcon>

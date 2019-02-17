@@ -13,7 +13,7 @@ export const RemoveIcon = reflexComponent<OptionalFlexSvgProps>({
   name: 'RemoveIcon',
 })((props: OptionalFlexSvgProps) => (
   <SvgIcon {...props}>
-    <Svg>
+    <Svg viewBox="0 0 24 24">
       <Path d="M19 13H5v-2h14v2z" />
     </Svg>
   </SvgIcon>

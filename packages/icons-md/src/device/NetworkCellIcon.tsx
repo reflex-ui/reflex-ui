@@ -13,7 +13,7 @@ export const NetworkCellIcon = reflexComponent<OptionalFlexSvgProps>({
   name: 'NetworkCellIcon',
 })((props: OptionalFlexSvgProps) => (
   <SvgIcon {...props}>
-    <Svg>
+    <Svg viewBox="0 0 24 24">
       <Path fillOpacity={0.3} d="M2 22h20V2z" />
       <Path d="M17 7L2 22h15z" />
     </Svg>

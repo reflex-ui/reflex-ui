@@ -13,7 +13,7 @@ export const PlayArrowIcon = reflexComponent<OptionalFlexSvgProps>({
   name: 'PlayArrowIcon',
 })((props: OptionalFlexSvgProps) => (
   <SvgIcon {...props}>
-    <Svg>
+    <Svg viewBox="0 0 24 24">
       <Path d="M8 5v14l11-7z" />
     </Svg>
   </SvgIcon>

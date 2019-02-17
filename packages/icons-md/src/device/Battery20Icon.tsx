@@ -13,7 +13,7 @@ export const Battery20Icon = reflexComponent<OptionalFlexSvgProps>({
   name: 'Battery20Icon',
 })((props: OptionalFlexSvgProps) => (
   <SvgIcon {...props}>
-    <Svg>
+    <Svg viewBox="0 0 24 24">
       <Path d="M7 17v3.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V17H7z" />
       <Path
         fillOpacity={0.3}

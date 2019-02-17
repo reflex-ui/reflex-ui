@@ -13,7 +13,7 @@ export const EjectIcon = reflexComponent<OptionalFlexSvgProps>({
   name: 'EjectIcon',
 })((props: OptionalFlexSvgProps) => (
   <SvgIcon {...props}>
-    <Svg>
+    <Svg viewBox="0 0 24 24">
       <Path d="M5 17h14v2H5zm7-12L5.33 15h13.34z" />
     </Svg>
   </SvgIcon>

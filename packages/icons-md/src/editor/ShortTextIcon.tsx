@@ -13,7 +13,7 @@ export const ShortTextIcon = reflexComponent<OptionalFlexSvgProps>({
   name: 'ShortTextIcon',
 })((props: OptionalFlexSvgProps) => (
   <SvgIcon {...props}>
-    <Svg>
+    <Svg viewBox="0 0 24 24">
       <Path d="M4 9h16v2H4zm0 4h10v2H4z" />
     </Svg>
   </SvgIcon>

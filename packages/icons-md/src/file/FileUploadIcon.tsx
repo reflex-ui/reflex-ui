@@ -13,7 +13,7 @@ export const FileUploadIcon = reflexComponent<OptionalFlexSvgProps>({
   name: 'FileUploadIcon',
 })((props: OptionalFlexSvgProps) => (
   <SvgIcon {...props}>
-    <Svg>
+    <Svg viewBox="0 0 24 24">
       <Path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z" />
     </Svg>
   </SvgIcon>

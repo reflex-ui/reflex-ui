@@ -13,7 +13,7 @@ export const PetsIcon = reflexComponent<OptionalFlexSvgProps>({
   name: 'PetsIcon',
 })((props: OptionalFlexSvgProps) => (
   <SvgIcon {...props}>
-    <Svg>
+    <Svg viewBox="0 0 24 24">
       <Circle cx={4.5} cy={9.5} r={2.5} />
       <Circle cx={9} cy={5.5} r={2.5} />
       <Circle cx={15} cy={5.5} r={2.5} />

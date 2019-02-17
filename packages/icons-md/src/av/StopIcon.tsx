@@ -13,7 +13,7 @@ export const StopIcon = reflexComponent<OptionalFlexSvgProps>({
   name: 'StopIcon',
 })((props: OptionalFlexSvgProps) => (
   <SvgIcon {...props}>
-    <Svg>
+    <Svg viewBox="0 0 24 24">
       <Path d="M6 6h12v12H6z" />
     </Svg>
   </SvgIcon>

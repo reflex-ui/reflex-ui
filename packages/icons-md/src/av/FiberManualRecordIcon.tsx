@@ -13,7 +13,7 @@ export const FiberManualRecordIcon = reflexComponent<OptionalFlexSvgProps>({
   name: 'FiberManualRecordIcon',
 })((props: OptionalFlexSvgProps) => (
   <SvgIcon {...props}>
-    <Svg>
+    <Svg viewBox="0 0 24 24">
       <Circle fill="#010101" cx={12} cy={12} r={8} />
     </Svg>
   </SvgIcon>

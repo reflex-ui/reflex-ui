@@ -13,7 +13,7 @@ export const SpaceBarIcon = reflexComponent<OptionalFlexSvgProps>({
   name: 'SpaceBarIcon',
 })((props: OptionalFlexSvgProps) => (
   <SvgIcon {...props}>
-    <Svg>
+    <Svg viewBox="0 0 24 24">
       <Path d="M18 9v4H6V9H4v6h16V9z" />
     </Svg>
   </SvgIcon>

@@ -13,7 +13,7 @@ export const PublishIcon = reflexComponent<OptionalFlexSvgProps>({
   name: 'PublishIcon',
 })((props: OptionalFlexSvgProps) => (
   <SvgIcon {...props}>
-    <Svg>
+    <Svg viewBox="0 0 24 24">
       <Path d="M5 4v2h14V4H5zm0 10h4v6h6v-6h4l-7-7-7 7z" />
     </Svg>
   </SvgIcon>

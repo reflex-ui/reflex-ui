@@ -13,7 +13,7 @@ export const PriorityHighIcon = reflexComponent<OptionalFlexSvgProps>({
   name: 'PriorityHighIcon',
 })((props: OptionalFlexSvgProps) => (
   <SvgIcon {...props}>
-    <Svg>
+    <Svg viewBox="0 0 24 24">
       <Circle cx={12} cy={19} r={2} />
       <Path d="M10 3h4v12h-4z" />
     </Svg>

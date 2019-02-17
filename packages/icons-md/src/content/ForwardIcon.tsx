@@ -13,7 +13,7 @@ export const ForwardIcon = reflexComponent<OptionalFlexSvgProps>({
   name: 'ForwardIcon',
 })((props: OptionalFlexSvgProps) => (
   <SvgIcon {...props}>
-    <Svg>
+    <Svg viewBox="0 0 24 24">
       <Path d="M12 8V4l8 8-8 8v-4H4V8z" />
     </Svg>
   </SvgIcon>
