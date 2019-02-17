@@ -61,9 +61,10 @@ export const generate = (config: Config) => {
       target.patternMatch,
       { ignore: target.patternMatchIgnore },
       (error, filePaths) => {
-        if (error) {
-          throw error;
-        } else {
+        if (error) throw error;
+        targetsProcessedCount = targetsProcessedCount + 1;
+
+        if (filePaths.length >= 1) {
           generateComponents(filePaths, target);
           if (rootIndexPath === '') {
             rootIndexPath = path.resolve(target.destPath, '../');
@@ -76,35 +77,33 @@ export const generate = (config: Config) => {
               target.destPath.length,
             ),
           );
+        }
 
-          targetsProcessedCount = targetsProcessedCount + 1;
+        if (targetsProcessedCount === config.targets.length) {
+          // sort module names alphabetically
+          moduleNames.sort((a, b) => {
+            if (a < b) return -1;
+            if (a > b) return 1;
+            return 0;
+          });
 
-          if (targetsProcessedCount === config.targets.length) {
-            // sort module names alphabetically
-            moduleNames.sort((a, b) => {
-              if (a < b) return -1;
-              if (a > b) return 1;
-              return 0;
-            });
+          moduleNames.forEach(moduleName => {
+            // tslint:disable-next-line:max-line-length
+            rootIndexData = `${rootIndexData} export * from './${moduleName}';`;
 
-            moduleNames.forEach(moduleName => {
-              // tslint:disable-next-line:max-line-length
-              rootIndexData = `${rootIndexData} export * from './${moduleName}';`;
+            if (target.prettierConfig && target.prettierConfig.shouldRun) {
+              rootIndexData = runPrettier(target.prettierConfig.configPath)(
+                rootIndexData,
+              );
+            }
+          });
 
-              if (target.prettierConfig && target.prettierConfig.shouldRun) {
-                rootIndexData = runPrettier(target.prettierConfig.configPath)(
-                  rootIndexData,
-                );
-              }
-            });
+          fsExtra.writeFileSync(rootIndexPath, rootIndexData, 'utf-8');
 
-            fsExtra.writeFileSync(rootIndexPath, rootIndexData, 'utf-8');
+          const [durationTime] = process.hrtime(startTime);
 
-            const [durationTime] = process.hrtime(startTime);
-
-            // tslint:disable-next-line:no-console
-            console.log(`Processing done in ${durationTime}s.`);
-          }
+          // tslint:disable-next-line:no-console
+          console.log(`Processing done in ${durationTime}s.`);
         }
       },
     );
@@ -141,6 +140,7 @@ export const generateComponents = (filePaths: string[], target: Target) => {
   }
 
   const indexFilePath = `${target.destPath}/index.ts`;
+  fsExtra.ensureDirSync(target.destPath);
   fsExtra.writeFileSync(indexFilePath, indexFileData, 'utf-8');
 };
 
@@ -185,11 +185,9 @@ export const svgr2SvgIcon: FileDataTransformer = ({ fileData, filePath }) => {
     `,
   );
 
-  svgIcon = svgIcon.replace(
-    ' width={24} height={24} viewBox="0 0 24 24" {...props}',
-    '',
-  );
-
+  svgIcon = svgIcon.replace(/(<Svg .*){...props}/g, '$1');
+  svgIcon = svgIcon.replace(/(<Svg .*)width={[^}]*}/g, '$1');
+  svgIcon = svgIcon.replace(/(<Svg .*)height={[^}]*}/g, '$1');
   svgIcon = svgIcon.replace('</Svg>;', '</Svg></SvgIcon>));');
   svgIcon = svgIcon.replace('export default SvgComponent;', '');
 
