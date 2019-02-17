@@ -9,56 +9,52 @@ import {
   ButtonProps,
   OptionalSubTheme,
   Size,
-  TextStyleGetter,
+  SvgPropsGetter,
 } from '@reflex-ui/core';
-import { Platform, TextProps, TextStyle } from 'react-native';
+import { ViewStyle } from 'react-native';
+import { SvgProps } from 'react-native-svg';
 
-import { getAllVariantsButtonIconStyle } from './icon';
+import { getAllVariantsButtonIconProps } from './icon';
 
-export const allVariantsButtonLeadingIconSizedStyle: {
-  [key in Size]: TextStyle
+export const allVariantsButtonLeadingIconSizedProps: {
+  [key in Size]: SvgProps
 } = {
-  xxsmall: { fontSize: 14 },
+  xxsmall: { height: 14, width: 14 },
   /*
    * Sorting values by size here makes it easier to reason about
    * the overall scale of values than sorting alphabetically,
    * so let's just disable this rule here.
    */
   // tslint:disable-next-line:object-literal-sort-keys
-  xsmall: { fontSize: 15 },
-  small: { fontSize: 16 },
-  medium: { fontSize: 18 },
-  large: { fontSize: 20 },
-  xlarge: { fontSize: 24 },
-  xxlarge: { fontSize: 32 },
+  xsmall: { height: 15, width: 15 },
+  small: { height: 16, width: 16 },
+  medium: { height: 18, width: 18 },
+  large: { height: 20, width: 20 },
+  xlarge: { height: 24, width: 24 },
+  xxlarge: { height: 32, width: 32 },
 };
 
-export const getAllVariantsButtonLeadingIconStyle: TextStyleGetter<
+export const getAllVariantsButtonLeadingIconProps: SvgPropsGetter<
   ButtonProps
 > = props => ({
-  ...getAllVariantsButtonIconStyle(props),
-  ...allVariantsButtonLeadingIconSizedStyle[props.size],
-  ...Platform.select<TextStyle>({
-    web: {
-      userSelect: 'none',
-    },
-  }),
+  ...getAllVariantsButtonIconProps(props),
+  ...allVariantsButtonLeadingIconSizedProps[props.size],
 });
 
 // prettier-ignore
-export const getAllVariantsButtonTrailingIconStyle =
-  getAllVariantsButtonLeadingIconStyle;
+export const getAllVariantsButtonTrailingIconProps =
+  getAllVariantsButtonLeadingIconProps;
 
 export const allVariantsButtonLeadingIconTheme: OptionalSubTheme<
   ButtonProps,
-  TextProps,
-  TextStyle
+  SvgProps,
+  ViewStyle
 > = {
-  getStyle: getAllVariantsButtonLeadingIconStyle,
+  getProps: getAllVariantsButtonLeadingIconProps,
 };
 
 export const allVariantsButtonTrailingIconTheme: OptionalSubTheme<
   ButtonProps,
-  TextProps,
-  TextStyle
+  SvgProps,
+  ViewStyle
 > = allVariantsButtonLeadingIconTheme;

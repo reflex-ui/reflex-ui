@@ -7,49 +7,50 @@
 
 import {
   ButtonProps,
-  rawButtonTextSubTheme,
+  rawButtonIconSubTheme,
   Size,
   SubTheme,
-  TextStyleGetter,
+  SvgPropsGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
-import { TextProps, TextStyle } from 'react-native';
+import { ViewStyle } from 'react-native';
+import { SvgProps } from 'react-native-svg';
 
-import { getContainedButtonLeadingIconStyle } from '../contained/sideIcons';
+import { getContainedButtonLeadingIconProps } from '../contained/sideIcons';
 
-export const xfabButtonLeadingIconSizedStyle: { [key in Size]: TextStyle } = {
-  xxsmall: {},
+export const xfabButtonLeadingIconSizedProps: { [key in Size]: SvgProps } = {
+  xxsmall: { height: 16, width: 16 },
   /*
    * Sorting values by size here makes it easier to reason about
    * the overall scale of values than sorting alphabetically,
    * so let's just disable this rule here.
    */
   // tslint:disable-next-line:object-literal-sort-keys
-  xsmall: { fontSize: 18 },
-  small: { fontSize: 22 },
-  medium: { fontSize: 24 },
-  large: { fontSize: 28 },
-  xlarge: { fontSize: 32 },
-  xxlarge: {},
+  xsmall: { height: 18, width: 18 },
+  small: { height: 22, width: 22 },
+  medium: { height: 24, width: 24 },
+  large: { height: 28, width: 28 },
+  xlarge: { height: 32, width: 32 },
+  xxlarge: { height: 40, width: 40 },
 };
 
-export const getXFabButtonLeadingIconStyle: TextStyleGetter<
+export const getXFabButtonLeadingIconProps: SvgPropsGetter<
   ButtonProps
 > = props => ({
-  ...getContainedButtonLeadingIconStyle(props),
-  ...xfabButtonLeadingIconSizedStyle[props.size],
+  ...getContainedButtonLeadingIconProps(props),
+  ...xfabButtonLeadingIconSizedProps[props.size],
 });
 
 export const xfabButtonLeadingIconTheme: SubTheme<
   ButtonProps,
-  TextProps,
-  TextStyle
-> = merge({}, rawButtonTextSubTheme, {
-  getStyle: getXFabButtonLeadingIconStyle,
+  SvgProps,
+  ViewStyle
+> = merge({}, rawButtonIconSubTheme, {
+  getProps: getXFabButtonLeadingIconProps,
 });
 
 export const xfabButtonTrailingIconTheme: SubTheme<
   ButtonProps,
-  TextProps,
-  TextStyle
+  SvgProps,
+  ViewStyle
 > = xfabButtonLeadingIconTheme;

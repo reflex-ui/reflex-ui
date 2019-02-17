@@ -7,29 +7,30 @@
 
 import {
   ButtonProps,
-  rawButtonTextSubTheme,
+  rawButtonIconSubTheme,
   SubTheme,
-  TextStyleGetter,
+  SvgPropsGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
-import { TextProps, TextStyle } from 'react-native';
+import { ViewStyle } from 'react-native';
+import { SvgProps } from 'react-native-svg';
 
 import {
-  allVariantsButtonIconSizedStyle,
-  getAllVariantsButtonIconStyle,
+  allVariantsButtonIconSizedProps,
+  getAllVariantsButtonIconProps,
 } from '../all-variants/icon';
 import { getDefaultButtonTextColorStyle } from '../default/text';
 
-export const getIconButtonIconStyle: TextStyleGetter<ButtonProps> = props => ({
-  ...getAllVariantsButtonIconStyle(props),
-  ...getDefaultButtonTextColorStyle(props),
-  ...allVariantsButtonIconSizedStyle[props.size],
+export const getIconButtonIconProps: SvgPropsGetter<ButtonProps> = props => ({
+  ...getAllVariantsButtonIconProps(props),
+  color: getDefaultButtonTextColorStyle(props).color,
+  ...allVariantsButtonIconSizedProps[props.size],
 });
 
 export const iconButtonIconTheme: SubTheme<
   ButtonProps,
-  TextProps,
-  TextStyle
-> = merge({}, rawButtonTextSubTheme, {
-  getStyle: getIconButtonIconStyle,
+  SvgProps,
+  ViewStyle
+> = merge({}, rawButtonIconSubTheme, {
+  getProps: getIconButtonIconProps,
 });

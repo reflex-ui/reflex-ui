@@ -9,7 +9,6 @@ import {
   ButtonProps,
   getThemedColor,
   InjectableSubTheme,
-  // InteractionType,
   rawInjectableButtonTextSubTheme,
   TextStyleGetter,
 } from '@reflex-ui/core';

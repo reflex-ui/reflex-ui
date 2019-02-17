@@ -7,34 +7,35 @@
 
 import {
   ButtonProps,
-  rawButtonTextSubTheme,
+  rawButtonIconSubTheme,
   SubTheme,
-  TextStyleGetter,
+  SvgPropsGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
-import { TextProps, TextStyle } from 'react-native';
+import { ViewStyle } from 'react-native';
+import { SvgProps } from 'react-native-svg';
 
 // tslint:disable-next-line:max-line-length
-import { getAllVariantsButtonLeadingIconStyle } from '../all-variants/sideIcons';
+import { getAllVariantsButtonLeadingIconProps } from '../all-variants/sideIcons';
 import { getDefaultButtonTextColorStyle } from './text';
 
-export const getDefaultButtonLeadingIconStyle: TextStyleGetter<
+export const getDefaultButtonLeadingIconProps: SvgPropsGetter<
   ButtonProps
 > = props => ({
-  ...getAllVariantsButtonLeadingIconStyle(props),
-  ...getDefaultButtonTextColorStyle(props),
+  ...getAllVariantsButtonLeadingIconProps(props),
+  color: getDefaultButtonTextColorStyle(props).color,
 });
 
 export const defaultButtonLeadingIconTheme: SubTheme<
   ButtonProps,
-  TextProps,
-  TextStyle
-> = merge({}, rawButtonTextSubTheme, {
-  getStyle: getDefaultButtonLeadingIconStyle,
+  SvgProps,
+  ViewStyle
+> = merge({}, rawButtonIconSubTheme, {
+  getProps: getDefaultButtonLeadingIconProps,
 });
 
 export const defaultButtonTrailingIconTheme: SubTheme<
   ButtonProps,
-  TextProps,
-  TextStyle
+  SvgProps,
+  ViewStyle
 > = defaultButtonLeadingIconTheme;

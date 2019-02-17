@@ -9,41 +9,37 @@ import {
   ButtonProps,
   OptionalSubTheme,
   Size,
-  TextStyleGetter,
+  SvgPropsGetter,
 } from '@reflex-ui/core';
-import { Platform, TextProps, TextStyle } from 'react-native';
+import { ViewStyle } from 'react-native';
+import { SvgProps } from 'react-native-svg';
 
-export const allVariantsButtonIconSizedStyle: { [key in Size]: TextStyle } = {
-  xxsmall: { fontSize: 16 },
+export const allVariantsButtonIconSizedProps: { [key in Size]: SvgProps } = {
+  xxsmall: { height: 16, width: 16 },
   /*
    * Sorting values by size here makes it easier to reason about
    * the overall scale of values than sorting alphabetically,
    * so let's just disable this rule here.
    */
   // tslint:disable-next-line:object-literal-sort-keys
-  xsmall: { fontSize: 20 },
-  small: { fontSize: 24 },
-  medium: { fontSize: 24 },
-  large: { fontSize: 28 },
-  xlarge: { fontSize: 36 },
-  xxlarge: { fontSize: 52 },
+  xsmall: { height: 20, width: 20 },
+  small: { height: 24, width: 24 },
+  medium: { height: 24, width: 24 },
+  large: { height: 28, width: 28 },
+  xlarge: { height: 36, width: 36 },
+  xxlarge: { height: 52, width: 52 },
 };
 
-export const getAllVariantsButtonIconStyle: TextStyleGetter<ButtonProps> = ({
+export const getAllVariantsButtonIconProps: SvgPropsGetter<ButtonProps> = ({
   size,
 }) => ({
-  ...allVariantsButtonIconSizedStyle[size],
-  ...Platform.select<TextStyle>({
-    web: {
-      userSelect: 'none',
-    },
-  }),
+  ...allVariantsButtonIconSizedProps[size],
 });
 
 export const allVariantsButtonIconTheme: OptionalSubTheme<
   ButtonProps,
-  TextProps,
-  TextStyle
+  SvgProps,
+  ViewStyle
 > = {
-  getStyle: getAllVariantsButtonIconStyle,
+  getProps: getAllVariantsButtonIconProps,
 };
