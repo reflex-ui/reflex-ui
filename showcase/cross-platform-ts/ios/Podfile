@@ -30,7 +30,6 @@ target 'example' do
   pod 'Folly', :podspec => '../../../node_modules/react-native/third-party-podspecs/Folly.podspec'
   pod 'glog', :podspec => '../../../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'ReactNativeNavigation', :podspec => '../../../node_modules/react-native-navigation/ReactNativeNavigation.podspec'
-  pod 'RNVectorIcons', :path => '../../../node_modules/react-native-vector-icons'
   pod 'RNSVG', :path => '../../../node_modules/react-native-svg'
 
   target 'exampleTests' do
