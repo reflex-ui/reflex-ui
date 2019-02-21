@@ -125,7 +125,7 @@ export interface HandleButtonIconData {
     ViewStyle
   >;
   readonly icon: React.ReactElement<OptionalFlexSvgProps>;
-  readonly iconTheme: SubTheme<ButtonProps, TextProps, TextStyle>;
+  readonly iconTheme: SubTheme<ButtonProps, SvgProps, ViewStyle>;
   readonly props: ButtonProps;
   readonly userContainerProps?: ViewProps;
   readonly userIconProps?: TextProps;
