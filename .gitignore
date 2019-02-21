@@ -36,6 +36,11 @@ build/
 local.properties
 *.iml
 
+# Java extensions
+.classpath
+.project
+.settings/
+
 # node.js
 node_modules/
 npm-debug.log
