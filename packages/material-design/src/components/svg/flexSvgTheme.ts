@@ -41,9 +41,19 @@ export const flexSvgSvgSizedProps: { [key in Size]: SvgProps } = {
   xxlarge: { height: 400, width: 400 },
 };
 
+export const getSvgColorProps: SvgPropsGetter<FlexSvgProps> = props => {
+  const themedColor: string | undefined = getDefaultTypographyColorStyle(props)
+    .color;
+
+  return {
+    color: props.color ? props.color : themedColor,
+    fill: props.fill ? props.fill : themedColor,
+  };
+};
+
 export const getFlexSvgSvgProps: SvgPropsGetter<FlexSvgProps> = props => ({
   ...getSizedSvgProps(flexSvgSvgSizedProps)(props),
-  fill: props.color ? props.color : getDefaultTypographyColorStyle(props).color,
+  ...getSvgColorProps(props),
 });
 
 export const flexSvgSvgTheme: OptionalInjectableSubTheme<

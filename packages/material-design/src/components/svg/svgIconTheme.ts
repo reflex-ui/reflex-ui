@@ -23,7 +23,7 @@ import { SvgProps } from 'react-native-svg';
 
 import { getSizingStyle } from '../../sizing/getSizingStyle';
 import { sizedSpacing } from '../../spacing/sizedSpacing';
-import { getDefaultTypographyColorStyle } from '../typography/theme';
+import { getSvgColorProps } from './flexSvgTheme';
 
 export const svgIconSvgSizedProps: { [key in Size]: SvgProps } = {
   xxsmall: { height: 12, width: 12 },
@@ -43,7 +43,7 @@ export const svgIconSvgSizedProps: { [key in Size]: SvgProps } = {
 
 export const getSvgIconSvgProps: SvgPropsGetter<FlexSvgProps> = props => ({
   ...getSizedSvgProps(svgIconSvgSizedProps)(props),
-  fill: props.color ? props.color : getDefaultTypographyColorStyle(props).color,
+  ...getSvgColorProps(props),
 });
 
 export const svgIconSvgTheme: OptionalInjectableSubTheme<
