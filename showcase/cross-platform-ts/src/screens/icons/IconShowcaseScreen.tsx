@@ -86,13 +86,13 @@ const IconShowcaseScreen: React.SFC<{}> = (): JSX.Element => (
                   <Headline6>Custom color</Headline6>
                 </Row>
                 <Row>
-                  <AlarmIcon color="#c70ad0" size={Size.XXS} />
-                  <AlarmIcon color="#c70ad0" size={Size.XS} />
-                  <AlarmIcon color="#c70ad0" size={Size.S} />
-                  <AlarmIcon color="#c70ad0" />
-                  <AlarmIcon color="#c70ad0" size={Size.L} />
-                  <AlarmIcon color="#c70ad0" size={Size.XL} />
-                  <AlarmIcon color="#c70ad0" size={Size.XXL} />
+                  <AlarmIcon fill="#c70ad0" size={Size.XXS} />
+                  <AlarmIcon fill="#c70ad0" size={Size.XS} />
+                  <AlarmIcon fill="#c70ad0" size={Size.S} />
+                  <AlarmIcon fill="#c70ad0" />
+                  <AlarmIcon fill="#c70ad0" size={Size.L} />
+                  <AlarmIcon fill="#c70ad0" size={Size.XL} />
+                  <AlarmIcon fill="#c70ad0" size={Size.XXL} />
                 </Row>
               </Surface>
             </Row>
