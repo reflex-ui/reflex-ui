@@ -19,7 +19,6 @@ export interface FlexSvgProps
     SizingProps,
     SvgProps {
   readonly children?: React.ReactNode;
-  readonly color?: string;
   readonly getSubProps?: FlexSvgSubPropsGetter;
   readonly skipContainer?: boolean;
   readonly theme: FlexSvgTheme;
