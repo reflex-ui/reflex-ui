@@ -63,21 +63,6 @@ const handleSvgChildren = (
 
   const mergedProps = merge({}, themeProps, svgProps);
 
-  /*
-   * Wait for feedback on the following issue to decide
-   * what to do next. Ideally, SvgProps would get a "fill?: string"
-   * prop added to it.
-   * https://github.com/react-native-community/react-native-svg/issues/943
-   */
-  // @ts-ignore Property 'color' does not exist on type 'SvgProps'.
-  if (mergedProps.color) {
-    // @ts-ignore Property 'fill' does not exist on type 'SvgProps'.
-    mergedProps.fill = mergedProps.color;
-    // @ts-ignore Property 'color' does not exist on type 'SvgProps'.
-    delete mergedProps.color;
-  }
-  /**/
-
   const styledSvg = children
     ? cloneElement({ element: children, props: mergedProps })
     : undefined;
