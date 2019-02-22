@@ -270,7 +270,7 @@ export const withRippleEffect = <ComponentProps extends InteractionStateProps>(
 
         this.animatedView = animated(View);
         this.rippleAnimation = Keyframes.Spring({
-          // @ts-ignore
+          // @ts-ignore Parameter 'call' implicitly has an 'any' type.
           pressin: async call => {
             call({
               config: { tension: 150, friction: 20 },
@@ -283,7 +283,7 @@ export const withRippleEffect = <ComponentProps extends InteractionStateProps>(
             await delay(250);
             if (this.state.isAnimatingPressIn) this.pressInAnimationComplete();
           },
-          // @ts-ignore
+          // @ts-ignore Parameter 'call' implicitly has an 'any' type.
           pressout: async call => {
             call({ config: { tension: 75, friction: 20 }, to: { opacity: 0 } });
             await delay(250);
@@ -314,9 +314,9 @@ export const withRippleEffect = <ComponentProps extends InteractionStateProps>(
         const AnimatedView = this.animatedView;
 
         return (
-          // @ts-ignore some issue with object spread (otherProps),
-          // is giving an error with a crypt message.
-          // Needs more investigation.
+          // @ts-ignore some issue with object spread (otherProps)
+          // is throwing an error with a message that do not point
+          // to what exactly is wrong. Needs more investigation.
           <WrappedComponent {...otherProps} onLayout={this.onLayoutChanged}>
             <React.Fragment>
               <View style={rippleStyles.container}>

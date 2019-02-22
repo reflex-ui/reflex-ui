@@ -36,7 +36,6 @@ export const getSubProps = <
   // @ts-ignore Type '{}' is not assignable to type 'PrimitiveProps'. [2322]
   const userProps: PrimitiveProps = data.userProps ? data.userProps : {};
 
-  // @ts-ignore Rest types may only be created from object types. [2700]
   const { style: userStyle, ...otherUserProps } = userProps;
 
   const subProps: PrimitiveProps = merge(

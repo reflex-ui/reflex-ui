@@ -205,7 +205,7 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
 
         this.animatedView = animated(View);
         this.raiseAnimation = Keyframes.Spring({
-          // @ts-ignore
+          // @ts-ignore Parameter 'call' implicitly has an 'any' type.
           disabled: async call => {
             call({
               config: { tension: 75, friction: 20 },
@@ -225,7 +225,7 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
             await delay(250);
             if (this.state.isAnimating) this.animationComplete();
           },
-          // @ts-ignore
+          // @ts-ignore Parameter 'call' implicitly has an 'any' type.
           enabled: async call => {
             call({
               config: { tension: 75, friction: 20 },
@@ -245,7 +245,7 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
             await delay(250);
             if (this.state.isAnimating) this.animationComplete();
           },
-          // @ts-ignore
+          // @ts-ignore Parameter 'call' implicitly has an 'any' type.
           focused: async call => {
             call({
               config: { tension: 75, friction: 20 },
@@ -265,7 +265,7 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
             await delay(250);
             if (this.state.isAnimating) this.animationComplete();
           },
-          // @ts-ignore
+          // @ts-ignore Parameter 'call' implicitly has an 'any' type.
           hovered: async call => {
             call({
               config: { tension: 150, friction: 20 },
@@ -285,7 +285,7 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
             await delay(250);
             if (this.state.isAnimating) this.animationComplete();
           },
-          // @ts-ignore
+          // @ts-ignore Parameter 'call' implicitly has an 'any' type.
           pressin: async call => {
             call({
               config: { tension: 150, friction: 20 },
@@ -324,9 +324,9 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
         const AnimatedView = this.animatedView;
 
         return (
-          // @ts-ignore some issue with object spread (otherProps),
-          // is giving an error with a crypt message.
-          // Needs more investigation.
+          // @ts-ignore some issue with object spread (otherProps)
+          // is throwing an error with a message that do not point
+          // to what exactly is wrong. Needs more investigation.
           <WrappedComponent {...otherProps} onLayout={this.onLayoutChanged}>
             <React.Fragment>
               <View style={this.state.staticRaiseStyles.container}>
