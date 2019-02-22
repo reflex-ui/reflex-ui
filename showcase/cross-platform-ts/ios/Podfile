@@ -1,11 +1,11 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'example' do
+target 'coreshowcase' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   # use_frameworks!
 
-  # Pods for example
+  # Pods for coreshowcase
   pod 'React', :path => '../../../node_modules/react-native', :subspecs => [
     'Core',
     'CxxBridge', # Include this for RN >= 0.47
@@ -29,23 +29,25 @@ target 'example' do
   pod 'DoubleConversion', :podspec => '../../../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
   pod 'Folly', :podspec => '../../../node_modules/react-native/third-party-podspecs/Folly.podspec'
   pod 'glog', :podspec => '../../../node_modules/react-native/third-party-podspecs/glog.podspec'
+
+  # the following dependencies are dependencies of this specific app.
   pod 'ReactNativeNavigation', :podspec => '../../../node_modules/react-native-navigation/ReactNativeNavigation.podspec'
   pod 'RNSVG', :path => '../../../node_modules/react-native-svg'
 
-  target 'exampleTests' do
+  target 'coreshowcaseTests' do
     inherit! :search_paths
     # Pods for testing
   end
 
 end
 
-target 'example-tvOS' do
+target 'coreshowcase-tvOS' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   # use_frameworks!
 
-  # Pods for example-tvOS
+  # Pods for coreshowcase-tvOS
 
-  target 'example-tvOSTests' do
+  target 'coreshowcase-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

@@ -16,7 +16,7 @@ interface Config {
 
 export const config: Config = {
   app: {
-    name: 'example',
+    name: 'coreshowcase',
   },
   web: {
     root: 'root',
