@@ -15,7 +15,6 @@ import { reflexComponent } from '../reflexComponent';
 import { SimpleText } from './SimpleText';
 import { OptionalTypographyProps, TypographyProps } from './TypographyProps';
 
-// prettier-ignore
 export const Headline2 = reflexComponent<OptionalTypographyProps>({
   name: 'Headline2',
 })((props: OptionalTypographyProps) => (
@@ -24,10 +23,10 @@ export const Headline2 = reflexComponent<OptionalTypographyProps>({
       <ColorThemeContext.Consumer>
         {colorTheme => (
           <ComponentsThemeContext.Consumer>
-            {(componentsTheme) => {
+            {componentsTheme => {
               const propsWithDefaults: TypographyProps = {
-                colorTheme: props.colorTheme || colorTheme ||
-                  ColorTheme.SurfaceNormal,
+                colorTheme:
+                  props.colorTheme || colorTheme || ColorTheme.SurfaceNormal,
                 paletteTheme,
                 theme: componentsTheme.typography.headline2,
                 ...props,

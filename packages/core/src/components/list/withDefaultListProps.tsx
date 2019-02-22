@@ -15,40 +15,39 @@ import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { reflexComponent } from '../reflexComponent';
 import { ListProps, OptionalListProps } from './ListProps';
 
-// prettier-ignore
 export const withDefaultListProps = (
   WrappedComponent: React.ComponentType<ListProps>,
-): React.ComponentType<
-  OptionalListProps
-> => reflexComponent<
-  OptionalListProps
->({ name: 'WithDefaultListProps', wrapped: WrappedComponent })(props => (
-  <DimensionsContext.Consumer>
-    {dimensionsProps => (
-      <PaletteThemeContext.Consumer>
-        {paletteTheme => (
-          <ComponentsThemeContext.Consumer>
-            {(componentsTheme) => {
-              const colorTheme: ColorTheme =
-                props.colorTheme || ColorTheme.SurfaceNormal;
+): React.ComponentType<OptionalListProps> =>
+  reflexComponent<OptionalListProps>({
+    name: 'WithDefaultListProps',
+    wrapped: WrappedComponent,
+  })(props => (
+    <DimensionsContext.Consumer>
+      {dimensionsProps => (
+        <PaletteThemeContext.Consumer>
+          {paletteTheme => (
+            <ComponentsThemeContext.Consumer>
+              {componentsTheme => {
+                const colorTheme: ColorTheme =
+                  props.colorTheme || ColorTheme.SurfaceNormal;
 
-              const propsWithDefaults: ListProps = {
-                ...dimensionsProps,
-                colorTheme,
-                paletteTheme,
-                theme: componentsTheme.list,
-                ...props,
-              };
+                const propsWithDefaults: ListProps = {
+                  ...dimensionsProps,
+                  colorTheme,
+                  paletteTheme,
+                  theme: componentsTheme.list,
+                  ...props,
+                };
 
-              return (
-                <ColorThemeContext.Provider value={colorTheme}>
-                  <WrappedComponent {...propsWithDefaults} />
-                </ColorThemeContext.Provider>
-              );
-            }}
-          </ComponentsThemeContext.Consumer>
-        )}
-      </PaletteThemeContext.Consumer>
-    )}
-  </DimensionsContext.Consumer>
-));
+                return (
+                  <ColorThemeContext.Provider value={colorTheme}>
+                    <WrappedComponent {...propsWithDefaults} />
+                  </ColorThemeContext.Provider>
+                );
+              }}
+            </ComponentsThemeContext.Consumer>
+          )}
+        </PaletteThemeContext.Consumer>
+      )}
+    </DimensionsContext.Consumer>
+  ));

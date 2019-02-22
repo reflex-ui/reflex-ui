@@ -19,47 +19,43 @@ import {
   TouchableSurfaceProps,
 } from './TouchableSurfaceProps';
 
-// prettier-ignore
 export const withDefaultTouchableSurfaceProps = (
   WrappedComponent: React.ComponentType<TouchableSurfaceProps>,
-): React.ComponentType<
-  OptionalTouchableSurfaceProps
-> => reflexComponent<
-  OptionalTouchableSurfaceProps
->({
-  name: 'WithDefaultTouchableSurfaceProps',
-  wrapped: WrappedComponent,
-})(props => (
-  <DimensionsContext.Consumer>
-    {dimensionsProps => (
-      <PaletteThemeContext.Consumer>
-        {paletteTheme => (
-          <ColorThemeContext.Consumer>
-            {colorTheme => (
-              <ComponentsThemeContext.Consumer>
-                {(componentsTheme) => {
-                  const propsWithDefaults: TouchableSurfaceProps = {
-                    ...dimensionsProps,
-                    colorTheme: colorTheme || ColorTheme.SurfaceNormal,
-                    interactionState: {
-                      type: InteractionType.Enabled,
-                    },
-                    paletteTheme,
-                    theme: componentsTheme.touchableSurface,
-                    ...props,
-                  };
+): React.ComponentType<OptionalTouchableSurfaceProps> =>
+  reflexComponent<OptionalTouchableSurfaceProps>({
+    name: 'WithDefaultTouchableSurfaceProps',
+    wrapped: WrappedComponent,
+  })(props => (
+    <DimensionsContext.Consumer>
+      {dimensionsProps => (
+        <PaletteThemeContext.Consumer>
+          {paletteTheme => (
+            <ColorThemeContext.Consumer>
+              {colorTheme => (
+                <ComponentsThemeContext.Consumer>
+                  {componentsTheme => {
+                    const propsWithDefaults: TouchableSurfaceProps = {
+                      ...dimensionsProps,
+                      colorTheme: colorTheme || ColorTheme.SurfaceNormal,
+                      interactionState: {
+                        type: InteractionType.Enabled,
+                      },
+                      paletteTheme,
+                      theme: componentsTheme.touchableSurface,
+                      ...props,
+                    };
 
-                  return (
-                    <ColorThemeContext.Provider value={colorTheme}>
-                      <WrappedComponent {...propsWithDefaults} />
-                    </ColorThemeContext.Provider>
-                  );
-                }}
-              </ComponentsThemeContext.Consumer>
-            )}
-          </ColorThemeContext.Consumer>
-        )}
-      </PaletteThemeContext.Consumer>
-    )}
-  </DimensionsContext.Consumer>
-));
+                    return (
+                      <ColorThemeContext.Provider value={colorTheme}>
+                        <WrappedComponent {...propsWithDefaults} />
+                      </ColorThemeContext.Provider>
+                    );
+                  }}
+                </ComponentsThemeContext.Consumer>
+              )}
+            </ColorThemeContext.Consumer>
+          )}
+        </PaletteThemeContext.Consumer>
+      )}
+    </DimensionsContext.Consumer>
+  ));

@@ -15,7 +15,6 @@ interface State {
   readonly layoutRectangle?: LayoutRectangle;
 }
 
-// prettier-ignore
 export const withResponsivenessProps = <P extends ResponsivenessProps>(
   WrappedComponent: React.ComponentType<P>,
 ): React.ComponentType<P> =>
@@ -31,9 +30,7 @@ export const withResponsivenessProps = <P extends ResponsivenessProps>(
           onLayout: this.onLayout,
         };
 
-        return (
-          <WrappedComponent {...this.props} {...responsivenessProps} />
-        );
+        return <WrappedComponent {...this.props} {...responsivenessProps} />;
       }
 
       private onLayout = (event: LayoutChangeEvent): void => {

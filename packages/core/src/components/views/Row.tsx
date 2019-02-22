@@ -18,7 +18,6 @@ import { reflexComponent } from '../reflexComponent';
 import { SimpleSuperView } from './SimpleSuperView';
 import { OptionalSuperViewProps, SuperViewProps } from './SuperViewProps';
 
-// prettier-ignore
 export const Row = withResponsivenessProps(
   reflexComponent<OptionalSuperViewProps>({
     name: 'Row',
@@ -30,7 +29,7 @@ export const Row = withResponsivenessProps(
             <PaletteThemeContext.Consumer>
               {paletteTheme => (
                 <ComponentsThemeContext.Consumer>
-                  {(componentsTheme) => {
+                  {componentsTheme => {
                     const colorTheme: ColorTheme =
                       props.colorTheme ||
                       ctxColorTheme ||

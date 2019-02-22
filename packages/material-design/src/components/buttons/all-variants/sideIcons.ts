@@ -41,9 +41,8 @@ export const getAllVariantsButtonLeadingIconProps: SvgPropsGetter<
   ...allVariantsButtonLeadingIconSizedProps[props.size],
 });
 
-// prettier-ignore
-export const getAllVariantsButtonTrailingIconProps =
-  getAllVariantsButtonLeadingIconProps;
+// tslint:disable-next-line:max-line-length
+export const getAllVariantsButtonTrailingIconProps = getAllVariantsButtonLeadingIconProps;
 
 export const allVariantsButtonLeadingIconTheme: OptionalSubTheme<
   ButtonProps,

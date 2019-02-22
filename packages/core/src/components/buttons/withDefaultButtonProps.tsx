@@ -17,7 +17,6 @@ import { ButtonProps, OptionalButtonProps } from './ButtonProps';
 import { ButtonVariant } from './ButtonVariant';
 import { getButtonVariantColorTheme } from './getButtonVariantColorTheme';
 
-// prettier-ignore
 export const withDefaultButtonProps = (
   WrappedComponent: React.ComponentType<ButtonProps>,
 ): React.ComponentType<OptionalButtonProps> =>
@@ -30,7 +29,7 @@ export const withDefaultButtonProps = (
         <ColorThemeContext.Consumer>
           {colorTheme => (
             <ComponentsThemeContext.Consumer>
-              {(componentsTheme) => {
+              {componentsTheme => {
                 const variant: ButtonVariant =
                   props.variant || ButtonVariant.Default;
 
@@ -42,11 +41,11 @@ export const withDefaultButtonProps = (
                     : Size.M;
 
                 const marginVertical: Size | number =
-                    variant === ButtonVariant.Fab ||
-                    variant === ButtonVariant.XFab ||
-                    variant === ButtonVariant.Icon
-                      ? 0
-                      : Size.S;
+                  variant === ButtonVariant.Fab ||
+                  variant === ButtonVariant.XFab ||
+                  variant === ButtonVariant.Icon
+                    ? 0
+                    : Size.S;
 
                 const propsWithDefaults: ButtonProps = {
                   colorTheme: colorTheme || getButtonVariantColorTheme(variant),

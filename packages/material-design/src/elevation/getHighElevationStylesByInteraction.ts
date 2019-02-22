@@ -6,10 +6,7 @@
  */
 
 import { InteractionType, ViewStyleGetter } from '@reflex-ui/core';
-// prettier-ignore
-import {
-  convertInteractionToElevation,
-} from './convertInteractionToElevation';
+import { convertInteractionToElevation } from './convertInteractionToElevation';
 import { ElevationDegree } from './ElevationDegree';
 import { getElevationStyles } from './getElevationStyles';
 

@@ -15,31 +15,32 @@ import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { reflexComponent } from '../reflexComponent';
 import { FlexSvgProps, OptionalFlexSvgProps } from './FlexSvgProps';
 
-// prettier-ignore
 export const withDefaultSvgIconProps = (
   WrappedComponent: React.ComponentType<FlexSvgProps>,
-): React.ComponentType<OptionalFlexSvgProps> => reflexComponent<
-OptionalFlexSvgProps
->({ name: 'WithDefaultSvgIconProps', wrapped: WrappedComponent })(props => (
-  <PaletteThemeContext.Consumer>
-    {paletteTheme => (
-      <ColorThemeContext.Consumer>
-        {colorTheme => (
-          <ComponentsThemeContext.Consumer>
-            {componentsTheme => {
-              const propsWithDefaults: FlexSvgProps = {
-                colorTheme: colorTheme || ColorTheme.SecondaryNormal,
-                paletteTheme,
-                size: Size.M,
-                theme: componentsTheme.svg.svgIcon,
-                ...props,
-              };
+): React.ComponentType<OptionalFlexSvgProps> =>
+  reflexComponent<OptionalFlexSvgProps>({
+    name: 'WithDefaultSvgIconProps',
+    wrapped: WrappedComponent,
+  })(props => (
+    <PaletteThemeContext.Consumer>
+      {paletteTheme => (
+        <ColorThemeContext.Consumer>
+          {colorTheme => (
+            <ComponentsThemeContext.Consumer>
+              {componentsTheme => {
+                const propsWithDefaults: FlexSvgProps = {
+                  colorTheme: colorTheme || ColorTheme.SecondaryNormal,
+                  paletteTheme,
+                  size: Size.M,
+                  theme: componentsTheme.svg.svgIcon,
+                  ...props,
+                };
 
-              return <WrappedComponent {...propsWithDefaults} />;
-            }}
-          </ComponentsThemeContext.Consumer>
-        )}
-      </ColorThemeContext.Consumer>
-    )}
-  </PaletteThemeContext.Consumer>
-));
+                return <WrappedComponent {...propsWithDefaults} />;
+              }}
+            </ComponentsThemeContext.Consumer>
+          )}
+        </ColorThemeContext.Consumer>
+      )}
+    </PaletteThemeContext.Consumer>
+  ));
