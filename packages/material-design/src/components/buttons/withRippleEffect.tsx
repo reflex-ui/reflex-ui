@@ -95,9 +95,7 @@ type InteractionPositionGetter = (
   interactionEvent?: InteractionEvent,
 ) => Position2D;
 
-const getInteractionPosition: InteractionPositionGetter = (
-  interactionEvent?,
-) => {
+const getInteractionPosition: InteractionPositionGetter = interactionEvent => {
   let x = 0;
   let y = 0;
 
@@ -179,21 +177,26 @@ const createComponentRippleStyles: ComponentRippleStylesCreator = ({
   });
 };
 
-type RippleColorGetter<P> = (props: P) => string;
+type RippleColorGetter<ComponentProps> = (props: ComponentProps) => string;
 
-interface RippleEffectSettings<P> {
-  readonly getRippleColor: RippleColorGetter<P>;
+interface RippleEffectSettings<ComponentProps> {
+  readonly getRippleColor: RippleColorGetter<ComponentProps>;
 }
 
-export const withRippleEffect = <S extends InteractionStateProps>(
-  settings: RippleEffectSettings<S>,
-) => <P extends SubProps<S> & ViewProps>(
-  WrappedComponent: React.ComponentType<P>,
-): React.ComponentType<P> =>
-  reflexComponent<P>({ wrapped: WrappedComponent })(
-    class WithRippleEffect extends React.Component<P> {
+export const withRippleEffect = <ComponentProps extends InteractionStateProps>(
+  settings: RippleEffectSettings<ComponentProps>,
+) => <
+  SubcomponentProps extends SubProps<ComponentProps> &
+    ViewProps & { children?: React.ReactNode }
+>(
+  WrappedComponent: React.ComponentType<SubcomponentProps>,
+): React.ComponentType<SubcomponentProps> =>
+  reflexComponent<SubcomponentProps>({
+    wrapped: WrappedComponent,
+  })(
+    class WithRippleEffect extends React.Component<SubcomponentProps> {
       public static getDerivedStateFromProps(
-        props: P,
+        props: SubcomponentProps,
         state: RippledComponentState,
       ) {
         const { interactionState } = props.componentProps;
@@ -246,8 +249,12 @@ export const withRippleEffect = <S extends InteractionStateProps>(
 
       // tslint:disable-next-line:no-any
       public animatedView: any;
-      // tslint:disable-next-line:no-any
-      public rippleAnimation: (props: {}) => Keyframes<any, any>;
+      public rippleAnimation: (props: {
+        children?: React.ReactNode;
+        native?: boolean;
+        state: AnimationKeyframe;
+      }) => // tslint:disable-next-line:no-any
+      Keyframes<any, any>;
 
       public readonly state: RippledComponentState = {
         animationKeyframe: AnimationKeyframe.PressOut,
@@ -258,7 +265,7 @@ export const withRippleEffect = <S extends InteractionStateProps>(
         width: 100,
       };
 
-      public constructor(props: P) {
+      public constructor(props: SubcomponentProps) {
         super(props);
 
         this.animatedView = animated(View);
@@ -300,8 +307,6 @@ export const withRippleEffect = <S extends InteractionStateProps>(
       };
 
       public render() {
-        // @ts-ignore [ts] Rest types may only be created from object types.
-        // https://github.com/Microsoft/TypeScript/issues/10727
         const { children, ...otherProps } = this.props;
         const RippleAnimation = this.rippleAnimation;
 
@@ -309,6 +314,9 @@ export const withRippleEffect = <S extends InteractionStateProps>(
         const AnimatedView = this.animatedView;
 
         return (
+          // @ts-ignore some issue with object spread (otherProps),
+          // is giving an error with a crypt message.
+          // Needs more investigation.
           <WrappedComponent {...otherProps} onLayout={this.onLayoutChanged}>
             <React.Fragment>
               <View style={rippleStyles.container}>

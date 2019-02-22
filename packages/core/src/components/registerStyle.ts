@@ -5,8 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { RegisteredStyle, StyleSheet } from 'react-native';
+import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import { StyleObj } from './StyleObj';
 
+export const registerStyle = <Style extends ViewStyle | TextStyle | ImageStyle>(
+  style: Style,
+): Style => StyleSheet.create<StyleObj<Style>>({ style }).style;
+/*
 export const registerStyle = <Style>(style: Style): RegisteredStyle<Style> =>
   StyleSheet.create<StyleObj<Style>>({ style }).style;
+*/

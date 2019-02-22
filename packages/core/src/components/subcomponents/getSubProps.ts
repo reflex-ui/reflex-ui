@@ -8,6 +8,7 @@
 import isEmpty from 'lodash/isEmpty';
 import isPlainObject from 'lodash/isPlainObject';
 import merge from 'lodash/merge';
+import { ImageStyle, TextStyle, ViewStyle } from 'react-native';
 
 import { registerStyle } from '../registerStyle';
 import { StyleProps } from '../StyleProps';
@@ -26,7 +27,8 @@ export interface SubPropsGetterData<
 export const getSubProps = <
   ComponentProps,
   PrimitiveProps extends StyleProps<PrimitiveStyle>,
-  PrimitiveStyle
+  // PrimitiveProps extends { style?: PrimitiveStyle },
+  PrimitiveStyle extends ViewStyle | TextStyle | ImageStyle
 >(
   data: SubPropsGetterData<ComponentProps, PrimitiveProps, PrimitiveStyle>,
 ): PrimitiveProps => {
@@ -65,7 +67,9 @@ export const getSubProps = <
     } else if (typeof userStyle === 'number') {
       subStyles.push(userStyle);
     } else if (isPlainObject(userStyle) && !isEmpty(userStyle)) {
-      subStyles.push(registerStyle(userStyle));
+      subStyles.push(
+        registerStyle(userStyle as ViewStyle | TextStyle | ImageStyle),
+      );
     } else {
       throw new Error(
         [

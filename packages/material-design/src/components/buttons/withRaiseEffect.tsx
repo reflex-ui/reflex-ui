@@ -96,14 +96,17 @@ const createMotionRaiseStyles: MotionRaiseStylesCreator = ({
 };
 
 export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
-  P extends SubProps<InteractionStateProps> & ViewProps
+  SubcomponentProps extends SubProps<InteractionStateProps> &
+    ViewProps & { children?: React.ReactNode }
 >(
-  WrappedComponent: React.ComponentType<P>,
-): React.ComponentType<P> =>
-  reflexComponent<P>({ wrapped: WrappedComponent })(
-    class WithRaiseEffect extends React.Component<P> {
+  WrappedComponent: React.ComponentType<SubcomponentProps>,
+): React.ComponentType<SubcomponentProps> =>
+  reflexComponent<SubcomponentProps>({
+    wrapped: WrappedComponent,
+  })(
+    class WithRaiseEffect extends React.Component<SubcomponentProps> {
       public static getDerivedStateFromProps(
-        props: P,
+        props: SubcomponentProps,
         state: RaisedComponentState,
       ) {
         const { interactionState } = props.componentProps;
@@ -184,8 +187,12 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
 
       // tslint:disable-next-line:no-any
       public animatedView: any;
-      // tslint:disable-next-line:no-any
-      public raiseAnimation: (props: {}) => Keyframes<any, any>;
+      public raiseAnimation: (props: {
+        children?: React.ReactNode;
+        native?: boolean;
+        state: AnimationKeyframe;
+      }) => // tslint:disable-next-line:no-any
+      Keyframes<any, any>;
 
       public readonly state: RaisedComponentState = {
         animationKeyframe: AnimationKeyframe.Disabled,
@@ -193,7 +200,7 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
         staticRaiseStyles: { container: {}, shadow: {} },
       };
 
-      public constructor(props: P) {
+      public constructor(props: SubcomponentProps) {
         super(props);
 
         this.animatedView = animated(View);
@@ -310,8 +317,6 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
       };
 
       public render() {
-        // @ts-ignore [ts] Rest types may only be created from object types.
-        // https://github.com/Microsoft/TypeScript/issues/10727
         const { children, ...otherProps } = this.props;
         const RaiseAnimation = this.raiseAnimation;
 
@@ -319,6 +324,9 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
         const AnimatedView = this.animatedView;
 
         return (
+          // @ts-ignore some issue with object spread (otherProps),
+          // is giving an error with a crypt message.
+          // Needs more investigation.
           <WrappedComponent {...otherProps} onLayout={this.onLayoutChanged}>
             <React.Fragment>
               <View style={this.state.staticRaiseStyles.container}>
@@ -352,9 +360,9 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
                       */
 
                       /*
-                      * Temporary solution. Need to investigate how to animate
-                      * shadowOffset, i.e., an object of values.
-                      */
+                       * Temporary solution. Need to investigate how to animate
+                       * shadowOffset, i.e., an object of values.
+                       */
                       const interactionType = this.props.componentProps
                         .interactionState.type;
 

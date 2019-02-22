@@ -29,10 +29,10 @@ export interface TextInputProperties {
 }
 
 export interface TouchableWithoutFeedbackProps {
-    onBlur?: React.FocusEventHandler<{}>;
-    onFocus?: React.FocusEventHandler<{}>;
-    onMouseEnter?: React.MouseEventHandler<{}>;
-    onMouseLeave?: React.MouseEventHandler<{}>;
+    onBlur?: React.FocusEventHandler;
+    onFocus?: React.FocusEventHandler;
+    onMouseEnter?: React.MouseEventHandler;
+    onMouseLeave?: React.MouseEventHandler;
 }
 
 export interface SwitchProperties {
