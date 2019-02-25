@@ -17,7 +17,7 @@ import {
   // createAnimatedComponentsTheme,
   createComponentsTheme,
   // deepPurple500TealA700PaletteTheme,
-} from '@reflex-ui/material-design';
+} from '@reflex-ui/core-md';
 import * as React from 'react';
 
 const mdComponentsTheme: ComponentsTheme = createComponentsTheme();

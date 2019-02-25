@@ -1,6 +1,6 @@
 {
   "name": "@reflex-ui/icons-md",
-  "description": "Cross-Platform iOS, Adnroid and Web icons based on ReflexUI.",
+  "description": "Cross-Platform Material Design icons based on material-design-icons and ReflexUI.",
   "author": {
     "name": "Flavio Silva",
     "email": "flsilva7@gmail.com",
@@ -22,13 +22,13 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/flsilva/react-platform-material-design.git"
+    "url": "https://github.com/reflex-ui/reflex-ui.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/flsilva/react-platform-material-design.git/issues"
+    "url": "https://github.com/reflex-ui/reflex-ui.git/issues"
   },
-  "homepage": "https://github.com/flsilva/react-platform-material-design",
+  "homepage": "https://github.com/reflex-ui/reflex-ui",
   "publishConfig": {
     "access": "public"
   },

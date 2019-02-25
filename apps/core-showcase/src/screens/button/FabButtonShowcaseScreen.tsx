@@ -15,11 +15,11 @@ import {
   InteractionType,
   OptionalButtonProps,
 } from '@reflex-ui/core';
-import { FavoriteIcon } from '@reflex-ui/icons-md';
 import {
   disabledGrey300_500,
   getInlayColorByInteraction,
-} from '@reflex-ui/material-design';
+} from '@reflex-ui/core-md';
+import { FavoriteIcon } from '@reflex-ui/icons-md';
 import * as React from 'react';
 
 import { ButtonShowcaseScreen } from './ButtonShowcaseScreen';

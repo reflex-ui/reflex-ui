@@ -12,7 +12,7 @@
   "scripts": {
     "postinstall": "node ./scripts/react-native-web-tsd.js",
     "tsc-core": "tsc -w -p packages/core/tsconfig.json",
-    "tsc-md": "tsc -w -p packages/material-design/tsconfig.json",
+    "tsc-core-md": "tsc -w -p packages/core-md/tsconfig.json",
     "tsc-svg2jsx": "tsc -w -p packages/svg2jsx/tsconfig.json"
   },
   "devDependencies": {
