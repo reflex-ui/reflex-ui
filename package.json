@@ -6,8 +6,8 @@
     "yarn": "^1.9.4"
   },
   "workspaces": [
-    "packages/*",
-    "showcase/*"
+    "apps/*",
+    "packages/*"
   ],
   "scripts": {
     "postinstall": "node ./scripts/react-native-web-tsd.js",
