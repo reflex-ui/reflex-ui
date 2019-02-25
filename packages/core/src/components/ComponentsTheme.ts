@@ -5,15 +5,15 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { AppBarVariantsTheme } from './app-bars';
-import { ButtonVariantsTheme } from './buttons';
+import { AppBarVariantsTheme } from './app-bar';
+import { ButtonVariantsTheme } from './button';
 import { ListTheme } from './list';
 import { ListItemTheme } from './list-item';
 import { SurfaceTheme } from './surface';
 import { FlexSvgVariantsTheme } from './svg';
 import { TouchableSurfaceTheme } from './touchable-surface';
 import { TypographyTheme } from './typography';
-import { SuperViewVariantsTheme } from './views';
+import { SuperViewVariantsTheme } from './view';
 
 export interface ComponentsTheme {
   readonly appBar: AppBarVariantsTheme;

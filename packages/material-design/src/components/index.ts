@@ -6,8 +6,8 @@
  */
 
 export * from './animatedMaterialDesignTheme';
-export * from './app-bars';
-export * from './buttons';
+export * from './app-bar';
+export * from './button';
 export * from './createAnimatedComponentsTheme';
 export * from './createComponentsTheme';
 export * from './list';
@@ -17,4 +17,4 @@ export * from './surface';
 export * from './svg';
 export * from './touchable-surface';
 export * from './typography';
-export * from './views';
+export * from './view';

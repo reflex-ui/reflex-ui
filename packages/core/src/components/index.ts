@@ -5,8 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './app-bars';
-export * from './buttons';
+export * from './app-bar';
+export * from './button';
 export * from './ComponentsTheme';
 export * from './ComponentsThemeContext';
 export * from './createComponentsTheme';
@@ -25,4 +25,4 @@ export * from './svg';
 export * from './touchable-surface';
 export * from './touchable';
 export * from './typography';
-export * from './views';
+export * from './view';

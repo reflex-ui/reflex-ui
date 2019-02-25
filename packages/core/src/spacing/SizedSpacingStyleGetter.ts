@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ViewStyleGetter } from '../components/views';
+import { ViewStyleGetter } from '../components/view/ViewStyleGetter';
 import { SizedSpacing } from './SizedSpacing';
 
 export type SizedSpacingStyleGetter<Props> = (

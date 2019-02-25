@@ -18,8 +18,8 @@ import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
 // tslint:disable-next-line:max-line-length
-import { getDefaultButtonRippleColor } from '../buttons/default/getDefaultButtonRippleColor';
-import { withRippleEffect } from '../buttons/withRippleEffect';
+import { getDefaultButtonRippleColor } from '../button/default/getDefaultButtonRippleColor';
+import { withRippleEffect } from '../button/withRippleEffect';
 import { getTouchableSurfaceContainerStyle } from './container';
 
 export const getAnimatedTouchableSurfaceContainerStyle: ViewStyleGetter<

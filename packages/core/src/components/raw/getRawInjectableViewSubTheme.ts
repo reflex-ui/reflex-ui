@@ -9,7 +9,7 @@ import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
 import { InjectableSubTheme } from '../subcomponents/InjectableSubTheme';
-import { DefaultViewSubcomponent } from '../views/DefaultViewSubcomponent';
+import { DefaultViewSubcomponent } from '../view/DefaultViewSubcomponent';
 import { getRawSubTheme } from './getRawSubTheme';
 
 export const getRawInjectableViewSubTheme = <

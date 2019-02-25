@@ -7,8 +7,8 @@
 
 import { ComponentsTheme } from '@reflex-ui/core';
 
-import { appBarVariantsTheme } from './app-bars/theme';
-import { animatedButtonTheme } from './buttons/animatedTheme';
+import { appBarVariantsTheme } from './app-bar/theme';
+import { animatedButtonTheme } from './button/animatedTheme';
 import { listItemTheme } from './list-item/theme';
 import { listTheme } from './list/theme';
 import { surfaceTheme } from './surface/theme';
@@ -16,7 +16,7 @@ import { flexSvgVariantsTheme } from './svg/theme';
 // tslint:disable-next-line:max-line-length
 import { animatedTouchableSurfaceTheme } from './touchable-surface/animatedTheme';
 import { typographyTheme } from './typography/theme';
-import { superViewTheme } from './views/theme';
+import { superViewTheme } from './view/theme';
 
 export const animatedMaterialDesignTheme: ComponentsTheme = {
   appBar: appBarVariantsTheme,

@@ -7,15 +7,15 @@
 
 import { ComponentsTheme } from '@reflex-ui/core';
 
-import { appBarVariantsTheme } from './app-bars/theme';
-import { buttonTheme } from './buttons/theme';
+import { appBarVariantsTheme } from './app-bar/theme';
+import { buttonTheme } from './button/theme';
 import { listItemTheme } from './list-item/theme';
 import { listTheme } from './list/theme';
 import { surfaceTheme } from './surface/theme';
 import { flexSvgVariantsTheme } from './svg/theme';
 import { touchableSurfaceTheme } from './touchable-surface/theme';
 import { typographyTheme } from './typography/theme';
-import { superViewTheme } from './views/theme';
+import { superViewTheme } from './view/theme';
 
 export const materialDesignTheme: ComponentsTheme = {
   appBar: appBarVariantsTheme,
