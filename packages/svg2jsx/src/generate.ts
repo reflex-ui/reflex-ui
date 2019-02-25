@@ -165,22 +165,22 @@ export const svgr2SvgIcon: FileDataTransformer = ({ fileData, filePath }) => {
   let svgIcon: string = fileData.replace(
     'import React from "react";',
     `import * as React from 'react';
-    // @ts-ignore Could not find a declaration file for module 'swgs'.
-    // tslint:disable-next-line:import-name`,
+    // tslint:disable-next-line:ordered-imports`,
   );
 
+  svgIcon = svgIcon.replace('import Svg, { ', 'import { Svg, ');
   svgIcon = svgIcon.replace(/react-native-svg/g, 'swgs');
 
   svgIcon = svgIcon.replace(
     'const SvgComponent = props => ',
     `import {
-       OptionalFlexSvgProps,
+       FlexSvgPropsOptional,
        reflexComponent,
        SvgIcon,
      } from '@reflex-ui/core';\n
-    export const SvgComponent = reflexComponent<OptionalFlexSvgProps>({
+    export const SvgComponent = reflexComponent<FlexSvgPropsOptional>({
       name: 'SvgComponent',
-    })((props: OptionalFlexSvgProps) => (
+    })((props: FlexSvgPropsOptional) => (
       <SvgIcon {...props}>
     `,
   );
@@ -188,6 +188,7 @@ export const svgr2SvgIcon: FileDataTransformer = ({ fileData, filePath }) => {
   svgIcon = svgIcon.replace(/(<Svg .*){...props}/g, '$1');
   svgIcon = svgIcon.replace(/(<Svg .*)width={[^}]*}/g, '$1');
   svgIcon = svgIcon.replace(/(<Svg .*)height={[^}]*}/g, '$1');
+  svgIcon = svgIcon.replace(/(<Svg .*)baseProfile="[^"]*"/g, '$1');
   svgIcon = svgIcon.replace('</Svg>;', '</Svg></SvgIcon>));');
   svgIcon = svgIcon.replace('export default SvgComponent;', '');
 
