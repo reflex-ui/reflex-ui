@@ -4,17 +4,16 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "web": "react-scripts start",
-    "build": "react-app-rewired build --scripts-version react-scripts-ts",
+    "web-start": "react-scripts start",
+    "web-build": "react-scripts build",
     "ios": "react-native run-ios --no-packager --simulator=\"iPhone X\"",
     "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug",
     "android-release": "cd ./android && ./gradlew app:assembleRelease",
     "android-packager": "cd ../../ && node node_modules/react-native/local-cli/cli.js start --reset-cache --port 8082 --config ../../../../apps/core-showcase/rn-cli.config.js",
     "ios-packager": "cd ../../ && node node_modules/react-native/local-cli/cli.js start --reset-cache --port 8081 --config ../../../../apps/core-showcase/rn-cli.config.js",
-    "test": "react-app-rewired test --scripts-version react-scripts-ts --env=jsdom",
-    "eject": "react-scripts-ts eject",
-    "lint": "tslint -p tsconfig.json -c tslint.json",
-    "rebuild": "rm -rf ios; rm -rf android; react-native upgrade; rm -f .babelrc; rm -f .buckconfig; rm -f .flowconfig; rm -f .watchmanconfig; rm -f .gitattributes;"
+    "web-test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "tslint -p tsconfig.json -c tslint.json"
   },
   "dependencies": {
     "react": "16.7.0",
