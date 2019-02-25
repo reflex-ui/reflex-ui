@@ -9,7 +9,7 @@ import { ViewProps, ViewStyle } from 'react-native';
 
 import {
   InjectableSubTheme,
-  OptionalInjectableSubTheme,
+  InjectableSubThemeOptional,
 } from '../subcomponents';
 import { SuperViewProps } from './SuperViewProps';
 
@@ -17,8 +17,8 @@ export interface SuperViewTheme {
   readonly container: InjectableSubTheme<SuperViewProps, ViewProps, ViewStyle>;
 }
 
-export interface OptionalSuperViewTheme {
-  readonly container?: OptionalInjectableSubTheme<
+export interface SuperViewThemeOptional {
+  readonly container?: InjectableSubThemeOptional<
     SuperViewProps,
     ViewProps,
     ViewStyle

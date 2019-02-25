@@ -14,12 +14,12 @@ import { DimensionsContext } from '../../responsiveness/DimensionsContext';
 import { Size } from '../../sizing/Size';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { reflexComponent } from '../reflexComponent';
-import { ListItemProps, OptionalListItemProps } from './ListItemProps';
+import { ListItemProps, ListItemPropsOptional } from './ListItemProps';
 
 export const withDefaultListItemProps = (
   WrappedComponent: React.ComponentType<ListItemProps>,
-): React.ComponentType<OptionalListItemProps> =>
-  reflexComponent<OptionalListItemProps>({
+): React.ComponentType<ListItemPropsOptional> =>
+  reflexComponent<ListItemPropsOptional>({
     name: 'WithDefaultListItemProps',
     wrapped: WrappedComponent,
   })(props => (

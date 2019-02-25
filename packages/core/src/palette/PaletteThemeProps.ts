@@ -14,4 +14,4 @@ export interface PaletteThemeProps {
   readonly paletteTheme: PaletteTheme;
 }
 
-export type OptionalPaletteThemeProps = Partial<PaletteThemeProps>;
+export type PaletteThemePropsOptional = Partial<PaletteThemeProps>;

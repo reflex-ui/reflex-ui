@@ -13,12 +13,12 @@ import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
 import { DimensionsContext } from '../../responsiveness/DimensionsContext';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { reflexComponent } from '../reflexComponent';
-import { OptionalSurfaceProps, SurfaceProps } from './SurfaceProps';
+import { SurfaceProps, SurfacePropsOptional } from './SurfaceProps';
 
 export const withDefaultSurfaceProps = (
   WrappedComponent: React.ComponentType<SurfaceProps>,
-): React.ComponentType<OptionalSurfaceProps> =>
-  reflexComponent<OptionalSurfaceProps>({
+): React.ComponentType<SurfacePropsOptional> =>
+  reflexComponent<SurfacePropsOptional>({
     name: 'WithDefaultSurfaceProps',
     wrapped: WrappedComponent,
   })(props => (

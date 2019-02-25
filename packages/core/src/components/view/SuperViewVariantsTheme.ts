@@ -5,13 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { OptionalSuperViewTheme, SuperViewTheme } from './SuperViewTheme';
+import { SuperViewTheme, SuperViewThemeOptional } from './SuperViewTheme';
 
 export interface SuperViewVariantsTheme {
   readonly column: SuperViewTheme;
   readonly row: SuperViewTheme;
 }
 
-export type OptionalSuperViewVariantsTheme = {
-  [P in keyof SuperViewVariantsTheme]?: OptionalSuperViewTheme
+export type SuperViewVariantsThemeOptional = {
+  [P in keyof SuperViewVariantsTheme]?: SuperViewThemeOptional
 };

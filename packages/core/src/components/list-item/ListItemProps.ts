@@ -26,4 +26,4 @@ export interface ListItemProps
   readonly theme: ListItemTheme;
 }
 
-export type OptionalListItemProps = Partial<ListItemProps>;
+export type ListItemPropsOptional = Partial<ListItemProps>;

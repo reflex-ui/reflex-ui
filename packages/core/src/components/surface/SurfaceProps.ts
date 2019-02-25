@@ -30,4 +30,4 @@ export interface SurfaceProps
   readonly theme: SurfaceTheme;
 }
 
-export type OptionalSurfaceProps = Partial<SurfaceProps>;
+export type SurfacePropsOptional = Partial<SurfaceProps>;

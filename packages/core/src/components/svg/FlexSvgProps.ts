@@ -24,4 +24,4 @@ export interface FlexSvgProps
   readonly theme: FlexSvgTheme;
 }
 
-export type OptionalFlexSvgProps = Partial<FlexSvgProps>;
+export type FlexSvgPropsOptional = Partial<FlexSvgProps>;

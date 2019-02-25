@@ -15,7 +15,7 @@ export interface PaletteColorInteraction {
   readonly pressed: PaletteColor;
 }
 
-export interface OptionalPaletteColorInteraction {
+export interface PaletteColorInteractionOptional {
   readonly disabled: PaletteColor;
   readonly enabled: PaletteColor;
   readonly focused?: PaletteColor;

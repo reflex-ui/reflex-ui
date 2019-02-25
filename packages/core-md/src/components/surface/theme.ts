@@ -9,11 +9,11 @@ import {
   getSizedMarginStyle,
   getSizedPaddingStyle,
   getThemedColor,
-  OptionalInjectableSubTheme,
-  OptionalSurfaceTheme,
+  InjectableSubThemeOptional,
   rawSurfaceTheme,
   SurfaceProps,
   SurfaceTheme,
+  SurfaceThemeOptional,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
@@ -36,7 +36,7 @@ export const getSurfaceContainerStyle: ViewStyleGetter<
   borderRadius: 4,
 });
 
-export const surfaceContainerTheme: OptionalInjectableSubTheme<
+export const surfaceContainerTheme: InjectableSubThemeOptional<
   SurfaceProps,
   ViewProps,
   ViewStyle
@@ -44,12 +44,12 @@ export const surfaceContainerTheme: OptionalInjectableSubTheme<
   getStyle: getSurfaceContainerStyle,
 };
 
-export const optionalSurfaceTheme: OptionalSurfaceTheme = {
+export const optionalSurfaceTheme: SurfaceThemeOptional = {
   container: surfaceContainerTheme,
 };
 
 export const surfaceTheme: SurfaceTheme = merge<
   {},
   SurfaceTheme,
-  OptionalSurfaceTheme
+  SurfaceThemeOptional
 >({}, rawSurfaceTheme, optionalSurfaceTheme);

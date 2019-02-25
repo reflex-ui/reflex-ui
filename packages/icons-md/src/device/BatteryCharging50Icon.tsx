@@ -1,17 +1,16 @@
 import * as React from 'react';
-// @ts-ignore Could not find a declaration file for module 'swgs'.
-// tslint:disable-next-line:import-name
-import Svg, { Path } from 'swgs';
+// tslint:disable-next-line:ordered-imports
+import { Svg, Path } from 'swgs';
 
 import {
-  OptionalFlexSvgProps,
+  FlexSvgPropsOptional,
   reflexComponent,
   SvgIcon,
 } from '@reflex-ui/core';
 
-export const BatteryCharging50Icon = reflexComponent<OptionalFlexSvgProps>({
+export const BatteryCharging50Icon = reflexComponent<FlexSvgPropsOptional>({
   name: 'BatteryCharging50Icon',
-})((props: OptionalFlexSvgProps) => (
+})((props: FlexSvgPropsOptional) => (
   <SvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Path d="M14.47 13.5L11 20v-5.5H9l.53-1H7v7.17C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V13.5h-2.53z" />

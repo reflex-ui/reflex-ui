@@ -1,17 +1,16 @@
 import * as React from 'react';
-// @ts-ignore Could not find a declaration file for module 'swgs'.
-// tslint:disable-next-line:import-name
-import Svg, { Path } from 'swgs';
+// tslint:disable-next-line:ordered-imports
+import { Svg, Path } from 'swgs';
 
 import {
-  OptionalFlexSvgProps,
+  FlexSvgPropsOptional,
   reflexComponent,
   SvgIcon,
 } from '@reflex-ui/core';
 
-export const ScreenLockLandscapeIcon = reflexComponent<OptionalFlexSvgProps>({
+export const ScreenLockLandscapeIcon = reflexComponent<FlexSvgPropsOptional>({
   name: 'ScreenLockLandscapeIcon',
-})((props: OptionalFlexSvgProps) => (
+})((props: FlexSvgPropsOptional) => (
   <SvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Path d="M21 5H3c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-2 12H5V7h14v10zm-9-1h4c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1v-1c0-1.11-.9-2-2-2-1.11 0-2 .9-2 2v1c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1zm.8-6c0-.66.54-1.2 1.2-1.2.66 0 1.2.54 1.2 1.2v1h-2.4v-1z" />

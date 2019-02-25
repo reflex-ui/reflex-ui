@@ -9,7 +9,7 @@ import { ViewProps, ViewStyle } from 'react-native';
 
 import {
   InjectableSubTheme,
-  OptionalInjectableSubTheme,
+  InjectableSubThemeOptional,
 } from '../subcomponents';
 import { ListItemProps } from './ListItemProps';
 
@@ -17,8 +17,8 @@ export interface ListItemTheme {
   readonly container: InjectableSubTheme<ListItemProps, ViewProps, ViewStyle>;
 }
 
-export interface OptionalListItemTheme {
-  readonly container?: OptionalInjectableSubTheme<
+export interface ListItemThemeOptional {
+  readonly container?: InjectableSubThemeOptional<
     ListItemProps,
     ViewProps,
     ViewStyle

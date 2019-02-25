@@ -12,12 +12,12 @@ import {
   getSizedPaddingStyle,
   getThemedColor,
   isWeb,
-  OptionalTypographyTheme,
   PaletteThemeProps,
   rawTypographyTheme,
   TextStyleGetter,
   TypographyProps,
   TypographyTheme,
+  TypographyThemeOptional,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 import { Platform, TextStyle } from 'react-native';
@@ -51,7 +51,7 @@ export const getCommonTypographyStyle: TextStyleGetter<
   }),
 });
 
-export const partialTypographyTheme: OptionalTypographyTheme = {
+export const partialTypographyTheme: TypographyThemeOptional = {
   appBarTitle: {
     getStyle: (props): TextStyle => ({
       ...getCommonTypographyStyle(props),

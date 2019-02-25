@@ -11,7 +11,7 @@ import { GestureResponderEvent } from 'react-native';
 import { reflexComponent } from '../components/reflexComponent';
 import { isWeb } from '../utils';
 import { InteractionEvent } from './InteractionEvent';
-import { InteractionProps, OptionalInteractionProps } from './InteractionProps';
+import { InteractionProps, InteractionPropsOptional } from './InteractionProps';
 import { InteractionState } from './InteractionState';
 import { InteractionType } from './InteractionType';
 
@@ -23,7 +23,7 @@ interface State {
   readonly isPressing: boolean;
 }
 
-export const withInteractionState = <P extends OptionalInteractionProps>(
+export const withInteractionState = <P extends InteractionPropsOptional>(
   WrappedComponent: React.ComponentType<P>,
 ): React.ComponentType<P> =>
   reflexComponent<P>({ wrapped: WrappedComponent })(

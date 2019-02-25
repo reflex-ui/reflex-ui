@@ -6,8 +6,8 @@
  */
 
 import {
-  OptionalTouchableSurfaceTheme,
   TouchableSurfaceTheme,
+  TouchableSurfaceThemeOptional,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
@@ -15,12 +15,12 @@ import { animatedTouchableSurfaceContainerTheme } from './animatedContainer';
 import { touchableSurfaceTheme } from './theme';
 
 // tslint:disable-next-line:max-line-length
-export const partialAnimatedTouchableSurfaceTheme: OptionalTouchableSurfaceTheme = {
+export const partialAnimatedTouchableSurfaceTheme: TouchableSurfaceThemeOptional = {
   container: animatedTouchableSurfaceContainerTheme,
 };
 
 export const animatedTouchableSurfaceTheme: TouchableSurfaceTheme = merge<
   {},
   TouchableSurfaceTheme,
-  OptionalTouchableSurfaceTheme
+  TouchableSurfaceThemeOptional
 >({}, touchableSurfaceTheme, partialAnimatedTouchableSurfaceTheme);

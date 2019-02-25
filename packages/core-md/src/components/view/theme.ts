@@ -8,11 +8,11 @@
 import {
   getSizedMarginStyle,
   getSizedPaddingStyle,
-  OptionalInjectableSubTheme,
-  OptionalSuperViewTheme,
+  InjectableSubThemeOptional,
   rawSuperViewTheme,
   SuperViewProps,
   SuperViewTheme,
+  SuperViewThemeOptional,
   SuperViewVariantsTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
@@ -46,7 +46,7 @@ export const getColumnContainerStyle: ViewStyleGetter<
   flexWrap: 'wrap',
 });
 
-export const columnContainerTheme: OptionalInjectableSubTheme<
+export const columnContainerTheme: InjectableSubThemeOptional<
   SuperViewProps,
   ViewProps,
   ViewStyle
@@ -54,14 +54,14 @@ export const columnContainerTheme: OptionalInjectableSubTheme<
   getStyle: getColumnContainerStyle,
 };
 
-export const optionalColumnTheme: OptionalSuperViewTheme = {
+export const optionalColumnTheme: SuperViewThemeOptional = {
   container: columnContainerTheme,
 };
 
 export const columnTheme: SuperViewTheme = merge<
   {},
   SuperViewTheme,
-  OptionalSuperViewTheme
+  SuperViewThemeOptional
 >({}, rawSuperViewTheme, optionalColumnTheme);
 
 /*
@@ -74,7 +74,7 @@ export const getRowContainerStyle: ViewStyleGetter<SuperViewProps> = props => ({
   flexWrap: 'wrap',
 });
 
-export const rowContainerTheme: OptionalInjectableSubTheme<
+export const rowContainerTheme: InjectableSubThemeOptional<
   SuperViewProps,
   ViewProps,
   ViewStyle
@@ -82,14 +82,14 @@ export const rowContainerTheme: OptionalInjectableSubTheme<
   getStyle: getRowContainerStyle,
 };
 
-export const optionalRowTheme: OptionalSuperViewTheme = {
+export const optionalRowTheme: SuperViewThemeOptional = {
   container: rowContainerTheme,
 };
 
 export const rowTheme: SuperViewTheme = merge<
   {},
   SuperViewTheme,
-  OptionalSuperViewTheme
+  SuperViewThemeOptional
 >({}, rawSuperViewTheme, optionalRowTheme);
 
 /*

@@ -30,4 +30,4 @@ export interface SuperViewProps
   readonly theme: SuperViewTheme;
 }
 
-export type OptionalSuperViewProps = Partial<SuperViewProps>;
+export type SuperViewPropsOptional = Partial<SuperViewProps>;

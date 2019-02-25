@@ -13,13 +13,13 @@ import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
 import { DimensionsContext } from '../../responsiveness/DimensionsContext';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { reflexComponent } from '../reflexComponent';
-import { AppBarProps, OptionalAppBarProps } from './AppBarProps';
+import { AppBarProps, AppBarPropsOptional } from './AppBarProps';
 import { AppBarVariant } from './AppBarVariant';
 
 export const withDefaultAppBarProps = (
   WrappedComponent: React.ComponentType<AppBarProps>,
-): React.ComponentType<OptionalAppBarProps> =>
-  reflexComponent<OptionalAppBarProps>({
+): React.ComponentType<AppBarPropsOptional> =>
+  reflexComponent<AppBarPropsOptional>({
     name: 'WithDefaultAppBarProps',
     wrapped: WrappedComponent,
   })(props => (

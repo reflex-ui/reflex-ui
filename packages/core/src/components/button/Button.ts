@@ -8,11 +8,11 @@
 import * as React from 'react';
 
 import { withInteractionState } from '../../interaction';
-import { OptionalButtonProps } from './ButtonProps';
+import { ButtonPropsOptional } from './ButtonProps';
 import { SimpleButton } from './SimpleButton';
 import { withDefaultButtonProps } from './withDefaultButtonProps';
 
-const Button: React.ComponentType<OptionalButtonProps> = withInteractionState(
+const Button: React.ComponentType<ButtonPropsOptional> = withInteractionState(
   withDefaultButtonProps(SimpleButton),
 );
 

@@ -7,15 +7,15 @@
 
 import {
   createPaletteTheme as createPaletteThemeCore,
-  OptionalPaletteTheme,
   PaletteTheme,
+  PaletteThemeOptional,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
 export const createPaletteTheme = (
   baseTheme: PaletteTheme,
-  theme: OptionalPaletteTheme,
+  theme: PaletteThemeOptional,
 ): PaletteTheme =>
   createPaletteThemeCore(
-    merge<{}, PaletteTheme, OptionalPaletteTheme>({}, baseTheme, theme),
+    merge<{}, PaletteTheme, PaletteThemeOptional>({}, baseTheme, theme),
   );

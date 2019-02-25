@@ -9,7 +9,7 @@ import { TextProps, TextStyle } from 'react-native';
 
 import {
   InjectableSubTheme,
-  OptionalInjectableSubTheme,
+  InjectableSubThemeOptional,
 } from '../subcomponents';
 import { TypographyProps } from './TypographyProps';
 
@@ -41,68 +41,68 @@ export interface TypographyTheme {
   readonly subtitle2: InjectableSubTheme<TypographyProps, TextProps, TextStyle>;
 }
 
-export interface OptionalTypographyTheme {
-  readonly appBarTitle?: OptionalInjectableSubTheme<
+export interface TypographyThemeOptional {
+  readonly appBarTitle?: InjectableSubThemeOptional<
     TypographyProps,
     TextProps,
     TextStyle
   >;
-  readonly caption?: OptionalInjectableSubTheme<
+  readonly caption?: InjectableSubThemeOptional<
     TypographyProps,
     TextProps,
     TextStyle
   >;
-  readonly headline1?: OptionalInjectableSubTheme<
+  readonly headline1?: InjectableSubThemeOptional<
     TypographyProps,
     TextProps,
     TextStyle
   >;
-  readonly headline2?: OptionalInjectableSubTheme<
+  readonly headline2?: InjectableSubThemeOptional<
     TypographyProps,
     TextProps,
     TextStyle
   >;
-  readonly headline3?: OptionalInjectableSubTheme<
+  readonly headline3?: InjectableSubThemeOptional<
     TypographyProps,
     TextProps,
     TextStyle
   >;
-  readonly headline4?: OptionalInjectableSubTheme<
+  readonly headline4?: InjectableSubThemeOptional<
     TypographyProps,
     TextProps,
     TextStyle
   >;
-  readonly headline5?: OptionalInjectableSubTheme<
+  readonly headline5?: InjectableSubThemeOptional<
     TypographyProps,
     TextProps,
     TextStyle
   >;
-  readonly headline6?: OptionalInjectableSubTheme<
+  readonly headline6?: InjectableSubThemeOptional<
     TypographyProps,
     TextProps,
     TextStyle
   >;
-  readonly overline?: OptionalInjectableSubTheme<
+  readonly overline?: InjectableSubThemeOptional<
     TypographyProps,
     TextProps,
     TextStyle
   >;
-  readonly paragraph1?: OptionalInjectableSubTheme<
+  readonly paragraph1?: InjectableSubThemeOptional<
     TypographyProps,
     TextProps,
     TextStyle
   >;
-  readonly paragraph2?: OptionalInjectableSubTheme<
+  readonly paragraph2?: InjectableSubThemeOptional<
     TypographyProps,
     TextProps,
     TextStyle
   >;
-  readonly subtitle1?: OptionalInjectableSubTheme<
+  readonly subtitle1?: InjectableSubThemeOptional<
     TypographyProps,
     TextProps,
     TextStyle
   >;
-  readonly subtitle2?: OptionalInjectableSubTheme<
+  readonly subtitle2?: InjectableSubThemeOptional<
     TypographyProps,
     TextProps,
     TextStyle

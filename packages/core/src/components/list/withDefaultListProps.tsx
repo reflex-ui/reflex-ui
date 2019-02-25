@@ -13,12 +13,12 @@ import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
 import { DimensionsContext } from '../../responsiveness/DimensionsContext';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { reflexComponent } from '../reflexComponent';
-import { ListProps, OptionalListProps } from './ListProps';
+import { ListProps, ListPropsOptional } from './ListProps';
 
 export const withDefaultListProps = (
   WrappedComponent: React.ComponentType<ListProps>,
-): React.ComponentType<OptionalListProps> =>
-  reflexComponent<OptionalListProps>({
+): React.ComponentType<ListPropsOptional> =>
+  reflexComponent<ListPropsOptional>({
     name: 'WithDefaultListProps',
     wrapped: WrappedComponent,
   })(props => (

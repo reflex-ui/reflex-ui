@@ -9,10 +9,10 @@ import * as React from 'react';
 
 // tslint:disable-next-line:max-line-length
 import { withResponsivenessProps } from '../../responsiveness/withResponsivenessProps';
-import { OptionalAppBarProps } from './AppBarProps';
+import { AppBarPropsOptional } from './AppBarProps';
 import { SimpleAppBar } from './SimpleAppBar';
 import { withDefaultAppBarProps } from './withDefaultAppBarProps';
 
 export const AppBar: React.ComponentType<
-  OptionalAppBarProps
+  AppBarPropsOptional
 > = withResponsivenessProps(withDefaultAppBarProps(SimpleAppBar));

@@ -7,9 +7,9 @@
 
 import merge from 'lodash/merge';
 
-import { ComponentsTheme, OptionalComponentsTheme } from './ComponentsTheme';
+import { ComponentsTheme, ComponentsThemeOptional } from './ComponentsTheme';
 import { rawComponentsTheme } from './raw/rawComponentsTheme';
 
 export const createComponentsTheme = (
-  theme: OptionalComponentsTheme,
+  theme: ComponentsThemeOptional,
 ): ComponentsTheme => merge({}, rawComponentsTheme, theme);

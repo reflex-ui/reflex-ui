@@ -7,7 +7,7 @@
 
 import {
   ButtonProps,
-  OptionalInjectableSubTheme,
+  InjectableSubThemeOptional,
   rawInjectableButtonTextSubTheme,
   TextStyleGetter,
 } from '@reflex-ui/core';
@@ -24,7 +24,7 @@ export const getOutlinedButtonTextStyle: TextStyleGetter<ButtonProps> = (
   ...getDefaultButtonTextColorStyle(props),
 });
 
-export const outlinedButtonTextTheme: OptionalInjectableSubTheme<
+export const outlinedButtonTextTheme: InjectableSubThemeOptional<
   ButtonProps,
   TextProps,
   TextStyle

@@ -13,7 +13,7 @@ import { SvgProps } from 'react-native-svg';
 import { cloneElement } from '../../utils';
 import { reflexComponent } from '../reflexComponent';
 import { getSubProps } from '../subcomponents';
-import { FlexSvgProps, OptionalFlexSvgProps } from './FlexSvgProps';
+import { FlexSvgProps, FlexSvgPropsOptional } from './FlexSvgProps';
 import { FlexSvgSubProps } from './FlexSvgSubProps';
 
 export const extractSvgPropsFromFlexSvgProps = (
@@ -46,7 +46,7 @@ const handleSvgChildren = (
   props: FlexSvgProps,
   userSubProps: FlexSvgSubProps,
 ): React.ReactNode => {
-  const children = props.children as React.ReactElement<OptionalFlexSvgProps>;
+  const children = props.children as React.ReactElement<FlexSvgPropsOptional>;
   if (!children) return undefined;
 
   if (typeof children !== 'object') {

@@ -5,13 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { FlexSvgTheme, OptionalFlexSvgTheme } from './FlexSvgTheme';
+import { FlexSvgTheme, FlexSvgThemeOptional } from './FlexSvgTheme';
 
 export interface FlexSvgVariantsTheme {
   readonly flexSvg: FlexSvgTheme;
   readonly svgIcon: FlexSvgTheme;
 }
 
-export type OptionalFlexSvgVariantsTheme = {
-  [P in keyof FlexSvgVariantsTheme]?: OptionalFlexSvgTheme
+export type FlexSvgVariantsThemeOptional = {
+  [P in keyof FlexSvgVariantsTheme]?: FlexSvgThemeOptional
 };

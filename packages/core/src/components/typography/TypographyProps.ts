@@ -22,4 +22,4 @@ export interface TypographyProps
   readonly theme: InjectableSubTheme<TypographyProps, TextProps, TextStyle>;
 }
 
-export type OptionalTypographyProps = Partial<TypographyProps>;
+export type TypographyPropsOptional = Partial<TypographyProps>;

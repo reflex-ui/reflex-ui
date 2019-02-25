@@ -11,12 +11,12 @@ import { withInteractionState } from '../../interaction';
 // tslint:disable-next-line:max-line-length
 import { withResponsivenessProps } from '../../responsiveness/withResponsivenessProps';
 import { SimpleTouchableSurface } from './SimpleTouchableSurface';
-import { OptionalTouchableSurfaceProps } from './TouchableSurfaceProps';
+import { TouchableSurfacePropsOptional } from './TouchableSurfaceProps';
 // tslint:disable-next-line:max-line-length
 import { withDefaultTouchableSurfaceProps } from './withDefaultTouchableSurfaceProps';
 
 export const TouchableSurface: React.ComponentType<
-  OptionalTouchableSurfaceProps
+  TouchableSurfacePropsOptional
 > = withInteractionState(
   withResponsivenessProps(
     withDefaultTouchableSurfaceProps(SimpleTouchableSurface),

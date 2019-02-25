@@ -13,14 +13,14 @@ import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
 import { Size } from '../../sizing/Size';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { reflexComponent } from '../reflexComponent';
-import { ButtonProps, OptionalButtonProps } from './ButtonProps';
+import { ButtonProps, ButtonPropsOptional } from './ButtonProps';
 import { ButtonVariant } from './ButtonVariant';
 import { getButtonVariantColorTheme } from './getButtonVariantColorTheme';
 
 export const withDefaultButtonProps = (
   WrappedComponent: React.ComponentType<ButtonProps>,
-): React.ComponentType<OptionalButtonProps> =>
-  reflexComponent<OptionalButtonProps>({
+): React.ComponentType<ButtonPropsOptional> =>
+  reflexComponent<ButtonPropsOptional>({
     name: 'WithDefaultButtonProps',
     wrapped: WrappedComponent,
   })(props => (

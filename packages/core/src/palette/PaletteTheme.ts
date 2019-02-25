@@ -6,8 +6,8 @@
  */
 
 import {
-  OptionalPaletteColorArrangement,
   PaletteColorArrangement,
+  PaletteColorArrangementOptional,
 } from './PaletteColorArrangement';
 
 export interface PaletteTheme {
@@ -20,6 +20,6 @@ export interface PaletteTheme {
   readonly warning: PaletteColorArrangement;
 }
 
-export type OptionalPaletteTheme = {
-  [P in keyof PaletteTheme]?: OptionalPaletteColorArrangement
+export type PaletteThemeOptional = {
+  [P in keyof PaletteTheme]?: PaletteColorArrangementOptional
 };

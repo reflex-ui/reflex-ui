@@ -17,4 +17,4 @@ export interface SizingProps {
   width?: number | string;
 }
 
-export type OptionalSizingProps = Partial<SizingProps>;
+export type SizingPropsOptional = Partial<SizingProps>;

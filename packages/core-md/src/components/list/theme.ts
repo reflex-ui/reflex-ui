@@ -9,7 +9,7 @@ import {
   getThemedColor,
   ListProps,
   ListTheme,
-  OptionalListTheme,
+  ListThemeOptional,
   rawListTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
@@ -23,7 +23,7 @@ export const getListContainerStyle: ViewStyleGetter<ListProps> = props => ({
   ...getSizingStyle(props),
 });
 
-export const partialListTheme: OptionalListTheme = {
+export const partialListTheme: ListThemeOptional = {
   container: {
     getStyle: getListContainerStyle,
   },

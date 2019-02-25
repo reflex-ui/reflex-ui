@@ -27,4 +27,4 @@ export interface TouchableSurfaceProps
   readonly theme: TouchableSurfaceTheme;
 }
 
-export type OptionalTouchableSurfaceProps = Partial<TouchableSurfaceProps>;
+export type TouchableSurfacePropsOptional = Partial<TouchableSurfaceProps>;

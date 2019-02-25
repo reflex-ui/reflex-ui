@@ -1,17 +1,16 @@
 import * as React from 'react';
-// @ts-ignore Could not find a declaration file for module 'swgs'.
-// tslint:disable-next-line:import-name
-import Svg, { Circle } from 'swgs';
+// tslint:disable-next-line:ordered-imports
+import { Svg, Circle } from 'swgs';
 
 import {
-  OptionalFlexSvgProps,
+  FlexSvgPropsOptional,
   reflexComponent,
   SvgIcon,
 } from '@reflex-ui/core';
 
-export const BubbleChartIcon = reflexComponent<OptionalFlexSvgProps>({
+export const BubbleChartIcon = reflexComponent<FlexSvgPropsOptional>({
   name: 'BubbleChartIcon',
-})((props: OptionalFlexSvgProps) => (
+})((props: FlexSvgPropsOptional) => (
   <SvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Circle cx={7.2} cy={14.4} r={3.2} />

@@ -13,11 +13,11 @@ import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { reflexComponent } from '../reflexComponent';
 import { SimpleText } from './SimpleText';
-import { OptionalTypographyProps, TypographyProps } from './TypographyProps';
+import { TypographyProps, TypographyPropsOptional } from './TypographyProps';
 
-export const Overline = reflexComponent<OptionalTypographyProps>({
+export const Overline = reflexComponent<TypographyPropsOptional>({
   name: 'Overline',
-})((props: OptionalTypographyProps) => (
+})((props: TypographyPropsOptional) => (
   <PaletteThemeContext.Consumer>
     {paletteTheme => (
       <ColorThemeContext.Consumer>

@@ -13,7 +13,7 @@ export interface SubTheme<ComponentProps, OutputProps, OutputStyle> {
   readonly getStyle: StyleGetter<ComponentProps, OutputStyle>;
 }
 
-export type OptionalSubTheme<
+export type SubThemeOptional<
   ComponentProps,
   OutputProps,
   OutputStyle

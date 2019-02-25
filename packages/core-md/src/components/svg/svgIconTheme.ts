@@ -8,10 +8,10 @@
 import {
   FlexSvgProps,
   FlexSvgTheme,
+  FlexSvgThemeOptional,
   getSizedMarginStyle,
   getSizedSvgProps,
-  OptionalFlexSvgTheme,
-  OptionalInjectableSubTheme,
+  InjectableSubThemeOptional,
   rawFlexSvgTheme,
   Size,
   SvgPropsGetter,
@@ -46,7 +46,7 @@ export const getSvgIconSvgProps: SvgPropsGetter<FlexSvgProps> = props => ({
   ...getSvgColorProps(props),
 });
 
-export const svgIconSvgTheme: OptionalInjectableSubTheme<
+export const svgIconSvgTheme: InjectableSubThemeOptional<
   FlexSvgProps,
   SvgProps,
   ViewStyle
@@ -61,7 +61,7 @@ export const getSvgIconContainerStyle: ViewStyleGetter<
   ...getSizingStyle(props),
 });
 
-export const svgIconContainerTheme: OptionalInjectableSubTheme<
+export const svgIconContainerTheme: InjectableSubThemeOptional<
   FlexSvgProps,
   SvgProps,
   ViewStyle
@@ -69,7 +69,7 @@ export const svgIconContainerTheme: OptionalInjectableSubTheme<
   getStyle: getSvgIconContainerStyle,
 };
 
-export const optionalSvgIconTheme: OptionalFlexSvgTheme = {
+export const optionalSvgIconTheme: FlexSvgThemeOptional = {
   container: svgIconContainerTheme,
   svg: svgIconSvgTheme,
 };
@@ -77,5 +77,5 @@ export const optionalSvgIconTheme: OptionalFlexSvgTheme = {
 export const svgIconTheme: FlexSvgTheme = merge<
   {},
   FlexSvgTheme,
-  OptionalFlexSvgTheme
+  FlexSvgThemeOptional
 >({}, rawFlexSvgTheme, optionalSvgIconTheme);

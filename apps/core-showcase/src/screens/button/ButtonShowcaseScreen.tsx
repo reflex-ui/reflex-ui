@@ -11,6 +11,7 @@ import {
   AppBar,
   AppBarTitle,
   Button,
+  ButtonPropsOptional,
   ButtonSubPropsGetter,
   ButtonVariant,
   Caption,
@@ -21,7 +22,6 @@ import {
   Headline6,
   isWeb,
   JustifyContent,
-  OptionalButtonProps,
   primaryColorThemes,
   Row,
   secondaryColorThemes,
@@ -79,7 +79,7 @@ export interface CustomButtonCollection {
 export interface ButtonShowcaseScreenProps {
   readonly ButtonCollection: React.ComponentType<ButtonCollectionProps>;
   readonly customCollections?: CustomButtonCollection[];
-  readonly scaleButtons?: React.ComponentType<OptionalButtonProps>[];
+  readonly scaleButtons?: React.ComponentType<ButtonPropsOptional>[];
   readonly title: string;
   readonly variant: ButtonVariant;
 }

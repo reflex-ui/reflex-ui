@@ -9,7 +9,7 @@ import { ViewProps, ViewStyle } from 'react-native';
 
 import {
   InjectableSubTheme,
-  OptionalInjectableSubTheme,
+  InjectableSubThemeOptional,
 } from '../subcomponents';
 import { SurfaceProps } from './SurfaceProps';
 
@@ -17,8 +17,8 @@ export interface SurfaceTheme {
   readonly container: InjectableSubTheme<SurfaceProps, ViewProps, ViewStyle>;
 }
 
-export interface OptionalSurfaceTheme {
-  readonly container?: OptionalInjectableSubTheme<
+export interface SurfaceThemeOptional {
+  readonly container?: InjectableSubThemeOptional<
     SurfaceProps,
     ViewProps,
     ViewStyle

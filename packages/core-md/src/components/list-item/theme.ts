@@ -8,7 +8,7 @@
 import {
   ListItemProps,
   ListItemTheme,
-  OptionalListItemTheme,
+  ListItemThemeOptional,
   rawListItemTheme,
   Size,
   ViewStyleGetter,
@@ -45,7 +45,7 @@ export const getListItemContainerStyle: ViewStyleGetter<
   ...getSizingStyle(props),
 });
 
-export const partialListItemTheme: OptionalListItemTheme = {
+export const partialListItemTheme: ListItemThemeOptional = {
   container: {
     getStyle: getListItemContainerStyle,
   },

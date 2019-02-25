@@ -9,8 +9,8 @@ import {
   ButtonProps,
   FontWeight,
   getFontWeight,
+  InjectableSubThemeOptional,
   isWeb,
-  OptionalInjectableSubTheme,
   Size,
   TextStyleGetter,
 } from '@reflex-ui/core';
@@ -73,7 +73,7 @@ export const getAllVariantsButtonTextStyle: TextStyleGetter<ButtonProps> = ({
   }),
 });
 
-export const allVariantsButtonTextTheme: OptionalInjectableSubTheme<
+export const allVariantsButtonTextTheme: InjectableSubThemeOptional<
   ButtonProps,
   TextProps,
   TextStyle

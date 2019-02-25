@@ -16,12 +16,12 @@ import { withResponsivenessProps } from '../../responsiveness/withResponsiveness
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { reflexComponent } from '../reflexComponent';
 import { SimpleSuperView } from './SimpleSuperView';
-import { OptionalSuperViewProps, SuperViewProps } from './SuperViewProps';
+import { SuperViewProps, SuperViewPropsOptional } from './SuperViewProps';
 
 export const Column = withResponsivenessProps(
-  reflexComponent<OptionalSuperViewProps>({
+  reflexComponent<SuperViewPropsOptional>({
     name: 'Column',
-  })((props: OptionalSuperViewProps) => (
+  })((props: SuperViewPropsOptional) => (
     <DimensionsContext.Consumer>
       {dimensionsProps => (
         <ColorThemeContext.Consumer>

@@ -8,12 +8,12 @@
 import {
   Button,
   ButtonProps,
+  ButtonPropsOptional,
   ButtonSubProps,
   ButtonSubPropsGetter,
   ButtonVariant,
   ColorTheme,
   InteractionType,
-  OptionalButtonProps,
 } from '@reflex-ui/core';
 import {
   disabledGrey300_500,
@@ -57,11 +57,11 @@ const getButtonProps: ButtonSubPropsGetter = (
   };
 };
 
-const ScaleButton1: React.SFC<OptionalButtonProps> = (props): JSX.Element => (
+const ScaleButton1: React.SFC<ButtonPropsOptional> = (props): JSX.Element => (
   <Button {...props}>Create</Button>
 );
 
-const ScaleButton2: React.SFC<OptionalButtonProps> = (props): JSX.Element => (
+const ScaleButton2: React.SFC<ButtonPropsOptional> = (props): JSX.Element => (
   <Button leadingIcon={<FavoriteIcon />} {...props}>
     Add to cart
   </Button>

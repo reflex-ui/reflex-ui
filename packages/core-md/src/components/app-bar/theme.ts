@@ -8,9 +8,9 @@
 import {
   AppBarProps,
   AppBarTheme,
+  AppBarThemeOptional,
   AppBarVariantsTheme,
   getThemedColor,
-  OptionalAppBarTheme,
   rawAppBarTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
@@ -67,7 +67,7 @@ export const getDefaultAppBarContainerAreaStyle: ViewStyleGetter<
     props.dimensions.window.width <= props.breakpoints.largeTablet ? 56 : 64,
 });
 
-export const partialDefaultAppBarTheme: OptionalAppBarTheme = {
+export const partialDefaultAppBarTheme: AppBarThemeOptional = {
   centerArea: {
     getStyle: getCommonAppBarCenterAreaStyle,
   },
@@ -100,7 +100,7 @@ export const getDenseAppBarContainerAreaStyle: ViewStyleGetter<
   paddingVertical: 0,
 });
 
-export const partialDenseAppBarTheme: OptionalAppBarTheme = {
+export const partialDenseAppBarTheme: AppBarThemeOptional = {
   centerArea: {
     getStyle: getCommonAppBarCenterAreaStyle,
   },
@@ -141,7 +141,7 @@ export const getProminentAppBarContainerAreaStyle: ViewStyleGetter<
   height: 128,
 });
 
-export const partialProminentAppBarTheme: OptionalAppBarTheme = {
+export const partialProminentAppBarTheme: AppBarThemeOptional = {
   centerArea: {
     getStyle: getProminentAppBarCenterAreaStyle,
   },
@@ -173,7 +173,7 @@ export const getProminentDenseAppBarContainerAreaStyle: ViewStyleGetter<
   height: 98,
 });
 
-export const partialProminentDenseAppBarTheme: OptionalAppBarTheme = {
+export const partialProminentDenseAppBarTheme: AppBarThemeOptional = {
   container: {
     getStyle: getProminentDenseAppBarContainerAreaStyle,
   },

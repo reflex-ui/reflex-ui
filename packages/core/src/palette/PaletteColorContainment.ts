@@ -6,8 +6,8 @@
  */
 
 import {
-  OptionalPaletteColorInteraction,
   PaletteColorInteraction,
+  PaletteColorInteractionOptional,
 } from './PaletteColorInteraction';
 
 export interface PaletteColorContainment {
@@ -15,6 +15,6 @@ export interface PaletteColorContainment {
   readonly uncontained: PaletteColorInteraction;
 }
 
-export type OptionalPaletteColorContainment = {
-  [P in keyof PaletteColorContainment]?: OptionalPaletteColorInteraction
+export type PaletteColorContainmentOptional = {
+  [P in keyof PaletteColorContainment]?: PaletteColorInteractionOptional
 };

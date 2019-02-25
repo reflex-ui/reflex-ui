@@ -26,4 +26,4 @@ export interface AppBarProps
   readonly variant: AppBarVariant;
 }
 
-export type OptionalAppBarProps = Partial<AppBarProps>;
+export type AppBarPropsOptional = Partial<AppBarProps>;

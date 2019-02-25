@@ -15,14 +15,14 @@ import { DimensionsContext } from '../../responsiveness/DimensionsContext';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { reflexComponent } from '../reflexComponent';
 import {
-  OptionalTouchableSurfaceProps,
   TouchableSurfaceProps,
+  TouchableSurfacePropsOptional,
 } from './TouchableSurfaceProps';
 
 export const withDefaultTouchableSurfaceProps = (
   WrappedComponent: React.ComponentType<TouchableSurfaceProps>,
-): React.ComponentType<OptionalTouchableSurfaceProps> =>
-  reflexComponent<OptionalTouchableSurfaceProps>({
+): React.ComponentType<TouchableSurfacePropsOptional> =>
+  reflexComponent<TouchableSurfacePropsOptional>({
     name: 'WithDefaultTouchableSurfaceProps',
     wrapped: WrappedComponent,
   })(props => (

@@ -7,8 +7,8 @@
 
 import {
   ButtonProps,
-  OptionalSubTheme,
   Size,
+  SubThemeOptional,
   SvgPropsGetter,
 } from '@reflex-ui/core';
 import { ViewStyle } from 'react-native';
@@ -36,7 +36,7 @@ export const getAllVariantsButtonIconProps: SvgPropsGetter<ButtonProps> = ({
   ...allVariantsButtonIconSizedProps[size],
 });
 
-export const allVariantsButtonIconTheme: OptionalSubTheme<
+export const allVariantsButtonIconTheme: SubThemeOptional<
   ButtonProps,
   SvgProps,
   ViewStyle

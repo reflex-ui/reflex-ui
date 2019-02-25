@@ -11,4 +11,4 @@ export interface InteractionStateProps {
   readonly interactionState: InteractionState;
 }
 
-export type OptionalInteractionStateProps = Partial<InteractionStateProps>;
+export type InteractionStatePropsOptional = Partial<InteractionStateProps>;

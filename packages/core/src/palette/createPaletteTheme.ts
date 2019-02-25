@@ -8,7 +8,7 @@
 import merge from 'lodash/merge';
 
 import { defaultPaletteTheme } from './defaultPaletteTheme';
-import { OptionalPaletteTheme, PaletteTheme } from './PaletteTheme';
+import { PaletteTheme, PaletteThemeOptional } from './PaletteTheme';
 
-export const createPaletteTheme = (theme: OptionalPaletteTheme): PaletteTheme =>
+export const createPaletteTheme = (theme: PaletteThemeOptional): PaletteTheme =>
   merge({}, defaultPaletteTheme, theme);

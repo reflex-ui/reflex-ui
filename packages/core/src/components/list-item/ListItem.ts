@@ -9,10 +9,10 @@ import * as React from 'react';
 
 // tslint:disable-next-line:max-line-length
 import { withResponsivenessProps } from '../../responsiveness/withResponsivenessProps';
-import { OptionalListItemProps } from './ListItemProps';
+import { ListItemPropsOptional } from './ListItemProps';
 import { SimpleListItem } from './SimpleListItem';
 import { withDefaultListItemProps } from './withDefaultListItemProps';
 
 export const ListItem: React.ComponentType<
-  OptionalListItemProps
+  ListItemPropsOptional
 > = withResponsivenessProps(withDefaultListItemProps(SimpleListItem));

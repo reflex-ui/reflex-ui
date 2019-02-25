@@ -13,4 +13,4 @@ export interface PaletteColor {
   readonly normal: PaletteColorVariant;
 }
 
-export type OptionalPaletteColor = Partial<PaletteColor>;
+export type PaletteColorOptional = Partial<PaletteColor>;

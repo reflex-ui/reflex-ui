@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { AppBarTheme, OptionalAppBarTheme } from './AppBarTheme';
+import { AppBarTheme, AppBarThemeOptional } from './AppBarTheme';
 
 export interface AppBarVariantsTheme {
   readonly default: AppBarTheme;
@@ -14,6 +14,6 @@ export interface AppBarVariantsTheme {
   readonly prominentDense: AppBarTheme;
 }
 
-export type OptionalAppBarVariantsTheme = {
-  [P in keyof AppBarVariantsTheme]?: OptionalAppBarTheme
+export type AppBarVariantsThemeOptional = {
+  [P in keyof AppBarVariantsTheme]?: AppBarThemeOptional
 };

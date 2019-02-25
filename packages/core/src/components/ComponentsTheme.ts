@@ -27,4 +27,4 @@ export interface ComponentsTheme {
   readonly views: SuperViewVariantsTheme;
 }
 
-export type OptionalComponentsTheme = Partial<ComponentsTheme>;
+export type ComponentsThemeOptional = Partial<ComponentsTheme>;

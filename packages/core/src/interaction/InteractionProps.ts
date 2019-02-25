@@ -8,13 +8,13 @@
 import { TouchableWithoutFeedbackProps } from 'react-native';
 import {
   InteractionStateProps,
-  OptionalInteractionStateProps,
+  InteractionStatePropsOptional,
 } from './InteractionStateProps';
 
 export interface InteractionProps
   extends InteractionStateProps,
     TouchableWithoutFeedbackProps {}
 
-export interface OptionalInteractionProps
-  extends OptionalInteractionStateProps,
+export interface InteractionPropsOptional
+  extends InteractionStatePropsOptional,
     TouchableWithoutFeedbackProps {}

@@ -16,9 +16,9 @@ import { SvgProps } from 'react-native-svg';
 
 import {
   InjectableSubTheme,
-  OptionalInjectableSubTheme,
-  OptionalSubTheme,
+  InjectableSubThemeOptional,
   SubTheme,
+  SubThemeOptional,
 } from '../subcomponents';
 import { ButtonProps } from './ButtonProps';
 
@@ -46,32 +46,32 @@ export interface ButtonTheme {
   >;
 }
 
-export interface OptionalButtonTheme {
-  readonly container?: OptionalInjectableSubTheme<
+export interface ButtonThemeOptional {
+  readonly container?: InjectableSubThemeOptional<
     ButtonProps,
     ViewProps,
     ViewStyle
   >;
-  readonly icon?: OptionalSubTheme<ButtonProps, SvgProps, ViewStyle>;
-  readonly iconContainer?: OptionalInjectableSubTheme<
+  readonly icon?: SubThemeOptional<ButtonProps, SvgProps, ViewStyle>;
+  readonly iconContainer?: InjectableSubThemeOptional<
     ButtonProps,
     ViewProps,
     ViewStyle
   >;
-  readonly leadingIcon?: OptionalSubTheme<ButtonProps, SvgProps, ViewStyle>;
-  readonly leadingIconContainer?: OptionalInjectableSubTheme<
+  readonly leadingIcon?: SubThemeOptional<ButtonProps, SvgProps, ViewStyle>;
+  readonly leadingIconContainer?: InjectableSubThemeOptional<
     ButtonProps,
     ViewProps,
     ViewStyle
   >;
-  readonly text?: OptionalInjectableSubTheme<ButtonProps, TextProps, TextStyle>;
-  readonly touchable?: OptionalInjectableSubTheme<
+  readonly text?: InjectableSubThemeOptional<ButtonProps, TextProps, TextStyle>;
+  readonly touchable?: InjectableSubThemeOptional<
     ButtonProps,
     TouchableWithoutFeedbackProps,
     ViewStyle
   >;
-  readonly trailingIcon?: OptionalSubTheme<ButtonProps, SvgProps, ViewStyle>;
-  readonly trailingIconContainer?: OptionalInjectableSubTheme<
+  readonly trailingIcon?: SubThemeOptional<ButtonProps, SvgProps, ViewStyle>;
+  readonly trailingIconContainer?: InjectableSubThemeOptional<
     ButtonProps,
     ViewProps,
     ViewStyle

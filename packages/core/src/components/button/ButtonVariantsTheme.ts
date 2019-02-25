@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ButtonTheme, OptionalButtonTheme } from './ButtonTheme';
+import { ButtonTheme, ButtonThemeOptional } from './ButtonTheme';
 
 export interface ButtonVariantsTheme {
   readonly contained: ButtonTheme;
@@ -19,6 +19,6 @@ export interface ButtonVariantsTheme {
   readonly xfab: ButtonTheme;
 }
 
-export type OptionalButtonVariantsTheme = {
-  [P in keyof ButtonVariantsTheme]?: OptionalButtonTheme
+export type ButtonVariantsThemeOptional = {
+  [P in keyof ButtonVariantsTheme]?: ButtonThemeOptional
 };

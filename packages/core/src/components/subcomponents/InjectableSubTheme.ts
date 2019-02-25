@@ -16,7 +16,7 @@ export interface InjectableSubTheme<ComponentProps, OutputProps, OutputStyle>
   >;
 }
 
-export type OptionalInjectableSubTheme<
+export type InjectableSubThemeOptional<
   ComponentProps,
   OutputProps,
   OutputStyle

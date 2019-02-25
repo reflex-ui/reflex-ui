@@ -29,4 +29,4 @@ export interface ButtonProps
   readonly variant: ButtonVariant;
 }
 
-export type OptionalButtonProps = Partial<ButtonProps>;
+export type ButtonPropsOptional = Partial<ButtonProps>;

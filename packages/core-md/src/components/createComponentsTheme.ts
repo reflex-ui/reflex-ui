@@ -7,12 +7,12 @@
 
 import {
   ComponentsTheme,
+  ComponentsThemeOptional,
   createComponentsTheme as createThemeCore,
-  OptionalComponentsTheme,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 import { materialDesignTheme } from './materialDesignTheme';
 
 export const createComponentsTheme = (
-  theme: OptionalComponentsTheme = {},
+  theme: ComponentsThemeOptional = {},
 ): ComponentsTheme => createThemeCore(merge({}, materialDesignTheme, theme));

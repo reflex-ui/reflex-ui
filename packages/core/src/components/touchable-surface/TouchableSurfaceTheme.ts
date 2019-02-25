@@ -13,7 +13,7 @@ import {
 
 import {
   InjectableSubTheme,
-  OptionalInjectableSubTheme,
+  InjectableSubThemeOptional,
 } from '../subcomponents';
 import { TouchableSurfaceProps } from './TouchableSurfaceProps';
 
@@ -30,13 +30,13 @@ export interface TouchableSurfaceTheme {
   >;
 }
 
-export interface OptionalTouchableSurfaceTheme {
-  readonly container?: OptionalInjectableSubTheme<
+export interface TouchableSurfaceThemeOptional {
+  readonly container?: InjectableSubThemeOptional<
     TouchableSurfaceProps,
     ViewProps,
     ViewStyle
   >;
-  readonly touchable?: OptionalInjectableSubTheme<
+  readonly touchable?: InjectableSubThemeOptional<
     TouchableSurfaceProps,
     TouchableWithoutFeedbackProps,
     ViewStyle

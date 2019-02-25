@@ -13,12 +13,12 @@ import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
 import { Size } from '../../sizing/Size';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { reflexComponent } from '../reflexComponent';
-import { FlexSvgProps, OptionalFlexSvgProps } from './FlexSvgProps';
+import { FlexSvgProps, FlexSvgPropsOptional } from './FlexSvgProps';
 
 export const withDefaultFlexSvgProps = (
   WrappedComponent: React.ComponentType<FlexSvgProps>,
-): React.ComponentType<OptionalFlexSvgProps> =>
-  reflexComponent<OptionalFlexSvgProps>({
+): React.ComponentType<FlexSvgPropsOptional> =>
+  reflexComponent<FlexSvgPropsOptional>({
     name: 'WithDefaultFlexSvgProps',
     wrapped: WrappedComponent,
   })(props => (

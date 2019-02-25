@@ -10,9 +10,9 @@ import { SvgProps } from 'react-native-svg';
 
 import {
   InjectableSubTheme,
-  OptionalInjectableSubTheme,
-  OptionalSubTheme,
+  InjectableSubThemeOptional,
   SubTheme,
+  SubThemeOptional,
 } from '../subcomponents';
 import { FlexSvgProps } from './FlexSvgProps';
 
@@ -21,11 +21,11 @@ export interface FlexSvgTheme {
   readonly svg: SubTheme<FlexSvgProps, SvgProps, ViewStyle>;
 }
 
-export interface OptionalFlexSvgTheme {
-  readonly container?: OptionalInjectableSubTheme<
+export interface FlexSvgThemeOptional {
+  readonly container?: InjectableSubThemeOptional<
     FlexSvgProps,
     ViewProps,
     ViewStyle
   >;
-  readonly svg?: OptionalSubTheme<FlexSvgProps, SvgProps, ViewStyle>;
+  readonly svg?: SubThemeOptional<FlexSvgProps, SvgProps, ViewStyle>;
 }
