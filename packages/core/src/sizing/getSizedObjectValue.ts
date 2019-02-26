@@ -16,10 +16,3 @@ export const getSizedObjectValue = <Data extends SizedObject<Value>, Value>(
   typeof size === 'string' && isSizeEnumValue(size)
     ? sizedObject[size as Size]
     : size;
-
-/*
-export const getSizedObjectValue = <Data extends SizedObject<Value>, Value>(
-  sizedObject: Data,
-  size: Value,
-) => (isSizeEnumValue(size as string) ? sizedObject[size as Size] : size);
-*/
