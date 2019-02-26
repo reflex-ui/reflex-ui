@@ -27,7 +27,6 @@ export interface SubPropsGetterData<
 export const getSubProps = <
   ComponentProps,
   PrimitiveProps extends StyleProps<PrimitiveStyle>,
-  // PrimitiveProps extends { style?: PrimitiveStyle },
   PrimitiveStyle extends ViewStyle | TextStyle | ImageStyle
 >(
   data: SubPropsGetterData<ComponentProps, PrimitiveProps, PrimitiveStyle>,
@@ -66,9 +65,7 @@ export const getSubProps = <
     } else if (typeof userStyle === 'number') {
       subStyles.push(userStyle);
     } else if (isPlainObject(userStyle) && !isEmpty(userStyle)) {
-      subStyles.push(
-        registerStyle(userStyle as ViewStyle | TextStyle | ImageStyle),
-      );
+      subStyles.push(registerStyle(userStyle as PrimitiveStyle));
     } else {
       throw new Error(
         [
