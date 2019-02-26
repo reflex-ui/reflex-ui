@@ -6,14 +6,14 @@
  */
 
 import { ViewStyleGetter } from '../components/view/ViewStyleGetter';
-import { getSizedObjectValue } from '../sizing/getSizedObjectValue';
+import { getSizedDataValue } from '../sizing/getSizedDataValue';
 import { SizedStyleGetterFactory } from '../sizing/SizedStyleGetterFactory';
 import { MarginProps } from './MarginProps';
 
 export const getSizedMarginStyle: SizedStyleGetterFactory<
   number | string,
   ViewStyleGetter<MarginProps>
-> = sizedObject => ({
+> = sizedData => ({
   margin: m,
   marginBottom: mB,
   marginEnd: mE,
@@ -25,14 +25,14 @@ export const getSizedMarginStyle: SizedStyleGetterFactory<
   // prettier-ignore
   ...(m
     ? {
-      marginHorizontal: getSizedObjectValue(sizedObject, m),
-      marginVertical: getSizedObjectValue(sizedObject, m),
+      marginHorizontal: getSizedDataValue(sizedData, m),
+      marginVertical: getSizedDataValue(sizedData, m),
     }
     : {}),
-  ...(mH ? { marginHorizontal: getSizedObjectValue(sizedObject, mH) } : {}),
-  ...(mV ? { marginVertical: getSizedObjectValue(sizedObject, mV) } : {}),
-  ...(mS ? { marginStart: getSizedObjectValue(sizedObject, mS) } : {}),
-  ...(mE ? { marginEnd: getSizedObjectValue(sizedObject, mE) } : {}),
-  ...(mT ? { marginTop: getSizedObjectValue(sizedObject, mT) } : {}),
-  ...(mB ? { marginBottom: getSizedObjectValue(sizedObject, mB) } : {}),
+  ...(mH ? { marginHorizontal: getSizedDataValue(sizedData, mH) } : {}),
+  ...(mV ? { marginVertical: getSizedDataValue(sizedData, mV) } : {}),
+  ...(mS ? { marginStart: getSizedDataValue(sizedData, mS) } : {}),
+  ...(mE ? { marginEnd: getSizedDataValue(sizedData, mE) } : {}),
+  ...(mT ? { marginTop: getSizedDataValue(sizedData, mT) } : {}),
+  ...(mB ? { marginBottom: getSizedDataValue(sizedData, mB) } : {}),
 });

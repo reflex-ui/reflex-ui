@@ -7,4 +7,4 @@
 
 import { Size } from './Size';
 
-export type SizedObject<Value> = { [key in Size]: Value };
+export type SizedData<Value> = { [key in Size]: Value };

@@ -5,8 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { SizedObject } from './SizedObject';
+import { SizedData } from './SizedData';
 
 export type SizedStyleGetterFactory<Value, ValueGetter> = (
-  sizedObject: SizedObject<Value>,
+  sizedData: SizedData<Value>,
 ) => ValueGetter;

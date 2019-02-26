@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { Size, SizedObject } from '@reflex-ui/core';
+import { Size, SizedData } from '@reflex-ui/core';
 
-export const sizedSpacing: SizedObject<number | string> = {
+export const sizedSpacing: SizedData<number | string> = {
   [Size.XXS]: 4,
   [Size.XS]: 8,
   [Size.S]: 12,

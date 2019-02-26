@@ -7,9 +7,9 @@
 
 import { isSizeEnumValue } from '../sizing/isSizeEnumValue';
 import { Size } from './Size';
-import { SizedObject } from './SizedObject';
+import { SizedData } from './SizedData';
 
-export const getSizedObjectValue = <Data extends SizedObject<Value>, Value>(
+export const getSizedDataValue = <Data extends SizedData<Value>, Value>(
   sizedObject: Data,
   size: Value,
 ) =>
