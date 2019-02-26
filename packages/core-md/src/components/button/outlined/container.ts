@@ -15,6 +15,7 @@ import {
 import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
+import { getAllVariantsButtonContainerProps } from '../all-variants/container';
 import { getDefaultButtonContainerStyle } from '../default/container';
 import { getDefaultButtonTextStyle } from '../default/text';
 
@@ -68,5 +69,6 @@ export const outlinedButtonContainerTheme: InjectableSubTheme<
   ViewProps,
   ViewStyle
 > = merge({}, rawInjectableButtonViewSubTheme, {
+  getProps: getAllVariantsButtonContainerProps,
   getStyle: getOutlinedButtonContainerStyle,
 });

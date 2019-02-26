@@ -15,6 +15,7 @@ import {
 import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
+import { getAllVariantsButtonContainerProps } from '../all-variants/container';
 import { getFabButtonContainerStyle } from '../fab/container';
 
 export const xfabButtonContainerSizedStyle: { [key in Size]: ViewStyle } = {
@@ -80,5 +81,6 @@ export const xfabButtonContainerTheme: InjectableSubTheme<
   ViewProps,
   ViewStyle
 > = merge({}, rawInjectableButtonViewSubTheme, {
+  getProps: getAllVariantsButtonContainerProps,
   getStyle: getXFabButtonContainerStyle,
 });

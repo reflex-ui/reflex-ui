@@ -15,6 +15,7 @@ import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
 import { getLowElevationStylesByInteraction } from '../../../elevation';
+import { getAllVariantsButtonContainerProps } from '../all-variants/container';
 import { getContainedButtonContainerStyle } from '../contained/container';
 
 export const getRaisedButtonContainerStyle: ViewStyleGetter<
@@ -29,5 +30,6 @@ export const raisedButtonContainerTheme: InjectableSubTheme<
   ViewProps,
   ViewStyle
 > = merge({}, rawInjectableButtonViewSubTheme, {
+  getProps: getAllVariantsButtonContainerProps,
   getStyle: getRaisedButtonContainerStyle,
 });

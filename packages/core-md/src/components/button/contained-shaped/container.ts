@@ -15,6 +15,7 @@ import {
 import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
+import { getAllVariantsButtonContainerProps } from '../all-variants/container';
 import { getContainedButtonContainerStyle } from '../contained/container';
 
 export const containedShapedButtonContainerSizedStyle: {
@@ -47,5 +48,6 @@ export const containedShapedButtonContainerTheme: InjectableSubTheme<
   ViewProps,
   ViewStyle
 > = merge({}, rawInjectableButtonViewSubTheme, {
+  getProps: getAllVariantsButtonContainerProps,
   getStyle: getContainedShapedButtonContainerStyle,
 });
