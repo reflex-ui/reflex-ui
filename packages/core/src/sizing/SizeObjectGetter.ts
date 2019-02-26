@@ -5,8 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { SvgProps } from 'react-native-svg';
+import { Size } from './Size';
+import { SizeObject } from './SizeObject';
 
-import { Size } from '../../sizing/Size';
-
-export type SizedSvgProps = { [key in Size]: SvgProps };
+export type SizeObjectGetter = (
+  object: SizeObject & { size?: Size | number | string },
+) => SizeObject;
