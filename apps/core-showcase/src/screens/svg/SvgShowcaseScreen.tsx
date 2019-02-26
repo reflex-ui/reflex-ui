@@ -55,6 +55,9 @@ const SvgShowcaseScreen: React.SFC<{}> = (): JSX.Element => (
               <Row>
                 <PencilSvg />
               </Row>
+              <Row marginTop={50}>
+                <PencilSvg height={75} width={75} />
+              </Row>
             </Surface>
           </Row>
         );
