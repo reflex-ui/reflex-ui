@@ -44,11 +44,10 @@ export const flexSvgSvgSizedProps: { [key in Size]: SvgProps } = {
 export const getSvgColorProps: SvgPropsGetter<FlexSvgProps> = props => {
   const themedColor: string | undefined = getDefaultTypographyColorStyle(props)
     .color;
+  const fill = props.fill ? props.fill : themedColor;
+  const color = props.color ? props.color : fill;
 
-  return {
-    color: props.color ? props.color : themedColor,
-    fill: props.fill ? props.fill : themedColor,
-  };
+  return { color, fill };
 };
 
 export const getFlexSvgSvgProps: SvgPropsGetter<FlexSvgProps> = props => ({
