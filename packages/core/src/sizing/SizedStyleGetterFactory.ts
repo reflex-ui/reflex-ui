@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './getSizedMarginStyle';
-export * from './getSizedPaddingStyle';
-export * from './MarginProps';
-export * from './PaddingProps';
+import { SizedObject } from './SizedObject';
+
+export type SizedStyleGetterFactory<Value, ValueGetter> = (
+  sizedObject: SizedObject<Value>,
+) => ValueGetter;

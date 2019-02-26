@@ -5,13 +5,15 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { getSpacingValue } from './getSpacingValue';
+import { ViewStyleGetter } from '../components/view/ViewStyleGetter';
+import { getSizedObjectValue } from '../sizing/getSizedObjectValue';
+import { SizedStyleGetterFactory } from '../sizing/SizedStyleGetterFactory';
 import { PaddingProps } from './PaddingProps';
-import { SizedSpacingStyleGetter } from './SizedSpacingStyleGetter';
 
-export const getSizedPaddingStyle: SizedSpacingStyleGetter<
-  PaddingProps
-> = sizedSpacing => ({
+export const getSizedPaddingStyle: SizedStyleGetterFactory<
+  number | string,
+  ViewStyleGetter<PaddingProps>
+> = sizedObject => ({
   padding: p,
   paddingBottom: pB,
   paddingEnd: pE,
@@ -23,14 +25,14 @@ export const getSizedPaddingStyle: SizedSpacingStyleGetter<
   // prettier-ignore
   ...(p
     ? {
-      paddingHorizontal: getSpacingValue(sizedSpacing, p),
-      paddingVertical: getSpacingValue(sizedSpacing, p),
+      paddingHorizontal: getSizedObjectValue(sizedObject, p),
+      paddingVertical: getSizedObjectValue(sizedObject, p),
     }
     : {}),
-  ...(pH ? { paddingHorizontal: getSpacingValue(sizedSpacing, pH) } : {}),
-  ...(pV ? { paddingVertical: getSpacingValue(sizedSpacing, pV) } : {}),
-  ...(pS ? { paddingStart: getSpacingValue(sizedSpacing, pS) } : {}),
-  ...(pE ? { paddingEnd: getSpacingValue(sizedSpacing, pE) } : {}),
-  ...(pT ? { paddingTop: getSpacingValue(sizedSpacing, pT) } : {}),
-  ...(pB ? { paddingBottom: getSpacingValue(sizedSpacing, pB) } : {}),
+  ...(pH ? { paddingHorizontal: getSizedObjectValue(sizedObject, pH) } : {}),
+  ...(pV ? { paddingVertical: getSizedObjectValue(sizedObject, pV) } : {}),
+  ...(pS ? { paddingStart: getSizedObjectValue(sizedObject, pS) } : {}),
+  ...(pE ? { paddingEnd: getSizedObjectValue(sizedObject, pE) } : {}),
+  ...(pT ? { paddingTop: getSizedObjectValue(sizedObject, pT) } : {}),
+  ...(pB ? { paddingBottom: getSizedObjectValue(sizedObject, pB) } : {}),
 });
