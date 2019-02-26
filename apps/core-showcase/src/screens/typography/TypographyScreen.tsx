@@ -16,7 +16,6 @@ import {
   Overline,
   Paragraph1,
   Paragraph2,
-  registerStyle,
   Size,
   Subtitle1,
   Subtitle2,
@@ -24,10 +23,10 @@ import {
 import * as React from 'react';
 import { ScrollView, TextStyle } from 'react-native';
 
-const captionStyle = registerStyle<TextStyle>({
+const captionStyle: TextStyle = {
   color: 'red',
   fontSize: 20,
-});
+};
 
 const TypographyScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
