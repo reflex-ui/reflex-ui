@@ -6,14 +6,15 @@
  */
 
 import { TextProps, ViewProps } from 'react-native';
+import { SvgProps } from 'react-native-svg';
 
 export interface ButtonSubProps {
   readonly container?: ViewProps;
-  readonly icon?: TextProps;
+  readonly icon?: SvgProps;
   readonly iconContainer?: ViewProps;
-  readonly leadingIcon?: TextProps;
+  readonly leadingIcon?: SvgProps;
   readonly leadingIconContainer?: ViewProps;
   readonly text?: TextProps;
-  readonly trailingIcon?: TextProps;
+  readonly trailingIcon?: SvgProps;
   readonly trailingIconContainer?: ViewProps;
 }
