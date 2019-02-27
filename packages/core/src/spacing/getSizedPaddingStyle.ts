@@ -5,15 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ViewStyleGetter } from '../components/view/ViewStyleGetter';
 import { getSizedDataValue } from '../sizing/getSizedDataValue';
-import { SizedStyleGetterFactory } from '../sizing/SizedStyleGetterFactory';
+import { SizedData } from '../sizing/SizedData';
 import { PaddingProps } from './PaddingProps';
 
-export const getSizedPaddingStyle: SizedStyleGetterFactory<
-  number | string,
-  ViewStyleGetter<PaddingProps>
-> = sizedData => ({
+export const getSizedPaddingStyle = (
+  sizedData: SizedData<number | string>,
+) => ({
   padding: p,
   paddingBottom: pB,
   paddingEnd: pE,
@@ -21,7 +19,7 @@ export const getSizedPaddingStyle: SizedStyleGetterFactory<
   paddingStart: pS,
   paddingTop: pT,
   paddingVertical: pV,
-}) => ({
+}: PaddingProps) => ({
   // prettier-ignore
   ...(p
     ? {

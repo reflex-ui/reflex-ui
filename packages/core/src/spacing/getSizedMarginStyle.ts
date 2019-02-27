@@ -5,15 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ViewStyleGetter } from '../components/view/ViewStyleGetter';
 import { getSizedDataValue } from '../sizing/getSizedDataValue';
-import { SizedStyleGetterFactory } from '../sizing/SizedStyleGetterFactory';
+import { SizedData } from '../sizing/SizedData';
 import { MarginProps } from './MarginProps';
 
-export const getSizedMarginStyle: SizedStyleGetterFactory<
-  number | string,
-  ViewStyleGetter<MarginProps>
-> = sizedData => ({
+export const getSizedMarginStyle = (sizedData: SizedData<number | string>) => ({
   margin: m,
   marginBottom: mB,
   marginEnd: mE,
@@ -21,7 +17,7 @@ export const getSizedMarginStyle: SizedStyleGetterFactory<
   marginStart: mS,
   marginTop: mT,
   marginVertical: mV,
-}) => ({
+}: MarginProps) => ({
   // prettier-ignore
   ...(m
     ? {

@@ -7,11 +7,7 @@
 
 export * from './allSizes';
 export * from './getSizedDataValue';
-export * from './getSizedSizeObject';
 export * from './isSizeEnumValue';
 export * from './Size';
 export * from './SizedData';
-export * from './SizedStyleGetterFactory';
 export * from './SizingProps';
-export * from './SizeObject';
-export * from './SizeObjectGetter';

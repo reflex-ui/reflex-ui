@@ -10,7 +10,6 @@ import {
   FlexSvgTheme,
   FlexSvgThemeOptional,
   getSizedMarginStyle,
-  getSizedSizeObject,
   InjectableSubThemeOptional,
   rawFlexSvgTheme,
   Size,
@@ -51,7 +50,7 @@ export const getSvgColorProps: SvgPropsGetter<FlexSvgProps> = props => {
 };
 
 export const getFlexSvgSvgProps: SvgPropsGetter<FlexSvgProps> = props => ({
-  ...getSizedSizeObject(flexSvgSvgSizedProps)(props),
+  ...flexSvgSvgSizedProps[props.size],
   ...getSvgColorProps(props),
 });
 
