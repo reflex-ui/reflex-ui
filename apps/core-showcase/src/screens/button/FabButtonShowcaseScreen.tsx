@@ -7,7 +7,6 @@
 
 import {
   Button,
-  ButtonProps,
   ButtonPropsOptional,
   ButtonSubProps,
   ButtonSubPropsGetter,
@@ -25,30 +24,30 @@ import * as React from 'react';
 import { ButtonShowcaseScreen } from './ButtonShowcaseScreen';
 import { IconButtonCollection } from './IconButtonCollection';
 
-const getButtonProps: ButtonSubPropsGetter = (
-  props: ButtonProps,
-): ButtonSubProps => ({
-  container: {
-    style: {
-      backgroundColor:
-        // prettier-ignore
-        props.interactionState.type === InteractionType.Disabled
-          ? disabledGrey300_500.normal.color
-          : getInlayColorByInteraction({
-            color: '#c70ad0',
-            type: props.interactionState.type,
-          }),
+const getButtonProps: ButtonSubPropsGetter = ({
+  interactionState: { type: interactionType },
+}): ButtonSubProps => {
+  const backgroundColor =
+    interactionType === InteractionType.Disabled
+      ? disabledGrey300_500.normal.color
+      : // prettier-ignore
+        getInlayColorByInteraction({
+          color: '#c70ad0',
+          type: interactionType,
+        });
+
+  const iconColor =
+    interactionType === InteractionType.Disabled
+      ? disabledGrey300_500.normal.onColor
+      : '#fff';
+
+  return {
+    container: {
+      style: { backgroundColor },
     },
-  },
-  icon: {
-    style: {
-      color:
-        props.interactionState.type === InteractionType.Disabled
-          ? disabledGrey300_500.normal.onColor
-          : '#fff',
-    },
-  },
-});
+    icon: { fill: iconColor },
+  };
+};
 
 const ScaleButton: React.SFC<ButtonPropsOptional> = (props): JSX.Element => (
   <Button {...props}>

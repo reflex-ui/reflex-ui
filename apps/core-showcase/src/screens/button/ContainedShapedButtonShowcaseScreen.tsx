@@ -7,7 +7,6 @@
 
 import {
   Button,
-  ButtonProps,
   ButtonPropsOptional,
   ButtonSubProps,
   ButtonSubPropsGetter,
@@ -35,36 +34,32 @@ const ScaleButton2: React.SFC<ButtonPropsOptional> = (props): JSX.Element => (
   </Button>
 );
 
-const getButtonProps: ButtonSubPropsGetter = (
-  props: ButtonProps,
-): ButtonSubProps => {
-  const subProps: ButtonSubProps = {
-    container: {
-      style: {
-        backgroundColor:
-          // prettier-ignore
-          props.interactionState.type === InteractionType.Disabled
-            ? disabledGrey300_500.normal.color
-            : getInlayColorByInteraction({
-              color: '#c70ad0',
-              type: props.interactionState.type,
-            }),
-      },
-    },
-    text: {
-      style: {
-        color:
-          props.interactionState.type === InteractionType.Disabled
-            ? disabledGrey300_500.normal.onColor
-            : '#fff',
-      },
-    },
-  };
+const getButtonProps: ButtonSubPropsGetter = ({
+  interactionState: { type: interactionType },
+}): ButtonSubProps => {
+  const backgroundColor =
+    interactionType === InteractionType.Disabled
+      ? disabledGrey300_500.normal.color
+      : // prettier-ignore
+        getInlayColorByInteraction({
+          color: '#c70ad0',
+          type: interactionType,
+        });
+
+  const textColor =
+    interactionType === InteractionType.Disabled
+      ? disabledGrey300_500.normal.onColor
+      : '#fff';
 
   return {
-    ...subProps,
-    leadingIcon: subProps.text,
-    trailingIcon: subProps.text,
+    container: {
+      style: { backgroundColor },
+    },
+    leadingIcon: { fill: textColor },
+    text: {
+      style: { color: textColor },
+    },
+    trailingIcon: { fill: textColor },
   };
 };
 
