@@ -10,7 +10,7 @@ import {
   FontWeight,
   getFontWeight,
   InjectableSubThemeOptional,
-  isWeb,
+  Size,
   SizedData,
   TextStyleGetter,
 } from '@reflex-ui/core';
@@ -67,7 +67,7 @@ export const getAllVariantsButtonTextStyle: TextStyleGetter<ButtonProps> = ({
     web: {
       MozOsxFontSmoothing: 'grayscale',
       WebkitFontSmoothing: 'antialiased',
-      marginTop: isWeb ? -2 : 0,
+      marginTop: size === Size.XXS || size === Size.XS ? -1 : -2,
       userSelect: 'none',
     },
   }),

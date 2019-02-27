@@ -9,7 +9,6 @@ import {
   ButtonProps,
   getThemedColor,
   InjectableSubTheme,
-  isWeb,
   rawInjectableButtonTextSubTheme,
   TextStyleGetter,
 } from '@reflex-ui/core';
@@ -39,7 +38,6 @@ export const getDefaultButtonTextStyle: TextStyleGetter<ButtonProps> = (
 ) => ({
   ...getAllVariantsButtonTextStyle(props),
   ...getDefaultButtonTextColorStyle(props),
-  marginTop: isWeb ? -3 : 0,
 });
 
 export const defaultButtonTextTheme: InjectableSubTheme<
