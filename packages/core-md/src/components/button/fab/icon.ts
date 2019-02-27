@@ -18,9 +18,9 @@ import { SvgProps } from 'react-native-svg';
 import { getAllVariantsButtonIconProps } from '../all-variants/icon';
 import { getContainedButtonTextColorStyle } from '../contained/text';
 
-export const getFabButtonIconStyle: SvgPropsGetter<ButtonProps> = props => ({
+export const getFabButtonIconProps: SvgPropsGetter<ButtonProps> = props => ({
   ...getAllVariantsButtonIconProps(props),
-  color: getContainedButtonTextColorStyle(props).color,
+  fill: getContainedButtonTextColorStyle(props).color,
 });
 
 export const fabButtonIconTheme: SubTheme<
@@ -28,5 +28,5 @@ export const fabButtonIconTheme: SubTheme<
   SvgProps,
   ViewStyle
 > = merge({}, rawButtonIconSubTheme, {
-  getStyle: getFabButtonIconStyle,
+  getProps: getFabButtonIconProps,
 });

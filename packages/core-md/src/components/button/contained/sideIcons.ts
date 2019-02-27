@@ -23,7 +23,7 @@ export const getContainedButtonLeadingIconProps: SvgPropsGetter<
   ButtonProps
 > = props => ({
   ...getAllVariantsButtonLeadingIconProps(props),
-  color: getContainedButtonTextColorStyle(props).color,
+  fill: getContainedButtonTextColorStyle(props).color,
 });
 
 export const containedButtonLeadingIconTheme: SubTheme<

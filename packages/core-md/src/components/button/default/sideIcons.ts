@@ -23,7 +23,7 @@ export const getDefaultButtonLeadingIconProps: SvgPropsGetter<
   ButtonProps
 > = props => ({
   ...getAllVariantsButtonLeadingIconProps(props),
-  color: getDefaultButtonTextColorStyle(props).color,
+  fill: getDefaultButtonTextColorStyle(props).color,
 });
 
 export const defaultButtonLeadingIconTheme: SubTheme<

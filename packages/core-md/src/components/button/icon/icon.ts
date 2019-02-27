@@ -23,7 +23,7 @@ import { getDefaultButtonTextColorStyle } from '../default/text';
 
 export const getIconButtonIconProps: SvgPropsGetter<ButtonProps> = props => ({
   ...getAllVariantsButtonIconProps(props),
-  color: getDefaultButtonTextColorStyle(props).color,
+  fill: getDefaultButtonTextColorStyle(props).color,
   ...allVariantsButtonIconSizedProps[props.size],
 });
 
