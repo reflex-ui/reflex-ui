@@ -9,7 +9,7 @@ import {
   ButtonProps,
   InjectableSubTheme,
   rawInjectableButtonViewSubTheme,
-  Size,
+  SizedData,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
@@ -22,7 +22,7 @@ import {
 // tslint:disable-next-line:max-line-length
 import { getDefaultButtonContainerBackgroundColorStyle } from '../default/container';
 
-export const iconButtonContainerSizedStyle: { [key in Size]: ViewStyle } = {
+export const iconButtonContainerSizedStyle: SizedData<ViewStyle> = {
   xxsmall: {
     borderRadius: 14,
     height: 28,

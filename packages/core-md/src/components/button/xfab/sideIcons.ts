@@ -8,7 +8,7 @@
 import {
   ButtonProps,
   rawButtonIconSubTheme,
-  Size,
+  SizedData,
   SubTheme,
   SvgPropsGetter,
 } from '@reflex-ui/core';
@@ -18,7 +18,7 @@ import { SvgProps } from 'react-native-svg';
 
 import { getContainedButtonLeadingIconProps } from '../contained/sideIcons';
 
-export const xfabButtonLeadingIconSizedProps: { [key in Size]: SvgProps } = {
+export const xfabButtonLeadingIconSizedProps: SizedData<SvgProps> = {
   xxsmall: { height: 16, width: 16 },
   /*
    * Sorting values by size here makes it easier to reason about

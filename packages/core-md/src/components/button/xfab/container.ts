@@ -9,7 +9,7 @@ import {
   ButtonProps,
   InjectableSubTheme,
   rawInjectableButtonViewSubTheme,
-  Size,
+  SizedData,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
@@ -18,7 +18,7 @@ import { ViewProps, ViewStyle } from 'react-native';
 import { getAllVariantsButtonContainerProps } from '../all-variants/container';
 import { getFabButtonContainerStyle } from '../fab/container';
 
-export const xfabButtonContainerSizedStyle: { [key in Size]: ViewStyle } = {
+export const xfabButtonContainerSizedStyle: SizedData<ViewStyle> = {
   xxsmall: {
     borderRadius: 12,
     height: 24,

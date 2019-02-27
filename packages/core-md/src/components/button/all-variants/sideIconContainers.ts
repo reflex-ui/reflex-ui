@@ -8,15 +8,15 @@
 import {
   ButtonProps,
   InjectableSubThemeOptional,
-  Size,
+  SizedData,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 
 import { ViewProps, ViewStyle } from 'react-native';
 
-export const allVariantsButtonLeadingIconContainerSizedStyle: {
-  [key in Size]: ViewStyle
-} = {
+export const allVariantsButtonLeadingIconContainerSizedStyle: SizedData<
+  ViewStyle
+> = {
   xxsmall: {
     marginEnd: 5,
     marginStart: -1,
@@ -66,9 +66,9 @@ export const allVariantsButtonLeadingIconContainerTheme: InjectableSubThemeOptio
   getStyle: getAllVariantsButtonLeadingIconContainerStyle,
 };
 
-export const allVariantsButtonTrailingIconContainerSizedStyle: {
-  [key in Size]: ViewStyle
-} = {
+export const allVariantsButtonTrailingIconContainerSizedStyle: SizedData<
+  ViewStyle
+> = {
   xxsmall: {
     marginEnd: -1,
     marginStart: 5,

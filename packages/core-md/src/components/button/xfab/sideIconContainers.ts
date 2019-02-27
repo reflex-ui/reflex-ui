@@ -9,15 +9,13 @@ import {
   ButtonProps,
   InjectableSubTheme,
   rawInjectableButtonViewSubTheme,
-  Size,
+  SizedData,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
-export const xfabButtonLeadingIconContainerSizedStyle: {
-  [key in Size]: ViewStyle
-} = {
+export const xfabButtonLeadingIconContainerSizedStyle: SizedData<ViewStyle> = {
   xxsmall: { marginEnd: 6, marginStart: -2 },
   /*
    * Sorting values by size here makes it easier to reason about
@@ -47,9 +45,7 @@ export const xfabButtonLeadingIconContainerTheme: InjectableSubTheme<
   getStyle: getXFabButtonLeadingIconContainerStyle,
 });
 
-export const xfabButtonTrailingIconContainerSizedStyle: {
-  [key in Size]: ViewStyle
-} = {
+export const xfabButtonTrailingIconContainerSizedStyle: SizedData<ViewStyle> = {
   xxsmall: { marginEnd: -2, marginStart: 6 },
   /*
    * Sorting values by size here makes it easier to reason about

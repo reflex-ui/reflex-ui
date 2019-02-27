@@ -9,7 +9,7 @@ import {
   ButtonProps,
   InjectableSubTheme,
   rawInjectableButtonViewSubTheme,
-  Size,
+  SizedData,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
@@ -18,9 +18,7 @@ import { ViewProps, ViewStyle } from 'react-native';
 import { getAllVariantsButtonContainerProps } from '../all-variants/container';
 import { getContainedButtonContainerStyle } from '../contained/container';
 
-export const containedShapedButtonContainerSizedStyle: {
-  [key in Size]: ViewStyle
-} = {
+export const containedShapedButtonContainerSizedStyle: SizedData<ViewStyle> = {
   xxsmall: { borderRadius: 12 },
   /*
    * Sorting values by size here makes it easier to reason about

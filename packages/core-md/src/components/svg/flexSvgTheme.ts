@@ -12,7 +12,7 @@ import {
   getSizedMarginStyle,
   InjectableSubThemeOptional,
   rawFlexSvgTheme,
-  Size,
+  SizedData,
   SvgPropsGetter,
   ViewStyleGetter,
 } from '@reflex-ui/core';
@@ -24,7 +24,7 @@ import { getSizingStyle } from '../../sizing/getSizingStyle';
 import { sizedSpacing } from '../../spacing/sizedSpacing';
 import { getDefaultTypographyColorStyle } from '../typography/theme';
 
-export const flexSvgSvgSizedProps: { [key in Size]: SvgProps } = {
+export const flexSvgSvgSizedProps: SizedData<SvgProps> = {
   xxsmall: { height: 50, width: 50 },
   /*
    * Sorting values by size here makes it easier to reason about

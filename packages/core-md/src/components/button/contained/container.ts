@@ -10,7 +10,7 @@ import {
   getThemedColor,
   InjectableSubTheme,
   rawInjectableButtonViewSubTheme,
-  Size,
+  SizedData,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
@@ -21,9 +21,7 @@ import {
   getAllVariantsButtonContainerStyle,
 } from '../all-variants/container';
 
-export const containedButtonContainerSizedStyle: {
-  [key in Size]: ViewStyle
-} = {
+export const containedButtonContainerSizedStyle: SizedData<ViewStyle> = {
   xxsmall: {
     height: 24,
     minWidth: 40,

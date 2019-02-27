@@ -9,7 +9,7 @@ import {
   ButtonProps,
   InjectableSubTheme,
   rawInjectableButtonViewSubTheme,
-  Size,
+  SizedData,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
@@ -19,7 +19,7 @@ import { getAllVariantsButtonContainerProps } from '../all-variants/container';
 import { getDefaultButtonContainerStyle } from '../default/container';
 import { getDefaultButtonTextStyle } from '../default/text';
 
-export const outlinedButtonContainerSizedStyle: { [key in Size]: ViewStyle } = {
+export const outlinedButtonContainerSizedStyle: SizedData<ViewStyle> = {
   xxsmall: {
     borderWidth: 1,
     paddingHorizontal: 4,

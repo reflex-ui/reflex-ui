@@ -9,7 +9,7 @@ import {
   ButtonProps,
   InjectableSubTheme,
   rawInjectableButtonViewSubTheme,
-  Size,
+  SizedData,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
@@ -19,7 +19,7 @@ import { getMidElevationStylesByInteraction } from '../../../elevation';
 import { getAllVariantsButtonContainerProps } from '../all-variants/container';
 import { getRaisedButtonContainerStyle } from '../raised/container';
 
-export const fabButtonContainerSizedStyle: { [key in Size]: ViewStyle } = {
+export const fabButtonContainerSizedStyle: SizedData<ViewStyle> = {
   xxsmall: {
     borderRadius: 16,
     height: 32,

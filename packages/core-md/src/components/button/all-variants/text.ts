@@ -11,14 +11,14 @@ import {
   getFontWeight,
   InjectableSubThemeOptional,
   isWeb,
-  Size,
+  SizedData,
   TextStyleGetter,
 } from '@reflex-ui/core';
 import { Platform, TextProps, TextStyle } from 'react-native';
 
 import { getFontFamily } from '../../typography';
 
-export const allVariantsButtonTextSizedStyle: { [key in Size]: TextStyle } = {
+export const allVariantsButtonTextSizedStyle: SizedData<TextStyle> = {
   xxsmall: {
     fontSize: 11,
     letterSpacing: 0.0772,

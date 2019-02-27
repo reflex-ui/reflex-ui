@@ -7,14 +7,14 @@
 
 import {
   ButtonProps,
-  Size,
+  SizedData,
   SubThemeOptional,
   SvgPropsGetter,
 } from '@reflex-ui/core';
 import { ViewStyle } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 
-export const allVariantsButtonIconSizedProps: { [key in Size]: SvgProps } = {
+export const allVariantsButtonIconSizedProps: SizedData<SvgProps> = {
   xxsmall: { height: 16, width: 16 },
   /*
    * Sorting values by size here makes it easier to reason about

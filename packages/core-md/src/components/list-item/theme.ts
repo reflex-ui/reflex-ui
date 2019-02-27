@@ -10,7 +10,7 @@ import {
   ListItemTheme,
   ListItemThemeOptional,
   rawListItemTheme,
-  Size,
+  SizedData,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
@@ -18,7 +18,7 @@ import { ViewStyle } from 'react-native';
 
 import { getSizingStyle } from '../../sizing/getSizingStyle';
 
-export const listItemContainerSizedStyle: { [key in Size]: ViewStyle } = {
+export const listItemContainerSizedStyle: SizedData<ViewStyle> = {
   xxsmall: { minHeight: 32 },
   /*
    * Sorting values by size here makes it easier to reason about
