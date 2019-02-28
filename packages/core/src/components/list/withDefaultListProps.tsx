@@ -34,6 +34,7 @@ export const withDefaultListProps = (
                 const propsWithDefaults: ListProps = {
                   ...dimensionsProps,
                   colorTheme,
+                  contained: true,
                   paletteTheme,
                   theme: componentsTheme.list,
                   ...props,

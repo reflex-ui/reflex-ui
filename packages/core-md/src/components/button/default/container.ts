@@ -7,7 +7,6 @@
 
 import {
   ButtonProps,
-  getThemedColor,
   InjectableSubTheme,
   rawInjectableButtonViewSubTheme,
   SizedData,
@@ -20,18 +19,6 @@ import {
   getAllVariantsButtonContainerProps,
   getAllVariantsButtonContainerStyle,
 } from '../all-variants/container';
-
-export const getDefaultButtonContainerBackgroundColorStyle: ViewStyleGetter<
-  ButtonProps
-> = ({ colorTheme, interactionState, invertColor, paletteTheme }) => ({
-  backgroundColor: getThemedColor({
-    colorTheme,
-    contained: false,
-    interactionState,
-    invertColor,
-    paletteTheme,
-  }),
-});
 
 export const defaultButtonContainerSizedStyle: SizedData<ViewStyle> = {
   xxsmall: {
@@ -82,7 +69,6 @@ export const getDefaultButtonContainerStyle: ViewStyleGetter<
 > = props => ({
   ...getAllVariantsButtonContainerStyle(props),
   ...defaultButtonContainerSizedStyle[props.size],
-  ...getDefaultButtonContainerBackgroundColorStyle(props),
 });
 
 export const defaultButtonContainerTheme: InjectableSubTheme<

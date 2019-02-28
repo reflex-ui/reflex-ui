@@ -7,6 +7,7 @@
 
 import {
   ButtonProps,
+  getThemedOnColor,
   InjectableSubTheme,
   rawInjectableButtonViewSubTheme,
   SizedData,
@@ -17,7 +18,6 @@ import { ViewProps, ViewStyle } from 'react-native';
 
 import { getAllVariantsButtonContainerProps } from '../all-variants/container';
 import { getDefaultButtonContainerStyle } from '../default/container';
-import { getDefaultButtonTextStyle } from '../default/text';
 
 export const outlinedButtonContainerSizedStyle: SizedData<ViewStyle> = {
   xxsmall: {
@@ -61,7 +61,7 @@ export const getOutlinedButtonContainerStyle: ViewStyleGetter<
 > = props => ({
   ...getDefaultButtonContainerStyle(props),
   ...outlinedButtonContainerSizedStyle[props.size],
-  borderColor: getDefaultButtonTextStyle(props).color,
+  borderColor: getThemedOnColor(props),
 });
 
 export const outlinedButtonContainerTheme: InjectableSubTheme<

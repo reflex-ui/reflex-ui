@@ -9,6 +9,7 @@ import {
   ButtonProps,
   FontWeight,
   getFontWeight,
+  getThemedOnColor,
   InjectableSubThemeOptional,
   Size,
   SizedData,
@@ -55,10 +56,11 @@ export const allVariantsButtonTextSizedStyle: SizedData<TextStyle> = {
   },
 };
 
-export const getAllVariantsButtonTextStyle: TextStyleGetter<ButtonProps> = ({
-  size,
-}) => ({
-  ...allVariantsButtonTextSizedStyle[size],
+export const getAllVariantsButtonTextStyle: TextStyleGetter<
+  ButtonProps
+> = props => ({
+  ...allVariantsButtonTextSizedStyle[props.size],
+  color: getThemedOnColor(props),
   fontFamily: getFontFamily(),
   fontWeight: getFontWeight(FontWeight.Medium),
   position: 'relative',
@@ -67,7 +69,7 @@ export const getAllVariantsButtonTextStyle: TextStyleGetter<ButtonProps> = ({
     web: {
       MozOsxFontSmoothing: 'grayscale',
       WebkitFontSmoothing: 'antialiased',
-      marginTop: size === Size.XXS || size === Size.XS ? -1 : -2,
+      marginTop: props.size === Size.XXS || props.size === Size.XS ? -1 : -2,
       userSelect: 'none',
     },
   }),

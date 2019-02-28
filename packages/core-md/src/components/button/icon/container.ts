@@ -19,8 +19,6 @@ import {
   getAllVariantsButtonContainerProps,
   getAllVariantsButtonContainerStyle,
 } from '../all-variants/container';
-// tslint:disable-next-line:max-line-length
-import { getDefaultButtonContainerBackgroundColorStyle } from '../default/container';
 
 export const iconButtonContainerSizedStyle: SizedData<ViewStyle> = {
   xxsmall: {
@@ -70,7 +68,6 @@ export const getIconButtonContainerStyle: ViewStyleGetter<
   ButtonProps
 > = props => ({
   ...getAllVariantsButtonContainerStyle(props),
-  ...getDefaultButtonContainerBackgroundColorStyle(props),
   ...iconButtonContainerSizedStyle[props.size],
 });
 

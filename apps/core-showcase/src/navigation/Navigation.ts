@@ -120,7 +120,7 @@ export const AppNavigation = () => {
     Navigation.setRoot({
       root: {
         component: {
-          name: SvgNavigation.default,
+          name: ButtonNavigation.contained,
         },
       },
     });

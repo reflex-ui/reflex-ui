@@ -12,6 +12,5 @@ import { PaletteThemeProps } from './PaletteThemeProps';
 export interface ThemedColorGetterInput
   extends InteractionStatePropsOptional,
     PaletteThemeProps {
-  readonly contained?: boolean;
   readonly onColor?: boolean;
 }

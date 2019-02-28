@@ -33,6 +33,14 @@ export const withDefaultButtonProps = (
                 const variant: ButtonVariant =
                   props.variant || ButtonVariant.Default;
 
+                const contained =
+                  variant === ButtonVariant.Default ||
+                  variant === ButtonVariant.Icon ||
+                  variant === ButtonVariant.Outlined ||
+                  variant === ButtonVariant.OutlinedShaped
+                    ? false
+                    : true;
+
                 const marginHorizontal: Size | number =
                   variant === ButtonVariant.Fab ||
                   variant === ButtonVariant.XFab ||
@@ -49,6 +57,7 @@ export const withDefaultButtonProps = (
 
                 const propsWithDefaults: ButtonProps = {
                   colorTheme: colorTheme || getButtonVariantColorTheme(variant),
+                  contained,
                   interactionState: {
                     type: InteractionType.Enabled,
                   },

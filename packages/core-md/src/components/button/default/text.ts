@@ -7,43 +7,18 @@
 
 import {
   ButtonProps,
-  getThemedColor,
   InjectableSubTheme,
   rawInjectableButtonTextSubTheme,
-  TextStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 import { TextProps, TextStyle } from 'react-native';
 
 import { getAllVariantsButtonTextStyle } from '../all-variants/text';
 
-export const getDefaultButtonTextColorStyle: TextStyleGetter<ButtonProps> = ({
-  colorTheme,
-  interactionState,
-  invertColor,
-  paletteTheme,
-}) => ({
-  color: getThemedColor({
-    colorTheme,
-    contained: false,
-    interactionState,
-    invertColor,
-    onColor: true,
-    paletteTheme,
-  }),
-});
-
-export const getDefaultButtonTextStyle: TextStyleGetter<ButtonProps> = (
-  props: ButtonProps,
-) => ({
-  ...getAllVariantsButtonTextStyle(props),
-  ...getDefaultButtonTextColorStyle(props),
-});
-
 export const defaultButtonTextTheme: InjectableSubTheme<
   ButtonProps,
   TextProps,
   TextStyle
 > = merge({}, rawInjectableButtonTextSubTheme, {
-  getStyle: getDefaultButtonTextStyle,
+  getStyle: getAllVariantsButtonTextStyle,
 });

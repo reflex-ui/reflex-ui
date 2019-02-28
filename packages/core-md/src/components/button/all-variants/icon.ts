@@ -7,6 +7,7 @@
 
 import {
   ButtonProps,
+  getThemedOnColor,
   SizedData,
   SubThemeOptional,
   SvgPropsGetter,
@@ -30,10 +31,11 @@ export const allVariantsButtonIconSizedProps: SizedData<SvgProps> = {
   xxlarge: { height: 52, width: 52 },
 };
 
-export const getAllVariantsButtonIconProps: SvgPropsGetter<ButtonProps> = ({
-  size,
-}) => ({
-  ...allVariantsButtonIconSizedProps[size],
+export const getAllVariantsButtonIconProps: SvgPropsGetter<
+  ButtonProps
+> = props => ({
+  ...allVariantsButtonIconSizedProps[props.size],
+  fill: getThemedOnColor(props),
 });
 
 export const allVariantsButtonIconTheme: SubThemeOptional<

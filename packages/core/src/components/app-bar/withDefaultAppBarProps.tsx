@@ -38,6 +38,7 @@ export const withDefaultAppBarProps = (
                 const propsWithDefaults: AppBarProps = {
                   ...dimensionsProps,
                   colorTheme,
+                  contained: true,
                   paletteTheme,
                   theme: componentsTheme.appBar[variant],
                   variant,

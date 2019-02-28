@@ -18,18 +18,12 @@ import { Platform, ViewProps, ViewStyle } from 'react-native';
 
 export const getTouchableSurfaceContainerStyle: ViewStyleGetter<
   TouchableSurfaceProps
-> = ({ colorTheme, interactionState, invertColor, paletteTheme }) => ({
-  backgroundColor: getThemedColor({
-    colorTheme,
-    contained: false,
-    interactionState,
-    invertColor,
-    paletteTheme,
-  }),
+> = props => ({
+  backgroundColor: getThemedColor(props),
   ...Platform.select({
     web: {
       cursor:
-        interactionState.type === InteractionType.Disabled
+        props.interactionState.type === InteractionType.Disabled
           ? 'default'
           : 'pointer',
       outline: 'none',

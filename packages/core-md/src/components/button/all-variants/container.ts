@@ -8,6 +8,7 @@
 import {
   ButtonProps,
   getSizedMarginStyle,
+  getThemedColor,
   InteractionType,
   Size,
   ViewPropsGetter,
@@ -28,6 +29,7 @@ export const getAllVariantsButtonContainerStyle: ViewStyleGetter<
   ButtonProps
 > = props => ({
   alignItems: 'center',
+  backgroundColor: getThemedColor(props),
   borderRadius: props.size === Size.XL || props.size === Size.XXL ? 6 : 4,
   flexDirection: 'row',
   flexGrow: props.fullWidth ? 1 : undefined,

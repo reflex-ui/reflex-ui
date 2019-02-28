@@ -29,10 +29,7 @@ export const getSurfaceContainerStyle: ViewStyleGetter<
   ...getFlexboxStyle(props),
   ...getSizedMarginStyle(sizedSpacing)(props),
   ...getSizedPaddingStyle(sizedSpacing)(props),
-  backgroundColor: getThemedColor({
-    colorTheme: props.colorTheme,
-    paletteTheme: props.paletteTheme,
-  }),
+  backgroundColor: getThemedColor(props),
   borderRadius: 4,
 });
 

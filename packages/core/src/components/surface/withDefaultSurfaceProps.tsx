@@ -34,6 +34,7 @@ export const withDefaultSurfaceProps = (
                 const propsWithDefaults: SurfaceProps = {
                   ...dimensionsProps,
                   colorTheme,
+                  contained: true,
                   paletteTheme,
                   theme: componentsTheme.surface,
                   ...props,

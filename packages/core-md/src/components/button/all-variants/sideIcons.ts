@@ -7,14 +7,13 @@
 
 import {
   ButtonProps,
+  getThemedOnColor,
   SizedData,
   SubThemeOptional,
   SvgPropsGetter,
 } from '@reflex-ui/core';
 import { ViewStyle } from 'react-native';
 import { SvgProps } from 'react-native-svg';
-
-import { getAllVariantsButtonIconProps } from './icon';
 
 export const allVariantsButtonLeadingIconSizedProps: SizedData<SvgProps> = {
   xxsmall: { height: 14, width: 14 },
@@ -35,8 +34,8 @@ export const allVariantsButtonLeadingIconSizedProps: SizedData<SvgProps> = {
 export const getAllVariantsButtonLeadingIconProps: SvgPropsGetter<
   ButtonProps
 > = props => ({
-  ...getAllVariantsButtonIconProps(props),
   ...allVariantsButtonLeadingIconSizedProps[props.size],
+  fill: getThemedOnColor(props),
 });
 
 // tslint:disable-next-line:max-line-length

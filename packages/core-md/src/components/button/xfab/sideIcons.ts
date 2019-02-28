@@ -16,7 +16,8 @@ import merge from 'lodash/merge';
 import { ViewStyle } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 
-import { getContainedButtonLeadingIconProps } from '../contained/sideIcons';
+// tslint:disable-next-line:max-line-length
+import { getAllVariantsButtonLeadingIconProps } from '../all-variants/sideIcons';
 
 export const xfabButtonLeadingIconSizedProps: SizedData<SvgProps> = {
   xxsmall: { height: 16, width: 16 },
@@ -37,7 +38,7 @@ export const xfabButtonLeadingIconSizedProps: SizedData<SvgProps> = {
 export const getXFabButtonLeadingIconProps: SvgPropsGetter<
   ButtonProps
 > = props => ({
-  ...getContainedButtonLeadingIconProps(props),
+  ...getAllVariantsButtonLeadingIconProps(props),
   ...xfabButtonLeadingIconSizedProps[props.size],
 });
 

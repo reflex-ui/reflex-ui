@@ -10,6 +10,7 @@ import {
   FlexSvgTheme,
   FlexSvgThemeOptional,
   getSizedMarginStyle,
+  getThemedOnColor,
   InjectableSubThemeOptional,
   rawFlexSvgTheme,
   SizedData,
@@ -22,7 +23,6 @@ import { SvgProps } from 'react-native-svg';
 
 import { getSizingStyle } from '../../sizing/getSizingStyle';
 import { sizedSpacing } from '../../spacing/sizedSpacing';
-import { getDefaultTypographyColorStyle } from '../typography/theme';
 
 export const flexSvgSvgSizedProps: SizedData<SvgProps> = {
   xxsmall: { height: 50, width: 50 },
@@ -41,8 +41,7 @@ export const flexSvgSvgSizedProps: SizedData<SvgProps> = {
 };
 
 export const getSvgColorProps: SvgPropsGetter<FlexSvgProps> = props => {
-  const themedColor: string | undefined = getDefaultTypographyColorStyle(props)
-    .color;
+  const themedColor = getThemedOnColor(props);
   const fill = props.fill ? props.fill : themedColor;
   const color = props.color ? props.color : fill;
 

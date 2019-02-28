@@ -7,7 +7,6 @@
 
 import {
   ButtonProps,
-  getThemedColor,
   InjectableSubTheme,
   rawInjectableButtonTextSubTheme,
   TextStyleGetter,
@@ -17,27 +16,9 @@ import { TextProps, TextStyle } from 'react-native';
 
 import { getAllVariantsButtonTextStyle } from '../all-variants/text';
 
-export const getContainedButtonTextColorStyle: TextStyleGetter<ButtonProps> = ({
-  colorTheme,
-  interactionState,
-  invertColor,
-  paletteTheme,
-}) => ({
-  color: getThemedColor({
-    colorTheme,
-    interactionState,
-    invertColor,
-    onColor: true,
-    paletteTheme,
-  }),
-});
-
 export const getContainedButtonTextStyle: TextStyleGetter<ButtonProps> = (
   props: ButtonProps,
-) => ({
-  ...getAllVariantsButtonTextStyle(props),
-  ...getContainedButtonTextColorStyle(props),
-});
+) => getAllVariantsButtonTextStyle(props);
 
 export const containedButtonTextTheme: InjectableSubTheme<
   ButtonProps,

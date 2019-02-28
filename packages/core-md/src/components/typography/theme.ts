@@ -10,9 +10,8 @@ import {
   getFontWeight,
   getSizedMarginStyle,
   getSizedPaddingStyle,
-  getThemedColor,
+  getThemedOnColor,
   isWeb,
-  PaletteThemeProps,
   rawTypographyTheme,
   TextStyleGetter,
   TypographyProps,
@@ -25,24 +24,12 @@ import { Platform, TextStyle } from 'react-native';
 import { sizedSpacing } from '../../spacing/sizedSpacing';
 import { getFontFamily } from './getFontFamily';
 
-export const getDefaultTypographyColorStyle: TextStyleGetter<
-  PaletteThemeProps
-> = ({ colorTheme, invertColor, paletteTheme }) => ({
-  color: getThemedColor({
-    colorTheme,
-    contained: false,
-    invertColor,
-    onColor: true,
-    paletteTheme,
-  }),
-});
-
 export const getCommonTypographyStyle: TextStyleGetter<
   TypographyProps
 > = props => ({
   ...getSizedMarginStyle(sizedSpacing)(props),
   ...getSizedPaddingStyle(sizedSpacing)(props),
-  ...getDefaultTypographyColorStyle(props),
+  color: getThemedOnColor(props),
   fontFamily: getFontFamily(),
   fontWeight: getFontWeight(FontWeight.Regular),
   ...Platform.select({

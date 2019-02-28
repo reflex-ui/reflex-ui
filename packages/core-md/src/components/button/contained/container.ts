@@ -7,7 +7,6 @@
 
 import {
   ButtonProps,
-  getThemedColor,
   InjectableSubTheme,
   rawInjectableButtonViewSubTheme,
   SizedData,
@@ -70,7 +69,6 @@ export const getContainedButtonContainerStyle: ViewStyleGetter<
 > = props => ({
   ...getAllVariantsButtonContainerStyle(props),
   ...containedButtonContainerSizedStyle[props.size],
-  backgroundColor: getThemedColor(props),
 });
 
 export const containedButtonContainerTheme: InjectableSubTheme<

@@ -14,6 +14,7 @@ export * from './createPaletteColorUsingOnColorOnly';
 export * from './createPaletteTheme';
 export * from './defaultPaletteTheme';
 export * from './getThemedColor';
+export * from './getThemedOnColor';
 export * from './invertPaletteColor';
 export * from './PaletteColor';
 export * from './PaletteColorArrangement';

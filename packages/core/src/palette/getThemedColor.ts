@@ -16,10 +16,10 @@ import { ThemedColorGetter } from './ThemedColorGetter';
 
 export const getThemedColor: ThemedColorGetter = ({
   colorTheme = ColorTheme.PrimaryNormal,
-  contained = true,
+  contained,
   interactionState = { type: InteractionType.Enabled },
-  invertColor = false,
-  onColor = false,
+  invertColor,
+  onColor,
   paletteTheme,
 }): string => {
   // tslint:disable-next-line:no-console
