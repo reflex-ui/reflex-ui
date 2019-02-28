@@ -27,9 +27,11 @@ import { getFontFamily } from './getFontFamily';
 
 export const getDefaultTypographyColorStyle: TextStyleGetter<
   PaletteThemeProps
-> = ({ colorTheme, paletteTheme }) => ({
+> = ({ colorTheme, invertColor, paletteTheme }) => ({
   color: getThemedColor({
     colorTheme,
+    contained: false,
+    invertColor,
     onColor: true,
     paletteTheme,
   }),
