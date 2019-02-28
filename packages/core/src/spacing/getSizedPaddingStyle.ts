@@ -21,16 +21,28 @@ export const getSizedPaddingStyle = (
   paddingVertical: pV,
 }: PaddingProps) => ({
   // prettier-ignore
-  ...(p
+  ...(p !== undefined && p !== null
     ? {
       paddingHorizontal: getSizedDataValue(sizedData, p),
       paddingVertical: getSizedDataValue(sizedData, p),
     }
     : {}),
-  ...(pH ? { paddingHorizontal: getSizedDataValue(sizedData, pH) } : {}),
-  ...(pV ? { paddingVertical: getSizedDataValue(sizedData, pV) } : {}),
-  ...(pS ? { paddingStart: getSizedDataValue(sizedData, pS) } : {}),
-  ...(pE ? { paddingEnd: getSizedDataValue(sizedData, pE) } : {}),
-  ...(pT ? { paddingTop: getSizedDataValue(sizedData, pT) } : {}),
-  ...(pB ? { paddingBottom: getSizedDataValue(sizedData, pB) } : {}),
+  ...(pH !== undefined && pH !== null
+    ? { paddingHorizontal: getSizedDataValue(sizedData, pH) }
+    : {}),
+  ...(pV !== undefined && pV !== null
+    ? { paddingVertical: getSizedDataValue(sizedData, pV) }
+    : {}),
+  ...(pS !== undefined && pS !== null
+    ? { paddingStart: getSizedDataValue(sizedData, pS) }
+    : {}),
+  ...(pE !== undefined && pE !== null
+    ? { paddingEnd: getSizedDataValue(sizedData, pE) }
+    : {}),
+  ...(pT !== undefined && pT !== null
+    ? { paddingTop: getSizedDataValue(sizedData, pT) }
+    : {}),
+  ...(pB !== undefined && pB !== null
+    ? { paddingBottom: getSizedDataValue(sizedData, pB) }
+    : {}),
 });

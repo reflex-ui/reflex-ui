@@ -19,16 +19,28 @@ export const getSizedMarginStyle = (sizedData: SizedData<number | string>) => ({
   marginVertical: mV,
 }: MarginProps) => ({
   // prettier-ignore
-  ...(m
+  ...(m !== undefined && m !== null
     ? {
       marginHorizontal: getSizedDataValue(sizedData, m),
       marginVertical: getSizedDataValue(sizedData, m),
     }
     : {}),
-  ...(mH ? { marginHorizontal: getSizedDataValue(sizedData, mH) } : {}),
-  ...(mV ? { marginVertical: getSizedDataValue(sizedData, mV) } : {}),
-  ...(mS ? { marginStart: getSizedDataValue(sizedData, mS) } : {}),
-  ...(mE ? { marginEnd: getSizedDataValue(sizedData, mE) } : {}),
-  ...(mT ? { marginTop: getSizedDataValue(sizedData, mT) } : {}),
-  ...(mB ? { marginBottom: getSizedDataValue(sizedData, mB) } : {}),
+  ...(mH !== undefined && mH !== null
+    ? { marginHorizontal: getSizedDataValue(sizedData, mH) }
+    : {}),
+  ...(mV !== undefined && mV !== null
+    ? { marginVertical: getSizedDataValue(sizedData, mV) }
+    : {}),
+  ...(mS !== undefined && mS !== null
+    ? { marginStart: getSizedDataValue(sizedData, mS) }
+    : {}),
+  ...(mE !== undefined && mE !== null
+    ? { marginEnd: getSizedDataValue(sizedData, mE) }
+    : {}),
+  ...(mT !== undefined && mT !== null
+    ? { marginTop: getSizedDataValue(sizedData, mT) }
+    : {}),
+  ...(mB !== undefined && mB !== null
+    ? { marginBottom: getSizedDataValue(sizedData, mB) }
+    : {}),
 });
