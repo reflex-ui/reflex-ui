@@ -21,8 +21,7 @@ import {
   ElevationDegree,
   getMidElevationStylesByInteraction,
 } from '../../../elevation';
-// tslint:disable-next-line:max-line-length
-import { getContainedButtonRippleColor } from '../contained/getContainedButtonRippleColor';
+import { getButtonRippleColor } from '../getButtonRippleColor';
 import { withRaiseEffect } from '../withRaiseEffect';
 import { withRippleEffect } from '../withRippleEffect';
 import { getFabButtonContainerStyle } from './container';
@@ -58,7 +57,7 @@ export const animatedFabButtonContainerTheme: InjectableSubTheme<
   ViewStyle
 > = merge({}, rawInjectableButtonViewSubTheme, {
   component: withRippleEffect({
-    getRippleColor: getContainedButtonRippleColor,
+    getRippleColor: getButtonRippleColor,
   })(withRaiseEffect(ElevationDegree.Mid)(DefaultViewSubcomponent)),
   getStyle: getAnimatedFabButtonContainerStyle,
 });

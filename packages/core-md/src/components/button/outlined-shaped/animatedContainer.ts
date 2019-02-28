@@ -17,8 +17,7 @@ import {
 import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
-// tslint:disable-next-line:max-line-length
-import { getDefaultButtonRippleColor } from '../default/getDefaultButtonRippleColor';
+import { getButtonRippleColor } from '../getButtonRippleColor';
 import { withRippleEffect } from '../withRippleEffect';
 import { getOutlinedShapedButtonContainerStyle } from './container';
 
@@ -51,7 +50,7 @@ export const animatedOutlinedShapedButtonContainerTheme: InjectableSubTheme<
   ViewStyle
 > = merge({}, rawInjectableButtonViewSubTheme, {
   component: withRippleEffect({
-    getRippleColor: getDefaultButtonRippleColor,
+    getRippleColor: getButtonRippleColor,
   })(DefaultViewSubcomponent),
   getStyle: getAnimatedOutlinedShapedButtonContainerStyle,
 });

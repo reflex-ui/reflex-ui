@@ -17,8 +17,7 @@ import {
 import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
-// tslint:disable-next-line:max-line-length
-import { getDefaultButtonRippleColor } from '../button/default/getDefaultButtonRippleColor';
+import { getButtonRippleColor } from '../button/getButtonRippleColor';
 import { withRippleEffect } from '../button/withRippleEffect';
 import { getTouchableSurfaceContainerStyle } from './container';
 
@@ -50,7 +49,7 @@ export const animatedTouchableSurfaceContainerTheme: InjectableSubTheme<
   ViewStyle
 > = merge({}, rawInjectableTouchableSurfaceViewSubTheme, {
   component: withRippleEffect({
-    getRippleColor: getDefaultButtonRippleColor,
+    getRippleColor: getButtonRippleColor,
   })(DefaultViewSubcomponent),
   getStyle: getAnimatedTouchableSurfaceContainerStyle,
 });

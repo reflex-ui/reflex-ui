@@ -8,7 +8,7 @@
 import { ButtonProps, getThemedColor } from '@reflex-ui/core';
 import { StyleSheet } from 'react-native';
 
-export const getContainedButtonRippleColor = (props: ButtonProps): string => {
+export const getButtonRippleColor = (props: ButtonProps): string => {
   const viewProps = props.getSubProps
     ? props.getSubProps(props).container || {}
     : {};

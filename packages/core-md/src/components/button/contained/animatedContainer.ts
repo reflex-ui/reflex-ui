@@ -17,9 +17,9 @@ import {
 import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
+import { getButtonRippleColor } from '../getButtonRippleColor';
 import { withRippleEffect } from '../withRippleEffect';
 import { getContainedButtonContainerStyle } from './container';
-import { getContainedButtonRippleColor } from './getContainedButtonRippleColor';
 
 export const getAnimatedContainedButtonContainerStyle: ViewStyleGetter<
   ButtonProps
@@ -49,7 +49,7 @@ export const animatedContainedButtonContainerTheme: InjectableSubTheme<
   ViewStyle
 > = merge({}, rawInjectableButtonViewSubTheme, {
   component: withRippleEffect({
-    getRippleColor: getContainedButtonRippleColor,
+    getRippleColor: getButtonRippleColor,
   })(DefaultViewSubcomponent),
   getStyle: getAnimatedContainedButtonContainerStyle,
 });

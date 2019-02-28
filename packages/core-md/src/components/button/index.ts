@@ -17,6 +17,7 @@ export * from './raised';
 export * from './xfab';
 
 export * from './animatedTheme';
+export * from './getButtonRippleColor';
 export * from './theme';
 export * from './withRaiseEffect';
 export * from './withRippleEffect';
