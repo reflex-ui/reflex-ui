@@ -36,8 +36,8 @@ export const svgIconSvgSizedProps: SizedData<SvgProps> = {
   small: { height: 20, width: 20 },
   medium: { height: 24, width: 24 },
   large: { height: 32, width: 32 },
-  xlarge: { height: 48, width: 48 },
-  xxlarge: { height: 64, width: 64 },
+  xlarge: { height: 40, width: 40 },
+  xxlarge: { height: 48, width: 48 },
 };
 
 export const getSvgIconSvgProps: SvgPropsGetter<FlexSvgProps> = props => ({
