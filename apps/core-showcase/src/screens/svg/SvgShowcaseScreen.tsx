@@ -31,10 +31,10 @@ const onButtonPress = () => {
 const SvgShowcaseScreen: React.SFC<{}> = (): JSX.Element => (
   <ScrollView>
     <AppBar>
-      <Button invertColor onPress={onButtonPress} variant={ButtonVariant.Icon}>
+      <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
         <MenuIcon />
       </Button>
-      <AppBarTitle numberOfLines={1}>FlexSvg</AppBarTitle>
+      <AppBarTitle numberOfLines={1}>Svg</AppBarTitle>
     </AppBar>
     <Column marginTop={Size.M}>
       {({ breakpoints, dimensions }) => {

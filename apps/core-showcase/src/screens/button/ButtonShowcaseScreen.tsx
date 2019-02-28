@@ -22,6 +22,8 @@ import {
   Headline6,
   isWeb,
   JustifyContent,
+  Paragraph1,
+  Paragraph2,
   primaryColorThemes,
   Row,
   secondaryColorThemes,
@@ -41,16 +43,6 @@ const onButtonPress = () => {
   console.log('DefaultButtonScreen().onButtonPress()');
 };
 
-/*
-const colorThemesByPairs = colorThemes.map((colorTheme, index, array) => (
-  index % 2 === 0 ? { a: colorTheme, b: array[index + 1] } : continue
-));
-
-interface ColorPair {
-  colorA: ColorTheme;
-  colorB: ColorTheme;
-}
-*/
 export const colorThemes: ColorTheme[] = [
   ...primaryColorThemes,
   ...secondaryColorThemes,
@@ -58,15 +50,6 @@ export const colorThemes: ColorTheme[] = [
   ...successColorThemes,
   ...warningColorThemes,
 ];
-/*
-const colorThemesInPairs = colorThemes.reduce<ColorPair[]>(
-  (acc, cur, index, array) => {
-    if (index % 2 === 0) acc.push({ colorA: cur, colorB: array[index + 1] });
-    return acc;
-  },
-  [],
-);
-*/
 
 export interface CustomButtonCollection {
   readonly colorTheme: ColorTheme;
@@ -93,7 +76,7 @@ const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
 }): JSX.Element => (
   <ScrollView>
     <AppBar>
-      <Button invertColor onPress={onButtonPress} variant={ButtonVariant.Icon}>
+      <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
         <MenuIcon />
       </Button>
       <AppBarTitle numberOfLines={1}>{title}</AppBarTitle>
@@ -102,6 +85,14 @@ const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
       {({ breakpoints, dimensions }) => {
         const marginSize =
           dimensions.window.width > breakpoints.largeHandset ? Size.M : 0;
+
+        const invertColor =
+          variant === ButtonVariant.Default ||
+          variant === ButtonVariant.Icon ||
+          variant === ButtonVariant.Outlined ||
+          variant === ButtonVariant.OutlinedShaped
+            ? true
+            : false;
 
         const justifyContent =
           dimensions.window.width <= breakpoints.smallTablet
@@ -131,6 +122,7 @@ const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
                           <Row>
                             <ScaleButton
                               colorTheme={ColorTheme.PrimaryNormal}
+                              invertColor={invertColor}
                               onPress={onButtonPress}
                               size={size}
                               variant={variant}
@@ -149,19 +141,36 @@ const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
                 marginVertical={marginSize}
               >
                 <Surface marginStart={marginSize}>
+                  <Paragraph1 margin={Size.M} marginBottom={Size.XXS}>
+                    Surface color: <Paragraph2>surface_normal</Paragraph2>
+                  </Paragraph1>
+                  <Paragraph1 margin={Size.M} marginTop={0}>
+                    Button color:
+                    <Paragraph2>
+                      {` ${colorTheme}${invertColor ? ' invertColor' : ''}`}
+                    </Paragraph2>
+                  </Paragraph1>
                   <ButtonCollection
                     colorTheme={colorTheme}
+                    invertColor={invertColor}
                     onPress={onButtonPress}
-                    title={colorTheme}
                     variant={variant}
                   />
                 </Surface>
                 <Surface colorTheme={colorTheme} marginStart={marginSize}>
+                  <Paragraph1 margin={Size.M} marginBottom={Size.XXS}>
+                    Surface color: <Paragraph2>{colorTheme}</Paragraph2>
+                  </Paragraph1>
+                  <Paragraph1 margin={Size.M} marginTop={0}>
+                    Button color:
+                    <Paragraph2>
+                      {` ${colorTheme}${invertColor ? '' : ' invertColor'}`}
+                    </Paragraph2>
+                  </Paragraph1>
                   <ButtonCollection
                     colorTheme={colorTheme}
-                    invertColor
+                    invertColor={!invertColor}
                     onPress={onButtonPress}
-                    title={`${colorTheme} invertColor`}
                     variant={variant}
                   />
                 </Surface>
@@ -179,12 +188,16 @@ const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
                     colorTheme={custom.surfaceColorTheme}
                     marginStart={marginSize}
                   >
+                    <Paragraph1 margin={Size.M} marginBottom={Size.XXS}>
+                      Surface color: <Paragraph2>surface_normal</Paragraph2>
+                    </Paragraph1>
+                    <Paragraph1 margin={Size.M} marginTop={0}>
+                      Button color: <Paragraph2>{custom.title}</Paragraph2>
+                    </Paragraph1>
                     <ButtonCollection
                       colorTheme={custom.colorTheme}
                       getSubProps={custom.getSubProps}
-                      invertColor
                       onPress={onButtonPress}
-                      title={custom.title}
                       variant={custom.variant}
                     />
                   </Surface>

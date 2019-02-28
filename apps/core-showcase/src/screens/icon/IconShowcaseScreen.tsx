@@ -45,7 +45,7 @@ const colorThemes: ColorTheme[] = [
 const IconShowcaseScreen: React.SFC<{}> = (): JSX.Element => (
   <ScrollView>
     <AppBar>
-      <Button invertColor onPress={onButtonPress} variant={ButtonVariant.Icon}>
+      <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
         <MenuIcon />
       </Button>
       <AppBarTitle numberOfLines={1}>Icon</AppBarTitle>
@@ -69,12 +69,15 @@ const IconShowcaseScreen: React.SFC<{}> = (): JSX.Element => (
                 marginVertical={marginSize}
               >
                 <Surface marginStart={marginSize}>
-                  <IconCollection colorTheme={colorTheme} title={colorTheme} />
+                  <IconCollection
+                    colorTheme={colorTheme}
+                    invertColor
+                    title={colorTheme}
+                  />
                 </Surface>
                 <Surface colorTheme={colorTheme} marginStart={marginSize}>
                   <IconCollection
                     colorTheme={colorTheme}
-                    invertColor
                     title={`${colorTheme} invertColor`}
                   />
                 </Surface>

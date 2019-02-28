@@ -19,6 +19,5 @@ export interface ButtonCollectionProps {
   readonly onPress?: () => void;
   readonly showDisabled?: boolean;
   readonly size?: Size;
-  readonly title: string;
   readonly variant: ButtonVariant;
 }

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { Button, Headline6, Row, Size } from '@reflex-ui/core';
+import { Button, Row, Size } from '@reflex-ui/core';
 import { FavoriteIcon } from '@reflex-ui/icons-md';
 import * as React from 'react';
 
@@ -16,11 +16,9 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
   getSubProps,
   invertColor,
   onPress,
-  title,
   variant,
 }): JSX.Element => (
   <React.Fragment>
-    <Headline6 margin={Size.M}>{title}</Headline6>
     <Row>
       <Button
         colorTheme={colorTheme}

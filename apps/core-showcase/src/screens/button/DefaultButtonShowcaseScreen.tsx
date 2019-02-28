@@ -67,7 +67,7 @@ const DefaultButtonShowcaseScreen: React.SFC = (): JSX.Element => (
         colorTheme: ColorTheme.PrimaryNormal,
         getSubProps: getButtonProps,
         surfaceColorTheme: ColorTheme.SurfaceNormal,
-        title: 'Custom color',
+        title: 'custom',
         variant: ButtonVariant.Default,
       },
     ]}
