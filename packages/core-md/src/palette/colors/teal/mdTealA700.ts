@@ -32,9 +32,9 @@ export const mdTealA700: MaterialPaletteColorItem = {
         disabledColor: disabledGrey300_500,
       }),
       uncontained: createPaletteColorInteraction({
-        color: createPaletteColorUsingOnColorOnly(tealA700),
+        color: createPaletteColorUsingColorOnly(tealA700),
         colorVariantFactory: createUncontainedPaletteColorVariant,
-        disabledColor: disabledGrey600_400_600,
+        disabledColor: disabledGrey500,
       }),
     },
     regular: {
@@ -44,9 +44,9 @@ export const mdTealA700: MaterialPaletteColorItem = {
         disabledColor: disabledGrey300_500,
       }),
       uncontained: createPaletteColorInteraction({
-        color: createPaletteColorUsingColorOnly(tealA700),
+        color: createPaletteColorUsingOnColorOnly(tealA700),
         colorVariantFactory: createUncontainedPaletteColorVariant,
-        disabledColor: disabledGrey500,
+        disabledColor: disabledGrey600_400_600,
       }),
     },
   },

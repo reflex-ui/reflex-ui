@@ -32,9 +32,9 @@ export const mdBlue500: MaterialPaletteColorItem = {
         disabledColor: disabledGrey300_500,
       }),
       uncontained: createPaletteColorInteraction({
-        color: createPaletteColorUsingOnColorOnly(blue500),
+        color: createPaletteColorUsingColorOnly(blue500),
         colorVariantFactory: createUncontainedPaletteColorVariant,
-        disabledColor: disabledGrey400_500_600,
+        disabledColor: disabledGrey500,
       }),
     },
     regular: {
@@ -44,12 +44,14 @@ export const mdBlue500: MaterialPaletteColorItem = {
         disabledColor: disabledGrey300_500,
       }),
       uncontained: createPaletteColorInteraction({
-        color: createPaletteColorUsingColorOnly(blue500),
+        color: createPaletteColorUsingOnColorOnly(blue500),
         colorVariantFactory: createUncontainedPaletteColorVariant,
-        disabledColor: disabledGrey500,
+        disabledColor: disabledGrey400_500_600,
       }),
     },
   },
   name: 'Blue',
   tone: '500',
 };
+
+console.log('mdBlue500: ', mdBlue500);

@@ -32,9 +32,9 @@ export const mdGrey100: MaterialPaletteColorItem = {
         disabledColor: disabledGrey300_500,
       }),
       uncontained: createPaletteColorInteraction({
-        color: createPaletteColorUsingOnColorOnly(grey100),
+        color: createPaletteColorUsingColorOnly(grey100),
         colorVariantFactory: createUncontainedPaletteColorVariant,
-        disabledColor: disabledGrey600_500_600,
+        disabledColor: disabledGrey500,
       }),
     },
     regular: {
@@ -44,9 +44,9 @@ export const mdGrey100: MaterialPaletteColorItem = {
         disabledColor: disabledGrey300_500,
       }),
       uncontained: createPaletteColorInteraction({
-        color: createPaletteColorUsingColorOnly(grey100),
+        color: createPaletteColorUsingOnColorOnly(grey100),
         colorVariantFactory: createUncontainedPaletteColorVariant,
-        disabledColor: disabledGrey500,
+        disabledColor: disabledGrey600_500_600,
       }),
     },
   },

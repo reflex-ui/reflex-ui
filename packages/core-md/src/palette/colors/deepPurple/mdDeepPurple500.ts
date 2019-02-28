@@ -32,9 +32,9 @@ export const mdDeepPurple500: MaterialPaletteColorItem = {
         disabledColor: disabledGrey300_500,
       }),
       uncontained: createPaletteColorInteraction({
-        color: createPaletteColorUsingOnColorOnly(deepPurple500),
+        color: createPaletteColorUsingColorOnly(deepPurple500),
         colorVariantFactory: createUncontainedPaletteColorVariant,
-        disabledColor: disabledGrey500_500_400,
+        disabledColor: disabledGrey500,
       }),
     },
     regular: {
@@ -44,9 +44,9 @@ export const mdDeepPurple500: MaterialPaletteColorItem = {
         disabledColor: disabledGrey300_500,
       }),
       uncontained: createPaletteColorInteraction({
-        color: createPaletteColorUsingColorOnly(deepPurple500),
+        color: createPaletteColorUsingOnColorOnly(deepPurple500),
         colorVariantFactory: createUncontainedPaletteColorVariant,
-        disabledColor: disabledGrey500,
+        disabledColor: disabledGrey500_500_400,
       }),
     },
   },
