@@ -7,6 +7,8 @@
 
 import * as React from 'react';
 
+// tslint:disable-next-line
+import { InteractionStateContext } from '../../interaction/InteractionStateContext';
 import { ColorTheme } from '../../palette/ColorTheme';
 import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
@@ -23,17 +25,24 @@ export const Subtitle2 = reflexComponent<TypographyPropsOptional>({
       <ColorThemeContext.Consumer>
         {colorTheme => (
           <ComponentsThemeContext.Consumer>
-            {componentsTheme => {
-              const propsWithDefaults: TypographyProps = {
-                colorTheme:
-                  props.colorTheme || colorTheme || ColorTheme.SurfaceNormal,
-                paletteTheme,
-                theme: componentsTheme.typography.subtitle2,
-                ...props,
-              };
+            {componentsTheme => (
+              <InteractionStateContext.Consumer>
+                {interactionState => {
+                  const propsWithDefaults: TypographyProps = {
+                    colorTheme:
+                      props.colorTheme ||
+                      colorTheme ||
+                      ColorTheme.SurfaceNormal,
+                    interactionState,
+                    paletteTheme,
+                    theme: componentsTheme.typography.subtitle2,
+                    ...props,
+                  };
 
-              return <SimpleText {...propsWithDefaults} />;
-            }}
+                  return <SimpleText {...propsWithDefaults} />;
+                }}
+              </InteractionStateContext.Consumer>
+            )}
           </ComponentsThemeContext.Consumer>
         )}
       </ColorThemeContext.Consumer>

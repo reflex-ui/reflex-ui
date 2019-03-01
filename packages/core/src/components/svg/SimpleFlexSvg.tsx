@@ -24,6 +24,7 @@ export const extractSvgPropsFromFlexSvgProps = (
     colorTheme,
     // tslint:disable-next-line:no-shadowed-variable
     getSubProps,
+    interactionState,
     invertColor,
     margin,
     marginBottom,

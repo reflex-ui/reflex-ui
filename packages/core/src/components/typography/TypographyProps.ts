@@ -8,6 +8,8 @@
 import * as React from 'react';
 import { TextProps, TextStyle } from 'react-native';
 
+// tslint:disable-next-line:max-line-length
+import { InteractionStatePropsOptional } from '../../interaction/InteractionStateProps';
 import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
 import { MarginProps } from '../../spacing/MarginProps';
 import { PaddingProps } from '../../spacing/PaddingProps';
@@ -15,6 +17,7 @@ import { InjectableSubTheme } from '../subcomponents';
 
 export interface TypographyProps
   extends TextProps,
+    InteractionStatePropsOptional,
     MarginProps,
     PaddingProps,
     PaletteThemeProps {

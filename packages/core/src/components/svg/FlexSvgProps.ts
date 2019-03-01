@@ -7,6 +7,8 @@
 
 import { SvgProps } from 'react-native-svg';
 
+// tslint:disable-next-line:max-line-length
+import { InteractionStatePropsOptional } from '../../interaction/InteractionStateProps';
 import { PaletteThemeProps } from '../../palette';
 import { SizingProps } from '../../sizing/SizingProps';
 import { MarginProps } from '../../spacing';
@@ -14,7 +16,8 @@ import { FlexSvgSubPropsGetter } from './FlexSvgSubPropsGetter';
 import { FlexSvgTheme } from './FlexSvgTheme';
 
 export interface FlexSvgProps
-  extends MarginProps,
+  extends InteractionStatePropsOptional,
+    MarginProps,
     PaletteThemeProps,
     SizingProps,
     SvgProps {

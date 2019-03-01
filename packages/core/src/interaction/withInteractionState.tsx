@@ -13,6 +13,7 @@ import { isWeb } from '../utils';
 import { InteractionEvent } from './InteractionEvent';
 import { InteractionProps, InteractionPropsOptional } from './InteractionProps';
 import { InteractionState } from './InteractionState';
+import { InteractionStateContext } from './InteractionStateContext';
 import { InteractionType } from './InteractionType';
 
 interface State {
@@ -37,17 +38,33 @@ export const withInteractionState = <P extends InteractionPropsOptional>(
       };
 
       public render(): JSX.Element {
-        const interactionProps: InteractionProps = {
-          interactionState: this.getInteractionState(),
-          onBlur: isWeb ? this.onBlur : undefined,
-          onFocus: isWeb ? this.onFocus : undefined,
-          onMouseEnter: isWeb ? this.onMouseEnter : undefined,
-          onMouseLeave: isWeb ? this.onMouseLeave : undefined,
-          onPressIn: this.onPressIn,
-          onPressOut: this.onPressOut,
-        };
+        return (
+          <InteractionStateContext.Consumer>
+            {inheritedInteractionState => {
+              const interactionState =
+                inheritedInteractionState &&
+                inheritedInteractionState.type === InteractionType.Disabled
+                  ? inheritedInteractionState
+                  : this.getInteractionState();
 
-        return <WrappedComponent {...this.props} {...interactionProps} />;
+              const interactionProps: InteractionProps = {
+                interactionState,
+                onBlur: isWeb ? this.onBlur : undefined,
+                onFocus: isWeb ? this.onFocus : undefined,
+                onMouseEnter: isWeb ? this.onMouseEnter : undefined,
+                onMouseLeave: isWeb ? this.onMouseLeave : undefined,
+                onPressIn: this.onPressIn,
+                onPressOut: this.onPressOut,
+              };
+
+              return (
+                <InteractionStateContext.Provider value={interactionState}>
+                  <WrappedComponent {...this.props} {...interactionProps} />
+                </InteractionStateContext.Provider>
+              );
+            }}
+          </InteractionStateContext.Consumer>
+        );
       }
 
       private getInteractionState = (): InteractionState => {

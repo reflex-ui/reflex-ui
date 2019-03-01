@@ -18,6 +18,7 @@ export const extractTextPropsFromTypographyProps = (
   const {
     children,
     colorTheme,
+    interactionState,
     margin,
     marginBottom,
     marginEnd,

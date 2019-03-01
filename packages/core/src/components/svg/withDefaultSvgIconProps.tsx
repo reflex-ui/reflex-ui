@@ -7,6 +7,8 @@
 
 import * as React from 'react';
 
+// tslint:disable-next-line
+import { InteractionStateContext } from '../../interaction/InteractionStateContext';
 import { ColorTheme } from '../../palette/ColorTheme';
 import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
@@ -27,17 +29,22 @@ export const withDefaultSvgIconProps = (
         <ColorThemeContext.Consumer>
           {colorTheme => (
             <ComponentsThemeContext.Consumer>
-              {componentsTheme => {
-                const propsWithDefaults: FlexSvgProps = {
-                  colorTheme: colorTheme || ColorTheme.SecondaryNormal,
-                  paletteTheme,
-                  size: Size.M,
-                  theme: componentsTheme.svg.svgIcon,
-                  ...props,
-                };
+              {componentsTheme => (
+                <InteractionStateContext.Consumer>
+                  {interactionState => {
+                    const propsWithDefaults: FlexSvgProps = {
+                      colorTheme: colorTheme || ColorTheme.SecondaryNormal,
+                      interactionState,
+                      paletteTheme,
+                      size: Size.M,
+                      theme: componentsTheme.svg.svgIcon,
+                      ...props,
+                    };
 
-                return <WrappedComponent {...propsWithDefaults} />;
-              }}
+                    return <WrappedComponent {...propsWithDefaults} />;
+                  }}
+                </InteractionStateContext.Consumer>
+              )}
             </ComponentsThemeContext.Consumer>
           )}
         </ColorThemeContext.Consumer>
