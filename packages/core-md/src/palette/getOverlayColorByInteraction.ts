@@ -18,6 +18,7 @@ export const getOverlayColorByInteraction = ({
       return 'transparent';
     case InteractionType.Enabled:
       return 'transparent';
+    case InteractionType.Activated:
     case InteractionType.Focused:
       return Color.rgb(color)
         .fade(0.81)

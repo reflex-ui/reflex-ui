@@ -29,7 +29,10 @@ export const getInlayColorByInteraction = ({
     } else {
       rate = 0.08;
     }
-  } else if (type === InteractionType.Focused) {
+  } else if (
+    type === InteractionType.Focused ||
+    type === InteractionType.Activated
+  ) {
     if (luminosity > 0.97) {
       rate = 0.12;
     } else if (luminosity > 0.7 || luminosity < 0.1) {
@@ -38,6 +41,7 @@ export const getInlayColorByInteraction = ({
       rate = 0.24;
     }
   } else {
+    // InteractionType.Pressed
     if (luminosity > 0.97) {
       rate = 0.16;
     } else if (luminosity > 0.7 || luminosity < 0.1) {

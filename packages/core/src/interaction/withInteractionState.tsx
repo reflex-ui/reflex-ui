@@ -38,6 +38,15 @@ export const withInteractionState = <P extends InteractionPropsOptional>(
       };
 
       public render(): JSX.Element {
+        if (this.props.activated && this.props.disabled) {
+          throw new Error(
+            [
+              'Rfx.WithInteractionState: activated and disabled props',
+              ' cannot be both true.',
+            ].join(''),
+          );
+        }
+
         return (
           <InteractionStateContext.Consumer>
             {inheritedInteractionState => {
@@ -72,6 +81,12 @@ export const withInteractionState = <P extends InteractionPropsOptional>(
       }
 
       private getInteractionState = (): InteractionState => {
+        if (this.props.activated) {
+          return {
+            event: this.state.interactionEvent,
+            type: InteractionType.Activated,
+          };
+        }
         if (this.props.disabled) {
           return {
             event: this.state.interactionEvent,
@@ -103,44 +118,70 @@ export const withInteractionState = <P extends InteractionPropsOptional>(
       };
 
       private onBlur = (event: React.FocusEvent): void => {
-        if (!this.state.isFocusing) return;
+        if (this.props.disabled || !this.state.isFocusing) return;
 
-        this.setState({ interactionEvent: undefined, isFocusing: false });
+        if (!this.props.activated) {
+          this.setState({ interactionEvent: undefined, isFocusing: false });
+        }
         if (this.props.onBlur) this.props.onBlur(event);
       };
 
       private onFocus = (event: React.FocusEvent): void => {
-        if (this.state.isFocusing || this.state.isPressing) return;
+        if (
+          this.props.disabled ||
+          this.state.isFocusing ||
+          this.state.isPressing
+        ) {
+          return;
+        }
 
-        this.setState({ interactionEvent: event, isFocusing: true });
+        if (!this.props.activated) {
+          this.setState({ interactionEvent: event, isFocusing: true });
+        }
         if (this.props.onFocus) this.props.onFocus(event);
       };
 
       private onMouseEnter = (event: React.MouseEvent): void => {
-        if (this.state.isHovering) return;
+        if (this.props.disabled || this.state.isHovering) {
+          return;
+        }
 
-        this.setState({ interactionEvent: event, isHovering: true });
+        if (!this.props.activated) {
+          this.setState({ interactionEvent: event, isHovering: true });
+        }
         if (this.props.onMouseEnter) this.props.onMouseEnter(event);
       };
 
       private onMouseLeave = (event: React.MouseEvent): void => {
-        if (!this.state.isHovering) return;
+        if (this.props.disabled || !this.state.isHovering) {
+          return;
+        }
 
-        this.setState({ interactionEvent: undefined, isHovering: false });
+        if (!this.props.activated) {
+          this.setState({ interactionEvent: undefined, isHovering: false });
+        }
         if (this.props.onMouseLeave) this.props.onMouseLeave(event);
       };
 
       private onPressIn = (event: GestureResponderEvent): void => {
-        if (this.state.isPressing) return;
+        if (this.props.disabled || this.state.isPressing) {
+          return;
+        }
 
-        this.setState({ interactionEvent: event, isPressing: true });
+        if (!this.props.activated) {
+          this.setState({ interactionEvent: event, isPressing: true });
+        }
         if (this.props.onPressIn) this.props.onPressIn(event);
       };
 
       private onPressOut = (event: GestureResponderEvent): void => {
-        if (!this.state.isPressing) return;
+        if (this.props.disabled || !this.state.isPressing) {
+          return;
+        }
 
-        this.setState({ interactionEvent: undefined, isPressing: false });
+        if (!this.props.activated) {
+          this.setState({ interactionEvent: undefined, isPressing: false });
+        }
         if (this.props.onPressOut) this.props.onPressOut(event);
       };
     },

@@ -72,7 +72,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
               </Paragraph1>
             </Column>
             <List maxWidth={listMaxWidth}>
-              <TouchableSurface onPress={onListItemPress}>
+              <TouchableSurface activated onPress={onListItemPress}>
                 <ListItem size={Size.XXS}>
                   <Paragraph2 marginHorizontal={Size.XS}>Inbox</Paragraph2>
                 </ListItem>
@@ -103,7 +103,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
               </Paragraph1>
             </Column>
             <List maxWidth={listMaxWidth}>
-              <TouchableSurface onPress={onListItemPress}>
+              <TouchableSurface activated onPress={onListItemPress}>
                 <ListItem size={Size.XXS}>
                   <InboxIcon marginHorizontal={Size.XS} size={Size.S} />
                   <Paragraph2 marginHorizontal={Size.XS}>Inbox</Paragraph2>
@@ -154,7 +154,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
               </Paragraph1>
             </Column>
             <List maxWidth={listMaxWidth}>
-              <TouchableSurface onPress={onListItemPress}>
+              <TouchableSurface activated onPress={onListItemPress}>
                 <ListItem size={Size.XS}>
                   <Paragraph1 marginHorizontal={Size.XS}>Inbox</Paragraph1>
                 </ListItem>
@@ -185,7 +185,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
               </Paragraph1>
             </Column>
             <List maxWidth={listMaxWidth}>
-              <TouchableSurface onPress={onListItemPress}>
+              <TouchableSurface activated onPress={onListItemPress}>
                 <ListItem size={Size.XS}>
                   <InboxIcon marginHorizontal={Size.XS} size={Size.S} />
                   <Paragraph1 marginHorizontal={Size.XS}>Inbox</Paragraph1>
@@ -236,7 +236,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
               </Paragraph1>
             </Column>
             <List maxWidth={listMaxWidth}>
-              <TouchableSurface onPress={onListItemPress}>
+              <TouchableSurface activated onPress={onListItemPress}>
                 <ListItem size={Size.S}>
                   <Paragraph1 marginHorizontal={Size.XS}>Inbox</Paragraph1>
                 </ListItem>
@@ -292,7 +292,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                   </Button>
                 </ListItem>
               </TouchableSurface>
-              <TouchableSurface onPress={onListItemPress}>
+              <TouchableSurface activated onPress={onListItemPress}>
                 <ListItem size={Size.S}>
                   <LabelIcon marginHorizontal={Size.XS} />
                   <Paragraph1 marginHorizontal={Size.XS}>Important</Paragraph1>
@@ -316,7 +316,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
               </Paragraph1>
             </Column>
             <List maxWidth={listMaxWidth}>
-              <TouchableSurface onPress={onListItemPress}>
+              <TouchableSurface activated onPress={onListItemPress}>
                 <ListItem size={Size.M}>
                   <InboxIcon marginHorizontal={Size.XS} />
                   <Paragraph1 marginHorizontal={Size.XS}>Inbox</Paragraph1>
@@ -366,7 +366,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
               </Paragraph1>
             </Column>
             <List colorTheme={ColorTheme.PrimaryDark} maxWidth={listMaxWidth}>
-              <TouchableSurface onPress={onListItemPress}>
+              <TouchableSurface activated onPress={onListItemPress}>
                 <ListItem size={Size.M}>
                   <InboxIcon marginHorizontal={Size.XS} />
                   <Paragraph1 marginHorizontal={Size.XS}>Inbox</Paragraph1>

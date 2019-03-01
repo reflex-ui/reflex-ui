@@ -13,8 +13,12 @@ import {
 
 export interface InteractionProps
   extends InteractionStateProps,
-    TouchableWithoutFeedbackProps {}
+    TouchableWithoutFeedbackProps {
+  readonly activated?: boolean;
+}
 
 export interface InteractionPropsOptional
   extends InteractionStatePropsOptional,
-    TouchableWithoutFeedbackProps {}
+    TouchableWithoutFeedbackProps {
+  readonly activated?: boolean;
+}

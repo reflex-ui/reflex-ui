@@ -6,6 +6,7 @@
  */
 
 export enum InteractionType {
+  Activated = 'activated',
   Disabled = 'disabled',
   Enabled = 'enabled',
   Focused = 'focused',

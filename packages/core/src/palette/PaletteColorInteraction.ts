@@ -8,6 +8,7 @@
 import { PaletteColor } from './PaletteColor';
 
 export interface PaletteColorInteraction {
+  readonly activated: PaletteColor;
   readonly disabled: PaletteColor;
   readonly enabled: PaletteColor;
   readonly focused: PaletteColor;
@@ -16,6 +17,7 @@ export interface PaletteColorInteraction {
 }
 
 export interface PaletteColorInteractionOptional {
+  readonly activated?: PaletteColor;
   readonly disabled: PaletteColor;
   readonly enabled: PaletteColor;
   readonly focused?: PaletteColor;

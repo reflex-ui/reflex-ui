@@ -14,6 +14,11 @@ import { PaletteColorInteractionFactoryInput } from './PaletteColorInteractionFa
 export const createPaletteColorInteraction = (
   config: PaletteColorInteractionFactoryInput,
 ): PaletteColorInteraction => ({
+  activated: createPaletteColor({
+    color: config.color,
+    colorVariantFactory: config.colorVariantFactory,
+    interactionType: InteractionType.Activated,
+  }),
   disabled: config.disabledColor,
   enabled: createPaletteColor({
     color: config.color,

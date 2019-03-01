@@ -42,6 +42,11 @@ const regularContainedBaseColor: PaletteColor = {
 };
 
 const whiteRegularUncontainedColorInteraction: PaletteColorInteraction = {
+  activated: {
+    dark: { color: '#e0e0e0', onColor: white },
+    light: { color: '#e0e0e0', onColor: white },
+    normal: { color: '#e0e0e0', onColor: white },
+  },
   disabled: disabledGrey500,
   enabled: {
     dark: { color: transparent, onColor: white },
