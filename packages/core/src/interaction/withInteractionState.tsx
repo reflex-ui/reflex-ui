@@ -47,7 +47,11 @@ export const withInteractionState = <P extends InteractionPropsOptional>(
                   ? inheritedInteractionState
                   : this.getInteractionState();
 
+              const disabled =
+                interactionState.type === InteractionType.Disabled;
+
               const interactionProps: InteractionProps = {
+                disabled,
                 interactionState,
                 onBlur: isWeb ? this.onBlur : undefined,
                 onFocus: isWeb ? this.onFocus : undefined,
