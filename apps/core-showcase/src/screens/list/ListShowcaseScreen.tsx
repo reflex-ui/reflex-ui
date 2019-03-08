@@ -13,12 +13,18 @@ import {
   Caption,
   ColorTheme,
   Column,
+  ComponentsThemeContext,
+  FontWeight,
+  getFontWeight,
+  InjectableSubTheme,
+  InteractionType,
   List,
   ListItem,
   Paragraph1,
   Paragraph2,
   Size,
   TouchableSurface,
+  TypographyProps,
 } from '@reflex-ui/core';
 import {
   AccountCircleIcon,
@@ -30,7 +36,7 @@ import {
   WatchLaterIcon,
 } from '@reflex-ui/icons-md';
 import * as React from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, TextProps, TextStyle } from 'react-native';
 
 const onButtonPress = () => {
   // tslint:disable-next-line:no-console
@@ -46,6 +52,20 @@ const onListItemIconPress = () => {
   // tslint:disable-next-line:no-console
   console.log('ListShowcaseScreen().onListItemIconPress()');
 };
+
+const createParagraph1Theme = (
+  baseTheme: InjectableSubTheme<TypographyProps, TextProps, TextStyle>,
+): InjectableSubTheme<TypographyProps, TextProps, TextStyle> => ({
+  ...baseTheme,
+  getStyle: props => ({
+    ...baseTheme.getStyle(props),
+    fontWeight:
+      props.interactionState &&
+      props.interactionState.type === InteractionType.Activated
+        ? getFontWeight(FontWeight.Medium)
+        : getFontWeight(FontWeight.Regular),
+  }),
+});
 
 const ListShowcaseScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
@@ -405,6 +425,85 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 </ListItem>
               </TouchableSurface>
             </List>
+            <Column margin={Size.M}>
+              <Paragraph1>
+                List:{' '}
+                <Paragraph2>ColorTheme.SurfaceNormal (default)</Paragraph2>
+              </Paragraph1>
+              <Paragraph1 marginTop={Size.XXS}>
+                ListItem: <Paragraph2>Size.M (custom theme)</Paragraph2>
+              </Paragraph1>
+            </Column>
+            <ComponentsThemeContext.Consumer>
+              {componentsTheme => (
+                <ComponentsThemeContext.Provider
+                  value={{
+                    ...componentsTheme,
+                    typography: {
+                      ...componentsTheme.typography,
+                      paragraph1: createParagraph1Theme(
+                        componentsTheme.typography.paragraph1,
+                      ),
+                    },
+                  }}
+                >
+                  <List maxWidth={listMaxWidth}>
+                    <TouchableSurface activated onPress={onListItemPress}>
+                      <ListItem size={Size.M}>
+                        <InboxIcon marginHorizontal={Size.XS} />
+                        <Paragraph1 marginHorizontal={Size.XS}>
+                          Inbox
+                        </Paragraph1>
+                      </ListItem>
+                    </TouchableSurface>
+                    <TouchableSurface onPress={onListItemPress}>
+                      <ListItem size={Size.M}>
+                        <StarIcon marginHorizontal={Size.XS} />
+                        <Paragraph1 marginHorizontal={Size.XS}>
+                          Starred
+                        </Paragraph1>
+                      </ListItem>
+                    </TouchableSurface>
+                    <TouchableSurface disabled onPress={onListItemPress}>
+                      <ListItem size={Size.M}>
+                        <WatchLaterIcon marginHorizontal={Size.XS} />
+                        <Paragraph1 marginHorizontal={Size.XS}>
+                          Snoozed
+                        </Paragraph1>
+                        <Column flexGrow={1} />
+                        <Button
+                          onPress={onListItemIconPress}
+                          variant={ButtonVariant.Icon}
+                        >
+                          <MoreVertIcon />
+                        </Button>
+                        <Caption marginHorizontal={Size.XS}>
+                          Jan 26, 2019
+                        </Caption>
+                      </ListItem>
+                    </TouchableSurface>
+                    <TouchableSurface onPress={onListItemPress}>
+                      <ListItem size={Size.M}>
+                        <LabelIcon marginHorizontal={Size.XS} />
+                        <Paragraph1 marginHorizontal={Size.XS}>
+                          Important
+                        </Paragraph1>
+                        <Column flexGrow={1} />
+                        <Button
+                          onPress={onListItemIconPress}
+                          variant={ButtonVariant.Icon}
+                        >
+                          <MoreVertIcon />
+                        </Button>
+                        <Caption marginHorizontal={Size.XS}>
+                          Jan 26, 2019
+                        </Caption>
+                      </ListItem>
+                    </TouchableSurface>
+                  </List>
+                </ComponentsThemeContext.Provider>
+              )}
+            </ComponentsThemeContext.Consumer>
             <Column margin={Size.M}>
               <Paragraph1>
                 List: <Paragraph2>ColorTheme.SurfaceNormal</Paragraph2>
