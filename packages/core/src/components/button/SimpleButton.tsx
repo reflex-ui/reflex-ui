@@ -25,7 +25,7 @@ import {
 } from '../subcomponents';
 import { FlexSvgPropsOptional } from '../svg/FlexSvgProps';
 // tslint:disable-next-line:max-line-length
-import { handleAndroidTextTransformation } from '../typography/handleAndroidTextTransformation';
+import { handleAndroidTextTransformation } from '../text/handleAndroidTextTransformation';
 import { ButtonProps } from './ButtonProps';
 import { ButtonSubProps } from './ButtonSubProps';
 import { ButtonVariant } from './ButtonVariant';

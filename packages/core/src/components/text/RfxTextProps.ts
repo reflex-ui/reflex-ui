@@ -15,14 +15,14 @@ import { MarginProps } from '../../spacing/MarginProps';
 import { PaddingProps } from '../../spacing/PaddingProps';
 import { InjectableSubTheme } from '../subcomponents';
 
-export interface TypographyProps
+export interface RfxTextProps
   extends TextProps,
     InteractionStatePropsOptional,
     MarginProps,
     PaddingProps,
     PaletteThemeProps {
   readonly children?: React.ReactNode;
-  readonly theme: InjectableSubTheme<TypographyProps, TextProps, TextStyle>;
+  readonly theme: InjectableSubTheme<RfxTextProps, TextProps, TextStyle>;
 }
 
-export type TypographyPropsOptional = Partial<TypographyProps>;
+export type RfxTextPropsOptional = Partial<RfxTextProps>;

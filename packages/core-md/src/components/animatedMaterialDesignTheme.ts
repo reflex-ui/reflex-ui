@@ -13,9 +13,9 @@ import { listItemTheme } from './list-item/theme';
 import { listTheme } from './list/theme';
 import { surfaceTheme } from './surface/theme';
 import { flexSvgVariantsTheme } from './svg/theme';
+import { rfxTextVariantsTheme } from './text/theme';
 // tslint:disable-next-line:max-line-length
 import { animatedTouchableSurfaceTheme } from './touchable-surface/animatedTheme';
-import { typographyTheme } from './typography/theme';
 import { superViewTheme } from './view/theme';
 
 export const animatedMaterialDesignTheme: ComponentsTheme = {
@@ -25,7 +25,7 @@ export const animatedMaterialDesignTheme: ComponentsTheme = {
   listItem: listItemTheme,
   surface: surfaceTheme,
   svg: flexSvgVariantsTheme,
+  text: rfxTextVariantsTheme,
   touchableSurface: animatedTouchableSurfaceTheme,
-  typography: typographyTheme,
   views: superViewTheme,
 };

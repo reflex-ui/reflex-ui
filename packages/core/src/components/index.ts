@@ -22,7 +22,7 @@ export * from './StyleProps';
 export * from './subcomponents';
 export * from './surface';
 export * from './svg';
+export * from './text';
 export * from './touchable-surface';
 export * from './touchable';
-export * from './typography';
 export * from './view';

@@ -5,4 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './TypographyScreen';
+import { TextStyle } from 'react-native';
+
+export type TextStyleGetter<Props> = (props: Props) => TextStyle;

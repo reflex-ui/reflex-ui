@@ -17,7 +17,7 @@ import {
 } from '@reflex-ui/core';
 import { Platform, TextProps, TextStyle } from 'react-native';
 
-import { getFontFamily } from '../../typography';
+import { getFontFamily } from '../../text';
 
 export const allVariantsButtonTextSizedStyle: SizedData<TextStyle> = {
   xxsmall: {

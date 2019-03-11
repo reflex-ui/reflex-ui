@@ -30,7 +30,7 @@ const captionStyle: TextStyle = {
   fontSize: 20,
 };
 
-const TypographyScreen: React.SFC = (): JSX.Element => (
+const RfxTextScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
     <Surface margin={Size.M} padding={Size.M}>
       <Headline1>Hello Headline 1</Headline1>
@@ -82,6 +82,6 @@ const TypographyScreen: React.SFC = (): JSX.Element => (
   </ScrollView>
 );
 
-TypographyScreen.displayName = 'TypographyScreen';
+RfxTextScreen.displayName = 'RfxTextScreen';
 
-export { TypographyScreen };
+export { RfxTextScreen };

@@ -11,8 +11,8 @@ import { ListTheme } from './list';
 import { ListItemTheme } from './list-item';
 import { SurfaceTheme } from './surface';
 import { FlexSvgVariantsTheme } from './svg';
+import { RfxTextVariantsTheme } from './text';
 import { TouchableSurfaceTheme } from './touchable-surface';
-import { TypographyTheme } from './typography';
 import { SuperViewVariantsTheme } from './view';
 
 export interface ComponentsTheme {
@@ -22,8 +22,8 @@ export interface ComponentsTheme {
   readonly listItem: ListItemTheme;
   readonly surface: SurfaceTheme;
   readonly svg: FlexSvgVariantsTheme;
+  readonly text: RfxTextVariantsTheme;
   readonly touchableSurface: TouchableSurfaceTheme;
-  readonly typography: TypographyTheme;
   readonly views: SuperViewVariantsTheme;
 }
 

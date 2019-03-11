@@ -14,12 +14,12 @@ import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { reflexComponent } from '../reflexComponent';
-import { SimpleText } from './SimpleText';
-import { TypographyProps, TypographyPropsOptional } from './TypographyProps';
+import { RfxText } from './RfxText';
+import { RfxTextProps, RfxTextPropsOptional } from './RfxTextProps';
 
-export const Headline4 = reflexComponent<TypographyPropsOptional>({
-  name: 'Headline4',
-})((props: TypographyPropsOptional) => (
+export const Headline5 = reflexComponent<RfxTextPropsOptional>({
+  name: 'Headline5',
+})((props: RfxTextPropsOptional) => (
   <PaletteThemeContext.Consumer>
     {paletteTheme => (
       <ColorThemeContext.Consumer>
@@ -28,18 +28,18 @@ export const Headline4 = reflexComponent<TypographyPropsOptional>({
             {componentsTheme => (
               <InteractionStateContext.Consumer>
                 {interactionState => {
-                  const propsWithDefaults: TypographyProps = {
+                  const propsWithDefaults: RfxTextProps = {
                     colorTheme:
                       props.colorTheme ||
                       colorTheme ||
                       ColorTheme.SurfaceNormal,
                     interactionState,
                     paletteTheme,
-                    theme: componentsTheme.typography.headline4,
+                    theme: componentsTheme.text.headline5,
                     ...props,
                   };
 
-                  return <SimpleText {...propsWithDefaults} />;
+                  return <RfxText {...propsWithDefaults} />;
                 }}
               </InteractionStateContext.Consumer>
             )}

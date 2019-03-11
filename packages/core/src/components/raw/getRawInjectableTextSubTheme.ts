@@ -9,7 +9,7 @@ import merge from 'lodash/merge';
 import { TextProps, TextStyle } from 'react-native';
 
 import { InjectableSubTheme } from '../subcomponents/InjectableSubTheme';
-import { DefaultTextSubcomponent } from '../typography/DefaultTextSubcomponent';
+import { DefaultTextSubcomponent } from '../text/DefaultTextSubcomponent';
 import { getRawSubTheme } from './getRawSubTheme';
 
 export const getRawInjectableTextSubTheme = <

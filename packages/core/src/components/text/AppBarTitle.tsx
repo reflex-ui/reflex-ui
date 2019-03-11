@@ -14,12 +14,12 @@ import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { reflexComponent } from '../reflexComponent';
-import { SimpleText } from './SimpleText';
-import { TypographyProps, TypographyPropsOptional } from './TypographyProps';
+import { RfxText } from './RfxText';
+import { RfxTextProps, RfxTextPropsOptional } from './RfxTextProps';
 
-export const Overline = reflexComponent<TypographyPropsOptional>({
-  name: 'Overline',
-})((props: TypographyPropsOptional) => (
+export const AppBarTitle = reflexComponent<RfxTextPropsOptional>({
+  name: 'AppBarTitle',
+})((props: RfxTextPropsOptional) => (
   <PaletteThemeContext.Consumer>
     {paletteTheme => (
       <ColorThemeContext.Consumer>
@@ -28,18 +28,18 @@ export const Overline = reflexComponent<TypographyPropsOptional>({
             {componentsTheme => (
               <InteractionStateContext.Consumer>
                 {interactionState => {
-                  const propsWithDefaults: TypographyProps = {
+                  const propsWithDefaults: RfxTextProps = {
                     colorTheme:
                       props.colorTheme ||
                       colorTheme ||
                       ColorTheme.SurfaceNormal,
                     interactionState,
                     paletteTheme,
-                    theme: componentsTheme.typography.overline,
+                    theme: componentsTheme.text.appBarTitle,
                     ...props,
                   };
 
-                  return <SimpleText {...propsWithDefaults} />;
+                  return <RfxText {...propsWithDefaults} />;
                 }}
               </InteractionStateContext.Consumer>
             )}

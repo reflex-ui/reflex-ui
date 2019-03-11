@@ -7,4 +7,4 @@
 
 import { TextProps } from 'react-native';
 
-export type TextPropsGetter<P> = (props: P) => TextProps;
+export type TextPropsGetter<Props> = (props: Props) => TextProps;

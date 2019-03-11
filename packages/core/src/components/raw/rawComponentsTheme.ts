@@ -12,9 +12,9 @@ import { rawListItemTheme } from '../list-item/rawListItemTheme';
 import { rawListTheme } from '../list/rawListTheme';
 import { rawSurfaceTheme } from '../surface/rawSurfaceTheme';
 import { rawFlexSvgVariantsTheme } from '../svg/rawFlexSvgTheme';
+import { rawRfxTextVariantsTheme } from '../text/rawRfxTextVariantsTheme';
 // tslint:disable-next-line:max-line-length
 import { rawTouchableSurfaceTheme } from '../touchable-surface/rawTouchableSurfaceTheme';
-import { rawTypographyTheme } from '../typography/rawTypographyTheme';
 import { rawSuperViewVariantsTheme } from '../view/rawSuperViewTheme';
 
 export const rawComponentsTheme: ComponentsTheme = {
@@ -24,7 +24,7 @@ export const rawComponentsTheme: ComponentsTheme = {
   listItem: rawListItemTheme,
   surface: rawSurfaceTheme,
   svg: rawFlexSvgVariantsTheme,
+  text: rawRfxTextVariantsTheme,
   touchableSurface: rawTouchableSurfaceTheme,
-  typography: rawTypographyTheme,
   views: rawSuperViewVariantsTheme,
 };

@@ -10,4 +10,4 @@ export * from './button';
 export * from './icon';
 export * from './list';
 export * from './svg';
-export * from './typography';
+export * from './text';

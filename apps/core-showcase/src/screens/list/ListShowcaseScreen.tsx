@@ -22,9 +22,9 @@ import {
   ListItem,
   Paragraph1,
   Paragraph2,
+  RfxTextProps,
   Size,
   TouchableSurface,
-  TypographyProps,
 } from '@reflex-ui/core';
 import {
   AccountCircleIcon,
@@ -54,8 +54,8 @@ const onListItemIconPress = () => {
 };
 
 const createParagraph1Theme = (
-  baseTheme: InjectableSubTheme<TypographyProps, TextProps, TextStyle>,
-): InjectableSubTheme<TypographyProps, TextProps, TextStyle> => ({
+  baseTheme: InjectableSubTheme<RfxTextProps, TextProps, TextStyle>,
+): InjectableSubTheme<RfxTextProps, TextProps, TextStyle> => ({
   ...baseTheme,
   getStyle: props => ({
     ...baseTheme.getStyle(props),
@@ -439,10 +439,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 <ComponentsThemeContext.Provider
                   value={{
                     ...componentsTheme,
-                    typography: {
-                      ...componentsTheme.typography,
+                    text: {
+                      ...componentsTheme.text,
                       paragraph1: createParagraph1Theme(
-                        componentsTheme.typography.paragraph1,
+                        componentsTheme.text.paragraph1,
                       ),
                     },
                   }}

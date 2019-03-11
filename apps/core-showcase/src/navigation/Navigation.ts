@@ -19,8 +19,8 @@ import {
   ListShowcaseScreen,
   OutlinedButtonShowcaseScreen,
   OutlinedShapedButtonShowcaseScreen,
+  RfxTextScreen,
   SvgShowcaseScreen,
-  TypographyScreen,
   XFabButtonShowcaseScreen,
 } from '../screens';
 import { withAppLogic } from '../withAppLogic';
@@ -58,8 +58,8 @@ const SvgNavigation = {
   default: `${appNavigationPrefix}svg.SvgScreen`,
 };
 
-const TypographyNavigation = {
-  default: `${appNavigationPrefix}typography.TypographyScreen`,
+const RfxTextNavigation = {
+  default: `${appNavigationPrefix}text.RfxTextScreen`,
 };
 
 const registerScreens = () => {
@@ -107,9 +107,9 @@ const registerScreens = () => {
   Navigation.registerComponent(SvgNavigation.default, () =>
     withAppLogic(SvgShowcaseScreen),
   );
-  /* TYPOGRAPHY */
-  Navigation.registerComponent(TypographyNavigation.default, () =>
-    withAppLogic(TypographyScreen),
+  /* REFLEX TEXT */
+  Navigation.registerComponent(RfxTextNavigation.default, () =>
+    withAppLogic(RfxTextScreen),
   );
 };
 
@@ -120,7 +120,7 @@ export const AppNavigation = () => {
     Navigation.setRoot({
       root: {
         component: {
-          name: ButtonNavigation.contained,
+          name: ListNavigation.default,
         },
       },
     });

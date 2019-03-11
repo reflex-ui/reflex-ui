@@ -13,8 +13,8 @@ import { listItemTheme } from './list-item/theme';
 import { listTheme } from './list/theme';
 import { surfaceTheme } from './surface/theme';
 import { flexSvgVariantsTheme } from './svg/theme';
+import { rfxTextVariantsTheme } from './text/theme';
 import { touchableSurfaceTheme } from './touchable-surface/theme';
-import { typographyTheme } from './typography/theme';
 import { superViewTheme } from './view/theme';
 
 export const materialDesignTheme: ComponentsTheme = {
@@ -24,7 +24,7 @@ export const materialDesignTheme: ComponentsTheme = {
   listItem: listItemTheme,
   surface: surfaceTheme,
   svg: flexSvgVariantsTheme,
+  text: rfxTextVariantsTheme,
   touchableSurface: touchableSurfaceTheme,
-  typography: typographyTheme,
   views: superViewTheme,
 };

@@ -10,10 +10,10 @@ import { TextProps, TextStyle } from 'react-native';
 
 import { reflexComponent } from '../reflexComponent';
 import { getSubProps } from '../subcomponents';
-import { TypographyProps } from './TypographyProps';
+import { RfxTextProps } from './RfxTextProps';
 
-export const extractTextPropsFromTypographyProps = (
-  props: TypographyProps,
+export const extractTextPropsFromRfxTextProps = (
+  props: RfxTextProps,
 ): TextProps => {
   const {
     children,
@@ -34,14 +34,14 @@ export const extractTextPropsFromTypographyProps = (
   return textProps;
 };
 
-export const transformTypographyStringChildrenIntoComponent = (
+export const transformRfxTextStringChildIntoComponent = (
   children: React.ReactNode,
-  props: TypographyProps,
+  props: RfxTextProps,
 ): JSX.Element => {
   const Text = props.theme.component;
-  const userProps = extractTextPropsFromTypographyProps(props);
+  const userProps = extractTextPropsFromRfxTextProps(props);
 
-  const textProps = getSubProps<TypographyProps, TextProps, TextStyle>({
+  const textProps = getSubProps<RfxTextProps, TextProps, TextStyle>({
     componentProps: props,
     theme: props.theme,
     userProps,
@@ -54,9 +54,9 @@ export const transformTypographyStringChildrenIntoComponent = (
   );
 };
 
-export const SimpleText = reflexComponent<TypographyProps>({
-  name: 'SimpleText',
-})((props: TypographyProps) => {
+export const RfxText = reflexComponent<RfxTextProps>({
+  name: 'Text',
+})((props: RfxTextProps) => {
   const { children } = props;
 
   if (
@@ -65,7 +65,7 @@ export const SimpleText = reflexComponent<TypographyProps>({
     typeof children === 'boolean' ||
     Array.isArray(children)
   ) {
-    return transformTypographyStringChildrenIntoComponent(children, props);
+    return transformRfxTextStringChildIntoComponent(children, props);
   }
 
   if (children === undefined || children === null) return null;

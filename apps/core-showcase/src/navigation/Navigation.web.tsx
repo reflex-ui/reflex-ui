@@ -21,8 +21,8 @@ import {
   ListShowcaseScreen,
   OutlinedButtonShowcaseScreen,
   OutlinedShapedButtonShowcaseScreen,
+  RfxTextScreen,
   SvgShowcaseScreen,
-  TypographyScreen,
   XFabButtonShowcaseScreen,
 } from '../screens';
 
@@ -68,7 +68,7 @@ const AppNavigation: React.SFC = () => (
       <Route exact path="/icon" component={IconShowcaseScreen} />
       <Route exact path="/list" component={ListShowcaseScreen} />
       <Route exact path="/svg" component={SvgShowcaseScreen} />
-      <Route exact path="/typography" component={TypographyScreen} />
+      <Route exact path="/text" component={RfxTextScreen} />
       <Redirect from="/*" to="/button/default" />
     </Switch>
   </Router>

@@ -5,6 +5,4 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { TextStyle } from 'react-native';
-
-export type TextStyleGetter<P> = (props: P) => TextStyle;
+export * from './RfxTextScreen';

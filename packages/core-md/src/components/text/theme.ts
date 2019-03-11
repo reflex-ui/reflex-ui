@@ -12,11 +12,11 @@ import {
   getSizedPaddingStyle,
   getThemedOnColor,
   isWeb,
-  rawTypographyTheme,
+  rawRfxTextVariantsTheme,
+  RfxTextProps,
+  RfxTextVariantsTheme,
+  RfxTextVariantsThemeOptional,
   TextStyleGetter,
-  TypographyProps,
-  TypographyTheme,
-  TypographyThemeOptional,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 import { Platform, TextStyle } from 'react-native';
@@ -24,9 +24,7 @@ import { Platform, TextStyle } from 'react-native';
 import { sizedSpacing } from '../../spacing/sizedSpacing';
 import { getFontFamily } from './getFontFamily';
 
-export const getCommonTypographyStyle: TextStyleGetter<
-  TypographyProps
-> = props => ({
+export const getCommonRfxTextStyle: TextStyleGetter<RfxTextProps> = props => ({
   ...getSizedMarginStyle(sizedSpacing)(props),
   ...getSizedPaddingStyle(sizedSpacing)(props),
   color: getThemedOnColor(props),
@@ -40,10 +38,10 @@ export const getCommonTypographyStyle: TextStyleGetter<
   }),
 });
 
-export const partialTypographyTheme: TypographyThemeOptional = {
+export const partialRfxTextTheme: RfxTextVariantsThemeOptional = {
   appBarTitle: {
     getStyle: (props): TextStyle => ({
-      ...getCommonTypographyStyle(props),
+      ...getCommonRfxTextStyle(props),
       fontSize: 20,
       fontWeight: getFontWeight(FontWeight.Medium),
       letterSpacing: 0.0075,
@@ -53,14 +51,14 @@ export const partialTypographyTheme: TypographyThemeOptional = {
   },
   caption: {
     getStyle: props => ({
-      ...getCommonTypographyStyle(props),
+      ...getCommonRfxTextStyle(props),
       fontSize: 12,
       letterSpacing: 0.033,
     }),
   },
   headline1: {
     getStyle: props => ({
-      ...getCommonTypographyStyle(props),
+      ...getCommonRfxTextStyle(props),
       fontSize: 96,
       fontWeight: getFontWeight(FontWeight.Light),
       letterSpacing: -0.015625,
@@ -68,7 +66,7 @@ export const partialTypographyTheme: TypographyThemeOptional = {
   },
   headline2: {
     getStyle: props => ({
-      ...getCommonTypographyStyle(props),
+      ...getCommonRfxTextStyle(props),
       fontSize: 60,
       fontWeight: getFontWeight(FontWeight.Light),
       letterSpacing: -0.0083,
@@ -76,28 +74,28 @@ export const partialTypographyTheme: TypographyThemeOptional = {
   },
   headline3: {
     getStyle: props => ({
-      ...getCommonTypographyStyle(props),
+      ...getCommonRfxTextStyle(props),
       fontSize: 48,
       letterSpacing: 0,
     }),
   },
   headline4: {
     getStyle: props => ({
-      ...getCommonTypographyStyle(props),
+      ...getCommonRfxTextStyle(props),
       fontSize: 34,
       letterSpacing: 0.0073,
     }),
   },
   headline5: {
     getStyle: props => ({
-      ...getCommonTypographyStyle(props),
+      ...getCommonRfxTextStyle(props),
       fontSize: 24,
       letterSpacing: 0,
     }),
   },
   headline6: {
     getStyle: props => ({
-      ...getCommonTypographyStyle(props),
+      ...getCommonRfxTextStyle(props),
       fontSize: 20,
       fontWeight: getFontWeight(FontWeight.Medium),
       letterSpacing: 0.0075,
@@ -105,7 +103,7 @@ export const partialTypographyTheme: TypographyThemeOptional = {
   },
   overline: {
     getStyle: props => ({
-      ...getCommonTypographyStyle(props),
+      ...getCommonRfxTextStyle(props),
       fontSize: 10,
       letterSpacing: 0.15,
       textTransform: 'uppercase',
@@ -113,28 +111,28 @@ export const partialTypographyTheme: TypographyThemeOptional = {
   },
   paragraph1: {
     getStyle: props => ({
-      ...getCommonTypographyStyle(props),
+      ...getCommonRfxTextStyle(props),
       fontSize: 16,
       letterSpacing: 0.03125,
     }),
   },
   paragraph2: {
     getStyle: props => ({
-      ...getCommonTypographyStyle(props),
+      ...getCommonRfxTextStyle(props),
       fontSize: 14,
       letterSpacing: 0.01785,
     }),
   },
   subtitle1: {
     getStyle: props => ({
-      ...getCommonTypographyStyle(props),
+      ...getCommonRfxTextStyle(props),
       fontSize: 16,
       letterSpacing: 0.009375,
     }),
   },
   subtitle2: {
     getStyle: props => ({
-      ...getCommonTypographyStyle(props),
+      ...getCommonRfxTextStyle(props),
       fontSize: 14,
       fontWeight: getFontWeight(FontWeight.Medium),
       letterSpacing: 0.0071,
@@ -142,8 +140,8 @@ export const partialTypographyTheme: TypographyThemeOptional = {
   },
 };
 
-export const typographyTheme: TypographyTheme = merge(
+export const rfxTextVariantsTheme: RfxTextVariantsTheme = merge(
   {},
-  rawTypographyTheme,
-  partialTypographyTheme,
+  rawRfxTextVariantsTheme,
+  partialRfxTextTheme,
 );

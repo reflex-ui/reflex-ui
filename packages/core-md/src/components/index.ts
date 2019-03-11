@@ -15,6 +15,6 @@ export * from './list-item';
 export * from './materialDesignTheme';
 export * from './surface';
 export * from './svg';
+export * from './text';
 export * from './touchable-surface';
-export * from './typography';
 export * from './view';
