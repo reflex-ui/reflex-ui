@@ -15,13 +15,13 @@ import { DimensionsContext } from '../../responsiveness/DimensionsContext';
 import { withResponsivenessProps } from '../../responsiveness/withResponsivenessProps';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { reflexComponent } from '../reflexComponent';
-import { SimpleSuperView } from './SimpleSuperView';
-import { SuperViewProps, SuperViewPropsOptional } from './SuperViewProps';
+import { RfxView } from './RfxView';
+import { RfxViewProps, RfxViewPropsOptional } from './RfxViewProps';
 
 export const Row = withResponsivenessProps(
-  reflexComponent<SuperViewPropsOptional>({
+  reflexComponent<RfxViewPropsOptional>({
     name: 'Row',
-  })((props: SuperViewPropsOptional) => (
+  })((props: RfxViewPropsOptional) => (
     <DimensionsContext.Consumer>
       {dimensionsProps => (
         <ColorThemeContext.Consumer>
@@ -35,7 +35,7 @@ export const Row = withResponsivenessProps(
                       ctxColorTheme ||
                       ColorTheme.SurfaceNormal;
 
-                    const propsWithDefaults: SuperViewProps = {
+                    const propsWithDefaults: RfxViewProps = {
                       ...dimensionsProps,
                       colorTheme,
                       paletteTheme,
@@ -45,7 +45,7 @@ export const Row = withResponsivenessProps(
 
                     return (
                       <ColorThemeContext.Provider value={colorTheme}>
-                        <SimpleSuperView {...propsWithDefaults} />
+                        <RfxView {...propsWithDefaults} />
                       </ColorThemeContext.Provider>
                     );
                   }}

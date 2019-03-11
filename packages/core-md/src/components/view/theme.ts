@@ -9,11 +9,11 @@ import {
   getSizedMarginStyle,
   getSizedPaddingStyle,
   InjectableSubThemeOptional,
-  rawSuperViewTheme,
-  SuperViewProps,
-  SuperViewTheme,
-  SuperViewThemeOptional,
-  SuperViewVariantsTheme,
+  rawRfxViewTheme,
+  RfxViewProps,
+  RfxViewTheme,
+  RfxViewThemeOptional,
+  RfxViewVariantsTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
@@ -26,8 +26,8 @@ import { sizedSpacing } from '../../spacing/sizedSpacing';
  * COMMON STYLES
  */
 
-export const getCommonSuperViewContainerStyle: ViewStyleGetter<
-  SuperViewProps
+export const getCommonRfxViewContainerStyle: ViewStyleGetter<
+  RfxViewProps
 > = props => ({
   ...getFlexboxStyle(props),
   ...getSizedMarginStyle(sizedSpacing)(props),
@@ -39,64 +39,64 @@ export const getCommonSuperViewContainerStyle: ViewStyleGetter<
  */
 
 export const getColumnContainerStyle: ViewStyleGetter<
-  SuperViewProps
+  RfxViewProps
 > = props => ({
-  ...getCommonSuperViewContainerStyle(props),
+  ...getCommonRfxViewContainerStyle(props),
   flexDirection: 'column',
   flexWrap: 'wrap',
 });
 
 export const columnContainerTheme: InjectableSubThemeOptional<
-  SuperViewProps,
+  RfxViewProps,
   ViewProps,
   ViewStyle
 > = {
   getStyle: getColumnContainerStyle,
 };
 
-export const optionalColumnTheme: SuperViewThemeOptional = {
+export const optionalColumnTheme: RfxViewThemeOptional = {
   container: columnContainerTheme,
 };
 
-export const columnTheme: SuperViewTheme = merge<
+export const columnTheme: RfxViewTheme = merge<
   {},
-  SuperViewTheme,
-  SuperViewThemeOptional
->({}, rawSuperViewTheme, optionalColumnTheme);
+  RfxViewTheme,
+  RfxViewThemeOptional
+>({}, rawRfxViewTheme, optionalColumnTheme);
 
 /*
  * ROW
  */
 
-export const getRowContainerStyle: ViewStyleGetter<SuperViewProps> = props => ({
-  ...getCommonSuperViewContainerStyle(props),
+export const getRowContainerStyle: ViewStyleGetter<RfxViewProps> = props => ({
+  ...getCommonRfxViewContainerStyle(props),
   flexDirection: 'row',
   flexWrap: 'wrap',
 });
 
 export const rowContainerTheme: InjectableSubThemeOptional<
-  SuperViewProps,
+  RfxViewProps,
   ViewProps,
   ViewStyle
 > = {
   getStyle: getRowContainerStyle,
 };
 
-export const optionalRowTheme: SuperViewThemeOptional = {
+export const optionalRowTheme: RfxViewThemeOptional = {
   container: rowContainerTheme,
 };
 
-export const rowTheme: SuperViewTheme = merge<
+export const rowTheme: RfxViewTheme = merge<
   {},
-  SuperViewTheme,
-  SuperViewThemeOptional
->({}, rawSuperViewTheme, optionalRowTheme);
+  RfxViewTheme,
+  RfxViewThemeOptional
+>({}, rawRfxViewTheme, optionalRowTheme);
 
 /*
- * SuperViewVariantsTheme
+ * RfxViewVariantsTheme
  */
 
-export const superViewTheme: SuperViewVariantsTheme = {
+export const rfxViewTheme: RfxViewVariantsTheme = {
   column: columnTheme,
   row: rowTheme,
 };

@@ -7,9 +7,9 @@
 
 import { ViewProps } from 'react-native';
 
-import { SuperViewProps } from './SuperViewProps';
+import { RfxViewProps } from './RfxViewProps';
 
-export interface SuperViewSubProps {
+export interface RfxViewSubProps {
   readonly container?: ViewProps;
-  readonly props?: SuperViewProps;
+  readonly props?: RfxViewProps;
 }

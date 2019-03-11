@@ -10,11 +10,11 @@ import { ViewProps, ViewStyle } from 'react-native';
 
 import { reflexComponent } from '../reflexComponent';
 import { getSubProps } from '../subcomponents';
-import { SuperViewProps } from './SuperViewProps';
+import { RfxViewProps } from './RfxViewProps';
 
-export const SimpleSuperView = reflexComponent<SuperViewProps>({
-  name: 'SimpleReflexView',
-})((props: SuperViewProps) => {
+export const RfxView = reflexComponent<RfxViewProps>({
+  name: 'View',
+})((props: RfxViewProps) => {
   const userProps = props.getProps ? props.getProps(props) : {};
 
   const children =
@@ -30,7 +30,7 @@ export const SimpleSuperView = reflexComponent<SuperViewProps>({
 
   const Container = updatedProps.theme.container.component;
 
-  const containerProps = getSubProps<SuperViewProps, ViewProps, ViewStyle>({
+  const containerProps = getSubProps<RfxViewProps, ViewProps, ViewStyle>({
     componentProps: updatedProps,
     theme: updatedProps.theme.container,
     userProps: userProps.container,

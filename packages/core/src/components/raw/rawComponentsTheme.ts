@@ -15,7 +15,7 @@ import { rawFlexSvgVariantsTheme } from '../svg/rawFlexSvgTheme';
 import { rawRfxTextVariantsTheme } from '../text/rawRfxTextVariantsTheme';
 // tslint:disable-next-line:max-line-length
 import { rawTouchableSurfaceTheme } from '../touchable-surface/rawTouchableSurfaceTheme';
-import { rawSuperViewVariantsTheme } from '../view/rawSuperViewTheme';
+import { rawRfxViewVariantsTheme } from '../view/rawRfxViewTheme';
 
 export const rawComponentsTheme: ComponentsTheme = {
   appBar: rawAppBarVariantsTheme,
@@ -26,5 +26,5 @@ export const rawComponentsTheme: ComponentsTheme = {
   svg: rawFlexSvgVariantsTheme,
   text: rawRfxTextVariantsTheme,
   touchableSurface: rawTouchableSurfaceTheme,
-  views: rawSuperViewVariantsTheme,
+  views: rawRfxViewVariantsTheme,
 };

@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ViewStyle } from 'react-native';
+import { RfxViewProps } from './RfxViewProps';
+import { RfxViewSubProps } from './RfxViewSubProps';
 
-export type ViewStyleGetter<Props> = (props: Props) => ViewStyle;
+export type RfxViewSubPropsGetter = (props: RfxViewProps) => RfxViewSubProps;

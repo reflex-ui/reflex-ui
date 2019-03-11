@@ -16,7 +16,7 @@ import { flexSvgVariantsTheme } from './svg/theme';
 import { rfxTextVariantsTheme } from './text/theme';
 // tslint:disable-next-line:max-line-length
 import { animatedTouchableSurfaceTheme } from './touchable-surface/animatedTheme';
-import { superViewTheme } from './view/theme';
+import { rfxViewTheme } from './view/theme';
 
 export const animatedMaterialDesignTheme: ComponentsTheme = {
   appBar: appBarVariantsTheme,
@@ -27,5 +27,5 @@ export const animatedMaterialDesignTheme: ComponentsTheme = {
   svg: flexSvgVariantsTheme,
   text: rfxTextVariantsTheme,
   touchableSurface: animatedTouchableSurfaceTheme,
-  views: superViewTheme,
+  views: rfxViewTheme,
 };

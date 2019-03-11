@@ -11,15 +11,15 @@ import {
   InjectableSubTheme,
   InjectableSubThemeOptional,
 } from '../subcomponents';
-import { SuperViewProps } from './SuperViewProps';
+import { RfxViewProps } from './RfxViewProps';
 
-export interface SuperViewTheme {
-  readonly container: InjectableSubTheme<SuperViewProps, ViewProps, ViewStyle>;
+export interface RfxViewTheme {
+  readonly container: InjectableSubTheme<RfxViewProps, ViewProps, ViewStyle>;
 }
 
-export interface SuperViewThemeOptional {
+export interface RfxViewThemeOptional {
   readonly container?: InjectableSubThemeOptional<
-    SuperViewProps,
+    RfxViewProps,
     ViewProps,
     ViewStyle
   >;

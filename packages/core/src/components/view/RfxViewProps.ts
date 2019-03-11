@@ -13,10 +13,10 @@ import { DimensionsProps } from '../../responsiveness/DimensionsProps';
 import { ResponsivenessProps } from '../../responsiveness/ResponsivenessProps';
 import { MarginProps } from '../../spacing/MarginProps';
 import { PaddingProps } from '../../spacing/PaddingProps';
-import { SuperViewSubPropsGetter } from './SuperViewSubPropsGetter';
-import { SuperViewTheme } from './SuperViewTheme';
+import { RfxViewSubPropsGetter } from './RfxViewSubPropsGetter';
+import { RfxViewTheme } from './RfxViewTheme';
 
-export interface SuperViewProps
+export interface RfxViewProps
   extends DimensionsProps,
     FlexboxProps,
     MarginProps,
@@ -25,9 +25,9 @@ export interface SuperViewProps
     ResponsivenessProps {
   readonly children?:
     | React.ReactNode
-    | ((props: SuperViewProps) => React.ReactNode);
-  readonly getProps?: SuperViewSubPropsGetter;
-  readonly theme: SuperViewTheme;
+    | ((props: RfxViewProps) => React.ReactNode);
+  readonly getProps?: RfxViewSubPropsGetter;
+  readonly theme: RfxViewTheme;
 }
 
-export type SuperViewPropsOptional = Partial<SuperViewProps>;
+export type RfxViewPropsOptional = Partial<RfxViewProps>;

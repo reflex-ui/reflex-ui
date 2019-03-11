@@ -15,7 +15,7 @@ import { surfaceTheme } from './surface/theme';
 import { flexSvgVariantsTheme } from './svg/theme';
 import { rfxTextVariantsTheme } from './text/theme';
 import { touchableSurfaceTheme } from './touchable-surface/theme';
-import { superViewTheme } from './view/theme';
+import { rfxViewTheme } from './view/theme';
 
 export const materialDesignTheme: ComponentsTheme = {
   appBar: appBarVariantsTheme,
@@ -26,5 +26,5 @@ export const materialDesignTheme: ComponentsTheme = {
   svg: flexSvgVariantsTheme,
   text: rfxTextVariantsTheme,
   touchableSurface: touchableSurfaceTheme,
-  views: superViewTheme,
+  views: rfxViewTheme,
 };

@@ -13,7 +13,7 @@ import { SurfaceTheme } from './surface';
 import { FlexSvgVariantsTheme } from './svg';
 import { RfxTextVariantsTheme } from './text';
 import { TouchableSurfaceTheme } from './touchable-surface';
-import { SuperViewVariantsTheme } from './view';
+import { RfxViewVariantsTheme } from './view';
 
 export interface ComponentsTheme {
   readonly appBar: AppBarVariantsTheme;
@@ -24,7 +24,7 @@ export interface ComponentsTheme {
   readonly svg: FlexSvgVariantsTheme;
   readonly text: RfxTextVariantsTheme;
   readonly touchableSurface: TouchableSurfaceTheme;
-  readonly views: SuperViewVariantsTheme;
+  readonly views: RfxViewVariantsTheme;
 }
 
 export type ComponentsThemeOptional = Partial<ComponentsTheme>;
