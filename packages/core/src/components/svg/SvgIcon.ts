@@ -7,12 +7,12 @@
 
 import * as React from 'react';
 
-import { FlexSvgPropsOptional } from './FlexSvgProps';
-import { SimpleFlexSvg } from './SimpleFlexSvg';
+import { RfxSvgPropsOptional } from './RfxSvgProps';
+import { SimpleRfxSvg } from './SimpleRfxSvg';
 import { withDefaultSvgIconProps } from './withDefaultSvgIconProps';
 
 const SvgIcon: React.ComponentType<
-  FlexSvgPropsOptional
-> = withDefaultSvgIconProps(SimpleFlexSvg);
+  RfxSvgPropsOptional
+> = withDefaultSvgIconProps(SimpleRfxSvg);
 
 export { SvgIcon };

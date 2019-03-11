@@ -23,7 +23,7 @@ import {
   SubProps,
   SubTheme,
 } from '../subcomponents';
-import { FlexSvgPropsOptional } from '../svg/FlexSvgProps';
+import { RfxSvgPropsOptional } from '../svg/RfxSvgProps';
 // tslint:disable-next-line:max-line-length
 import { handleAndroidTextTransformation } from '../text/handleAndroidTextTransformation';
 import { ButtonProps } from './ButtonProps';
@@ -86,7 +86,7 @@ export const handleButtonChildren = (
     return handleButtonIcon({
       Container: props.theme.iconContainer.component,
       containerTheme: props.theme.iconContainer,
-      icon: children as React.ReactElement<FlexSvgPropsOptional>,
+      icon: children as React.ReactElement<RfxSvgPropsOptional>,
       iconTheme: props.theme.icon,
       props,
       userContainerProps: userSubProps.iconContainer,
@@ -124,7 +124,7 @@ export interface HandleButtonIconData {
     ViewProps,
     ViewStyle
   >;
-  readonly icon: React.ReactElement<FlexSvgPropsOptional>;
+  readonly icon: React.ReactElement<RfxSvgPropsOptional>;
   readonly iconTheme: SubTheme<ButtonProps, SvgProps, ViewStyle>;
   readonly props: ButtonProps;
   readonly userContainerProps?: ViewProps;
@@ -140,7 +140,7 @@ export const handleButtonIcon = (
     userProps: data.userContainerProps,
   });
 
-  const iconProps: FlexSvgPropsOptional = {
+  const iconProps: RfxSvgPropsOptional = {
     colorTheme: data.props.colorTheme,
     getSubProps: () => ({
       svg: {
@@ -174,7 +174,7 @@ export const handleLeadingIcon = (
   handleButtonIcon({
     Container: props.theme.leadingIconContainer.component,
     containerTheme: props.theme.leadingIconContainer,
-    icon: props.leadingIcon as React.ReactElement<FlexSvgPropsOptional>,
+    icon: props.leadingIcon as React.ReactElement<RfxSvgPropsOptional>,
     iconTheme: props.theme.leadingIcon,
     props,
     userContainerProps: userSubProps.leadingIconContainer,
@@ -188,7 +188,7 @@ export const handleTrailingIcon = (
   handleButtonIcon({
     Container: props.theme.trailingIconContainer.component,
     containerTheme: props.theme.trailingIconContainer,
-    icon: props.trailingIcon as React.ReactElement<FlexSvgPropsOptional>,
+    icon: props.trailingIcon as React.ReactElement<RfxSvgPropsOptional>,
     iconTheme: props.theme.trailingIcon,
     props,
     userContainerProps: userSubProps.trailingIconContainer,

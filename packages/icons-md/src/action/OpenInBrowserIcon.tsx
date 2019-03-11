@@ -2,15 +2,11 @@ import * as React from 'react';
 // tslint:disable-next-line:ordered-imports
 import { Svg, Path } from 'swgs';
 
-import {
-  FlexSvgPropsOptional,
-  reflexComponent,
-  SvgIcon,
-} from '@reflex-ui/core';
+import { reflexComponent, RfxSvgPropsOptional, SvgIcon } from '@reflex-ui/core';
 
-export const OpenInBrowserIcon = reflexComponent<FlexSvgPropsOptional>({
+export const OpenInBrowserIcon = reflexComponent<RfxSvgPropsOptional>({
   name: 'OpenInBrowserIcon',
-})((props: FlexSvgPropsOptional) => (
+})((props: RfxSvgPropsOptional) => (
   <SvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z" />

@@ -2,15 +2,11 @@ import * as React from 'react';
 // tslint:disable-next-line:ordered-imports
 import { Svg, Path } from 'swgs';
 
-import {
-  FlexSvgPropsOptional,
-  reflexComponent,
-  SvgIcon,
-} from '@reflex-ui/core';
+import { reflexComponent, RfxSvgPropsOptional, SvgIcon } from '@reflex-ui/core';
 
-export const SpaIcon = reflexComponent<FlexSvgPropsOptional>({
+export const SpaIcon = reflexComponent<RfxSvgPropsOptional>({
   name: 'SpaIcon',
-})((props: FlexSvgPropsOptional) => (
+})((props: RfxSvgPropsOptional) => (
   <SvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Path

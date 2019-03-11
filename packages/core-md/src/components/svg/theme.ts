@@ -5,12 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { FlexSvgVariantsTheme } from '@reflex-ui/core';
+import { RfxSvgVariantsTheme } from '@reflex-ui/core';
 
-import { flexSvgTheme } from './flexSvgTheme';
+import { rfxSvgTheme } from './rfxSvgTheme';
 import { svgIconTheme } from './svgIconTheme';
 
-export const flexSvgVariantsTheme: FlexSvgVariantsTheme = {
-  flexSvg: flexSvgTheme,
+export const rfxSvgVariantsTheme: RfxSvgVariantsTheme = {
+  rfxSvg: rfxSvgTheme,
   svgIcon: svgIconTheme,
 };

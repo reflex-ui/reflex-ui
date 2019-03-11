@@ -2,15 +2,11 @@ import * as React from 'react';
 // tslint:disable-next-line:ordered-imports
 import { Svg, Path } from 'swgs';
 
-import {
-  FlexSvgPropsOptional,
-  reflexComponent,
-  SvgIcon,
-} from '@reflex-ui/core';
+import { reflexComponent, RfxSvgPropsOptional, SvgIcon } from '@reflex-ui/core';
 
-export const SettingsCellIcon = reflexComponent<FlexSvgPropsOptional>({
+export const SettingsCellIcon = reflexComponent<RfxSvgPropsOptional>({
   name: 'SettingsCellIcon',
-})((props: FlexSvgPropsOptional) => (
+})((props: RfxSvgPropsOptional) => (
   <SvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Path d="M7 24h2v-2H7v2zm4 0h2v-2h-2v2zm4 0h2v-2h-2v2zM16 .01L8 0C6.9 0 6 .9 6 2v16c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V2c0-1.1-.9-1.99-2-1.99zM16 16H8V4h8v12z" />

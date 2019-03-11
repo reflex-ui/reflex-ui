@@ -13,13 +13,13 @@ import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
 import { Size } from '../../sizing/Size';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { reflexComponent } from '../reflexComponent';
-import { FlexSvgProps, FlexSvgPropsOptional } from './FlexSvgProps';
+import { RfxSvgProps, RfxSvgPropsOptional } from './RfxSvgProps';
 
-export const withDefaultFlexSvgProps = (
-  WrappedComponent: React.ComponentType<FlexSvgProps>,
-): React.ComponentType<FlexSvgPropsOptional> =>
-  reflexComponent<FlexSvgPropsOptional>({
-    name: 'WithDefaultFlexSvgProps',
+export const withDefaultRfxSvgProps = (
+  WrappedComponent: React.ComponentType<RfxSvgProps>,
+): React.ComponentType<RfxSvgPropsOptional> =>
+  reflexComponent<RfxSvgPropsOptional>({
+    name: 'WithDefaultRfxSvgProps',
     wrapped: WrappedComponent,
   })(props => (
     <PaletteThemeContext.Consumer>
@@ -28,11 +28,11 @@ export const withDefaultFlexSvgProps = (
           {colorTheme => (
             <ComponentsThemeContext.Consumer>
               {componentsTheme => {
-                const propsWithDefaults: FlexSvgProps = {
+                const propsWithDefaults: RfxSvgProps = {
                   colorTheme: colorTheme || ColorTheme.SecondaryNormal,
                   paletteTheme,
                   size: Size.M,
-                  theme: componentsTheme.svg.flexSvg,
+                  theme: componentsTheme.svg.rfxSvg,
                   ...props,
                 };
 

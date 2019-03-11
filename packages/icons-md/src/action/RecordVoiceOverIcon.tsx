@@ -2,15 +2,11 @@ import * as React from 'react';
 // tslint:disable-next-line:ordered-imports
 import { Svg, Circle, Path } from 'swgs';
 
-import {
-  FlexSvgPropsOptional,
-  reflexComponent,
-  SvgIcon,
-} from '@reflex-ui/core';
+import { reflexComponent, RfxSvgPropsOptional, SvgIcon } from '@reflex-ui/core';
 
-export const RecordVoiceOverIcon = reflexComponent<FlexSvgPropsOptional>({
+export const RecordVoiceOverIcon = reflexComponent<RfxSvgPropsOptional>({
   name: 'RecordVoiceOverIcon',
-})((props: FlexSvgPropsOptional) => (
+})((props: RfxSvgPropsOptional) => (
   <SvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Circle cx={9} cy={9} r={4} />

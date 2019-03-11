@@ -14,18 +14,18 @@ import {
   SubTheme,
   SubThemeOptional,
 } from '../subcomponents';
-import { FlexSvgProps } from './FlexSvgProps';
+import { RfxSvgProps } from './RfxSvgProps';
 
-export interface FlexSvgTheme {
-  readonly container: InjectableSubTheme<FlexSvgProps, ViewProps, ViewStyle>;
-  readonly svg: SubTheme<FlexSvgProps, SvgProps, ViewStyle>;
+export interface RfxSvgTheme {
+  readonly container: InjectableSubTheme<RfxSvgProps, ViewProps, ViewStyle>;
+  readonly svg: SubTheme<RfxSvgProps, SvgProps, ViewStyle>;
 }
 
-export interface FlexSvgThemeOptional {
+export interface RfxSvgThemeOptional {
   readonly container?: InjectableSubThemeOptional<
-    FlexSvgProps,
+    RfxSvgProps,
     ViewProps,
     ViewStyle
   >;
-  readonly svg?: SubThemeOptional<FlexSvgProps, SvgProps, ViewStyle>;
+  readonly svg?: SubThemeOptional<RfxSvgProps, SvgProps, ViewStyle>;
 }

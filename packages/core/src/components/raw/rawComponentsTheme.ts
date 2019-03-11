@@ -11,7 +11,7 @@ import { ComponentsTheme } from '../ComponentsTheme';
 import { rawListItemTheme } from '../list-item/rawListItemTheme';
 import { rawListTheme } from '../list/rawListTheme';
 import { rawSurfaceTheme } from '../surface/rawSurfaceTheme';
-import { rawFlexSvgVariantsTheme } from '../svg/rawFlexSvgTheme';
+import { rawRfxSvgVariantsTheme } from '../svg/rawRfxSvgTheme';
 import { rawRfxTextVariantsTheme } from '../text/rawRfxTextVariantsTheme';
 // tslint:disable-next-line:max-line-length
 import { rawTouchableSurfaceTheme } from '../touchable-surface/rawTouchableSurfaceTheme';
@@ -23,7 +23,7 @@ export const rawComponentsTheme: ComponentsTheme = {
   list: rawListTheme,
   listItem: rawListItemTheme,
   surface: rawSurfaceTheme,
-  svg: rawFlexSvgVariantsTheme,
+  svg: rawRfxSvgVariantsTheme,
   text: rawRfxTextVariantsTheme,
   touchableSurface: rawTouchableSurfaceTheme,
   views: rawRfxViewVariantsTheme,

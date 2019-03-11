@@ -2,17 +2,13 @@ import * as React from 'react';
 // tslint:disable-next-line:ordered-imports
 import { Svg, Path } from 'swgs';
 
-import {
-  FlexSvgPropsOptional,
-  reflexComponent,
-  SvgIcon,
-} from '@reflex-ui/core';
+import { reflexComponent, RfxSvgPropsOptional, SvgIcon } from '@reflex-ui/core';
 
 export const SignalCellularConnectedNoInternet3BarIcon = reflexComponent<
-  FlexSvgPropsOptional
+  RfxSvgPropsOptional
 >({
   name: 'SignalCellularConnectedNoInternet3BarIcon',
-})((props: FlexSvgPropsOptional) => (
+})((props: RfxSvgPropsOptional) => (
   <SvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Path fillOpacity={0.3} d="M22 8V2L2 22h16V8z" />

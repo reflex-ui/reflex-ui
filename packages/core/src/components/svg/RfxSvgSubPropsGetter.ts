@@ -5,10 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ViewProps } from 'react-native';
-import { SvgProps } from 'react-native-svg';
+import { RfxSvgProps } from './RfxSvgProps';
+import { RfxSvgSubProps } from './RfxSvgSubProps';
 
-export interface FlexSvgSubProps {
-  readonly container?: ViewProps;
-  readonly svg?: SvgProps;
-}
+export type RfxSvgSubPropsGetter = (props: RfxSvgProps) => RfxSvgSubProps;

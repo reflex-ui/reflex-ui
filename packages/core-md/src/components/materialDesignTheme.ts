@@ -12,7 +12,7 @@ import { buttonTheme } from './button/theme';
 import { listItemTheme } from './list-item/theme';
 import { listTheme } from './list/theme';
 import { surfaceTheme } from './surface/theme';
-import { flexSvgVariantsTheme } from './svg/theme';
+import { rfxSvgVariantsTheme } from './svg/theme';
 import { rfxTextVariantsTheme } from './text/theme';
 import { touchableSurfaceTheme } from './touchable-surface/theme';
 import { rfxViewTheme } from './view/theme';
@@ -23,7 +23,7 @@ export const materialDesignTheme: ComponentsTheme = {
   list: listTheme,
   listItem: listItemTheme,
   surface: surfaceTheme,
-  svg: flexSvgVariantsTheme,
+  svg: rfxSvgVariantsTheme,
   text: rfxTextVariantsTheme,
   touchableSurface: touchableSurfaceTheme,
   views: rfxViewTheme,

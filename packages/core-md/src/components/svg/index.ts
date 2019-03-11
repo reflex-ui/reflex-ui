@@ -5,5 +5,5 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './flexSvgTheme';
+export * from './rfxSvgTheme';
 export * from './svgIconTheme';

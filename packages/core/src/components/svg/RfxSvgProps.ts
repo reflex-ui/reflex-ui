@@ -12,19 +12,19 @@ import { InteractionStatePropsOptional } from '../../interaction/InteractionStat
 import { PaletteThemeProps } from '../../palette';
 import { SizingProps } from '../../sizing/SizingProps';
 import { MarginProps } from '../../spacing';
-import { FlexSvgSubPropsGetter } from './FlexSvgSubPropsGetter';
-import { FlexSvgTheme } from './FlexSvgTheme';
+import { RfxSvgSubPropsGetter } from './RfxSvgSubPropsGetter';
+import { RfxSvgTheme } from './RfxSvgTheme';
 
-export interface FlexSvgProps
+export interface RfxSvgProps
   extends InteractionStatePropsOptional,
     MarginProps,
     PaletteThemeProps,
     SizingProps,
     SvgProps {
   readonly children?: React.ReactNode;
-  readonly getSubProps?: FlexSvgSubPropsGetter;
+  readonly getSubProps?: RfxSvgSubPropsGetter;
   readonly skipContainer?: boolean;
-  readonly theme: FlexSvgTheme;
+  readonly theme: RfxSvgTheme;
 }
 
-export type FlexSvgPropsOptional = Partial<FlexSvgProps>;
+export type RfxSvgPropsOptional = Partial<RfxSvgProps>;

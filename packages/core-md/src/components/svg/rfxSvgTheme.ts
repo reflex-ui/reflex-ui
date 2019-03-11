@@ -6,13 +6,13 @@
  */
 
 import {
-  FlexSvgProps,
-  FlexSvgTheme,
-  FlexSvgThemeOptional,
   getSizedMarginStyle,
   getThemedOnColor,
   InjectableSubThemeOptional,
-  rawFlexSvgTheme,
+  rawRfxSvgTheme,
+  RfxSvgProps,
+  RfxSvgTheme,
+  RfxSvgThemeOptional,
   SizedData,
   SvgPropsGetter,
   ViewStyleGetter,
@@ -24,7 +24,7 @@ import { SvgProps } from 'react-native-svg';
 import { getSizingStyle } from '../../sizing/getSizingStyle';
 import { sizedSpacing } from '../../spacing/sizedSpacing';
 
-export const flexSvgSvgSizedProps: SizedData<SvgProps> = {
+export const rfxSvgSvgSizedProps: SizedData<SvgProps> = {
   xxsmall: { height: 50, width: 50 },
   /*
    * Sorting values by size here makes it easier to reason about
@@ -40,7 +40,7 @@ export const flexSvgSvgSizedProps: SizedData<SvgProps> = {
   xxlarge: { height: 400, width: 400 },
 };
 
-export const getSvgColorProps: SvgPropsGetter<FlexSvgProps> = props => {
+export const getSvgColorProps: SvgPropsGetter<RfxSvgProps> = props => {
   const themedColor = getThemedOnColor(props);
   const fill = props.fill ? props.fill : themedColor;
   const color = props.color ? props.color : fill;
@@ -48,41 +48,39 @@ export const getSvgColorProps: SvgPropsGetter<FlexSvgProps> = props => {
   return { color, fill };
 };
 
-export const getFlexSvgSvgProps: SvgPropsGetter<FlexSvgProps> = props => ({
-  ...flexSvgSvgSizedProps[props.size],
+export const getRfxSvgSvgProps: SvgPropsGetter<RfxSvgProps> = props => ({
+  ...rfxSvgSvgSizedProps[props.size],
   ...getSvgColorProps(props),
 });
 
-export const flexSvgSvgTheme: InjectableSubThemeOptional<
-  FlexSvgProps,
+export const rfxSvgSvgTheme: InjectableSubThemeOptional<
+  RfxSvgProps,
   SvgProps,
   ViewStyle
 > = {
-  getProps: getFlexSvgSvgProps,
+  getProps: getRfxSvgSvgProps,
 };
 
-export const getFlexSvgContainerStyle: ViewStyleGetter<
-  FlexSvgProps
-> = props => ({
+export const getRfxSvgContainerStyle: ViewStyleGetter<RfxSvgProps> = props => ({
   ...getSizedMarginStyle(sizedSpacing)(props),
   ...getSizingStyle(props),
 });
 
-export const flexSvgContainerTheme: InjectableSubThemeOptional<
-  FlexSvgProps,
+export const rfxSvgContainerTheme: InjectableSubThemeOptional<
+  RfxSvgProps,
   SvgProps,
   ViewStyle
 > = {
-  getStyle: getFlexSvgContainerStyle,
+  getStyle: getRfxSvgContainerStyle,
 };
 
-export const optionalFlexSvgTheme: FlexSvgThemeOptional = {
-  container: flexSvgContainerTheme,
-  svg: flexSvgSvgTheme,
+export const optionalRfxSvgTheme: RfxSvgThemeOptional = {
+  container: rfxSvgContainerTheme,
+  svg: rfxSvgSvgTheme,
 };
 
-export const flexSvgTheme: FlexSvgTheme = merge<
+export const rfxSvgTheme: RfxSvgTheme = merge<
   {},
-  FlexSvgTheme,
-  FlexSvgThemeOptional
->({}, rawFlexSvgTheme, optionalFlexSvgTheme);
+  RfxSvgTheme,
+  RfxSvgThemeOptional
+>({}, rawRfxSvgTheme, optionalRfxSvgTheme);

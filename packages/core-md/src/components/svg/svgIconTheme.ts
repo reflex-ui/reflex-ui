@@ -6,12 +6,12 @@
  */
 
 import {
-  FlexSvgProps,
-  FlexSvgTheme,
-  FlexSvgThemeOptional,
   getSizedMarginStyle,
   InjectableSubThemeOptional,
-  rawFlexSvgTheme,
+  rawRfxSvgTheme,
+  RfxSvgProps,
+  RfxSvgTheme,
+  RfxSvgThemeOptional,
   SizedData,
   SvgPropsGetter,
   ViewStyleGetter,
@@ -22,7 +22,7 @@ import { SvgProps } from 'react-native-svg';
 
 import { getSizingStyle } from '../../sizing/getSizingStyle';
 import { sizedSpacing } from '../../spacing/sizedSpacing';
-import { getSvgColorProps } from './flexSvgTheme';
+import { getSvgColorProps } from './rfxSvgTheme';
 
 export const svgIconSvgSizedProps: SizedData<SvgProps> = {
   xxsmall: { height: 12, width: 12 },
@@ -40,13 +40,13 @@ export const svgIconSvgSizedProps: SizedData<SvgProps> = {
   xxlarge: { height: 48, width: 48 },
 };
 
-export const getSvgIconSvgProps: SvgPropsGetter<FlexSvgProps> = props => ({
+export const getSvgIconSvgProps: SvgPropsGetter<RfxSvgProps> = props => ({
   ...svgIconSvgSizedProps[props.size],
   ...getSvgColorProps(props),
 });
 
 export const svgIconSvgTheme: InjectableSubThemeOptional<
-  FlexSvgProps,
+  RfxSvgProps,
   SvgProps,
   ViewStyle
 > = {
@@ -54,27 +54,27 @@ export const svgIconSvgTheme: InjectableSubThemeOptional<
 };
 
 export const getSvgIconContainerStyle: ViewStyleGetter<
-  FlexSvgProps
+  RfxSvgProps
 > = props => ({
   ...getSizedMarginStyle(sizedSpacing)(props),
   ...getSizingStyle(props),
 });
 
 export const svgIconContainerTheme: InjectableSubThemeOptional<
-  FlexSvgProps,
+  RfxSvgProps,
   SvgProps,
   ViewStyle
 > = {
   getStyle: getSvgIconContainerStyle,
 };
 
-export const optionalSvgIconTheme: FlexSvgThemeOptional = {
+export const optionalSvgIconTheme: RfxSvgThemeOptional = {
   container: svgIconContainerTheme,
   svg: svgIconSvgTheme,
 };
 
-export const svgIconTheme: FlexSvgTheme = merge<
+export const svgIconTheme: RfxSvgTheme = merge<
   {},
-  FlexSvgTheme,
-  FlexSvgThemeOptional
->({}, rawFlexSvgTheme, optionalSvgIconTheme);
+  RfxSvgTheme,
+  RfxSvgThemeOptional
+>({}, rawRfxSvgTheme, optionalSvgIconTheme);

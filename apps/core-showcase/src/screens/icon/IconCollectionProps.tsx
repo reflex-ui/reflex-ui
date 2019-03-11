@@ -5,11 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ColorTheme, FlexSvgSubPropsGetter } from '@reflex-ui/core';
+import { ColorTheme, RfxSvgSubPropsGetter } from '@reflex-ui/core';
 
 export interface IconCollectionProps {
   readonly colorTheme: ColorTheme;
-  readonly getSubProps?: FlexSvgSubPropsGetter;
+  readonly getSubProps?: RfxSvgSubPropsGetter;
   readonly invertColor?: boolean;
   readonly title: string;
 }

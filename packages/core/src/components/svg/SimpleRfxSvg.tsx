@@ -13,11 +13,11 @@ import { SvgProps } from 'react-native-svg';
 import { cloneElement } from '../../utils';
 import { reflexComponent } from '../reflexComponent';
 import { getSubProps } from '../subcomponents';
-import { FlexSvgProps, FlexSvgPropsOptional } from './FlexSvgProps';
-import { FlexSvgSubProps } from './FlexSvgSubProps';
+import { RfxSvgProps, RfxSvgPropsOptional } from './RfxSvgProps';
+import { RfxSvgSubProps } from './RfxSvgSubProps';
 
-export const extractSvgPropsFromFlexSvgProps = (
-  props: FlexSvgProps,
+export const extractSvgPropsFromRfxSvgProps = (
+  props: RfxSvgProps,
 ): SvgProps => {
   const {
     children,
@@ -44,19 +44,19 @@ export const extractSvgPropsFromFlexSvgProps = (
 };
 
 const handleSvgChildren = (
-  props: FlexSvgProps,
-  userSubProps: FlexSvgSubProps,
+  props: RfxSvgProps,
+  userSubProps: RfxSvgSubProps,
 ): React.ReactNode => {
-  const children = props.children as React.ReactElement<FlexSvgPropsOptional>;
+  const children = props.children as React.ReactElement<RfxSvgPropsOptional>;
   if (!children) return undefined;
 
   if (typeof children !== 'object') {
     throw new Error('SVG children must be a valid React element.');
   }
 
-  const svgProps = extractSvgPropsFromFlexSvgProps(props);
+  const svgProps = extractSvgPropsFromRfxSvgProps(props);
 
-  const themeProps = getSubProps<FlexSvgProps, SvgProps, ViewStyle>({
+  const themeProps = getSubProps<RfxSvgProps, SvgProps, ViewStyle>({
     componentProps: props,
     theme: props.theme.svg,
     userProps: userSubProps.svg,
@@ -71,9 +71,9 @@ const handleSvgChildren = (
   return styledSvg;
 };
 
-export const SimpleFlexSvg = reflexComponent<FlexSvgProps>({
-  name: 'SimpleFlexSvg',
-})((props: FlexSvgProps) => {
+export const SimpleRfxSvg = reflexComponent<RfxSvgProps>({
+  name: 'SimpleRfxSvg',
+})((props: RfxSvgProps) => {
   let children: React.ReactNode;
   const userSubProps = props.getSubProps ? props.getSubProps(props) : {};
   if (props.children) children = handleSvgChildren(props, userSubProps);
@@ -81,7 +81,7 @@ export const SimpleFlexSvg = reflexComponent<FlexSvgProps>({
 
   const Container = props.theme.container.component;
 
-  const containerProps = getSubProps<FlexSvgProps, ViewProps, ViewStyle>({
+  const containerProps = getSubProps<RfxSvgProps, ViewProps, ViewStyle>({
     componentProps: props,
     theme: props.theme.container,
     userProps: userSubProps.container,

@@ -10,7 +10,7 @@ import { ButtonVariantsTheme } from './button';
 import { ListTheme } from './list';
 import { ListItemTheme } from './list-item';
 import { SurfaceTheme } from './surface';
-import { FlexSvgVariantsTheme } from './svg';
+import { RfxSvgVariantsTheme } from './svg';
 import { RfxTextVariantsTheme } from './text';
 import { TouchableSurfaceTheme } from './touchable-surface';
 import { RfxViewVariantsTheme } from './view';
@@ -21,7 +21,7 @@ export interface ComponentsTheme {
   readonly list: ListTheme;
   readonly listItem: ListItemTheme;
   readonly surface: SurfaceTheme;
-  readonly svg: FlexSvgVariantsTheme;
+  readonly svg: RfxSvgVariantsTheme;
   readonly text: RfxTextVariantsTheme;
   readonly touchableSurface: TouchableSurfaceTheme;
   readonly views: RfxViewVariantsTheme;

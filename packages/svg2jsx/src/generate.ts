@@ -174,13 +174,13 @@ export const svgr2SvgIcon: FileDataTransformer = ({ fileData, filePath }) => {
   svgIcon = svgIcon.replace(
     'const SvgComponent = props => ',
     `import {
-       FlexSvgPropsOptional,
        reflexComponent,
+       RfxSvgPropsOptional,
        SvgIcon,
      } from '@reflex-ui/core';\n
-    export const SvgComponent = reflexComponent<FlexSvgPropsOptional>({
+    export const SvgComponent = reflexComponent<RfxSvgPropsOptional>({
       name: 'SvgComponent',
-    })((props: FlexSvgPropsOptional) => (
+    })((props: RfxSvgPropsOptional) => (
       <SvgIcon {...props}>
     `,
   );

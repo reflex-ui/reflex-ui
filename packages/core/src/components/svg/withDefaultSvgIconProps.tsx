@@ -15,12 +15,12 @@ import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
 import { Size } from '../../sizing/Size';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { reflexComponent } from '../reflexComponent';
-import { FlexSvgProps, FlexSvgPropsOptional } from './FlexSvgProps';
+import { RfxSvgProps, RfxSvgPropsOptional } from './RfxSvgProps';
 
 export const withDefaultSvgIconProps = (
-  WrappedComponent: React.ComponentType<FlexSvgProps>,
-): React.ComponentType<FlexSvgPropsOptional> =>
-  reflexComponent<FlexSvgPropsOptional>({
+  WrappedComponent: React.ComponentType<RfxSvgProps>,
+): React.ComponentType<RfxSvgPropsOptional> =>
+  reflexComponent<RfxSvgPropsOptional>({
     name: 'WithDefaultSvgIconProps',
     wrapped: WrappedComponent,
   })(props => (
@@ -32,7 +32,7 @@ export const withDefaultSvgIconProps = (
               {componentsTheme => (
                 <InteractionStateContext.Consumer>
                   {interactionState => {
-                    const propsWithDefaults: FlexSvgProps = {
+                    const propsWithDefaults: RfxSvgProps = {
                       colorTheme: colorTheme || ColorTheme.SecondaryNormal,
                       interactionState,
                       paletteTheme,

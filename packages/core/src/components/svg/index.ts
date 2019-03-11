@@ -5,15 +5,15 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './FlexSvg';
-export * from './FlexSvgProps';
-export * from './FlexSvgSubProps';
-export * from './FlexSvgSubPropsGetter';
-export * from './FlexSvgTheme';
-export * from './FlexSvgVariantsTheme';
-export * from './rawFlexSvgTheme';
-export * from './SimpleFlexSvg';
+export * from './rawRfxSvgTheme';
+export * from './RfxSvg';
+export * from './RfxSvgProps';
+export * from './RfxSvgSubProps';
+export * from './RfxSvgSubPropsGetter';
+export * from './RfxSvgTheme';
+export * from './RfxSvgVariantsTheme';
+export * from './SimpleRfxSvg';
 export * from './SvgIcon';
 export * from './SvgPropsGetter';
-export * from './withDefaultFlexSvgProps';
+export * from './withDefaultRfxSvgProps';
 export * from './withDefaultSvgIconProps';
