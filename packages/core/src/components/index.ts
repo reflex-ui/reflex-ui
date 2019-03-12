@@ -9,7 +9,6 @@ export * from './app-bar';
 export * from './button';
 export * from './ComponentsTheme';
 export * from './ComponentsThemeContext';
-export * from './createComponentsTheme';
 export * from './list';
 export * from './list-item';
 export * from './PropsGetter';

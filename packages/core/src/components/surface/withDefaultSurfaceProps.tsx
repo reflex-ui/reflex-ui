@@ -7,6 +7,8 @@
 
 import * as React from 'react';
 
+// tslint:disable-next-line:max-line-length
+import { MissingComponentThemeError } from '../../errors/MissingComponentThemeError';
 import { ColorTheme } from '../../palette/ColorTheme';
 import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
@@ -28,6 +30,14 @@ export const withDefaultSurfaceProps = (
           {paletteTheme => (
             <ComponentsThemeContext.Consumer>
               {componentsTheme => {
+                let theme = props.theme;
+                if (!theme) {
+                  if (!componentsTheme.surface) {
+                    throw new MissingComponentThemeError('<Surface>');
+                  }
+                  theme = componentsTheme.surface;
+                }
+
                 const colorTheme: ColorTheme =
                   props.colorTheme || ColorTheme.SurfaceNormal;
 
@@ -36,7 +46,7 @@ export const withDefaultSurfaceProps = (
                   colorTheme,
                   contained: true,
                   paletteTheme,
-                  theme: componentsTheme.surface,
+                  theme,
                   ...props,
                 };
 

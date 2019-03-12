@@ -8,6 +8,8 @@
 import * as React from 'react';
 
 // tslint:disable-next-line
+import { MissingComponentThemeError } from '../../errors/MissingComponentThemeError';
+// tslint:disable-next-line
 import { InteractionStateContext } from '../../interaction/InteractionStateContext';
 import { ColorTheme } from '../../palette/ColorTheme';
 import { ColorThemeContext } from '../../palette/ColorThemeContext';
@@ -28,6 +30,14 @@ export const AppBarTitle = reflexComponent<RfxTextPropsOptional>({
             {componentsTheme => (
               <InteractionStateContext.Consumer>
                 {interactionState => {
+                  let theme = props.theme;
+                  if (!theme) {
+                    if (!componentsTheme.text) {
+                      throw new MissingComponentThemeError('<AppBarTitle>');
+                    }
+                    theme = componentsTheme.text.appBarTitle;
+                  }
+
                   const propsWithDefaults: RfxTextProps = {
                     colorTheme:
                       props.colorTheme ||
@@ -35,7 +45,7 @@ export const AppBarTitle = reflexComponent<RfxTextPropsOptional>({
                       ColorTheme.SurfaceNormal,
                     interactionState,
                     paletteTheme,
-                    theme: componentsTheme.text.appBarTitle,
+                    theme,
                     ...props,
                   };
 

@@ -16,15 +16,13 @@ import { TouchableSurfaceTheme } from './touchable-surface';
 import { RfxViewVariantsTheme } from './view';
 
 export interface ComponentsTheme {
-  readonly appBar: AppBarVariantsTheme;
-  readonly button: ButtonVariantsTheme;
-  readonly list: ListTheme;
-  readonly listItem: ListItemTheme;
-  readonly surface: SurfaceTheme;
-  readonly svg: RfxSvgVariantsTheme;
-  readonly text: RfxTextVariantsTheme;
-  readonly touchableSurface: TouchableSurfaceTheme;
-  readonly views: RfxViewVariantsTheme;
+  readonly appBar?: AppBarVariantsTheme;
+  readonly button?: ButtonVariantsTheme;
+  readonly list?: ListTheme;
+  readonly listItem?: ListItemTheme;
+  readonly surface?: SurfaceTheme;
+  readonly svg?: RfxSvgVariantsTheme;
+  readonly text?: RfxTextVariantsTheme;
+  readonly touchableSurface?: TouchableSurfaceTheme;
+  readonly views?: RfxViewVariantsTheme;
 }
-
-export type ComponentsThemeOptional = Partial<ComponentsTheme>;

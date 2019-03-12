@@ -7,6 +7,8 @@
 
 import * as React from 'react';
 
+// tslint:disable-next-line:max-line-length
+import { MissingComponentThemeError } from '../../errors/MissingComponentThemeError';
 import { ColorTheme } from '../../palette/ColorTheme';
 import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
@@ -28,11 +30,19 @@ export const withDefaultRfxSvgProps = (
           {colorTheme => (
             <ComponentsThemeContext.Consumer>
               {componentsTheme => {
+                let theme = props.theme;
+                if (!theme) {
+                  if (!componentsTheme.svg) {
+                    throw new MissingComponentThemeError('<RfxSvg>');
+                  }
+                  theme = componentsTheme.svg.rfxSvg;
+                }
+
                 const propsWithDefaults: RfxSvgProps = {
                   colorTheme: colorTheme || ColorTheme.SecondaryNormal,
                   paletteTheme,
                   size: Size.M,
-                  theme: componentsTheme.svg.rfxSvg,
+                  theme,
                   ...props,
                 };
 

@@ -7,6 +7,8 @@
 
 import * as React from 'react';
 
+// tslint:disable-next-line:max-line-length
+import { MissingComponentThemeError } from '../../errors/MissingComponentThemeError';
 import { ColorTheme } from '../../palette/ColorTheme';
 import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
@@ -29,18 +31,26 @@ export const withDefaultAppBarProps = (
           {paletteTheme => (
             <ComponentsThemeContext.Consumer>
               {componentsTheme => {
-                const colorTheme: ColorTheme =
-                  props.colorTheme || ColorTheme.PrimaryNormal;
-
                 const variant: AppBarVariant =
                   props.variant || AppBarVariant.Default;
+
+                let theme = props.theme;
+                if (!theme) {
+                  if (!componentsTheme.appBar) {
+                    throw new MissingComponentThemeError('<AppBar>');
+                  }
+                  theme = componentsTheme.appBar[variant];
+                }
+
+                const colorTheme: ColorTheme =
+                  props.colorTheme || ColorTheme.PrimaryNormal;
 
                 const propsWithDefaults: AppBarProps = {
                   ...dimensionsProps,
                   colorTheme,
                   contained: true,
                   paletteTheme,
-                  theme: componentsTheme.appBar[variant],
+                  theme,
                   variant,
                   ...props,
                 };

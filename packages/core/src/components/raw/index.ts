@@ -9,4 +9,3 @@ export * from './getRawInjectableTextSubTheme';
 export * from './getRawInjectableTouchableSubTheme';
 export * from './getRawInjectableViewSubTheme';
 export * from './getRawSubTheme';
-export * from './rawComponentsTheme';

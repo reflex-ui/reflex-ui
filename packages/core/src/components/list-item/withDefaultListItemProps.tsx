@@ -7,6 +7,8 @@
 
 import * as React from 'react';
 
+// tslint:disable-next-line:max-line-length
+import { MissingComponentThemeError } from '../../errors/MissingComponentThemeError';
 import { ColorTheme } from '../../palette/ColorTheme';
 import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
@@ -31,6 +33,14 @@ export const withDefaultListItemProps = (
               {colorTheme => (
                 <ComponentsThemeContext.Consumer>
                   {componentsTheme => {
+                    let theme = props.theme;
+                    if (!theme) {
+                      if (!componentsTheme.listItem) {
+                        throw new MissingComponentThemeError('<ListItem>');
+                      }
+                      theme = componentsTheme.listItem;
+                    }
+
                     const propsWithDefaults: ListItemProps = {
                       ...dimensionsProps,
                       colorTheme:
@@ -39,7 +49,7 @@ export const withDefaultListItemProps = (
                         ColorTheme.SurfaceNormal,
                       paletteTheme,
                       size: Size.M,
-                      theme: componentsTheme.listItem,
+                      theme,
                       ...props,
                     };
 

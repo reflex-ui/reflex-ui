@@ -23,6 +23,7 @@ import {
   Paragraph1,
   Paragraph2,
   RfxTextProps,
+  RfxTextVariantsTheme,
   Size,
   TouchableSurface,
 } from '@reflex-ui/core';
@@ -440,9 +441,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                   value={{
                     ...componentsTheme,
                     text: {
-                      ...componentsTheme.text,
+                      ...(componentsTheme.text as RfxTextVariantsTheme),
                       paragraph1: createParagraph1Theme(
-                        componentsTheme.text.paragraph1,
+                        (componentsTheme.text as RfxTextVariantsTheme)
+                          .paragraph1,
                       ),
                     },
                   }}

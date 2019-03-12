@@ -7,6 +7,8 @@
 
 import * as React from 'react';
 
+// tslint:disable-next-line:max-line-length
+import { MissingComponentThemeError } from '../../errors/MissingComponentThemeError';
 import { InteractionType } from '../../interaction';
 import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
@@ -32,6 +34,14 @@ export const withDefaultButtonProps = (
               {componentsTheme => {
                 const variant: ButtonVariant =
                   props.variant || ButtonVariant.Default;
+
+                let theme = props.theme;
+                if (!theme) {
+                  if (!componentsTheme.button) {
+                    throw new MissingComponentThemeError('<Button>');
+                  }
+                  theme = componentsTheme.button[variant];
+                }
 
                 const contained =
                   variant === ButtonVariant.Default ||
@@ -71,7 +81,7 @@ export const withDefaultButtonProps = (
                   /**/
                   paletteTheme,
                   size: Size.M,
-                  theme: componentsTheme.button[variant],
+                  theme,
                   variant,
                   ...props,
                 };

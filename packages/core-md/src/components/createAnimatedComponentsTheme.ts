@@ -5,15 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  ComponentsTheme,
-  ComponentsThemeOptional,
-  createComponentsTheme as createComponentsThemeCore,
-} from '@reflex-ui/core';
+import { ComponentsTheme } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 import { animatedMaterialDesignTheme } from './animatedMaterialDesignTheme';
 
 export const createAnimatedComponentsTheme = (
-  theme: ComponentsThemeOptional = {},
-): ComponentsTheme =>
-  createComponentsThemeCore(merge({}, animatedMaterialDesignTheme, theme));
+  theme: ComponentsTheme = {},
+): ComponentsTheme => merge({}, animatedMaterialDesignTheme, theme);

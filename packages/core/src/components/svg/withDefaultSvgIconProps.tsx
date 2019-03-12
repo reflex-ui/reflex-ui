@@ -7,6 +7,8 @@
 
 import * as React from 'react';
 
+// tslint:disable-next-line:max-line-length
+import { MissingComponentThemeError } from '../../errors/MissingComponentThemeError';
 // tslint:disable-next-line
 import { InteractionStateContext } from '../../interaction/InteractionStateContext';
 import { ColorTheme } from '../../palette/ColorTheme';
@@ -32,12 +34,20 @@ export const withDefaultSvgIconProps = (
               {componentsTheme => (
                 <InteractionStateContext.Consumer>
                   {interactionState => {
+                    let theme = props.theme;
+                    if (!theme) {
+                      if (!componentsTheme.svg) {
+                        throw new MissingComponentThemeError('<SvgIcon>');
+                      }
+                      theme = componentsTheme.svg.svgIcon;
+                    }
+
                     const propsWithDefaults: RfxSvgProps = {
                       colorTheme: colorTheme || ColorTheme.SecondaryNormal,
                       interactionState,
                       paletteTheme,
                       size: Size.M,
-                      theme: componentsTheme.svg.svgIcon,
+                      theme,
                       ...props,
                     };
 

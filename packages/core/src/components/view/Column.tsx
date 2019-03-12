@@ -7,6 +7,8 @@
 
 import * as React from 'react';
 
+// tslint:disable-next-line:max-line-length
+import { MissingComponentThemeError } from '../../errors/MissingComponentThemeError';
 import { ColorTheme } from '../../palette/ColorTheme';
 import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
@@ -30,6 +32,14 @@ export const Column = withResponsivenessProps(
               {paletteTheme => (
                 <ComponentsThemeContext.Consumer>
                   {componentsTheme => {
+                    let theme = props.theme;
+                    if (!theme) {
+                      if (!componentsTheme.views) {
+                        throw new MissingComponentThemeError('<Column>');
+                      }
+                      theme = componentsTheme.views.column;
+                    }
+
                     const colorTheme: ColorTheme =
                       props.colorTheme ||
                       ctxColorTheme ||
@@ -39,7 +49,7 @@ export const Column = withResponsivenessProps(
                       ...dimensionsProps,
                       colorTheme,
                       paletteTheme,
-                      theme: componentsTheme.views.column,
+                      theme,
                       ...props,
                     };
 

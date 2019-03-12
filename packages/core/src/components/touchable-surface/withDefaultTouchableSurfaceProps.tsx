@@ -7,6 +7,8 @@
 
 import * as React from 'react';
 
+// tslint:disable-next-line:max-line-length
+import { MissingComponentThemeError } from '../../errors/MissingComponentThemeError';
 import { InteractionType } from '../../interaction';
 import { ColorTheme } from '../../palette/ColorTheme';
 import { ColorThemeContext } from '../../palette/ColorThemeContext';
@@ -34,6 +36,16 @@ export const withDefaultTouchableSurfaceProps = (
               {colorTheme => (
                 <ComponentsThemeContext.Consumer>
                   {componentsTheme => {
+                    let theme = props.theme;
+                    if (!theme) {
+                      if (!componentsTheme.touchableSurface) {
+                        throw new MissingComponentThemeError(
+                          '<TouchableSurface>',
+                        );
+                      }
+                      theme = componentsTheme.touchableSurface;
+                    }
+
                     const propsWithDefaults: TouchableSurfaceProps = {
                       ...dimensionsProps,
                       colorTheme: colorTheme || ColorTheme.SurfaceNormal,
@@ -41,7 +53,7 @@ export const withDefaultTouchableSurfaceProps = (
                         type: InteractionType.Enabled,
                       },
                       paletteTheme,
-                      theme: componentsTheme.touchableSurface,
+                      theme,
                       ...props,
                     };
 
