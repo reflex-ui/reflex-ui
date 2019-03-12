@@ -11,14 +11,14 @@ import { Text, TextProps } from 'react-native';
 import { reflexComponent } from '../reflexComponent';
 import { SubProps } from '../subcomponents/SubProps';
 
-export const DefaultTextSubcomponent = reflexComponent<
+export const DefaultTextChild = reflexComponent<
   /*
    * it's ok to disable it here as it's a dead end, i.e.
    * it doesn't leak and affect other parts of the codebase.
    */
   // tslint:disable-next-line:no-any
   SubProps<any> & TextProps
->({ name: 'DefaultTextSubcomponent' })(
+>({ name: 'DefaultTextChild' })(
   ({ children, componentProps, ...otherProps }) => (
     <Text {...otherProps}>{children}</Text>
   ),

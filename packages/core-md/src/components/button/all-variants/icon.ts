@@ -9,7 +9,7 @@ import {
   ButtonProps,
   getThemedOnColor,
   SizedData,
-  SubThemeOptional,
+  SubTheme,
   SvgPropsGetter,
 } from '@reflex-ui/core';
 import { ViewStyle } from 'react-native';
@@ -38,7 +38,7 @@ export const getAllVariantsButtonIconProps: SvgPropsGetter<
   fill: getThemedOnColor(props),
 });
 
-export const allVariantsButtonIconTheme: SubThemeOptional<
+export const allVariantsButtonIconTheme: SubTheme<
   ButtonProps,
   SvgProps,
   ViewStyle

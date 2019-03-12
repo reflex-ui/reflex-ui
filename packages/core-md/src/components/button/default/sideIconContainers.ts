@@ -8,10 +8,8 @@
 import {
   ButtonProps,
   InjectableSubTheme,
-  rawInjectableButtonViewSubTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
 import {
@@ -30,9 +28,9 @@ export const defaultButtonLeadingIconContainerTheme: InjectableSubTheme<
   ButtonProps,
   ViewProps,
   ViewStyle
-> = merge({}, rawInjectableButtonViewSubTheme, {
+> = {
   getStyle: getDefaultButtonLeadingIconContainerStyle,
-});
+};
 
 export const getDefaultButtonTrailingIconContainerStyle: ViewStyleGetter<
   ButtonProps
@@ -45,6 +43,6 @@ export const defaultButtonTrailingIconContainerTheme: InjectableSubTheme<
   ButtonProps,
   ViewProps,
   ViewStyle
-> = merge({}, rawInjectableButtonViewSubTheme, {
+> = {
   getStyle: getDefaultButtonTrailingIconContainerStyle,
-});
+};

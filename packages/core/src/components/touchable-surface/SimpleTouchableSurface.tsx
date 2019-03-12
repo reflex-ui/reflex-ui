@@ -15,6 +15,8 @@ import {
 
 import { reflexComponent } from '../reflexComponent';
 import { getSubProps } from '../subcomponents';
+import { DefaultTouchableChild } from '../touchable/DefaultTouchableChild';
+import { DefaultViewChild } from '../view/DefaultViewChild';
 import { TouchableSurfaceProps } from './TouchableSurfaceProps';
 
 export const extractTouchableProps = (
@@ -54,8 +56,8 @@ export const SimpleTouchableSurface = reflexComponent<TouchableSurfaceProps>({
     children,
   };
 
-  const Container = updatedProps.theme.container.component;
-  const Touchable = props.theme.touchable.component;
+  const Container = updatedProps.theme.container.component || DefaultViewChild;
+  const Touchable = props.theme.touchable.component || DefaultTouchableChild;
 
   const containerProps = getSubProps<
     TouchableSurfaceProps,

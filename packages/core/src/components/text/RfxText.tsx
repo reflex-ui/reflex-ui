@@ -10,6 +10,7 @@ import { TextProps, TextStyle } from 'react-native';
 
 import { reflexComponent } from '../reflexComponent';
 import { getSubProps } from '../subcomponents';
+import { DefaultTextChild } from './DefaultTextChild';
 import { RfxTextProps } from './RfxTextProps';
 
 export const extractTextPropsFromRfxTextProps = (
@@ -38,7 +39,7 @@ export const transformRfxTextStringChildIntoComponent = (
   children: React.ReactNode,
   props: RfxTextProps,
 ): JSX.Element => {
-  const Text = props.theme.component;
+  const Text = props.theme.component || DefaultTextChild;
   const userProps = extractTextPropsFromRfxTextProps(props);
 
   const textProps = getSubProps<RfxTextProps, TextProps, TextStyle>({

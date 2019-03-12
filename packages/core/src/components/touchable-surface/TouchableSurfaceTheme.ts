@@ -11,10 +11,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import {
-  InjectableSubTheme,
-  InjectableSubThemeOptional,
-} from '../subcomponents';
+import { InjectableSubTheme } from '../subcomponents';
 import { TouchableSurfaceProps } from './TouchableSurfaceProps';
 
 export interface TouchableSurfaceTheme {
@@ -24,19 +21,6 @@ export interface TouchableSurfaceTheme {
     ViewStyle
   >;
   readonly touchable: InjectableSubTheme<
-    TouchableSurfaceProps,
-    TouchableWithoutFeedbackProps,
-    ViewStyle
-  >;
-}
-
-export interface TouchableSurfaceThemeOptional {
-  readonly container?: InjectableSubThemeOptional<
-    TouchableSurfaceProps,
-    ViewProps,
-    ViewStyle
-  >;
-  readonly touchable?: InjectableSubThemeOptional<
     TouchableSurfaceProps,
     TouchableWithoutFeedbackProps,
     ViewStyle

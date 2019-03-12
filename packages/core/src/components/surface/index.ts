@@ -10,6 +10,5 @@ export * from './SurfaceProps';
 export * from './SurfaceSubProps';
 export * from './SurfaceSubPropsGetter';
 export * from './SurfaceTheme';
-export * from './rawSurfaceTheme';
 export * from './SimpleSurface';
 export * from './withDefaultSurfaceProps';

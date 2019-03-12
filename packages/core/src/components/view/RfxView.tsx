@@ -10,6 +10,7 @@ import { ViewProps, ViewStyle } from 'react-native';
 
 import { reflexComponent } from '../reflexComponent';
 import { getSubProps } from '../subcomponents';
+import { DefaultViewChild } from './DefaultViewChild';
 import { RfxViewProps } from './RfxViewProps';
 
 export const RfxView = reflexComponent<RfxViewProps>({
@@ -28,7 +29,7 @@ export const RfxView = reflexComponent<RfxViewProps>({
     children,
   };
 
-  const Container = updatedProps.theme.container.component;
+  const Container = updatedProps.theme.container.component || DefaultViewChild;
 
   const containerProps = getSubProps<RfxViewProps, ViewProps, ViewStyle>({
     componentProps: updatedProps,

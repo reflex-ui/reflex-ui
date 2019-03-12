@@ -10,6 +10,7 @@ import { ViewProps, ViewStyle } from 'react-native';
 
 import { reflexComponent } from '../reflexComponent';
 import { getSubProps } from '../subcomponents';
+import { DefaultViewChild } from '../view';
 import { SurfaceProps } from './SurfaceProps';
 
 export const SimpleSurface = reflexComponent<SurfaceProps>({
@@ -28,7 +29,7 @@ export const SimpleSurface = reflexComponent<SurfaceProps>({
     children,
   };
 
-  const Container = updatedProps.theme.container.component;
+  const Container = updatedProps.theme.container.component || DefaultViewChild;
 
   const containerProps = getSubProps<SurfaceProps, ViewProps, ViewStyle>({
     componentProps: updatedProps,

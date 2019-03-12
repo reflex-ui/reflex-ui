@@ -24,8 +24,11 @@ import {
   SubTheme,
 } from '../subcomponents';
 import { RfxSvgPropsOptional } from '../svg/RfxSvgProps';
+import { DefaultTextChild } from '../text/DefaultTextChild';
 // tslint:disable-next-line:max-line-length
 import { handleAndroidTextTransformation } from '../text/handleAndroidTextTransformation';
+import { DefaultTouchableChild } from '../touchable/DefaultTouchableChild';
+import { DefaultViewChild } from '../view/DefaultViewChild';
 import { ButtonProps } from './ButtonProps';
 import { ButtonSubProps } from './ButtonSubProps';
 import { ButtonVariant } from './ButtonVariant';
@@ -84,7 +87,7 @@ export const handleButtonChildren = (
     props.variant === ButtonVariant.Icon
   ) {
     return handleButtonIcon({
-      Container: props.theme.iconContainer.component,
+      Container: props.theme.iconContainer.component || DefaultViewChild,
       containerTheme: props.theme.iconContainer,
       icon: children as React.ReactElement<RfxSvgPropsOptional>,
       iconTheme: props.theme.icon,
@@ -102,7 +105,7 @@ export const transformButtonStringChildrenIntoComponent = (
   props: ButtonProps,
   userSubProps: ButtonSubProps,
 ): JSX.Element => {
-  const Text = props.theme.text.component;
+  const Text = props.theme.text.component || DefaultTextChild;
 
   const textProps = getSubProps<ButtonProps, TextProps, TextStyle>({
     componentProps: props,
@@ -172,7 +175,7 @@ export const handleLeadingIcon = (
   userSubProps: ButtonSubProps,
 ): JSX.Element | undefined =>
   handleButtonIcon({
-    Container: props.theme.leadingIconContainer.component,
+    Container: props.theme.leadingIconContainer.component || DefaultViewChild,
     containerTheme: props.theme.leadingIconContainer,
     icon: props.leadingIcon as React.ReactElement<RfxSvgPropsOptional>,
     iconTheme: props.theme.leadingIcon,
@@ -186,7 +189,7 @@ export const handleTrailingIcon = (
   userSubProps: ButtonSubProps,
 ): JSX.Element | undefined =>
   handleButtonIcon({
-    Container: props.theme.trailingIconContainer.component,
+    Container: props.theme.trailingIconContainer.component || DefaultViewChild,
     containerTheme: props.theme.trailingIconContainer,
     icon: props.trailingIcon as React.ReactElement<RfxSvgPropsOptional>,
     iconTheme: props.theme.trailingIcon,
@@ -202,8 +205,8 @@ export const SimpleButton = reflexComponent<ButtonProps>({
   const userSubProps = props.getSubProps ? props.getSubProps(props) : {};
   const touchableProps = extractTouchablePropsFromButtonProps(props);
 
-  const Container = props.theme.container.component;
-  const Touchable = props.theme.touchable.component;
+  const Container = props.theme.container.component || DefaultViewChild;
+  const Touchable = props.theme.touchable.component || DefaultTouchableChild;
 
   const containerProps = getSubProps<ButtonProps, ViewProps, ViewStyle>({
     componentProps: props,

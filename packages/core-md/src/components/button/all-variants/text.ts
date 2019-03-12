@@ -10,7 +10,7 @@ import {
   FontWeight,
   getFontWeight,
   getThemedOnColor,
-  InjectableSubThemeOptional,
+  InjectableSubTheme,
   Size,
   SizedData,
   TextStyleGetter,
@@ -75,7 +75,7 @@ export const getAllVariantsButtonTextStyle: TextStyleGetter<
   }),
 });
 
-export const allVariantsButtonTextTheme: InjectableSubThemeOptional<
+export const allVariantsButtonTextTheme: InjectableSubTheme<
   ButtonProps,
   TextProps,
   TextStyle

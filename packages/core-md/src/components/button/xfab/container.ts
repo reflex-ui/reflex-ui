@@ -8,11 +8,9 @@
 import {
   ButtonProps,
   InjectableSubTheme,
-  rawInjectableButtonViewSubTheme,
   SizedData,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
 import { getAllVariantsButtonContainerProps } from '../all-variants/container';
@@ -80,7 +78,7 @@ export const xfabButtonContainerTheme: InjectableSubTheme<
   ButtonProps,
   ViewProps,
   ViewStyle
-> = merge({}, rawInjectableButtonViewSubTheme, {
+> = {
   getProps: getAllVariantsButtonContainerProps,
   getStyle: getXFabButtonContainerStyle,
-});
+};

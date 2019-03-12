@@ -8,10 +8,8 @@
 import {
   AppBarProps,
   AppBarTheme,
-  AppBarThemeOptional,
   AppBarVariantsTheme,
   getThemedColor,
-  rawAppBarTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
@@ -67,7 +65,7 @@ export const getDefaultAppBarContainerAreaStyle: ViewStyleGetter<
     props.dimensions.window.width <= props.breakpoints.largeTablet ? 56 : 64,
 });
 
-export const partialDefaultAppBarTheme: AppBarThemeOptional = {
+export const defaultAppBarTheme: AppBarTheme = {
   centerArea: {
     getStyle: getCommonAppBarCenterAreaStyle,
   },
@@ -82,12 +80,6 @@ export const partialDefaultAppBarTheme: AppBarThemeOptional = {
   },
 };
 
-export const defaultAppBarTheme: AppBarTheme = merge(
-  {},
-  rawAppBarTheme,
-  partialDefaultAppBarTheme,
-);
-
 /*
  * AppBarVariant.DENSE
  */
@@ -100,7 +92,7 @@ export const getDenseAppBarContainerAreaStyle: ViewStyleGetter<
   paddingVertical: 0,
 });
 
-export const partialDenseAppBarTheme: AppBarThemeOptional = {
+export const denseAppBarTheme: AppBarTheme = {
   centerArea: {
     getStyle: getCommonAppBarCenterAreaStyle,
   },
@@ -114,12 +106,6 @@ export const partialDenseAppBarTheme: AppBarThemeOptional = {
     getStyle: getCommonAppBarTrailingAreaStyle,
   },
 };
-
-export const denseAppBarTheme: AppBarTheme = merge(
-  {},
-  rawAppBarTheme,
-  partialDenseAppBarTheme,
-);
 
 /*
  * PROMINENT STYLES
@@ -141,7 +127,7 @@ export const getProminentAppBarContainerAreaStyle: ViewStyleGetter<
   height: 128,
 });
 
-export const partialProminentAppBarTheme: AppBarThemeOptional = {
+export const prominentAppBarTheme: AppBarTheme = {
   centerArea: {
     getStyle: getProminentAppBarCenterAreaStyle,
   },
@@ -156,12 +142,6 @@ export const partialProminentAppBarTheme: AppBarThemeOptional = {
   },
 };
 
-export const prominentAppBarTheme: AppBarTheme = merge(
-  {},
-  rawAppBarTheme,
-  partialProminentAppBarTheme,
-);
-
 /*
  * AppBarVariant.PROMINENT_DENSE
  */
@@ -173,7 +153,7 @@ export const getProminentDenseAppBarContainerAreaStyle: ViewStyleGetter<
   height: 98,
 });
 
-export const partialProminentDenseAppBarTheme: AppBarThemeOptional = {
+export const partialProminentDenseAppBarTheme: Partial<AppBarTheme> = {
   container: {
     getStyle: getProminentDenseAppBarContainerAreaStyle,
   },

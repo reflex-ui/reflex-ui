@@ -14,10 +14,10 @@ import {
 import { reflexComponent } from '../reflexComponent';
 import { SubProps } from '../subcomponents/SubProps';
 
-export const DefaultTouchableSubcomponent = reflexComponent<
+export const DefaultTouchableChild = reflexComponent<
   // tslint:disable-next-line:no-any
   SubProps<any> & TouchableWithoutFeedbackProps
->({ name: 'DefaultTouchableSubcomponent' })(
+>({ name: 'DefaultTouchableChild' })(
   ({ children, componentProps, ...otherProps }) => (
     <TouchableWithoutFeedback {...otherProps}>
       {children}

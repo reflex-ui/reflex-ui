@@ -8,12 +8,9 @@
 import {
   ListItemProps,
   ListItemTheme,
-  ListItemThemeOptional,
-  rawListItemTheme,
   SizedData,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import merge from 'lodash/merge';
 import { ViewStyle } from 'react-native';
 
 import { getSizingStyle } from '../../sizing/getSizingStyle';
@@ -45,14 +42,8 @@ export const getListItemContainerStyle: ViewStyleGetter<
   ...getSizingStyle(props),
 });
 
-export const partialListItemTheme: ListItemThemeOptional = {
+export const listItemTheme: ListItemTheme = {
   container: {
     getStyle: getListItemContainerStyle,
   },
 };
-
-export const listItemTheme: ListItemTheme = merge(
-  {},
-  rawListItemTheme,
-  partialListItemTheme,
-);

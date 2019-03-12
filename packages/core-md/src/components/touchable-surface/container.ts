@@ -9,11 +9,9 @@ import {
   getThemedColor,
   InjectableSubTheme,
   InteractionType,
-  rawInjectableTouchableSurfaceViewSubTheme,
   TouchableSurfaceProps,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import merge from 'lodash/merge';
 import { Platform, ViewProps, ViewStyle } from 'react-native';
 
 export const getTouchableSurfaceContainerStyle: ViewStyleGetter<
@@ -35,6 +33,6 @@ export const touchableSurfaceContainerTheme: InjectableSubTheme<
   TouchableSurfaceProps,
   ViewProps,
   ViewStyle
-> = merge({}, rawInjectableTouchableSurfaceViewSubTheme, {
+> = {
   getStyle: getTouchableSurfaceContainerStyle,
-});
+};

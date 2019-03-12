@@ -6,8 +6,7 @@
  */
 
 export * from './Column';
-export * from './DefaultViewSubcomponent';
-export * from './rawRfxViewTheme';
+export * from './DefaultViewChild';
 export * from './RfxView';
 export * from './RfxViewProps';
 export * from './RfxViewSubProps';

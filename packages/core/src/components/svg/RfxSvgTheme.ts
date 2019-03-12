@@ -8,24 +8,10 @@
 import { ViewProps, ViewStyle } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 
-import {
-  InjectableSubTheme,
-  InjectableSubThemeOptional,
-  SubTheme,
-  SubThemeOptional,
-} from '../subcomponents';
+import { InjectableSubTheme, SubTheme } from '../subcomponents';
 import { RfxSvgProps } from './RfxSvgProps';
 
 export interface RfxSvgTheme {
   readonly container: InjectableSubTheme<RfxSvgProps, ViewProps, ViewStyle>;
   readonly svg: SubTheme<RfxSvgProps, SvgProps, ViewStyle>;
-}
-
-export interface RfxSvgThemeOptional {
-  readonly container?: InjectableSubThemeOptional<
-    RfxSvgProps,
-    ViewProps,
-    ViewStyle
-  >;
-  readonly svg?: SubThemeOptional<RfxSvgProps, SvgProps, ViewStyle>;
 }

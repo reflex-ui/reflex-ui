@@ -9,7 +9,7 @@ import {
   ButtonProps,
   getThemedOnColor,
   SizedData,
-  SubThemeOptional,
+  SubTheme,
   SvgPropsGetter,
 } from '@reflex-ui/core';
 import { ViewStyle } from 'react-native';
@@ -41,7 +41,7 @@ export const getAllVariantsButtonLeadingIconProps: SvgPropsGetter<
 // tslint:disable-next-line:max-line-length
 export const getAllVariantsButtonTrailingIconProps = getAllVariantsButtonLeadingIconProps;
 
-export const allVariantsButtonLeadingIconTheme: SubThemeOptional<
+export const allVariantsButtonLeadingIconTheme: SubTheme<
   ButtonProps,
   SvgProps,
   ViewStyle
@@ -49,7 +49,7 @@ export const allVariantsButtonLeadingIconTheme: SubThemeOptional<
   getProps: getAllVariantsButtonLeadingIconProps,
 };
 
-export const allVariantsButtonTrailingIconTheme: SubThemeOptional<
+export const allVariantsButtonTrailingIconTheme: SubTheme<
   ButtonProps,
   SvgProps,
   ViewStyle

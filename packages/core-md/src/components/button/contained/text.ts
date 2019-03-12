@@ -8,10 +8,8 @@
 import {
   ButtonProps,
   InjectableSubTheme,
-  rawInjectableButtonTextSubTheme,
   TextStyleGetter,
 } from '@reflex-ui/core';
-import merge from 'lodash/merge';
 import { TextProps, TextStyle } from 'react-native';
 
 import { getAllVariantsButtonTextStyle } from '../all-variants/text';
@@ -24,6 +22,6 @@ export const containedButtonTextTheme: InjectableSubTheme<
   ButtonProps,
   TextProps,
   TextStyle
-> = merge({}, rawInjectableButtonTextSubTheme, {
+> = {
   getStyle: getContainedButtonTextStyle,
-});
+};

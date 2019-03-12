@@ -5,11 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  ButtonTheme,
-  rawInjectableButtonTouchableSubTheme,
-  rawInjectableButtonViewSubTheme,
-} from '@reflex-ui/core';
+import { ButtonTheme } from '@reflex-ui/core';
 
 import { containedButtonContainerTheme } from './container';
 import { containedButtonIconTheme } from './icon';
@@ -26,11 +22,11 @@ import { containedButtonTextTheme } from './text';
 export const containedButtonTheme: ButtonTheme = {
   container: containedButtonContainerTheme,
   icon: containedButtonIconTheme,
-  iconContainer: rawInjectableButtonViewSubTheme,
+  iconContainer: {},
   leadingIcon: containedButtonLeadingIconTheme,
   leadingIconContainer: containedButtonLeadingIconContainerTheme,
   text: containedButtonTextTheme,
-  touchable: rawInjectableButtonTouchableSubTheme,
+  touchable: {},
   trailingIcon: containedButtonTrailingIconTheme,
   trailingIconContainer: containedButtonTrailingIconContainerTheme,
 };

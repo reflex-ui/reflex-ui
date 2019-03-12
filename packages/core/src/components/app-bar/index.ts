@@ -12,6 +12,5 @@ export * from './AppBarSubPropsGetter';
 export * from './AppBarTheme';
 export * from './AppBarVariant';
 export * from './AppBarVariantsTheme';
-export * from './rawAppBarTheme';
 export * from './SimpleAppBar';
 export * from './withDefaultAppBarProps';

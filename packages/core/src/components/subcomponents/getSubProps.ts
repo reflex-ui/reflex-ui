@@ -37,9 +37,13 @@ export const getSubProps = <
 
   const { style: userStyle, ...otherUserProps } = userProps;
 
+  // @ts-ignore
+  // Type 'Pick<PrimitiveProps, Exclude<keyof PrimitiveProps, "style">>'
+  // is not assignable to type 'PrimitiveProps'.ts(2322)
+  // This TS error seems strange, perhaps a TS bug. Needs some investigation.
   const subProps: PrimitiveProps = merge(
     {},
-    theme.getProps(componentProps) || {},
+    theme.getProps ? theme.getProps(componentProps) : {},
     otherUserProps || {},
   );
 
@@ -52,7 +56,15 @@ export const getSubProps = <
     );
   }
 
-  const subStyle: PrimitiveStyle = theme.getStyle(componentProps);
+  // @ts-ignore
+  // Type 'PrimitiveStyle | {}' is not assignable to type 'PrimitiveStyle'.
+  // Type '{}' is not assignable to type 'PrimitiveStyle'.ts(2322)
+  // This TS error is interesting. Since there are no required fields
+  // on none style type (PrimitiveStyle extends ViewStyle | TextStyle |
+  // ImageStyle) an empty object could be accepted as valid data for such types.
+  const subStyle: PrimitiveStyle = theme.getStyle
+    ? theme.getStyle(componentProps)
+    : {};
 
   let subStyles = [];
   if (!isEmpty(subStyle)) {

@@ -7,14 +7,12 @@
 
 import {
   ButtonProps,
-  DefaultViewSubcomponent,
+  DefaultViewChild,
   InjectableSubTheme,
   InteractionType,
   isTouchDevice,
-  rawInjectableButtonViewSubTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
 import {
@@ -55,9 +53,9 @@ export const animatedXFabButtonContainerTheme: InjectableSubTheme<
   ButtonProps,
   ViewProps,
   ViewStyle
-> = merge({}, rawInjectableButtonViewSubTheme, {
+> = {
   component: withRippleEffect({
     getRippleColor: getButtonRippleColor,
-  })(withRaiseEffect(ElevationDegree.Mid)(DefaultViewSubcomponent)),
+  })(withRaiseEffect(ElevationDegree.Mid)(DefaultViewChild)),
   getStyle: getAnimatedXFabButtonContainerStyle,
-});
+};

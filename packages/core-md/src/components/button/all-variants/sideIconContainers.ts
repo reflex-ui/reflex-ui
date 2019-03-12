@@ -7,7 +7,7 @@
 
 import {
   ButtonProps,
-  InjectableSubThemeOptional,
+  InjectableSubTheme,
   SizedData,
   ViewStyleGetter,
 } from '@reflex-ui/core';
@@ -58,7 +58,7 @@ export const getAllVariantsButtonLeadingIconContainerStyle: ViewStyleGetter<
 > = props => allVariantsButtonLeadingIconContainerSizedStyle[props.size];
 
 // tslint:disable-next-line:max-line-length
-export const allVariantsButtonLeadingIconContainerTheme: InjectableSubThemeOptional<
+export const allVariantsButtonLeadingIconContainerTheme: InjectableSubTheme<
   ButtonProps,
   ViewProps,
   ViewStyle
@@ -110,7 +110,7 @@ export const getAllVariantsButtonTrailingIconContainerStyle: ViewStyleGetter<
 > = ({ size }) => allVariantsButtonTrailingIconContainerSizedStyle[size];
 
 // tslint:disable-next-line:max-line-length
-export const allVariantsButtonTrailingIconContainerTheme: InjectableSubThemeOptional<
+export const allVariantsButtonTrailingIconContainerTheme: InjectableSubTheme<
   ButtonProps,
   ViewProps,
   ViewStyle

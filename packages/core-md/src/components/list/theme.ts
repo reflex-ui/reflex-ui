@@ -9,11 +9,8 @@ import {
   getThemedColor,
   ListProps,
   ListTheme,
-  ListThemeOptional,
-  rawListTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import merge from 'lodash/merge';
 
 import { getSizingStyle } from '../../sizing/getSizingStyle';
 
@@ -23,10 +20,8 @@ export const getListContainerStyle: ViewStyleGetter<ListProps> = props => ({
   ...getSizingStyle(props),
 });
 
-export const partialListTheme: ListThemeOptional = {
+export const listTheme: ListTheme = {
   container: {
     getStyle: getListContainerStyle,
   },
 };
-
-export const listTheme: ListTheme = merge({}, rawListTheme, partialListTheme);

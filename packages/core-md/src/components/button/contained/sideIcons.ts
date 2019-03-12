@@ -5,8 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ButtonProps, rawButtonIconSubTheme, SubTheme } from '@reflex-ui/core';
-import merge from 'lodash/merge';
+import { ButtonProps, SubTheme } from '@reflex-ui/core';
 import { ViewStyle } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 
@@ -17,9 +16,9 @@ export const containedButtonLeadingIconTheme: SubTheme<
   ButtonProps,
   SvgProps,
   ViewStyle
-> = merge({}, rawButtonIconSubTheme, {
+> = {
   getProps: getAllVariantsButtonLeadingIconProps,
-});
+};
 
 export const containedButtonTrailingIconTheme: SubTheme<
   ButtonProps,

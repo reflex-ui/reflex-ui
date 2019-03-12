@@ -5,12 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  ButtonProps,
-  InjectableSubTheme,
-  rawInjectableButtonViewSubTheme,
-} from '@reflex-ui/core';
-import merge from 'lodash/merge';
+import { ButtonProps, InjectableSubTheme } from '@reflex-ui/core';
 import { ViewProps, ViewStyle } from 'react-native';
 
 import {
@@ -23,15 +18,15 @@ export const containedButtonLeadingIconContainerTheme: InjectableSubTheme<
   ButtonProps,
   ViewProps,
   ViewStyle
-> = merge({}, rawInjectableButtonViewSubTheme, {
+> = {
   getStyle: getAllVariantsButtonLeadingIconContainerStyle,
-});
+};
 
 // tslint:disable-next-line:max-line-length
 export const containedButtonTrailingIconContainerTheme: InjectableSubTheme<
   ButtonProps,
   ViewProps,
   ViewStyle
-> = merge({}, rawInjectableButtonViewSubTheme, {
+> = {
   getStyle: getAllVariantsButtonTrailingIconContainerStyle,
-});
+};

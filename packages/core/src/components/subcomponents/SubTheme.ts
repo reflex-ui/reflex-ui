@@ -9,12 +9,6 @@ import { PropsGetter } from '../PropsGetter';
 import { StyleGetter } from '../StyleGetter';
 
 export interface SubTheme<ComponentProps, OutputProps, OutputStyle> {
-  readonly getProps: PropsGetter<ComponentProps, OutputProps>;
-  readonly getStyle: StyleGetter<ComponentProps, OutputStyle>;
+  readonly getProps?: PropsGetter<ComponentProps, OutputProps>;
+  readonly getStyle?: StyleGetter<ComponentProps, OutputStyle>;
 }
-
-export type SubThemeOptional<
-  ComponentProps,
-  OutputProps,
-  OutputStyle
-> = Partial<SubTheme<ComponentProps, OutputProps, OutputStyle>>;

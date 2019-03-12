@@ -13,6 +13,7 @@ import { SvgProps } from 'react-native-svg';
 import { cloneElement } from '../../utils';
 import { reflexComponent } from '../reflexComponent';
 import { getSubProps } from '../subcomponents';
+import { DefaultViewChild } from '../view';
 import { RfxSvgProps, RfxSvgPropsOptional } from './RfxSvgProps';
 import { RfxSvgSubProps } from './RfxSvgSubProps';
 
@@ -79,7 +80,7 @@ export const SimpleRfxSvg = reflexComponent<RfxSvgProps>({
   if (props.children) children = handleSvgChildren(props, userSubProps);
   if (props.skipContainer) return <React.Fragment>{children}</React.Fragment>;
 
-  const Container = props.theme.container.component;
+  const Container = props.theme.container.component || DefaultViewChild;
 
   const containerProps = getSubProps<RfxSvgProps, ViewProps, ViewStyle>({
     componentProps: props,

@@ -9,14 +9,11 @@ import {
   getSizedMarginStyle,
   getSizedPaddingStyle,
   getThemedColor,
-  InjectableSubThemeOptional,
-  rawSurfaceTheme,
+  InjectableSubTheme,
   SurfaceProps,
   SurfaceTheme,
-  SurfaceThemeOptional,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
 import { getFlexboxStyle } from '../../flexbox/getFlexboxStyle';
@@ -33,7 +30,7 @@ export const getSurfaceContainerStyle: ViewStyleGetter<
   borderRadius: 4,
 });
 
-export const surfaceContainerTheme: InjectableSubThemeOptional<
+export const surfaceContainerTheme: InjectableSubTheme<
   SurfaceProps,
   ViewProps,
   ViewStyle
@@ -41,12 +38,6 @@ export const surfaceContainerTheme: InjectableSubThemeOptional<
   getStyle: getSurfaceContainerStyle,
 };
 
-export const optionalSurfaceTheme: SurfaceThemeOptional = {
+export const surfaceTheme: SurfaceTheme = {
   container: surfaceContainerTheme,
 };
-
-export const surfaceTheme: SurfaceTheme = merge<
-  {},
-  SurfaceTheme,
-  SurfaceThemeOptional
->({}, rawSurfaceTheme, optionalSurfaceTheme);

@@ -11,6 +11,7 @@ import { ViewProps, ViewStyle } from 'react-native';
 
 import { reflexComponent } from '../reflexComponent';
 import { getSubProps } from '../subcomponents';
+import { DefaultViewChild } from '../view';
 import { ListProps } from './ListProps';
 
 export const SimpleList = reflexComponent<ListProps>({
@@ -32,7 +33,7 @@ export const SimpleList = reflexComponent<ListProps>({
     children,
   };
 
-  const Container = updatedProps.theme.container.component;
+  const Container = updatedProps.theme.container.component || DefaultViewChild;
 
   const containerProps = getSubProps<ListProps, ViewProps, ViewStyle>({
     componentProps: updatedProps,

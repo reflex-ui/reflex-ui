@@ -8,11 +8,9 @@
 import {
   ButtonProps,
   InjectableSubTheme,
-  rawInjectableButtonViewSubTheme,
   SizedData,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
 export const xfabButtonLeadingIconContainerSizedStyle: SizedData<ViewStyle> = {
@@ -41,9 +39,9 @@ export const xfabButtonLeadingIconContainerTheme: InjectableSubTheme<
   ButtonProps,
   ViewProps,
   ViewStyle
-> = merge({}, rawInjectableButtonViewSubTheme, {
+> = {
   getStyle: getXFabButtonLeadingIconContainerStyle,
-});
+};
 
 export const xfabButtonTrailingIconContainerSizedStyle: SizedData<ViewStyle> = {
   xxsmall: { marginEnd: -2, marginStart: 6 },
@@ -71,6 +69,6 @@ export const xfabButtonTrailingIconContainerTheme: InjectableSubTheme<
   ButtonProps,
   ViewProps,
   ViewStyle
-> = merge({}, rawInjectableButtonViewSubTheme, {
+> = {
   getStyle: getXFabButtonTrailingIconContainerStyle,
-});
+};

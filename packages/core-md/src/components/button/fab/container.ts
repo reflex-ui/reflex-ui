@@ -8,11 +8,9 @@
 import {
   ButtonProps,
   InjectableSubTheme,
-  rawInjectableButtonViewSubTheme,
   SizedData,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
 import { getMidElevationStylesByInteraction } from '../../../elevation';
@@ -89,7 +87,7 @@ export const fabButtonContainerTheme: InjectableSubTheme<
   ButtonProps,
   ViewProps,
   ViewStyle
-> = merge({}, rawInjectableButtonViewSubTheme, {
+> = {
   getProps: getAllVariantsButtonContainerProps,
   getStyle: getFabButtonContainerStyle,
-});
+};

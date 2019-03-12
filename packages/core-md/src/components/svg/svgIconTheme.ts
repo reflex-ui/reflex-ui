@@ -7,16 +7,13 @@
 
 import {
   getSizedMarginStyle,
-  InjectableSubThemeOptional,
-  rawRfxSvgTheme,
+  InjectableSubTheme,
   RfxSvgProps,
   RfxSvgTheme,
-  RfxSvgThemeOptional,
   SizedData,
   SvgPropsGetter,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import merge from 'lodash/merge';
 import { ViewStyle } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 
@@ -45,7 +42,7 @@ export const getSvgIconSvgProps: SvgPropsGetter<RfxSvgProps> = props => ({
   ...getSvgColorProps(props),
 });
 
-export const svgIconSvgTheme: InjectableSubThemeOptional<
+export const svgIconSvgTheme: InjectableSubTheme<
   RfxSvgProps,
   SvgProps,
   ViewStyle
@@ -60,7 +57,7 @@ export const getSvgIconContainerStyle: ViewStyleGetter<
   ...getSizingStyle(props),
 });
 
-export const svgIconContainerTheme: InjectableSubThemeOptional<
+export const svgIconContainerTheme: InjectableSubTheme<
   RfxSvgProps,
   SvgProps,
   ViewStyle
@@ -68,13 +65,7 @@ export const svgIconContainerTheme: InjectableSubThemeOptional<
   getStyle: getSvgIconContainerStyle,
 };
 
-export const optionalSvgIconTheme: RfxSvgThemeOptional = {
+export const svgIconTheme: RfxSvgTheme = {
   container: svgIconContainerTheme,
   svg: svgIconSvgTheme,
 };
-
-export const svgIconTheme: RfxSvgTheme = merge<
-  {},
-  RfxSvgTheme,
-  RfxSvgThemeOptional
->({}, rawRfxSvgTheme, optionalSvgIconTheme);

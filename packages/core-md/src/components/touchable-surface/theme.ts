@@ -5,14 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  rawInjectableTouchableSurfaceTouchableSubTheme,
-  TouchableSurfaceTheme,
-} from '@reflex-ui/core';
+import { TouchableSurfaceTheme } from '@reflex-ui/core';
 
 import { touchableSurfaceContainerTheme } from './container';
 
 export const touchableSurfaceTheme: TouchableSurfaceTheme = {
   container: touchableSurfaceContainerTheme,
-  touchable: rawInjectableTouchableSurfaceTouchableSubTheme,
+  touchable: {},
 };

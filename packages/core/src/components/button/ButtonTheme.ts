@@ -14,12 +14,7 @@ import {
 } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 
-import {
-  InjectableSubTheme,
-  InjectableSubThemeOptional,
-  SubTheme,
-  SubThemeOptional,
-} from '../subcomponents';
+import { InjectableSubTheme, SubTheme } from '../subcomponents';
 import { ButtonProps } from './ButtonProps';
 
 export interface ButtonTheme {
@@ -40,38 +35,6 @@ export interface ButtonTheme {
   >;
   readonly trailingIcon: SubTheme<ButtonProps, SvgProps, ViewStyle>;
   readonly trailingIconContainer: InjectableSubTheme<
-    ButtonProps,
-    ViewProps,
-    ViewStyle
-  >;
-}
-
-export interface ButtonThemeOptional {
-  readonly container?: InjectableSubThemeOptional<
-    ButtonProps,
-    ViewProps,
-    ViewStyle
-  >;
-  readonly icon?: SubThemeOptional<ButtonProps, SvgProps, ViewStyle>;
-  readonly iconContainer?: InjectableSubThemeOptional<
-    ButtonProps,
-    ViewProps,
-    ViewStyle
-  >;
-  readonly leadingIcon?: SubThemeOptional<ButtonProps, SvgProps, ViewStyle>;
-  readonly leadingIconContainer?: InjectableSubThemeOptional<
-    ButtonProps,
-    ViewProps,
-    ViewStyle
-  >;
-  readonly text?: InjectableSubThemeOptional<ButtonProps, TextProps, TextStyle>;
-  readonly touchable?: InjectableSubThemeOptional<
-    ButtonProps,
-    TouchableWithoutFeedbackProps,
-    ViewStyle
-  >;
-  readonly trailingIcon?: SubThemeOptional<ButtonProps, SvgProps, ViewStyle>;
-  readonly trailingIconContainer?: InjectableSubThemeOptional<
     ButtonProps,
     ViewProps,
     ViewStyle

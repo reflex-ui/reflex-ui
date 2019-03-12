@@ -11,6 +11,7 @@ import { ViewProps, ViewStyle } from 'react-native';
 
 import { reflexComponent } from '../reflexComponent';
 import { getSubProps } from '../subcomponents';
+import { DefaultViewChild } from '../view/DefaultViewChild';
 import { AppBarProps } from './AppBarProps';
 import { AppBarSubProps } from './AppBarSubProps';
 
@@ -22,7 +23,7 @@ export const renderCenterArea = (
   if (!children) return children;
 
   if (Array.isArray(children) && children.length > 1) {
-    const Container = props.theme.centerArea.component;
+    const Container = props.theme.centerArea.component || DefaultViewChild;
 
     const containerProps = getSubProps<AppBarProps, ViewProps, ViewStyle>({
       componentProps: props,
@@ -49,7 +50,7 @@ export const renderLeadingArea = (
   if (typeof children === 'function') return children(props);
   const leadingChildren = Array.isArray(children) ? children[0] : children;
 
-  const Container = props.theme.leadingArea.component;
+  const Container = props.theme.leadingArea.component || DefaultViewChild;
 
   const containerProps = getSubProps<AppBarProps, ViewProps, ViewStyle>({
     componentProps: props,
@@ -72,7 +73,7 @@ export const renderTrailingArea = (
   if (!children) return children;
 
   if (Array.isArray(children) && children.length > 2) {
-    const Container = props.theme.trailingArea.component;
+    const Container = props.theme.trailingArea.component || DefaultViewChild;
 
     const containerProps = getSubProps<AppBarProps, ViewProps, ViewStyle>({
       componentProps: props,
@@ -118,7 +119,7 @@ export const SimpleAppBar = reflexComponent<AppBarProps>({
     children,
   };
 
-  const Container = updatedProps.theme.container.component;
+  const Container = updatedProps.theme.container.component || DefaultViewChild;
 
   const containerProps = getSubProps<AppBarProps, ViewProps, ViewStyle>({
     componentProps: updatedProps,

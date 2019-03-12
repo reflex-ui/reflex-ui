@@ -7,12 +7,10 @@
 
 import {
   ButtonProps,
-  rawButtonIconSubTheme,
   SizedData,
   SubTheme,
   SvgPropsGetter,
 } from '@reflex-ui/core';
-import merge from 'lodash/merge';
 import { ViewStyle } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 
@@ -46,9 +44,9 @@ export const xfabButtonLeadingIconTheme: SubTheme<
   ButtonProps,
   SvgProps,
   ViewStyle
-> = merge({}, rawButtonIconSubTheme, {
+> = {
   getProps: getXFabButtonLeadingIconProps,
-});
+};
 
 export const xfabButtonTrailingIconTheme: SubTheme<
   ButtonProps,

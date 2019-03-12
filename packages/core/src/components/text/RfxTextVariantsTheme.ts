@@ -7,10 +7,7 @@
 
 import { TextProps, TextStyle } from 'react-native';
 
-import {
-  InjectableSubTheme,
-  InjectableSubThemeOptional,
-} from '../subcomponents';
+import { InjectableSubTheme } from '../subcomponents';
 import { RfxTextProps } from './RfxTextProps';
 
 export interface RfxTextVariantsTheme {
@@ -27,72 +24,4 @@ export interface RfxTextVariantsTheme {
   readonly paragraph2: InjectableSubTheme<RfxTextProps, TextProps, TextStyle>;
   readonly subtitle1: InjectableSubTheme<RfxTextProps, TextProps, TextStyle>;
   readonly subtitle2: InjectableSubTheme<RfxTextProps, TextProps, TextStyle>;
-}
-
-export interface RfxTextVariantsThemeOptional {
-  readonly appBarTitle?: InjectableSubThemeOptional<
-    RfxTextProps,
-    TextProps,
-    TextStyle
-  >;
-  readonly caption?: InjectableSubThemeOptional<
-    RfxTextProps,
-    TextProps,
-    TextStyle
-  >;
-  readonly headline1?: InjectableSubThemeOptional<
-    RfxTextProps,
-    TextProps,
-    TextStyle
-  >;
-  readonly headline2?: InjectableSubThemeOptional<
-    RfxTextProps,
-    TextProps,
-    TextStyle
-  >;
-  readonly headline3?: InjectableSubThemeOptional<
-    RfxTextProps,
-    TextProps,
-    TextStyle
-  >;
-  readonly headline4?: InjectableSubThemeOptional<
-    RfxTextProps,
-    TextProps,
-    TextStyle
-  >;
-  readonly headline5?: InjectableSubThemeOptional<
-    RfxTextProps,
-    TextProps,
-    TextStyle
-  >;
-  readonly headline6?: InjectableSubThemeOptional<
-    RfxTextProps,
-    TextProps,
-    TextStyle
-  >;
-  readonly overline?: InjectableSubThemeOptional<
-    RfxTextProps,
-    TextProps,
-    TextStyle
-  >;
-  readonly paragraph1?: InjectableSubThemeOptional<
-    RfxTextProps,
-    TextProps,
-    TextStyle
-  >;
-  readonly paragraph2?: InjectableSubThemeOptional<
-    RfxTextProps,
-    TextProps,
-    TextStyle
-  >;
-  readonly subtitle1?: InjectableSubThemeOptional<
-    RfxTextProps,
-    TextProps,
-    TextStyle
-  >;
-  readonly subtitle2?: InjectableSubThemeOptional<
-    RfxTextProps,
-    TextProps,
-    TextStyle
-  >;
 }

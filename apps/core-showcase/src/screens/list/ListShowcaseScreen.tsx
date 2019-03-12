@@ -59,7 +59,7 @@ const createParagraph1Theme = (
 ): InjectableSubTheme<RfxTextProps, TextProps, TextStyle> => ({
   ...baseTheme,
   getStyle: props => ({
-    ...baseTheme.getStyle(props),
+    ...(baseTheme.getStyle ? baseTheme.getStyle(props) : {}),
     fontWeight:
       props.interactionState &&
       props.interactionState.type === InteractionType.Activated

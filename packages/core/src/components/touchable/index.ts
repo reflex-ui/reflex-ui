@@ -5,5 +5,5 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './DefaultTouchableSubcomponent';
+export * from './DefaultTouchableChild';
 export * from './TouchablePropsGetter';

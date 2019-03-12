@@ -7,14 +7,12 @@
 
 import {
   ButtonProps,
-  DefaultViewSubcomponent,
+  DefaultViewChild,
   InjectableSubTheme,
   InteractionType,
   isTouchDevice,
-  rawInjectableButtonViewSubTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
 import { getButtonRippleColor } from '../getButtonRippleColor';
@@ -48,9 +46,9 @@ export const animatedOutlinedShapedButtonContainerTheme: InjectableSubTheme<
   ButtonProps,
   ViewProps,
   ViewStyle
-> = merge({}, rawInjectableButtonViewSubTheme, {
+> = {
   component: withRippleEffect({
     getRippleColor: getButtonRippleColor,
-  })(DefaultViewSubcomponent),
+  })(DefaultViewChild),
   getStyle: getAnimatedOutlinedShapedButtonContainerStyle,
-});
+};

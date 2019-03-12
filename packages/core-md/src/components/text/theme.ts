@@ -12,13 +12,10 @@ import {
   getSizedPaddingStyle,
   getThemedOnColor,
   isWeb,
-  rawRfxTextVariantsTheme,
   RfxTextProps,
   RfxTextVariantsTheme,
-  RfxTextVariantsThemeOptional,
   TextStyleGetter,
 } from '@reflex-ui/core';
-import merge from 'lodash/merge';
 import { Platform, TextStyle } from 'react-native';
 
 import { sizedSpacing } from '../../spacing/sizedSpacing';
@@ -38,7 +35,7 @@ export const getCommonRfxTextStyle: TextStyleGetter<RfxTextProps> = props => ({
   }),
 });
 
-export const partialRfxTextTheme: RfxTextVariantsThemeOptional = {
+export const rfxTextVariantsTheme: RfxTextVariantsTheme = {
   appBarTitle: {
     getStyle: (props): TextStyle => ({
       ...getCommonRfxTextStyle(props),
@@ -139,9 +136,3 @@ export const partialRfxTextTheme: RfxTextVariantsThemeOptional = {
     }),
   },
 };
-
-export const rfxTextVariantsTheme: RfxTextVariantsTheme = merge(
-  {},
-  rawRfxTextVariantsTheme,
-  partialRfxTextTheme,
-);

@@ -5,18 +5,18 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ButtonTheme, ButtonThemeOptional } from '@reflex-ui/core';
+import { ButtonTheme } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
 import { animatedIconButtonContainerTheme } from './animatedContainer';
 import { iconButtonTheme } from './theme';
 
-const optionalIconAnimatedButtonTheme: ButtonThemeOptional = {
+const optionalIconAnimatedButtonTheme: Partial<ButtonTheme> = {
   container: animatedIconButtonContainerTheme,
 };
 
 export const animatedIconButtonTheme: ButtonTheme = merge<
   {},
   ButtonTheme,
-  ButtonThemeOptional
+  Partial<ButtonTheme>
 >({}, iconButtonTheme, optionalIconAnimatedButtonTheme);

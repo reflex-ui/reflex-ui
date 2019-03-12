@@ -5,13 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { RfxSvgTheme, RfxSvgThemeOptional } from './RfxSvgTheme';
+import { RfxSvgTheme } from './RfxSvgTheme';
 
 export interface RfxSvgVariantsTheme {
   readonly rfxSvg: RfxSvgTheme;
   readonly svgIcon: RfxSvgTheme;
 }
-
-export type RfxSvgVariantsThemeOptional = {
-  [P in keyof RfxSvgVariantsTheme]?: RfxSvgThemeOptional
-};

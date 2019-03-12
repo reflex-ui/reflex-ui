@@ -10,6 +10,5 @@ export * from './ListItemProps';
 export * from './ListItemSubProps';
 export * from './ListItemSubPropsGetter';
 export * from './ListItemTheme';
-export * from './rawListItemTheme';
 export * from './SimpleListItem';
 export * from './withDefaultListItemProps';

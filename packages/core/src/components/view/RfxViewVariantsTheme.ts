@@ -5,13 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { RfxViewTheme, RfxViewThemeOptional } from './RfxViewTheme';
+import { RfxViewTheme } from './RfxViewTheme';
 
 export interface RfxViewVariantsTheme {
   readonly column: RfxViewTheme;
   readonly row: RfxViewTheme;
 }
-
-export type RfxViewVariantsThemeOptional = {
-  [P in keyof RfxViewVariantsTheme]?: RfxViewThemeOptional
-};

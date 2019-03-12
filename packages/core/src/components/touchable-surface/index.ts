@@ -10,6 +10,5 @@ export * from './TouchableSurfaceProps';
 export * from './TouchableSurfaceSubProps';
 export * from './TouchableSurfaceSubPropsGetter';
 export * from './TouchableSurfaceTheme';
-export * from './rawTouchableSurfaceTheme';
 export * from './SimpleTouchableSurface';
 export * from './withDefaultTouchableSurfaceProps';

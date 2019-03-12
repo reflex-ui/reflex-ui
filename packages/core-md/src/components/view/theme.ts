@@ -8,15 +8,12 @@
 import {
   getSizedMarginStyle,
   getSizedPaddingStyle,
-  InjectableSubThemeOptional,
-  rawRfxViewTheme,
+  InjectableSubTheme,
   RfxViewProps,
   RfxViewTheme,
-  RfxViewThemeOptional,
   RfxViewVariantsTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import merge from 'lodash/merge';
 import { ViewProps, ViewStyle } from 'react-native';
 
 import { getFlexboxStyle } from '../../flexbox/getFlexboxStyle';
@@ -46,7 +43,7 @@ export const getColumnContainerStyle: ViewStyleGetter<
   flexWrap: 'wrap',
 });
 
-export const columnContainerTheme: InjectableSubThemeOptional<
+export const columnContainerTheme: InjectableSubTheme<
   RfxViewProps,
   ViewProps,
   ViewStyle
@@ -54,15 +51,9 @@ export const columnContainerTheme: InjectableSubThemeOptional<
   getStyle: getColumnContainerStyle,
 };
 
-export const optionalColumnTheme: RfxViewThemeOptional = {
+export const columnTheme: RfxViewTheme = {
   container: columnContainerTheme,
 };
-
-export const columnTheme: RfxViewTheme = merge<
-  {},
-  RfxViewTheme,
-  RfxViewThemeOptional
->({}, rawRfxViewTheme, optionalColumnTheme);
 
 /*
  * ROW
@@ -74,7 +65,7 @@ export const getRowContainerStyle: ViewStyleGetter<RfxViewProps> = props => ({
   flexWrap: 'wrap',
 });
 
-export const rowContainerTheme: InjectableSubThemeOptional<
+export const rowContainerTheme: InjectableSubTheme<
   RfxViewProps,
   ViewProps,
   ViewStyle
@@ -82,15 +73,9 @@ export const rowContainerTheme: InjectableSubThemeOptional<
   getStyle: getRowContainerStyle,
 };
 
-export const optionalRowTheme: RfxViewThemeOptional = {
+export const rowTheme: RfxViewTheme = {
   container: rowContainerTheme,
 };
-
-export const rowTheme: RfxViewTheme = merge<
-  {},
-  RfxViewTheme,
-  RfxViewThemeOptional
->({}, rawRfxViewTheme, optionalRowTheme);
 
 /*
  * RfxViewVariantsTheme

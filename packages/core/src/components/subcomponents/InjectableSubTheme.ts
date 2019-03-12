@@ -11,13 +11,7 @@ import { SubTheme } from './SubTheme';
 
 export interface InjectableSubTheme<ComponentProps, OutputProps, OutputStyle>
   extends SubTheme<ComponentProps, OutputProps, OutputStyle> {
-  readonly component: React.ComponentType<
+  readonly component?: React.ComponentType<
     SubProps<ComponentProps> & OutputProps
   >;
 }
-
-export type InjectableSubThemeOptional<
-  ComponentProps,
-  OutputProps,
-  OutputStyle
-> = Partial<InjectableSubTheme<ComponentProps, OutputProps, OutputStyle>>;

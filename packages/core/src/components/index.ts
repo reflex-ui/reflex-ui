@@ -12,7 +12,6 @@ export * from './ComponentsThemeContext';
 export * from './list';
 export * from './list-item';
 export * from './PropsGetter';
-export * from './raw';
 export * from './reflexComponent';
 export * from './registerStyle';
 export * from './StyleGetter';

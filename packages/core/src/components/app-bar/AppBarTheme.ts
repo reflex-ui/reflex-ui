@@ -7,10 +7,7 @@
 
 import { ViewProps, ViewStyle } from 'react-native';
 
-import {
-  InjectableSubTheme,
-  InjectableSubThemeOptional,
-} from '../subcomponents';
+import { InjectableSubTheme } from '../subcomponents';
 import { AppBarProps } from './AppBarProps';
 
 export interface AppBarTheme {
@@ -18,27 +15,4 @@ export interface AppBarTheme {
   readonly container: InjectableSubTheme<AppBarProps, ViewProps, ViewStyle>;
   readonly leadingArea: InjectableSubTheme<AppBarProps, ViewProps, ViewStyle>;
   readonly trailingArea: InjectableSubTheme<AppBarProps, ViewProps, ViewStyle>;
-}
-
-export interface AppBarThemeOptional {
-  readonly centerArea?: InjectableSubThemeOptional<
-    AppBarProps,
-    ViewProps,
-    ViewStyle
-  >;
-  readonly container?: InjectableSubThemeOptional<
-    AppBarProps,
-    ViewProps,
-    ViewStyle
-  >;
-  readonly leadingArea?: InjectableSubThemeOptional<
-    AppBarProps,
-    ViewProps,
-    ViewStyle
-  >;
-  readonly trailingArea?: InjectableSubThemeOptional<
-    AppBarProps,
-    ViewProps,
-    ViewStyle
-  >;
 }

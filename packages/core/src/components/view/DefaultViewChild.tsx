@@ -11,14 +11,14 @@ import { View, ViewProps } from 'react-native';
 import { reflexComponent } from '../reflexComponent';
 import { SubProps } from '../subcomponents/SubProps';
 
-export const DefaultViewSubcomponent = reflexComponent<
+export const DefaultViewChild = reflexComponent<
   /*
    * it's ok to disable it here as it's a dead end, i.e.
    * it doesn't leak and affect other parts of the codebase.
    */
   // tslint:disable-next-line:no-any
   SubProps<any> & ViewProps
->({ name: 'DefaultViewSubcomponent' })(
+>({ name: 'DefaultViewChild' })(
   ({ children, componentProps, ...otherProps }) => (
     /*
      * otherProps is used to pass lib provided props, users'custom props,
