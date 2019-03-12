@@ -11,7 +11,6 @@ import merge from 'lodash/merge';
 import { animatedTouchableSurfaceContainerTheme } from './animatedContainer';
 import { touchableSurfaceTheme } from './theme';
 
-// tslint:disable-next-line:max-line-length
 export const partialAnimatedTouchableSurfaceTheme: Partial<
   TouchableSurfaceTheme
 > = {

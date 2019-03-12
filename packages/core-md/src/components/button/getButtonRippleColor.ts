@@ -9,8 +9,8 @@ import { ButtonProps, getThemedColor } from '@reflex-ui/core';
 import { StyleSheet } from 'react-native';
 
 export const getButtonRippleColor = (props: ButtonProps): string => {
-  const viewProps = props.getSubProps
-    ? props.getSubProps(props).container || {}
+  const viewProps = props.getChildrenProps
+    ? props.getChildrenProps(props).container || {}
     : {};
   let color = viewProps.style
     ? StyleSheet.flatten(viewProps.style).backgroundColor

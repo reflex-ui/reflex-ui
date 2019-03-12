@@ -5,16 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ButtonProps, SubTheme } from '@reflex-ui/core';
-import { ViewStyle } from 'react-native';
-import { SvgProps } from 'react-native-svg';
+import { ButtonProps, SvgChildTheme } from '@reflex-ui/core';
 
 import { getAllVariantsButtonIconProps } from '../all-variants/icon';
 
-export const defaultButtonIconTheme: SubTheme<
-  ButtonProps,
-  SvgProps,
-  ViewStyle
-> = {
+export const defaultButtonIconTheme: SvgChildTheme<ButtonProps> = {
   getProps: getAllVariantsButtonIconProps,
 };

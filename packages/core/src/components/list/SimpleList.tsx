@@ -9,8 +9,8 @@ import * as React from 'react';
 import * as ReactIs from 'react-is';
 import { ViewProps, ViewStyle } from 'react-native';
 
+import { resolveChildProps } from '../children';
 import { reflexComponent } from '../reflexComponent';
-import { getSubProps } from '../subcomponents';
 import { DefaultViewChild } from '../view';
 import { ListProps } from './ListProps';
 
@@ -26,7 +26,9 @@ export const SimpleList = reflexComponent<ListProps>({
     children = children.props.children;
   }
 
-  const userSubProps = props.getSubProps ? props.getSubProps(props) : {};
+  const userChildrenProps = props.getChildrenProps
+    ? props.getChildrenProps(props)
+    : {};
 
   const updatedProps = {
     ...props,
@@ -35,10 +37,10 @@ export const SimpleList = reflexComponent<ListProps>({
 
   const Container = updatedProps.theme.container.component || DefaultViewChild;
 
-  const containerProps = getSubProps<ListProps, ViewProps, ViewStyle>({
+  const containerProps = resolveChildProps<ListProps, ViewProps, ViewStyle>({
     componentProps: updatedProps,
     theme: updatedProps.theme.container,
-    userProps: userSubProps.container,
+    userProps: userChildrenProps.container,
   });
 
   return (

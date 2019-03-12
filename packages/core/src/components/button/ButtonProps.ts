@@ -11,7 +11,7 @@ import { InteractionProps } from '../../interaction';
 import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
 import { SizingProps } from '../../sizing/SizingProps';
 import { MarginProps } from '../../spacing/MarginProps';
-import { ButtonSubPropsGetter } from './ButtonSubPropsGetter';
+import { ButtonChildrenPropsGetter } from './ButtonChildrenPropsGetter';
 import { ButtonTheme } from './ButtonTheme';
 import { ButtonVariant } from './ButtonVariant';
 
@@ -22,7 +22,7 @@ export interface ButtonProps
     SizingProps {
   readonly children?: React.ReactNode;
   readonly fullWidth?: boolean;
-  readonly getSubProps?: ButtonSubPropsGetter;
+  readonly getChildrenProps?: ButtonChildrenPropsGetter;
   readonly leadingIcon?: JSX.Element;
   readonly theme: ButtonTheme;
   readonly trailingIcon?: JSX.Element;

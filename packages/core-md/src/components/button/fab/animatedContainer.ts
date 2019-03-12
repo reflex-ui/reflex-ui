@@ -6,14 +6,13 @@
  */
 
 import {
+  BuiltInViewChildTheme,
   ButtonProps,
   DefaultViewChild,
-  InjectableSubTheme,
   InteractionType,
   isTouchDevice,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import { ViewProps, ViewStyle } from 'react-native';
 
 import {
   ElevationDegree,
@@ -49,10 +48,8 @@ export const getAnimatedFabButtonContainerStyle: ViewStyleGetter<
   };
 };
 
-export const animatedFabButtonContainerTheme: InjectableSubTheme<
-  ButtonProps,
-  ViewProps,
-  ViewStyle
+export const animatedFabButtonContainerTheme: BuiltInViewChildTheme<
+  ButtonProps
 > = {
   component: withRippleEffect({
     getRippleColor: getButtonRippleColor,

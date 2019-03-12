@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { BuiltInViewChildTheme } from '../view/ViewChildTheme';
+import { ListItemChildrenProps } from './ListItemChildrenProps';
 import { ListItemProps } from './ListItemProps';
 
-export interface ListItemTheme {
-  readonly container: BuiltInViewChildTheme<ListItemProps>;
-}
+export type ListItemChildrenPropsGetter = (
+  props: ListItemProps,
+) => ListItemChildrenProps;

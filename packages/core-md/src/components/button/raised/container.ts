@@ -6,11 +6,10 @@
  */
 
 import {
+  BuiltInViewChildTheme,
   ButtonProps,
-  InjectableSubTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import { ViewProps, ViewStyle } from 'react-native';
 
 import { getLowElevationStylesByInteraction } from '../../../elevation';
 import { getAllVariantsButtonContainerProps } from '../all-variants/container';
@@ -23,11 +22,7 @@ export const getRaisedButtonContainerStyle: ViewStyleGetter<
   ...getLowElevationStylesByInteraction(props.interactionState.type),
 });
 
-export const raisedButtonContainerTheme: InjectableSubTheme<
-  ButtonProps,
-  ViewProps,
-  ViewStyle
-> = {
+export const raisedButtonContainerTheme: BuiltInViewChildTheme<ButtonProps> = {
   getProps: getAllVariantsButtonContainerProps,
   getStyle: getRaisedButtonContainerStyle,
 };

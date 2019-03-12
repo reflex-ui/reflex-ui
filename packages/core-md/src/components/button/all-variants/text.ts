@@ -6,16 +6,16 @@
  */
 
 import {
+  BuiltInTextChildTheme,
   ButtonProps,
   FontWeight,
   getFontWeight,
   getThemedOnColor,
-  InjectableSubTheme,
   Size,
   SizedData,
   TextStyleGetter,
 } from '@reflex-ui/core';
-import { Platform, TextProps, TextStyle } from 'react-native';
+import { Platform, TextStyle } from 'react-native';
 
 import { getFontFamily } from '../../text';
 
@@ -75,10 +75,6 @@ export const getAllVariantsButtonTextStyle: TextStyleGetter<
   }),
 });
 
-export const allVariantsButtonTextTheme: InjectableSubTheme<
-  ButtonProps,
-  TextProps,
-  TextStyle
-> = {
+export const allVariantsButtonTextTheme: BuiltInTextChildTheme<ButtonProps> = {
   getStyle: getAllVariantsButtonTextStyle,
 };

@@ -7,9 +7,9 @@
 
 import {
   Button,
+  ButtonChildrenProps,
+  ButtonChildrenPropsGetter,
   ButtonPropsOptional,
-  ButtonSubProps,
-  ButtonSubPropsGetter,
   ButtonVariant,
   ColorTheme,
   InteractionType,
@@ -24,9 +24,9 @@ import * as React from 'react';
 import { ButtonShowcaseScreen } from './ButtonShowcaseScreen';
 import { LabelButtonCollection } from './LabelButtonCollection';
 
-const getButtonProps: ButtonSubPropsGetter = ({
+const getButtonProps: ButtonChildrenPropsGetter = ({
   interactionState: { type: interactionType },
-}): ButtonSubProps => {
+}): ButtonChildrenProps => {
   const backgroundColor =
     interactionType === InteractionType.Disabled
       ? disabledGrey300_500.normal.color
@@ -69,7 +69,7 @@ const HighlightedButtonShowcaseScreen: React.SFC = (): JSX.Element => (
     customCollections={[
       {
         colorTheme: ColorTheme.PrimaryNormal,
-        getSubProps: getButtonProps,
+        getChildrenProps: getButtonProps,
         surfaceColorTheme: ColorTheme.SurfaceNormal,
         title: 'custom',
         variant: ButtonVariant.Highlighted,

@@ -7,6 +7,6 @@
 
 import { ViewProps } from 'react-native';
 
-export interface ListSubProps {
+export interface TouchableSurfaceChildrenProps {
   readonly container?: ViewProps;
 }

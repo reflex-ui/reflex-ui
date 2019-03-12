@@ -13,8 +13,8 @@ import {
   ViewStyle,
 } from 'react-native';
 
+import { resolveChildProps } from '../children';
 import { reflexComponent } from '../reflexComponent';
-import { getSubProps } from '../subcomponents';
 import { DefaultTouchableChild } from '../touchable/DefaultTouchableChild';
 import { DefaultViewChild } from '../view/DefaultViewChild';
 import { TouchableSurfaceProps } from './TouchableSurfaceProps';
@@ -25,8 +25,7 @@ export const extractTouchableProps = (
   const {
     children,
     colorTheme,
-    // tslint:disable-next-line:no-shadowed-variable
-    getSubProps,
+    getChildrenProps,
     interactionState,
     paletteTheme,
     theme,
@@ -48,7 +47,9 @@ export const SimpleTouchableSurface = reflexComponent<TouchableSurfaceProps>({
     children = children.props.children;
   }
 
-  const userSubProps = props.getSubProps ? props.getSubProps(props) : {};
+  const userChildrenProps = props.getChildrenProps
+    ? props.getChildrenProps(props)
+    : {};
   const touchableProps = extractTouchableProps(props);
 
   const updatedProps = {
@@ -59,7 +60,7 @@ export const SimpleTouchableSurface = reflexComponent<TouchableSurfaceProps>({
   const Container = updatedProps.theme.container.component || DefaultViewChild;
   const Touchable = props.theme.touchable.component || DefaultTouchableChild;
 
-  const containerProps = getSubProps<
+  const containerProps = resolveChildProps<
     TouchableSurfaceProps,
     ViewProps,
     ViewStyle
@@ -67,7 +68,7 @@ export const SimpleTouchableSurface = reflexComponent<TouchableSurfaceProps>({
   >({
     componentProps: updatedProps,
     theme: updatedProps.theme.container,
-    userProps: userSubProps.container,
+    userProps: userChildrenProps.container,
   });
 
   return (

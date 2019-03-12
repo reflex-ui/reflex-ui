@@ -6,9 +6,9 @@
  */
 
 export * from './List';
+export * from './ListChildrenProps';
+export * from './ListChildrenPropsGetter';
 export * from './ListProps';
-export * from './ListSubProps';
-export * from './ListSubPropsGetter';
 export * from './ListTheme';
 export * from './SimpleList';
 export * from './withDefaultListProps';

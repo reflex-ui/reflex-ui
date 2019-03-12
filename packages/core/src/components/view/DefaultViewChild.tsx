@@ -8,8 +8,8 @@
 import * as React from 'react';
 import { View, ViewProps } from 'react-native';
 
+import { BuiltInChildProps } from '../children/BuiltInChildProps';
 import { reflexComponent } from '../reflexComponent';
-import { SubProps } from '../subcomponents/SubProps';
 
 export const DefaultViewChild = reflexComponent<
   /*
@@ -17,7 +17,7 @@ export const DefaultViewChild = reflexComponent<
    * it doesn't leak and affect other parts of the codebase.
    */
   // tslint:disable-next-line:no-any
-  SubProps<any> & ViewProps
+  BuiltInChildProps<any> & ViewProps
 >({ name: 'DefaultViewChild' })(
   ({ children, componentProps, ...otherProps }) => (
     /*

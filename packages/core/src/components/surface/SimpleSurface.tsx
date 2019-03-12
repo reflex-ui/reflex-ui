@@ -8,15 +8,17 @@
 import * as React from 'react';
 import { ViewProps, ViewStyle } from 'react-native';
 
+import { resolveChildProps } from '../children';
 import { reflexComponent } from '../reflexComponent';
-import { getSubProps } from '../subcomponents';
 import { DefaultViewChild } from '../view';
 import { SurfaceProps } from './SurfaceProps';
 
 export const SimpleSurface = reflexComponent<SurfaceProps>({
   name: 'SimpleSurface',
 })((props: SurfaceProps) => {
-  const userProps = props.getProps ? props.getProps(props) : {};
+  const userChildrenProps = props.getChildrenProps
+    ? props.getChildrenProps(props)
+    : {};
 
   const children =
     props.children && typeof props.children === 'function'
@@ -25,16 +27,15 @@ export const SimpleSurface = reflexComponent<SurfaceProps>({
 
   const updatedProps = {
     ...props,
-    ...userProps.props,
     children,
   };
 
   const Container = updatedProps.theme.container.component || DefaultViewChild;
 
-  const containerProps = getSubProps<SurfaceProps, ViewProps, ViewStyle>({
+  const containerProps = resolveChildProps<SurfaceProps, ViewProps, ViewStyle>({
     componentProps: updatedProps,
     theme: updatedProps.theme.container,
-    userProps: userProps.container,
+    userProps: userChildrenProps.container,
   });
 
   return (

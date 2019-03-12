@@ -5,8 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ViewProps } from 'react-native';
+import { ListChildrenProps } from './ListChildrenProps';
+import { ListProps } from './ListProps';
 
-export interface ListItemSubProps {
-  readonly container?: ViewProps;
-}
+export type ListChildrenPropsGetter = (props: ListProps) => ListChildrenProps;

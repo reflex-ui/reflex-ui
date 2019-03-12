@@ -5,7 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { ButtonChildrenProps } from './ButtonChildrenProps';
 import { ButtonProps } from './ButtonProps';
-import { ButtonSubProps } from './ButtonSubProps';
 
-export type ButtonSubPropsGetter = (props: ButtonProps) => ButtonSubProps;
+export type ButtonChildrenPropsGetter = (
+  props: ButtonProps,
+) => ButtonChildrenProps;

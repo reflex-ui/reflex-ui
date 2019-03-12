@@ -9,15 +9,15 @@ import * as React from 'react';
 import * as ReactIs from 'react-is';
 import { ViewProps, ViewStyle } from 'react-native';
 
+import { resolveChildProps } from '../children';
 import { reflexComponent } from '../reflexComponent';
-import { getSubProps } from '../subcomponents';
 import { DefaultViewChild } from '../view/DefaultViewChild';
+import { AppBarChildrenProps } from './AppBarChildrenProps';
 import { AppBarProps } from './AppBarProps';
-import { AppBarSubProps } from './AppBarSubProps';
 
 export const renderCenterArea = (
   props: AppBarProps,
-  userSubProps: AppBarSubProps,
+  userChildrenProps: AppBarChildrenProps,
 ): React.ReactNode => {
   const { children } = props;
   if (!children) return children;
@@ -25,11 +25,13 @@ export const renderCenterArea = (
   if (Array.isArray(children) && children.length > 1) {
     const Container = props.theme.centerArea.component || DefaultViewChild;
 
-    const containerProps = getSubProps<AppBarProps, ViewProps, ViewStyle>({
-      componentProps: props,
-      theme: props.theme.centerArea,
-      userProps: userSubProps.centerArea,
-    });
+    const containerProps = resolveChildProps<AppBarProps, ViewProps, ViewStyle>(
+      {
+        componentProps: props,
+        theme: props.theme.centerArea,
+        userProps: userChildrenProps.centerArea,
+      },
+    );
 
     return (
       <Container componentProps={props} {...containerProps}>
@@ -43,7 +45,7 @@ export const renderCenterArea = (
 
 export const renderLeadingArea = (
   props: AppBarProps,
-  userSubProps: AppBarSubProps,
+  userChildrenProps: AppBarChildrenProps,
 ): React.ReactNode => {
   const { children } = props;
   if (!children) return children;
@@ -52,10 +54,10 @@ export const renderLeadingArea = (
 
   const Container = props.theme.leadingArea.component || DefaultViewChild;
 
-  const containerProps = getSubProps<AppBarProps, ViewProps, ViewStyle>({
+  const containerProps = resolveChildProps<AppBarProps, ViewProps, ViewStyle>({
     componentProps: props,
     theme: props.theme.leadingArea,
-    userProps: userSubProps.leadingArea,
+    userProps: userChildrenProps.leadingArea,
   });
 
   return (
@@ -67,7 +69,7 @@ export const renderLeadingArea = (
 
 export const renderTrailingArea = (
   props: AppBarProps,
-  userSubProps: AppBarSubProps,
+  userChildrenProps: AppBarChildrenProps,
 ): React.ReactNode => {
   const { children } = props;
   if (!children) return children;
@@ -75,11 +77,13 @@ export const renderTrailingArea = (
   if (Array.isArray(children) && children.length > 2) {
     const Container = props.theme.trailingArea.component || DefaultViewChild;
 
-    const containerProps = getSubProps<AppBarProps, ViewProps, ViewStyle>({
-      componentProps: props,
-      theme: props.theme.trailingArea,
-      userProps: userSubProps.trailingArea,
-    });
+    const containerProps = resolveChildProps<AppBarProps, ViewProps, ViewStyle>(
+      {
+        componentProps: props,
+        theme: props.theme.trailingArea,
+        userProps: userChildrenProps.trailingArea,
+      },
+    );
 
     return (
       <Container componentProps={props} {...containerProps}>
@@ -112,7 +116,9 @@ export const SimpleAppBar = reflexComponent<AppBarProps>({
     );
   }
 
-  const userSubProps = props.getSubProps ? props.getSubProps(props) : {};
+  const userChildrenProps = props.getChildrenProps
+    ? props.getChildrenProps(props)
+    : {};
 
   const updatedProps = {
     ...props,
@@ -121,10 +127,10 @@ export const SimpleAppBar = reflexComponent<AppBarProps>({
 
   const Container = updatedProps.theme.container.component || DefaultViewChild;
 
-  const containerProps = getSubProps<AppBarProps, ViewProps, ViewStyle>({
+  const containerProps = resolveChildProps<AppBarProps, ViewProps, ViewStyle>({
     componentProps: updatedProps,
     theme: updatedProps.theme.container,
-    userProps: userSubProps.container,
+    userProps: userChildrenProps.container,
   });
 
   return (
@@ -133,9 +139,9 @@ export const SimpleAppBar = reflexComponent<AppBarProps>({
       onLayout={updatedProps.onLayout}
       {...containerProps}
     >
-      {renderLeadingArea(updatedProps, userSubProps)}
-      {renderCenterArea(updatedProps, userSubProps)}
-      {renderTrailingArea(updatedProps, userSubProps)}
+      {renderLeadingArea(updatedProps, userChildrenProps)}
+      {renderCenterArea(updatedProps, userChildrenProps)}
+      {renderTrailingArea(updatedProps, userChildrenProps)}
     </Container>
   );
 });

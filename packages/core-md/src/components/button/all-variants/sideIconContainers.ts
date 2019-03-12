@@ -6,13 +6,13 @@
  */
 
 import {
+  BuiltInViewChildTheme,
   ButtonProps,
-  InjectableSubTheme,
   SizedData,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 
-import { ViewProps, ViewStyle } from 'react-native';
+import { ViewStyle } from 'react-native';
 
 export const allVariantsButtonLeadingIconContainerSizedStyle: SizedData<
   ViewStyle
@@ -58,10 +58,8 @@ export const getAllVariantsButtonLeadingIconContainerStyle: ViewStyleGetter<
 > = props => allVariantsButtonLeadingIconContainerSizedStyle[props.size];
 
 // tslint:disable-next-line:max-line-length
-export const allVariantsButtonLeadingIconContainerTheme: InjectableSubTheme<
-  ButtonProps,
-  ViewProps,
-  ViewStyle
+export const allVariantsButtonLeadingIconContainerTheme: BuiltInViewChildTheme<
+  ButtonProps
 > = {
   getStyle: getAllVariantsButtonLeadingIconContainerStyle,
 };
@@ -109,11 +107,8 @@ export const getAllVariantsButtonTrailingIconContainerStyle: ViewStyleGetter<
   ButtonProps
 > = ({ size }) => allVariantsButtonTrailingIconContainerSizedStyle[size];
 
-// tslint:disable-next-line:max-line-length
-export const allVariantsButtonTrailingIconContainerTheme: InjectableSubTheme<
-  ButtonProps,
-  ViewProps,
-  ViewStyle
+export const allVariantsButtonTrailingIconContainerTheme: BuiltInViewChildTheme<
+  ButtonProps
 > = {
   getStyle: getAllVariantsButtonTrailingIconContainerStyle,
 };

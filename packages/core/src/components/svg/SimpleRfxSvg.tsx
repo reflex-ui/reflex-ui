@@ -11,11 +11,11 @@ import { ViewProps, ViewStyle } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 
 import { cloneElement } from '../../utils';
+import { resolveChildProps } from '../children';
 import { reflexComponent } from '../reflexComponent';
-import { getSubProps } from '../subcomponents';
 import { DefaultViewChild } from '../view';
+import { RfxSvgChildrenProps } from './RfxSvgChildrenProps';
 import { RfxSvgProps, RfxSvgPropsOptional } from './RfxSvgProps';
-import { RfxSvgSubProps } from './RfxSvgSubProps';
 
 export const extractSvgPropsFromRfxSvgProps = (
   props: RfxSvgProps,
@@ -23,8 +23,7 @@ export const extractSvgPropsFromRfxSvgProps = (
   const {
     children,
     colorTheme,
-    // tslint:disable-next-line:no-shadowed-variable
-    getSubProps,
+    getChildrenProps,
     interactionState,
     invertColor,
     margin,
@@ -46,7 +45,7 @@ export const extractSvgPropsFromRfxSvgProps = (
 
 const handleSvgChildren = (
   props: RfxSvgProps,
-  userSubProps: RfxSvgSubProps,
+  userChildrenProps: RfxSvgChildrenProps,
 ): React.ReactNode => {
   const children = props.children as React.ReactElement<RfxSvgPropsOptional>;
   if (!children) return undefined;
@@ -57,10 +56,10 @@ const handleSvgChildren = (
 
   const svgProps = extractSvgPropsFromRfxSvgProps(props);
 
-  const themeProps = getSubProps<RfxSvgProps, SvgProps, ViewStyle>({
+  const themeProps = resolveChildProps<RfxSvgProps, SvgProps, ViewStyle>({
     componentProps: props,
     theme: props.theme.svg,
-    userProps: userSubProps.svg,
+    userProps: userChildrenProps.svg,
   });
 
   const mergedProps = merge({}, themeProps, svgProps);
@@ -76,16 +75,18 @@ export const SimpleRfxSvg = reflexComponent<RfxSvgProps>({
   name: 'SimpleRfxSvg',
 })((props: RfxSvgProps) => {
   let children: React.ReactNode;
-  const userSubProps = props.getSubProps ? props.getSubProps(props) : {};
-  if (props.children) children = handleSvgChildren(props, userSubProps);
+  const userChildrenProps = props.getChildrenProps
+    ? props.getChildrenProps(props)
+    : {};
+  if (props.children) children = handleSvgChildren(props, userChildrenProps);
   if (props.skipContainer) return <React.Fragment>{children}</React.Fragment>;
 
   const Container = props.theme.container.component || DefaultViewChild;
 
-  const containerProps = getSubProps<RfxSvgProps, ViewProps, ViewStyle>({
+  const containerProps = resolveChildProps<RfxSvgProps, ViewProps, ViewStyle>({
     componentProps: props,
     theme: props.theme.container,
-    userProps: userSubProps.container,
+    userProps: userChildrenProps.container,
   });
 
   return (

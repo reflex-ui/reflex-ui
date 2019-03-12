@@ -6,14 +6,13 @@
  */
 
 import {
+  BuiltInViewChildTheme,
   ButtonProps,
   DefaultViewChild,
-  InjectableSubTheme,
   InteractionType,
   isTouchDevice,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import { ViewProps, ViewStyle } from 'react-native';
 
 import { getButtonRippleColor } from '../getButtonRippleColor';
 import { withRippleEffect } from '../withRippleEffect';
@@ -41,11 +40,8 @@ export const getAnimatedContainedShapedButtonContainerStyle: ViewStyleGetter<
   return getContainedShapedButtonContainerStyle(updatedProps);
 };
 
-// tslint:disable-next-line:max-line-length
-export const animatedContainedShapedButtonContainerTheme: InjectableSubTheme<
-  ButtonProps,
-  ViewProps,
-  ViewStyle
+export const animatedContainedShapedButtonContainerTheme: BuiltInViewChildTheme<
+  ButtonProps
 > = {
   component: withRippleEffect({
     getRippleColor: getButtonRippleColor,

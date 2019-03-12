@@ -8,6 +8,7 @@
 import {
   AppBar,
   AppBarTitle,
+  BuiltInTextChildTheme,
   Button,
   ButtonVariant,
   Caption,
@@ -16,7 +17,6 @@ import {
   ComponentsThemeContext,
   FontWeight,
   getFontWeight,
-  InjectableSubTheme,
   InteractionType,
   List,
   ListItem,
@@ -37,7 +37,7 @@ import {
   WatchLaterIcon,
 } from '@reflex-ui/icons-md';
 import * as React from 'react';
-import { ScrollView, TextProps, TextStyle } from 'react-native';
+import { ScrollView } from 'react-native';
 
 const onButtonPress = () => {
   // tslint:disable-next-line:no-console
@@ -55,8 +55,8 @@ const onListItemIconPress = () => {
 };
 
 const createParagraph1Theme = (
-  baseTheme: InjectableSubTheme<RfxTextProps, TextProps, TextStyle>,
-): InjectableSubTheme<RfxTextProps, TextProps, TextStyle> => ({
+  baseTheme: BuiltInTextChildTheme<RfxTextProps>,
+): BuiltInTextChildTheme<RfxTextProps> => ({
   ...baseTheme,
   getStyle: props => ({
     ...(baseTheme.getStyle ? baseTheme.getStyle(props) : {}),

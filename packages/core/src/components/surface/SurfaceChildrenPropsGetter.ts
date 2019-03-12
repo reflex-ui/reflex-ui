@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { BuiltInViewChildTheme } from '../view/ViewChildTheme';
+import { SurfaceChildrenProps } from './SurfaceChildrenProps';
 import { SurfaceProps } from './SurfaceProps';
 
-export interface SurfaceTheme {
-  readonly container: BuiltInViewChildTheme<SurfaceProps>;
-}
+export type SurfaceChildrenPropsGetter = (
+  props: SurfaceProps,
+) => SurfaceChildrenProps;

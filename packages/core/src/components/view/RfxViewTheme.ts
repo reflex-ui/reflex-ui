@@ -5,11 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ViewProps, ViewStyle } from 'react-native';
-
-import { InjectableSubTheme } from '../subcomponents';
+import { BuiltInViewChildTheme } from '../view/ViewChildTheme';
 import { RfxViewProps } from './RfxViewProps';
 
 export interface RfxViewTheme {
-  readonly container: InjectableSubTheme<RfxViewProps, ViewProps, ViewStyle>;
+  readonly container: BuiltInViewChildTheme<RfxViewProps>;
 }

@@ -5,7 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { SurfaceProps } from './SurfaceProps';
-import { SurfaceSubProps } from './SurfaceSubProps';
-
-export type SurfaceSubPropsGetter = (props: SurfaceProps) => SurfaceSubProps;
+export * from './BuiltInChildProps';
+export * from './ChildTheme';
+export * from './resolveChildProps';

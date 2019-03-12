@@ -25,6 +25,7 @@ export * from './RfxTextProps';
 export * from './RfxTextVariantsTheme';
 export * from './Subtitle1';
 export * from './Subtitle2';
+export * from './TextChildTheme';
 export * from './TextPropsGetter';
 export * from './TextStyleGetter';
 export * from './transformText';

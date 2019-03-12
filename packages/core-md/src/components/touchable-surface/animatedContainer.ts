@@ -6,14 +6,13 @@
  */
 
 import {
+  BuiltInViewChildTheme,
   DefaultViewChild,
-  InjectableSubTheme,
   InteractionType,
   isTouchDevice,
   TouchableSurfaceProps,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import { ViewProps, ViewStyle } from 'react-native';
 
 import { getButtonRippleColor } from '../button/getButtonRippleColor';
 import { withRippleEffect } from '../button/withRippleEffect';
@@ -41,10 +40,8 @@ export const getAnimatedTouchableSurfaceContainerStyle: ViewStyleGetter<
   return getTouchableSurfaceContainerStyle(updatedProps);
 };
 
-export const animatedTouchableSurfaceContainerTheme: InjectableSubTheme<
-  TouchableSurfaceProps,
-  ViewProps,
-  ViewStyle
+export const animatedTouchableSurfaceContainerTheme: BuiltInViewChildTheme<
+  TouchableSurfaceProps
 > = {
   component: withRippleEffect({
     getRippleColor: getButtonRippleColor,

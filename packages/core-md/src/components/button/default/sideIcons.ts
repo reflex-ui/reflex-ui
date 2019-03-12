@@ -5,23 +5,15 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ButtonProps, SubTheme } from '@reflex-ui/core';
-import { ViewStyle } from 'react-native';
-import { SvgProps } from 'react-native-svg';
+import { ButtonProps, SvgChildTheme } from '@reflex-ui/core';
 
 // tslint:disable-next-line:max-line-length
 import { getAllVariantsButtonLeadingIconProps } from '../all-variants/sideIcons';
 
-export const defaultButtonLeadingIconTheme: SubTheme<
-  ButtonProps,
-  SvgProps,
-  ViewStyle
-> = {
+export const defaultButtonLeadingIconTheme: SvgChildTheme<ButtonProps> = {
   getProps: getAllVariantsButtonLeadingIconProps,
 };
 
-export const defaultButtonTrailingIconTheme: SubTheme<
-  ButtonProps,
-  SvgProps,
-  ViewStyle
+export const defaultButtonTrailingIconTheme: SvgChildTheme<
+  ButtonProps
 > = defaultButtonLeadingIconTheme;

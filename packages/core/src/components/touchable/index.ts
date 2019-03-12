@@ -6,4 +6,5 @@
  */
 
 export * from './DefaultTouchableChild';
+export * from './TouchableChildTheme';
 export * from './TouchablePropsGetter';

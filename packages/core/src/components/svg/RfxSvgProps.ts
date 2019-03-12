@@ -12,7 +12,7 @@ import { InteractionStatePropsOptional } from '../../interaction/InteractionStat
 import { PaletteThemeProps } from '../../palette';
 import { SizingProps } from '../../sizing/SizingProps';
 import { MarginProps } from '../../spacing';
-import { RfxSvgSubPropsGetter } from './RfxSvgSubPropsGetter';
+import { RfxSvgChildrenPropsGetter } from './RfxSvgChildrenPropsGetter';
 import { RfxSvgTheme } from './RfxSvgTheme';
 
 export interface RfxSvgProps
@@ -22,7 +22,7 @@ export interface RfxSvgProps
     SizingProps,
     SvgProps {
   readonly children?: React.ReactNode;
-  readonly getSubProps?: RfxSvgSubPropsGetter;
+  readonly getChildrenProps?: RfxSvgChildrenPropsGetter;
   readonly skipContainer?: boolean;
   readonly theme: RfxSvgTheme;
 }

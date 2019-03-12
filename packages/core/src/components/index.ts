@@ -7,6 +7,7 @@
 
 export * from './app-bar';
 export * from './button';
+export * from './children';
 export * from './ComponentsTheme';
 export * from './ComponentsThemeContext';
 export * from './list';
@@ -17,7 +18,6 @@ export * from './registerStyle';
 export * from './StyleGetter';
 export * from './StyleObj';
 export * from './StyleProps';
-export * from './subcomponents';
 export * from './surface';
 export * from './svg';
 export * from './text';

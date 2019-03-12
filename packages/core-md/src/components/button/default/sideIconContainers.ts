@@ -6,11 +6,10 @@
  */
 
 import {
+  BuiltInViewChildTheme,
   ButtonProps,
-  InjectableSubTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import { ViewProps, ViewStyle } from 'react-native';
 
 import {
   getAllVariantsButtonLeadingIconContainerStyle,
@@ -24,10 +23,8 @@ export const getDefaultButtonLeadingIconContainerStyle: ViewStyleGetter<
   marginStart: 0,
 });
 
-export const defaultButtonLeadingIconContainerTheme: InjectableSubTheme<
-  ButtonProps,
-  ViewProps,
-  ViewStyle
+export const defaultButtonLeadingIconContainerTheme: BuiltInViewChildTheme<
+  ButtonProps
 > = {
   getStyle: getDefaultButtonLeadingIconContainerStyle,
 };
@@ -39,10 +36,8 @@ export const getDefaultButtonTrailingIconContainerStyle: ViewStyleGetter<
   marginEnd: 0,
 });
 
-export const defaultButtonTrailingIconContainerTheme: InjectableSubTheme<
-  ButtonProps,
-  ViewProps,
-  ViewStyle
+export const defaultButtonTrailingIconContainerTheme: BuiltInViewChildTheme<
+  ButtonProps
 > = {
   getStyle: getDefaultButtonTrailingIconContainerStyle,
 };

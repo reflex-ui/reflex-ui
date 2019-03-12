@@ -8,15 +8,15 @@
 import * as React from 'react';
 import { ViewProps, ViewStyle } from 'react-native';
 
+import { resolveChildProps } from '../children';
 import { reflexComponent } from '../reflexComponent';
-import { getSubProps } from '../subcomponents';
 import { DefaultViewChild } from './DefaultViewChild';
 import { RfxViewProps } from './RfxViewProps';
 
 export const RfxView = reflexComponent<RfxViewProps>({
   name: 'View',
 })((props: RfxViewProps) => {
-  const userProps = props.getProps ? props.getProps(props) : {};
+  const userChildrenProps = props.getProps ? props.getProps(props) : {};
 
   const children =
     props.children && typeof props.children === 'function'
@@ -25,16 +25,16 @@ export const RfxView = reflexComponent<RfxViewProps>({
 
   const updatedProps = {
     ...props,
-    ...userProps.props,
+    ...userChildrenProps.props,
     children,
   };
 
   const Container = updatedProps.theme.container.component || DefaultViewChild;
 
-  const containerProps = getSubProps<RfxViewProps, ViewProps, ViewStyle>({
+  const containerProps = resolveChildProps<RfxViewProps, ViewProps, ViewStyle>({
     componentProps: updatedProps,
     theme: updatedProps.theme.container,
-    userProps: userProps.container,
+    userProps: userChildrenProps.container,
   });
 
   return (

@@ -6,11 +6,10 @@
  */
 
 import {
+  BuiltInTextChildTheme,
   ButtonProps,
-  InjectableSubTheme,
   TextStyleGetter,
 } from '@reflex-ui/core';
-import { TextProps, TextStyle } from 'react-native';
 
 import { getAllVariantsButtonTextStyle } from '../all-variants/text';
 
@@ -18,10 +17,6 @@ export const getContainedButtonTextStyle: TextStyleGetter<ButtonProps> = (
   props: ButtonProps,
 ) => getAllVariantsButtonTextStyle(props);
 
-export const containedButtonTextTheme: InjectableSubTheme<
-  ButtonProps,
-  TextProps,
-  TextStyle
-> = {
+export const containedButtonTextTheme: BuiltInTextChildTheme<ButtonProps> = {
   getStyle: getContainedButtonTextStyle,
 };

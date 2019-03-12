@@ -6,16 +6,16 @@
  */
 
 import {
+  BuiltInViewChildTheme,
   getSizedMarginStyle,
   getThemedOnColor,
-  InjectableSubTheme,
   RfxSvgProps,
   RfxSvgTheme,
   SizedData,
+  SvgChildTheme,
   SvgPropsGetter,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import { ViewStyle } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 
 import { getSizingStyle } from '../../sizing/getSizingStyle';
@@ -50,11 +50,7 @@ export const getRfxSvgSvgProps: SvgPropsGetter<RfxSvgProps> = props => ({
   ...getSvgColorProps(props),
 });
 
-export const rfxSvgSvgTheme: InjectableSubTheme<
-  RfxSvgProps,
-  SvgProps,
-  ViewStyle
-> = {
+export const rfxSvgSvgTheme: SvgChildTheme<RfxSvgProps> = {
   getProps: getRfxSvgSvgProps,
 };
 
@@ -63,11 +59,7 @@ export const getRfxSvgContainerStyle: ViewStyleGetter<RfxSvgProps> = props => ({
   ...getSizingStyle(props),
 });
 
-export const rfxSvgContainerTheme: InjectableSubTheme<
-  RfxSvgProps,
-  SvgProps,
-  ViewStyle
-> = {
+export const rfxSvgContainerTheme: BuiltInViewChildTheme<RfxSvgProps> = {
   getStyle: getRfxSvgContainerStyle,
 };
 

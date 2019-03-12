@@ -8,7 +8,7 @@
 import { ViewProps } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 
-export interface RfxSvgSubProps {
+export interface RfxSvgChildrenProps {
   readonly container?: ViewProps;
   readonly svg?: SvgProps;
 }

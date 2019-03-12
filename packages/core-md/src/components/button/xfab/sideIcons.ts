@@ -8,10 +8,9 @@
 import {
   ButtonProps,
   SizedData,
-  SubTheme,
+  SvgChildTheme,
   SvgPropsGetter,
 } from '@reflex-ui/core';
-import { ViewStyle } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 
 // tslint:disable-next-line:max-line-length
@@ -40,16 +39,10 @@ export const getXFabButtonLeadingIconProps: SvgPropsGetter<
   ...xfabButtonLeadingIconSizedProps[props.size],
 });
 
-export const xfabButtonLeadingIconTheme: SubTheme<
-  ButtonProps,
-  SvgProps,
-  ViewStyle
-> = {
+export const xfabButtonLeadingIconTheme: SvgChildTheme<ButtonProps> = {
   getProps: getXFabButtonLeadingIconProps,
 };
 
-export const xfabButtonTrailingIconTheme: SubTheme<
-  ButtonProps,
-  SvgProps,
-  ViewStyle
+export const xfabButtonTrailingIconTheme: SvgChildTheme<
+  ButtonProps
 > = xfabButtonLeadingIconTheme;

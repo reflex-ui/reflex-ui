@@ -15,7 +15,6 @@ const partialContainedShapedButtonTheme: Partial<ButtonTheme> = {
   container: containedShapedButtonContainerTheme,
 };
 
-// tslint:disable-next-line:max-line-length
 export const containedShapedButtonTheme: ButtonTheme = merge<
   {},
   ButtonTheme,

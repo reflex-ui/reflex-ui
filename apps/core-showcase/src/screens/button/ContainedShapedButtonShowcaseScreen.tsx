@@ -7,9 +7,9 @@
 
 import {
   Button,
+  ButtonChildrenProps,
+  ButtonChildrenPropsGetter,
   ButtonPropsOptional,
-  ButtonSubProps,
-  ButtonSubPropsGetter,
   ButtonVariant,
   ColorTheme,
   InteractionType,
@@ -34,9 +34,9 @@ const ScaleButton2: React.SFC<ButtonPropsOptional> = (props): JSX.Element => (
   </Button>
 );
 
-const getButtonProps: ButtonSubPropsGetter = ({
+const getButtonProps: ButtonChildrenPropsGetter = ({
   interactionState: { type: interactionType },
-}): ButtonSubProps => {
+}): ButtonChildrenProps => {
   const backgroundColor =
     interactionType === InteractionType.Disabled
       ? disabledGrey300_500.normal.color
@@ -69,7 +69,7 @@ const ContainedShapedButtonShowcaseScreen: React.SFC = (): JSX.Element => (
     customCollections={[
       {
         colorTheme: ColorTheme.PrimaryNormal,
-        getSubProps: getButtonProps,
+        getChildrenProps: getButtonProps,
         surfaceColorTheme: ColorTheme.SurfaceNormal,
         title: 'custom',
         variant: ButtonVariant.ContainedShaped,

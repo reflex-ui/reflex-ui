@@ -6,9 +6,9 @@
  */
 
 export * from './Button';
+export * from './ButtonChildrenProps';
+export * from './ButtonChildrenPropsGetter';
 export * from './ButtonProps';
-export * from './ButtonSubProps';
-export * from './ButtonSubPropsGetter';
 export * from './ButtonTheme';
 export * from './ButtonVariant';
 export * from './ButtonVariantsTheme';

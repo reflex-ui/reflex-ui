@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { TouchableSurfaceChildrenProps } from './TouchableSurfaceChildrenProps';
 import { TouchableSurfaceProps } from './TouchableSurfaceProps';
-import { TouchableSurfaceSubProps } from './TouchableSurfaceSubProps';
 
-export type TouchableSurfaceSubPropsGetter = (
+export type TouchableSurfaceChildrenPropsGetter = (
   props: TouchableSurfaceProps,
-) => TouchableSurfaceSubProps;
+) => TouchableSurfaceChildrenProps;

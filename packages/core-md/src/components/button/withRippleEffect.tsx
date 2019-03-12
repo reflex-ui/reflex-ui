@@ -6,11 +6,11 @@
  */
 
 import {
+  BuiltInChildProps,
   InteractionEvent,
   InteractionStateProps,
   InteractionType,
   reflexComponent,
-  SubProps,
 } from '@reflex-ui/core';
 import delay from 'delay';
 import * as React from 'react';
@@ -186,17 +186,17 @@ interface RippleEffectSettings<ComponentProps> {
 export const withRippleEffect = <ComponentProps extends InteractionStateProps>(
   settings: RippleEffectSettings<ComponentProps>,
 ) => <
-  SubcomponentProps extends SubProps<ComponentProps> &
+  ChildProps extends BuiltInChildProps<ComponentProps> &
     ViewProps & { children?: React.ReactNode }
 >(
-  WrappedComponent: React.ComponentType<SubcomponentProps>,
-): React.ComponentType<SubcomponentProps> =>
-  reflexComponent<SubcomponentProps>({
+  WrappedComponent: React.ComponentType<ChildProps>,
+): React.ComponentType<ChildProps> =>
+  reflexComponent<ChildProps>({
     wrapped: WrappedComponent,
   })(
-    class WithRippleEffect extends React.Component<SubcomponentProps> {
+    class WithRippleEffect extends React.Component<ChildProps> {
       public static getDerivedStateFromProps(
-        props: SubcomponentProps,
+        props: ChildProps,
         state: RippledComponentState,
       ) {
         const { interactionState } = props.componentProps;
@@ -265,7 +265,7 @@ export const withRippleEffect = <ComponentProps extends InteractionStateProps>(
         width: 100,
       };
 
-      public constructor(props: SubcomponentProps) {
+      public constructor(props: ChildProps) {
         super(props);
 
         this.animatedView = animated(View);

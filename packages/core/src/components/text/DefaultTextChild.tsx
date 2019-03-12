@@ -8,8 +8,8 @@
 import * as React from 'react';
 import { Text, TextProps } from 'react-native';
 
+import { BuiltInChildProps } from '../children/BuiltInChildProps';
 import { reflexComponent } from '../reflexComponent';
-import { SubProps } from '../subcomponents/SubProps';
 
 export const DefaultTextChild = reflexComponent<
   /*
@@ -17,7 +17,7 @@ export const DefaultTextChild = reflexComponent<
    * it doesn't leak and affect other parts of the codebase.
    */
   // tslint:disable-next-line:no-any
-  SubProps<any> & TextProps
+  BuiltInChildProps<any> & TextProps
 >({ name: 'DefaultTextChild' })(
   ({ children, componentProps, ...otherProps }) => (
     <Text {...otherProps}>{children}</Text>

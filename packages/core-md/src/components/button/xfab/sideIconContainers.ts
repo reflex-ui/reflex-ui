@@ -6,12 +6,12 @@
  */
 
 import {
+  BuiltInViewChildTheme,
   ButtonProps,
-  InjectableSubTheme,
   SizedData,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import { ViewProps, ViewStyle } from 'react-native';
+import { ViewStyle } from 'react-native';
 
 export const xfabButtonLeadingIconContainerSizedStyle: SizedData<ViewStyle> = {
   xxsmall: { marginEnd: 6, marginStart: -2 },
@@ -35,10 +35,8 @@ export const getXFabButtonLeadingIconContainerStyle: ViewStyleGetter<
   ...xfabButtonLeadingIconContainerSizedStyle[props.size],
 });
 
-export const xfabButtonLeadingIconContainerTheme: InjectableSubTheme<
-  ButtonProps,
-  ViewProps,
-  ViewStyle
+export const xfabButtonLeadingIconContainerTheme: BuiltInViewChildTheme<
+  ButtonProps
 > = {
   getStyle: getXFabButtonLeadingIconContainerStyle,
 };
@@ -65,10 +63,8 @@ export const getXFabButtonTrailingIconContainerStyle: ViewStyleGetter<
   ...xfabButtonTrailingIconContainerSizedStyle[props.size],
 });
 
-export const xfabButtonTrailingIconContainerTheme: InjectableSubTheme<
-  ButtonProps,
-  ViewProps,
-  ViewStyle
+export const xfabButtonTrailingIconContainerTheme: BuiltInViewChildTheme<
+  ButtonProps
 > = {
   getStyle: getXFabButtonTrailingIconContainerStyle,
 };

@@ -7,8 +7,16 @@
 
 import { PropsGetter } from '../PropsGetter';
 import { StyleGetter } from '../StyleGetter';
+import { BuiltInChildProps } from './BuiltInChildProps';
 
-export interface SubTheme<ComponentProps, OutputProps, OutputStyle> {
+export interface ChildTheme<ComponentProps, OutputProps, OutputStyle> {
   readonly getProps?: PropsGetter<ComponentProps, OutputProps>;
   readonly getStyle?: StyleGetter<ComponentProps, OutputStyle>;
+}
+
+export interface BuiltInChildTheme<ComponentProps, OutputProps, OutputStyle>
+  extends ChildTheme<ComponentProps, OutputProps, OutputStyle> {
+  readonly component?: React.ComponentType<
+    BuiltInChildProps<ComponentProps> & OutputProps
+  >;
 }

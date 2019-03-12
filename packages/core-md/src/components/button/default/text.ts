@@ -5,15 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ButtonProps, InjectableSubTheme } from '@reflex-ui/core';
-import { TextProps, TextStyle } from 'react-native';
+import { BuiltInViewChildTheme, ButtonProps } from '@reflex-ui/core';
 
 import { getAllVariantsButtonTextStyle } from '../all-variants/text';
 
-export const defaultButtonTextTheme: InjectableSubTheme<
-  ButtonProps,
-  TextProps,
-  TextStyle
-> = {
+export const defaultButtonTextTheme: BuiltInViewChildTheme<ButtonProps> = {
   getStyle: getAllVariantsButtonTextStyle,
 };

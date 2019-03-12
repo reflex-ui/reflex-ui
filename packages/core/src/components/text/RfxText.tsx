@@ -8,8 +8,8 @@
 import * as React from 'react';
 import { TextProps, TextStyle } from 'react-native';
 
+import { resolveChildProps } from '../children';
 import { reflexComponent } from '../reflexComponent';
-import { getSubProps } from '../subcomponents';
 import { DefaultTextChild } from './DefaultTextChild';
 import { RfxTextProps } from './RfxTextProps';
 
@@ -42,7 +42,7 @@ export const transformRfxTextStringChildIntoComponent = (
   const Text = props.theme.component || DefaultTextChild;
   const userProps = extractTextPropsFromRfxTextProps(props);
 
-  const textProps = getSubProps<RfxTextProps, TextProps, TextStyle>({
+  const textProps = resolveChildProps<RfxTextProps, TextProps, TextStyle>({
     componentProps: props,
     theme: props.theme,
     userProps,

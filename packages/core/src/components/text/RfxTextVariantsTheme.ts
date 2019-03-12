@@ -5,23 +5,21 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { TextProps, TextStyle } from 'react-native';
-
-import { InjectableSubTheme } from '../subcomponents';
+import { BuiltInTextChildTheme } from '../text/TextChildTheme';
 import { RfxTextProps } from './RfxTextProps';
 
 export interface RfxTextVariantsTheme {
-  readonly appBarTitle: InjectableSubTheme<RfxTextProps, TextProps, TextStyle>;
-  readonly caption: InjectableSubTheme<RfxTextProps, TextProps, TextStyle>;
-  readonly headline1: InjectableSubTheme<RfxTextProps, TextProps, TextStyle>;
-  readonly headline2: InjectableSubTheme<RfxTextProps, TextProps, TextStyle>;
-  readonly headline3: InjectableSubTheme<RfxTextProps, TextProps, TextStyle>;
-  readonly headline4: InjectableSubTheme<RfxTextProps, TextProps, TextStyle>;
-  readonly headline5: InjectableSubTheme<RfxTextProps, TextProps, TextStyle>;
-  readonly headline6: InjectableSubTheme<RfxTextProps, TextProps, TextStyle>;
-  readonly overline: InjectableSubTheme<RfxTextProps, TextProps, TextStyle>;
-  readonly paragraph1: InjectableSubTheme<RfxTextProps, TextProps, TextStyle>;
-  readonly paragraph2: InjectableSubTheme<RfxTextProps, TextProps, TextStyle>;
-  readonly subtitle1: InjectableSubTheme<RfxTextProps, TextProps, TextStyle>;
-  readonly subtitle2: InjectableSubTheme<RfxTextProps, TextProps, TextStyle>;
+  readonly appBarTitle: BuiltInTextChildTheme<RfxTextProps>;
+  readonly caption: BuiltInTextChildTheme<RfxTextProps>;
+  readonly headline1: BuiltInTextChildTheme<RfxTextProps>;
+  readonly headline2: BuiltInTextChildTheme<RfxTextProps>;
+  readonly headline3: BuiltInTextChildTheme<RfxTextProps>;
+  readonly headline4: BuiltInTextChildTheme<RfxTextProps>;
+  readonly headline5: BuiltInTextChildTheme<RfxTextProps>;
+  readonly headline6: BuiltInTextChildTheme<RfxTextProps>;
+  readonly overline: BuiltInTextChildTheme<RfxTextProps>;
+  readonly paragraph1: BuiltInTextChildTheme<RfxTextProps>;
+  readonly paragraph2: BuiltInTextChildTheme<RfxTextProps>;
+  readonly subtitle1: BuiltInTextChildTheme<RfxTextProps>;
+  readonly subtitle2: BuiltInTextChildTheme<RfxTextProps>;
 }

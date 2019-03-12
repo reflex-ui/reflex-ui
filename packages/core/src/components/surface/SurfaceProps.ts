@@ -13,7 +13,7 @@ import { DimensionsProps } from '../../responsiveness/DimensionsProps';
 import { ResponsivenessProps } from '../../responsiveness/ResponsivenessProps';
 import { MarginProps } from '../../spacing/MarginProps';
 import { PaddingProps } from '../../spacing/PaddingProps';
-import { SurfaceSubPropsGetter } from './SurfaceSubPropsGetter';
+import { SurfaceChildrenPropsGetter } from './SurfaceChildrenPropsGetter';
 import { SurfaceTheme } from './SurfaceTheme';
 
 export interface SurfaceProps
@@ -26,7 +26,7 @@ export interface SurfaceProps
   readonly children?:
     | React.ReactNode
     | ((props: SurfaceProps) => React.ReactNode);
-  readonly getProps?: SurfaceSubPropsGetter;
+  readonly getChildrenProps?: SurfaceChildrenPropsGetter;
   readonly theme: SurfaceTheme;
 }
 

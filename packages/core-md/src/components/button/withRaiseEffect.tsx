@@ -6,13 +6,13 @@
  */
 
 import {
+  BuiltInChildProps,
   InteractionStateProps,
   InteractionType,
   isAndroid,
   isIOS,
   isWeb,
   reflexComponent,
-  SubProps,
 } from '@reflex-ui/core';
 import delay from 'delay';
 import * as React from 'react';
@@ -96,17 +96,17 @@ const createMotionRaiseStyles: MotionRaiseStylesCreator = ({
 };
 
 export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
-  SubcomponentProps extends SubProps<InteractionStateProps> &
+  ChildProps extends BuiltInChildProps<InteractionStateProps> &
     ViewProps & { children?: React.ReactNode }
 >(
-  WrappedComponent: React.ComponentType<SubcomponentProps>,
-): React.ComponentType<SubcomponentProps> =>
-  reflexComponent<SubcomponentProps>({
+  WrappedComponent: React.ComponentType<ChildProps>,
+): React.ComponentType<ChildProps> =>
+  reflexComponent<ChildProps>({
     wrapped: WrappedComponent,
   })(
-    class WithRaiseEffect extends React.Component<SubcomponentProps> {
+    class WithRaiseEffect extends React.Component<ChildProps> {
       public static getDerivedStateFromProps(
-        props: SubcomponentProps,
+        props: ChildProps,
         state: RaisedComponentState,
       ) {
         const { interactionState } = props.componentProps;
@@ -200,7 +200,7 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
         staticRaiseStyles: { container: {}, shadow: {} },
       };
 
-      public constructor(props: SubcomponentProps) {
+      public constructor(props: ChildProps) {
         super(props);
 
         this.animatedView = animated(View);

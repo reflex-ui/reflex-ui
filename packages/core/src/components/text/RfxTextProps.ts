@@ -6,14 +6,14 @@
  */
 
 import * as React from 'react';
-import { TextProps, TextStyle } from 'react-native';
+import { TextProps } from 'react-native';
 
 // tslint:disable-next-line:max-line-length
 import { InteractionStatePropsOptional } from '../../interaction/InteractionStateProps';
 import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
 import { MarginProps } from '../../spacing/MarginProps';
 import { PaddingProps } from '../../spacing/PaddingProps';
-import { InjectableSubTheme } from '../subcomponents';
+import { BuiltInTextChildTheme } from '../text/TextChildTheme';
 
 export interface RfxTextProps
   extends TextProps,
@@ -22,7 +22,7 @@ export interface RfxTextProps
     PaddingProps,
     PaletteThemeProps {
   readonly children?: React.ReactNode;
-  readonly theme: InjectableSubTheme<RfxTextProps, TextProps, TextStyle>;
+  readonly theme: BuiltInTextChildTheme<RfxTextProps>;
 }
 
 export type RfxTextPropsOptional = Partial<RfxTextProps>;

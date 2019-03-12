@@ -6,12 +6,12 @@
  */
 
 import {
+  BuiltInViewChildTheme,
   ButtonProps,
-  InjectableSubTheme,
   SizedData,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import { ViewProps, ViewStyle } from 'react-native';
+import { ViewStyle } from 'react-native';
 
 import { getAllVariantsButtonContainerProps } from '../all-variants/container';
 import { getOutlinedButtonContainerStyle } from '../outlined/container';
@@ -39,10 +39,8 @@ export const getOutlinedShapedButtonContainerStyle: ViewStyleGetter<
   ...outlinedShapedButtonContainerSizedStyle[props.size],
 });
 
-export const outlinedShapedButtonContainerTheme: InjectableSubTheme<
-  ButtonProps,
-  ViewProps,
-  ViewStyle
+export const outlinedShapedButtonContainerTheme: BuiltInViewChildTheme<
+  ButtonProps
 > = {
   getProps: getAllVariantsButtonContainerProps,
   getStyle: getOutlinedShapedButtonContainerStyle,

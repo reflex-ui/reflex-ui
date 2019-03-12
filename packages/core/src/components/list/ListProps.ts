@@ -11,7 +11,7 @@ import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
 import { DimensionsProps } from '../../responsiveness/DimensionsProps';
 import { ResponsivenessProps } from '../../responsiveness/ResponsivenessProps';
 import { SizingPropsOptional } from '../../sizing/SizingProps';
-import { ListSubPropsGetter } from './ListSubPropsGetter';
+import { ListChildrenPropsGetter } from './ListChildrenPropsGetter';
 import { ListTheme } from './ListTheme';
 
 export interface ListProps
@@ -20,7 +20,7 @@ export interface ListProps
     ResponsivenessProps,
     SizingPropsOptional {
   readonly children?: React.ReactNode | ((props: ListProps) => React.ReactNode);
-  readonly getSubProps?: ListSubPropsGetter;
+  readonly getChildrenProps?: ListChildrenPropsGetter;
   readonly theme: ListTheme;
 }
 

@@ -13,7 +13,7 @@ import { DimensionsProps } from '../../responsiveness/DimensionsProps';
 import { ResponsivenessProps } from '../../responsiveness/ResponsivenessProps';
 import { MarginProps } from '../../spacing/MarginProps';
 import { PaddingProps } from '../../spacing/PaddingProps';
-import { RfxViewSubPropsGetter } from './RfxViewSubPropsGetter';
+import { RfxViewChildrenPropsGetter } from './RfxViewChildrenPropsGetter';
 import { RfxViewTheme } from './RfxViewTheme';
 
 export interface RfxViewProps
@@ -26,7 +26,7 @@ export interface RfxViewProps
   readonly children?:
     | React.ReactNode
     | ((props: RfxViewProps) => React.ReactNode);
-  readonly getProps?: RfxViewSubPropsGetter;
+  readonly getProps?: RfxViewChildrenPropsGetter;
   readonly theme: RfxViewTheme;
 }
 

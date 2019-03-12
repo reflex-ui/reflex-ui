@@ -7,8 +7,8 @@
 
 import {
   AppBar,
-  AppBarSubProps,
-  AppBarSubPropsGetter,
+  AppBarChildrenProps,
+  AppBarChildrenPropsGetter,
   AppBarTitle,
   AppBarVariant,
   Button,
@@ -32,10 +32,10 @@ const onButtonPress = () => {
   console.log('DefaultButtonScreen().onButtonPress()');
 };
 
-const getAppBarSubProps: AppBarSubPropsGetter = ({
+const getAppBarChildrenProps: AppBarChildrenPropsGetter = ({
   dimensions,
   breakpoints,
-}): AppBarSubProps => ({
+}): AppBarChildrenProps => ({
   centerArea: {
     style: {
       marginStart: dimensions.window.width > breakpoints.largeHandset ? 10 : 4,
@@ -45,7 +45,10 @@ const getAppBarSubProps: AppBarSubPropsGetter = ({
 
 const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
-    <AppBar getSubProps={getAppBarSubProps} variant={AppBarVariant.Default}>
+    <AppBar
+      getChildrenProps={getAppBarChildrenProps}
+      variant={AppBarVariant.Default}
+    >
       <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
         <MenuIcon />
       </Button>
@@ -81,7 +84,10 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
       AppBarVariant.Default, ColorTheme.PrimaryNormal (default)
     </Caption>
     <Row>
-      <AppBar getSubProps={getAppBarSubProps} variant={AppBarVariant.Default}>
+      <AppBar
+        getChildrenProps={getAppBarChildrenProps}
+        variant={AppBarVariant.Default}
+      >
         <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
           <MenuIcon />
         </Button>

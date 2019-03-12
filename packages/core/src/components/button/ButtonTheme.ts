@@ -5,38 +5,20 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  TextProps,
-  TextStyle,
-  TouchableWithoutFeedbackProps,
-  ViewProps,
-  ViewStyle,
-} from 'react-native';
-import { SvgProps } from 'react-native-svg';
-
-import { InjectableSubTheme, SubTheme } from '../subcomponents';
+import { SvgChildTheme } from '../svg/SvgChildTheme';
+import { BuiltInTextChildTheme } from '../text/TextChildTheme';
+import { BuiltInTouchableChildTheme } from '../touchable/TouchableChildTheme';
+import { BuiltInViewChildTheme } from '../view/ViewChildTheme';
 import { ButtonProps } from './ButtonProps';
 
 export interface ButtonTheme {
-  readonly container: InjectableSubTheme<ButtonProps, ViewProps, ViewStyle>;
-  readonly icon: SubTheme<ButtonProps, SvgProps, ViewStyle>;
-  readonly iconContainer: InjectableSubTheme<ButtonProps, ViewProps, ViewStyle>;
-  readonly leadingIcon: SubTheme<ButtonProps, SvgProps, ViewStyle>;
-  readonly leadingIconContainer: InjectableSubTheme<
-    ButtonProps,
-    ViewProps,
-    ViewStyle
-  >;
-  readonly text: InjectableSubTheme<ButtonProps, TextProps, TextStyle>;
-  readonly touchable: InjectableSubTheme<
-    ButtonProps,
-    TouchableWithoutFeedbackProps,
-    ViewStyle
-  >;
-  readonly trailingIcon: SubTheme<ButtonProps, SvgProps, ViewStyle>;
-  readonly trailingIconContainer: InjectableSubTheme<
-    ButtonProps,
-    ViewProps,
-    ViewStyle
-  >;
+  readonly container: BuiltInViewChildTheme<ButtonProps>;
+  readonly icon: SvgChildTheme<ButtonProps>;
+  readonly iconContainer: BuiltInViewChildTheme<ButtonProps>;
+  readonly leadingIcon: SvgChildTheme<ButtonProps>;
+  readonly leadingIconContainer: BuiltInViewChildTheme<ButtonProps>;
+  readonly text: BuiltInTextChildTheme<ButtonProps>;
+  readonly touchable: BuiltInTouchableChildTheme<ButtonProps>;
+  readonly trailingIcon: SvgChildTheme<ButtonProps>;
+  readonly trailingIconContainer: BuiltInViewChildTheme<ButtonProps>;
 }

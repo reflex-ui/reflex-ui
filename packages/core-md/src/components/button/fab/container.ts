@@ -6,12 +6,12 @@
  */
 
 import {
+  BuiltInViewChildTheme,
   ButtonProps,
-  InjectableSubTheme,
   SizedData,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import { ViewProps, ViewStyle } from 'react-native';
+import { ViewStyle } from 'react-native';
 
 import { getMidElevationStylesByInteraction } from '../../../elevation';
 import { getAllVariantsButtonContainerProps } from '../all-variants/container';
@@ -83,11 +83,7 @@ export const getFabButtonContainerStyle: ViewStyleGetter<
   ...fabButtonContainerSizedStyle[props.size],
 });
 
-export const fabButtonContainerTheme: InjectableSubTheme<
-  ButtonProps,
-  ViewProps,
-  ViewStyle
-> = {
+export const fabButtonContainerTheme: BuiltInViewChildTheme<ButtonProps> = {
   getProps: getAllVariantsButtonContainerProps,
   getStyle: getFabButtonContainerStyle,
 };

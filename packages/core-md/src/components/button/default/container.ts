@@ -6,12 +6,12 @@
  */
 
 import {
+  BuiltInViewChildTheme,
   ButtonProps,
-  InjectableSubTheme,
   SizedData,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import { ViewProps, ViewStyle } from 'react-native';
+import { ViewStyle } from 'react-native';
 
 import {
   getAllVariantsButtonContainerProps,
@@ -69,11 +69,7 @@ export const getDefaultButtonContainerStyle: ViewStyleGetter<
   ...defaultButtonContainerSizedStyle[props.size],
 });
 
-export const defaultButtonContainerTheme: InjectableSubTheme<
-  ButtonProps,
-  ViewProps,
-  ViewStyle
-> = {
+export const defaultButtonContainerTheme: BuiltInViewChildTheme<ButtonProps> = {
   getProps: getAllVariantsButtonContainerProps,
   getStyle: getDefaultButtonContainerStyle,
 };

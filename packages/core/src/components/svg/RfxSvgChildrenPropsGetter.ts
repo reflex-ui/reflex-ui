@@ -5,7 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { RfxSvgChildrenProps } from './RfxSvgChildrenProps';
 import { RfxSvgProps } from './RfxSvgProps';
-import { RfxSvgSubProps } from './RfxSvgSubProps';
 
-export type RfxSvgSubPropsGetter = (props: RfxSvgProps) => RfxSvgSubProps;
+export type RfxSvgChildrenPropsGetter = (
+  props: RfxSvgProps,
+) => RfxSvgChildrenProps;

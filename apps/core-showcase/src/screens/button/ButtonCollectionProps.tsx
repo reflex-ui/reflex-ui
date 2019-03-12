@@ -6,7 +6,7 @@
  */
 
 import {
-  ButtonSubPropsGetter,
+  ButtonChildrenPropsGetter,
   ButtonVariant,
   ColorTheme,
   Size,
@@ -14,7 +14,7 @@ import {
 
 export interface ButtonCollectionProps {
   readonly colorTheme: ColorTheme;
-  readonly getSubProps?: ButtonSubPropsGetter;
+  readonly getChildrenProps?: ButtonChildrenPropsGetter;
   readonly invertColor?: boolean;
   readonly onPress?: () => void;
   readonly showDisabled?: boolean;

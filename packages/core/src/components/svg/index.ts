@@ -6,12 +6,13 @@
  */
 
 export * from './RfxSvg';
+export * from './RfxSvgChildrenProps';
+export * from './RfxSvgChildrenPropsGetter';
 export * from './RfxSvgProps';
-export * from './RfxSvgSubProps';
-export * from './RfxSvgSubPropsGetter';
 export * from './RfxSvgTheme';
 export * from './RfxSvgVariantsTheme';
 export * from './SimpleRfxSvg';
+export * from './SvgChildTheme';
 export * from './SvgIcon';
 export * from './SvgPropsGetter';
 export * from './withDefaultRfxSvgProps';

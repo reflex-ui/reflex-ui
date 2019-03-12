@@ -8,7 +8,7 @@
 import { TextProps, ViewProps } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 
-export interface ButtonSubProps {
+export interface ButtonChildrenProps {
   readonly container?: ViewProps;
   readonly icon?: SvgProps;
   readonly iconContainer?: ViewProps;

@@ -5,24 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  TouchableWithoutFeedbackProps,
-  ViewProps,
-  ViewStyle,
-} from 'react-native';
-
-import { InjectableSubTheme } from '../subcomponents';
+import { BuiltInTouchableChildTheme } from '../touchable/TouchableChildTheme';
+import { BuiltInViewChildTheme } from '../view/ViewChildTheme';
 import { TouchableSurfaceProps } from './TouchableSurfaceProps';
 
 export interface TouchableSurfaceTheme {
-  readonly container: InjectableSubTheme<
-    TouchableSurfaceProps,
-    ViewProps,
-    ViewStyle
-  >;
-  readonly touchable: InjectableSubTheme<
-    TouchableSurfaceProps,
-    TouchableWithoutFeedbackProps,
-    ViewStyle
-  >;
+  readonly container: BuiltInViewChildTheme<TouchableSurfaceProps>;
+  readonly touchable: BuiltInTouchableChildTheme<TouchableSurfaceProps>;
 }

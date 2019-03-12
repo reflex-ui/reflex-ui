@@ -5,11 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ViewProps } from 'react-native';
-
+import { RfxViewChildrenProps } from './RfxViewChildrenProps';
 import { RfxViewProps } from './RfxViewProps';
 
-export interface RfxViewSubProps {
-  readonly container?: ViewProps;
-  readonly props?: RfxViewProps;
-}
+export type RfxViewChildrenPropsGetter = (
+  props: RfxViewProps,
+) => RfxViewChildrenProps;

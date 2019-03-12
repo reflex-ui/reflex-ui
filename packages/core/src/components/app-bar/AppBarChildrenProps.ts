@@ -7,9 +7,9 @@
 
 import { ViewProps } from 'react-native';
 
-import { SurfaceProps } from './SurfaceProps';
-
-export interface SurfaceSubProps {
+export interface AppBarChildrenProps {
+  readonly centerArea?: ViewProps;
   readonly container?: ViewProps;
-  readonly props?: SurfaceProps;
+  readonly leadingArea?: ViewProps;
+  readonly trailingArea?: ViewProps;
 }

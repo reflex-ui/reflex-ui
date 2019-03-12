@@ -13,7 +13,7 @@ import { ButtonCollectionProps } from './ButtonCollectionProps';
 
 const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
   colorTheme,
-  getSubProps,
+  getChildrenProps,
   invertColor,
   onPress,
   variant,
@@ -22,7 +22,7 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
     <Row>
       <Button
         colorTheme={colorTheme}
-        getSubProps={getSubProps}
+        getChildrenProps={getChildrenProps}
         invertColor={invertColor}
         marginHorizontal={Size.M}
         marginVertical={Size.S}
@@ -34,7 +34,7 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
       <Button
         colorTheme={colorTheme}
         disabled
-        getSubProps={getSubProps}
+        getChildrenProps={getChildrenProps}
         invertColor={invertColor}
         marginHorizontal={Size.M}
         marginVertical={Size.S}
@@ -47,7 +47,7 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
     <Row>
       <Button
         colorTheme={colorTheme}
-        getSubProps={getSubProps}
+        getChildrenProps={getChildrenProps}
         invertColor={invertColor}
         leadingIcon={<FavoriteIcon />}
         marginHorizontal={Size.M}
@@ -60,7 +60,7 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
       <Button
         colorTheme={colorTheme}
         disabled
-        getSubProps={getSubProps}
+        getChildrenProps={getChildrenProps}
         invertColor={invertColor}
         leadingIcon={<FavoriteIcon />}
         marginHorizontal={Size.M}
@@ -74,7 +74,7 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
     <Row>
       <Button
         colorTheme={colorTheme}
-        getSubProps={getSubProps}
+        getChildrenProps={getChildrenProps}
         invertColor={invertColor}
         marginHorizontal={Size.M}
         marginVertical={Size.S}
@@ -87,7 +87,7 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
       <Button
         colorTheme={colorTheme}
         disabled
-        getSubProps={getSubProps}
+        getChildrenProps={getChildrenProps}
         invertColor={invertColor}
         marginHorizontal={Size.M}
         marginVertical={Size.S}
@@ -101,7 +101,7 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
     <Row>
       <Button
         colorTheme={colorTheme}
-        getSubProps={getSubProps}
+        getChildrenProps={getChildrenProps}
         invertColor={invertColor}
         leadingIcon={<FavoriteIcon />}
         marginHorizontal={Size.M}
@@ -115,7 +115,7 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
       <Button
         colorTheme={colorTheme}
         disabled
-        getSubProps={getSubProps}
+        getChildrenProps={getChildrenProps}
         invertColor={invertColor}
         leadingIcon={<FavoriteIcon />}
         marginHorizontal={Size.M}

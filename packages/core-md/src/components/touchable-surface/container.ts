@@ -6,13 +6,13 @@
  */
 
 import {
+  BuiltInViewChildTheme,
   getThemedColor,
-  InjectableSubTheme,
   InteractionType,
   TouchableSurfaceProps,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import { Platform, ViewProps, ViewStyle } from 'react-native';
+import { Platform } from 'react-native';
 
 export const getTouchableSurfaceContainerStyle: ViewStyleGetter<
   TouchableSurfaceProps
@@ -29,10 +29,8 @@ export const getTouchableSurfaceContainerStyle: ViewStyleGetter<
   }),
 });
 
-export const touchableSurfaceContainerTheme: InjectableSubTheme<
-  TouchableSurfaceProps,
-  ViewProps,
-  ViewStyle
+export const touchableSurfaceContainerTheme: BuiltInViewChildTheme<
+  TouchableSurfaceProps
 > = {
   getStyle: getTouchableSurfaceContainerStyle,
 };

@@ -9,10 +9,9 @@ import {
   ButtonProps,
   getThemedOnColor,
   SizedData,
-  SubTheme,
+  SvgChildTheme,
   SvgPropsGetter,
 } from '@reflex-ui/core';
-import { ViewStyle } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 
 export const allVariantsButtonIconSizedProps: SizedData<SvgProps> = {
@@ -38,10 +37,6 @@ export const getAllVariantsButtonIconProps: SvgPropsGetter<
   fill: getThemedOnColor(props),
 });
 
-export const allVariantsButtonIconTheme: SubTheme<
-  ButtonProps,
-  SvgProps,
-  ViewStyle
-> = {
+export const allVariantsButtonIconTheme: SvgChildTheme<ButtonProps> = {
   getProps: getAllVariantsButtonIconProps,
 };

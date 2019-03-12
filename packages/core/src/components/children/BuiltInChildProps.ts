@@ -5,7 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { AppBarProps } from './AppBarProps';
-import { AppBarSubProps } from './AppBarSubProps';
-
-export type AppBarSubPropsGetter = (props: AppBarProps) => AppBarSubProps;
+export interface BuiltInChildProps<Props> {
+  readonly componentProps: Props;
+}

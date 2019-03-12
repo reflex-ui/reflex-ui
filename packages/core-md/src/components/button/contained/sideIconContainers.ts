@@ -5,28 +5,21 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ButtonProps, InjectableSubTheme } from '@reflex-ui/core';
-import { ViewProps, ViewStyle } from 'react-native';
+import { BuiltInViewChildTheme, ButtonProps } from '@reflex-ui/core';
 
 import {
   getAllVariantsButtonLeadingIconContainerStyle,
   getAllVariantsButtonTrailingIconContainerStyle,
 } from '../all-variants/sideIconContainers';
 
-// tslint:disable-next-line:max-line-length
-export const containedButtonLeadingIconContainerTheme: InjectableSubTheme<
-  ButtonProps,
-  ViewProps,
-  ViewStyle
+export const containedButtonLeadingIconContainerTheme: BuiltInViewChildTheme<
+  ButtonProps
 > = {
   getStyle: getAllVariantsButtonLeadingIconContainerStyle,
 };
 
-// tslint:disable-next-line:max-line-length
-export const containedButtonTrailingIconContainerTheme: InjectableSubTheme<
-  ButtonProps,
-  ViewProps,
-  ViewStyle
+export const containedButtonTrailingIconContainerTheme: BuiltInViewChildTheme<
+  ButtonProps
 > = {
   getStyle: getAllVariantsButtonTrailingIconContainerStyle,
 };

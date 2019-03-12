@@ -5,13 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ViewProps, ViewStyle } from 'react-native';
-import { SvgProps } from 'react-native-svg';
-
-import { InjectableSubTheme, SubTheme } from '../subcomponents';
+import { BuiltInViewChildTheme } from '../view/ViewChildTheme';
 import { RfxSvgProps } from './RfxSvgProps';
+import { SvgChildTheme } from './SvgChildTheme';
 
 export interface RfxSvgTheme {
-  readonly container: InjectableSubTheme<RfxSvgProps, ViewProps, ViewStyle>;
-  readonly svg: SubTheme<RfxSvgProps, SvgProps, ViewStyle>;
+  readonly container: BuiltInViewChildTheme<RfxSvgProps>;
+  readonly svg: SvgChildTheme<RfxSvgProps>;
 }

@@ -6,15 +6,14 @@
  */
 
 import {
+  BuiltInViewChildTheme,
   getSizedMarginStyle,
   getSizedPaddingStyle,
   getThemedColor,
-  InjectableSubTheme,
   SurfaceProps,
   SurfaceTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import { ViewProps, ViewStyle } from 'react-native';
 
 import { getFlexboxStyle } from '../../flexbox/getFlexboxStyle';
 import { sizedSpacing } from '../../spacing/sizedSpacing';
@@ -30,11 +29,7 @@ export const getSurfaceContainerStyle: ViewStyleGetter<
   borderRadius: 4,
 });
 
-export const surfaceContainerTheme: InjectableSubTheme<
-  SurfaceProps,
-  ViewProps,
-  ViewStyle
-> = {
+export const surfaceContainerTheme: BuiltInViewChildTheme<SurfaceProps> = {
   getStyle: getSurfaceContainerStyle,
 };
 
