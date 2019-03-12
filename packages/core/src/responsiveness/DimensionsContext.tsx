@@ -11,10 +11,13 @@ import { Dimensions } from 'react-native';
 import { defaultBreakpoints } from './defaultBreakpoints';
 import { DimensionsProps } from './DimensionsProps';
 
-export const DimensionsContext = React.createContext<DimensionsProps>({
+const DimensionsContext = React.createContext<DimensionsProps>({
   breakpoints: defaultBreakpoints,
   dimensions: {
     screen: Dimensions.get('screen'),
     window: Dimensions.get('window'),
   },
 });
+DimensionsContext.displayName = 'DimensionsContext';
+
+export { DimensionsContext };

@@ -10,6 +10,9 @@ import * as React from 'react';
 import { defaultPaletteTheme } from './defaultPaletteTheme';
 import { PaletteTheme } from './PaletteTheme';
 
-export const PaletteThemeContext = React.createContext<PaletteTheme>(
+const PaletteThemeContext = React.createContext<PaletteTheme>(
   defaultPaletteTheme,
 );
+PaletteThemeContext.displayName = 'PaletteThemeContext';
+
+export { PaletteThemeContext };

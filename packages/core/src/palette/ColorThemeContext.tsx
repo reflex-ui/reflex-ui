@@ -9,6 +9,9 @@ import * as React from 'react';
 
 import { ColorTheme } from './ColorTheme';
 
-export const ColorThemeContext = React.createContext<ColorTheme | undefined>(
+const ColorThemeContext = React.createContext<ColorTheme | undefined>(
   undefined,
 );
+ColorThemeContext.displayName = 'ColorThemeContext';
+
+export { ColorThemeContext };
