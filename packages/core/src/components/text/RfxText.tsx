@@ -7,9 +7,10 @@
 
 import merge from 'lodash/merge';
 import * as React from 'react';
-import { TextProps, TextStyle } from 'react-native';
+import { TextProps } from 'react-native';
 
-import { resolveChildProps } from '../children/resolveChildProps';
+import { extractPropsFromTheme } from '../children/extractPropsFromTheme';
+import { mergeThemes } from '../children/mergeThemes';
 import { reflexComponent } from '../reflexComponent';
 import { DefaultTextChild } from './DefaultTextChild';
 import { RfxTextProps } from './RfxTextProps';
@@ -41,32 +42,29 @@ export const transformRfxTextStringChildIntoComponent = (
   children: React.ReactNode,
   props: RfxTextProps,
 ): JSX.Element => {
-  const patchTheme = props.getPatchTheme && props.getPatchTheme(props);
+  let newProps = props;
+  let mergedTheme = props.theme;
 
-  let newProps = { ...props, children };
-  if (props.theme.getProps || (patchTheme && patchTheme.getProps)) {
+  if (props.getPatchTheme || props.theme.getProps) {
+    mergedTheme = mergeThemes(
+      props.theme,
+      props.getPatchTheme && props.getPatchTheme(props),
+    );
+
     newProps = {
       ...newProps,
-      ...((props.theme.getProps && props.theme.getProps(props)) || {}),
-      ...((patchTheme && patchTheme.getProps && patchTheme.getProps(props)) ||
-        {}),
+      ...((mergedTheme.getProps && mergedTheme.getProps(props)) || {}),
+      theme: mergedTheme,
     };
   }
 
   const Text =
-    (patchTheme && patchTheme.text && patchTheme.text.component) ||
-    (newProps.theme.text && newProps.theme.text.component) ||
-    DefaultTextChild;
+    (mergedTheme.text && mergedTheme.text.component) || DefaultTextChild;
 
-  const textProps = resolveChildProps<RfxTextProps, TextProps, TextStyle>({
-    componentProps: newProps,
-    patchTheme: patchTheme && patchTheme.text,
-    theme: newProps.theme.text,
-  });
+  const textPropsFromTheme = extractPropsFromTheme(newProps, mergedTheme.text);
+  const textProps = extractTextPropsFromRfxTextProps(newProps);
 
-  const userProps = extractTextPropsFromRfxTextProps(newProps);
-
-  if (userProps.style) {
+  if (textProps.style) {
     throw new Error(
       [
         "Rfx: It's not possible to pass style prop directly.",
@@ -75,7 +73,7 @@ export const transformRfxTextStringChildIntoComponent = (
     );
   }
 
-  const mergedTextProps = merge({}, textProps, userProps);
+  const mergedTextProps = merge({}, textPropsFromTheme, textProps);
 
   return (
     <Text componentProps={newProps} {...mergedTextProps}>

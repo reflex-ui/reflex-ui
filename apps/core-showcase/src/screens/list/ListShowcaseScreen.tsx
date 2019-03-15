@@ -8,7 +8,6 @@
 import {
   AppBar,
   AppBarTitle,
-  BuiltInTextChildTheme,
   Button,
   ButtonVariant,
   Caption,
@@ -22,7 +21,7 @@ import {
   ListItem,
   Paragraph1,
   Paragraph2,
-  RfxTextProps,
+  RfxTextTheme,
   RfxTextVariantsTheme,
   Size,
   TouchableSurface,
@@ -54,18 +53,22 @@ const onListItemIconPress = () => {
   console.log('ListShowcaseScreen().onListItemIconPress()');
 };
 
-const createParagraph1Theme = (
-  baseTheme: BuiltInTextChildTheme<RfxTextProps>,
-): BuiltInTextChildTheme<RfxTextProps> => ({
+const createParagraph1Theme = (baseTheme: RfxTextTheme): RfxTextTheme => ({
   ...baseTheme,
-  getStyle: props => ({
-    ...(baseTheme.getStyle ? baseTheme.getStyle(props) : {}),
-    fontWeight:
-      props.interactionState &&
-      props.interactionState.type === InteractionType.Activated
-        ? getFontWeight(FontWeight.Medium)
-        : getFontWeight(FontWeight.Regular),
-  }),
+  text: {
+    ...baseTheme.text,
+    getStyle: props => ({
+      ...((baseTheme.text &&
+        baseTheme.text.getStyle &&
+        baseTheme.text.getStyle(props)) ||
+        {}),
+      fontWeight:
+        props.interactionState &&
+        props.interactionState.type === InteractionType.Activated
+          ? getFontWeight(FontWeight.Medium)
+          : getFontWeight(FontWeight.Regular),
+    }),
+  },
 });
 
 const ListShowcaseScreen: React.SFC = (): JSX.Element => (

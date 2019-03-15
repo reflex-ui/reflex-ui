@@ -5,11 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { ComplexComponentTheme } from '../ComplexComponentTheme';
 import { BuiltInViewChildTheme } from '../view/ViewChildTheme';
 import { AppBarProps } from './AppBarProps';
 import { AppBarPropsOptionalGetter } from './AppBarPropsGetter';
 
-export interface AppBarTheme {
+export interface AppBarTheme extends ComplexComponentTheme {
   readonly centerArea?: BuiltInViewChildTheme<AppBarProps>;
   readonly container?: BuiltInViewChildTheme<AppBarProps>;
   readonly getProps?: AppBarPropsOptionalGetter<AppBarProps>;

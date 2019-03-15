@@ -7,17 +7,11 @@
 
 import merge from 'lodash/merge';
 import * as React from 'react';
-import {
-  TextProps,
-  TextStyle,
-  TouchableWithoutFeedbackProps,
-  ViewProps,
-  ViewStyle,
-} from 'react-native';
+import { TouchableWithoutFeedbackProps } from 'react-native';
 
 import { cloneElement } from '../../utils';
+import { extractPropsFromTheme } from '../children/extractPropsFromTheme';
 import { mergeThemes } from '../children/mergeThemes';
-import { resolveChildProps } from '../children/resolveChildProps';
 import { reflexComponent } from '../reflexComponent';
 import { RfxSvgPropsOptional } from '../svg/RfxSvgProps';
 import { RfxSvgTheme } from '../svg/RfxSvgTheme';
@@ -27,7 +21,6 @@ import { handleAndroidTextTransformation } from '../text/handleAndroidTextTransf
 import { DefaultTouchableChild } from '../touchable/DefaultTouchableChild';
 import { DefaultViewChild } from '../view/DefaultViewChild';
 import { ButtonProps } from './ButtonProps';
-import { ButtonTheme } from './ButtonTheme';
 import { ButtonVariant } from './ButtonVariant';
 
 export const extractTouchablePropsFromButtonProps = (
@@ -59,11 +52,8 @@ export const extractTouchablePropsFromButtonProps = (
   return touchableProps;
 };
 
-export const handleButtonChildren = (
-  props: ButtonProps,
-  patchTheme: ButtonTheme | undefined,
-): React.ReactNode => {
-  const { children } = props;
+export const handleButtonChildren = (props: ButtonProps): React.ReactNode => {
+  const { children, theme } = props;
   if (!children) return undefined;
 
   if (
@@ -74,7 +64,6 @@ export const handleButtonChildren = (
     return transformButtonStringChildrenIntoComponent(
       children.toString(),
       props,
-      patchTheme,
     );
   }
 
@@ -84,9 +73,7 @@ export const handleButtonChildren = (
   ) {
     return handleButtonIcon({
       icon: children as React.ReactElement<RfxSvgPropsOptional>,
-      iconTheme: props.theme.getIcon && props.theme.getIcon(props),
-      patchIconTheme:
-        patchTheme && patchTheme.getIcon && patchTheme.getIcon(props),
+      iconTheme: theme.getIcon && theme.getIcon(props),
       props,
     });
   }
@@ -97,18 +84,10 @@ export const handleButtonChildren = (
 export const transformButtonStringChildrenIntoComponent = (
   children: string,
   props: ButtonProps,
-  patchTheme: ButtonTheme | undefined,
 ): JSX.Element => {
   const Text =
-    (patchTheme && patchTheme.text && patchTheme.text.component) ||
-    (props.theme.text && props.theme.text.component) ||
-    DefaultTextChild;
-
-  const textProps = resolveChildProps<ButtonProps, TextProps, TextStyle>({
-    componentProps: props,
-    patchTheme: patchTheme && patchTheme.text,
-    theme: props.theme.text,
-  });
+    (props.theme.text && props.theme.text.component) || DefaultTextChild;
+  const textProps = extractPropsFromTheme(props, props.theme.text);
 
   return (
     <Text componentProps={props} {...textProps}>
@@ -120,7 +99,6 @@ export const transformButtonStringChildrenIntoComponent = (
 export interface ButtonIconHandlerInput {
   readonly icon: React.ReactElement<RfxSvgPropsOptional>;
   readonly iconTheme?: RfxSvgTheme;
-  readonly patchIconTheme?: RfxSvgTheme;
   readonly props: ButtonProps;
 }
 
@@ -138,23 +116,23 @@ export const handleButtonIcon = (
       props: iconProps,
     });
 
-  if (data.iconTheme || data.patchIconTheme) {
-    const mergedThemes = mergeThemes(
-      data.iconTheme,
-      data.patchIconTheme,
-    ) as RfxSvgTheme;
-
+  if (data.iconTheme) {
     newIcon = {
       ...newIcon,
       props: {
         ...newIcon.props,
         getPatchTheme: props =>
           (data.icon.props.getPatchTheme &&
-            (mergeThemes(
-              mergedThemes,
+            mergeThemes(
+              // data.iconTheme is validated above so this seems a TS issue.
+              // @ts-ignore Argument of type 'RfxSvgTheme | undefined' is not
+              // assignable to parameter of type 'CompositeComponentTheme'.
+              // Type 'undefined' is not assignable to type
+              // 'CompositeComponentTheme'.ts(2345)
+              data.iconTheme,
               data.icon.props.getPatchTheme(props),
-            ) as RfxSvgTheme)) ||
-          mergedThemes,
+            )) ||
+          data.iconTheme,
       },
     };
   }
@@ -164,30 +142,20 @@ export const handleButtonIcon = (
 
 export const handleLeadingIcon = (
   props: ButtonProps,
-  patchTheme: ButtonTheme | undefined,
 ): JSX.Element | undefined =>
   handleButtonIcon({
     icon: props.leadingIcon as React.ReactElement<RfxSvgPropsOptional>,
     iconTheme: props.theme.getLeadingIcon && props.theme.getLeadingIcon(props),
-    patchIconTheme:
-      patchTheme &&
-      patchTheme.getLeadingIcon &&
-      patchTheme.getLeadingIcon(props),
     props,
   });
 
 export const handleTrailingIcon = (
   props: ButtonProps,
-  patchTheme: ButtonTheme | undefined,
 ): JSX.Element | undefined =>
   handleButtonIcon({
     icon: props.trailingIcon as React.ReactElement<RfxSvgPropsOptional>,
     iconTheme:
       props.theme.getTrailingIcon && props.theme.getTrailingIcon(props),
-    patchIconTheme:
-      patchTheme &&
-      patchTheme.getTrailingIcon &&
-      patchTheme.getTrailingIcon(props),
     props,
   });
 
@@ -195,29 +163,27 @@ export const SimpleButton = reflexComponent<ButtonProps>({
   name: 'SimpleButton',
 })((props: ButtonProps) => {
   const { children } = props;
-  const patchTheme = props.getPatchTheme && props.getPatchTheme(props);
-
   let newProps = props;
-  if (props.theme.getProps || (patchTheme && patchTheme.getProps)) {
+  let mergedTheme = props.theme;
+
+  if (props.getPatchTheme || props.theme.getProps) {
+    mergedTheme = mergeThemes(
+      props.theme,
+      props.getPatchTheme && props.getPatchTheme(props),
+    );
+
     newProps = {
       ...newProps,
-      ...((props.theme.getProps && props.theme.getProps(props)) || {}),
-      ...((patchTheme && patchTheme.getProps && patchTheme.getProps(props)) ||
-        {}),
+      ...((mergedTheme.getProps && mergedTheme.getProps(props)) || {}),
+      theme: mergedTheme,
     };
   }
 
   const Touchable =
-    (patchTheme && patchTheme.touchable && patchTheme.touchable.component) ||
-    (newProps.theme.touchable && newProps.theme.touchable.component) ||
+    (mergedTheme.touchable && mergedTheme.touchable.component) ||
     DefaultTouchableChild;
 
-  const touchableProps = resolveChildProps<ButtonProps, ViewProps, ViewStyle>({
-    componentProps: newProps,
-    patchTheme: patchTheme && patchTheme.container,
-    theme: newProps.theme.container,
-  });
-
+  const touchableProps = extractPropsFromTheme(newProps, mergedTheme.touchable);
   const userTouchableProps = extractTouchablePropsFromButtonProps(newProps);
 
   if (userTouchableProps.style) {
@@ -231,22 +197,17 @@ export const SimpleButton = reflexComponent<ButtonProps>({
   const mergedTouchableProps = merge({}, touchableProps, userTouchableProps);
 
   const Container =
-    (patchTheme && patchTheme.container && patchTheme.container.component) ||
-    (newProps.theme.container && newProps.theme.container.component) ||
+    (mergedTheme.container && mergedTheme.container.component) ||
     DefaultViewChild;
 
-  const containerProps = resolveChildProps<ButtonProps, ViewProps, ViewStyle>({
-    componentProps: newProps,
-    patchTheme: patchTheme && patchTheme.container,
-    theme: newProps.theme.container,
-  });
+  const containerProps = extractPropsFromTheme(newProps, mergedTheme.container);
 
   return (
     <Touchable componentProps={newProps} {...mergedTouchableProps}>
       <Container componentProps={newProps} {...containerProps}>
-        {newProps.leadingIcon && handleLeadingIcon(newProps, patchTheme)}
-        {children && handleButtonChildren(newProps, patchTheme)}
-        {newProps.trailingIcon && handleTrailingIcon(newProps, patchTheme)}
+        {newProps.leadingIcon && handleLeadingIcon(newProps)}
+        {children && handleButtonChildren(newProps)}
+        {newProps.trailingIcon && handleTrailingIcon(newProps)}
       </Container>
     </Touchable>
   );

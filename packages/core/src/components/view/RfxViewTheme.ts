@@ -5,11 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { ComplexComponentTheme } from '../ComplexComponentTheme';
 import { BuiltInViewChildTheme } from '../view/ViewChildTheme';
 import { RfxViewProps } from './RfxViewProps';
 import { RfxViewPropsOptionalGetter } from './RfxViewPropsGetter';
 
-export interface RfxViewTheme {
+export interface RfxViewTheme extends ComplexComponentTheme {
   readonly container?: BuiltInViewChildTheme<RfxViewProps>;
   readonly getProps?: RfxViewPropsOptionalGetter<RfxViewProps>;
 }

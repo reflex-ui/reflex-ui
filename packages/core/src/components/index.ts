@@ -8,6 +8,7 @@
 export * from './app-bar';
 export * from './button';
 export * from './children';
+export * from './ComplexComponentTheme';
 export * from './ComponentsTheme';
 export * from './ComponentsThemeContext';
 export * from './ComponentThemeGetter';

@@ -6,9 +6,9 @@
  */
 
 import * as React from 'react';
-import { ViewProps, ViewStyle } from 'react-native';
 
-import { resolveChildProps } from '../children/resolveChildProps';
+import { extractPropsFromTheme } from '../children/extractPropsFromTheme';
+import { mergeThemes } from '../children/mergeThemes';
 import { reflexComponent } from '../reflexComponent';
 import { DefaultViewChild } from '../view';
 import { SurfaceProps } from './SurfaceProps';
@@ -21,28 +21,32 @@ export const SimpleSurface = reflexComponent<SurfaceProps>({
       ? props.children(props)
       : props.children;
 
-  const patchTheme = props.getPatchTheme && props.getPatchTheme(props);
+  let newProps = props;
+  let mergedTheme = props.theme;
 
-  let newProps = { ...props, children };
-  if (props.theme.getProps || (patchTheme && patchTheme.getProps)) {
+  if (
+    props.getPatchTheme ||
+    props.theme.getProps ||
+    typeof props.children === 'function'
+  ) {
+    mergedTheme = mergeThemes(
+      props.theme,
+      props.getPatchTheme && props.getPatchTheme(props),
+    );
+
     newProps = {
       ...newProps,
-      ...((props.theme.getProps && props.theme.getProps(props)) || {}),
-      ...((patchTheme && patchTheme.getProps && patchTheme.getProps(props)) ||
-        {}),
+      ...((mergedTheme.getProps && mergedTheme.getProps(props)) || {}),
+      children,
+      theme: mergedTheme,
     };
   }
 
   const Container =
-    (patchTheme && patchTheme.container && patchTheme.container.component) ||
-    (newProps.theme.container && newProps.theme.container.component) ||
+    (mergedTheme.container && mergedTheme.container.component) ||
     DefaultViewChild;
 
-  const containerProps = resolveChildProps<SurfaceProps, ViewProps, ViewStyle>({
-    componentProps: newProps,
-    patchTheme: patchTheme && patchTheme.container,
-    theme: newProps.theme.container,
-  });
+  const containerProps = extractPropsFromTheme(newProps, mergedTheme.container);
 
   return (
     <Container

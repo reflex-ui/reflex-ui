@@ -7,71 +7,41 @@
 
 import * as React from 'react';
 import * as ReactIs from 'react-is';
-import { ViewProps, ViewStyle } from 'react-native';
 
-import { resolveChildProps } from '../children/resolveChildProps';
+import { extractPropsFromTheme } from '../children/extractPropsFromTheme';
+import { mergeThemes } from '../children/mergeThemes';
 import { reflexComponent } from '../reflexComponent';
 import { DefaultViewChild } from '../view/DefaultViewChild';
 import { AppBarProps } from './AppBarProps';
-import { AppBarTheme } from './AppBarTheme';
 
-export const renderCenterArea = (
-  props: AppBarProps,
-  patchTheme: AppBarTheme | undefined,
-): React.ReactNode => {
-  const { children } = props;
-  if (!children) return children;
-
-  if (Array.isArray(children) && children.length > 1) {
-    const Container =
-      (patchTheme &&
-        patchTheme.centerArea &&
-        patchTheme.centerArea.component) ||
-      (props.theme.centerArea && props.theme.centerArea.component) ||
-      DefaultViewChild;
-
-    const containerProps = resolveChildProps<
-      AppBarProps,
-      ViewProps,
-      ViewStyle
-      // tslint:disable-next-line:ter-func-call-spacing
-    >({
-      componentProps: props,
-      patchTheme: patchTheme && patchTheme.centerArea,
-      theme: props.theme.centerArea,
-    });
-
-    return (
-      <Container componentProps={props} {...containerProps}>
-        {children[1]}
-      </Container>
-    );
+export const renderCenterArea = (props: AppBarProps): React.ReactNode => {
+  const { children, theme } = props;
+  if (!children || !Array.isArray(children) || children.length < 2) {
+    return undefined;
   }
 
-  return undefined;
+  const Container =
+    (theme.centerArea && theme.centerArea.component) || DefaultViewChild;
+
+  const containerProps = extractPropsFromTheme(props, theme.centerArea);
+
+  return (
+    <Container componentProps={props} {...containerProps}>
+      {children[1]}
+    </Container>
+  );
 };
 
-export const renderLeadingArea = (
-  props: AppBarProps,
-  patchTheme: AppBarTheme | undefined,
-): React.ReactNode => {
-  const { children } = props;
+export const renderLeadingArea = (props: AppBarProps): React.ReactNode => {
+  const { children, theme } = props;
   if (!children) return children;
-  if (typeof children === 'function') return children(props);
+  // if (typeof children === 'function') return children(props);
   const leadingChildren = Array.isArray(children) ? children[0] : children;
 
   const Container =
-    (patchTheme &&
-      patchTheme.leadingArea &&
-      patchTheme.leadingArea.component) ||
-    (props.theme.leadingArea && props.theme.leadingArea.component) ||
-    DefaultViewChild;
+    (theme.leadingArea && theme.leadingArea.component) || DefaultViewChild;
 
-  const containerProps = resolveChildProps<AppBarProps, ViewProps, ViewStyle>({
-    componentProps: props,
-    patchTheme: patchTheme && patchTheme.leadingArea,
-    theme: props.theme.leadingArea,
-  });
+  const containerProps = extractPropsFromTheme(props, theme.leadingArea);
 
   return (
     <Container componentProps={props} {...containerProps}>
@@ -80,40 +50,22 @@ export const renderLeadingArea = (
   );
 };
 
-export const renderTrailingArea = (
-  props: AppBarProps,
-  patchTheme: AppBarTheme | undefined,
-): React.ReactNode => {
-  const { children } = props;
-  if (!children) return children;
-
-  if (Array.isArray(children) && children.length > 2) {
-    const Container =
-      (patchTheme &&
-        patchTheme.trailingArea &&
-        patchTheme.trailingArea.component) ||
-      (props.theme.trailingArea && props.theme.trailingArea.component) ||
-      DefaultViewChild;
-
-    const containerProps = resolveChildProps<
-      AppBarProps,
-      ViewProps,
-      ViewStyle
-      // tslint:disable-next-line:ter-func-call-spacing
-    >({
-      componentProps: props,
-      patchTheme: patchTheme && patchTheme.trailingArea,
-      theme: props.theme.trailingArea,
-    });
-
-    return (
-      <Container componentProps={props} {...containerProps}>
-        {children[2]}
-      </Container>
-    );
+export const renderTrailingArea = (props: AppBarProps): React.ReactNode => {
+  const { children, theme } = props;
+  if (!children || !Array.isArray(children) || children.length < 3) {
+    return undefined;
   }
 
-  return undefined;
+  const Container =
+    (theme.trailingArea && theme.trailingArea.component) || DefaultViewChild;
+
+  const containerProps = extractPropsFromTheme(props, theme.trailingArea);
+
+  return (
+    <Container componentProps={props} {...containerProps}>
+      {children[2]}
+    </Container>
+  );
 };
 
 export const SimpleAppBar = reflexComponent<AppBarProps>({
@@ -137,28 +89,32 @@ export const SimpleAppBar = reflexComponent<AppBarProps>({
     );
   }
 
-  const patchTheme = props.getPatchTheme && props.getPatchTheme(props);
+  let newProps = props;
+  let mergedTheme = props.theme;
 
-  let newProps = { ...props, children };
-  if (props.theme.getProps || (patchTheme && patchTheme.getProps)) {
+  if (
+    props.getPatchTheme ||
+    props.theme.getProps ||
+    typeof props.children === 'function'
+  ) {
+    mergedTheme = mergeThemes(
+      props.theme,
+      props.getPatchTheme && props.getPatchTheme(props),
+    );
+
     newProps = {
       ...newProps,
-      ...((props.theme.getProps && props.theme.getProps(props)) || {}),
-      ...((patchTheme && patchTheme.getProps && patchTheme.getProps(props)) ||
-        {}),
+      ...((mergedTheme.getProps && mergedTheme.getProps(props)) || {}),
+      children,
+      theme: mergedTheme,
     };
   }
 
   const Container =
-    (patchTheme && patchTheme.container && patchTheme.container.component) ||
-    (newProps.theme.container && newProps.theme.container.component) ||
+    (mergedTheme.container && mergedTheme.container.component) ||
     DefaultViewChild;
 
-  const containerProps = resolveChildProps<AppBarProps, ViewProps, ViewStyle>({
-    componentProps: newProps,
-    patchTheme: patchTheme && patchTheme.container,
-    theme: newProps.theme.container,
-  });
+  const containerProps = extractPropsFromTheme(newProps, mergedTheme.container);
 
   return (
     <Container
@@ -166,9 +122,9 @@ export const SimpleAppBar = reflexComponent<AppBarProps>({
       onLayout={newProps.onLayout}
       {...containerProps}
     >
-      {renderLeadingArea(newProps, patchTheme)}
-      {renderCenterArea(newProps, patchTheme)}
-      {renderTrailingArea(newProps, patchTheme)}
+      {renderLeadingArea(newProps)}
+      {renderCenterArea(newProps)}
+      {renderTrailingArea(newProps)}
     </Container>
   );
 });

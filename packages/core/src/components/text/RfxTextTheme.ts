@@ -5,11 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { ComplexComponentTheme } from '../ComplexComponentTheme';
 import { RfxTextProps } from './RfxTextProps';
 import { RfxTextPropsOptionalGetter } from './RfxTextPropsGetter';
 import { BuiltInTextChildTheme } from './TextChildTheme';
 
-export interface RfxTextTheme {
+export interface RfxTextTheme extends ComplexComponentTheme {
   readonly text?: BuiltInTextChildTheme<RfxTextProps>;
   readonly getProps?: RfxTextPropsOptionalGetter<RfxTextProps>;
 }

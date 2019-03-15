@@ -5,15 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import merge from 'lodash/merge';
 import * as React from 'react';
 import * as ReactIs from 'react-is';
-import {
-  TouchableWithoutFeedbackProps,
-  ViewProps,
-  ViewStyle,
-} from 'react-native';
+import { TouchableWithoutFeedbackProps } from 'react-native';
 
-import { resolveChildProps } from '../children/resolveChildProps';
+import { extractPropsFromTheme } from '../children/extractPropsFromTheme';
+import { mergeThemes } from '../children/mergeThemes';
 import { reflexComponent } from '../reflexComponent';
 import { DefaultTouchableChild } from '../touchable/DefaultTouchableChild';
 import { DefaultViewChild } from '../view/DefaultViewChild';
@@ -47,43 +45,59 @@ export const SimpleTouchableSurface = reflexComponent<TouchableSurfaceProps>({
     children = children.props.children;
   }
 
-  const patchTheme = props.getPatchTheme && props.getPatchTheme(props);
+  let newProps = props;
+  let mergedTheme = props.theme;
 
-  let newProps = { ...props, children };
-  if (props.theme.getProps || (patchTheme && patchTheme.getProps)) {
+  if (
+    props.getPatchTheme ||
+    props.theme.getProps ||
+    typeof props.children === 'function'
+  ) {
+    mergedTheme = mergeThemes(
+      props.theme,
+      props.getPatchTheme && props.getPatchTheme(props),
+    );
+
     newProps = {
       ...newProps,
-      ...((props.theme.getProps && props.theme.getProps(props)) || {}),
-      ...((patchTheme && patchTheme.getProps && patchTheme.getProps(props)) ||
-        {}),
+      ...((mergedTheme.getProps && mergedTheme.getProps(props)) || {}),
+      children,
+      theme: mergedTheme,
     };
   }
 
   const Container =
-    (patchTheme && patchTheme.container && patchTheme.container.component) ||
-    (newProps.theme.container && newProps.theme.container.component) ||
+    (mergedTheme.container && mergedTheme.container.component) ||
     DefaultViewChild;
 
-  const containerProps = resolveChildProps<
-    TouchableSurfaceProps,
-    ViewProps,
-    ViewStyle
-    // tslint:disable-next-line:ter-func-call-spacing
-  >({
-    componentProps: newProps,
-    patchTheme: patchTheme && patchTheme.container,
-    theme: newProps.theme.container,
-  });
-
-  const touchableProps = extractTouchableProps(props);
+  const containerProps = extractPropsFromTheme(newProps, mergedTheme.container);
 
   const Touchable =
-    (patchTheme && patchTheme.touchable && patchTheme.touchable.component) ||
-    (newProps.theme.touchable && newProps.theme.touchable.component) ||
+    (mergedTheme.touchable && mergedTheme.touchable.component) ||
     DefaultTouchableChild;
 
+  const touchablePropsFromTheme = extractPropsFromTheme(
+    newProps,
+    mergedTheme.touchable,
+  );
+  const touchableProps = extractTouchableProps(props);
+
+  if (touchableProps.style) {
+    throw new Error(
+      [
+        "Rfx: It's not possible to pass style prop directly.",
+        'You have to pass it as part of theme object.',
+      ].join(' '),
+    );
+  }
+  const mergedTouchableProps = merge(
+    {},
+    touchablePropsFromTheme,
+    touchableProps,
+  );
+
   return (
-    <Touchable componentProps={props} {...touchableProps}>
+    <Touchable componentProps={props} {...mergedTouchableProps}>
       <Container
         componentProps={newProps}
         onLayout={newProps.onLayout}

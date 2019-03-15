@@ -7,4 +7,5 @@
 
 export * from './BuiltInChildProps';
 export * from './ChildTheme';
-export * from './resolveChildProps';
+export * from './extractPropsFromTheme';
+export * from './mergeThemes';

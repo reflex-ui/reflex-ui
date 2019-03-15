@@ -7,27 +7,19 @@
 
 import merge from 'lodash/merge';
 
+import { ComplexComponentTheme } from '../ComplexComponentTheme';
 import { PropsGetter } from '../PropsGetter';
 import { BuiltInChildTheme } from './ChildTheme';
 
-export interface CompositeComponentTheme {
-  // It's fine to ignore type safety here.
-  [key: string]:  // tslint:disable-next-line:no-any
-    | BuiltInChildTheme<any, any, any>
-    // tslint:disable-next-line:no-any
-    | PropsGetter<any, any>
-    | undefined;
-}
-
-export const mergeThemes = (
-  theme1: CompositeComponentTheme | undefined,
-  theme2: CompositeComponentTheme | undefined,
-): CompositeComponentTheme | undefined => {
-  if (!theme1) return theme2;
+export const mergeThemes = <Theme extends ComplexComponentTheme>(
+  theme1: Theme,
+  theme2: Theme | undefined,
+): Theme => {
   if (!theme2) return theme1;
 
   const allKeys = new Set(Object.keys(theme1).concat(Object.keys(theme2)));
-  const mergedTheme: CompositeComponentTheme = {};
+  // @ts-ignore Type '{}' is not assignable to type 'Theme'.ts(2322)
+  const mergedTheme: Theme = {};
 
   allKeys.forEach(prop => {
     const theme1Obj = theme1[prop];

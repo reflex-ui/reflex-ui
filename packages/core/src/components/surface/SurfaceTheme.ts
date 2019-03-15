@@ -5,11 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { ComplexComponentTheme } from '../ComplexComponentTheme';
 import { BuiltInViewChildTheme } from '../view/ViewChildTheme';
 import { SurfaceProps } from './SurfaceProps';
 import { SurfacePropsOptionalGetter } from './SurfacePropsGetter';
 
-export interface SurfaceTheme {
+export interface SurfaceTheme extends ComplexComponentTheme {
   readonly container?: BuiltInViewChildTheme<SurfaceProps>;
   readonly getProps?: SurfacePropsOptionalGetter<SurfaceProps>;
 }

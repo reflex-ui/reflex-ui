@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { ComplexComponentTheme } from '../ComplexComponentTheme';
 import { ComponentThemeGetter } from '../ComponentThemeGetter';
 import { RfxSvgTheme } from '../svg/RfxSvgTheme';
 import { BuiltInTextChildTheme } from '../text/TextChildTheme';
@@ -13,7 +14,7 @@ import { BuiltInViewChildTheme } from '../view/ViewChildTheme';
 import { ButtonProps } from './ButtonProps';
 import { ButtonPropsOptionalGetter } from './ButtonPropsGetter';
 
-export interface ButtonTheme {
+export interface ButtonTheme extends ComplexComponentTheme {
   readonly container?: BuiltInViewChildTheme<ButtonProps>;
   readonly getIcon?: ComponentThemeGetter<ButtonProps, RfxSvgTheme>;
   readonly getLeadingIcon?: ComponentThemeGetter<ButtonProps, RfxSvgTheme>;

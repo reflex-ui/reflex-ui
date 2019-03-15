@@ -5,11 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { ComplexComponentTheme } from '../ComplexComponentTheme';
 import { BuiltInViewChildTheme } from '../view/ViewChildTheme';
 import { ListProps } from './ListProps';
 import { ListPropsOptionalGetter } from './ListPropsGetter';
 
-export interface ListTheme {
+export interface ListTheme extends ComplexComponentTheme {
   readonly container?: BuiltInViewChildTheme<ListProps>;
   readonly getProps?: ListPropsOptionalGetter<ListProps>;
 }
