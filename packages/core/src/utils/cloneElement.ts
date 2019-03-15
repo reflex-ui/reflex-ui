@@ -8,27 +8,37 @@
 import flatten from 'lodash/flatten';
 import merge from 'lodash/merge';
 import * as React from 'react';
+import { ImageStyle, StyleProp, TextStyle, ViewStyle } from 'react-native';
 
-export const cloneElement = ({
+import { StyleProps } from '../components/StyleProps';
+
+export const cloneElement = <
+  ComponentProps extends {} & StyleProps<ViewStyle | TextStyle | ImageStyle>
+>({
   element,
-  props = {},
+  props,
 }: {
-  readonly element: React.ReactElement<{}>;
-  readonly props: {};
+  readonly element: React.ReactElement<ComponentProps>;
+  readonly props?: ComponentProps;
 }) => {
+  // @ts-ignore Type '{}' is not assignable to type 'ComponentProps'.ts(2322)
+  // Why not? If ComponentProps extends {} & StyleProps,
+  // which only contains optional fields,
+  // then it doesn't seem wrong to assign an empty object to it as {}.
   if (!element.props) element.props = {};
-  // @ts-ignore Type '{}' has no property 'style' and no string index signature.
   const { style: elementStyle, ...otherElementProps } = element.props;
-  let styles = [];
-  // @ts-ignore Property 'style' does not exist on type '{}'.
-  if (props.style) {
-    // @ts-ignore Property 'style' does not exist on type '{}'.
+  let styles: StyleProp<ViewStyle | TextStyle | ImageStyle>[] = [];
+  if (props && props.style) {
     styles.push(props.style);
     styles = flatten(styles);
   }
-  // @ts-ignore
+
   if (elementStyle) styles.push(elementStyle);
-  // @ts-ignore
-  if (styles.length > 0) props.style = styles;
+  if (props && styles.length > 0) {
+    // @ts-ignore Cannot assign to 'style'
+    // because it is a read-only property.ts(2540)
+    // It's fine to mutate it here.
+    props.style = styles;
+  }
   return React.cloneElement(element, merge({}, props, otherElementProps));
 };
