@@ -8,8 +8,13 @@
 import { BuiltInTouchableChildTheme } from '../touchable/TouchableChildTheme';
 import { BuiltInViewChildTheme } from '../view/ViewChildTheme';
 import { TouchableSurfaceProps } from './TouchableSurfaceProps';
+// tslint:disable-next-line:max-line-length
+import { TouchableSurfacePropsOptionalGetter } from './TouchableSurfacePropsGetter';
 
 export interface TouchableSurfaceTheme {
-  readonly container: BuiltInViewChildTheme<TouchableSurfaceProps>;
-  readonly touchable: BuiltInTouchableChildTheme<TouchableSurfaceProps>;
+  readonly container?: BuiltInViewChildTheme<TouchableSurfaceProps>;
+  readonly getProps?: TouchableSurfacePropsOptionalGetter<
+    TouchableSurfaceProps
+  >;
+  readonly touchable?: BuiltInTouchableChildTheme<TouchableSurfaceProps>;
 }

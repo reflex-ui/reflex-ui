@@ -10,4 +10,5 @@ export * from './button';
 export * from './icon';
 export * from './list';
 export * from './svg';
+export * from './test';
 export * from './text';

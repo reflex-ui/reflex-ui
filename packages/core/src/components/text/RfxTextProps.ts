@@ -13,7 +13,8 @@ import { InteractionStatePropsOptional } from '../../interaction/InteractionStat
 import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
 import { MarginProps } from '../../spacing/MarginProps';
 import { PaddingProps } from '../../spacing/PaddingProps';
-import { BuiltInTextChildTheme } from '../text/TextChildTheme';
+import { ComponentThemeGetter } from '../ComponentThemeGetter';
+import { RfxTextTheme } from './RfxTextTheme';
 
 export interface RfxTextProps
   extends TextProps,
@@ -22,7 +23,8 @@ export interface RfxTextProps
     PaddingProps,
     PaletteThemeProps {
   readonly children?: React.ReactNode;
-  readonly theme: BuiltInTextChildTheme<RfxTextProps>;
+  readonly getPatchTheme?: ComponentThemeGetter<RfxTextProps, RfxTextTheme>;
+  readonly theme: RfxTextTheme;
 }
 
 export type RfxTextPropsOptional = Partial<RfxTextProps>;

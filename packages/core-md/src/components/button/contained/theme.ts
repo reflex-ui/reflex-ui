@@ -8,25 +8,16 @@
 import { ButtonTheme } from '@reflex-ui/core';
 
 import { containedButtonContainerTheme } from './container';
-import { containedButtonIconTheme } from './icon';
 import {
-  containedButtonLeadingIconContainerTheme,
-  containedButtonTrailingIconContainerTheme,
-} from './sideIconContainers';
-import {
-  containedButtonLeadingIconTheme,
-  containedButtonTrailingIconTheme,
+  getContainedButtonLeadingIconTheme,
+  getContainedButtonTrailingIconTheme,
 } from './sideIcons';
 import { containedButtonTextTheme } from './text';
 
 export const containedButtonTheme: ButtonTheme = {
   container: containedButtonContainerTheme,
-  icon: containedButtonIconTheme,
-  iconContainer: {},
-  leadingIcon: containedButtonLeadingIconTheme,
-  leadingIconContainer: containedButtonLeadingIconContainerTheme,
+  getLeadingIcon: getContainedButtonLeadingIconTheme,
+  getTrailingIcon: getContainedButtonTrailingIconTheme,
   text: containedButtonTextTheme,
   touchable: {},
-  trailingIcon: containedButtonTrailingIconTheme,
-  trailingIconContainer: containedButtonTrailingIconContainerTheme,
 };

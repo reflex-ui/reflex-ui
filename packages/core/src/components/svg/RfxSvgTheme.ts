@@ -5,11 +5,14 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { CompositeComponentTheme } from '../children/mergeThemes';
 import { BuiltInViewChildTheme } from '../view/ViewChildTheme';
 import { RfxSvgProps } from './RfxSvgProps';
+import { RfxSvgPropsOptionalGetter } from './RfxSvgPropsGetter';
 import { SvgChildTheme } from './SvgChildTheme';
 
-export interface RfxSvgTheme {
-  readonly container: BuiltInViewChildTheme<RfxSvgProps>;
-  readonly svg: SvgChildTheme<RfxSvgProps>;
+export interface RfxSvgTheme extends CompositeComponentTheme {
+  readonly container?: BuiltInViewChildTheme<RfxSvgProps>;
+  readonly getProps?: RfxSvgPropsOptionalGetter<RfxSvgProps>;
+  readonly svg?: SvgChildTheme<RfxSvgProps>;
 }

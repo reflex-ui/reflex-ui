@@ -6,9 +6,8 @@
  */
 
 export * from './TouchableSurface';
-export * from './TouchableSurfaceChildrenProps';
-export * from './TouchableSurfaceChildrenPropsGetter';
 export * from './TouchableSurfaceProps';
+export * from './TouchableSurfacePropsGetter';
 export * from './TouchableSurfaceTheme';
 export * from './SimpleTouchableSurface';
 export * from './withDefaultTouchableSurfaceProps';

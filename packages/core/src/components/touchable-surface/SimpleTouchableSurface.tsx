@@ -13,7 +13,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { resolveChildProps } from '../children';
+import { resolveChildProps } from '../children/resolveChildProps';
 import { reflexComponent } from '../reflexComponent';
 import { DefaultTouchableChild } from '../touchable/DefaultTouchableChild';
 import { DefaultViewChild } from '../view/DefaultViewChild';
@@ -25,7 +25,7 @@ export const extractTouchableProps = (
   const {
     children,
     colorTheme,
-    getChildrenProps,
+    getPatchTheme,
     interactionState,
     paletteTheme,
     theme,
@@ -47,18 +47,22 @@ export const SimpleTouchableSurface = reflexComponent<TouchableSurfaceProps>({
     children = children.props.children;
   }
 
-  const userChildrenProps = props.getChildrenProps
-    ? props.getChildrenProps(props)
-    : {};
-  const touchableProps = extractTouchableProps(props);
+  const patchTheme = props.getPatchTheme && props.getPatchTheme(props);
 
-  const updatedProps = {
-    ...props,
-    children,
-  };
+  let newProps = { ...props, children };
+  if (props.theme.getProps || (patchTheme && patchTheme.getProps)) {
+    newProps = {
+      ...newProps,
+      ...((props.theme.getProps && props.theme.getProps(props)) || {}),
+      ...((patchTheme && patchTheme.getProps && patchTheme.getProps(props)) ||
+        {}),
+    };
+  }
 
-  const Container = updatedProps.theme.container.component || DefaultViewChild;
-  const Touchable = props.theme.touchable.component || DefaultTouchableChild;
+  const Container =
+    (patchTheme && patchTheme.container && patchTheme.container.component) ||
+    (newProps.theme.container && newProps.theme.container.component) ||
+    DefaultViewChild;
 
   const containerProps = resolveChildProps<
     TouchableSurfaceProps,
@@ -66,16 +70,23 @@ export const SimpleTouchableSurface = reflexComponent<TouchableSurfaceProps>({
     ViewStyle
     // tslint:disable-next-line:ter-func-call-spacing
   >({
-    componentProps: updatedProps,
-    theme: updatedProps.theme.container,
-    userProps: userChildrenProps.container,
+    componentProps: newProps,
+    patchTheme: patchTheme && patchTheme.container,
+    theme: newProps.theme.container,
   });
+
+  const touchableProps = extractTouchableProps(props);
+
+  const Touchable =
+    (patchTheme && patchTheme.touchable && patchTheme.touchable.component) ||
+    (newProps.theme.touchable && newProps.theme.touchable.component) ||
+    DefaultTouchableChild;
 
   return (
     <Touchable componentProps={props} {...touchableProps}>
       <Container
-        componentProps={updatedProps}
-        onLayout={updatedProps.onLayout}
+        componentProps={newProps}
+        onLayout={newProps.onLayout}
         {...containerProps}
       >
         {children}

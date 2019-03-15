@@ -7,7 +7,9 @@
 
 import { BuiltInViewChildTheme } from '../view/ViewChildTheme';
 import { ListItemProps } from './ListItemProps';
+import { ListItemPropsOptionalGetter } from './ListItemPropsGetter';
 
 export interface ListItemTheme {
-  readonly container: BuiltInViewChildTheme<ListItemProps>;
+  readonly container?: BuiltInViewChildTheme<ListItemProps>;
+  readonly getProps?: ListItemPropsOptionalGetter<ListItemProps>;
 }

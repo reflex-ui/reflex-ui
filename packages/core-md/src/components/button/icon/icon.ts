@@ -5,10 +5,19 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ButtonProps, SvgChildTheme } from '@reflex-ui/core';
+import {
+  ButtonProps,
+  ComponentThemeGetter,
+  RfxSvgTheme,
+} from '@reflex-ui/core';
 
 import { getAllVariantsButtonIconProps } from '../all-variants/icon';
 
-export const iconButtonIconTheme: SvgChildTheme<ButtonProps> = {
-  getProps: getAllVariantsButtonIconProps,
-};
+export const getIconButtonIconTheme: ComponentThemeGetter<
+  ButtonProps,
+  RfxSvgTheme
+> = (props): RfxSvgTheme => ({
+  svg: {
+    getProps: () => getAllVariantsButtonIconProps(props),
+  },
+});

@@ -7,7 +7,9 @@
 
 import { BuiltInViewChildTheme } from '../view/ViewChildTheme';
 import { RfxViewProps } from './RfxViewProps';
+import { RfxViewPropsOptionalGetter } from './RfxViewPropsGetter';
 
 export interface RfxViewTheme {
-  readonly container: BuiltInViewChildTheme<RfxViewProps>;
+  readonly container?: BuiltInViewChildTheme<RfxViewProps>;
+  readonly getProps?: RfxViewPropsOptionalGetter<RfxViewProps>;
 }

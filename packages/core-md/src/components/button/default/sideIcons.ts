@@ -5,15 +5,56 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ButtonProps, SvgChildTheme } from '@reflex-ui/core';
+import {
+  ButtonProps,
+  ComponentThemeGetter,
+  RfxSvgTheme,
+  ViewStyleGetter,
+} from '@reflex-ui/core';
 
-// tslint:disable-next-line:max-line-length
-import { getAllVariantsButtonLeadingIconProps } from '../all-variants/sideIcons';
+import {
+  getAllVariantsButtonLeadingIconContainerStyle,
+  getAllVariantsButtonTrailingIconContainerStyle,
+} from '../all-variants/sideIconContainers';
+import {
+  getAllVariantsButtonLeadingIconProps,
+  getAllVariantsButtonTrailingIconProps,
+} from '../all-variants/sideIcons';
 
-export const defaultButtonLeadingIconTheme: SvgChildTheme<ButtonProps> = {
-  getProps: getAllVariantsButtonLeadingIconProps,
-};
-
-export const defaultButtonTrailingIconTheme: SvgChildTheme<
+export const getDefaultButtonLeadingIconContainerStyle: ViewStyleGetter<
   ButtonProps
-> = defaultButtonLeadingIconTheme;
+> = props => ({
+  ...getAllVariantsButtonLeadingIconContainerStyle(props),
+  marginStart: 0,
+});
+
+export const getDefaultButtonTrailingIconContainerStyle: ViewStyleGetter<
+  ButtonProps
+> = props => ({
+  ...getAllVariantsButtonTrailingIconContainerStyle(props),
+  marginEnd: 0,
+});
+
+export const getDefaultButtonLeadingIconTheme: ComponentThemeGetter<
+  ButtonProps,
+  RfxSvgTheme
+> = (props): RfxSvgTheme => ({
+  container: {
+    getStyle: () => getDefaultButtonLeadingIconContainerStyle(props),
+  },
+  svg: {
+    getProps: () => getAllVariantsButtonLeadingIconProps(props),
+  },
+});
+
+export const getDefaultButtonTrailingIconTheme: ComponentThemeGetter<
+  ButtonProps,
+  RfxSvgTheme
+> = (props): RfxSvgTheme => ({
+  container: {
+    getStyle: () => getAllVariantsButtonTrailingIconContainerStyle(props),
+  },
+  svg: {
+    getProps: () => getAllVariantsButtonTrailingIconProps(props),
+  },
+});

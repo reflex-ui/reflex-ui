@@ -5,21 +5,20 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { BuiltInTextChildTheme } from '../text/TextChildTheme';
-import { RfxTextProps } from './RfxTextProps';
+import { RfxTextTheme } from './RfxTextTheme';
 
 export interface RfxTextVariantsTheme {
-  readonly appBarTitle: BuiltInTextChildTheme<RfxTextProps>;
-  readonly caption: BuiltInTextChildTheme<RfxTextProps>;
-  readonly headline1: BuiltInTextChildTheme<RfxTextProps>;
-  readonly headline2: BuiltInTextChildTheme<RfxTextProps>;
-  readonly headline3: BuiltInTextChildTheme<RfxTextProps>;
-  readonly headline4: BuiltInTextChildTheme<RfxTextProps>;
-  readonly headline5: BuiltInTextChildTheme<RfxTextProps>;
-  readonly headline6: BuiltInTextChildTheme<RfxTextProps>;
-  readonly overline: BuiltInTextChildTheme<RfxTextProps>;
-  readonly paragraph1: BuiltInTextChildTheme<RfxTextProps>;
-  readonly paragraph2: BuiltInTextChildTheme<RfxTextProps>;
-  readonly subtitle1: BuiltInTextChildTheme<RfxTextProps>;
-  readonly subtitle2: BuiltInTextChildTheme<RfxTextProps>;
+  readonly appBarTitle: RfxTextTheme;
+  readonly caption: RfxTextTheme;
+  readonly headline1: RfxTextTheme;
+  readonly headline2: RfxTextTheme;
+  readonly headline3: RfxTextTheme;
+  readonly headline4: RfxTextTheme;
+  readonly headline5: RfxTextTheme;
+  readonly headline6: RfxTextTheme;
+  readonly overline: RfxTextTheme;
+  readonly paragraph1: RfxTextTheme;
+  readonly paragraph2: RfxTextTheme;
+  readonly subtitle1: RfxTextTheme;
+  readonly subtitle2: RfxTextTheme;
 }

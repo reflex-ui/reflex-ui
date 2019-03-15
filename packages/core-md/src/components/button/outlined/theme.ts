@@ -10,17 +10,17 @@ import merge from 'lodash/merge';
 
 import { containedButtonTheme } from '../contained/theme';
 import {
-  defaultButtonLeadingIconTheme,
-  defaultButtonTrailingIconTheme,
+  getDefaultButtonLeadingIconTheme,
+  getDefaultButtonTrailingIconTheme,
 } from '../default/sideIcons';
 import { outlinedButtonContainerTheme } from './container';
 import { outlinedButtonTextTheme } from './text';
 
 export const partialOutlinedButtonTheme: Partial<ButtonTheme> = {
   container: outlinedButtonContainerTheme,
-  leadingIcon: defaultButtonLeadingIconTheme,
+  getLeadingIcon: getDefaultButtonLeadingIconTheme,
+  getTrailingIcon: getDefaultButtonTrailingIconTheme,
   text: outlinedButtonTextTheme,
-  trailingIcon: defaultButtonTrailingIconTheme,
 };
 
 export const outlinedButtonTheme: ButtonTheme = merge<

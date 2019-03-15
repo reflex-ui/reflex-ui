@@ -7,10 +7,12 @@
 
 import { BuiltInViewChildTheme } from '../view/ViewChildTheme';
 import { AppBarProps } from './AppBarProps';
+import { AppBarPropsOptionalGetter } from './AppBarPropsGetter';
 
 export interface AppBarTheme {
-  readonly centerArea: BuiltInViewChildTheme<AppBarProps>;
-  readonly container: BuiltInViewChildTheme<AppBarProps>;
-  readonly leadingArea: BuiltInViewChildTheme<AppBarProps>;
-  readonly trailingArea: BuiltInViewChildTheme<AppBarProps>;
+  readonly centerArea?: BuiltInViewChildTheme<AppBarProps>;
+  readonly container?: BuiltInViewChildTheme<AppBarProps>;
+  readonly getProps?: AppBarPropsOptionalGetter<AppBarProps>;
+  readonly leadingArea?: BuiltInViewChildTheme<AppBarProps>;
+  readonly trailingArea?: BuiltInViewChildTheme<AppBarProps>;
 }

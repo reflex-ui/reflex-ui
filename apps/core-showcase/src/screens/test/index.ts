@@ -5,8 +5,4 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ViewProps } from 'react-native';
-
-export interface TouchableSurfaceChildrenProps {
-  readonly container?: ViewProps;
-}
+export * from './TestShowcaseScreen';

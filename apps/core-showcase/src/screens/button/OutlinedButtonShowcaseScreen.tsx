@@ -7,11 +7,12 @@
 
 import {
   Button,
-  ButtonChildrenProps,
-  ButtonChildrenPropsGetter,
+  ButtonProps,
   ButtonPropsOptional,
+  ButtonTheme,
   ButtonVariant,
   ColorTheme,
+  ComponentThemeGetter,
   InteractionType,
 } from '@reflex-ui/core';
 import {
@@ -24,18 +25,13 @@ import * as React from 'react';
 import { ButtonShowcaseScreen } from './ButtonShowcaseScreen';
 import { LabelButtonCollection } from './LabelButtonCollection';
 
-const getButtonProps: ButtonChildrenPropsGetter = ({
+const getButtonPatchTheme: ComponentThemeGetter<ButtonProps, ButtonTheme> = ({
   interactionState: { type: interactionType },
-}): ButtonChildrenProps => {
+}): ButtonTheme => {
   const backgroundColor = getOverlayColorByInteraction({
     color: '#c70ad0',
     type: interactionType,
   });
-
-  const borderColor =
-    interactionType === InteractionType.Disabled
-      ? disabledGrey300_500.normal.onColor
-      : '#c70ad0';
 
   const textColor =
     interactionType === InteractionType.Disabled
@@ -44,13 +40,17 @@ const getButtonProps: ButtonChildrenPropsGetter = ({
 
   return {
     container: {
-      style: { backgroundColor, borderColor },
+      getStyle: () => ({ backgroundColor, borderColor: textColor }),
     },
-    leadingIcon: { fill: textColor },
+    getLeadingIcon: () => ({
+      getProps: () => ({ fill: textColor }),
+    }),
+    getTrailingIcon: () => ({
+      getProps: () => ({ fill: textColor }),
+    }),
     text: {
-      style: { color: textColor },
+      getStyle: () => ({ color: textColor }),
     },
-    trailingIcon: { fill: textColor },
   };
 };
 
@@ -70,7 +70,7 @@ const OutlinedButtonShowcaseScreen: React.SFC = (): JSX.Element => (
     customCollections={[
       {
         colorTheme: ColorTheme.PrimaryNormal,
-        getChildrenProps: getButtonProps,
+        getPatchTheme: getButtonPatchTheme,
         surfaceColorTheme: ColorTheme.SurfaceNormal,
         title: 'custom',
         variant: ButtonVariant.Outlined,

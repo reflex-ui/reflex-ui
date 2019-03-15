@@ -9,12 +9,14 @@ import { ButtonProps, getThemedColor } from '@reflex-ui/core';
 import { StyleSheet } from 'react-native';
 
 export const getButtonRippleColor = (props: ButtonProps): string => {
-  const viewProps = props.getChildrenProps
-    ? props.getChildrenProps(props).container || {}
-    : {};
-  let color = viewProps.style
-    ? StyleSheet.flatten(viewProps.style).backgroundColor
-    : undefined;
+  const patchTheme = props.getPatchTheme && props.getPatchTheme(props);
+  const containerStyle =
+    patchTheme &&
+    patchTheme.container &&
+    patchTheme.container.getStyle &&
+    patchTheme.container.getStyle(props);
+  let color =
+    containerStyle && StyleSheet.flatten(containerStyle).backgroundColor;
 
   if (!color) color = getThemedColor(props);
 

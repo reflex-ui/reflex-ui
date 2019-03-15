@@ -11,11 +11,11 @@ import { ViewProps, ViewStyle } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 
 import { cloneElement } from '../../utils';
-import { resolveChildProps } from '../children';
+import { resolveChildProps } from '../children/resolveChildProps';
 import { reflexComponent } from '../reflexComponent';
 import { DefaultViewChild } from '../view';
-import { RfxSvgChildrenProps } from './RfxSvgChildrenProps';
 import { RfxSvgProps, RfxSvgPropsOptional } from './RfxSvgProps';
+import { RfxSvgTheme } from './RfxSvgTheme';
 
 export const extractSvgPropsFromRfxSvgProps = (
   props: RfxSvgProps,
@@ -23,7 +23,7 @@ export const extractSvgPropsFromRfxSvgProps = (
   const {
     children,
     colorTheme,
-    getChildrenProps,
+    getPatchTheme,
     interactionState,
     invertColor,
     margin,
@@ -45,7 +45,7 @@ export const extractSvgPropsFromRfxSvgProps = (
 
 const handleSvgChildren = (
   props: RfxSvgProps,
-  userChildrenProps: RfxSvgChildrenProps,
+  patchTheme: RfxSvgTheme | undefined,
 ): React.ReactNode => {
   const children = props.children as React.ReactElement<RfxSvgPropsOptional>;
   if (!children) return undefined;
@@ -56,10 +56,10 @@ const handleSvgChildren = (
 
   const svgProps = extractSvgPropsFromRfxSvgProps(props);
 
-  const themeProps = resolveChildProps<RfxSvgProps, SvgProps, ViewStyle>({
+  const themeProps = resolveChildProps<RfxSvgProps, ViewProps, ViewStyle>({
     componentProps: props,
+    patchTheme: patchTheme && patchTheme.svg,
     theme: props.theme.svg,
-    userProps: userChildrenProps.svg,
   });
 
   const mergedProps = merge({}, themeProps, svgProps);
@@ -75,22 +75,36 @@ export const SimpleRfxSvg = reflexComponent<RfxSvgProps>({
   name: 'SimpleRfxSvg',
 })((props: RfxSvgProps) => {
   let children: React.ReactNode;
-  const userChildrenProps = props.getChildrenProps
-    ? props.getChildrenProps(props)
-    : {};
-  if (props.children) children = handleSvgChildren(props, userChildrenProps);
-  if (props.skipContainer) return <React.Fragment>{children}</React.Fragment>;
+  const patchTheme = props.getPatchTheme && props.getPatchTheme(props);
 
-  const Container = props.theme.container.component || DefaultViewChild;
+  let newProps = props;
+  if (props.theme.getProps || (patchTheme && patchTheme.getProps)) {
+    newProps = {
+      ...newProps,
+      ...((props.theme.getProps && props.theme.getProps(props)) || {}),
+      ...((patchTheme && patchTheme.getProps && patchTheme.getProps(props)) ||
+        {}),
+    };
+  }
+
+  if (newProps.children) children = handleSvgChildren(newProps, patchTheme);
+  if (newProps.skipContainer) {
+    return <React.Fragment>{children}</React.Fragment>;
+  }
+
+  const Container =
+    (patchTheme && patchTheme.container && patchTheme.container.component) ||
+    (newProps.theme.container && newProps.theme.container.component) ||
+    DefaultViewChild;
 
   const containerProps = resolveChildProps<RfxSvgProps, ViewProps, ViewStyle>({
-    componentProps: props,
-    theme: props.theme.container,
-    userProps: userChildrenProps.container,
+    componentProps: newProps,
+    patchTheme: patchTheme && patchTheme.container,
+    theme: newProps.theme.container,
   });
 
   return (
-    <Container componentProps={props} {...containerProps}>
+    <Container componentProps={newProps} {...containerProps}>
       {children}
     </Container>
   );

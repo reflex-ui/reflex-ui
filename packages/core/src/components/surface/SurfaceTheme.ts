@@ -7,7 +7,9 @@
 
 import { BuiltInViewChildTheme } from '../view/ViewChildTheme';
 import { SurfaceProps } from './SurfaceProps';
+import { SurfacePropsOptionalGetter } from './SurfacePropsGetter';
 
 export interface SurfaceTheme {
-  readonly container: BuiltInViewChildTheme<SurfaceProps>;
+  readonly container?: BuiltInViewChildTheme<SurfaceProps>;
+  readonly getProps?: SurfacePropsOptionalGetter<SurfaceProps>;
 }

@@ -5,12 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  BuiltInViewChildTheme,
-  ButtonProps,
-  SizedData,
-  ViewStyleGetter,
-} from '@reflex-ui/core';
+import { ButtonProps, SizedData, ViewStyleGetter } from '@reflex-ui/core';
 
 import { ViewStyle } from 'react-native';
 
@@ -57,13 +52,6 @@ export const getAllVariantsButtonLeadingIconContainerStyle: ViewStyleGetter<
   ButtonProps
 > = props => allVariantsButtonLeadingIconContainerSizedStyle[props.size];
 
-// tslint:disable-next-line:max-line-length
-export const allVariantsButtonLeadingIconContainerTheme: BuiltInViewChildTheme<
-  ButtonProps
-> = {
-  getStyle: getAllVariantsButtonLeadingIconContainerStyle,
-};
-
 export const allVariantsButtonTrailingIconContainerSizedStyle: SizedData<
   ViewStyle
 > = {
@@ -106,9 +94,3 @@ export const allVariantsButtonTrailingIconContainerSizedStyle: SizedData<
 export const getAllVariantsButtonTrailingIconContainerStyle: ViewStyleGetter<
   ButtonProps
 > = ({ size }) => allVariantsButtonTrailingIconContainerSizedStyle[size];
-
-export const allVariantsButtonTrailingIconContainerTheme: BuiltInViewChildTheme<
-  ButtonProps
-> = {
-  getStyle: getAllVariantsButtonTrailingIconContainerStyle,
-};

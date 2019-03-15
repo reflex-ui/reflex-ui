@@ -6,9 +6,8 @@
  */
 
 export * from './AppBar';
-export * from './AppBarChildrenProps';
-export * from './AppBarChildrenPropsGetter';
 export * from './AppBarProps';
+export * from './AppBarPropsGetter';
 export * from './AppBarTheme';
 export * from './AppBarVariant';
 export * from './AppBarVariantsTheme';

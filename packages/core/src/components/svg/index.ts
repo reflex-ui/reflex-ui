@@ -6,9 +6,8 @@
  */
 
 export * from './RfxSvg';
-export * from './RfxSvgChildrenProps';
-export * from './RfxSvgChildrenPropsGetter';
 export * from './RfxSvgProps';
+export * from './RfxSvgPropsGetter';
 export * from './RfxSvgTheme';
 export * from './RfxSvgVariantsTheme';
 export * from './SimpleRfxSvg';

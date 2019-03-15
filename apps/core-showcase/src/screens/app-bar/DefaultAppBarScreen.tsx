@@ -7,14 +7,15 @@
 
 import {
   AppBar,
-  AppBarChildrenProps,
-  AppBarChildrenPropsGetter,
+  AppBarProps,
+  AppBarTheme,
   AppBarTitle,
   AppBarVariant,
   Button,
   ButtonVariant,
   Caption,
   ColorTheme,
+  ComponentThemeGetter,
   Row,
   Size,
 } from '@reflex-ui/core';
@@ -32,23 +33,20 @@ const onButtonPress = () => {
   console.log('DefaultButtonScreen().onButtonPress()');
 };
 
-const getAppBarChildrenProps: AppBarChildrenPropsGetter = ({
+const getAppBarPatchTheme: ComponentThemeGetter<AppBarProps, AppBarTheme> = ({
   dimensions,
   breakpoints,
-}): AppBarChildrenProps => ({
+}): AppBarTheme => ({
   centerArea: {
-    style: {
+    getStyle: () => ({
       marginStart: dimensions.window.width > breakpoints.largeHandset ? 10 : 4,
-    },
+    }),
   },
 });
 
 const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
-    <AppBar
-      getChildrenProps={getAppBarChildrenProps}
-      variant={AppBarVariant.Default}
-    >
+    <AppBar getPatchTheme={getAppBarPatchTheme} variant={AppBarVariant.Default}>
       <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
         <MenuIcon />
       </Button>
@@ -85,7 +83,7 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
     </Caption>
     <Row>
       <AppBar
-        getChildrenProps={getAppBarChildrenProps}
+        getPatchTheme={getAppBarPatchTheme}
         variant={AppBarVariant.Default}
       >
         <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>

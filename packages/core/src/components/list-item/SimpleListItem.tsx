@@ -9,7 +9,7 @@ import * as React from 'react';
 import * as ReactIs from 'react-is';
 import { ViewProps, ViewStyle } from 'react-native';
 
-import { resolveChildProps } from '../children';
+import { resolveChildProps } from '../children/resolveChildProps';
 import { reflexComponent } from '../reflexComponent';
 import { DefaultViewChild } from '../view';
 import { ListItemProps } from './ListItemProps';
@@ -26,29 +26,38 @@ export const SimpleListItem = reflexComponent<ListItemProps>({
     children = children.props.children;
   }
 
-  const userChildrenProps = props.getChildrenProps
-    ? props.getChildrenProps(props)
-    : {};
+  const patchTheme = props.getPatchTheme && props.getPatchTheme(props);
 
-  const updatedProps = {
-    ...props,
-    children,
-  };
+  let newProps = { ...props, children };
+  if (props.theme.getProps || (patchTheme && patchTheme.getProps)) {
+    newProps = {
+      ...newProps,
+      ...((props.theme.getProps && props.theme.getProps(props)) || {}),
+      ...((patchTheme && patchTheme.getProps && patchTheme.getProps(props)) ||
+        {}),
+    };
+  }
 
-  const Container = updatedProps.theme.container.component || DefaultViewChild;
+  const Container =
+    (patchTheme && patchTheme.container && patchTheme.container.component) ||
+    (newProps.theme.container && newProps.theme.container.component) ||
+    DefaultViewChild;
 
-  const containerProps = resolveChildProps<ListItemProps, ViewProps, ViewStyle>(
-    {
-      componentProps: updatedProps,
-      theme: updatedProps.theme.container,
-      userProps: userChildrenProps.container,
-    },
-  );
+  const containerProps = resolveChildProps<
+    ListItemProps,
+    ViewProps,
+    ViewStyle
+    // tslint:disable-next-line:ter-func-call-spacing
+  >({
+    componentProps: newProps,
+    patchTheme: patchTheme && patchTheme.container,
+    theme: newProps.theme.container,
+  });
 
   return (
     <Container
-      componentProps={updatedProps}
-      onLayout={updatedProps.onLayout}
+      componentProps={newProps}
+      onLayout={newProps.onLayout}
       {...containerProps}
     >
       {children}

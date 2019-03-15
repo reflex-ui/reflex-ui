@@ -7,11 +7,12 @@
 
 import {
   Button,
-  ButtonChildrenProps,
-  ButtonChildrenPropsGetter,
+  ButtonProps,
   ButtonPropsOptional,
+  ButtonTheme,
   ButtonVariant,
   ColorTheme,
+  ComponentThemeGetter,
   InteractionType,
 } from '@reflex-ui/core';
 import {
@@ -24,9 +25,9 @@ import * as React from 'react';
 import { ButtonShowcaseScreen } from './ButtonShowcaseScreen';
 import { IconButtonCollection } from './IconButtonCollection';
 
-const getButtonProps: ButtonChildrenPropsGetter = ({
+const getButtonPatchTheme: ComponentThemeGetter<ButtonProps, ButtonTheme> = ({
   interactionState: { type: interactionType },
-}): ButtonChildrenProps => {
+}): ButtonTheme => {
   const backgroundColor =
     interactionType === InteractionType.Disabled
       ? disabledGrey300_500.normal.color
@@ -43,9 +44,11 @@ const getButtonProps: ButtonChildrenPropsGetter = ({
 
   return {
     container: {
-      style: { backgroundColor },
+      getStyle: () => ({ backgroundColor }),
     },
-    icon: { fill: iconColor },
+    getIcon: () => ({
+      getProps: () => ({ fill: iconColor }),
+    }),
   };
 };
 
@@ -61,7 +64,7 @@ const FabButtonShowcaseScreen: React.SFC = (): JSX.Element => (
     customCollections={[
       {
         colorTheme: ColorTheme.PrimaryNormal,
-        getChildrenProps: getButtonProps,
+        getPatchTheme: getButtonPatchTheme,
         surfaceColorTheme: ColorTheme.SurfaceNormal,
         title: 'custom',
         variant: ButtonVariant.Fab,

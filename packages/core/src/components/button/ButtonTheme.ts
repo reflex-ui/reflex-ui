@@ -5,20 +5,20 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { SvgChildTheme } from '../svg/SvgChildTheme';
+import { ComponentThemeGetter } from '../ComponentThemeGetter';
+import { RfxSvgTheme } from '../svg/RfxSvgTheme';
 import { BuiltInTextChildTheme } from '../text/TextChildTheme';
 import { BuiltInTouchableChildTheme } from '../touchable/TouchableChildTheme';
 import { BuiltInViewChildTheme } from '../view/ViewChildTheme';
 import { ButtonProps } from './ButtonProps';
+import { ButtonPropsOptionalGetter } from './ButtonPropsGetter';
 
 export interface ButtonTheme {
-  readonly container: BuiltInViewChildTheme<ButtonProps>;
-  readonly icon: SvgChildTheme<ButtonProps>;
-  readonly iconContainer: BuiltInViewChildTheme<ButtonProps>;
-  readonly leadingIcon: SvgChildTheme<ButtonProps>;
-  readonly leadingIconContainer: BuiltInViewChildTheme<ButtonProps>;
-  readonly text: BuiltInTextChildTheme<ButtonProps>;
-  readonly touchable: BuiltInTouchableChildTheme<ButtonProps>;
-  readonly trailingIcon: SvgChildTheme<ButtonProps>;
-  readonly trailingIconContainer: BuiltInViewChildTheme<ButtonProps>;
+  readonly container?: BuiltInViewChildTheme<ButtonProps>;
+  readonly getIcon?: ComponentThemeGetter<ButtonProps, RfxSvgTheme>;
+  readonly getLeadingIcon?: ComponentThemeGetter<ButtonProps, RfxSvgTheme>;
+  readonly getProps?: ButtonPropsOptionalGetter<ButtonProps>;
+  readonly text?: BuiltInTextChildTheme<ButtonProps>;
+  readonly touchable?: BuiltInTouchableChildTheme<ButtonProps>;
+  readonly getTrailingIcon?: ComponentThemeGetter<ButtonProps, RfxSvgTheme>;
 }

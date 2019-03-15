@@ -10,6 +10,7 @@ export * from './button';
 export * from './children';
 export * from './ComponentsTheme';
 export * from './ComponentsThemeContext';
+export * from './ComponentThemeGetter';
 export * from './list';
 export * from './list-item';
 export * from './PropsGetter';

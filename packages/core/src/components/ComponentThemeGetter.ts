@@ -5,8 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ViewProps } from 'react-native';
-
-export interface SurfaceChildrenProps {
-  readonly container?: ViewProps;
-}
+export type ComponentThemeGetter<ComponentProps, ComponentTheme> = (
+  props: ComponentProps,
+) => ComponentTheme;

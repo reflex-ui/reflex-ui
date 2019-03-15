@@ -9,29 +9,37 @@ import * as React from 'react';
 import * as ReactIs from 'react-is';
 import { ViewProps, ViewStyle } from 'react-native';
 
-import { resolveChildProps } from '../children';
+import { resolveChildProps } from '../children/resolveChildProps';
 import { reflexComponent } from '../reflexComponent';
 import { DefaultViewChild } from '../view/DefaultViewChild';
-import { AppBarChildrenProps } from './AppBarChildrenProps';
 import { AppBarProps } from './AppBarProps';
+import { AppBarTheme } from './AppBarTheme';
 
 export const renderCenterArea = (
   props: AppBarProps,
-  userChildrenProps: AppBarChildrenProps,
+  patchTheme: AppBarTheme | undefined,
 ): React.ReactNode => {
   const { children } = props;
   if (!children) return children;
 
   if (Array.isArray(children) && children.length > 1) {
-    const Container = props.theme.centerArea.component || DefaultViewChild;
+    const Container =
+      (patchTheme &&
+        patchTheme.centerArea &&
+        patchTheme.centerArea.component) ||
+      (props.theme.centerArea && props.theme.centerArea.component) ||
+      DefaultViewChild;
 
-    const containerProps = resolveChildProps<AppBarProps, ViewProps, ViewStyle>(
-      {
-        componentProps: props,
-        theme: props.theme.centerArea,
-        userProps: userChildrenProps.centerArea,
-      },
-    );
+    const containerProps = resolveChildProps<
+      AppBarProps,
+      ViewProps,
+      ViewStyle
+      // tslint:disable-next-line:ter-func-call-spacing
+    >({
+      componentProps: props,
+      patchTheme: patchTheme && patchTheme.centerArea,
+      theme: props.theme.centerArea,
+    });
 
     return (
       <Container componentProps={props} {...containerProps}>
@@ -45,19 +53,24 @@ export const renderCenterArea = (
 
 export const renderLeadingArea = (
   props: AppBarProps,
-  userChildrenProps: AppBarChildrenProps,
+  patchTheme: AppBarTheme | undefined,
 ): React.ReactNode => {
   const { children } = props;
   if (!children) return children;
   if (typeof children === 'function') return children(props);
   const leadingChildren = Array.isArray(children) ? children[0] : children;
 
-  const Container = props.theme.leadingArea.component || DefaultViewChild;
+  const Container =
+    (patchTheme &&
+      patchTheme.leadingArea &&
+      patchTheme.leadingArea.component) ||
+    (props.theme.leadingArea && props.theme.leadingArea.component) ||
+    DefaultViewChild;
 
   const containerProps = resolveChildProps<AppBarProps, ViewProps, ViewStyle>({
     componentProps: props,
+    patchTheme: patchTheme && patchTheme.leadingArea,
     theme: props.theme.leadingArea,
-    userProps: userChildrenProps.leadingArea,
   });
 
   return (
@@ -69,21 +82,29 @@ export const renderLeadingArea = (
 
 export const renderTrailingArea = (
   props: AppBarProps,
-  userChildrenProps: AppBarChildrenProps,
+  patchTheme: AppBarTheme | undefined,
 ): React.ReactNode => {
   const { children } = props;
   if (!children) return children;
 
   if (Array.isArray(children) && children.length > 2) {
-    const Container = props.theme.trailingArea.component || DefaultViewChild;
+    const Container =
+      (patchTheme &&
+        patchTheme.trailingArea &&
+        patchTheme.trailingArea.component) ||
+      (props.theme.trailingArea && props.theme.trailingArea.component) ||
+      DefaultViewChild;
 
-    const containerProps = resolveChildProps<AppBarProps, ViewProps, ViewStyle>(
-      {
-        componentProps: props,
-        theme: props.theme.trailingArea,
-        userProps: userChildrenProps.trailingArea,
-      },
-    );
+    const containerProps = resolveChildProps<
+      AppBarProps,
+      ViewProps,
+      ViewStyle
+      // tslint:disable-next-line:ter-func-call-spacing
+    >({
+      componentProps: props,
+      patchTheme: patchTheme && patchTheme.trailingArea,
+      theme: props.theme.trailingArea,
+    });
 
     return (
       <Container componentProps={props} {...containerProps}>
@@ -116,32 +137,38 @@ export const SimpleAppBar = reflexComponent<AppBarProps>({
     );
   }
 
-  const userChildrenProps = props.getChildrenProps
-    ? props.getChildrenProps(props)
-    : {};
+  const patchTheme = props.getPatchTheme && props.getPatchTheme(props);
 
-  const updatedProps = {
-    ...props,
-    children,
-  };
+  let newProps = { ...props, children };
+  if (props.theme.getProps || (patchTheme && patchTheme.getProps)) {
+    newProps = {
+      ...newProps,
+      ...((props.theme.getProps && props.theme.getProps(props)) || {}),
+      ...((patchTheme && patchTheme.getProps && patchTheme.getProps(props)) ||
+        {}),
+    };
+  }
 
-  const Container = updatedProps.theme.container.component || DefaultViewChild;
+  const Container =
+    (patchTheme && patchTheme.container && patchTheme.container.component) ||
+    (newProps.theme.container && newProps.theme.container.component) ||
+    DefaultViewChild;
 
   const containerProps = resolveChildProps<AppBarProps, ViewProps, ViewStyle>({
-    componentProps: updatedProps,
-    theme: updatedProps.theme.container,
-    userProps: userChildrenProps.container,
+    componentProps: newProps,
+    patchTheme: patchTheme && patchTheme.container,
+    theme: newProps.theme.container,
   });
 
   return (
     <Container
-      componentProps={updatedProps}
-      onLayout={updatedProps.onLayout}
+      componentProps={newProps}
+      onLayout={newProps.onLayout}
       {...containerProps}
     >
-      {renderLeadingArea(updatedProps, userChildrenProps)}
-      {renderCenterArea(updatedProps, userChildrenProps)}
-      {renderTrailingArea(updatedProps, userChildrenProps)}
+      {renderLeadingArea(newProps, patchTheme)}
+      {renderCenterArea(newProps, patchTheme)}
+      {renderTrailingArea(newProps, patchTheme)}
     </Container>
   );
 });

@@ -6,15 +6,17 @@
  */
 
 import {
-  ButtonChildrenPropsGetter,
+  ButtonProps,
+  ButtonTheme,
   ButtonVariant,
   ColorTheme,
+  ComponentThemeGetter,
   Size,
 } from '@reflex-ui/core';
 
 export interface ButtonCollectionProps {
   readonly colorTheme: ColorTheme;
-  readonly getChildrenProps?: ButtonChildrenPropsGetter;
+  readonly getPatchTheme?: ComponentThemeGetter<ButtonProps, ButtonTheme>;
   readonly invertColor?: boolean;
   readonly onPress?: () => void;
   readonly showDisabled?: boolean;

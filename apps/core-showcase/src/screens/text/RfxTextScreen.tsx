@@ -8,6 +8,7 @@
 import {
   Caption,
   ColorTheme,
+  ComponentThemeGetter,
   Headline1,
   Headline2,
   Headline3,
@@ -17,18 +18,27 @@ import {
   Overline,
   Paragraph1,
   Paragraph2,
+  RfxTextProps,
+  RfxTextTheme,
   Size,
   Subtitle1,
   Subtitle2,
   Surface,
 } from '@reflex-ui/core';
 import * as React from 'react';
-import { ScrollView, TextStyle } from 'react-native';
+import { ScrollView } from 'react-native';
 
-const captionStyle: TextStyle = {
-  color: 'red',
-  fontSize: 20,
-};
+const getCaptionPatchTheme: ComponentThemeGetter<
+  RfxTextProps,
+  RfxTextTheme
+> = () => ({
+  text: {
+    getStyle: () => ({
+      color: 'red',
+      fontSize: 20,
+    }),
+  },
+});
 
 const RfxTextScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
@@ -56,7 +66,11 @@ const RfxTextScreen: React.SFC = (): JSX.Element => (
       <Caption marginVertical={Size.XS} selectable>
         Caption lorem ipsum.
       </Caption>
-      <Caption marginVertical={Size.XS} selectable style={captionStyle}>
+      <Caption
+        getPatchTheme={getCaptionPatchTheme}
+        marginVertical={Size.XS}
+        selectable
+      >
         Caption lorem ipsum.
       </Caption>
       <Overline marginVertical={Size.XS}>Hello Overline</Overline>

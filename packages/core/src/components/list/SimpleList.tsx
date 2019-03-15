@@ -9,7 +9,7 @@ import * as React from 'react';
 import * as ReactIs from 'react-is';
 import { ViewProps, ViewStyle } from 'react-native';
 
-import { resolveChildProps } from '../children';
+import { resolveChildProps } from '../children/resolveChildProps';
 import { reflexComponent } from '../reflexComponent';
 import { DefaultViewChild } from '../view';
 import { ListProps } from './ListProps';
@@ -26,27 +26,33 @@ export const SimpleList = reflexComponent<ListProps>({
     children = children.props.children;
   }
 
-  const userChildrenProps = props.getChildrenProps
-    ? props.getChildrenProps(props)
-    : {};
+  const patchTheme = props.getPatchTheme && props.getPatchTheme(props);
 
-  const updatedProps = {
-    ...props,
-    children,
-  };
+  let newProps = { ...props, children };
+  if (props.theme.getProps || (patchTheme && patchTheme.getProps)) {
+    newProps = {
+      ...newProps,
+      ...((props.theme.getProps && props.theme.getProps(props)) || {}),
+      ...((patchTheme && patchTheme.getProps && patchTheme.getProps(props)) ||
+        {}),
+    };
+  }
 
-  const Container = updatedProps.theme.container.component || DefaultViewChild;
+  const Container =
+    (patchTheme && patchTheme.container && patchTheme.container.component) ||
+    (newProps.theme.container && newProps.theme.container.component) ||
+    DefaultViewChild;
 
   const containerProps = resolveChildProps<ListProps, ViewProps, ViewStyle>({
-    componentProps: updatedProps,
-    theme: updatedProps.theme.container,
-    userProps: userChildrenProps.container,
+    componentProps: newProps,
+    patchTheme: patchTheme && patchTheme.container,
+    theme: newProps.theme.container,
   });
 
   return (
     <Container
-      componentProps={updatedProps}
-      onLayout={updatedProps.onLayout}
+      componentProps={newProps}
+      onLayout={newProps.onLayout}
       {...containerProps}
     >
       {children}

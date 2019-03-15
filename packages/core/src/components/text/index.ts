@@ -22,6 +22,8 @@ export * from './Paragraph1';
 export * from './Paragraph2';
 export * from './RfxText';
 export * from './RfxTextProps';
+export * from './RfxTextPropsGetter';
+export * from './RfxTextTheme';
 export * from './RfxTextVariantsTheme';
 export * from './Subtitle1';
 export * from './Subtitle2';

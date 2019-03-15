@@ -11,12 +11,14 @@ import {
   AppBar,
   AppBarTitle,
   Button,
-  ButtonChildrenPropsGetter,
+  ButtonProps,
   ButtonPropsOptional,
+  ButtonTheme,
   ButtonVariant,
   Caption,
   ColorTheme,
   Column,
+  ComponentThemeGetter,
   errorColorThemes,
   FlexDirection,
   Headline6,
@@ -53,7 +55,7 @@ export const colorThemes: ColorTheme[] = [
 
 export interface CustomButtonCollection {
   readonly colorTheme: ColorTheme;
-  readonly getChildrenProps?: ButtonChildrenPropsGetter;
+  readonly getPatchTheme?: ComponentThemeGetter<ButtonProps, ButtonTheme>;
   readonly surfaceColorTheme: ColorTheme;
   readonly title: string;
   readonly variant: ButtonVariant;
@@ -196,7 +198,7 @@ const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
                     </Paragraph1>
                     <ButtonCollection
                       colorTheme={custom.colorTheme}
-                      getChildrenProps={custom.getChildrenProps}
+                      getPatchTheme={custom.getPatchTheme}
                       onPress={onButtonPress}
                       variant={custom.variant}
                     />

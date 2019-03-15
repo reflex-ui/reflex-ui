@@ -8,7 +8,7 @@
 import * as React from 'react';
 import { ViewProps, ViewStyle } from 'react-native';
 
-import { resolveChildProps } from '../children';
+import { resolveChildProps } from '../children/resolveChildProps';
 import { reflexComponent } from '../reflexComponent';
 import { DefaultViewChild } from './DefaultViewChild';
 import { RfxViewProps } from './RfxViewProps';
@@ -16,31 +16,38 @@ import { RfxViewProps } from './RfxViewProps';
 export const RfxView = reflexComponent<RfxViewProps>({
   name: 'View',
 })((props: RfxViewProps) => {
-  const userChildrenProps = props.getProps ? props.getProps(props) : {};
-
   const children =
     props.children && typeof props.children === 'function'
       ? props.children(props)
       : props.children;
 
-  const updatedProps = {
-    ...props,
-    ...userChildrenProps.props,
-    children,
-  };
+  const patchTheme = props.getPatchTheme && props.getPatchTheme(props);
 
-  const Container = updatedProps.theme.container.component || DefaultViewChild;
+  let newProps = { ...props, children };
+  if (props.theme.getProps || (patchTheme && patchTheme.getProps)) {
+    newProps = {
+      ...newProps,
+      ...((props.theme.getProps && props.theme.getProps(props)) || {}),
+      ...((patchTheme && patchTheme.getProps && patchTheme.getProps(props)) ||
+        {}),
+    };
+  }
+
+  const Container =
+    (patchTheme && patchTheme.container && patchTheme.container.component) ||
+    (newProps.theme.container && newProps.theme.container.component) ||
+    DefaultViewChild;
 
   const containerProps = resolveChildProps<RfxViewProps, ViewProps, ViewStyle>({
-    componentProps: updatedProps,
-    theme: updatedProps.theme.container,
-    userProps: userChildrenProps.container,
+    componentProps: newProps,
+    patchTheme: patchTheme && patchTheme.container,
+    theme: newProps.theme.container,
   });
 
   return (
     <Container
-      componentProps={updatedProps}
-      onLayout={updatedProps.onLayout}
+      componentProps={newProps}
+      onLayout={newProps.onLayout}
       {...containerProps}
     >
       {children}

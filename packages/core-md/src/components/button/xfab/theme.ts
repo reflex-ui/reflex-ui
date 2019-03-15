@@ -11,20 +11,14 @@ import merge from 'lodash/merge';
 import { fabButtonTheme } from '../fab/theme';
 import { xfabButtonContainerTheme } from './container';
 import {
-  xfabButtonLeadingIconContainerTheme,
-  xfabButtonTrailingIconContainerTheme,
-} from './sideIconContainers';
-import {
-  xfabButtonLeadingIconTheme,
-  xfabButtonTrailingIconTheme,
+  getXfabButtonLeadingIconTheme,
+  getXfabButtonTrailingIconTheme,
 } from './sideIcons';
 
 export const partialXFabButtonTheme: Partial<ButtonTheme> = {
   container: xfabButtonContainerTheme,
-  leadingIcon: xfabButtonLeadingIconTheme,
-  leadingIconContainer: xfabButtonLeadingIconContainerTheme,
-  trailingIcon: xfabButtonTrailingIconTheme,
-  trailingIconContainer: xfabButtonTrailingIconContainerTheme,
+  getLeadingIcon: getXfabButtonLeadingIconTheme,
+  getTrailingIcon: getXfabButtonTrailingIconTheme,
 };
 
 export const xfabButtonTheme: ButtonTheme = merge<

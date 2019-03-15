@@ -8,25 +8,16 @@
 import { ButtonTheme } from '@reflex-ui/core';
 
 import { defaultButtonContainerTheme } from './container';
-import { defaultButtonIconTheme } from './icon';
 import {
-  defaultButtonLeadingIconContainerTheme,
-  defaultButtonTrailingIconContainerTheme,
-} from './sideIconContainers';
-import {
-  defaultButtonLeadingIconTheme,
-  defaultButtonTrailingIconTheme,
+  getDefaultButtonLeadingIconTheme,
+  getDefaultButtonTrailingIconTheme,
 } from './sideIcons';
 import { defaultButtonTextTheme } from './text';
 
 export const defaultButtonTheme: ButtonTheme = {
   container: defaultButtonContainerTheme,
-  icon: defaultButtonIconTheme,
-  iconContainer: {},
-  leadingIcon: defaultButtonLeadingIconTheme,
-  leadingIconContainer: defaultButtonLeadingIconContainerTheme,
+  getLeadingIcon: getDefaultButtonLeadingIconTheme,
+  getTrailingIcon: getDefaultButtonTrailingIconTheme,
   text: defaultButtonTextTheme,
   touchable: {},
-  trailingIcon: defaultButtonTrailingIconTheme,
-  trailingIconContainer: defaultButtonTrailingIconContainerTheme,
 };

@@ -10,11 +10,11 @@ import merge from 'lodash/merge';
 
 import { defaultButtonTheme } from '../default/theme';
 import { iconButtonContainerTheme } from './container';
-import { iconButtonIconTheme } from './icon';
+import { getIconButtonIconTheme } from './icon';
 
 export const partialIconButtonTheme: Partial<ButtonTheme> = {
   container: iconButtonContainerTheme,
-  icon: iconButtonIconTheme,
+  getIcon: getIconButtonIconTheme,
 };
 
 export const iconButtonTheme: ButtonTheme = merge<

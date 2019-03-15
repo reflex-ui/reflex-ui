@@ -13,21 +13,20 @@ import {
   ViewProps,
   ViewStyle,
 } from 'react-native';
-import { SvgProps } from 'react-native-svg';
 
 import { cloneElement } from '../../utils';
-import { BuiltInChildProps, resolveChildProps } from '../children';
+import { mergeThemes } from '../children/mergeThemes';
+import { resolveChildProps } from '../children/resolveChildProps';
 import { reflexComponent } from '../reflexComponent';
 import { RfxSvgPropsOptional } from '../svg/RfxSvgProps';
-import { SvgChildTheme } from '../svg/SvgChildTheme';
+import { RfxSvgTheme } from '../svg/RfxSvgTheme';
 import { DefaultTextChild } from '../text/DefaultTextChild';
 // tslint:disable-next-line:max-line-length
 import { handleAndroidTextTransformation } from '../text/handleAndroidTextTransformation';
 import { DefaultTouchableChild } from '../touchable/DefaultTouchableChild';
 import { DefaultViewChild } from '../view/DefaultViewChild';
-import { BuiltInViewChildTheme } from '../view/ViewChildTheme';
-import { ButtonChildrenProps } from './ButtonChildrenProps';
 import { ButtonProps } from './ButtonProps';
+import { ButtonTheme } from './ButtonTheme';
 import { ButtonVariant } from './ButtonVariant';
 
 export const extractTouchablePropsFromButtonProps = (
@@ -37,7 +36,7 @@ export const extractTouchablePropsFromButtonProps = (
     children,
     colorTheme,
     fullWidth,
-    getChildrenProps,
+    getPatchTheme,
     interactionState,
     invertColor,
     leadingIcon,
@@ -61,7 +60,7 @@ export const extractTouchablePropsFromButtonProps = (
 
 export const handleButtonChildren = (
   props: ButtonProps,
-  userChildrenProps: ButtonChildrenProps,
+  patchTheme: ButtonTheme | undefined,
 ): React.ReactNode => {
   const { children } = props;
   if (!children) return undefined;
@@ -74,7 +73,7 @@ export const handleButtonChildren = (
     return transformButtonStringChildrenIntoComponent(
       children.toString(),
       props,
-      userChildrenProps,
+      patchTheme,
     );
   }
 
@@ -83,13 +82,11 @@ export const handleButtonChildren = (
     props.variant === ButtonVariant.Icon
   ) {
     return handleButtonIcon({
-      Container: props.theme.iconContainer.component || DefaultViewChild,
-      containerTheme: props.theme.iconContainer,
       icon: children as React.ReactElement<RfxSvgPropsOptional>,
-      iconTheme: props.theme.icon,
+      iconTheme: props.theme.getIcon && props.theme.getIcon(props),
+      patchIconTheme:
+        patchTheme && patchTheme.getIcon && patchTheme.getIcon(props),
       props,
-      userContainerProps: userChildrenProps.iconContainer,
-      userIconProps: userChildrenProps.icon,
     });
   }
 
@@ -99,14 +96,17 @@ export const handleButtonChildren = (
 export const transformButtonStringChildrenIntoComponent = (
   children: string,
   props: ButtonProps,
-  userChildrenProps: ButtonChildrenProps,
+  patchTheme: ButtonTheme | undefined,
 ): JSX.Element => {
-  const Text = props.theme.text.component || DefaultTextChild;
+  const Text =
+    (patchTheme && patchTheme.text && patchTheme.text.component) ||
+    (props.theme.text && props.theme.text.component) ||
+    DefaultTextChild;
 
   const textProps = resolveChildProps<ButtonProps, TextProps, TextStyle>({
     componentProps: props,
+    patchTheme: patchTheme && patchTheme.text,
     theme: props.theme.text,
-    userProps: userChildrenProps.text,
   });
 
   return (
@@ -116,106 +116,120 @@ export const transformButtonStringChildrenIntoComponent = (
   );
 };
 
-export interface HandleButtonIconData {
-  readonly Container: React.ComponentType<
-    BuiltInChildProps<ButtonProps> & ViewProps
-  >;
-  readonly containerTheme: BuiltInViewChildTheme<ButtonProps>;
+export interface ButtonIconHandlerInput {
   readonly icon: React.ReactElement<RfxSvgPropsOptional>;
-  readonly iconTheme: SvgChildTheme<ButtonProps>;
+  readonly iconTheme?: RfxSvgTheme;
+  readonly patchIconTheme?: RfxSvgTheme;
   readonly props: ButtonProps;
-  readonly userContainerProps?: ViewProps;
-  readonly userIconProps?: TextProps;
 }
 
 export const handleButtonIcon = (
-  data: HandleButtonIconData,
+  data: ButtonIconHandlerInput,
 ): JSX.Element | undefined => {
-  const containerProps = resolveChildProps<ButtonProps, ViewProps, ViewStyle>({
-    componentProps: data.props,
-    theme: data.containerTheme,
-    userProps: data.userContainerProps,
-  });
-
   const iconProps: RfxSvgPropsOptional = {
     colorTheme: data.props.colorTheme,
-    getChildrenProps: () => ({
-      svg: {
-        ...resolveChildProps<ButtonProps, SvgProps, ViewStyle>({
-          componentProps: data.props,
-          theme: data.iconTheme,
-          userProps: data.userIconProps,
-        }),
-      },
-    }),
-    skipContainer: true,
   };
 
-  const styledIcon = data.icon
-    ? cloneElement({ element: data.icon, props: iconProps })
-    : undefined;
+  let newIcon =
+    data.icon &&
+    cloneElement<RfxSvgPropsOptional>({
+      element: data.icon,
+      props: iconProps,
+    });
 
-  const { Container } = data;
+  if (data.iconTheme || data.patchIconTheme) {
+    const mergedThemes = mergeThemes(
+      data.iconTheme,
+      data.patchIconTheme,
+    ) as RfxSvgTheme;
 
-  return (
-    <Container componentProps={data.props} {...containerProps}>
-      {styledIcon}
-    </Container>
-  );
+    newIcon = {
+      ...newIcon,
+      props: {
+        ...newIcon.props,
+        getPatchTheme: props =>
+          (data.icon.props.getPatchTheme &&
+            (mergeThemes(
+              mergedThemes,
+              data.icon.props.getPatchTheme(props),
+            ) as RfxSvgTheme)) ||
+          mergedThemes,
+      },
+    };
+  }
+
+  return newIcon;
 };
 
 export const handleLeadingIcon = (
   props: ButtonProps,
-  userChildrenProps: ButtonChildrenProps,
+  patchTheme: ButtonTheme | undefined,
 ): JSX.Element | undefined =>
   handleButtonIcon({
-    Container: props.theme.leadingIconContainer.component || DefaultViewChild,
-    containerTheme: props.theme.leadingIconContainer,
     icon: props.leadingIcon as React.ReactElement<RfxSvgPropsOptional>,
-    iconTheme: props.theme.leadingIcon,
+    iconTheme: props.theme.getLeadingIcon && props.theme.getLeadingIcon(props),
+    patchIconTheme:
+      patchTheme &&
+      patchTheme.getLeadingIcon &&
+      patchTheme.getLeadingIcon(props),
     props,
-    userContainerProps: userChildrenProps.leadingIconContainer,
-    userIconProps: userChildrenProps.leadingIcon,
   });
 
 export const handleTrailingIcon = (
   props: ButtonProps,
-  userChildrenProps: ButtonChildrenProps,
+  patchTheme: ButtonTheme | undefined,
 ): JSX.Element | undefined =>
   handleButtonIcon({
-    Container: props.theme.trailingIconContainer.component || DefaultViewChild,
-    containerTheme: props.theme.trailingIconContainer,
     icon: props.trailingIcon as React.ReactElement<RfxSvgPropsOptional>,
-    iconTheme: props.theme.trailingIcon,
+    iconTheme:
+      props.theme.getTrailingIcon && props.theme.getTrailingIcon(props),
+    patchIconTheme:
+      patchTheme &&
+      patchTheme.getTrailingIcon &&
+      patchTheme.getTrailingIcon(props),
     props,
-    userContainerProps: userChildrenProps.trailingIconContainer,
-    userIconProps: userChildrenProps.trailingIcon,
   });
 
 export const SimpleButton = reflexComponent<ButtonProps>({
   name: 'SimpleButton',
 })((props: ButtonProps) => {
   const { children } = props;
-  const userChildrenProps = props.getChildrenProps
-    ? props.getChildrenProps(props)
-    : {};
-  const touchableProps = extractTouchablePropsFromButtonProps(props);
+  const patchTheme = props.getPatchTheme && props.getPatchTheme(props);
 
-  const Container = props.theme.container.component || DefaultViewChild;
-  const Touchable = props.theme.touchable.component || DefaultTouchableChild;
+  let newProps = props;
+  if (props.theme.getProps || (patchTheme && patchTheme.getProps)) {
+    newProps = {
+      ...newProps,
+      ...((props.theme.getProps && props.theme.getProps(props)) || {}),
+      ...((patchTheme && patchTheme.getProps && patchTheme.getProps(props)) ||
+        {}),
+    };
+  }
+
+  const touchableProps = extractTouchablePropsFromButtonProps(newProps);
+
+  const Container =
+    (patchTheme && patchTheme.container && patchTheme.container.component) ||
+    (newProps.theme.container && newProps.theme.container.component) ||
+    DefaultViewChild;
+
+  const Touchable =
+    (patchTheme && patchTheme.touchable && patchTheme.touchable.component) ||
+    (newProps.theme.touchable && newProps.theme.touchable.component) ||
+    DefaultTouchableChild;
 
   const containerProps = resolveChildProps<ButtonProps, ViewProps, ViewStyle>({
-    componentProps: props,
-    theme: props.theme.container,
-    userProps: userChildrenProps.container,
+    componentProps: newProps,
+    patchTheme: patchTheme && patchTheme.container,
+    theme: newProps.theme.container,
   });
 
   return (
-    <Touchable componentProps={props} {...touchableProps}>
-      <Container componentProps={props} {...containerProps}>
-        {props.leadingIcon && handleLeadingIcon(props, userChildrenProps)}
-        {children && handleButtonChildren(props, userChildrenProps)}
-        {props.trailingIcon && handleTrailingIcon(props, userChildrenProps)}
+    <Touchable componentProps={newProps} {...touchableProps}>
+      <Container componentProps={newProps} {...containerProps}>
+        {newProps.leadingIcon && handleLeadingIcon(newProps, patchTheme)}
+        {children && handleButtonChildren(newProps, patchTheme)}
+        {newProps.trailingIcon && handleTrailingIcon(newProps, patchTheme)}
       </Container>
     </Touchable>
   );

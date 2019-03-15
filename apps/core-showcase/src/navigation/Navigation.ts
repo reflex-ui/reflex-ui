@@ -21,6 +21,7 @@ import {
   OutlinedShapedButtonShowcaseScreen,
   RfxTextScreen,
   SvgShowcaseScreen,
+  TestShowcaseScreen,
   XFabButtonShowcaseScreen,
 } from '../screens';
 import { withAppLogic } from '../withAppLogic';
@@ -60,6 +61,10 @@ const SvgNavigation = {
 
 const RfxTextNavigation = {
   default: `${appNavigationPrefix}text.RfxTextScreen`,
+};
+
+const TestNavigation = {
+  default: `${appNavigationPrefix}test.TestShowcaseScreen`,
 };
 
 const registerScreens = () => {
@@ -106,6 +111,10 @@ const registerScreens = () => {
   /* SVG */
   Navigation.registerComponent(SvgNavigation.default, () =>
     withAppLogic(SvgShowcaseScreen),
+  );
+  /* TEST */
+  Navigation.registerComponent(TestNavigation.default, () =>
+    withAppLogic(TestShowcaseScreen),
   );
   /* REFLEX TEXT */
   Navigation.registerComponent(RfxTextNavigation.default, () =>

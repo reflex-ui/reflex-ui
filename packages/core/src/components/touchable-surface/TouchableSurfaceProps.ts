@@ -11,8 +11,7 @@ import { InteractionProps } from '../../interaction';
 import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
 import { DimensionsProps } from '../../responsiveness/DimensionsProps';
 import { ResponsivenessProps } from '../../responsiveness/ResponsivenessProps';
-// tslint:disable-next-line:max-line-length
-import { TouchableSurfaceChildrenPropsGetter } from './TouchableSurfaceChildrenPropsGetter';
+import { ComponentThemeGetter } from '../ComponentThemeGetter';
 import { TouchableSurfaceTheme } from './TouchableSurfaceTheme';
 
 export interface TouchableSurfaceProps
@@ -23,7 +22,10 @@ export interface TouchableSurfaceProps
   readonly children?:
     | React.ReactNode
     | ((props: TouchableSurfaceProps) => React.ReactNode);
-  readonly getChildrenProps?: TouchableSurfaceChildrenPropsGetter;
+  readonly getPatchTheme?: ComponentThemeGetter<
+    TouchableSurfaceProps,
+    TouchableSurfaceTheme
+  >;
   readonly theme: TouchableSurfaceTheme;
 }
 

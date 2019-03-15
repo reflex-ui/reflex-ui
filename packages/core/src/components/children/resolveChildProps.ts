@@ -14,14 +14,18 @@ import { registerStyle } from '../registerStyle';
 import { StyleProps } from '../StyleProps';
 import { ChildTheme } from './ChildTheme';
 
-export interface ChildPropsResolverData<
+export interface ChildPropsResolverData2<
   ComponentProps,
   PrimitiveProps,
   PrimitiveStyle
 > {
+  readonly patchTheme?: ChildTheme<
+    ComponentProps,
+    PrimitiveProps,
+    PrimitiveStyle
+  >;
   readonly componentProps: ComponentProps;
-  readonly theme: ChildTheme<ComponentProps, PrimitiveProps, PrimitiveStyle>;
-  readonly userProps?: PrimitiveProps;
+  readonly theme?: ChildTheme<ComponentProps, PrimitiveProps, PrimitiveStyle>;
 }
 
 export const resolveChildProps = <
@@ -29,25 +33,31 @@ export const resolveChildProps = <
   PrimitiveProps extends StyleProps<PrimitiveStyle>,
   PrimitiveStyle extends ViewStyle | TextStyle | ImageStyle
 >(
-  data: ChildPropsResolverData<ComponentProps, PrimitiveProps, PrimitiveStyle>,
+  data: ChildPropsResolverData2<ComponentProps, PrimitiveProps, PrimitiveStyle>,
 ): PrimitiveProps => {
   const { componentProps, theme } = data;
-  // @ts-ignore Type '{}' is not assignable to type 'PrimitiveProps'. [2322]
-  const userProps: PrimitiveProps = data.userProps ? data.userProps : {};
+  const patchTheme = data.patchTheme ? data.patchTheme : undefined;
 
-  const { style: userStyle, ...userPropsButStyle } = userProps;
+  const themeProps =
+    theme && theme.getProps ? theme.getProps(componentProps) : undefined;
+
+  const patchProps =
+    patchTheme && patchTheme.getProps
+      ? patchTheme.getProps(componentProps)
+      : undefined;
 
   // @ts-ignore
-  // Type 'Pick<PrimitiveProps, Exclude<keyof PrimitiveProps, "style">>'
-  // is not assignable to type 'PrimitiveProps'.ts(2322)
-  // This TS error seems strange, perhaps a TS bug. Needs some investigation.
-  const childProps: PrimitiveProps = merge(
+  // Type '{}' is not assignable to type 'PrimitiveProps'.ts(2322)
+  // It seems it could accept an empty object here with no problems
+  // since there's no mandatory fields in PrimitiveProps
+  // (it just extends extends StyleProps<PrimitiveStyle>)
+  const mergedProps: PrimitiveProps = merge(
     {},
-    theme.getProps ? theme.getProps(componentProps) : {},
-    userPropsButStyle || {},
+    themeProps || {},
+    patchProps || {},
   );
 
-  if (childProps.style) {
+  if (mergedProps.style) {
     throw new Error(
       [
         '"style" property is not allowed to be passed as part of ',
@@ -56,42 +66,40 @@ export const resolveChildProps = <
     );
   }
 
-  // @ts-ignore
-  // Type 'PrimitiveStyle | {}' is not assignable to type 'PrimitiveStyle'.
-  // Type '{}' is not assignable to type 'PrimitiveStyle'.ts(2322)
-  // This TS error is interesting. Since there are no required fields
-  // on none style type (PrimitiveStyle extends ViewStyle | TextStyle |
-  // ImageStyle) an empty object could be accepted as valid data for such types.
-  const childStyle: PrimitiveStyle = theme.getStyle
-    ? theme.getStyle(componentProps)
-    : {};
+  const themeStyle =
+    theme && theme.getStyle ? theme.getStyle(componentProps) : undefined;
 
-  let childStyles = [];
-  if (!isEmpty(childStyle)) {
-    childStyles.push(registerStyle<PrimitiveStyle>(childStyle));
+  let mergedStyles = [];
+  if (themeStyle && !isEmpty(themeStyle)) {
+    mergedStyles.push(registerStyle<PrimitiveStyle>(themeStyle));
   }
 
-  if (userStyle) {
-    if (Array.isArray(userStyle) && userStyle.length) {
-      childStyles = childStyles.concat(userStyle as []);
-    } else if (typeof userStyle === 'number') {
-      childStyles.push(userStyle);
-    } else if (isPlainObject(userStyle) && !isEmpty(userStyle)) {
-      childStyles.push(registerStyle(userStyle as PrimitiveStyle));
+  const patchStyle =
+    patchTheme && patchTheme.getStyle
+      ? patchTheme.getStyle(componentProps)
+      : undefined;
+
+  if (patchStyle) {
+    if (Array.isArray(patchStyle) && patchStyle.length) {
+      mergedStyles = mergedStyles.concat(patchStyle);
+    } else if (typeof patchStyle === 'number') {
+      mergedStyles.push(patchStyle);
+    } else if (isPlainObject(patchStyle) && !isEmpty(patchStyle)) {
+      mergedStyles.push(registerStyle(patchStyle as PrimitiveStyle));
     } else {
       throw new Error(
         [
-          'Invalid custom style object provided via getChildrenProps(). ',
-          `Object type: ${typeof userStyle}`,
+          'Invalid custom style object provided via getPatchTheme(). ',
+          `Object type: ${typeof patchStyle}`,
         ].join(''),
       );
     }
   }
 
   // It's fine to mutate it here.
-  // @ts-ignore Cannot assign to 'style' because
-  // it is a constant or a read-only property. [2540]
-  if (childStyles.length) childProps.style = childStyles;
+  // @ts-ignore Cannot assign to 'style'
+  // because it is a read-only property.ts(2540)
+  if (mergedStyles.length) mergedProps.style = mergedStyles;
 
-  return childProps;
+  return mergedProps;
 };
