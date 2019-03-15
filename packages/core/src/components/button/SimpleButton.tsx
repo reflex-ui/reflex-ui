@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import merge from 'lodash/merge';
 import * as React from 'react';
 import {
   TextProps,
@@ -206,17 +207,33 @@ export const SimpleButton = reflexComponent<ButtonProps>({
     };
   }
 
-  const touchableProps = extractTouchablePropsFromButtonProps(newProps);
+  const Touchable =
+    (patchTheme && patchTheme.touchable && patchTheme.touchable.component) ||
+    (newProps.theme.touchable && newProps.theme.touchable.component) ||
+    DefaultTouchableChild;
+
+  const touchableProps = resolveChildProps<ButtonProps, ViewProps, ViewStyle>({
+    componentProps: newProps,
+    patchTheme: patchTheme && patchTheme.container,
+    theme: newProps.theme.container,
+  });
+
+  const userTouchableProps = extractTouchablePropsFromButtonProps(newProps);
+
+  if (userTouchableProps.style) {
+    throw new Error(
+      [
+        "Rfx: It's not possible to pass style prop directly.",
+        'You have to pass it as part of theme object.',
+      ].join(' '),
+    );
+  }
+  const mergedTouchableProps = merge({}, touchableProps, userTouchableProps);
 
   const Container =
     (patchTheme && patchTheme.container && patchTheme.container.component) ||
     (newProps.theme.container && newProps.theme.container.component) ||
     DefaultViewChild;
-
-  const Touchable =
-    (patchTheme && patchTheme.touchable && patchTheme.touchable.component) ||
-    (newProps.theme.touchable && newProps.theme.touchable.component) ||
-    DefaultTouchableChild;
 
   const containerProps = resolveChildProps<ButtonProps, ViewProps, ViewStyle>({
     componentProps: newProps,
@@ -225,7 +242,7 @@ export const SimpleButton = reflexComponent<ButtonProps>({
   });
 
   return (
-    <Touchable componentProps={newProps} {...touchableProps}>
+    <Touchable componentProps={newProps} {...mergedTouchableProps}>
       <Container componentProps={newProps} {...containerProps}>
         {newProps.leadingIcon && handleLeadingIcon(newProps, patchTheme)}
         {children && handleButtonChildren(newProps, patchTheme)}
