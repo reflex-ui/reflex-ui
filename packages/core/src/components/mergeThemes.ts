@@ -7,9 +7,9 @@
 
 import merge from 'lodash/merge';
 
-import { ComplexComponentTheme } from '../ComplexComponentTheme';
-import { PropsGetter } from '../PropsGetter';
-import { BuiltInChildTheme } from './ChildTheme';
+import { ComplexComponentTheme } from './ComplexComponentTheme';
+import { PropsGetter } from './PropsGetter';
+import { BuiltInSimpleComponentTheme } from './SimpleComponentTheme';
 
 export const mergeThemes = <Theme extends ComplexComponentTheme>(
   theme1: Theme,
@@ -30,7 +30,7 @@ export const mergeThemes = <Theme extends ComplexComponentTheme>(
       mergedTheme[prop] = theme1Obj;
     } else {
       let newThemeObj:
-        | BuiltInChildTheme<unknown, unknown, unknown>
+        | BuiltInSimpleComponentTheme<unknown, unknown, unknown>
         | PropsGetter<unknown, unknown>;
       if (typeof theme1Obj === 'function' || typeof theme2Obj === 'function') {
         if (

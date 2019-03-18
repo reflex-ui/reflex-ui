@@ -6,7 +6,7 @@
  */
 
 import {
-  BuiltInTextChildTheme,
+  BuiltInTextTheme,
   ButtonProps,
   TextStyleGetter,
 } from '@reflex-ui/core';
@@ -17,6 +17,6 @@ export const getContainedButtonTextStyle: TextStyleGetter<ButtonProps> = (
   props: ButtonProps,
 ) => getAllVariantsButtonTextStyle(props);
 
-export const containedButtonTextTheme: BuiltInTextChildTheme<ButtonProps> = {
+export const containedButtonTextTheme: BuiltInTextTheme<ButtonProps> = {
   getStyle: getContainedButtonTextStyle,
 };

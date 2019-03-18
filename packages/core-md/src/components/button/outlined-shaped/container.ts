@@ -6,7 +6,7 @@
  */
 
 import {
-  BuiltInViewChildTheme,
+  BuiltInViewTheme,
   ButtonProps,
   SizedData,
   ViewStyleGetter,
@@ -39,7 +39,7 @@ export const getOutlinedShapedButtonContainerStyle: ViewStyleGetter<
   ...outlinedShapedButtonContainerSizedStyle[props.size],
 });
 
-export const outlinedShapedButtonContainerTheme: BuiltInViewChildTheme<
+export const outlinedShapedButtonContainerTheme: BuiltInViewTheme<
   ButtonProps
 > = {
   getProps: getAllVariantsButtonContainerProps,

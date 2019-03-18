@@ -6,7 +6,7 @@
  */
 
 import {
-  BuiltInChildProps,
+  BuiltInSimpleComponentProps,
   InteractionEvent,
   InteractionStateProps,
   InteractionType,
@@ -186,7 +186,7 @@ interface RippleEffectSettings<ComponentProps> {
 export const withRippleEffect = <ComponentProps extends InteractionStateProps>(
   settings: RippleEffectSettings<ComponentProps>,
 ) => <
-  ChildProps extends BuiltInChildProps<ComponentProps> &
+  ChildProps extends BuiltInSimpleComponentProps<ComponentProps> &
     ViewProps & { children?: React.ReactNode }
 >(
   WrappedComponent: React.ComponentType<ChildProps>,
@@ -199,7 +199,7 @@ export const withRippleEffect = <ComponentProps extends InteractionStateProps>(
         props: ChildProps,
         state: RippledComponentState,
       ) {
-        const { interactionState } = props.componentProps;
+        const { interactionState } = props.complexComponentProps;
         const interactionType = interactionState.type;
         const interactionEvent = interactionState.event;
 
@@ -222,7 +222,7 @@ export const withRippleEffect = <ComponentProps extends InteractionStateProps>(
             animationKeyframe: AnimationKeyframe.PressIn,
             isAnimatingPressIn: true,
             rippleStyles: createComponentRippleStyles({
-              color: settings.getRippleColor(props.componentProps),
+              color: settings.getRippleColor(props.complexComponentProps),
               height,
               interactionEvent,
               maxDiameter,

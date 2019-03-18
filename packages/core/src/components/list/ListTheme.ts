@@ -6,11 +6,11 @@
  */
 
 import { ComplexComponentTheme } from '../ComplexComponentTheme';
-import { BuiltInViewChildTheme } from '../view/ViewChildTheme';
+import { BuiltInViewTheme } from '../view/ViewTheme';
 import { ListProps } from './ListProps';
 import { ListPropsOptionalGetter } from './ListPropsGetter';
 
 export interface ListTheme extends ComplexComponentTheme {
-  readonly container?: BuiltInViewChildTheme<ListProps>;
+  readonly container?: BuiltInViewTheme<ListProps>;
   readonly getProps?: ListPropsOptionalGetter<ListProps>;
 }

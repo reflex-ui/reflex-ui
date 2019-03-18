@@ -6,11 +6,11 @@
  */
 
 import { ComplexComponentTheme } from '../ComplexComponentTheme';
-import { BuiltInViewChildTheme } from '../view/ViewChildTheme';
+import { BuiltInViewTheme } from '../view/ViewTheme';
 import { SurfaceProps } from './SurfaceProps';
 import { SurfacePropsOptionalGetter } from './SurfacePropsGetter';
 
 export interface SurfaceTheme extends ComplexComponentTheme {
-  readonly container?: BuiltInViewChildTheme<SurfaceProps>;
+  readonly container?: BuiltInViewTheme<SurfaceProps>;
   readonly getProps?: SurfacePropsOptionalGetter<SurfaceProps>;
 }

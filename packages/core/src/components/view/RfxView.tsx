@@ -7,10 +7,10 @@
 
 import * as React from 'react';
 
-import { extractPropsFromTheme } from '../children/extractPropsFromTheme';
-import { mergeThemes } from '../children/mergeThemes';
+import { extractPropsFromTheme } from '../extractPropsFromTheme';
+import { mergeThemes } from '../mergeThemes';
 import { reflexComponent } from '../reflexComponent';
-import { DefaultViewChild } from './DefaultViewChild';
+import { DefaultView } from './DefaultView';
 import { RfxViewProps } from './RfxViewProps';
 
 export const RfxView = reflexComponent<RfxViewProps>({
@@ -43,14 +43,13 @@ export const RfxView = reflexComponent<RfxViewProps>({
   }
 
   const Container =
-    (mergedTheme.container && mergedTheme.container.component) ||
-    DefaultViewChild;
+    (mergedTheme.container && mergedTheme.container.component) || DefaultView;
 
   const containerProps = extractPropsFromTheme(newProps, mergedTheme.container);
 
   return (
     <Container
-      componentProps={newProps}
+      complexComponentProps={newProps}
       onLayout={newProps.onLayout}
       {...containerProps}
     >

@@ -5,14 +5,14 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { BuiltInChildTheme } from './children/ChildTheme';
 import { ComponentThemeGetter } from './ComponentThemeGetter';
 import { PropsGetter } from './PropsGetter';
+import { BuiltInSimpleComponentTheme } from './SimpleComponentTheme';
 
 export interface ComplexComponentTheme {
   // It's fine to ignore type safety here.
   [key: string]:  // tslint:disable-next-line:no-any
-    | BuiltInChildTheme<any, any, any>
+    | BuiltInSimpleComponentTheme<any, any, any>
     // tslint:disable-next-line:no-any
     | ComponentThemeGetter<any, any>
     // tslint:disable-next-line:no-any

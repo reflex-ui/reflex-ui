@@ -8,10 +8,10 @@
 import * as React from 'react';
 import * as ReactIs from 'react-is';
 
-import { extractPropsFromTheme } from '../children/extractPropsFromTheme';
-import { mergeThemes } from '../children/mergeThemes';
+import { extractPropsFromTheme } from '../extractPropsFromTheme';
+import { mergeThemes } from '../mergeThemes';
 import { reflexComponent } from '../reflexComponent';
-import { DefaultViewChild } from '../view/DefaultViewChild';
+import { DefaultView } from '../view/DefaultView';
 import { AppBarProps } from './AppBarProps';
 
 export const renderCenterArea = (props: AppBarProps): React.ReactNode => {
@@ -21,12 +21,12 @@ export const renderCenterArea = (props: AppBarProps): React.ReactNode => {
   }
 
   const Container =
-    (theme.centerArea && theme.centerArea.component) || DefaultViewChild;
+    (theme.centerArea && theme.centerArea.component) || DefaultView;
 
   const containerProps = extractPropsFromTheme(props, theme.centerArea);
 
   return (
-    <Container componentProps={props} {...containerProps}>
+    <Container complexComponentProps={props} {...containerProps}>
       {children[1]}
     </Container>
   );
@@ -39,12 +39,12 @@ export const renderLeadingArea = (props: AppBarProps): React.ReactNode => {
   const leadingChildren = Array.isArray(children) ? children[0] : children;
 
   const Container =
-    (theme.leadingArea && theme.leadingArea.component) || DefaultViewChild;
+    (theme.leadingArea && theme.leadingArea.component) || DefaultView;
 
   const containerProps = extractPropsFromTheme(props, theme.leadingArea);
 
   return (
-    <Container componentProps={props} {...containerProps}>
+    <Container complexComponentProps={props} {...containerProps}>
       {leadingChildren}
     </Container>
   );
@@ -57,12 +57,12 @@ export const renderTrailingArea = (props: AppBarProps): React.ReactNode => {
   }
 
   const Container =
-    (theme.trailingArea && theme.trailingArea.component) || DefaultViewChild;
+    (theme.trailingArea && theme.trailingArea.component) || DefaultView;
 
   const containerProps = extractPropsFromTheme(props, theme.trailingArea);
 
   return (
-    <Container componentProps={props} {...containerProps}>
+    <Container complexComponentProps={props} {...containerProps}>
       {children[2]}
     </Container>
   );
@@ -111,14 +111,13 @@ export const SimpleAppBar = reflexComponent<AppBarProps>({
   }
 
   const Container =
-    (mergedTheme.container && mergedTheme.container.component) ||
-    DefaultViewChild;
+    (mergedTheme.container && mergedTheme.container.component) || DefaultView;
 
   const containerProps = extractPropsFromTheme(newProps, mergedTheme.container);
 
   return (
     <Container
-      componentProps={newProps}
+      complexComponentProps={newProps}
       onLayout={newProps.onLayout}
       {...containerProps}
     >

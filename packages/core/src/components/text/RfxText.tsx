@@ -9,10 +9,10 @@ import merge from 'lodash/merge';
 import * as React from 'react';
 import { TextProps } from 'react-native';
 
-import { extractPropsFromTheme } from '../children/extractPropsFromTheme';
-import { mergeThemes } from '../children/mergeThemes';
+import { extractPropsFromTheme } from '../extractPropsFromTheme';
+import { mergeThemes } from '../mergeThemes';
 import { reflexComponent } from '../reflexComponent';
-import { DefaultTextChild } from './DefaultTextChild';
+import { DefaultText } from './DefaultText';
 import { RfxTextProps } from './RfxTextProps';
 
 export const extractTextPropsFromRfxTextProps = (
@@ -58,8 +58,7 @@ export const transformRfxTextStringChildIntoComponent = (
     };
   }
 
-  const Text =
-    (mergedTheme.text && mergedTheme.text.component) || DefaultTextChild;
+  const Text = (mergedTheme.text && mergedTheme.text.component) || DefaultText;
 
   const textPropsFromTheme = extractPropsFromTheme(newProps, mergedTheme.text);
   const textProps = extractTextPropsFromRfxTextProps(newProps);
@@ -76,7 +75,7 @@ export const transformRfxTextStringChildIntoComponent = (
   const mergedTextProps = merge({}, textPropsFromTheme, textProps);
 
   return (
-    <Text componentProps={newProps} {...mergedTextProps}>
+    <Text complexComponentProps={newProps} {...mergedTextProps}>
       {children}
     </Text>
   );

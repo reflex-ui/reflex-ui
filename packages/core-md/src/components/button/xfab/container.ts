@@ -6,7 +6,7 @@
  */
 
 import {
-  BuiltInViewChildTheme,
+  BuiltInViewTheme,
   ButtonProps,
   SizedData,
   ViewStyleGetter,
@@ -74,7 +74,7 @@ export const getXFabButtonContainerStyle: ViewStyleGetter<
   ...xfabButtonContainerSizedStyle[props.size],
 });
 
-export const xfabButtonContainerTheme: BuiltInViewChildTheme<ButtonProps> = {
+export const xfabButtonContainerTheme: BuiltInViewTheme<ButtonProps> = {
   getProps: getAllVariantsButtonContainerProps,
   getStyle: getXFabButtonContainerStyle,
 };

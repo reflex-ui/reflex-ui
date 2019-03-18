@@ -11,14 +11,14 @@ import {
   TouchableWithoutFeedbackProps,
 } from 'react-native';
 
-import { BuiltInChildProps } from '../children/BuiltInChildProps';
+import { BuiltInSimpleComponentProps } from '../BuiltInSimpleComponentProps';
 import { reflexComponent } from '../reflexComponent';
 
-export const DefaultTouchableChild = reflexComponent<
+export const DefaultTouchable = reflexComponent<
   // tslint:disable-next-line:no-any
-  BuiltInChildProps<any> & TouchableWithoutFeedbackProps
+  BuiltInSimpleComponentProps<any> & TouchableWithoutFeedbackProps
 >({ name: 'DefaultTouchableChild' })(
-  ({ children, componentProps, ...otherProps }) => (
+  ({ children, complexComponentProps, ...otherProps }) => (
     <TouchableWithoutFeedback {...otherProps}>
       {children}
     </TouchableWithoutFeedback>

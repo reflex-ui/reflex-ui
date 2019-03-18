@@ -6,7 +6,7 @@
  */
 
 import {
-  BuiltInChildProps,
+  BuiltInSimpleComponentProps,
   InteractionStateProps,
   InteractionType,
   isAndroid,
@@ -96,7 +96,7 @@ const createMotionRaiseStyles: MotionRaiseStylesCreator = ({
 };
 
 export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
-  ChildProps extends BuiltInChildProps<InteractionStateProps> &
+  ChildProps extends BuiltInSimpleComponentProps<InteractionStateProps> &
     ViewProps & { children?: React.ReactNode }
 >(
   WrappedComponent: React.ComponentType<ChildProps>,
@@ -109,7 +109,7 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
         props: ChildProps,
         state: RaisedComponentState,
       ) {
-        const { interactionState } = props.componentProps;
+        const { interactionState } = props.complexComponentProps;
         const interactionType = interactionState.type;
         const { animationKeyframe, isAnimating } = state;
 
@@ -363,7 +363,7 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
                        * Temporary solution. Need to investigate how to animate
                        * shadowOffset, i.e., an object of values.
                        */
-                      const interactionType = this.props.componentProps
+                      const interactionType = this.props.complexComponentProps
                         .interactionState.type;
 
                       const elevation = convertInteractionToElevation(

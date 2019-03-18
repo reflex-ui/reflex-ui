@@ -6,9 +6,9 @@
  */
 
 import {
-  BuiltInViewChildTheme,
+  BuiltInViewTheme,
   ButtonProps,
-  DefaultViewChild,
+  DefaultView,
   InteractionType,
   isTouchDevice,
   ViewStyleGetter,
@@ -40,11 +40,11 @@ export const getAnimatedOutlinedShapedButtonContainerStyle: ViewStyleGetter<
   return getOutlinedShapedButtonContainerStyle(updatedProps);
 };
 
-export const animatedOutlinedShapedButtonContainerTheme: BuiltInViewChildTheme<
+export const animatedOutlinedShapedButtonContainerTheme: BuiltInViewTheme<
   ButtonProps
 > = {
   component: withRippleEffect({
     getRippleColor: getButtonRippleColor,
-  })(DefaultViewChild),
+  })(DefaultView),
   getStyle: getAnimatedOutlinedShapedButtonContainerStyle,
 };

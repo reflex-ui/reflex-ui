@@ -6,7 +6,7 @@
  */
 
 import {
-  BuiltInViewChildTheme,
+  BuiltInViewTheme,
   getSizedMarginStyle,
   getSizedPaddingStyle,
   getThemedColor,
@@ -29,7 +29,7 @@ export const getSurfaceContainerStyle: ViewStyleGetter<
   borderRadius: 4,
 });
 
-export const surfaceContainerTheme: BuiltInViewChildTheme<SurfaceProps> = {
+export const surfaceContainerTheme: BuiltInViewTheme<SurfaceProps> = {
   getStyle: getSurfaceContainerStyle,
 };
 

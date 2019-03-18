@@ -6,7 +6,7 @@
  */
 
 import {
-  BuiltInViewChildTheme,
+  BuiltInViewTheme,
   ButtonProps,
   ViewStyleGetter,
 } from '@reflex-ui/core';
@@ -22,7 +22,7 @@ export const getRaisedButtonContainerStyle: ViewStyleGetter<
   ...getLowElevationStylesByInteraction(props.interactionState.type),
 });
 
-export const raisedButtonContainerTheme: BuiltInViewChildTheme<ButtonProps> = {
+export const raisedButtonContainerTheme: BuiltInViewTheme<ButtonProps> = {
   getProps: getAllVariantsButtonContainerProps,
   getStyle: getRaisedButtonContainerStyle,
 };

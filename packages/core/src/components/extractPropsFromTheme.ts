@@ -9,9 +9,9 @@ import isEmpty from 'lodash/isEmpty';
 import isPlainObject from 'lodash/isPlainObject';
 import { ImageStyle, TextStyle, ViewStyle } from 'react-native';
 
-import { registerStyle } from '../registerStyle';
-import { StyleProps } from '../StyleProps';
-import { ChildTheme } from './ChildTheme';
+import { registerStyle } from './registerStyle';
+import { SimpleComponentTheme } from './SimpleComponentTheme';
+import { StyleProps } from './StyleProps';
 
 export const extractPropsFromTheme = <
   ComponentProps,
@@ -19,7 +19,7 @@ export const extractPropsFromTheme = <
   PrimitiveStyle extends ViewStyle | TextStyle | ImageStyle
 >(
   componentProps: ComponentProps,
-  theme?: ChildTheme<ComponentProps, PrimitiveProps, PrimitiveStyle>,
+  theme?: SimpleComponentTheme<ComponentProps, PrimitiveProps, PrimitiveStyle>,
 ): PrimitiveProps => {
   // @ts-ignore Type '{}' is not assignable to type 'PrimitiveProps'.ts(2322)
   // It seems it could accept an empty object here without problems

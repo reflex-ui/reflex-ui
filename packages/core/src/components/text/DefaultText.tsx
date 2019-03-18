@@ -8,18 +8,18 @@
 import * as React from 'react';
 import { Text, TextProps } from 'react-native';
 
-import { BuiltInChildProps } from '../children/BuiltInChildProps';
+import { BuiltInSimpleComponentProps } from '../BuiltInSimpleComponentProps';
 import { reflexComponent } from '../reflexComponent';
 
-export const DefaultTextChild = reflexComponent<
+export const DefaultText = reflexComponent<
   /*
    * it's ok to disable it here as it's a dead end, i.e.
    * it doesn't leak and affect other parts of the codebase.
    */
   // tslint:disable-next-line:no-any
-  BuiltInChildProps<any> & TextProps
+  BuiltInSimpleComponentProps<any> & TextProps
 >({ name: 'DefaultTextChild' })(
-  ({ children, componentProps, ...otherProps }) => (
+  ({ children, complexComponentProps, ...otherProps }) => (
     <Text {...otherProps}>{children}</Text>
   ),
 );

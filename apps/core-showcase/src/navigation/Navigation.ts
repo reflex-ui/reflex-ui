@@ -129,7 +129,7 @@ export const AppNavigation = () => {
     Navigation.setRoot({
       root: {
         component: {
-          name: ListNavigation.default,
+          name: ButtonNavigation.contained,
         },
       },
     });

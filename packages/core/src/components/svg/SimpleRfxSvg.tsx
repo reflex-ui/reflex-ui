@@ -10,10 +10,10 @@ import * as React from 'react';
 import { SvgProps } from 'react-native-svg';
 
 import { cloneElement } from '../../utils';
-import { extractPropsFromTheme } from '../children/extractPropsFromTheme';
-import { mergeThemes } from '../children/mergeThemes';
+import { extractPropsFromTheme } from '../extractPropsFromTheme';
+import { mergeThemes } from '../mergeThemes';
 import { reflexComponent } from '../reflexComponent';
-import { DefaultViewChild } from '../view';
+import { DefaultView } from '../view';
 import { RfxSvgProps, RfxSvgPropsOptional } from './RfxSvgProps';
 
 export const extractSvgPropsFromRfxSvgProps = (
@@ -87,13 +87,12 @@ export const SimpleRfxSvg = reflexComponent<RfxSvgProps>({
   }
 
   const Container =
-    (mergedTheme.container && mergedTheme.container.component) ||
-    DefaultViewChild;
+    (mergedTheme.container && mergedTheme.container.component) || DefaultView;
 
   const containerProps = extractPropsFromTheme(newProps, mergedTheme.container);
 
   return (
-    <Container componentProps={newProps} {...containerProps}>
+    <Container complexComponentProps={newProps} {...containerProps}>
       {children}
     </Container>
   );

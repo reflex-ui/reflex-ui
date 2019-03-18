@@ -8,15 +8,18 @@
 import { ViewStyle } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 
-import { BuiltInChildTheme, ChildTheme } from '../children/ChildTheme';
+import {
+  BuiltInSimpleComponentTheme,
+  SimpleComponentTheme,
+} from '../SimpleComponentTheme';
 
-export type SvgChildTheme<ComponentProps> = ChildTheme<
+export type SvgTheme<ComponentProps> = SimpleComponentTheme<
   ComponentProps,
   SvgProps,
   ViewStyle
 >;
 
-export type BuiltInSvgChildTheme<ComponentProps> = BuiltInChildTheme<
+export type BuiltInSvgTheme<ComponentProps> = BuiltInSimpleComponentTheme<
   ComponentProps,
   SvgProps,
   ViewStyle

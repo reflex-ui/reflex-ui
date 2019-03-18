@@ -6,17 +6,20 @@
  */
 
 export * from './app-bar';
+export * from './BuiltInSimpleComponentProps';
 export * from './button';
-export * from './children';
 export * from './ComplexComponentTheme';
 export * from './ComponentsTheme';
 export * from './ComponentsThemeContext';
 export * from './ComponentThemeGetter';
+export * from './extractPropsFromTheme';
 export * from './list';
 export * from './list-item';
+export * from './mergeThemes';
 export * from './PropsGetter';
 export * from './reflexComponent';
 export * from './registerStyle';
+export * from './SimpleComponentTheme';
 export * from './StyleGetter';
 export * from './StyleObj';
 export * from './StyleProps';

@@ -5,6 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './DefaultTouchableChild';
-export * from './TouchableChildTheme';
+export * from './DefaultTouchable';
+export * from './TouchableTheme';
 export * from './TouchablePropsGetter';

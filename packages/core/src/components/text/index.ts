@@ -7,7 +7,7 @@
 
 export * from './AppBarTitle';
 export * from './Caption';
-export * from './DefaultTextChild';
+export * from './DefaultText';
 export * from './FontWeight';
 export * from './FontWeightValues';
 export * from './getFontWeight';
@@ -27,7 +27,7 @@ export * from './RfxTextTheme';
 export * from './RfxTextVariantsTheme';
 export * from './Subtitle1';
 export * from './Subtitle2';
-export * from './TextChildTheme';
 export * from './TextPropsGetter';
 export * from './TextStyleGetter';
+export * from './TextTheme';
 export * from './transformText';

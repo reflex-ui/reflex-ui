@@ -8,18 +8,18 @@
 import { ComplexComponentTheme } from '../ComplexComponentTheme';
 import { ComponentThemeGetter } from '../ComponentThemeGetter';
 import { RfxSvgTheme } from '../svg/RfxSvgTheme';
-import { BuiltInTextChildTheme } from '../text/TextChildTheme';
-import { BuiltInTouchableChildTheme } from '../touchable/TouchableChildTheme';
-import { BuiltInViewChildTheme } from '../view/ViewChildTheme';
+import { BuiltInTextTheme } from '../text/TextTheme';
+import { BuiltInTouchableTheme } from '../touchable/TouchableTheme';
+import { BuiltInViewTheme } from '../view/ViewTheme';
 import { ButtonProps } from './ButtonProps';
 import { ButtonPropsOptionalGetter } from './ButtonPropsGetter';
 
 export interface ButtonTheme extends ComplexComponentTheme {
-  readonly container?: BuiltInViewChildTheme<ButtonProps>;
+  readonly container?: BuiltInViewTheme<ButtonProps>;
   readonly getIcon?: ComponentThemeGetter<ButtonProps, RfxSvgTheme>;
   readonly getLeadingIcon?: ComponentThemeGetter<ButtonProps, RfxSvgTheme>;
   readonly getProps?: ButtonPropsOptionalGetter<ButtonProps>;
-  readonly text?: BuiltInTextChildTheme<ButtonProps>;
-  readonly touchable?: BuiltInTouchableChildTheme<ButtonProps>;
+  readonly text?: BuiltInTextTheme<ButtonProps>;
+  readonly touchable?: BuiltInTouchableTheme<ButtonProps>;
   readonly getTrailingIcon?: ComponentThemeGetter<ButtonProps, RfxSvgTheme>;
 }

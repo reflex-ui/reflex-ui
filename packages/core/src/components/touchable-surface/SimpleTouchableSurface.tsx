@@ -10,11 +10,11 @@ import * as React from 'react';
 import * as ReactIs from 'react-is';
 import { TouchableWithoutFeedbackProps } from 'react-native';
 
-import { extractPropsFromTheme } from '../children/extractPropsFromTheme';
-import { mergeThemes } from '../children/mergeThemes';
+import { extractPropsFromTheme } from '../extractPropsFromTheme';
+import { mergeThemes } from '../mergeThemes';
 import { reflexComponent } from '../reflexComponent';
-import { DefaultTouchableChild } from '../touchable/DefaultTouchableChild';
-import { DefaultViewChild } from '../view/DefaultViewChild';
+import { DefaultTouchable } from '../touchable/DefaultTouchable';
+import { DefaultView } from '../view/DefaultView';
 import { TouchableSurfaceProps } from './TouchableSurfaceProps';
 
 export const extractTouchableProps = (
@@ -67,14 +67,13 @@ export const SimpleTouchableSurface = reflexComponent<TouchableSurfaceProps>({
   }
 
   const Container =
-    (mergedTheme.container && mergedTheme.container.component) ||
-    DefaultViewChild;
+    (mergedTheme.container && mergedTheme.container.component) || DefaultView;
 
   const containerProps = extractPropsFromTheme(newProps, mergedTheme.container);
 
   const Touchable =
     (mergedTheme.touchable && mergedTheme.touchable.component) ||
-    DefaultTouchableChild;
+    DefaultTouchable;
 
   const touchablePropsFromTheme = extractPropsFromTheme(
     newProps,
@@ -97,9 +96,9 @@ export const SimpleTouchableSurface = reflexComponent<TouchableSurfaceProps>({
   );
 
   return (
-    <Touchable componentProps={props} {...mergedTouchableProps}>
+    <Touchable complexComponentProps={props} {...mergedTouchableProps}>
       <Container
-        componentProps={newProps}
+        complexComponentProps={newProps}
         onLayout={newProps.onLayout}
         {...containerProps}
       >

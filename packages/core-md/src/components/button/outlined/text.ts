@@ -5,10 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { BuiltInTextChildTheme, ButtonProps } from '@reflex-ui/core';
+import { BuiltInTextTheme, ButtonProps } from '@reflex-ui/core';
 
 import { getAllVariantsButtonTextStyle } from '../all-variants/text';
 
-export const outlinedButtonTextTheme: BuiltInTextChildTheme<ButtonProps> = {
+export const outlinedButtonTextTheme: BuiltInTextTheme<ButtonProps> = {
   getStyle: getAllVariantsButtonTextStyle,
 };

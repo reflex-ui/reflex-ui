@@ -6,13 +6,13 @@
  */
 
 import {
-  BuiltInViewChildTheme,
+  BuiltInViewTheme,
   getSizedMarginStyle,
   RfxSvgProps,
   RfxSvgTheme,
   SizedData,
-  SvgChildTheme,
   SvgPropsGetter,
+  SvgTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import { SvgProps } from 'react-native-svg';
@@ -42,7 +42,7 @@ export const getSvgIconSvgProps: SvgPropsGetter<RfxSvgProps> = props => ({
   ...getSvgColorProps(props),
 });
 
-export const svgIconSvgTheme: SvgChildTheme<RfxSvgProps> = {
+export const svgIconSvgTheme: SvgTheme<RfxSvgProps> = {
   getProps: getSvgIconSvgProps,
 };
 
@@ -53,7 +53,7 @@ export const getSvgIconContainerStyle: ViewStyleGetter<
   ...getSizingStyle(props),
 });
 
-export const svgIconContainerTheme: BuiltInViewChildTheme<RfxSvgProps> = {
+export const svgIconContainerTheme: BuiltInViewTheme<RfxSvgProps> = {
   getStyle: getSvgIconContainerStyle,
 };
 

@@ -6,7 +6,7 @@
  */
 
 import {
-  BuiltInTextChildTheme,
+  BuiltInTextTheme,
   ButtonProps,
   FontWeight,
   getFontWeight,
@@ -75,6 +75,6 @@ export const getAllVariantsButtonTextStyle: TextStyleGetter<
   }),
 });
 
-export const allVariantsButtonTextTheme: BuiltInTextChildTheme<ButtonProps> = {
+export const allVariantsButtonTextTheme: BuiltInTextTheme<ButtonProps> = {
   getStyle: getAllVariantsButtonTextStyle,
 };

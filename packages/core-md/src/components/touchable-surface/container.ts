@@ -6,7 +6,7 @@
  */
 
 import {
-  BuiltInViewChildTheme,
+  BuiltInViewTheme,
   getThemedColor,
   InteractionType,
   TouchableSurfaceProps,
@@ -29,7 +29,7 @@ export const getTouchableSurfaceContainerStyle: ViewStyleGetter<
   }),
 });
 
-export const touchableSurfaceContainerTheme: BuiltInViewChildTheme<
+export const touchableSurfaceContainerTheme: BuiltInViewTheme<
   TouchableSurfaceProps
 > = {
   getStyle: getTouchableSurfaceContainerStyle,

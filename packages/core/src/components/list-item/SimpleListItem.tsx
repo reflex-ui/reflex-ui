@@ -8,10 +8,10 @@
 import * as React from 'react';
 import * as ReactIs from 'react-is';
 
-import { extractPropsFromTheme } from '../children/extractPropsFromTheme';
-import { mergeThemes } from '../children/mergeThemes';
+import { extractPropsFromTheme } from '../extractPropsFromTheme';
+import { mergeThemes } from '../mergeThemes';
 import { reflexComponent } from '../reflexComponent';
-import { DefaultViewChild } from '../view';
+import { DefaultView } from '../view/DefaultView';
 import { ListItemProps } from './ListItemProps';
 
 export const SimpleListItem = reflexComponent<ListItemProps>({
@@ -48,14 +48,13 @@ export const SimpleListItem = reflexComponent<ListItemProps>({
   }
 
   const Container =
-    (mergedTheme.container && mergedTheme.container.component) ||
-    DefaultViewChild;
+    (mergedTheme.container && mergedTheme.container.component) || DefaultView;
 
   const containerProps = extractPropsFromTheme(newProps, mergedTheme.container);
 
   return (
     <Container
-      componentProps={newProps}
+      complexComponentProps={newProps}
       onLayout={newProps.onLayout}
       {...containerProps}
     >

@@ -6,15 +6,19 @@
  */
 
 import { ViewProps, ViewStyle } from 'react-native';
-import { BuiltInChildTheme, ChildTheme } from '../children/ChildTheme';
 
-export type ViewChildTheme<ComponentProps> = ChildTheme<
+import {
+  BuiltInSimpleComponentTheme,
+  SimpleComponentTheme,
+} from '../SimpleComponentTheme';
+
+export type ViewTheme<ComponentProps> = SimpleComponentTheme<
   ComponentProps,
   ViewProps,
   ViewStyle
 >;
 
-export type BuiltInViewChildTheme<ComponentProps> = BuiltInChildTheme<
+export type BuiltInViewTheme<ComponentProps> = BuiltInSimpleComponentTheme<
   ComponentProps,
   ViewProps,
   ViewStyle

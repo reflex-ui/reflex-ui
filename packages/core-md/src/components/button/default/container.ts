@@ -6,7 +6,7 @@
  */
 
 import {
-  BuiltInViewChildTheme,
+  BuiltInViewTheme,
   ButtonProps,
   SizedData,
   ViewStyleGetter,
@@ -69,7 +69,7 @@ export const getDefaultButtonContainerStyle: ViewStyleGetter<
   ...defaultButtonContainerSizedStyle[props.size],
 });
 
-export const defaultButtonContainerTheme: BuiltInViewChildTheme<ButtonProps> = {
+export const defaultButtonContainerTheme: BuiltInViewTheme<ButtonProps> = {
   getProps: getAllVariantsButtonContainerProps,
   getStyle: getDefaultButtonContainerStyle,
 };

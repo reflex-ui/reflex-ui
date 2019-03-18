@@ -6,13 +6,13 @@
  */
 
 export * from './Column';
-export * from './DefaultViewChild';
+export * from './DefaultView';
 export * from './RfxView';
 export * from './RfxViewProps';
 export * from './RfxViewPropsGetter';
 export * from './RfxViewTheme';
 export * from './RfxViewVariantsTheme';
 export * from './Row';
-export * from './ViewChildTheme';
 export * from './ViewPropsGetter';
 export * from './ViewStyleGetter';
+export * from './ViewTheme';

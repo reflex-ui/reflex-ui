@@ -6,9 +6,9 @@
  */
 
 import {
-  BuiltInViewChildTheme,
+  BuiltInViewTheme,
   ButtonProps,
-  DefaultViewChild,
+  DefaultView,
   InteractionType,
   isTouchDevice,
   ViewStyleGetter,
@@ -48,11 +48,9 @@ export const getAnimatedXFabButtonContainerStyle: ViewStyleGetter<
   };
 };
 
-export const animatedXFabButtonContainerTheme: BuiltInViewChildTheme<
-  ButtonProps
-> = {
+export const animatedXFabButtonContainerTheme: BuiltInViewTheme<ButtonProps> = {
   component: withRippleEffect({
     getRippleColor: getButtonRippleColor,
-  })(withRaiseEffect(ElevationDegree.Mid)(DefaultViewChild)),
+  })(withRaiseEffect(ElevationDegree.Mid)(DefaultView)),
   getStyle: getAnimatedXFabButtonContainerStyle,
 };

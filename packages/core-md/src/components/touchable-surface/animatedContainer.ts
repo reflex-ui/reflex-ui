@@ -6,8 +6,8 @@
  */
 
 import {
-  BuiltInViewChildTheme,
-  DefaultViewChild,
+  BuiltInViewTheme,
+  DefaultView,
   InteractionType,
   isTouchDevice,
   TouchableSurfaceProps,
@@ -40,11 +40,11 @@ export const getAnimatedTouchableSurfaceContainerStyle: ViewStyleGetter<
   return getTouchableSurfaceContainerStyle(updatedProps);
 };
 
-export const animatedTouchableSurfaceContainerTheme: BuiltInViewChildTheme<
+export const animatedTouchableSurfaceContainerTheme: BuiltInViewTheme<
   TouchableSurfaceProps
 > = {
   component: withRippleEffect({
     getRippleColor: getButtonRippleColor,
-  })(DefaultViewChild),
+  })(DefaultView),
   getStyle: getAnimatedTouchableSurfaceContainerStyle,
 };

@@ -6,15 +6,18 @@
  */
 
 import { TouchableWithoutFeedbackProps, ViewStyle } from 'react-native';
-import { BuiltInChildTheme, ChildTheme } from '../children/ChildTheme';
+import {
+  BuiltInSimpleComponentTheme,
+  SimpleComponentTheme,
+} from '../SimpleComponentTheme';
 
-export type TouchableChildTheme<ComponentProps> = ChildTheme<
+export type TouchableChildTheme<ComponentProps> = SimpleComponentTheme<
   ComponentProps,
   TouchableWithoutFeedbackProps,
   ViewStyle
 >;
 
-export type BuiltInTouchableChildTheme<ComponentProps> = BuiltInChildTheme<
+export type BuiltInTouchableTheme<ComponentProps> = BuiltInSimpleComponentTheme<
   ComponentProps,
   TouchableWithoutFeedbackProps,
   ViewStyle

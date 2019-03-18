@@ -6,11 +6,11 @@
  */
 
 import { ComplexComponentTheme } from '../ComplexComponentTheme';
-import { BuiltInViewChildTheme } from '../view/ViewChildTheme';
+import { BuiltInViewTheme } from '../view/ViewTheme';
 import { RfxViewProps } from './RfxViewProps';
 import { RfxViewPropsOptionalGetter } from './RfxViewPropsGetter';
 
 export interface RfxViewTheme extends ComplexComponentTheme {
-  readonly container?: BuiltInViewChildTheme<RfxViewProps>;
+  readonly container?: BuiltInViewTheme<RfxViewProps>;
   readonly getProps?: RfxViewPropsOptionalGetter<RfxViewProps>;
 }

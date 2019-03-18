@@ -6,15 +6,19 @@
  */
 
 import { TextProps, TextStyle } from 'react-native';
-import { BuiltInChildTheme, ChildTheme } from '../children/ChildTheme';
 
-export type TextChildTheme<ComponentProps> = ChildTheme<
+import {
+  BuiltInSimpleComponentTheme,
+  SimpleComponentTheme,
+} from '../SimpleComponentTheme';
+
+export type TextTheme<ComponentProps> = SimpleComponentTheme<
   ComponentProps,
   TextProps,
   TextStyle
 >;
 
-export type BuiltInTextChildTheme<ComponentProps> = BuiltInChildTheme<
+export type BuiltInTextTheme<ComponentProps> = BuiltInSimpleComponentTheme<
   ComponentProps,
   TextProps,
   TextStyle

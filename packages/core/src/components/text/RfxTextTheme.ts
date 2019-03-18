@@ -8,9 +8,9 @@
 import { ComplexComponentTheme } from '../ComplexComponentTheme';
 import { RfxTextProps } from './RfxTextProps';
 import { RfxTextPropsOptionalGetter } from './RfxTextPropsGetter';
-import { BuiltInTextChildTheme } from './TextChildTheme';
+import { BuiltInTextTheme } from './TextTheme';
 
 export interface RfxTextTheme extends ComplexComponentTheme {
-  readonly text?: BuiltInTextChildTheme<RfxTextProps>;
+  readonly text?: BuiltInTextTheme<RfxTextProps>;
   readonly getProps?: RfxTextPropsOptionalGetter<RfxTextProps>;
 }

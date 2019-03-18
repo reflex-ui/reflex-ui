@@ -8,18 +8,18 @@
 import * as React from 'react';
 import { View, ViewProps } from 'react-native';
 
-import { BuiltInChildProps } from '../children/BuiltInChildProps';
+import { BuiltInSimpleComponentProps } from '../BuiltInSimpleComponentProps';
 import { reflexComponent } from '../reflexComponent';
 
-export const DefaultViewChild = reflexComponent<
+export const DefaultView = reflexComponent<
   /*
    * it's ok to disable it here as it's a dead end, i.e.
    * it doesn't leak and affect other parts of the codebase.
    */
   // tslint:disable-next-line:no-any
-  BuiltInChildProps<any> & ViewProps
+  BuiltInSimpleComponentProps<any> & ViewProps
 >({ name: 'DefaultViewChild' })(
-  ({ children, componentProps, ...otherProps }) => (
+  ({ children, complexComponentProps, ...otherProps }) => (
     /*
      * otherProps is used to pass lib provided props, users'custom props,
      * as well as to deal with a TouchableWithoutFeedback's issue:

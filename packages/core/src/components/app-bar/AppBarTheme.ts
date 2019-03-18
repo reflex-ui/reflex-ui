@@ -6,14 +6,14 @@
  */
 
 import { ComplexComponentTheme } from '../ComplexComponentTheme';
-import { BuiltInViewChildTheme } from '../view/ViewChildTheme';
+import { BuiltInViewTheme } from '../view/ViewTheme';
 import { AppBarProps } from './AppBarProps';
 import { AppBarPropsOptionalGetter } from './AppBarPropsGetter';
 
 export interface AppBarTheme extends ComplexComponentTheme {
-  readonly centerArea?: BuiltInViewChildTheme<AppBarProps>;
-  readonly container?: BuiltInViewChildTheme<AppBarProps>;
+  readonly centerArea?: BuiltInViewTheme<AppBarProps>;
+  readonly container?: BuiltInViewTheme<AppBarProps>;
   readonly getProps?: AppBarPropsOptionalGetter<AppBarProps>;
-  readonly leadingArea?: BuiltInViewChildTheme<AppBarProps>;
-  readonly trailingArea?: BuiltInViewChildTheme<AppBarProps>;
+  readonly leadingArea?: BuiltInViewTheme<AppBarProps>;
+  readonly trailingArea?: BuiltInViewTheme<AppBarProps>;
 }
