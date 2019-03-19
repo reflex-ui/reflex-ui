@@ -17,7 +17,7 @@ import { reflexComponent } from '../reflexComponent';
 export const DefaultTouchable = reflexComponent<
   // tslint:disable-next-line:no-any
   BuiltInSimpleComponentProps<any> & TouchableWithoutFeedbackProps
->({ name: 'DefaultTouchableChild' })(
+>({ name: 'DefaultTouchable' })(
   ({ children, complexComponentProps, ...otherProps }) => (
     <TouchableWithoutFeedback {...otherProps}>
       {children}

@@ -6,59 +6,64 @@
  */
 
 import * as React from 'react';
-import * as ReactIs from 'react-is';
+import { ViewProps } from 'react-native';
 
-import { extractPropsFromTheme } from '../extractPropsFromTheme';
-import { mergeThemes } from '../mergeThemes';
+import { propsPipe } from '../../utils/propsPipe';
+import { getStyleFromTheme } from '../getStyleFromTheme';
+import { handleChildrenProps } from '../handleChildrenProps';
+import { handlePatchThemeProps } from '../handlePatchThemeProps';
+import { handleThemeGetProps } from '../handleThemeGetProps';
 import { reflexComponent } from '../reflexComponent';
+import { validateNoStyleProps } from '../validateNoStyleProps';
 import { DefaultView } from '../view/DefaultView';
 import { ListItemProps } from './ListItemProps';
+
+export const extractViewPropsFromListItemProps = (
+  props: ListItemProps,
+): ViewProps => {
+  const {
+    children,
+    colorTheme,
+    getPatchTheme,
+    margin,
+    marginBottom,
+    marginEnd,
+    marginHorizontal,
+    marginStart,
+    marginTop,
+    marginVertical,
+    paletteTheme,
+    theme,
+    ...viewProps
+  } = props;
+
+  return viewProps;
+};
 
 export const SimpleListItem = reflexComponent<ListItemProps>({
   name: 'SimpleListItem',
 })((props: ListItemProps) => {
-  let children =
-    props.children && typeof props.children === 'function'
-      ? props.children(props)
-      : props.children;
+  validateNoStyleProps(props);
+  const newProps = propsPipe<ListItemProps>([
+    handlePatchThemeProps,
+    handleThemeGetProps,
+    handleChildrenProps,
+  ])(props);
+  const { theme } = newProps;
 
-  if (ReactIs.isFragment(children) && children.props) {
-    children = children.props.children;
-  }
-
-  let newProps = props;
-  let mergedTheme = props.theme;
-
-  if (
-    props.getPatchTheme ||
-    props.theme.getProps ||
-    typeof props.children === 'function'
-  ) {
-    mergedTheme = mergeThemes(
-      props.theme,
-      props.getPatchTheme && props.getPatchTheme(props),
-    );
-
-    newProps = {
-      ...newProps,
-      ...((mergedTheme.getProps && mergedTheme.getProps(props)) || {}),
-      children,
-      theme: mergedTheme,
-    };
-  }
-
-  const Container =
-    (mergedTheme.container && mergedTheme.container.component) || DefaultView;
-
-  const containerProps = extractPropsFromTheme(newProps, mergedTheme.container);
+  const Container = theme.component || DefaultView;
+  const viewProps = {
+    ...extractViewPropsFromListItemProps(newProps),
+    style: getStyleFromTheme(newProps, theme),
+  };
 
   return (
     <Container
       complexComponentProps={newProps}
       onLayout={newProps.onLayout}
-      {...containerProps}
+      {...viewProps}
     >
-      {children}
+      {newProps.children}
     </Container>
   );
 });

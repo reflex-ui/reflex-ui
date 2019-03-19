@@ -6,6 +6,8 @@
  */
 
 import {
+  getSizedMarginStyle,
+  getSizedPaddingStyle,
   getThemedColor,
   ListProps,
   ListTheme,
@@ -13,15 +15,16 @@ import {
 } from '@reflex-ui/core';
 
 import { getSizingStyle } from '../../sizing/getSizingStyle';
+import { sizedSpacing } from '../../spacing/sizedSpacing';
 
 export const getListContainerStyle: ViewStyleGetter<ListProps> = props => ({
   backgroundColor: getThemedColor(props),
   paddingVertical: 8,
+  ...getSizedMarginStyle(sizedSpacing)(props),
+  ...getSizedPaddingStyle(sizedSpacing)(props),
   ...getSizingStyle(props),
 });
 
 export const listTheme: ListTheme = {
-  container: {
-    getStyle: getListContainerStyle,
-  },
+  getStyle: getListContainerStyle,
 };

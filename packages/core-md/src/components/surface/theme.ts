@@ -6,7 +6,6 @@
  */
 
 import {
-  BuiltInViewTheme,
   getSizedMarginStyle,
   getSizedPaddingStyle,
   getThemedColor,
@@ -21,18 +20,14 @@ import { sizedSpacing } from '../../spacing/sizedSpacing';
 export const getSurfaceContainerStyle: ViewStyleGetter<
   SurfaceProps
 > = props => ({
+  backgroundColor: getThemedColor(props),
+  borderRadius: 4,
   flexWrap: 'wrap',
   ...getFlexboxStyle(props),
   ...getSizedMarginStyle(sizedSpacing)(props),
   ...getSizedPaddingStyle(sizedSpacing)(props),
-  backgroundColor: getThemedColor(props),
-  borderRadius: 4,
 });
 
-export const surfaceContainerTheme: BuiltInViewTheme<SurfaceProps> = {
-  getStyle: getSurfaceContainerStyle,
-};
-
 export const surfaceTheme: SurfaceTheme = {
-  container: surfaceContainerTheme,
+  getStyle: getSurfaceContainerStyle,
 };

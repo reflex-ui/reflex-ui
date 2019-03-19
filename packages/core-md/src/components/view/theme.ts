@@ -6,7 +6,6 @@
  */
 
 import {
-  BuiltInViewTheme,
   getSizedMarginStyle,
   getSizedPaddingStyle,
   RfxViewProps,
@@ -42,12 +41,8 @@ export const getColumnContainerStyle: ViewStyleGetter<
   flexWrap: 'wrap',
 });
 
-export const columnContainerTheme: BuiltInViewTheme<RfxViewProps> = {
-  getStyle: getColumnContainerStyle,
-};
-
 export const columnTheme: RfxViewTheme = {
-  container: columnContainerTheme,
+  getStyle: getColumnContainerStyle,
 };
 
 /*
@@ -60,12 +55,8 @@ export const getRowContainerStyle: ViewStyleGetter<RfxViewProps> = props => ({
   flexWrap: 'wrap',
 });
 
-export const rowContainerTheme: BuiltInViewTheme<RfxViewProps> = {
-  getStyle: getRowContainerStyle,
-};
-
 export const rowTheme: RfxViewTheme = {
-  container: rowContainerTheme,
+  getStyle: getRowContainerStyle,
 };
 
 /*

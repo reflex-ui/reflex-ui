@@ -7,7 +7,6 @@
 
 export * from './List';
 export * from './ListProps';
-export * from './ListPropsGetter';
 export * from './ListTheme';
 export * from './SimpleList';
 export * from './withDefaultListProps';

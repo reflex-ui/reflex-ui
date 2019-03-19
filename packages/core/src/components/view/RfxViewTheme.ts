@@ -5,12 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ComplexComponentTheme } from '../ComplexComponentTheme';
-import { BuiltInViewTheme } from '../view/ViewTheme';
-import { RfxViewProps } from './RfxViewProps';
-import { RfxViewPropsOptionalGetter } from './RfxViewPropsGetter';
+import { ViewStyle } from 'react-native';
 
-export interface RfxViewTheme extends ComplexComponentTheme {
-  readonly container?: BuiltInViewTheme<RfxViewProps>;
-  readonly getProps?: RfxViewPropsOptionalGetter<RfxViewProps>;
-}
+import { BuiltInSimpleComponentTheme } from '../SimpleComponentTheme';
+import { RfxViewProps, RfxViewPropsOptional } from './RfxViewProps';
+
+export type RfxViewTheme = BuiltInSimpleComponentTheme<
+  RfxViewProps,
+  RfxViewPropsOptional,
+  ViewStyle
+>;

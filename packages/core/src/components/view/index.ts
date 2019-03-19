@@ -9,7 +9,6 @@ export * from './Column';
 export * from './DefaultView';
 export * from './RfxView';
 export * from './RfxViewProps';
-export * from './RfxViewPropsGetter';
 export * from './RfxViewTheme';
 export * from './RfxViewVariantsTheme';
 export * from './Row';

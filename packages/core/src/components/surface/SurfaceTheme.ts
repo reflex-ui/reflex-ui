@@ -5,12 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ComplexComponentTheme } from '../ComplexComponentTheme';
-import { BuiltInViewTheme } from '../view/ViewTheme';
-import { SurfaceProps } from './SurfaceProps';
-import { SurfacePropsOptionalGetter } from './SurfacePropsGetter';
+import { ViewStyle } from 'react-native';
 
-export interface SurfaceTheme extends ComplexComponentTheme {
-  readonly container?: BuiltInViewTheme<SurfaceProps>;
-  readonly getProps?: SurfacePropsOptionalGetter<SurfaceProps>;
-}
+import { BuiltInSimpleComponentTheme } from '../SimpleComponentTheme';
+import { SurfaceProps, SurfacePropsOptional } from './SurfaceProps';
+
+export type SurfaceTheme = BuiltInSimpleComponentTheme<
+  SurfaceProps,
+  SurfacePropsOptional,
+  ViewStyle
+>;

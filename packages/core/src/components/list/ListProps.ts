@@ -5,23 +5,27 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import * as React from 'react';
+import { ViewProps } from 'react-native';
 
 import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
 import { DimensionsProps } from '../../responsiveness/DimensionsProps';
 import { ResponsivenessProps } from '../../responsiveness/ResponsivenessProps';
 import { SizingPropsOptional } from '../../sizing/SizingProps';
-import { ComponentThemeGetter } from '../ComponentThemeGetter';
+import { MarginProps } from '../../spacing/MarginProps';
+import { PaddingProps } from '../../spacing/PaddingProps';
+import { ComponentChildrenProps } from '../ComponentChildrenProps';
+import { ComponentThemeProps } from '../ComponentThemeProps';
 import { ListTheme } from './ListTheme';
 
 export interface ListProps
-  extends DimensionsProps,
+  extends ComponentChildrenProps<ListProps>,
+    ComponentThemeProps<ListProps, ListTheme>,
+    DimensionsProps,
+    MarginProps,
+    PaddingProps,
     PaletteThemeProps,
     ResponsivenessProps,
-    SizingPropsOptional {
-  readonly children?: React.ReactNode | ((props: ListProps) => React.ReactNode);
-  readonly getPatchTheme?: ComponentThemeGetter<ListProps, ListTheme>;
-  readonly theme: ListTheme;
-}
+    SizingPropsOptional,
+    ViewProps {}
 
 export type ListPropsOptional = Partial<ListProps>;

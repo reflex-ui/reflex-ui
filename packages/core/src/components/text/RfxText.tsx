@@ -5,13 +5,16 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import merge from 'lodash/merge';
 import * as React from 'react';
 import { TextProps } from 'react-native';
 
-import { extractPropsFromTheme } from '../extractPropsFromTheme';
-import { mergeThemes } from '../mergeThemes';
+import { propsPipe } from '../../utils/propsPipe';
+import { getStyleFromTheme } from '../getStyleFromTheme';
+import { handleChildrenProps } from '../handleChildrenProps';
+import { handlePatchThemeProps } from '../handlePatchThemeProps';
+import { handleThemeGetProps } from '../handleThemeGetProps';
 import { reflexComponent } from '../reflexComponent';
+import { validateNoStyleProps } from '../validateNoStyleProps';
 import { DefaultText } from './DefaultText';
 import { RfxTextProps } from './RfxTextProps';
 
@@ -39,44 +42,25 @@ export const extractTextPropsFromRfxTextProps = (
 };
 
 export const transformRfxTextStringChildIntoComponent = (
-  children: React.ReactNode,
   props: RfxTextProps,
 ): JSX.Element => {
-  let newProps = props;
-  let mergedTheme = props.theme;
+  validateNoStyleProps(props);
+  const newProps = propsPipe<RfxTextProps>([
+    handlePatchThemeProps,
+    handleThemeGetProps,
+    handleChildrenProps,
+  ])(props);
+  const { theme } = newProps;
 
-  if (props.getPatchTheme || props.theme.getProps) {
-    mergedTheme = mergeThemes(
-      props.theme,
-      props.getPatchTheme && props.getPatchTheme(props),
-    );
-
-    newProps = {
-      ...newProps,
-      ...((mergedTheme.getProps && mergedTheme.getProps(props)) || {}),
-      theme: mergedTheme,
-    };
-  }
-
-  const Text = (mergedTheme.text && mergedTheme.text.component) || DefaultText;
-
-  const textPropsFromTheme = extractPropsFromTheme(newProps, mergedTheme.text);
-  const textProps = extractTextPropsFromRfxTextProps(newProps);
-
-  if (textProps.style) {
-    throw new Error(
-      [
-        "Rfx: It's not possible to pass style prop directly.",
-        'You have to pass it as part of theme object.',
-      ].join(' '),
-    );
-  }
-
-  const mergedTextProps = merge({}, textPropsFromTheme, textProps);
+  const Text = theme.component || DefaultText;
+  const textProps = {
+    ...extractTextPropsFromRfxTextProps(newProps),
+    style: getStyleFromTheme(newProps, theme),
+  };
 
   return (
-    <Text complexComponentProps={newProps} {...mergedTextProps}>
-      {children}
+    <Text complexComponentProps={newProps} {...textProps}>
+      {newProps.children}
     </Text>
   );
 };
@@ -84,7 +68,7 @@ export const transformRfxTextStringChildIntoComponent = (
 export const RfxText = reflexComponent<RfxTextProps>({
   name: 'Text',
 })((props: RfxTextProps) => {
-  const { children, ...propsButChildren } = props;
+  const { children } = props;
 
   if (
     typeof children === 'string' ||
@@ -92,7 +76,7 @@ export const RfxText = reflexComponent<RfxTextProps>({
     typeof children === 'boolean' ||
     Array.isArray(children)
   ) {
-    return transformRfxTextStringChildIntoComponent(children, propsButChildren);
+    return transformRfxTextStringChildIntoComponent(props);
   }
 
   if (children === undefined || children === null) return null;

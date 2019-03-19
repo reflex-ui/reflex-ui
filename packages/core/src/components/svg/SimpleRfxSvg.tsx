@@ -10,9 +10,13 @@ import * as React from 'react';
 import { SvgProps } from 'react-native-svg';
 
 import { cloneElement } from '../../utils';
-import { extractPropsFromTheme } from '../extractPropsFromTheme';
-import { mergeThemes } from '../mergeThemes';
+import { propsPipe } from '../../utils/propsPipe';
+import { getPropsAndStyleFromTheme } from '../getPropsAndStyleFromTheme';
+import { handleChildrenProps } from '../handleChildrenProps';
+import { handlePatchThemeProps } from '../handlePatchThemeProps';
+import { handleThemeGetProps } from '../handleThemeGetProps';
 import { reflexComponent } from '../reflexComponent';
+import { validateNoStyleProps } from '../validateNoStyleProps';
 import { DefaultView } from '../view';
 import { RfxSvgProps, RfxSvgPropsOptional } from './RfxSvgProps';
 
@@ -43,16 +47,16 @@ export const extractSvgPropsFromRfxSvgProps = (
 };
 
 const handleSvgChildren = (props: RfxSvgProps): React.ReactNode => {
+  if (!props.children) return undefined;
   const children = props.children as React.ReactElement<RfxSvgPropsOptional>;
-  if (!children) return undefined;
 
   if (typeof children !== 'object') {
-    throw new Error('SVG children must be a valid React element.');
+    throw new Error('Rfx: SVG children must be a valid React element.');
   }
 
-  const themeProps = extractPropsFromTheme(props, props.theme.svg);
+  const svgPropsFromTheme = getPropsAndStyleFromTheme(props, props.theme.svg);
   const svgProps = extractSvgPropsFromRfxSvgProps(props);
-  const mergedProps = merge({}, themeProps, svgProps);
+  const mergedProps = merge({}, svgPropsFromTheme, svgProps);
 
   const styledSvg = children
     ? cloneElement({ element: children, props: mergedProps })
@@ -64,21 +68,13 @@ const handleSvgChildren = (props: RfxSvgProps): React.ReactNode => {
 export const SimpleRfxSvg = reflexComponent<RfxSvgProps>({
   name: 'SimpleRfxSvg',
 })((props: RfxSvgProps) => {
-  let newProps = props;
-  let mergedTheme = props.theme;
-
-  if (props.getPatchTheme || props.theme.getProps) {
-    mergedTheme = mergeThemes(
-      props.theme,
-      props.getPatchTheme && props.getPatchTheme(props),
-    );
-
-    newProps = {
-      ...newProps,
-      ...((mergedTheme.getProps && mergedTheme.getProps(props)) || {}),
-      theme: mergedTheme,
-    };
-  }
+  validateNoStyleProps(props);
+  const newProps = propsPipe<RfxSvgProps>([
+    handlePatchThemeProps,
+    handleThemeGetProps,
+    handleChildrenProps,
+  ])(props);
+  const { theme } = newProps;
 
   let children: React.ReactNode;
   if (newProps.children) children = handleSvgChildren(newProps);
@@ -87,12 +83,11 @@ export const SimpleRfxSvg = reflexComponent<RfxSvgProps>({
   }
 
   const Container =
-    (mergedTheme.container && mergedTheme.container.component) || DefaultView;
-
-  const containerProps = extractPropsFromTheme(newProps, mergedTheme.container);
+    (theme.container && theme.container.component) || DefaultView;
+  const viewProps = getPropsAndStyleFromTheme(newProps, theme.container);
 
   return (
-    <Container complexComponentProps={newProps} {...containerProps}>
+    <Container complexComponentProps={newProps} {...viewProps}>
       {children}
     </Container>
   );

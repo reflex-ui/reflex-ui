@@ -5,28 +5,20 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import * as React from 'react';
-
 import { InteractionProps } from '../../interaction';
 import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
 import { DimensionsProps } from '../../responsiveness/DimensionsProps';
 import { ResponsivenessProps } from '../../responsiveness/ResponsivenessProps';
-import { ComponentThemeGetter } from '../ComponentThemeGetter';
+import { ComponentChildrenProps } from '../ComponentChildrenProps';
+import { ComponentThemeProps } from '../ComponentThemeProps';
 import { TouchableSurfaceTheme } from './TouchableSurfaceTheme';
 
 export interface TouchableSurfaceProps
-  extends DimensionsProps,
+  extends ComponentChildrenProps<TouchableSurfaceProps>,
+    ComponentThemeProps<TouchableSurfaceProps, TouchableSurfaceTheme>,
+    DimensionsProps,
     InteractionProps,
     PaletteThemeProps,
-    ResponsivenessProps {
-  readonly children?:
-    | React.ReactNode
-    | ((props: TouchableSurfaceProps) => React.ReactNode);
-  readonly getPatchTheme?: ComponentThemeGetter<
-    TouchableSurfaceProps,
-    TouchableSurfaceTheme
-  >;
-  readonly theme: TouchableSurfaceTheme;
-}
+    ResponsivenessProps {}
 
 export type TouchableSurfacePropsOptional = Partial<TouchableSurfaceProps>;

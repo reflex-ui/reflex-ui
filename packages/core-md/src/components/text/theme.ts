@@ -37,128 +37,102 @@ export const getCommonRfxTextStyle: TextStyleGetter<RfxTextProps> = props => ({
 
 export const rfxTextVariantsTheme: RfxTextVariantsTheme = {
   appBarTitle: {
-    text: {
-      getStyle: (props): TextStyle => ({
-        ...getCommonRfxTextStyle(props),
-        fontSize: 20,
-        fontWeight: getFontWeight(FontWeight.Medium),
-        letterSpacing: 0.0075,
-        marginTop: isWeb ? -1 : 0,
-        overflow: 'hidden',
-      }),
-    },
+    getStyle: (props): TextStyle => ({
+      ...getCommonRfxTextStyle(props),
+      fontSize: 20,
+      fontWeight: getFontWeight(FontWeight.Medium),
+      letterSpacing: 0.0075,
+      marginTop: isWeb ? -1 : 0,
+      overflow: 'hidden',
+    }),
   },
   caption: {
-    text: {
-      getStyle: props => ({
-        ...getCommonRfxTextStyle(props),
-        fontSize: 12,
-        letterSpacing: 0.033,
-      }),
-    },
+    getStyle: props => ({
+      ...getCommonRfxTextStyle(props),
+      fontSize: 12,
+      letterSpacing: 0.033,
+    }),
   },
   headline1: {
-    text: {
-      getStyle: props => ({
-        ...getCommonRfxTextStyle(props),
-        fontSize: 96,
-        fontWeight: getFontWeight(FontWeight.Light),
-        letterSpacing: -0.015625,
-      }),
-    },
+    getStyle: props => ({
+      ...getCommonRfxTextStyle(props),
+      fontSize: 96,
+      fontWeight: getFontWeight(FontWeight.Light),
+      letterSpacing: -0.015625,
+    }),
   },
   headline2: {
-    text: {
-      getStyle: props => ({
-        ...getCommonRfxTextStyle(props),
-        fontSize: 60,
-        fontWeight: getFontWeight(FontWeight.Light),
-        letterSpacing: -0.0083,
-      }),
-    },
+    getStyle: props => ({
+      ...getCommonRfxTextStyle(props),
+      fontSize: 60,
+      fontWeight: getFontWeight(FontWeight.Light),
+      letterSpacing: -0.0083,
+    }),
   },
   headline3: {
-    text: {
-      getStyle: props => ({
-        ...getCommonRfxTextStyle(props),
-        fontSize: 48,
-        letterSpacing: 0,
-      }),
-    },
+    getStyle: props => ({
+      ...getCommonRfxTextStyle(props),
+      fontSize: 48,
+      letterSpacing: 0,
+    }),
   },
   headline4: {
-    text: {
-      getStyle: props => ({
-        ...getCommonRfxTextStyle(props),
-        fontSize: 34,
-        letterSpacing: 0.0073,
-      }),
-    },
+    getStyle: props => ({
+      ...getCommonRfxTextStyle(props),
+      fontSize: 34,
+      letterSpacing: 0.0073,
+    }),
   },
   headline5: {
-    text: {
-      getStyle: props => ({
-        ...getCommonRfxTextStyle(props),
-        fontSize: 24,
-        letterSpacing: 0,
-      }),
-    },
+    getStyle: props => ({
+      ...getCommonRfxTextStyle(props),
+      fontSize: 24,
+      letterSpacing: 0,
+    }),
   },
   headline6: {
-    text: {
-      getStyle: props => ({
-        ...getCommonRfxTextStyle(props),
-        fontSize: 20,
-        fontWeight: getFontWeight(FontWeight.Medium),
-        letterSpacing: 0.0075,
-      }),
-    },
+    getStyle: props => ({
+      ...getCommonRfxTextStyle(props),
+      fontSize: 20,
+      fontWeight: getFontWeight(FontWeight.Medium),
+      letterSpacing: 0.0075,
+    }),
   },
   overline: {
-    text: {
-      getStyle: props => ({
-        ...getCommonRfxTextStyle(props),
-        fontSize: 10,
-        letterSpacing: 0.15,
-        textTransform: 'uppercase',
-      }),
-    },
+    getStyle: props => ({
+      ...getCommonRfxTextStyle(props),
+      fontSize: 10,
+      letterSpacing: 0.15,
+      textTransform: 'uppercase',
+    }),
   },
   paragraph1: {
-    text: {
-      getStyle: props => ({
-        ...getCommonRfxTextStyle(props),
-        fontSize: 16,
-        letterSpacing: 0.03125,
-      }),
-    },
+    getStyle: props => ({
+      ...getCommonRfxTextStyle(props),
+      fontSize: 16,
+      letterSpacing: 0.03125,
+    }),
   },
   paragraph2: {
-    text: {
-      getStyle: props => ({
-        ...getCommonRfxTextStyle(props),
-        fontSize: 14,
-        letterSpacing: 0.01785,
-      }),
-    },
+    getStyle: props => ({
+      ...getCommonRfxTextStyle(props),
+      fontSize: 14,
+      letterSpacing: 0.01785,
+    }),
   },
   subtitle1: {
-    text: {
-      getStyle: props => ({
-        ...getCommonRfxTextStyle(props),
-        fontSize: 16,
-        letterSpacing: 0.009375,
-      }),
-    },
+    getStyle: props => ({
+      ...getCommonRfxTextStyle(props),
+      fontSize: 16,
+      letterSpacing: 0.009375,
+    }),
   },
   subtitle2: {
-    text: {
-      getStyle: props => ({
-        ...getCommonRfxTextStyle(props),
-        fontSize: 14,
-        fontWeight: getFontWeight(FontWeight.Medium),
-        letterSpacing: 0.0071,
-      }),
-    },
+    getStyle: props => ({
+      ...getCommonRfxTextStyle(props),
+      fontSize: 14,
+      fontWeight: getFontWeight(FontWeight.Medium),
+      letterSpacing: 0.0071,
+    }),
   },
 };

@@ -5,15 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import isEmpty from 'lodash/isEmpty';
-import isPlainObject from 'lodash/isPlainObject';
 import { ImageStyle, TextStyle, ViewStyle } from 'react-native';
 
-import { registerStyle } from './registerStyle';
+import { getStyleFromTheme } from './getStyleFromTheme';
 import { SimpleComponentTheme } from './SimpleComponentTheme';
 import { StyleProps } from './StyleProps';
 
-export const extractPropsFromTheme = <
+export const getPropsAndStyleFromTheme = <
   ComponentProps,
   PrimitiveProps extends StyleProps<PrimitiveStyle>,
   PrimitiveStyle extends ViewStyle | TextStyle | ImageStyle
@@ -37,12 +35,12 @@ export const extractPropsFromTheme = <
     );
   }
 
-  const themeStyle = theme && theme.getStyle && theme.getStyle(componentProps);
-  if (themeStyle && isPlainObject(themeStyle) && !isEmpty(themeStyle)) {
+  const themeStyle = getStyleFromTheme(componentProps, theme);
+  if (themeStyle !== undefined) {
     // It's fine to mutate it here.
     // @ts-ignore Cannot assign to 'style'
     // because it is a read-only property.ts(2540)
-    themeProps.style = registerStyle<PrimitiveStyle>(themeStyle);
+    themeProps.style = themeStyle;
   }
 
   return themeProps;

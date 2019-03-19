@@ -6,13 +6,13 @@
  */
 
 import { ComplexComponentTheme } from '../ComplexComponentTheme';
+import { PropsGetter } from '../PropsGetter';
 import { BuiltInViewTheme } from '../view/ViewTheme';
-import { RfxSvgProps } from './RfxSvgProps';
-import { RfxSvgPropsOptionalGetter } from './RfxSvgPropsGetter';
+import { RfxSvgProps, RfxSvgPropsOptional } from './RfxSvgProps';
 import { SvgTheme } from './SvgTheme';
 
 export interface RfxSvgTheme extends ComplexComponentTheme {
   readonly container?: BuiltInViewTheme<RfxSvgProps>;
-  readonly getProps?: RfxSvgPropsOptionalGetter<RfxSvgProps>;
+  readonly getProps?: PropsGetter<RfxSvgProps, RfxSvgPropsOptional>;
   readonly svg?: SvgTheme<RfxSvgProps>;
 }

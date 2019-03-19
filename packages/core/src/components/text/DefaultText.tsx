@@ -18,7 +18,7 @@ export const DefaultText = reflexComponent<
    */
   // tslint:disable-next-line:no-any
   BuiltInSimpleComponentProps<any> & TextProps
->({ name: 'DefaultTextChild' })(
+>({ name: 'DefaultText' })(
   ({ children, complexComponentProps, ...otherProps }) => (
     <Text {...otherProps}>{children}</Text>
   ),

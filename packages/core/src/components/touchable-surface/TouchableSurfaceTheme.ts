@@ -6,16 +6,19 @@
  */
 
 import { ComplexComponentTheme } from '../ComplexComponentTheme';
+import { PropsGetter } from '../PropsGetter';
 import { BuiltInTouchableTheme } from '../touchable/TouchableTheme';
 import { BuiltInViewTheme } from '../view/ViewTheme';
-import { TouchableSurfaceProps } from './TouchableSurfaceProps';
-// tslint:disable-next-line:max-line-length
-import { TouchableSurfacePropsOptionalGetter } from './TouchableSurfacePropsGetter';
+import {
+  TouchableSurfaceProps,
+  TouchableSurfacePropsOptional,
+} from './TouchableSurfaceProps';
 
 export interface TouchableSurfaceTheme extends ComplexComponentTheme {
   readonly container?: BuiltInViewTheme<TouchableSurfaceProps>;
-  readonly getProps?: TouchableSurfacePropsOptionalGetter<
-    TouchableSurfaceProps
+  readonly getProps?: PropsGetter<
+    TouchableSurfaceProps,
+    TouchableSurfacePropsOptional
   >;
   readonly touchable?: BuiltInTouchableTheme<TouchableSurfaceProps>;
 }

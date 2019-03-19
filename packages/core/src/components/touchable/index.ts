@@ -7,4 +7,3 @@
 
 export * from './DefaultTouchable';
 export * from './TouchableTheme';
-export * from './TouchablePropsGetter';

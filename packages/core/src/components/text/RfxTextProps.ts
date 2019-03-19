@@ -5,7 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import * as React from 'react';
 import { TextProps } from 'react-native';
 
 // tslint:disable-next-line:max-line-length
@@ -13,18 +12,17 @@ import { InteractionStatePropsOptional } from '../../interaction/InteractionStat
 import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
 import { MarginProps } from '../../spacing/MarginProps';
 import { PaddingProps } from '../../spacing/PaddingProps';
-import { ComponentThemeGetter } from '../ComponentThemeGetter';
+import { ComponentChildrenProps } from '../ComponentChildrenProps';
+import { ComponentThemeProps } from '../ComponentThemeProps';
 import { RfxTextTheme } from './RfxTextTheme';
 
 export interface RfxTextProps
-  extends TextProps,
+  extends ComponentChildrenProps<RfxTextProps>,
+    ComponentThemeProps<RfxTextProps, RfxTextTheme>,
     InteractionStatePropsOptional,
     MarginProps,
     PaddingProps,
-    PaletteThemeProps {
-  readonly children?: React.ReactNode;
-  readonly getPatchTheme?: ComponentThemeGetter<RfxTextProps, RfxTextTheme>;
-  readonly theme: RfxTextTheme;
-}
+    PaletteThemeProps,
+    TextProps {}
 
 export type RfxTextPropsOptional = Partial<RfxTextProps>;

@@ -5,8 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { TouchableWithoutFeedbackProps } from 'react-native';
+import * as React from 'react';
 
-export type TouchablePropsGetter<P> = (
-  props: P,
-) => TouchableWithoutFeedbackProps;
+export interface ComponentChildrenProps<ComponentProps> {
+  readonly children?:
+    | React.ReactNode
+    | ((props: ComponentProps) => React.ReactNode);
+}

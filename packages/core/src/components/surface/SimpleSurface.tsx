@@ -6,54 +6,81 @@
  */
 
 import * as React from 'react';
+import { ViewProps } from 'react-native';
 
-import { extractPropsFromTheme } from '../extractPropsFromTheme';
-import { mergeThemes } from '../mergeThemes';
+import { propsPipe } from '../../utils/propsPipe';
+import { getStyleFromTheme } from '../getStyleFromTheme';
+import { handleChildrenProps } from '../handleChildrenProps';
+import { handlePatchThemeProps } from '../handlePatchThemeProps';
+import { handleThemeGetProps } from '../handleThemeGetProps';
 import { reflexComponent } from '../reflexComponent';
+import { validateNoStyleProps } from '../validateNoStyleProps';
 import { DefaultView } from '../view';
 import { SurfaceProps } from './SurfaceProps';
+
+export const extractViewPropsFromSurfaceProps = (
+  props: SurfaceProps,
+): ViewProps => {
+  const {
+    alignContent,
+    alignItems,
+    alignSelf,
+    children,
+    colorTheme,
+    flex,
+    flexBasis,
+    flexDirection,
+    flexGrow,
+    flexShrink,
+    flexWrap,
+    getPatchTheme,
+    justifyContent,
+    margin,
+    marginBottom,
+    marginEnd,
+    marginHorizontal,
+    marginStart,
+    marginTop,
+    marginVertical,
+    padding,
+    paddingBottom,
+    paddingEnd,
+    paddingHorizontal,
+    paddingStart,
+    paddingTop,
+    paddingVertical,
+    paletteTheme,
+    theme,
+    ...viewProps
+  } = props;
+
+  return viewProps;
+};
 
 export const SimpleSurface = reflexComponent<SurfaceProps>({
   name: 'SimpleSurface',
 })((props: SurfaceProps) => {
-  const children =
-    props.children && typeof props.children === 'function'
-      ? props.children(props)
-      : props.children;
+  validateNoStyleProps(props);
+  const newProps = propsPipe<SurfaceProps>([
+    handlePatchThemeProps,
+    handleThemeGetProps,
+    handleChildrenProps,
+  ])(props);
+  const { theme } = newProps;
 
-  let newProps = props;
-  let mergedTheme = props.theme;
-
-  if (
-    props.getPatchTheme ||
-    props.theme.getProps ||
-    typeof props.children === 'function'
-  ) {
-    mergedTheme = mergeThemes(
-      props.theme,
-      props.getPatchTheme && props.getPatchTheme(props),
-    );
-
-    newProps = {
-      ...newProps,
-      ...((mergedTheme.getProps && mergedTheme.getProps(props)) || {}),
-      children,
-      theme: mergedTheme,
-    };
-  }
-
-  const Container =
-    (mergedTheme.container && mergedTheme.container.component) || DefaultView;
-
-  const containerProps = extractPropsFromTheme(newProps, mergedTheme.container);
+  const Container = theme.component || DefaultView;
+  const viewProps = {
+    ...extractViewPropsFromSurfaceProps(newProps),
+    style: getStyleFromTheme(newProps, theme),
+  };
 
   return (
     <Container
       complexComponentProps={newProps}
       onLayout={newProps.onLayout}
-      {...containerProps}
+      {...viewProps}
     >
-      {children}
+      {newProps.children}
     </Container>
   );
 });

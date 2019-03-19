@@ -18,7 +18,7 @@ export const DefaultView = reflexComponent<
    */
   // tslint:disable-next-line:no-any
   BuiltInSimpleComponentProps<any> & ViewProps
->({ name: 'DefaultViewChild' })(
+>({ name: 'DefaultView' })(
   ({ children, complexComponentProps, ...otherProps }) => (
     /*
      * otherProps is used to pass lib provided props, users'custom props,

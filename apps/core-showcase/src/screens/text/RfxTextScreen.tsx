@@ -15,6 +15,7 @@ import {
   Headline4,
   Headline5,
   Headline6,
+  InteractionType,
   Overline,
   Paragraph1,
   Paragraph2,
@@ -32,12 +33,11 @@ const getCaptionPatchTheme: ComponentThemeGetter<
   RfxTextProps,
   RfxTextTheme
 > = () => ({
-  text: {
-    getStyle: () => ({
-      color: 'red',
-      fontSize: 20,
-    }),
-  },
+  getProps: () => ({ interactionState: { type: InteractionType.Disabled } }),
+  getStyle: () => ({
+    // color: 'red',
+    fontSize: 20,
+  }),
 });
 
 const RfxTextScreen: React.SFC = (): JSX.Element => (

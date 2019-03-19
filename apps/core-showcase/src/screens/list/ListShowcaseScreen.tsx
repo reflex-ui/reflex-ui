@@ -55,20 +55,14 @@ const onListItemIconPress = () => {
 
 const createParagraph1Theme = (baseTheme: RfxTextTheme): RfxTextTheme => ({
   ...baseTheme,
-  text: {
-    ...baseTheme.text,
-    getStyle: props => ({
-      ...((baseTheme.text &&
-        baseTheme.text.getStyle &&
-        baseTheme.text.getStyle(props)) ||
-        {}),
-      fontWeight:
-        props.interactionState &&
-        props.interactionState.type === InteractionType.Activated
-          ? getFontWeight(FontWeight.Medium)
-          : getFontWeight(FontWeight.Regular),
-    }),
-  },
+  getStyle: props => ({
+    ...((baseTheme.getStyle && baseTheme.getStyle(props)) || {}),
+    fontWeight:
+      props.interactionState &&
+      props.interactionState.type === InteractionType.Activated
+        ? getFontWeight(FontWeight.Medium)
+        : getFontWeight(FontWeight.Regular),
+  }),
 });
 
 const ListShowcaseScreen: React.SFC = (): JSX.Element => (

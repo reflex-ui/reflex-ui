@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import * as React from 'react';
+import { ViewProps } from 'react-native';
 
 import { FlexboxProps } from '../../flexbox/FlexboxProps';
 import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
@@ -13,21 +13,19 @@ import { DimensionsProps } from '../../responsiveness/DimensionsProps';
 import { ResponsivenessProps } from '../../responsiveness/ResponsivenessProps';
 import { MarginProps } from '../../spacing/MarginProps';
 import { PaddingProps } from '../../spacing/PaddingProps';
-import { ComponentThemeGetter } from '../ComponentThemeGetter';
+import { ComponentChildrenProps } from '../ComponentChildrenProps';
+import { ComponentThemeProps } from '../ComponentThemeProps';
 import { SurfaceTheme } from './SurfaceTheme';
 
 export interface SurfaceProps
-  extends DimensionsProps,
+  extends ComponentChildrenProps<SurfaceProps>,
+    ComponentThemeProps<SurfaceProps, SurfaceTheme>,
+    DimensionsProps,
     FlexboxProps,
     MarginProps,
     PaddingProps,
     PaletteThemeProps,
-    ResponsivenessProps {
-  readonly children?:
-    | React.ReactNode
-    | ((props: SurfaceProps) => React.ReactNode);
-  readonly getPatchTheme?: ComponentThemeGetter<SurfaceProps, SurfaceTheme>;
-  readonly theme: SurfaceTheme;
-}
+    ResponsivenessProps,
+    ViewProps {}
 
 export type SurfacePropsOptional = Partial<SurfaceProps>;

@@ -7,7 +7,6 @@
 
 export * from './Surface';
 export * from './SurfaceProps';
-export * from './SurfacePropsGetter';
 export * from './SurfaceTheme';
 export * from './SimpleSurface';
 export * from './withDefaultSurfaceProps';

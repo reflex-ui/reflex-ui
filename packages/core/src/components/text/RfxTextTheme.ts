@@ -5,12 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ComplexComponentTheme } from '../ComplexComponentTheme';
-import { RfxTextProps } from './RfxTextProps';
-import { RfxTextPropsOptionalGetter } from './RfxTextPropsGetter';
-import { BuiltInTextTheme } from './TextTheme';
+import { TextStyle } from 'react-native';
 
-export interface RfxTextTheme extends ComplexComponentTheme {
-  readonly text?: BuiltInTextTheme<RfxTextProps>;
-  readonly getProps?: RfxTextPropsOptionalGetter<RfxTextProps>;
-}
+import { BuiltInSimpleComponentTheme } from '../SimpleComponentTheme';
+import { RfxTextProps, RfxTextPropsOptional } from './RfxTextProps';
+
+export type RfxTextTheme = BuiltInSimpleComponentTheme<
+  RfxTextProps,
+  RfxTextPropsOptional,
+  TextStyle
+>;

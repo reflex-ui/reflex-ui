@@ -7,17 +7,20 @@
 
 import merge from 'lodash/merge';
 import * as React from 'react';
-import * as ReactIs from 'react-is';
 import { TouchableWithoutFeedbackProps } from 'react-native';
 
-import { extractPropsFromTheme } from '../extractPropsFromTheme';
-import { mergeThemes } from '../mergeThemes';
+import { propsPipe } from '../../utils/propsPipe';
+import { getPropsAndStyleFromTheme } from '../getPropsAndStyleFromTheme';
+import { handleChildrenProps } from '../handleChildrenProps';
+import { handlePatchThemeProps } from '../handlePatchThemeProps';
+import { handleThemeGetProps } from '../handleThemeGetProps';
 import { reflexComponent } from '../reflexComponent';
 import { DefaultTouchable } from '../touchable/DefaultTouchable';
+import { validateNoStyleProps } from '../validateNoStyleProps';
 import { DefaultView } from '../view/DefaultView';
 import { TouchableSurfaceProps } from './TouchableSurfaceProps';
 
-export const extractTouchableProps = (
+export const extractTouchablePropsFromTouchableSurface = (
   props: TouchableSurfaceProps,
 ): TouchableWithoutFeedbackProps => {
   const {
@@ -36,73 +39,40 @@ export const extractTouchableProps = (
 export const SimpleTouchableSurface = reflexComponent<TouchableSurfaceProps>({
   name: 'SimpleTouchableSurface',
 })((props: TouchableSurfaceProps) => {
-  let children =
-    props.children && typeof props.children === 'function'
-      ? props.children(props)
-      : props.children;
-
-  if (ReactIs.isFragment(children) && children.props) {
-    children = children.props.children;
-  }
-
-  let newProps = props;
-  let mergedTheme = props.theme;
-
-  if (
-    props.getPatchTheme ||
-    props.theme.getProps ||
-    typeof props.children === 'function'
-  ) {
-    mergedTheme = mergeThemes(
-      props.theme,
-      props.getPatchTheme && props.getPatchTheme(props),
-    );
-
-    newProps = {
-      ...newProps,
-      ...((mergedTheme.getProps && mergedTheme.getProps(props)) || {}),
-      children,
-      theme: mergedTheme,
-    };
-  }
-
-  const Container =
-    (mergedTheme.container && mergedTheme.container.component) || DefaultView;
-
-  const containerProps = extractPropsFromTheme(newProps, mergedTheme.container);
+  validateNoStyleProps(props);
+  const newProps = propsPipe<TouchableSurfaceProps>([
+    handlePatchThemeProps,
+    handleThemeGetProps,
+    handleChildrenProps,
+  ])(props);
+  const { theme } = newProps;
 
   const Touchable =
-    (mergedTheme.touchable && mergedTheme.touchable.component) ||
-    DefaultTouchable;
+    (theme.touchable && theme.touchable.component) || DefaultTouchable;
 
-  const touchablePropsFromTheme = extractPropsFromTheme(
+  const touchablePropsFromTheme = getPropsAndStyleFromTheme(
     newProps,
-    mergedTheme.touchable,
+    theme.touchable,
   );
-  const touchableProps = extractTouchableProps(props);
-
-  if (touchableProps.style) {
-    throw new Error(
-      [
-        "Rfx: It's not possible to pass style prop directly.",
-        'You have to pass it as part of theme object.',
-      ].join(' '),
-    );
-  }
+  const touchableProps = extractTouchablePropsFromTouchableSurface(newProps);
   const mergedTouchableProps = merge(
     {},
     touchablePropsFromTheme,
     touchableProps,
   );
 
+  const Container =
+    (theme.container && theme.container.component) || DefaultView;
+  const containerProps = getPropsAndStyleFromTheme(newProps, theme.container);
+
   return (
-    <Touchable complexComponentProps={props} {...mergedTouchableProps}>
+    <Touchable complexComponentProps={newProps} {...mergedTouchableProps}>
       <Container
         complexComponentProps={newProps}
         onLayout={newProps.onLayout}
         {...containerProps}
       >
-        {children}
+        {newProps.children}
       </Container>
     </Touchable>
   );

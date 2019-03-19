@@ -11,10 +11,14 @@ import { ComplexComponentTheme } from './ComplexComponentTheme';
 import { PropsGetter } from './PropsGetter';
 import { BuiltInSimpleComponentTheme } from './SimpleComponentTheme';
 
-export const mergeThemes = <Theme extends ComplexComponentTheme>(
+function mergeThemes<
+  // tslint:disable-next-line:no-any
+  Theme extends BuiltInSimpleComponentTheme<any, any, any>
+>(theme1: Theme, theme2: Theme | undefined): Theme;
+function mergeThemes<Theme extends ComplexComponentTheme>(
   theme1: Theme,
   theme2: Theme | undefined,
-): Theme => {
+): Theme {
   if (!theme2) return theme1;
 
   const allKeys = new Set(Object.keys(theme1).concat(Object.keys(theme2)));
@@ -93,7 +97,9 @@ export const mergeThemes = <Theme extends ComplexComponentTheme>(
   });
 
   return mergedTheme;
-};
+}
+
+export { mergeThemes };
 
 export const mergeThemeGetters = (
   getter1: PropsGetter<unknown, unknown> | undefined,

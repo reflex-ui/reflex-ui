@@ -6,6 +6,8 @@
  */
 
 import {
+  getSizedMarginStyle,
+  getSizedPaddingStyle,
   ListItemProps,
   ListItemTheme,
   SizedData,
@@ -14,6 +16,7 @@ import {
 import { ViewStyle } from 'react-native';
 
 import { getSizingStyle } from '../../sizing/getSizingStyle';
+import { sizedSpacing } from '../../spacing/sizedSpacing';
 
 export const listItemContainerSizedStyle: SizedData<ViewStyle> = {
   xxsmall: { minHeight: 32 },
@@ -39,11 +42,11 @@ export const getListItemContainerStyle: ViewStyleGetter<
   backgroundColor: 'transparent',
   flexDirection: 'row',
   paddingHorizontal: 8,
+  ...getSizedMarginStyle(sizedSpacing)(props),
+  ...getSizedPaddingStyle(sizedSpacing)(props),
   ...getSizingStyle(props),
 });
 
 export const listItemTheme: ListItemTheme = {
-  container: {
-    getStyle: getListItemContainerStyle,
-  },
+  getStyle: getListItemContainerStyle,
 };

@@ -6,11 +6,14 @@
  */
 
 import * as React from 'react';
-import * as ReactIs from 'react-is';
 
-import { extractPropsFromTheme } from '../extractPropsFromTheme';
-import { mergeThemes } from '../mergeThemes';
+import { propsPipe } from '../../utils/propsPipe';
+import { getPropsAndStyleFromTheme } from '../getPropsAndStyleFromTheme';
+import { handleChildrenProps } from '../handleChildrenProps';
+import { handlePatchThemeProps } from '../handlePatchThemeProps';
+import { handleThemeGetProps } from '../handleThemeGetProps';
 import { reflexComponent } from '../reflexComponent';
+import { validateNoStyleProps } from '../validateNoStyleProps';
 import { DefaultView } from '../view/DefaultView';
 import { AppBarProps } from './AppBarProps';
 
@@ -22,11 +25,10 @@ export const renderCenterArea = (props: AppBarProps): React.ReactNode => {
 
   const Container =
     (theme.centerArea && theme.centerArea.component) || DefaultView;
-
-  const containerProps = extractPropsFromTheme(props, theme.centerArea);
+  const viewProps = getPropsAndStyleFromTheme(props, theme.centerArea);
 
   return (
-    <Container complexComponentProps={props} {...containerProps}>
+    <Container complexComponentProps={props} {...viewProps}>
       {children[1]}
     </Container>
   );
@@ -35,16 +37,15 @@ export const renderCenterArea = (props: AppBarProps): React.ReactNode => {
 export const renderLeadingArea = (props: AppBarProps): React.ReactNode => {
   const { children, theme } = props;
   if (!children) return children;
-  // if (typeof children === 'function') return children(props);
+
   const leadingChildren = Array.isArray(children) ? children[0] : children;
 
   const Container =
     (theme.leadingArea && theme.leadingArea.component) || DefaultView;
-
-  const containerProps = extractPropsFromTheme(props, theme.leadingArea);
+  const viewProps = getPropsAndStyleFromTheme(props, theme.leadingArea);
 
   return (
-    <Container complexComponentProps={props} {...containerProps}>
+    <Container complexComponentProps={props} {...viewProps}>
       {leadingChildren}
     </Container>
   );
@@ -58,11 +59,10 @@ export const renderTrailingArea = (props: AppBarProps): React.ReactNode => {
 
   const Container =
     (theme.trailingArea && theme.trailingArea.component) || DefaultView;
-
-  const containerProps = extractPropsFromTheme(props, theme.trailingArea);
+  const viewProps = getPropsAndStyleFromTheme(props, theme.trailingArea);
 
   return (
-    <Container complexComponentProps={props} {...containerProps}>
+    <Container complexComponentProps={props} {...viewProps}>
       {children[2]}
     </Container>
   );
@@ -71,55 +71,32 @@ export const renderTrailingArea = (props: AppBarProps): React.ReactNode => {
 export const SimpleAppBar = reflexComponent<AppBarProps>({
   name: 'SimpleAppBar',
 })((props: AppBarProps) => {
-  let children =
-    props.children && typeof props.children === 'function'
-      ? props.children(props)
-      : props.children;
+  validateNoStyleProps(props);
+  const newProps = propsPipe<AppBarProps>([
+    handlePatchThemeProps,
+    handleThemeGetProps,
+    handleChildrenProps,
+  ])(props);
+  const { theme } = newProps;
 
-  if (ReactIs.isFragment(children) && children.props) {
-    children = children.props.children;
-  }
-
-  if (Array.isArray(children) && children.length > 3) {
+  if (Array.isArray(newProps.children) && newProps.children.length > 3) {
     throw new Error(
       [
-        'SimpleAppBar.children cannot take more than 3 top-level nodes. ',
+        'Rfx: SimpleAppBar.children cannot take more than 3 top-level nodes. ',
         'You probably forgot to wrap some components into e.g. a <Row>.',
       ].join(''),
     );
   }
 
-  let newProps = props;
-  let mergedTheme = props.theme;
-
-  if (
-    props.getPatchTheme ||
-    props.theme.getProps ||
-    typeof props.children === 'function'
-  ) {
-    mergedTheme = mergeThemes(
-      props.theme,
-      props.getPatchTheme && props.getPatchTheme(props),
-    );
-
-    newProps = {
-      ...newProps,
-      ...((mergedTheme.getProps && mergedTheme.getProps(props)) || {}),
-      children,
-      theme: mergedTheme,
-    };
-  }
-
   const Container =
-    (mergedTheme.container && mergedTheme.container.component) || DefaultView;
-
-  const containerProps = extractPropsFromTheme(newProps, mergedTheme.container);
+    (theme.container && theme.container.component) || DefaultView;
+  const viewProps = getPropsAndStyleFromTheme(newProps, theme.container);
 
   return (
     <Container
       complexComponentProps={newProps}
       onLayout={newProps.onLayout}
-      {...containerProps}
+      {...viewProps}
     >
       {renderLeadingArea(newProps)}
       {renderCenterArea(newProps)}

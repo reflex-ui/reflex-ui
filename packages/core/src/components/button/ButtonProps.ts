@@ -5,26 +5,24 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import * as React from 'react';
-
 import { InteractionProps } from '../../interaction';
 import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
 import { SizingProps } from '../../sizing/SizingProps';
 import { MarginProps } from '../../spacing/MarginProps';
-import { ComponentThemeGetter } from '../ComponentThemeGetter';
+import { ComponentChildrenProps } from '../ComponentChildrenProps';
+import { ComponentThemeProps } from '../ComponentThemeProps';
 import { ButtonTheme } from './ButtonTheme';
 import { ButtonVariant } from './ButtonVariant';
 
 export interface ButtonProps
-  extends InteractionProps,
+  extends ComponentChildrenProps<ButtonProps>,
+    ComponentThemeProps<ButtonProps, ButtonTheme>,
+    InteractionProps,
     MarginProps,
     PaletteThemeProps,
     SizingProps {
-  readonly children?: React.ReactNode;
   readonly fullWidth?: boolean;
-  readonly getPatchTheme?: ComponentThemeGetter<ButtonProps, ButtonTheme>;
   readonly leadingIcon?: JSX.Element;
-  readonly theme: ButtonTheme;
   readonly trailingIcon?: JSX.Element;
   readonly variant: ButtonVariant;
 }

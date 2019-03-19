@@ -5,12 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ComplexComponentTheme } from '../ComplexComponentTheme';
-import { BuiltInViewTheme } from '../view/ViewTheme';
-import { ListItemProps } from './ListItemProps';
-import { ListItemPropsOptionalGetter } from './ListItemPropsGetter';
+import { ViewStyle } from 'react-native';
 
-export interface ListItemTheme extends ComplexComponentTheme {
-  readonly container?: BuiltInViewTheme<ListItemProps>;
-  readonly getProps?: ListItemPropsOptionalGetter<ListItemProps>;
-}
+import { BuiltInSimpleComponentTheme } from '../SimpleComponentTheme';
+import { ListItemProps, ListItemPropsOptional } from './ListItemProps';
+
+export type ListItemTheme = BuiltInSimpleComponentTheme<
+  ListItemProps,
+  ListItemPropsOptional,
+  ViewStyle
+>;

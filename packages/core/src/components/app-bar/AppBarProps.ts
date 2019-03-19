@@ -5,24 +5,20 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import * as React from 'react';
-
 import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
 import { DimensionsProps } from '../../responsiveness/DimensionsProps';
 import { ResponsivenessProps } from '../../responsiveness/ResponsivenessProps';
-import { ComponentThemeGetter } from '../ComponentThemeGetter';
+import { ComponentChildrenProps } from '../ComponentChildrenProps';
+import { ComponentThemeProps } from '../ComponentThemeProps';
 import { AppBarTheme } from './AppBarTheme';
 import { AppBarVariant } from './AppBarVariant';
 
 export interface AppBarProps
-  extends DimensionsProps,
+  extends ComponentChildrenProps<AppBarProps>,
+    ComponentThemeProps<AppBarProps, AppBarTheme>,
+    DimensionsProps,
     PaletteThemeProps,
     ResponsivenessProps {
-  readonly children?:
-    | React.ReactNode
-    | ((props: AppBarProps) => React.ReactNode);
-  readonly getPatchTheme?: ComponentThemeGetter<AppBarProps, AppBarTheme>;
-  readonly theme: AppBarTheme;
   readonly variant: AppBarVariant;
 }
 

@@ -9,8 +9,12 @@ import merge from 'lodash/merge';
 import * as React from 'react';
 import { TouchableWithoutFeedbackProps } from 'react-native';
 
-import { cloneElement } from '../../utils';
-import { extractPropsFromTheme } from '../extractPropsFromTheme';
+import { cloneElement } from '../../utils/cloneElement';
+import { propsPipe } from '../../utils/propsPipe';
+import { getPropsAndStyleFromTheme } from '../getPropsAndStyleFromTheme';
+import { handleChildrenProps } from '../handleChildrenProps';
+import { handlePatchThemeProps } from '../handlePatchThemeProps';
+import { handleThemeGetProps } from '../handleThemeGetProps';
 import { mergeThemes } from '../mergeThemes';
 import { reflexComponent } from '../reflexComponent';
 import { RfxSvgPropsOptional } from '../svg/RfxSvgProps';
@@ -19,6 +23,7 @@ import { DefaultText } from '../text/DefaultText';
 // tslint:disable-next-line:max-line-length
 import { handleAndroidTextTransformation } from '../text/handleAndroidTextTransformation';
 import { DefaultTouchable } from '../touchable/DefaultTouchable';
+import { validateNoStyleProps } from '../validateNoStyleProps';
 import { DefaultView } from '../view/DefaultView';
 import { ButtonProps } from './ButtonProps';
 import { ButtonVariant } from './ButtonVariant';
@@ -86,7 +91,7 @@ export const transformButtonStringChildrenIntoComponent = (
   props: ButtonProps,
 ): JSX.Element => {
   const Text = (props.theme.text && props.theme.text.component) || DefaultText;
-  const textProps = extractPropsFromTheme(props, props.theme.text);
+  const textProps = getPropsAndStyleFromTheme(props, props.theme.text);
 
   return (
     <Text complexComponentProps={props} {...textProps}>
@@ -161,50 +166,37 @@ export const handleTrailingIcon = (
 export const SimpleButton = reflexComponent<ButtonProps>({
   name: 'SimpleButton',
 })((props: ButtonProps) => {
-  const { children } = props;
-  let newProps = props;
-  let mergedTheme = props.theme;
-
-  if (props.getPatchTheme || props.theme.getProps) {
-    mergedTheme = mergeThemes(
-      props.theme,
-      props.getPatchTheme && props.getPatchTheme(props),
-    );
-
-    newProps = {
-      ...newProps,
-      ...((mergedTheme.getProps && mergedTheme.getProps(props)) || {}),
-      theme: mergedTheme,
-    };
-  }
+  validateNoStyleProps(props);
+  const newProps = propsPipe<ButtonProps>([
+    handlePatchThemeProps,
+    handleThemeGetProps,
+    handleChildrenProps,
+  ])(props);
+  const { theme } = newProps;
 
   const Touchable =
-    (mergedTheme.touchable && mergedTheme.touchable.component) ||
-    DefaultTouchable;
+    (theme.touchable && theme.touchable.component) || DefaultTouchable;
 
-  const touchableProps = extractPropsFromTheme(newProps, mergedTheme.touchable);
-  const userTouchableProps = extractTouchablePropsFromButtonProps(newProps);
-
-  if (userTouchableProps.style) {
-    throw new Error(
-      [
-        "Rfx: It's not possible to pass style prop directly.",
-        'You have to pass it as part of theme object.',
-      ].join(' '),
-    );
-  }
-  const mergedTouchableProps = merge({}, touchableProps, userTouchableProps);
+  const touchablePropsFromTheme = getPropsAndStyleFromTheme(
+    newProps,
+    theme.touchable,
+  );
+  const touchableProps = extractTouchablePropsFromButtonProps(newProps);
+  const mergedTouchableProps = merge(
+    {},
+    touchablePropsFromTheme,
+    touchableProps,
+  );
 
   const Container =
-    (mergedTheme.container && mergedTheme.container.component) || DefaultView;
-
-  const containerProps = extractPropsFromTheme(newProps, mergedTheme.container);
+    (theme.container && theme.container.component) || DefaultView;
+  const viewProps = getPropsAndStyleFromTheme(newProps, theme.container);
 
   return (
     <Touchable complexComponentProps={newProps} {...mergedTouchableProps}>
-      <Container complexComponentProps={newProps} {...containerProps}>
+      <Container complexComponentProps={newProps} {...viewProps}>
         {newProps.leadingIcon && handleLeadingIcon(newProps)}
-        {children && handleButtonChildren(newProps)}
+        {newProps.children && handleButtonChildren(newProps)}
         {newProps.trailingIcon && handleTrailingIcon(newProps)}
       </Container>
     </Touchable>
