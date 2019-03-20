@@ -6,6 +6,7 @@
  */
 
 import * as React from 'react';
+import { View } from 'react-native';
 
 import { propsPipe } from '../../utils/propsPipe';
 import { getPropsAndStyleFromTheme } from '../getPropsAndStyleFromTheme';
@@ -14,7 +15,6 @@ import { handlePatchThemeProps } from '../handlePatchThemeProps';
 import { handleThemeGetProps } from '../handleThemeGetProps';
 import { reflexComponent } from '../reflexComponent';
 import { validateNoStyleProps } from '../validateNoStyleProps';
-import { DefaultView } from '../view/DefaultView';
 import { AppBarProps } from './AppBarProps';
 
 export const renderCenterArea = (props: AppBarProps): React.ReactNode => {
@@ -23,9 +23,12 @@ export const renderCenterArea = (props: AppBarProps): React.ReactNode => {
     return undefined;
   }
 
-  const Container =
-    (theme.centerArea && theme.centerArea.component) || DefaultView;
+  const Container = (theme.centerArea && theme.centerArea.component) || View;
   const viewProps = getPropsAndStyleFromTheme(props, theme.centerArea);
+
+  if (Container === View) {
+    return <Container {...viewProps}>{children[1]}</Container>;
+  }
 
   return (
     <Container complexComponentProps={props} {...viewProps}>
@@ -40,9 +43,12 @@ export const renderLeadingArea = (props: AppBarProps): React.ReactNode => {
 
   const leadingChildren = Array.isArray(children) ? children[0] : children;
 
-  const Container =
-    (theme.leadingArea && theme.leadingArea.component) || DefaultView;
+  const Container = (theme.leadingArea && theme.leadingArea.component) || View;
   const viewProps = getPropsAndStyleFromTheme(props, theme.leadingArea);
+
+  if (Container === View) {
+    return <Container {...viewProps}>{leadingChildren}</Container>;
+  }
 
   return (
     <Container complexComponentProps={props} {...viewProps}>
@@ -58,8 +64,12 @@ export const renderTrailingArea = (props: AppBarProps): React.ReactNode => {
   }
 
   const Container =
-    (theme.trailingArea && theme.trailingArea.component) || DefaultView;
+    (theme.trailingArea && theme.trailingArea.component) || View;
   const viewProps = getPropsAndStyleFromTheme(props, theme.trailingArea);
+
+  if (Container === View) {
+    return <Container {...viewProps}>{children[2]}</Container>;
+  }
 
   return (
     <Container complexComponentProps={props} {...viewProps}>
@@ -88,16 +98,24 @@ export const SimpleAppBar = reflexComponent<AppBarProps>({
     );
   }
 
-  const Container =
-    (theme.container && theme.container.component) || DefaultView;
-  const viewProps = getPropsAndStyleFromTheme(newProps, theme.container);
+  const Container = (theme.container && theme.container.component) || View;
+  const viewProps = {
+    ...getPropsAndStyleFromTheme(newProps, theme.container),
+    onLayout: newProps.onLayout,
+  };
+
+  if (Container === View) {
+    return (
+      <Container {...viewProps}>
+        {renderLeadingArea(newProps)}
+        {renderCenterArea(newProps)}
+        {renderTrailingArea(newProps)}
+      </Container>
+    );
+  }
 
   return (
-    <Container
-      complexComponentProps={newProps}
-      onLayout={newProps.onLayout}
-      {...viewProps}
-    >
+    <Container complexComponentProps={newProps} {...viewProps}>
       {renderLeadingArea(newProps)}
       {renderCenterArea(newProps)}
       {renderTrailingArea(newProps)}
