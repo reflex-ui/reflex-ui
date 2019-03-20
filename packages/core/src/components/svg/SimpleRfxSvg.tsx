@@ -7,6 +7,7 @@
 
 import merge from 'lodash/merge';
 import * as React from 'react';
+import { View } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 
 import { cloneElement } from '../../utils';
@@ -17,7 +18,6 @@ import { handlePatchThemeProps } from '../handlePatchThemeProps';
 import { handleThemeGetProps } from '../handleThemeGetProps';
 import { reflexComponent } from '../reflexComponent';
 import { validateNoStyleProps } from '../validateNoStyleProps';
-import { DefaultView } from '../view';
 import { RfxSvgProps, RfxSvgPropsOptional } from './RfxSvgProps';
 
 export const extractSvgPropsFromRfxSvgProps = (
@@ -82,9 +82,12 @@ export const SimpleRfxSvg = reflexComponent<RfxSvgProps>({
     return <React.Fragment>{children}</React.Fragment>;
   }
 
-  const Container =
-    (theme.container && theme.container.component) || DefaultView;
+  const Container = (theme.container && theme.container.component) || View;
   const viewProps = getPropsAndStyleFromTheme(newProps, theme.container);
+
+  if (Container === View) {
+    return <Container {...viewProps}>{children}</Container>;
+  }
 
   return (
     <Container complexComponentProps={newProps} {...viewProps}>
