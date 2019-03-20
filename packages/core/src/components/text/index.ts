@@ -7,7 +7,6 @@
 
 export * from './AppBarTitle';
 export * from './Caption';
-export * from './DefaultText';
 export * from './FontWeight';
 export * from './FontWeightValues';
 export * from './getFontWeight';
