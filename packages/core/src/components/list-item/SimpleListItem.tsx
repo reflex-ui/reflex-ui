@@ -6,7 +6,7 @@
  */
 
 import * as React from 'react';
-import { ViewProps } from 'react-native';
+import { View, ViewProps } from 'react-native';
 
 import { propsPipe } from '../../utils/propsPipe';
 import { getStyleFromTheme } from '../getStyleFromTheme';
@@ -15,7 +15,6 @@ import { handlePatchThemeProps } from '../handlePatchThemeProps';
 import { handleThemeGetProps } from '../handleThemeGetProps';
 import { reflexComponent } from '../reflexComponent';
 import { validateNoStyleProps } from '../validateNoStyleProps';
-import { DefaultView } from '../view/DefaultView';
 import { ListItemProps } from './ListItemProps';
 
 export const extractViewPropsFromListItemProps = (
@@ -49,21 +48,22 @@ export const SimpleListItem = reflexComponent<ListItemProps>({
     handleThemeGetProps,
     handleChildrenProps,
   ])(props);
-  const { theme } = newProps;
+  const { children, onLayout, theme } = newProps;
 
-  const Container = theme.component || DefaultView;
+  const Container = theme.component || View;
   const viewProps = {
     ...extractViewPropsFromListItemProps(newProps),
+    onLayout,
     style: getStyleFromTheme(newProps, theme),
   };
 
+  if (Container === View) {
+    return <Container {...viewProps}>{children}</Container>;
+  }
+
   return (
-    <Container
-      complexComponentProps={newProps}
-      onLayout={newProps.onLayout}
-      {...viewProps}
-    >
-      {newProps.children}
+    <Container complexComponentProps={newProps} {...viewProps}>
+      {children}
     </Container>
   );
 });
