@@ -6,7 +6,7 @@
  */
 
 import * as React from 'react';
-import { TextProps } from 'react-native';
+import { Text as RNText, TextProps } from 'react-native';
 
 import { propsPipe } from '../../utils/propsPipe';
 import { getStyleFromTheme } from '../getStyleFromTheme';
@@ -15,7 +15,6 @@ import { handlePatchThemeProps } from '../handlePatchThemeProps';
 import { handleThemeGetProps } from '../handleThemeGetProps';
 import { reflexComponent } from '../reflexComponent';
 import { validateNoStyleProps } from '../validateNoStyleProps';
-import { DefaultText } from './DefaultText';
 import { RfxTextProps } from './RfxTextProps';
 
 export const extractTextPropsFromRfxTextProps = (
@@ -50,17 +49,21 @@ export const transformRfxTextStringChildIntoComponent = (
     handleThemeGetProps,
     handleChildrenProps,
   ])(props);
-  const { theme } = newProps;
+  const { children, theme } = newProps;
 
-  const Text = theme.component || DefaultText;
+  const Text = theme.component || RNText;
   const textProps = {
     ...extractTextPropsFromRfxTextProps(newProps),
     style: getStyleFromTheme(newProps, theme),
   };
 
+  if (Text === RNText) {
+    return <Text {...textProps}>{children}</Text>;
+  }
+
   return (
     <Text complexComponentProps={newProps} {...textProps}>
-      {newProps.children}
+      {children}
     </Text>
   );
 };
