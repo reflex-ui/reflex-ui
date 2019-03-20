@@ -13,3 +13,4 @@ export * from './responsiveness';
 export * from './sizing';
 export * from './spacing';
 export * from './utils';
+export * from './utils-ts';

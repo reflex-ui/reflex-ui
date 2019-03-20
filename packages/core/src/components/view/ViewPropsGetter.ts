@@ -6,9 +6,6 @@
  */
 
 import { ViewProps } from 'react-native';
-import { PropsGetter } from '../PropsGetter';
+import { Function1 } from '../../utils-ts/Function1';
 
-export type ViewPropsGetter<ComponentProps> = PropsGetter<
-  ComponentProps,
-  ViewProps
->;
+export type ViewPropsGetter<Props> = Function1<Props, ViewProps>;

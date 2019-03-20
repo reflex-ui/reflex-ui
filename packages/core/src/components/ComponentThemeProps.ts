@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ComponentThemeGetter } from './ComponentThemeGetter';
+import { Function1 } from '../utils-ts/Function1';
 
 export interface ComponentThemeProps<ComponentProps, ComponentTheme> {
-  readonly getPatchTheme?: ComponentThemeGetter<ComponentProps, ComponentTheme>;
+  readonly getPatchTheme?: Function1<ComponentProps, ComponentTheme>;
   readonly theme: ComponentTheme;
 }

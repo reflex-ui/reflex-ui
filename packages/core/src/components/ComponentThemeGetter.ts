@@ -5,6 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export type ComponentThemeGetter<ComponentProps, ComponentTheme> = (
-  props: ComponentProps,
-) => ComponentTheme;
+import { Function1 } from '../utils-ts/Function1';
+
+export type ComponentThemeGetter<ComponentProps, ComponentTheme> = Function1<
+  ComponentProps,
+  ComponentTheme
+>;

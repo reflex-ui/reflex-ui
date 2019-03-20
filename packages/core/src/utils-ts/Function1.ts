@@ -5,7 +5,4 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { SvgProps } from 'react-native-svg';
-import { Function1 } from '../../utils-ts/Function1';
-
-export type SvgPropsGetter<Props> = Function1<Props, SvgProps>;
+export type Function1<A, B> = (a: A) => B;

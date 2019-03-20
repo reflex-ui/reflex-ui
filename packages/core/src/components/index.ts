@@ -17,7 +17,6 @@ export * from './getStyleFromTheme';
 export * from './list';
 export * from './list-item';
 export * from './mergeThemes';
-export * from './PropsGetter';
 export * from './reflexComponent';
 export * from './registerStyle';
 export * from './SimpleComponentTheme';

@@ -6,5 +6,6 @@
  */
 
 import { ViewStyle } from 'react-native';
+import { Function1 } from '../../utils-ts/Function1';
 
-export type ViewStyleGetter<Props> = (props: Props) => ViewStyle;
+export type ViewStyleGetter<Props> = Function1<Props, ViewStyle>;

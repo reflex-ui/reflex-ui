@@ -5,8 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { Function1 } from '../utils-ts/Function1';
 import { BuiltInSimpleComponentProps } from './BuiltInSimpleComponentProps';
-import { PropsGetter } from './PropsGetter';
 import { StyleGetter } from './StyleGetter';
 
 export interface SimpleComponentTheme<
@@ -14,7 +14,7 @@ export interface SimpleComponentTheme<
   OutputProps,
   OutputStyle
 > {
-  readonly getProps?: PropsGetter<ComponentProps, OutputProps>;
+  readonly getProps?: Function1<ComponentProps, OutputProps>;
   readonly getStyle?: StyleGetter<ComponentProps, OutputStyle>;
 }
 

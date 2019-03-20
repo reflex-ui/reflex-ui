@@ -7,8 +7,8 @@
 
 import merge from 'lodash/merge';
 
+import { Function1 } from '../utils-ts/Function1';
 import { ComplexComponentTheme } from './ComplexComponentTheme';
-import { PropsGetter } from './PropsGetter';
 import { BuiltInSimpleComponentTheme } from './SimpleComponentTheme';
 
 function mergeThemes<
@@ -35,7 +35,7 @@ function mergeThemes<Theme extends ComplexComponentTheme>(
     } else {
       let newThemeObj:
         | BuiltInSimpleComponentTheme<unknown, unknown, unknown>
-        | PropsGetter<unknown, unknown>;
+        | Function1<unknown, unknown>;
       if (typeof theme1Obj === 'function' || typeof theme2Obj === 'function') {
         if (
           typeof theme1Obj !== 'function' ||
@@ -46,7 +46,7 @@ function mergeThemes<Theme extends ComplexComponentTheme>(
           );
         }
 
-        newThemeObj = mergeThemeGetters(theme1Obj, theme2Obj) as PropsGetter<
+        newThemeObj = mergeThemeGetters(theme1Obj, theme2Obj) as Function1<
           unknown,
           unknown
         >;
@@ -102,14 +102,14 @@ function mergeThemes<Theme extends ComplexComponentTheme>(
 export { mergeThemes };
 
 export const mergeThemeGetters = (
-  getter1: PropsGetter<unknown, unknown> | undefined,
-  getter2: PropsGetter<unknown, unknown> | undefined,
-): PropsGetter<unknown, unknown> | undefined => {
+  getter1: Function1<unknown, unknown> | undefined,
+  getter2: Function1<unknown, unknown> | undefined,
+): Function1<unknown, unknown> | undefined => {
   if (getter1 === undefined && getter2 === undefined) return undefined;
   if (getter1 !== undefined && getter2 === undefined) return getter1;
   if (getter2 !== undefined && getter1 === undefined) return getter2;
 
-  const getter: PropsGetter<unknown, unknown> = (props: unknown): unknown =>
+  const getter: Function1<unknown, unknown> = (props: unknown): unknown =>
     // @ts-ignore Object is possibly 'undefined'.ts(2532)
     // Really? It's checked above...
     merge({}, getter1(props) || {}, getter2(props) || {});

@@ -5,6 +5,4 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export type PropsGetter<ComponentProps, OutputProps> = (
-  props: ComponentProps,
-) => OutputProps;
+export * from './Function1';

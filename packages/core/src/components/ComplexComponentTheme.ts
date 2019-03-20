@@ -5,8 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ComponentThemeGetter } from './ComponentThemeGetter';
-import { PropsGetter } from './PropsGetter';
+import { Function1 } from '../utils-ts/Function1';
 import { BuiltInSimpleComponentTheme } from './SimpleComponentTheme';
 
 export interface ComplexComponentTheme {
@@ -14,8 +13,8 @@ export interface ComplexComponentTheme {
   [key: string]:  // tslint:disable-next-line:no-any
     | BuiltInSimpleComponentTheme<any, any, any>
     // tslint:disable-next-line:no-any
-    | ComponentThemeGetter<any, any>
+    | Function1<any, any>
     // tslint:disable-next-line:no-any
-    | PropsGetter<any, any>
+    | Function1<any, any>
     | undefined;
 }
