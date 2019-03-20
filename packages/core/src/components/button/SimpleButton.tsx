@@ -7,7 +7,12 @@
 
 import merge from 'lodash/merge';
 import * as React from 'react';
-import { TouchableWithoutFeedbackProps } from 'react-native';
+import {
+  Text as RNText,
+  TouchableWithoutFeedback,
+  TouchableWithoutFeedbackProps,
+  View,
+} from 'react-native';
 
 import { cloneElement } from '../../utils/cloneElement';
 import { propsPipe } from '../../utils/propsPipe';
@@ -19,12 +24,9 @@ import { mergeThemes } from '../mergeThemes';
 import { reflexComponent } from '../reflexComponent';
 import { RfxSvgPropsOptional } from '../svg/RfxSvgProps';
 import { RfxSvgTheme } from '../svg/RfxSvgTheme';
-import { DefaultText } from '../text/DefaultText';
 // tslint:disable-next-line:max-line-length
 import { handleAndroidTextTransformation } from '../text/handleAndroidTextTransformation';
-import { DefaultTouchable } from '../touchable/DefaultTouchable';
 import { validateNoStyleProps } from '../validateNoStyleProps';
-import { DefaultView } from '../view/DefaultView';
 import { ButtonProps } from './ButtonProps';
 import { ButtonVariant } from './ButtonVariant';
 
@@ -34,6 +36,7 @@ export const extractTouchablePropsFromButtonProps = (
   const {
     children,
     colorTheme,
+    contained,
     fullWidth,
     getPatchTheme,
     interactionState,
@@ -90,8 +93,16 @@ export const transformButtonStringChildrenIntoComponent = (
   children: string,
   props: ButtonProps,
 ): JSX.Element => {
-  const Text = (props.theme.text && props.theme.text.component) || DefaultText;
+  const Text = (props.theme.text && props.theme.text.component) || RNText;
   const textProps = getPropsAndStyleFromTheme(props, props.theme.text);
+
+  if (Text === RNText) {
+    return (
+      <Text {...textProps}>
+        {handleAndroidTextTransformation(children, textProps.style)}
+      </Text>
+    );
+  }
 
   return (
     <Text complexComponentProps={props} {...textProps}>
@@ -163,6 +174,60 @@ export const handleTrailingIcon = (
     props,
   });
 
+export const renderButtonContainer = (props: ButtonProps) => {
+  const { theme } = props;
+  const Container = (theme.container && theme.container.component) || View;
+  const viewProps = getPropsAndStyleFromTheme(props, theme.container);
+
+  const children = (
+    <React.Fragment>
+      {props.leadingIcon && handleLeadingIcon(props)}
+      {props.children && handleButtonChildren(props)}
+      {props.trailingIcon && handleTrailingIcon(props)}
+    </React.Fragment>
+  );
+
+  if (Container === View) {
+    return <Container {...viewProps}>{children}</Container>;
+  }
+
+  return (
+    <Container complexComponentProps={props} {...viewProps}>
+      {children}
+    </Container>
+  );
+};
+
+export const renderButtonTouchable = (props: ButtonProps) => {
+  const { theme } = props;
+
+  const Touchable =
+    (theme.touchable && theme.touchable.component) || TouchableWithoutFeedback;
+
+  const touchablePropsFromTheme = getPropsAndStyleFromTheme(
+    props,
+    theme.touchable,
+  );
+  const touchableProps = extractTouchablePropsFromButtonProps(props);
+  const mergedTouchableProps = merge(
+    {},
+    touchablePropsFromTheme,
+    touchableProps,
+  );
+
+  const containerElement = renderButtonContainer(props);
+
+  if (Touchable === TouchableWithoutFeedback) {
+    return <Touchable {...mergedTouchableProps}>{containerElement}</Touchable>;
+  }
+
+  return (
+    <Touchable complexComponentProps={props} {...mergedTouchableProps}>
+      {containerElement}
+    </Touchable>
+  );
+};
+
 export const SimpleButton = reflexComponent<ButtonProps>({
   name: 'SimpleButton',
 })((props: ButtonProps) => {
@@ -172,33 +237,5 @@ export const SimpleButton = reflexComponent<ButtonProps>({
     handleThemeGetProps,
     handleChildrenProps,
   ])(props);
-  const { theme } = newProps;
-
-  const Touchable =
-    (theme.touchable && theme.touchable.component) || DefaultTouchable;
-
-  const touchablePropsFromTheme = getPropsAndStyleFromTheme(
-    newProps,
-    theme.touchable,
-  );
-  const touchableProps = extractTouchablePropsFromButtonProps(newProps);
-  const mergedTouchableProps = merge(
-    {},
-    touchablePropsFromTheme,
-    touchableProps,
-  );
-
-  const Container =
-    (theme.container && theme.container.component) || DefaultView;
-  const viewProps = getPropsAndStyleFromTheme(newProps, theme.container);
-
-  return (
-    <Touchable complexComponentProps={newProps} {...mergedTouchableProps}>
-      <Container complexComponentProps={newProps} {...viewProps}>
-        {newProps.leadingIcon && handleLeadingIcon(newProps)}
-        {newProps.children && handleButtonChildren(newProps)}
-        {newProps.trailingIcon && handleTrailingIcon(newProps)}
-      </Container>
-    </Touchable>
-  );
+  return renderButtonTouchable(newProps);
 });
