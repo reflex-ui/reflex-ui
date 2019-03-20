@@ -10,11 +10,11 @@ import {
   ButtonProps,
   ButtonTheme,
   ButtonVariant,
+  Column,
   ComponentThemeGetter,
   InteractionType,
   RfxSvgProps,
   RfxSvgTheme,
-  Row,
   Size,
 } from '@reflex-ui/core';
 import {
@@ -133,7 +133,7 @@ const getIconPatchTheme: ComponentThemeGetter<RfxSvgProps, RfxSvgTheme> = ({
 };
 
 const TestShowcaseScreen: React.SFC<{}> = (): JSX.Element => (
-  <Row>
+  <Column>
     <Button
       getPatchTheme={getButtonPatchTheme}
       onPress={onButtonPress}
@@ -141,7 +141,17 @@ const TestShowcaseScreen: React.SFC<{}> = (): JSX.Element => (
     >
       <FavoriteIcon getPatchTheme={getIconPatchTheme} size={Size.L} />
     </Button>
-  </Row>
+    <Button
+      leadingIcon={<FavoriteIcon />}
+      marginHorizontal={Size.M}
+      marginVertical={Size.XXL}
+      onPress={onButtonPress}
+      trailingIcon={<FavoriteIcon />}
+      variant={ButtonVariant.Highlighted}
+    >
+      Favorite
+    </Button>
+  </Column>
 );
 
 TestShowcaseScreen.displayName = 'TestShowcaseScreen';
