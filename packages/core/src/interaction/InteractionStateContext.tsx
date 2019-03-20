@@ -9,6 +9,10 @@ import * as React from 'react';
 
 import { InteractionState } from './InteractionState';
 
-export const InteractionStateContext = React.createContext<
+const InteractionStateContext = React.createContext<
   InteractionState | undefined
 >(undefined);
+
+InteractionStateContext.displayName = 'InteractionStateContext';
+
+export { InteractionStateContext };
