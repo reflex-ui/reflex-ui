@@ -15,6 +15,14 @@ const packagesPaths = [
 /**/
 
 module.exports = {
+  transformer: {
+    getTransformOptions: async () => ({
+      transform: {
+        experimentalImportSupport: false,
+        inlineRequires: false,
+      },
+    }),
+  },
   watchFolders: [path.resolve(__dirname, '../../node_modules')].concat(
     packagesPaths,
   ),

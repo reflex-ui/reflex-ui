@@ -6,60 +6,66 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - React (0.58.3):
-    - React/Core (= 0.58.3)
-  - React/Core (0.58.3):
-    - yoga (= 0.58.3.React)
-  - React/CxxBridge (0.58.3):
+  - React (0.59.1):
+    - React/Core (= 0.59.1)
+  - React/Core (0.59.1):
+    - yoga (= 0.59.1.React)
+  - React/CxxBridge (0.59.1):
     - Folly (= 2018.10.22.00)
     - React/Core
     - React/cxxreact
     - React/jsiexecutor
-  - React/cxxreact (0.58.3):
+  - React/cxxreact (0.59.1):
     - boost-for-react-native (= 1.63.0)
+    - DoubleConversion
     - Folly (= 2018.10.22.00)
+    - glog
     - React/jsinspector
-  - React/DevSupport (0.58.3):
+  - React/DevSupport (0.59.1):
     - React/Core
     - React/RCTWebSocket
-  - React/fishhook (0.58.3)
-  - React/jsi (0.58.3):
+  - React/fishhook (0.59.1)
+  - React/jsi (0.59.1):
+    - DoubleConversion
     - Folly (= 2018.10.22.00)
-  - React/jsiexecutor (0.58.3):
+    - glog
+  - React/jsiexecutor (0.59.1):
+    - DoubleConversion
     - Folly (= 2018.10.22.00)
+    - glog
     - React/cxxreact
     - React/jsi
-  - React/jsinspector (0.58.3)
-  - React/RCTActionSheet (0.58.3):
+  - React/jsinspector (0.59.1)
+  - React/RCTActionSheet (0.59.1):
     - React/Core
-  - React/RCTAnimation (0.58.3):
+  - React/RCTAnimation (0.59.1):
     - React/Core
-  - React/RCTBlob (0.58.3):
+  - React/RCTBlob (0.59.1):
     - React/Core
-  - React/RCTGeolocation (0.58.3):
+  - React/RCTGeolocation (0.59.1):
     - React/Core
-  - React/RCTImage (0.58.3):
+  - React/RCTImage (0.59.1):
     - React/Core
     - React/RCTNetwork
-  - React/RCTLinkingIOS (0.58.3):
+  - React/RCTLinkingIOS (0.59.1):
     - React/Core
-  - React/RCTNetwork (0.58.3):
+  - React/RCTNetwork (0.59.1):
     - React/Core
-  - React/RCTSettings (0.58.3):
+  - React/RCTSettings (0.59.1):
     - React/Core
-  - React/RCTText (0.58.3):
+  - React/RCTText (0.59.1):
     - React/Core
-  - React/RCTVibration (0.58.3):
+  - React/RCTVibration (0.59.1):
     - React/Core
-  - React/RCTWebSocket (0.58.3):
+  - React/RCTWebSocket (0.59.1):
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - ReactNativeNavigation (2.12.0):
+  - ReactNativeNavigation (2.15.0):
     - React
-  - RNSVG (9.2.4):
+  - RNSVG (9.3.5):
     - React
-  - yoga (0.58.3.React)
+  - yoga (0.59.1.React)
 
 DEPENDENCIES:
   - DoubleConversion (from `../../../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
@@ -108,10 +114,10 @@ SPEC CHECKSUMS:
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
   Folly: de497beb10f102453a1afa9edbf8cf8a251890de
   glog: aefd1eb5dda2ab95ba0938556f34b98e2da3a60d
-  React: 9b873b38b92ed8012d7cdf3b965477095ed364c4
-  ReactNativeNavigation: 55fde2ac2cb38be1d5dc5fee29e173961c559a5a
+  React: 1d605e098d69bdf08960787f3446f0a9dc2e2ccf
+  ReactNativeNavigation: 60bb2ccea223cba134f87961c0efc05f25ee8426
   RNSVG: 4834be1d644eb77f0e3f6de851881b83758a3124
-  yoga: 0885622311729a02c2bc02dca97167787a51488b
+  yoga: 128daf064cacaede0c3bb27424b6b4c71052e6cd
 
 PODFILE CHECKSUM: a91b5d00df26f801629957170d8458acde4f8506
 
