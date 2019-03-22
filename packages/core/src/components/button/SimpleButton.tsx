@@ -24,8 +24,6 @@ import { mergeThemes } from '../mergeThemes';
 import { reflexComponent } from '../reflexComponent';
 import { RfxSvgPropsOptional } from '../svg/RfxSvgProps';
 import { RfxSvgTheme } from '../svg/RfxSvgTheme';
-// tslint:disable-next-line:max-line-length
-import { handleAndroidTextTransformation } from '../text/handleAndroidTextTransformation';
 import { validateNoStyleProps } from '../validateNoStyleProps';
 import { ButtonProps } from './ButtonProps';
 import { ButtonVariant } from './ButtonVariant';
@@ -97,16 +95,12 @@ export const transformButtonStringChildrenIntoComponent = (
   const textProps = getPropsAndStyleFromTheme(props, props.theme.text);
 
   if (Text === RNText) {
-    return (
-      <Text {...textProps}>
-        {handleAndroidTextTransformation(children, textProps.style)}
-      </Text>
-    );
+    return <Text {...textProps}>{children}</Text>;
   }
 
   return (
     <Text complexComponentProps={props} {...textProps}>
-      {handleAndroidTextTransformation(children, textProps.style)}
+      {children}
     </Text>
   );
 };

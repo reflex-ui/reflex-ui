@@ -64,7 +64,7 @@ export const getAllVariantsButtonTextStyle: TextStyleGetter<
   fontFamily: getFontFamily(),
   fontWeight: getFontWeight(FontWeight.Medium),
   position: 'relative',
-  // textTransform: 'uppercase',
+  textTransform: 'uppercase',
   ...Platform.select({
     web: {
       MozOsxFontSmoothing: 'grayscale',
