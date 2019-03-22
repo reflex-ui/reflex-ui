@@ -10,10 +10,9 @@ import * as React from 'react';
 import { withInteractionState } from '../../interaction';
 import { ButtonPropsOptional } from './ButtonProps';
 import { SimpleButton } from './SimpleButton';
-import { withDefaultButtonProps } from './withDefaultButtonProps';
 
 const Button: React.ComponentType<ButtonPropsOptional> = withInteractionState(
-  withDefaultButtonProps(SimpleButton),
+  SimpleButton,
 );
 
 export { Button };

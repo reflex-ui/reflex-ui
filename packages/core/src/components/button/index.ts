@@ -12,4 +12,4 @@ export * from './ButtonVariant';
 export * from './ButtonVariantsTheme';
 export * from './getButtonVariantColorTheme';
 export * from './SimpleButton';
-export * from './withDefaultButtonProps';
+export * from './useDefaultButtonProps';
