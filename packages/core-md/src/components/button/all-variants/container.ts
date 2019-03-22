@@ -40,7 +40,7 @@ export const getAllVariantsButtonContainerStyle: ViewStyleGetter<
         props.interactionState.type === InteractionType.Disabled
           ? 'default'
           : 'pointer',
-      outline: 'none',
+      outlineStyle: 'none',
     },
   }),
   ...getSizedMarginStyle(sizedSpacing)(props),
