@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import createBrowserHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
 import * as React from 'react';
 import { Redirect, Route, Router, Switch } from 'react-router-dom';
 
