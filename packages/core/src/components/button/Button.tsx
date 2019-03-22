@@ -14,6 +14,7 @@ import {
   View,
 } from 'react-native';
 
+import { useInteraction } from '../../interaction/useInteraction';
 import { cloneElement } from '../../utils/cloneElement';
 import { propsPipe } from '../../utils/propsPipe';
 import { getPropsAndStyleFromTheme } from '../getPropsAndStyleFromTheme';
@@ -223,7 +224,7 @@ export const renderButtonTouchable = (props: ButtonProps) => {
   );
 };
 
-let SimpleButton: React.ComponentType<ButtonPropsOptional> = (
+let Button: React.ComponentType<ButtonPropsOptional> = (
   props: ButtonPropsOptional,
 ) => {
   validateNoStyleProps(props);
@@ -233,11 +234,15 @@ let SimpleButton: React.ComponentType<ButtonPropsOptional> = (
     handleThemeGetProps,
     handleChildrenProps,
   ])(newProps);
+  newProps = {
+    ...newProps,
+    ...useInteraction(newProps),
+  };
   return renderButtonTouchable(newProps);
 };
 
-SimpleButton = processComponent<ButtonPropsOptional>(SimpleButton, {
-  name: 'SimpleButton',
+Button = processComponent<ButtonPropsOptional>(Button, {
+  name: 'Button',
 });
 
-export { SimpleButton };
+export { Button };
