@@ -8,14 +8,17 @@
 import * as React from 'react';
 import { View, ViewProps } from 'react-native';
 
+import { ColorThemeContext } from '../../palette/ColorThemeContext';
+import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { propsPipe } from '../../utils/propsPipe';
 import { getStyleFromTheme } from '../getStyleFromTheme';
 import { handleChildrenProps } from '../handleChildrenProps';
 import { handlePatchThemeProps } from '../handlePatchThemeProps';
 import { handleThemeGetProps } from '../handleThemeGetProps';
-import { reflexComponent } from '../reflexComponent';
+import { processComponent } from '../processComponent';
 import { validateNoStyleProps } from '../validateNoStyleProps';
-import { SurfaceProps } from './SurfaceProps';
+import { SurfaceProps, SurfacePropsOptional } from './SurfaceProps';
+import { useDefaultSurfaceProps } from './useDefaultSurfaceProps';
 
 export const extractViewPropsFromSurfaceProps = (
   props: SurfaceProps,
@@ -56,22 +59,14 @@ export const extractViewPropsFromSurfaceProps = (
   return viewProps;
 };
 
-export const SimpleSurface = reflexComponent<SurfaceProps>({
-  name: 'SimpleSurface',
-})((props: SurfaceProps) => {
-  validateNoStyleProps(props);
-  const newProps = propsPipe<SurfaceProps>([
-    handlePatchThemeProps,
-    handleThemeGetProps,
-    handleChildrenProps,
-  ])(props);
-  const { children, onLayout, theme } = newProps;
+export const renderSurfaceView = (props: SurfaceProps): JSX.Element => {
+  const { children, onLayout, theme } = props;
 
   const Container = theme.component || View;
   const viewProps = {
-    ...extractViewPropsFromSurfaceProps(newProps),
+    ...extractViewPropsFromSurfaceProps(props),
     onLayout,
-    style: getStyleFromTheme(newProps, theme),
+    style: getStyleFromTheme(props, theme),
   };
 
   if (Container === View) {
@@ -79,8 +74,36 @@ export const SimpleSurface = reflexComponent<SurfaceProps>({
   }
 
   return (
-    <Container complexComponentProps={newProps} {...viewProps}>
+    <Container complexComponentProps={props} {...viewProps}>
       {children}
     </Container>
   );
+};
+
+let Surface: React.ComponentType<SurfacePropsOptional> = (
+  props: SurfacePropsOptional,
+) => {
+  validateNoStyleProps(props);
+  let newProps = useDefaultSurfaceProps(props);
+  newProps = propsPipe<SurfaceProps>([
+    handlePatchThemeProps,
+    handleThemeGetProps,
+    handleChildrenProps,
+  ])(newProps);
+  newProps = {
+    ...newProps,
+    ...useOnLayout(newProps),
+  };
+
+  return (
+    <ColorThemeContext.Provider value={newProps.colorTheme}>
+      {renderSurfaceView(newProps)}
+    </ColorThemeContext.Provider>
+  );
+};
+
+Surface = processComponent<SurfacePropsOptional>(Surface, {
+  name: 'Surface',
 });
+
+export { Surface };
