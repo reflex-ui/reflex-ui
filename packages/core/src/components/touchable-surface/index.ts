@@ -8,5 +8,4 @@
 export * from './TouchableSurface';
 export * from './TouchableSurfaceProps';
 export * from './TouchableSurfaceTheme';
-export * from './SimpleTouchableSurface';
-export * from './withDefaultTouchableSurfaceProps';
+export * from './useDefaultTouchableSurfaceProps';
