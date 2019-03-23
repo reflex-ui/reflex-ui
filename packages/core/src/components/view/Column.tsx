@@ -5,66 +5,57 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import * as React from 'react';
+// tslint:disable-next-line:import-name
+import React, { useContext } from 'react';
 
-// tslint:disable-next-line:max-line-length
-import { MissingComponentThemeError } from '../../errors/MissingComponentThemeError';
-import { ColorTheme } from '../../palette/ColorTheme';
+import { MissingComponentThemeError } from '../../errors';
 import { ColorThemeContext } from '../../palette/ColorThemeContext';
-import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
-import { DimensionsContext } from '../../responsiveness/DimensionsContext';
-// tslint:disable-next-line:max-line-length
-import { withResponsivenessProps } from '../../responsiveness/withResponsivenessProps';
+import { useOnLayout } from '../../responsiveness/useOnLayout';
+import { propsPipe } from '../../utils/propsPipe';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
-import { reflexComponent } from '../reflexComponent';
-import { RfxView } from './RfxView';
+import { handleChildrenProps } from '../handleChildrenProps';
+import { handlePatchThemeProps } from '../handlePatchThemeProps';
+import { handleThemeGetProps } from '../handleThemeGetProps';
+import { processComponent } from '../processComponent';
+import { validateNoStyleProps } from '../validateNoStyleProps';
+import { renderRfxViewContainer } from './RfxView';
 import { RfxViewProps, RfxViewPropsOptional } from './RfxViewProps';
+import { useDefaultRfxViewProps } from './useDefaultRfxViewProps';
 
-export const Column = withResponsivenessProps(
-  reflexComponent<RfxViewPropsOptional>({
-    name: 'Column',
-  })((props: RfxViewPropsOptional) => (
-    <DimensionsContext.Consumer>
-      {dimensionsProps => (
-        <ColorThemeContext.Consumer>
-          {ctxColorTheme => (
-            <PaletteThemeContext.Consumer>
-              {paletteTheme => (
-                <ComponentsThemeContext.Consumer>
-                  {componentsTheme => {
-                    let theme = props.theme;
-                    if (!theme) {
-                      if (!componentsTheme.views) {
-                        throw new MissingComponentThemeError('<Column>');
-                      }
-                      theme = componentsTheme.views.column;
-                    }
+let Column: React.ComponentType<RfxViewPropsOptional> = (
+  props: RfxViewPropsOptional,
+) => {
+  const componentsTheme = useContext(ComponentsThemeContext);
+  let theme = props.theme;
+  if (!theme) {
+    if (!componentsTheme.views) {
+      throw new MissingComponentThemeError('<Column>');
+    }
+    theme = componentsTheme.views.column;
+  }
 
-                    const colorTheme: ColorTheme =
-                      props.colorTheme ||
-                      ctxColorTheme ||
-                      ColorTheme.SurfaceNormal;
+  validateNoStyleProps(props);
+  let newProps = useDefaultRfxViewProps(props);
+  newProps = propsPipe<RfxViewProps>([
+    handlePatchThemeProps,
+    handleThemeGetProps,
+    handleChildrenProps,
+  ])(newProps);
+  newProps = {
+    ...newProps,
+    ...useOnLayout(newProps),
+    theme,
+  };
 
-                    const propsWithDefaults: RfxViewProps = {
-                      ...dimensionsProps,
-                      colorTheme,
-                      paletteTheme,
-                      theme,
-                      ...props,
-                    };
+  return (
+    <ColorThemeContext.Provider value={newProps.colorTheme}>
+      {renderRfxViewContainer(newProps)}
+    </ColorThemeContext.Provider>
+  );
+};
 
-                    return (
-                      <ColorThemeContext.Provider value={colorTheme}>
-                        <RfxView {...propsWithDefaults} />
-                      </ColorThemeContext.Provider>
-                    );
-                  }}
-                </ComponentsThemeContext.Consumer>
-              )}
-            </PaletteThemeContext.Consumer>
-          )}
-        </ColorThemeContext.Consumer>
-      )}
-    </DimensionsContext.Consumer>
-  )),
-);
+Column = processComponent<RfxViewPropsOptional>(Column, {
+  name: 'Column',
+});
+
+export { Column };

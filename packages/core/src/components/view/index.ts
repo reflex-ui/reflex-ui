@@ -12,6 +12,7 @@ export * from './RfxViewProps';
 export * from './RfxViewTheme';
 export * from './RfxViewVariantsTheme';
 export * from './Row';
+export * from './useDefaultRfxViewProps';
 export * from './ViewPropsGetter';
 export * from './ViewStyleGetter';
 export * from './ViewTheme';

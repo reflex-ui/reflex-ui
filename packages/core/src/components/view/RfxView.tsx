@@ -8,14 +8,16 @@
 import * as React from 'react';
 import { View, ViewProps } from 'react-native';
 
+import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { propsPipe } from '../../utils/propsPipe';
 import { getStyleFromTheme } from '../getStyleFromTheme';
 import { handleChildrenProps } from '../handleChildrenProps';
 import { handlePatchThemeProps } from '../handlePatchThemeProps';
 import { handleThemeGetProps } from '../handleThemeGetProps';
-import { reflexComponent } from '../reflexComponent';
+import { processComponent } from '../processComponent';
 import { validateNoStyleProps } from '../validateNoStyleProps';
-import { RfxViewProps } from './RfxViewProps';
+import { RfxViewProps, RfxViewPropsOptional } from './RfxViewProps';
+import { useDefaultRfxViewProps } from './useDefaultRfxViewProps';
 
 export const extractViewPropsFromRfxViewProps = (
   props: RfxViewProps,
@@ -56,22 +58,14 @@ export const extractViewPropsFromRfxViewProps = (
   return viewProps;
 };
 
-export const RfxView = reflexComponent<RfxViewProps>({
-  name: 'View',
-})((props: RfxViewProps) => {
-  validateNoStyleProps(props);
-  const newProps = propsPipe<RfxViewProps>([
-    handlePatchThemeProps,
-    handleThemeGetProps,
-    handleChildrenProps,
-  ])(props);
-  const { children, onLayout, theme } = newProps;
+export const renderRfxViewContainer = (props: RfxViewProps): JSX.Element => {
+  const { children, onLayout, theme } = props;
 
   const Container = theme.component || View;
   const viewProps = {
-    ...extractViewPropsFromRfxViewProps(newProps),
+    ...extractViewPropsFromRfxViewProps(props),
     onLayout,
-    style: getStyleFromTheme(newProps, theme),
+    style: getStyleFromTheme(props, theme),
   };
 
   if (Container === View) {
@@ -79,8 +73,31 @@ export const RfxView = reflexComponent<RfxViewProps>({
   }
 
   return (
-    <Container complexComponentProps={newProps} {...viewProps}>
+    <Container complexComponentProps={props} {...viewProps}>
       {children}
     </Container>
   );
+};
+
+let RfxView: React.ComponentType<RfxViewPropsOptional> = (
+  props: RfxViewPropsOptional,
+) => {
+  validateNoStyleProps(props);
+  let newProps = useDefaultRfxViewProps(props);
+  newProps = propsPipe<RfxViewProps>([
+    handlePatchThemeProps,
+    handleThemeGetProps,
+    handleChildrenProps,
+  ])(newProps);
+  newProps = {
+    ...newProps,
+    ...useOnLayout(newProps),
+  };
+  return renderRfxViewContainer(newProps);
+};
+
+RfxView = processComponent<RfxViewPropsOptional>(RfxView, {
+  name: 'View',
 });
+
+export { RfxView };
