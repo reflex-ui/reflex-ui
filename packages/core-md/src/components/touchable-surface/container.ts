@@ -24,7 +24,7 @@ export const getTouchableSurfaceContainerStyle: ViewStyleGetter<
         props.interactionState.type === InteractionType.Disabled
           ? 'default'
           : 'pointer',
-      outline: 'none',
+      outlineStyle: 'none',
     },
   }),
 });
