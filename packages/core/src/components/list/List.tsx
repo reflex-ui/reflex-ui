@@ -8,14 +8,17 @@
 import * as React from 'react';
 import { View, ViewProps } from 'react-native';
 
+import { ColorThemeContext } from '../../palette/ColorThemeContext';
+import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { propsPipe } from '../../utils/propsPipe';
 import { getStyleFromTheme } from '../getStyleFromTheme';
 import { handleChildrenProps } from '../handleChildrenProps';
 import { handlePatchThemeProps } from '../handlePatchThemeProps';
 import { handleThemeGetProps } from '../handleThemeGetProps';
-import { reflexComponent } from '../reflexComponent';
+import { processComponent } from '../processComponent';
 import { validateNoStyleProps } from '../validateNoStyleProps';
-import { ListProps } from './ListProps';
+import { ListProps, ListPropsOptional } from './ListProps';
+import { useDefaultListProps } from './useDefaultListProps';
 
 export const extractViewPropsFromListProps = (props: ListProps): ViewProps => {
   const {
@@ -37,22 +40,14 @@ export const extractViewPropsFromListProps = (props: ListProps): ViewProps => {
   return viewProps;
 };
 
-export const SimpleList = reflexComponent<ListProps>({
-  name: 'SimpleList',
-})((props: ListProps) => {
-  validateNoStyleProps(props);
-  const newProps = propsPipe<ListProps>([
-    handlePatchThemeProps,
-    handleThemeGetProps,
-    handleChildrenProps,
-  ])(props);
-  const { children, onLayout, theme } = newProps;
+export const renderListView = (props: ListProps): JSX.Element => {
+  const { children, onLayout, theme } = props;
 
   const Container = theme.component || View;
   const viewProps = {
-    ...extractViewPropsFromListProps(newProps),
+    ...extractViewPropsFromListProps(props),
     onLayout,
-    style: getStyleFromTheme(newProps, theme),
+    style: getStyleFromTheme(props, theme),
   };
 
   if (Container === View) {
@@ -60,8 +55,36 @@ export const SimpleList = reflexComponent<ListProps>({
   }
 
   return (
-    <Container complexComponentProps={newProps} {...viewProps}>
+    <Container complexComponentProps={props} {...viewProps}>
       {children}
     </Container>
   );
+};
+
+let List: React.ComponentType<ListPropsOptional> = (
+  props: ListPropsOptional,
+) => {
+  validateNoStyleProps(props);
+  let newProps = useDefaultListProps(props);
+  newProps = propsPipe<ListProps>([
+    handlePatchThemeProps,
+    handleThemeGetProps,
+    handleChildrenProps,
+  ])(newProps);
+  newProps = {
+    ...newProps,
+    ...useOnLayout(newProps),
+  };
+
+  return (
+    <ColorThemeContext.Provider value={newProps.colorTheme}>
+      {renderListView(newProps)}
+    </ColorThemeContext.Provider>
+  );
+};
+
+List = processComponent<ListPropsOptional>(List, {
+  name: 'List',
 });
+
+export { List };
