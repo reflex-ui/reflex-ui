@@ -29,3 +29,4 @@ export * from './TextPropsGetter';
 export * from './TextStyleGetter';
 export * from './TextTheme';
 export * from './transformText';
+export * from './useDefaultRfxTextProps';

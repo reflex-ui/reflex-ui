@@ -5,57 +5,38 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import * as React from 'react';
+import { useContext } from 'react';
 
-// tslint:disable-next-line
-import { MissingComponentThemeError } from '../../errors/MissingComponentThemeError';
-// tslint:disable-next-line
-import { InteractionStateContext } from '../../interaction/InteractionStateContext';
-import { ColorTheme } from '../../palette/ColorTheme';
-import { ColorThemeContext } from '../../palette/ColorThemeContext';
-import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
+import { MissingComponentThemeError } from '../../errors';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
-import { reflexComponent } from '../reflexComponent';
-import { RfxText } from './RfxText';
+import { processComponent } from '../processComponent';
+import { renderRfxText } from './RfxText';
 import { RfxTextProps, RfxTextPropsOptional } from './RfxTextProps';
+import { useDefaultRfxTextProps } from './useDefaultRfxTextProps';
 
-export const Subtitle2 = reflexComponent<RfxTextPropsOptional>({
+let Subtitle2: React.ComponentType<RfxTextPropsOptional> = (
+  props: RfxTextPropsOptional,
+) => {
+  const componentsTheme = useContext(ComponentsThemeContext);
+
+  let theme = props.theme;
+  if (!theme) {
+    if (!componentsTheme.text) {
+      throw new MissingComponentThemeError('<Subtitle2>');
+    }
+    theme = componentsTheme.text.subtitle2;
+  }
+
+  const newProps: RfxTextProps = {
+    ...useDefaultRfxTextProps(props),
+    theme,
+  };
+
+  return renderRfxText(newProps);
+};
+
+Subtitle2 = processComponent<RfxTextPropsOptional>(Subtitle2, {
   name: 'Subtitle2',
-})((props: RfxTextPropsOptional) => (
-  <PaletteThemeContext.Consumer>
-    {paletteTheme => (
-      <ColorThemeContext.Consumer>
-        {colorTheme => (
-          <ComponentsThemeContext.Consumer>
-            {componentsTheme => (
-              <InteractionStateContext.Consumer>
-                {interactionState => {
-                  let theme = props.theme;
-                  if (!theme) {
-                    if (!componentsTheme.text) {
-                      throw new MissingComponentThemeError('<Subtitle2>');
-                    }
-                    theme = componentsTheme.text.subtitle2;
-                  }
+});
 
-                  const propsWithDefaults: RfxTextProps = {
-                    colorTheme:
-                      props.colorTheme ||
-                      colorTheme ||
-                      ColorTheme.SurfaceNormal,
-                    interactionState,
-                    paletteTheme,
-                    theme,
-                    ...props,
-                  };
-
-                  return <RfxText {...propsWithDefaults} />;
-                }}
-              </InteractionStateContext.Consumer>
-            )}
-          </ComponentsThemeContext.Consumer>
-        )}
-      </ColorThemeContext.Consumer>
-    )}
-  </PaletteThemeContext.Consumer>
-));
+export { Subtitle2 };
