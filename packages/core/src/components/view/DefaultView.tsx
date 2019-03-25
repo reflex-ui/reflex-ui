@@ -12,7 +12,8 @@ import { BuiltInSimpleComponentProps } from '../BuiltInSimpleComponentProps';
 import { processComponent } from '../processComponent';
 
 let DefaultView: React.ComponentType<
-  BuiltInSimpleComponentProps<unknown> & ViewProps
+  // tslint:disable-next-line:no-any
+  BuiltInSimpleComponentProps<any> & ViewProps
 > = ({ complexComponentProps, ...otherProps }) => (
   /*
    * otherProps is used to pass lib provided props, users'custom props,
