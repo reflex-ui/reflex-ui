@@ -20,7 +20,7 @@ export * from './handlePatchThemeProps';
 export * from './list';
 export * from './list-item';
 export * from './mergeThemes';
-export * from './reflexComponent';
+export * from './processComponent';
 export * from './registerStyle';
 export * from './SimpleComponentTheme';
 export * from './StyleGetter';
