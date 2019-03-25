@@ -8,5 +8,4 @@
 export * from './List';
 export * from './ListProps';
 export * from './ListTheme';
-export * from './SimpleList';
-export * from './withDefaultListProps';
+export * from './useDefaultListProps';

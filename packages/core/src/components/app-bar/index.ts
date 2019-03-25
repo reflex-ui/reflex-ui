@@ -10,5 +10,4 @@ export * from './AppBarProps';
 export * from './AppBarTheme';
 export * from './AppBarVariant';
 export * from './AppBarVariantsTheme';
-export * from './SimpleAppBar';
-export * from './withDefaultAppBarProps';
+export * from './useDefaultAppBarProps';

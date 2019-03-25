@@ -8,6 +8,7 @@
 import * as React from 'react';
 import { View, ViewProps } from 'react-native';
 
+import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { propsPipe } from '../../utils/propsPipe';
 import { getStyleFromTheme } from '../getStyleFromTheme';
@@ -16,26 +17,16 @@ import { handlePatchThemeProps } from '../handlePatchThemeProps';
 import { handleThemeGetProps } from '../handleThemeGetProps';
 import { processComponent } from '../processComponent';
 import { validateNoStyleProps } from '../validateNoStyleProps';
-import { RfxViewProps, RfxViewPropsOptional } from './RfxViewProps';
-import { useDefaultRfxViewProps } from './useDefaultRfxViewProps';
+import { ListItemProps, ListItemPropsOptional } from './ListItemProps';
+import { useDefaultListItemProps } from './useDefaultListItemProps';
 
-export const extractViewPropsFromRfxViewProps = (
-  props: RfxViewProps,
+export const extractViewPropsFromListItemProps = (
+  props: ListItemProps,
 ): ViewProps => {
   const {
-    alignContent,
-    alignItems,
-    alignSelf,
     children,
     colorTheme,
-    flex,
-    flexBasis,
-    flexDirection,
-    flexGrow,
-    flexShrink,
-    flexWrap,
     getPatchTheme,
-    justifyContent,
     margin,
     marginBottom,
     marginEnd,
@@ -43,13 +34,6 @@ export const extractViewPropsFromRfxViewProps = (
     marginStart,
     marginTop,
     marginVertical,
-    padding,
-    paddingBottom,
-    paddingEnd,
-    paddingHorizontal,
-    paddingStart,
-    paddingTop,
-    paddingVertical,
     paletteTheme,
     theme,
     ...viewProps
@@ -58,12 +42,12 @@ export const extractViewPropsFromRfxViewProps = (
   return viewProps;
 };
 
-export const renderRfxViewContainer = (props: RfxViewProps): JSX.Element => {
+export const renderListItemView = (props: ListItemProps): JSX.Element => {
   const { children, onLayout, theme } = props;
 
   const Container = theme.component || View;
   const viewProps = {
-    ...extractViewPropsFromRfxViewProps(props),
+    ...extractViewPropsFromListItemProps(props),
     onLayout,
     style: getStyleFromTheme(props, theme),
   };
@@ -79,12 +63,12 @@ export const renderRfxViewContainer = (props: RfxViewProps): JSX.Element => {
   );
 };
 
-let RfxView: React.ComponentType<RfxViewPropsOptional> = (
-  props: RfxViewPropsOptional,
+let ListItem: React.ComponentType<ListItemPropsOptional> = (
+  props: ListItemPropsOptional,
 ) => {
   validateNoStyleProps(props);
-  let newProps = useDefaultRfxViewProps(props);
-  newProps = propsPipe<RfxViewProps>([
+  let newProps = useDefaultListItemProps(props);
+  newProps = propsPipe<ListItemProps>([
     handlePatchThemeProps,
     handleThemeGetProps,
     handleChildrenProps,
@@ -93,11 +77,16 @@ let RfxView: React.ComponentType<RfxViewPropsOptional> = (
     ...newProps,
     ...useOnLayout(newProps),
   };
-  return renderRfxViewContainer(newProps);
+
+  return (
+    <ColorThemeContext.Provider value={newProps.colorTheme}>
+      {renderListItemView(newProps)}
+    </ColorThemeContext.Provider>
+  );
 };
 
-RfxView = processComponent<RfxViewPropsOptional>(RfxView, {
-  name: 'View',
+ListItem = processComponent<ListItemPropsOptional>(ListItem, {
+  name: 'ListItem',
 });
 
-export { RfxView };
+export { ListItem };

@@ -14,6 +14,7 @@ import {
   View,
 } from 'react-native';
 
+import { useInteraction } from '../../interaction/useInteraction';
 import { cloneElement } from '../../utils/cloneElement';
 import { propsPipe } from '../../utils/propsPipe';
 import { getPropsAndStyleFromTheme } from '../getPropsAndStyleFromTheme';
@@ -21,12 +22,13 @@ import { handleChildrenProps } from '../handleChildrenProps';
 import { handlePatchThemeProps } from '../handlePatchThemeProps';
 import { handleThemeGetProps } from '../handleThemeGetProps';
 import { mergeThemes } from '../mergeThemes';
-import { reflexComponent } from '../reflexComponent';
+import { processComponent } from '../processComponent';
 import { RfxSvgPropsOptional } from '../svg/RfxSvgProps';
 import { RfxSvgTheme } from '../svg/RfxSvgTheme';
 import { validateNoStyleProps } from '../validateNoStyleProps';
-import { ButtonProps } from './ButtonProps';
+import { ButtonProps, ButtonPropsOptional } from './ButtonProps';
 import { ButtonVariant } from './ButtonVariant';
+import { useDefaultButtonProps } from './useDefaultButtonProps';
 
 export const extractTouchablePropsFromButtonProps = (
   props: ButtonProps,
@@ -222,14 +224,25 @@ export const renderButtonTouchable = (props: ButtonProps) => {
   );
 };
 
-export const SimpleButton = reflexComponent<ButtonProps>({
-  name: 'SimpleButton',
-})((props: ButtonProps) => {
+let Button: React.ComponentType<ButtonPropsOptional> = (
+  props: ButtonPropsOptional,
+) => {
   validateNoStyleProps(props);
-  const newProps = propsPipe<ButtonProps>([
+  let newProps = useDefaultButtonProps(props);
+  newProps = propsPipe<ButtonProps>([
     handlePatchThemeProps,
     handleThemeGetProps,
     handleChildrenProps,
-  ])(props);
+  ])(newProps);
+  newProps = {
+    ...newProps,
+    ...useInteraction(newProps),
+  };
   return renderButtonTouchable(newProps);
+};
+
+Button = processComponent<ButtonPropsOptional>(Button, {
+  name: 'Button',
 });
+
+export { Button };

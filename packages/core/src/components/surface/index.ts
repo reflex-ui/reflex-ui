@@ -8,5 +8,4 @@
 export * from './Surface';
 export * from './SurfaceProps';
 export * from './SurfaceTheme';
-export * from './SimpleSurface';
-export * from './withDefaultSurfaceProps';
+export * from './useDefaultSurfaceProps';

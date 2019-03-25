@@ -13,7 +13,6 @@ import { getStyleFromTheme } from '../getStyleFromTheme';
 import { handleChildrenProps } from '../handleChildrenProps';
 import { handlePatchThemeProps } from '../handlePatchThemeProps';
 import { handleThemeGetProps } from '../handleThemeGetProps';
-import { reflexComponent } from '../reflexComponent';
 import { validateNoStyleProps } from '../validateNoStyleProps';
 import { RfxTextProps } from './RfxTextProps';
 
@@ -40,21 +39,13 @@ export const extractTextPropsFromRfxTextProps = (
   return textProps;
 };
 
-export const transformRfxTextStringChildIntoComponent = (
-  props: RfxTextProps,
-): JSX.Element => {
-  validateNoStyleProps(props);
-  const newProps = propsPipe<RfxTextProps>([
-    handlePatchThemeProps,
-    handleThemeGetProps,
-    handleChildrenProps,
-  ])(props);
-  const { children, theme } = newProps;
+export const renderRfxTextText = (props: RfxTextProps): JSX.Element => {
+  const { children, theme } = props;
 
   const Text = theme.component || RNText;
   const textProps = {
-    ...extractTextPropsFromRfxTextProps(newProps),
-    style: getStyleFromTheme(newProps, theme),
+    ...extractTextPropsFromRfxTextProps(props),
+    style: getStyleFromTheme(props, theme),
   };
 
   if (Text === RNText) {
@@ -62,15 +53,15 @@ export const transformRfxTextStringChildIntoComponent = (
   }
 
   return (
-    <Text complexComponentProps={newProps} {...textProps}>
+    <Text complexComponentProps={props} {...textProps}>
       {children}
     </Text>
   );
 };
 
-export const RfxText = reflexComponent<RfxTextProps>({
-  name: 'Text',
-})((props: RfxTextProps) => {
+export const renderRfxText = (
+  props: RfxTextProps,
+): React.ReactElement | null => {
   const { children } = props;
 
   if (
@@ -79,11 +70,18 @@ export const RfxText = reflexComponent<RfxTextProps>({
     typeof children === 'boolean' ||
     Array.isArray(children)
   ) {
-    return transformRfxTextStringChildIntoComponent(props);
+    validateNoStyleProps(props);
+    const newProps = propsPipe<RfxTextProps>([
+      handlePatchThemeProps,
+      handleThemeGetProps,
+      handleChildrenProps,
+    ])(props);
+
+    return renderRfxTextText(newProps);
   }
 
   if (children === undefined || children === null) return null;
   if ('type' in children) return children;
 
   return null;
-});
+};

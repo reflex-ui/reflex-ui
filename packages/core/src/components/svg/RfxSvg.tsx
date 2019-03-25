@@ -16,9 +16,10 @@ import { getPropsAndStyleFromTheme } from '../getPropsAndStyleFromTheme';
 import { handleChildrenProps } from '../handleChildrenProps';
 import { handlePatchThemeProps } from '../handlePatchThemeProps';
 import { handleThemeGetProps } from '../handleThemeGetProps';
-import { reflexComponent } from '../reflexComponent';
+import { processComponent } from '../processComponent';
 import { validateNoStyleProps } from '../validateNoStyleProps';
 import { RfxSvgProps, RfxSvgPropsOptional } from './RfxSvgProps';
+import { useDefaultRfxSvgProps } from './useDefaultRfxSvgProps';
 
 export const extractSvgPropsFromRfxSvgProps = (
   props: RfxSvgProps,
@@ -46,8 +47,8 @@ export const extractSvgPropsFromRfxSvgProps = (
   return svgProps;
 };
 
-const handleSvgChildren = (props: RfxSvgProps): React.ReactNode => {
-  if (!props.children) return undefined;
+export const handleRfxSvgChildren = (props: RfxSvgProps): RfxSvgProps => {
+  if (props.children === undefined || props.children === null) return props;
   const children = props.children as React.ReactElement<RfxSvgPropsOptional>;
 
   if (typeof children !== 'object') {
@@ -62,36 +63,51 @@ const handleSvgChildren = (props: RfxSvgProps): React.ReactNode => {
     ? cloneElement({ element: children, props: mergedProps })
     : undefined;
 
-  return styledSvg;
+  return {
+    ...props,
+    children: styledSvg,
+  };
 };
 
-export const SimpleRfxSvg = reflexComponent<RfxSvgProps>({
-  name: 'SimpleRfxSvg',
-})((props: RfxSvgProps) => {
-  validateNoStyleProps(props);
-  const newProps = propsPipe<RfxSvgProps>([
-    handlePatchThemeProps,
-    handleThemeGetProps,
-    handleChildrenProps,
-  ])(props);
-  const { theme } = newProps;
+export const renderRfxSvgView = (props: RfxSvgProps) => {
+  const { children, skipContainer, theme } = props;
 
-  let children: React.ReactNode;
-  if (newProps.children) children = handleSvgChildren(newProps);
-  if (newProps.skipContainer) {
+  if (skipContainer) {
     return <React.Fragment>{children}</React.Fragment>;
   }
 
   const Container = (theme.container && theme.container.component) || View;
-  const viewProps = getPropsAndStyleFromTheme(newProps, theme.container);
+  const viewProps = getPropsAndStyleFromTheme(props, theme.container);
 
   if (Container === View) {
     return <Container {...viewProps}>{children}</Container>;
   }
 
   return (
-    <Container complexComponentProps={newProps} {...viewProps}>
+    <Container complexComponentProps={props} {...viewProps}>
       {children}
     </Container>
   );
+};
+
+let RfxSvg: React.ComponentType<RfxSvgPropsOptional> = (
+  props: RfxSvgPropsOptional,
+) => {
+  validateNoStyleProps(props);
+  let newProps = useDefaultRfxSvgProps(props);
+  if (props.children === undefined || props.children === null) return null;
+  newProps = propsPipe<RfxSvgProps>([
+    handlePatchThemeProps,
+    handleThemeGetProps,
+    handleChildrenProps,
+    handleRfxSvgChildren,
+  ])(newProps);
+
+  return renderRfxSvgView(newProps);
+};
+
+RfxSvg = processComponent<RfxSvgPropsOptional>(RfxSvg, {
+  name: 'Svg',
 });
+
+export { RfxSvg };

@@ -8,16 +8,19 @@
 import * as React from 'react';
 import { View } from 'react-native';
 
+import { ColorThemeContext } from '../../palette/ColorThemeContext';
+import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { propsPipe } from '../../utils/propsPipe';
 import { getPropsAndStyleFromTheme } from '../getPropsAndStyleFromTheme';
 import { handleChildrenProps } from '../handleChildrenProps';
 import { handlePatchThemeProps } from '../handlePatchThemeProps';
 import { handleThemeGetProps } from '../handleThemeGetProps';
-import { reflexComponent } from '../reflexComponent';
+import { processComponent } from '../processComponent';
 import { validateNoStyleProps } from '../validateNoStyleProps';
-import { AppBarProps } from './AppBarProps';
+import { AppBarProps, AppBarPropsOptional } from './AppBarProps';
+import { useDefaultAppBarProps } from './useDefaultAppBarProps';
 
-export const renderCenterArea = (props: AppBarProps): React.ReactNode => {
+export const renderAppBarCenterArea = (props: AppBarProps): React.ReactNode => {
   const { children, theme } = props;
   if (!children || !Array.isArray(children) || children.length < 2) {
     return undefined;
@@ -37,7 +40,9 @@ export const renderCenterArea = (props: AppBarProps): React.ReactNode => {
   );
 };
 
-export const renderLeadingArea = (props: AppBarProps): React.ReactNode => {
+export const renderAppBarLeadingArea = (
+  props: AppBarProps,
+): React.ReactNode => {
   const { children, theme } = props;
   if (!children) return children;
 
@@ -57,7 +62,9 @@ export const renderLeadingArea = (props: AppBarProps): React.ReactNode => {
   );
 };
 
-export const renderTrailingArea = (props: AppBarProps): React.ReactNode => {
+export const renderAppBarTrailingArea = (
+  props: AppBarProps,
+): React.ReactNode => {
   const { children, theme } = props;
   if (!children || !Array.isArray(children) || children.length < 3) {
     return undefined;
@@ -78,16 +85,47 @@ export const renderTrailingArea = (props: AppBarProps): React.ReactNode => {
   );
 };
 
-export const SimpleAppBar = reflexComponent<AppBarProps>({
-  name: 'SimpleAppBar',
-})((props: AppBarProps) => {
+export const renderAppBarContainer = (props: AppBarProps): JSX.Element => {
+  const { theme } = props;
+  const Container = (theme.container && theme.container.component) || View;
+  const viewProps = {
+    ...getPropsAndStyleFromTheme(props, theme.container),
+    onLayout: props.onLayout,
+  };
+
+  if (Container === View) {
+    return (
+      <Container {...viewProps}>
+        {renderAppBarLeadingArea(props)}
+        {renderAppBarCenterArea(props)}
+        {renderAppBarTrailingArea(props)}
+      </Container>
+    );
+  }
+
+  return (
+    <Container complexComponentProps={props} {...viewProps}>
+      {renderAppBarLeadingArea(props)}
+      {renderAppBarCenterArea(props)}
+      {renderAppBarTrailingArea(props)}
+    </Container>
+  );
+};
+
+let AppBar: React.ComponentType<AppBarPropsOptional> = (
+  props: AppBarPropsOptional,
+) => {
   validateNoStyleProps(props);
-  const newProps = propsPipe<AppBarProps>([
+  let newProps = useDefaultAppBarProps(props);
+  newProps = propsPipe<AppBarProps>([
     handlePatchThemeProps,
     handleThemeGetProps,
     handleChildrenProps,
-  ])(props);
-  const { theme } = newProps;
+  ])(newProps);
+  newProps = {
+    ...newProps,
+    ...useOnLayout(newProps),
+  };
 
   if (Array.isArray(newProps.children) && newProps.children.length > 3) {
     throw new Error(
@@ -98,27 +136,15 @@ export const SimpleAppBar = reflexComponent<AppBarProps>({
     );
   }
 
-  const Container = (theme.container && theme.container.component) || View;
-  const viewProps = {
-    ...getPropsAndStyleFromTheme(newProps, theme.container),
-    onLayout: newProps.onLayout,
-  };
-
-  if (Container === View) {
-    return (
-      <Container {...viewProps}>
-        {renderLeadingArea(newProps)}
-        {renderCenterArea(newProps)}
-        {renderTrailingArea(newProps)}
-      </Container>
-    );
-  }
-
   return (
-    <Container complexComponentProps={newProps} {...viewProps}>
-      {renderLeadingArea(newProps)}
-      {renderCenterArea(newProps)}
-      {renderTrailingArea(newProps)}
-    </Container>
+    <ColorThemeContext.Provider value={newProps.colorTheme}>
+      {renderAppBarContainer(newProps)}
+    </ColorThemeContext.Provider>
   );
+};
+
+AppBar = processComponent<AppBarPropsOptional>(AppBar, {
+  name: 'AppBar',
 });
+
+export { AppBar };

@@ -13,14 +13,24 @@ import {
   View,
 } from 'react-native';
 
+// tslint:disable-next-line
+import { InteractionStateContext } from '../../interaction/InteractionStateContext';
+import { useInteraction } from '../../interaction/useInteraction';
+import { ColorThemeContext } from '../../palette/ColorThemeContext';
+import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { propsPipe } from '../../utils/propsPipe';
 import { getPropsAndStyleFromTheme } from '../getPropsAndStyleFromTheme';
 import { handleChildrenProps } from '../handleChildrenProps';
 import { handlePatchThemeProps } from '../handlePatchThemeProps';
 import { handleThemeGetProps } from '../handleThemeGetProps';
-import { reflexComponent } from '../reflexComponent';
+import { processComponent } from '../processComponent';
 import { validateNoStyleProps } from '../validateNoStyleProps';
-import { TouchableSurfaceProps } from './TouchableSurfaceProps';
+import {
+  TouchableSurfaceProps,
+  TouchableSurfacePropsOptional,
+} from './TouchableSurfaceProps';
+// tslint:disable-next-line
+import { useDefaultTouchableSurfaceProps } from './useDefaultTouchableSurfaceProps';
 
 export const extractTouchablePropsFromTouchableSurface = (
   props: TouchableSurfaceProps,
@@ -88,14 +98,36 @@ export const renderTouchableSurfaceTouchable = (
   );
 };
 
-export const SimpleTouchableSurface = reflexComponent<TouchableSurfaceProps>({
-  name: 'SimpleTouchableSurface',
-})((props: TouchableSurfaceProps) => {
+let TouchableSurface: React.ComponentType<TouchableSurfacePropsOptional> = (
+  props: TouchableSurfacePropsOptional,
+) => {
   validateNoStyleProps(props);
-  const newProps = propsPipe<TouchableSurfaceProps>([
+  let newProps = useDefaultTouchableSurfaceProps(props);
+  newProps = propsPipe<TouchableSurfaceProps>([
     handlePatchThemeProps,
     handleThemeGetProps,
     handleChildrenProps,
-  ])(props);
-  return renderTouchableSurfaceTouchable(newProps);
-});
+  ])(newProps);
+  newProps = {
+    ...newProps,
+    ...useInteraction(newProps),
+    ...useOnLayout(newProps),
+  };
+
+  return (
+    <ColorThemeContext.Provider value={newProps.colorTheme}>
+      <InteractionStateContext.Provider value={newProps.interactionState}>
+        {renderTouchableSurfaceTouchable(newProps)}
+      </InteractionStateContext.Provider>
+    </ColorThemeContext.Provider>
+  );
+};
+
+TouchableSurface = processComponent<TouchableSurfacePropsOptional>(
+  TouchableSurface,
+  {
+    name: 'TouchableSurface',
+  },
+);
+
+export { TouchableSurface };

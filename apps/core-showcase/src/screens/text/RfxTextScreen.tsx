@@ -35,7 +35,6 @@ const getCaptionPatchTheme: ComponentThemeGetter<
 > = () => ({
   getProps: () => ({ interactionState: { type: InteractionType.Disabled } }),
   getStyle: () => ({
-    // color: 'red',
     fontSize: 20,
   }),
 });
@@ -66,14 +65,26 @@ const RfxTextScreen: React.SFC = (): JSX.Element => (
       <Caption marginVertical={Size.XS} selectable>
         Caption lorem ipsum.
       </Caption>
+      <Overline marginVertical={Size.XS}>Hello Overline</Overline>
       <Caption
         getPatchTheme={getCaptionPatchTheme}
         marginVertical={Size.XS}
         selectable
       >
-        Caption lorem ipsum.
+        This is a {'<Caption>'} with custom styles via getPatchTheme() prop.
       </Caption>
-      <Overline marginVertical={Size.XS}>Hello Overline</Overline>
+      <Paragraph1 marginVertical={Size.XS}>
+        You can nest your text components. For example, this is a{' '}
+        {'<Paragraph1>'},
+        <Paragraph2>
+          {' '}
+          this is a {'<Paragraph2>'} inside that {'<Paragraph1>'},
+        </Paragraph2>
+        <Caption>
+          {' '}
+          and this is a {'<Caption>'} also inside that same {'<Paragraph1>'}.
+        </Caption>
+      </Paragraph1>
     </Surface>
     <Surface
       colorTheme={ColorTheme.PrimaryNormal}
@@ -81,7 +92,8 @@ const RfxTextScreen: React.SFC = (): JSX.Element => (
       padding={Size.M}
     >
       <Paragraph1 marginVertical={Size.XS}>
-        Hello Paragraph1 lorem ipsum dolor sit amet.
+        This is a {'<Paragraph1>'} inside a{' '}
+        {'<Surface colorTheme={ColorTheme.PrimaryNormal}>'}.
       </Paragraph1>
     </Surface>
     <Surface
@@ -90,7 +102,8 @@ const RfxTextScreen: React.SFC = (): JSX.Element => (
       padding={Size.M}
     >
       <Paragraph1 marginVertical={Size.XS}>
-        Hello Paragraph1 lorem ipsum dolor sit amet.
+        This is a {'<Paragraph1>'} inside a{' '}
+        {'<Surface colorTheme={ColorTheme.PrimaryDark}>'}.
       </Paragraph1>
     </Surface>
   </ScrollView>
