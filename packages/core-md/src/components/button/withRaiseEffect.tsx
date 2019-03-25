@@ -12,7 +12,6 @@ import {
   isAndroid,
   isIOS,
   isWeb,
-  reflexComponent,
 } from '@reflex-ui/core';
 import delay from 'delay';
 import * as React from 'react';
@@ -101,256 +100,253 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
 >(
   WrappedComponent: React.ComponentType<ChildProps>,
 ): React.ComponentType<ChildProps> =>
-  reflexComponent<ChildProps>({
-    wrapped: WrappedComponent,
-  })(
-    class WithRaiseEffect extends React.Component<ChildProps> {
-      public static getDerivedStateFromProps(
-        props: ChildProps,
-        state: RaisedComponentState,
+  class WithRaiseEffect extends React.Component<ChildProps> {
+    public static getDerivedStateFromProps(
+      props: ChildProps,
+      state: RaisedComponentState,
+    ) {
+      const { interactionState } = props.complexComponentProps;
+      const interactionType = interactionState.type;
+      const { animationKeyframe, isAnimating } = state;
+
+      const staticRaiseStyles = createRaiseStyles(
+        StyleSheet.flatten(props.style),
+      );
+
+      if (
+        interactionType === InteractionType.Disabled &&
+        animationKeyframe !== AnimationKeyframe.Disabled &&
+        !isAnimating
       ) {
-        const { interactionState } = props.complexComponentProps;
-        const interactionType = interactionState.type;
-        const { animationKeyframe, isAnimating } = state;
-
-        const staticRaiseStyles = createRaiseStyles(
-          StyleSheet.flatten(props.style),
-        );
-
-        if (
-          interactionType === InteractionType.Disabled &&
-          animationKeyframe !== AnimationKeyframe.Disabled &&
-          !isAnimating
-        ) {
-          return {
-            ...state,
-            animationKeyframe: AnimationKeyframe.Disabled,
-            isAnimating: true,
-            staticRaiseStyles,
-          };
-        }
-
-        if (
-          interactionType === InteractionType.Hovered &&
-          animationKeyframe !== AnimationKeyframe.Hovered &&
-          !isAnimating
-        ) {
-          return {
-            ...state,
-            animationKeyframe: AnimationKeyframe.Hovered,
-            isAnimating: true,
-            staticRaiseStyles,
-          };
-        }
-
-        if (
-          interactionType === InteractionType.Focused &&
-          animationKeyframe !== AnimationKeyframe.Focused &&
-          !isAnimating
-        ) {
-          return {
-            ...state,
-            animationKeyframe: AnimationKeyframe.Focused,
-            isAnimating: true,
-            staticRaiseStyles,
-          };
-        }
-
-        if (
-          interactionType === InteractionType.Pressed &&
-          animationKeyframe !== AnimationKeyframe.PressIn &&
-          !isAnimating
-        ) {
-          return {
-            ...state,
-            animationKeyframe: AnimationKeyframe.PressIn,
-            isAnimating: true,
-            staticRaiseStyles,
-          };
-        }
-
-        if (
-          interactionType === InteractionType.Enabled &&
-          animationKeyframe !== AnimationKeyframe.Enabled &&
-          !isAnimating
-        ) {
-          return {
-            ...state,
-            animationKeyframe: AnimationKeyframe.Enabled,
-            isAnimatingPressOut: true,
-            staticRaiseStyles,
-          };
-        }
-
-        return state;
+        return {
+          ...state,
+          animationKeyframe: AnimationKeyframe.Disabled,
+          isAnimating: true,
+          staticRaiseStyles,
+        };
       }
 
-      // tslint:disable-next-line:no-any
-      public animatedView: any;
-      public raiseAnimation: (props: {
-        children?: React.ReactNode;
-        native?: boolean;
-        state: AnimationKeyframe;
-      }) => // tslint:disable-next-line:no-any
-      Keyframes<any, any>;
-
-      public readonly state: RaisedComponentState = {
-        animationKeyframe: AnimationKeyframe.Disabled,
-        isAnimating: false,
-        staticRaiseStyles: { container: {}, shadow: {} },
-      };
-
-      public constructor(props: ChildProps) {
-        super(props);
-
-        this.animatedView = animated(View);
-        this.raiseAnimation = Keyframes.Spring({
-          // @ts-ignore Parameter 'call' implicitly has an 'any' type.
-          disabled: async call => {
-            call({
-              config: { tension: 75, friction: 20 },
-              from: {
-                ...createMotionRaiseStyles({
-                  elevationDegree,
-                  interactionType: InteractionType.Enabled,
-                }),
-              },
-              to: {
-                ...createMotionRaiseStyles({
-                  elevationDegree,
-                  interactionType: InteractionType.Disabled,
-                }),
-              },
-            });
-            await delay(250);
-            if (this.state.isAnimating) this.animationComplete();
-          },
-          // @ts-ignore Parameter 'call' implicitly has an 'any' type.
-          enabled: async call => {
-            call({
-              config: { tension: 75, friction: 20 },
-              from: {
-                ...createMotionRaiseStyles({
-                  elevationDegree,
-                  interactionType: InteractionType.Hovered,
-                }),
-              },
-              to: {
-                ...createMotionRaiseStyles({
-                  elevationDegree,
-                  interactionType: InteractionType.Enabled,
-                }),
-              },
-            });
-            await delay(250);
-            if (this.state.isAnimating) this.animationComplete();
-          },
-          // @ts-ignore Parameter 'call' implicitly has an 'any' type.
-          focused: async call => {
-            call({
-              config: { tension: 75, friction: 20 },
-              from: {
-                ...createMotionRaiseStyles({
-                  elevationDegree,
-                  interactionType: InteractionType.Enabled,
-                }),
-              },
-              to: {
-                ...createMotionRaiseStyles({
-                  elevationDegree,
-                  interactionType: InteractionType.Focused,
-                }),
-              },
-            });
-            await delay(250);
-            if (this.state.isAnimating) this.animationComplete();
-          },
-          // @ts-ignore Parameter 'call' implicitly has an 'any' type.
-          hovered: async call => {
-            call({
-              config: { tension: 150, friction: 20 },
-              from: {
-                ...createMotionRaiseStyles({
-                  elevationDegree,
-                  interactionType: InteractionType.Enabled,
-                }),
-              },
-              to: {
-                ...createMotionRaiseStyles({
-                  elevationDegree,
-                  interactionType: InteractionType.Hovered,
-                }),
-              },
-            });
-            await delay(250);
-            if (this.state.isAnimating) this.animationComplete();
-          },
-          // @ts-ignore Parameter 'call' implicitly has an 'any' type.
-          pressin: async call => {
-            call({
-              config: { tension: 150, friction: 20 },
-              from: {
-                ...createMotionRaiseStyles({
-                  elevationDegree,
-                  interactionType: InteractionType.Hovered,
-                }),
-              },
-              to: {
-                ...createMotionRaiseStyles({
-                  elevationDegree,
-                  interactionType: InteractionType.Pressed,
-                }),
-              },
-            });
-            await delay(250);
-            if (this.state.isAnimating) this.animationComplete();
-          },
-        });
-        // @ts-ignore Property 'displayName' does not exist
-        // on type '(props: {}) => any'. [2339]
-        this.raiseAnimation.displayName = 'RfxRaiseAnimation';
+      if (
+        interactionType === InteractionType.Hovered &&
+        animationKeyframe !== AnimationKeyframe.Hovered &&
+        !isAnimating
+      ) {
+        return {
+          ...state,
+          animationKeyframe: AnimationKeyframe.Hovered,
+          isAnimating: true,
+          staticRaiseStyles,
+        };
       }
 
-      public onLayoutChanged = (event: LayoutChangeEvent) => {
-        const { height, width } = event.nativeEvent.layout;
-        this.setState({ height, width });
-      };
+      if (
+        interactionType === InteractionType.Focused &&
+        animationKeyframe !== AnimationKeyframe.Focused &&
+        !isAnimating
+      ) {
+        return {
+          ...state,
+          animationKeyframe: AnimationKeyframe.Focused,
+          isAnimating: true,
+          staticRaiseStyles,
+        };
+      }
 
-      public render() {
-        const { children, ...otherProps } = this.props;
-        const RaiseAnimation = this.raiseAnimation;
+      if (
+        interactionType === InteractionType.Pressed &&
+        animationKeyframe !== AnimationKeyframe.PressIn &&
+        !isAnimating
+      ) {
+        return {
+          ...state,
+          animationKeyframe: AnimationKeyframe.PressIn,
+          isAnimating: true,
+          staticRaiseStyles,
+        };
+      }
 
-        const { animationKeyframe } = this.state;
-        const AnimatedView = this.animatedView;
+      if (
+        interactionType === InteractionType.Enabled &&
+        animationKeyframe !== AnimationKeyframe.Enabled &&
+        !isAnimating
+      ) {
+        return {
+          ...state,
+          animationKeyframe: AnimationKeyframe.Enabled,
+          isAnimatingPressOut: true,
+          staticRaiseStyles,
+        };
+      }
 
-        return (
-          // @ts-ignore some issue with object spread (otherProps)
-          // is throwing an error with a message that do not point
-          // to what exactly is wrong. Needs more investigation.
-          <WrappedComponent {...otherProps} onLayout={this.onLayoutChanged}>
-            <React.Fragment>
-              <View style={this.state.staticRaiseStyles.container}>
-                <RaiseAnimation native state={animationKeyframe}>
-                  {(styles: { boxShadow: string }) => {
-                    /*
+      return state;
+    }
+
+    // tslint:disable-next-line:no-any
+    public animatedView: any;
+    public raiseAnimation: (props: {
+      children?: React.ReactNode;
+      native?: boolean;
+      state: AnimationKeyframe;
+    }) => // tslint:disable-next-line:no-any
+    Keyframes<any, any>;
+
+    public readonly state: RaisedComponentState = {
+      animationKeyframe: AnimationKeyframe.Disabled,
+      isAnimating: false,
+      staticRaiseStyles: { container: {}, shadow: {} },
+    };
+
+    public constructor(props: ChildProps) {
+      super(props);
+
+      this.animatedView = animated(View);
+      this.raiseAnimation = Keyframes.Spring({
+        // @ts-ignore Parameter 'call' implicitly has an 'any' type.
+        disabled: async call => {
+          call({
+            config: { tension: 75, friction: 20 },
+            from: {
+              ...createMotionRaiseStyles({
+                elevationDegree,
+                interactionType: InteractionType.Enabled,
+              }),
+            },
+            to: {
+              ...createMotionRaiseStyles({
+                elevationDegree,
+                interactionType: InteractionType.Disabled,
+              }),
+            },
+          });
+          await delay(250);
+          if (this.state.isAnimating) this.animationComplete();
+        },
+        // @ts-ignore Parameter 'call' implicitly has an 'any' type.
+        enabled: async call => {
+          call({
+            config: { tension: 75, friction: 20 },
+            from: {
+              ...createMotionRaiseStyles({
+                elevationDegree,
+                interactionType: InteractionType.Hovered,
+              }),
+            },
+            to: {
+              ...createMotionRaiseStyles({
+                elevationDegree,
+                interactionType: InteractionType.Enabled,
+              }),
+            },
+          });
+          await delay(250);
+          if (this.state.isAnimating) this.animationComplete();
+        },
+        // @ts-ignore Parameter 'call' implicitly has an 'any' type.
+        focused: async call => {
+          call({
+            config: { tension: 75, friction: 20 },
+            from: {
+              ...createMotionRaiseStyles({
+                elevationDegree,
+                interactionType: InteractionType.Enabled,
+              }),
+            },
+            to: {
+              ...createMotionRaiseStyles({
+                elevationDegree,
+                interactionType: InteractionType.Focused,
+              }),
+            },
+          });
+          await delay(250);
+          if (this.state.isAnimating) this.animationComplete();
+        },
+        // @ts-ignore Parameter 'call' implicitly has an 'any' type.
+        hovered: async call => {
+          call({
+            config: { tension: 150, friction: 20 },
+            from: {
+              ...createMotionRaiseStyles({
+                elevationDegree,
+                interactionType: InteractionType.Enabled,
+              }),
+            },
+            to: {
+              ...createMotionRaiseStyles({
+                elevationDegree,
+                interactionType: InteractionType.Hovered,
+              }),
+            },
+          });
+          await delay(250);
+          if (this.state.isAnimating) this.animationComplete();
+        },
+        // @ts-ignore Parameter 'call' implicitly has an 'any' type.
+        pressin: async call => {
+          call({
+            config: { tension: 150, friction: 20 },
+            from: {
+              ...createMotionRaiseStyles({
+                elevationDegree,
+                interactionType: InteractionType.Hovered,
+              }),
+            },
+            to: {
+              ...createMotionRaiseStyles({
+                elevationDegree,
+                interactionType: InteractionType.Pressed,
+              }),
+            },
+          });
+          await delay(250);
+          if (this.state.isAnimating) this.animationComplete();
+        },
+      });
+      // @ts-ignore Property 'displayName' does not exist
+      // on type '(props: {}) => any'. [2339]
+      this.raiseAnimation.displayName = 'RfxRaiseAnimation';
+    }
+
+    public onLayoutChanged = (event: LayoutChangeEvent) => {
+      const { height, width } = event.nativeEvent.layout;
+      this.setState({ height, width });
+    };
+
+    public render() {
+      const { children, ...otherProps } = this.props;
+      const RaiseAnimation = this.raiseAnimation;
+
+      const { animationKeyframe } = this.state;
+      const AnimatedView = this.animatedView;
+
+      return (
+        // @ts-ignore some issue with object spread (otherProps)
+        // is throwing an error with a message that do not point
+        // to what exactly is wrong. Needs more investigation.
+        <WrappedComponent {...otherProps} onLayout={this.onLayoutChanged}>
+          <React.Fragment>
+            <View style={this.state.staticRaiseStyles.container}>
+              <RaiseAnimation native state={animationKeyframe}>
+                {(styles: { boxShadow: string }) => {
+                  /*
                   const motionStyles = {
                     boxShadow: styles.boxShadow,
                   };
                   */
 
-                    const motionStyles = {};
+                  const motionStyles = {};
 
-                    if (isWeb) {
-                      // @ts-ignore
-                      motionStyles.boxShadow = styles.boxShadow;
-                    } else if (isAndroid) {
-                      // @ts-ignore
-                      motionStyles.elevation = styles.elevation;
-                    } else {
-                      // @ts-ignore
-                      motionStyles.shadowColor = styles.shadowColor;
-                      // @ts-ignore
-                      /*
+                  if (isWeb) {
+                    // @ts-ignore
+                    motionStyles.boxShadow = styles.boxShadow;
+                  } else if (isAndroid) {
+                    // @ts-ignore
+                    motionStyles.elevation = styles.elevation;
+                  } else {
+                    // @ts-ignore
+                    motionStyles.shadowColor = styles.shadowColor;
+                    // @ts-ignore
+                    /*
                       motionStyles.shadowOffset = {
                         // @ts-ignore
                         height: styles.height || 0,
@@ -359,58 +355,57 @@ export const withRaiseEffect = (elevationDegree: ElevationDegree) => <
                       };
                       */
 
-                      /*
-                       * Temporary solution. Need to investigate how to animate
-                       * shadowOffset, i.e., an object of values.
-                       */
-                      const interactionType = this.props.complexComponentProps
-                        .interactionState.type;
+                    /*
+                     * Temporary solution. Need to investigate how to animate
+                     * shadowOffset, i.e., an object of values.
+                     */
+                    const interactionType = this.props.complexComponentProps
+                      .interactionState.type;
 
-                      const elevation = convertInteractionToElevation(
-                        interactionType,
-                        elevationDegree,
-                      );
-                      const elevationStyles = getElevationStyles(elevation);
-
-                      const height = elevationStyles.shadowOffset
-                        ? elevationStyles.shadowOffset.height
-                        : 0;
-                      const width = elevationStyles.shadowOffset
-                        ? elevationStyles.shadowOffset.width
-                        : 0;
-                      // @ts-ignore
-                      motionStyles.shadowOffset = {
-                        height,
-                        width,
-                      };
-                      /**/
-                      // @ts-ignore
-                      motionStyles.shadowOpacity = styles.shadowOpacity;
-                      // @ts-ignore
-                      motionStyles.shadowRadius = styles.shadowRadius;
-                    }
-
-                    return (
-                      <AnimatedView
-                        style={{
-                          ...this.state.staticRaiseStyles.shadow,
-                          ...motionStyles,
-                        }}
-                      />
+                    const elevation = convertInteractionToElevation(
+                      interactionType,
+                      elevationDegree,
                     );
-                  }}
-                </RaiseAnimation>
-              </View>
-            </React.Fragment>
-            {children}
-          </WrappedComponent>
-        );
-      }
+                    const elevationStyles = getElevationStyles(elevation);
 
-      private animationComplete() {
-        this.setState({
-          isAnimating: false,
-        });
-      }
-    },
-  );
+                    const height = elevationStyles.shadowOffset
+                      ? elevationStyles.shadowOffset.height
+                      : 0;
+                    const width = elevationStyles.shadowOffset
+                      ? elevationStyles.shadowOffset.width
+                      : 0;
+                    // @ts-ignore
+                    motionStyles.shadowOffset = {
+                      height,
+                      width,
+                    };
+                    /**/
+                    // @ts-ignore
+                    motionStyles.shadowOpacity = styles.shadowOpacity;
+                    // @ts-ignore
+                    motionStyles.shadowRadius = styles.shadowRadius;
+                  }
+
+                  return (
+                    <AnimatedView
+                      style={{
+                        ...this.state.staticRaiseStyles.shadow,
+                        ...motionStyles,
+                      }}
+                    />
+                  );
+                }}
+              </RaiseAnimation>
+            </View>
+          </React.Fragment>
+          {children}
+        </WrappedComponent>
+      );
+    }
+
+    private animationComplete() {
+      this.setState({
+        isAnimating: false,
+      });
+    }
+  };
