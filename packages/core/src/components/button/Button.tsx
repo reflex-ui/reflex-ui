@@ -67,10 +67,7 @@ export const handleButtonChildren = (props: ButtonProps): React.ReactNode => {
     typeof children === 'number' ||
     typeof children === 'boolean'
   ) {
-    return transformButtonStringChildrenIntoComponent(
-      children.toString(),
-      props,
-    );
+    return handleButtonStringChildren(children.toString(), props);
   }
 
   if (
@@ -87,7 +84,7 @@ export const handleButtonChildren = (props: ButtonProps): React.ReactNode => {
   return children;
 };
 
-export const transformButtonStringChildrenIntoComponent = (
+export const handleButtonStringChildren = (
   children: string,
   props: ButtonProps,
 ): JSX.Element => {
