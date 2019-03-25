@@ -6,11 +6,11 @@
  */
 
 export * from './RfxSvg';
+export * from './RfxSvgIcon';
 export * from './RfxSvgProps';
 export * from './RfxSvgTheme';
 export * from './RfxSvgVariantsTheme';
-export * from './SvgIcon';
 export * from './SvgPropsGetter';
 export * from './SvgTheme';
+export * from './useDefaultRfxSvgIconProps';
 export * from './useDefaultRfxSvgProps';
-export * from './useDefaultSvgIconProps';

@@ -4,18 +4,18 @@ import { Svg, Path } from 'swgs';
 
 import {
   processComponent,
+  RfxSvgIcon,
   RfxSvgPropsOptional,
-  SvgIcon,
 } from '@reflex-ui/core';
 
 let KeyboardArrowDownIcon: React.ComponentType<RfxSvgPropsOptional> = (
   props: RfxSvgPropsOptional,
 ) => (
-  <SvgIcon {...props}>
+  <RfxSvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z" />
     </Svg>
-  </SvgIcon>
+  </RfxSvgIcon>
 );
 
 KeyboardArrowDownIcon = processComponent<RfxSvgPropsOptional>(

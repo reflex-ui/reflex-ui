@@ -4,18 +4,18 @@ import { Svg, Path } from 'swgs';
 
 import {
   processComponent,
+  RfxSvgIcon,
   RfxSvgPropsOptional,
-  SvgIcon,
 } from '@reflex-ui/core';
 
 let RemoveIcon: React.ComponentType<RfxSvgPropsOptional> = (
   props: RfxSvgPropsOptional,
 ) => (
-  <SvgIcon {...props}>
+  <RfxSvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Path d="M19 13H5v-2h14v2z" />
     </Svg>
-  </SvgIcon>
+  </RfxSvgIcon>
 );
 
 RemoveIcon = processComponent<RfxSvgPropsOptional>(RemoveIcon, {

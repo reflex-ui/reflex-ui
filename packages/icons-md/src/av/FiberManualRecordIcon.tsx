@@ -4,18 +4,18 @@ import { Svg, Circle } from 'swgs';
 
 import {
   processComponent,
+  RfxSvgIcon,
   RfxSvgPropsOptional,
-  SvgIcon,
 } from '@reflex-ui/core';
 
 let FiberManualRecordIcon: React.ComponentType<RfxSvgPropsOptional> = (
   props: RfxSvgPropsOptional,
 ) => (
-  <SvgIcon {...props}>
+  <RfxSvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Circle fill="#010101" cx={12} cy={12} r={8} />
     </Svg>
-  </SvgIcon>
+  </RfxSvgIcon>
 );
 
 FiberManualRecordIcon = processComponent<RfxSvgPropsOptional>(

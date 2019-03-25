@@ -4,18 +4,18 @@ import { Svg, Circle } from 'swgs';
 
 import {
   processComponent,
+  RfxSvgIcon,
   RfxSvgPropsOptional,
-  SvgIcon,
 } from '@reflex-ui/core';
 
 let Brightness1Icon: React.ComponentType<RfxSvgPropsOptional> = (
   props: RfxSvgPropsOptional,
 ) => (
-  <SvgIcon {...props}>
+  <RfxSvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Circle cx={12} cy={12} r={10} />
     </Svg>
-  </SvgIcon>
+  </RfxSvgIcon>
 );
 
 Brightness1Icon = processComponent<RfxSvgPropsOptional>(Brightness1Icon, {

@@ -4,19 +4,19 @@ import { Svg, Circle, Path } from 'swgs';
 
 import {
   processComponent,
+  RfxSvgIcon,
   RfxSvgPropsOptional,
-  SvgIcon,
 } from '@reflex-ui/core';
 
 let PriorityHighIcon: React.ComponentType<RfxSvgPropsOptional> = (
   props: RfxSvgPropsOptional,
 ) => (
-  <SvgIcon {...props}>
+  <RfxSvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Circle cx={12} cy={19} r={2} />
       <Path d="M10 3h4v12h-4z" />
     </Svg>
-  </SvgIcon>
+  </RfxSvgIcon>
 );
 
 PriorityHighIcon = processComponent<RfxSvgPropsOptional>(PriorityHighIcon, {

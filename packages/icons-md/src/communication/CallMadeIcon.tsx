@@ -4,18 +4,18 @@ import { Svg, Path } from 'swgs';
 
 import {
   processComponent,
+  RfxSvgIcon,
   RfxSvgPropsOptional,
-  SvgIcon,
 } from '@reflex-ui/core';
 
 let CallMadeIcon: React.ComponentType<RfxSvgPropsOptional> = (
   props: RfxSvgPropsOptional,
 ) => (
-  <SvgIcon {...props}>
+  <RfxSvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5z" />
     </Svg>
-  </SvgIcon>
+  </RfxSvgIcon>
 );
 
 CallMadeIcon = processComponent<RfxSvgPropsOptional>(CallMadeIcon, {

@@ -4,14 +4,14 @@ import { Svg, Path } from 'swgs';
 
 import {
   processComponent,
+  RfxSvgIcon,
   RfxSvgPropsOptional,
-  SvgIcon,
 } from '@reflex-ui/core';
 
 let BatteryCharging30Icon: React.ComponentType<RfxSvgPropsOptional> = (
   props: RfxSvgPropsOptional,
 ) => (
-  <SvgIcon {...props}>
+  <RfxSvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Path
         fillOpacity={0.3}
@@ -19,7 +19,7 @@ let BatteryCharging30Icon: React.ComponentType<RfxSvgPropsOptional> = (
       />
       <Path d="M11 20v-5.5H7v6.17C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V14.5h-3.07L11 20z" />
     </Svg>
-  </SvgIcon>
+  </RfxSvgIcon>
 );
 
 BatteryCharging30Icon = processComponent<RfxSvgPropsOptional>(

@@ -4,18 +4,18 @@ import { Svg, Path } from 'swgs';
 
 import {
   processComponent,
+  RfxSvgIcon,
   RfxSvgPropsOptional,
-  SvgIcon,
 } from '@reflex-ui/core';
 
 let ShortTextIcon: React.ComponentType<RfxSvgPropsOptional> = (
   props: RfxSvgPropsOptional,
 ) => (
-  <SvgIcon {...props}>
+  <RfxSvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Path d="M4 9h16v2H4zm0 4h10v2H4z" />
     </Svg>
-  </SvgIcon>
+  </RfxSvgIcon>
 );
 
 ShortTextIcon = processComponent<RfxSvgPropsOptional>(ShortTextIcon, {

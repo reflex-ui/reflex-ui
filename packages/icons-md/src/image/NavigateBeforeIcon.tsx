@@ -4,18 +4,18 @@ import { Svg, Path } from 'swgs';
 
 import {
   processComponent,
+  RfxSvgIcon,
   RfxSvgPropsOptional,
-  SvgIcon,
 } from '@reflex-ui/core';
 
 let NavigateBeforeIcon: React.ComponentType<RfxSvgPropsOptional> = (
   props: RfxSvgPropsOptional,
 ) => (
-  <SvgIcon {...props}>
+  <RfxSvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
     </Svg>
-  </SvgIcon>
+  </RfxSvgIcon>
 );
 
 NavigateBeforeIcon = processComponent<RfxSvgPropsOptional>(NavigateBeforeIcon, {

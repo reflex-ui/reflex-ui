@@ -175,13 +175,13 @@ export const svgr2SvgIcon: FileDataTransformer = ({ fileData, filePath }) => {
     'const SvgComponent = props => ',
     `import {
        processComponent,
+       RfxSvgIcon,
        RfxSvgPropsOptional,
-       SvgIcon,
      } from '@reflex-ui/core';\n
     let SvgComponent: React.ComponentType<RfxSvgPropsOptional> = (
       props: RfxSvgPropsOptional
     ) => (
-      <SvgIcon {...props}>
+      <RfxSvgIcon {...props}>
     `,
   );
 
@@ -189,7 +189,7 @@ export const svgr2SvgIcon: FileDataTransformer = ({ fileData, filePath }) => {
   svgIcon = svgIcon.replace(/(<Svg .*)width={[^}]*}/g, '$1');
   svgIcon = svgIcon.replace(/(<Svg .*)height={[^}]*}/g, '$1');
   svgIcon = svgIcon.replace(/(<Svg .*)baseProfile="[^"]*"/g, '$1');
-  svgIcon = svgIcon.replace('</Svg>;', '</Svg></SvgIcon>);');
+  svgIcon = svgIcon.replace('</Svg>;', '</Svg></RfxSvgIcon>);');
   svgIcon = svgIcon.replace(
     'export default SvgComponent;',
     `SvgComponent = processComponent<RfxSvgPropsOptional>(SvgComponent, {

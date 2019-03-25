@@ -4,14 +4,14 @@ import { Svg, Path } from 'swgs';
 
 import {
   processComponent,
+  RfxSvgIcon,
   RfxSvgPropsOptional,
-  SvgIcon,
 } from '@reflex-ui/core';
 
 let SignalWifiStatusbarConnectedNoInternet2Icon: React.ComponentType<
   RfxSvgPropsOptional
 > = (props: RfxSvgPropsOptional) => (
-  <SvgIcon {...props}>
+  <RfxSvgIcon {...props}>
     <Svg viewBox="0 0 26 24">
       <Path
         fillOpacity={0.3}
@@ -19,7 +19,7 @@ let SignalWifiStatusbarConnectedNoInternet2Icon: React.ComponentType<
       />
       <Path d="M5.45 12.59l7.54 9.4.01.01.01-.01L20 13.28v-1.09c-1.07-.73-3.59-2.19-7-2.19-4.36 0-7.26 2.38-7.55 2.59zM22 10v8h2v-8h-2zm0 12h2v-2h-2v2z" />
     </Svg>
-  </SvgIcon>
+  </RfxSvgIcon>
 );
 
 SignalWifiStatusbarConnectedNoInternet2Icon = processComponent<

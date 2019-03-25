@@ -4,18 +4,18 @@ import { Svg, Path } from 'swgs';
 
 import {
   processComponent,
+  RfxSvgIcon,
   RfxSvgPropsOptional,
-  SvgIcon,
 } from '@reflex-ui/core';
 
 let VolumeMuteIcon: React.ComponentType<RfxSvgPropsOptional> = (
   props: RfxSvgPropsOptional,
 ) => (
-  <SvgIcon {...props}>
+  <RfxSvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Path d="M7 9v6h4l5 5V4l-5 5H7z" />
     </Svg>
-  </SvgIcon>
+  </RfxSvgIcon>
 );
 
 VolumeMuteIcon = processComponent<RfxSvgPropsOptional>(VolumeMuteIcon, {

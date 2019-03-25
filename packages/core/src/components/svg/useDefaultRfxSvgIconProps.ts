@@ -13,7 +13,7 @@ import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { RfxSvgProps, RfxSvgPropsOptional } from './RfxSvgProps';
 import { useDefaultRfxSvgProps } from './useDefaultRfxSvgProps';
 
-export const useDefaultSvgIconProps = (
+export const useDefaultRfxSvgIconProps = (
   props: RfxSvgPropsOptional,
 ): RfxSvgProps => {
   const componentsTheme = useContext(ComponentsThemeContext);
@@ -21,7 +21,7 @@ export const useDefaultSvgIconProps = (
   let theme = props.theme;
   if (!theme) {
     if (!componentsTheme.svg) {
-      throw new MissingComponentThemeError('<SvgIcon>');
+      throw new MissingComponentThemeError('<RfxSvgIcon>');
     }
     theme = componentsTheme.svg.svgIcon;
   }

@@ -4,18 +4,18 @@ import { Svg, Path } from 'swgs';
 
 import {
   processComponent,
+  RfxSvgIcon,
   RfxSvgPropsOptional,
-  SvgIcon,
 } from '@reflex-ui/core';
 
 let ExpandLessIcon: React.ComponentType<RfxSvgPropsOptional> = (
   props: RfxSvgPropsOptional,
 ) => (
-  <SvgIcon {...props}>
+  <RfxSvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z" />
     </Svg>
-  </SvgIcon>
+  </RfxSvgIcon>
 );
 
 ExpandLessIcon = processComponent<RfxSvgPropsOptional>(ExpandLessIcon, {

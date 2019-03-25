@@ -4,18 +4,18 @@ import { Svg, Path } from 'swgs';
 
 import {
   processComponent,
+  RfxSvgIcon,
   RfxSvgPropsOptional,
-  SvgIcon,
 } from '@reflex-ui/core';
 
 let FlashOnIcon: React.ComponentType<RfxSvgPropsOptional> = (
   props: RfxSvgPropsOptional,
 ) => (
-  <SvgIcon {...props}>
+  <RfxSvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Path d="M7 2v11h3v9l7-12h-4l4-8z" />
     </Svg>
-  </SvgIcon>
+  </RfxSvgIcon>
 );
 
 FlashOnIcon = processComponent<RfxSvgPropsOptional>(FlashOnIcon, {

@@ -13,13 +13,13 @@ import { processComponent } from '../processComponent';
 import { validateNoStyleProps } from '../validateNoStyleProps';
 import { handleRfxSvgChildren, renderRfxSvgView } from './RfxSvg';
 import { RfxSvgPropsOptional } from './RfxSvgProps';
-import { useDefaultSvgIconProps } from './useDefaultSvgIconProps';
+import { useDefaultRfxSvgIconProps } from './useDefaultRfxSvgIconProps';
 
-let SvgIcon: React.ComponentType<RfxSvgPropsOptional> = (
+let RfxSvgIcon: React.ComponentType<RfxSvgPropsOptional> = (
   props: RfxSvgPropsOptional,
 ) => {
   validateNoStyleProps(props);
-  let newProps = useDefaultSvgIconProps(props);
+  let newProps = useDefaultRfxSvgIconProps(props);
   if (props.children === undefined || props.children === null) return null;
   newProps = handlePatchThemeProps(newProps);
   newProps = handleChildrenProps(newProps);
@@ -27,8 +27,8 @@ let SvgIcon: React.ComponentType<RfxSvgPropsOptional> = (
   return renderRfxSvgView(newProps);
 };
 
-SvgIcon = processComponent<RfxSvgPropsOptional>(SvgIcon, {
+RfxSvgIcon = processComponent<RfxSvgPropsOptional>(RfxSvgIcon, {
   name: 'SvgIcon',
 });
 
-export { SvgIcon };
+export { RfxSvgIcon };
