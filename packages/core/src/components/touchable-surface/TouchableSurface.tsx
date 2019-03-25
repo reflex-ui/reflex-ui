@@ -13,16 +13,13 @@ import {
   View,
 } from 'react-native';
 
-// tslint:disable-next-line
-import { InteractionStateContext } from '../../interaction/InteractionStateContext';
+import { InteractionStateContext } from '../../interaction';
 import { useInteraction } from '../../interaction/useInteraction';
 import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
-import { propsPipe } from '../../utils/propsPipe';
 import { getPropsAndStyleFromTheme } from '../getPropsAndStyleFromTheme';
 import { handleChildrenProps } from '../handleChildrenProps';
 import { handlePatchThemeProps } from '../handlePatchThemeProps';
-import { handleThemeGetProps } from '../handleThemeGetProps';
 import { processComponent } from '../processComponent';
 import { validateNoStyleProps } from '../validateNoStyleProps';
 import {
@@ -103,16 +100,10 @@ let TouchableSurface: React.ComponentType<TouchableSurfacePropsOptional> = (
 ) => {
   validateNoStyleProps(props);
   let newProps = useDefaultTouchableSurfaceProps(props);
-  newProps = propsPipe<TouchableSurfaceProps>([
-    handlePatchThemeProps,
-    handleThemeGetProps,
-    handleChildrenProps,
-  ])(newProps);
-  newProps = {
-    ...newProps,
-    ...useInteraction(newProps),
-    ...useOnLayout(newProps),
-  };
+  newProps = { ...newProps, ...useInteraction(newProps) };
+  newProps = { ...newProps, ...useOnLayout(newProps) };
+  newProps = handlePatchThemeProps(newProps);
+  newProps = handleChildrenProps(newProps);
 
   return (
     <ColorThemeContext.Provider value={newProps.colorTheme}>

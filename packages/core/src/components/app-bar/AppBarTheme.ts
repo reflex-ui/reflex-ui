@@ -5,15 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { Function1 } from '../../utils-ts/Function1';
-import { ComplexComponentTheme } from '../ComplexComponentTheme';
 import { BuiltInViewTheme } from '../view/ViewTheme';
-import { AppBarProps, AppBarPropsOptional } from './AppBarProps';
+import { AppBarProps } from './AppBarProps';
 
-export interface AppBarTheme extends ComplexComponentTheme {
+export interface AppBarTheme {
   readonly centerArea?: BuiltInViewTheme<AppBarProps>;
   readonly container?: BuiltInViewTheme<AppBarProps>;
-  readonly getProps?: Function1<AppBarProps, AppBarPropsOptional>;
   readonly leadingArea?: BuiltInViewTheme<AppBarProps>;
   readonly trailingArea?: BuiltInViewTheme<AppBarProps>;
 }

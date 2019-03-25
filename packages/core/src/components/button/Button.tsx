@@ -16,11 +16,9 @@ import {
 
 import { useInteraction } from '../../interaction/useInteraction';
 import { cloneElement } from '../../utils/cloneElement';
-import { propsPipe } from '../../utils/propsPipe';
 import { getPropsAndStyleFromTheme } from '../getPropsAndStyleFromTheme';
 import { handleChildrenProps } from '../handleChildrenProps';
 import { handlePatchThemeProps } from '../handlePatchThemeProps';
-import { handleThemeGetProps } from '../handleThemeGetProps';
 import { mergeThemes } from '../mergeThemes';
 import { processComponent } from '../processComponent';
 import { RfxSvgPropsOptional } from '../svg/RfxSvgProps';
@@ -143,7 +141,7 @@ export const handleButtonIcon = (
               data.iconTheme,
               data.icon.props.getPatchTheme(props),
             )) ||
-          data.iconTheme,
+          (data.iconTheme as RfxSvgTheme),
       },
     };
   }
@@ -229,15 +227,9 @@ let Button: React.ComponentType<ButtonPropsOptional> = (
 ) => {
   validateNoStyleProps(props);
   let newProps = useDefaultButtonProps(props);
-  newProps = propsPipe<ButtonProps>([
-    handlePatchThemeProps,
-    handleThemeGetProps,
-    handleChildrenProps,
-  ])(newProps);
-  newProps = {
-    ...newProps,
-    ...useInteraction(newProps),
-  };
+  newProps = { ...newProps, ...useInteraction(newProps) };
+  newProps = handlePatchThemeProps(newProps);
+  newProps = handleChildrenProps(newProps);
   return renderButtonTouchable(newProps);
 };
 

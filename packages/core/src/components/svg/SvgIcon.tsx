@@ -7,14 +7,12 @@
 
 import * as React from 'react';
 
-import { propsPipe } from '../../utils/propsPipe';
 import { handleChildrenProps } from '../handleChildrenProps';
 import { handlePatchThemeProps } from '../handlePatchThemeProps';
-import { handleThemeGetProps } from '../handleThemeGetProps';
 import { processComponent } from '../processComponent';
 import { validateNoStyleProps } from '../validateNoStyleProps';
 import { handleRfxSvgChildren, renderRfxSvgView } from './RfxSvg';
-import { RfxSvgProps, RfxSvgPropsOptional } from './RfxSvgProps';
+import { RfxSvgPropsOptional } from './RfxSvgProps';
 import { useDefaultSvgIconProps } from './useDefaultSvgIconProps';
 
 let SvgIcon: React.ComponentType<RfxSvgPropsOptional> = (
@@ -23,13 +21,9 @@ let SvgIcon: React.ComponentType<RfxSvgPropsOptional> = (
   validateNoStyleProps(props);
   let newProps = useDefaultSvgIconProps(props);
   if (props.children === undefined || props.children === null) return null;
-  newProps = propsPipe<RfxSvgProps>([
-    handlePatchThemeProps,
-    handleThemeGetProps,
-    handleChildrenProps,
-    handleRfxSvgChildren,
-  ])(newProps);
-
+  newProps = handlePatchThemeProps(newProps);
+  newProps = handleChildrenProps(newProps);
+  newProps = handleRfxSvgChildren(newProps);
   return renderRfxSvgView(newProps);
 };
 

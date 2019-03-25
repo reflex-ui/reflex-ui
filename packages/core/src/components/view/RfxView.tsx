@@ -8,12 +8,11 @@
 import * as React from 'react';
 import { View, ViewProps } from 'react-native';
 
+import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
-import { propsPipe } from '../../utils/propsPipe';
 import { getStyleFromTheme } from '../getStyleFromTheme';
 import { handleChildrenProps } from '../handleChildrenProps';
 import { handlePatchThemeProps } from '../handlePatchThemeProps';
-import { handleThemeGetProps } from '../handleThemeGetProps';
 import { processComponent } from '../processComponent';
 import { validateNoStyleProps } from '../validateNoStyleProps';
 import { RfxViewProps, RfxViewPropsOptional } from './RfxViewProps';
@@ -84,16 +83,15 @@ let RfxView: React.ComponentType<RfxViewPropsOptional> = (
 ) => {
   validateNoStyleProps(props);
   let newProps = useDefaultRfxViewProps(props);
-  newProps = propsPipe<RfxViewProps>([
-    handlePatchThemeProps,
-    handleThemeGetProps,
-    handleChildrenProps,
-  ])(newProps);
-  newProps = {
-    ...newProps,
-    ...useOnLayout(newProps),
-  };
-  return renderRfxViewContainer(newProps);
+  newProps = { ...newProps, ...useOnLayout(newProps) };
+  newProps = handlePatchThemeProps(newProps);
+  newProps = handleChildrenProps(newProps);
+
+  return (
+    <ColorThemeContext.Provider value={newProps.colorTheme}>
+      {renderRfxViewContainer(newProps)}
+    </ColorThemeContext.Provider>
+  );
 };
 
 RfxView = processComponent<RfxViewPropsOptional>(RfxView, {

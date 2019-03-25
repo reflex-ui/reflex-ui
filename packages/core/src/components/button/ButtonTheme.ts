@@ -5,20 +5,18 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { Function1 } from '../../utils-ts/Function1';
-import { ComplexComponentTheme } from '../ComplexComponentTheme';
+import { ComponentThemeGetter } from '../ComponentThemeGetter';
 import { RfxSvgTheme } from '../svg/RfxSvgTheme';
 import { BuiltInTextTheme } from '../text/TextTheme';
 import { BuiltInTouchableTheme } from '../touchable/TouchableTheme';
 import { BuiltInViewTheme } from '../view/ViewTheme';
-import { ButtonProps, ButtonPropsOptional } from './ButtonProps';
+import { ButtonProps } from './ButtonProps';
 
-export interface ButtonTheme extends ComplexComponentTheme {
+export interface ButtonTheme {
   readonly container?: BuiltInViewTheme<ButtonProps>;
-  readonly getIcon?: Function1<ButtonProps, RfxSvgTheme>;
-  readonly getLeadingIcon?: Function1<ButtonProps, RfxSvgTheme>;
-  readonly getProps?: Function1<ButtonProps, ButtonPropsOptional>;
+  readonly getIcon?: ComponentThemeGetter<ButtonProps, RfxSvgTheme>;
+  readonly getLeadingIcon?: ComponentThemeGetter<ButtonProps, RfxSvgTheme>;
   readonly text?: BuiltInTextTheme<ButtonProps>;
   readonly touchable?: BuiltInTouchableTheme<ButtonProps>;
-  readonly getTrailingIcon?: Function1<ButtonProps, RfxSvgTheme>;
+  readonly getTrailingIcon?: ComponentThemeGetter<ButtonProps, RfxSvgTheme>;
 }

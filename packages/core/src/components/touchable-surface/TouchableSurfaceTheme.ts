@@ -5,20 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { Function1 } from '../../utils-ts/Function1';
-import { ComplexComponentTheme } from '../ComplexComponentTheme';
 import { BuiltInTouchableTheme } from '../touchable/TouchableTheme';
 import { BuiltInViewTheme } from '../view/ViewTheme';
-import {
-  TouchableSurfaceProps,
-  TouchableSurfacePropsOptional,
-} from './TouchableSurfaceProps';
+import { TouchableSurfaceProps } from './TouchableSurfaceProps';
 
-export interface TouchableSurfaceTheme extends ComplexComponentTheme {
+export interface TouchableSurfaceTheme {
   readonly container?: BuiltInViewTheme<TouchableSurfaceProps>;
-  readonly getProps?: Function1<
-    TouchableSurfaceProps,
-    TouchableSurfacePropsOptional
-  >;
   readonly touchable?: BuiltInTouchableTheme<TouchableSurfaceProps>;
 }

@@ -5,13 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ViewStyle } from 'react-native';
+import { ViewProps, ViewStyle } from 'react-native';
 
 import { BuiltInSimpleComponentTheme } from '../SimpleComponentTheme';
-import { RfxViewProps, RfxViewPropsOptional } from './RfxViewProps';
+import { RfxViewProps } from './RfxViewProps';
 
 export type RfxViewTheme = BuiltInSimpleComponentTheme<
   RfxViewProps,
-  RfxViewPropsOptional,
+  ViewProps,
   ViewStyle
 >;

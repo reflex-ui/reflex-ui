@@ -12,4 +12,3 @@ export * from './isAndroid';
 export * from './isIOS';
 export * from './isTouchDevice';
 export * from './isWeb';
-export * from './propsPipe';

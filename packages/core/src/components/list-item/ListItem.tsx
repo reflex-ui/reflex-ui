@@ -10,11 +10,9 @@ import { View, ViewProps } from 'react-native';
 
 import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
-import { propsPipe } from '../../utils/propsPipe';
 import { getStyleFromTheme } from '../getStyleFromTheme';
 import { handleChildrenProps } from '../handleChildrenProps';
 import { handlePatchThemeProps } from '../handlePatchThemeProps';
-import { handleThemeGetProps } from '../handleThemeGetProps';
 import { processComponent } from '../processComponent';
 import { validateNoStyleProps } from '../validateNoStyleProps';
 import { ListItemProps, ListItemPropsOptional } from './ListItemProps';
@@ -68,15 +66,9 @@ let ListItem: React.ComponentType<ListItemPropsOptional> = (
 ) => {
   validateNoStyleProps(props);
   let newProps = useDefaultListItemProps(props);
-  newProps = propsPipe<ListItemProps>([
-    handlePatchThemeProps,
-    handleThemeGetProps,
-    handleChildrenProps,
-  ])(newProps);
-  newProps = {
-    ...newProps,
-    ...useOnLayout(newProps),
-  };
+  newProps = { ...newProps, ...useOnLayout(newProps) };
+  newProps = handlePatchThemeProps(newProps);
+  newProps = handleChildrenProps(newProps);
 
   return (
     <ColorThemeContext.Provider value={newProps.colorTheme}>

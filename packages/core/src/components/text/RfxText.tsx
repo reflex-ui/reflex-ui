@@ -8,11 +8,9 @@
 import * as React from 'react';
 import { Text as RNText, TextProps } from 'react-native';
 
-import { propsPipe } from '../../utils/propsPipe';
 import { getStyleFromTheme } from '../getStyleFromTheme';
 import { handleChildrenProps } from '../handleChildrenProps';
 import { handlePatchThemeProps } from '../handlePatchThemeProps';
-import { handleThemeGetProps } from '../handleThemeGetProps';
 import { validateNoStyleProps } from '../validateNoStyleProps';
 import { RfxTextProps } from './RfxTextProps';
 
@@ -71,12 +69,8 @@ export const renderRfxText = (
     Array.isArray(children)
   ) {
     validateNoStyleProps(props);
-    const newProps = propsPipe<RfxTextProps>([
-      handlePatchThemeProps,
-      handleThemeGetProps,
-      handleChildrenProps,
-    ])(props);
-
+    let newProps = handlePatchThemeProps(props);
+    newProps = handleChildrenProps(props);
     return renderRfxTextText(newProps);
   }
 

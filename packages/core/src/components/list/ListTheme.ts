@@ -5,13 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ViewStyle } from 'react-native';
+import { ViewProps, ViewStyle } from 'react-native';
 
 import { BuiltInSimpleComponentTheme } from '../SimpleComponentTheme';
-import { ListProps, ListPropsOptional } from './ListProps';
+import { ListProps } from './ListProps';
 
 export type ListTheme = BuiltInSimpleComponentTheme<
   ListProps,
-  ListPropsOptional,
+  ViewProps,
   ViewStyle
 >;

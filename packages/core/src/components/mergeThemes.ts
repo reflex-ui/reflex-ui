@@ -8,34 +8,53 @@
 import merge from 'lodash/merge';
 
 import { Function1 } from '../utils-ts/Function1';
-import { ComplexComponentTheme } from './ComplexComponentTheme';
-import { BuiltInSimpleComponentTheme } from './SimpleComponentTheme';
 
-function mergeThemes<
-  // tslint:disable-next-line:no-any
-  Theme extends BuiltInSimpleComponentTheme<any, any, any>
->(theme1: Theme, theme2: Theme | undefined): Theme;
-function mergeThemes<Theme extends ComplexComponentTheme>(
-  theme1: Theme,
-  theme2: Theme | undefined,
+export function mergeThemes<Theme extends {}>(
+  theme1: Theme | undefined | null,
+  theme2: Theme | undefined | null,
 ): Theme {
-  if (!theme2) return theme1;
+  // @ts-ignore Type '{}' is not assignable to type 'Theme'.ts(2322)
+  if (theme2 === undefined || theme2 === null) return theme1 || {};
+  // @ts-ignore Type '{}' is not assignable to type 'Theme'.ts(2322)
+  if (theme1 === undefined || theme1 === null) return theme2 || {};
+  if (typeof theme1 !== 'object' && typeof theme1 !== 'function') {
+    throw new Error(
+      [
+        'Rfx.mergeThemes: Argument theme1 must be of type object or function,',
+        `but received: ${typeof theme1}`,
+      ].join(' '),
+    );
+  }
+  if (typeof theme2 !== 'object' && typeof theme2 !== 'function') {
+    throw new Error(
+      [
+        'Rfx.mergeThemes: Argument theme2 must be of type object or function,',
+        `but received: ${typeof theme2}`,
+      ].join(' '),
+    );
+  }
 
   const allKeys = new Set(Object.keys(theme1).concat(Object.keys(theme2)));
   // @ts-ignore Type '{}' is not assignable to type 'Theme'.ts(2322)
   const mergedTheme: Theme = {};
 
   allKeys.forEach(prop => {
-    const theme1Obj = theme1[prop];
-    const theme2Obj = theme2[prop];
-    if (theme1Obj === undefined) {
+    // @ts-ignore Element implicitly has an 'any' type
+    // because type '{}' has no index signature.ts(7017)
+    const theme1Obj: unknown = theme1[prop];
+    // @ts-ignore Element implicitly has an 'any' type
+    // because type '{}' has no index signature.ts(7017)
+    const theme2Obj: unknown = theme2[prop];
+    if (theme1Obj === undefined || theme1Obj === null) {
+      // @ts-ignore Element implicitly has an 'any' type
+      // because type '{}' has no index signature.ts(7017)
       mergedTheme[prop] = theme2Obj;
-    } else if (theme2Obj === undefined) {
+    } else if (theme2Obj === undefined || theme2Obj === null) {
+      // @ts-ignore Element implicitly has an 'any' type
+      // because type '{}' has no index signature.ts(7017)
       mergedTheme[prop] = theme1Obj;
     } else {
-      let newThemeObj:
-        | BuiltInSimpleComponentTheme<unknown, unknown, unknown>
-        | Function1<unknown, unknown>;
+      let newThemeObj;
       if (typeof theme1Obj === 'function' || typeof theme2Obj === 'function') {
         if (
           typeof theme1Obj !== 'function' ||
@@ -46,10 +65,22 @@ function mergeThemes<Theme extends ComplexComponentTheme>(
           );
         }
 
-        newThemeObj = mergeThemeGetters(theme1Obj, theme2Obj) as Function1<
-          unknown,
-          unknown
-        >;
+        if (prop === 'component') {
+          if (theme2Obj) {
+            newThemeObj = theme2Obj;
+          } else {
+            newThemeObj = theme1Obj;
+          }
+        } else if (prop === 'getProps' || prop === 'getStyle') {
+          newThemeObj = mergeThemeGetters(
+            theme1Obj as Function1<unknown, unknown>,
+            theme2Obj as Function1<unknown, unknown>,
+          ) as Function1<unknown, unknown>;
+        } else {
+          // @ts-ignore Parameter 'props' implicitly has an 'any' type.ts(7006)
+          newThemeObj = props =>
+            mergeThemes(theme1Obj(props), theme2Obj(props));
+        }
       } else if (
         typeof theme1Obj === 'object' ||
         typeof theme2Obj === 'object'
@@ -60,38 +91,13 @@ function mergeThemes<Theme extends ComplexComponentTheme>(
           );
         }
 
-        newThemeObj = {};
-        // @ts-ignore Cannot assign to 'getProps'
-        // because it is a read-only property.
-        // It's fine to mutate it here.
-        newThemeObj.getProps = mergeThemeGetters(
-          theme1Obj.getProps,
-          theme2Obj.getProps,
-        );
-
-        // @ts-ignore Cannot assign to 'getStyle'
-        // because it is a read-only property.
-        // It's fine to mutate it here.
-        newThemeObj.getStyle = mergeThemeGetters(
-          theme1Obj.getStyle,
-          theme2Obj.getStyle,
-        );
-
-        if (theme2Obj.component) {
-          // @ts-ignore Cannot assign to 'component'
-          // because it is a read-only property.ts(2540)
-          // It's fine to mutate it here.
-          newThemeObj.component = theme2Obj.component;
-        } else {
-          // @ts-ignore Cannot assign to 'component'
-          // because it is a read-only property.ts(2540)
-          // It's fine to mutate it here.
-          newThemeObj.component = theme1Obj.component;
-        }
+        newThemeObj = mergeThemes(theme1Obj, theme2Obj);
       } else {
         throw new Error(`Invalid theme property type for property: ${prop}`);
       }
 
+      // @ts-ignore Element implicitly has an 'any' type
+      // because type '{}' has no index signature.ts(7017)
       mergedTheme[prop] = newThemeObj;
     }
   });
@@ -99,11 +105,9 @@ function mergeThemes<Theme extends ComplexComponentTheme>(
   return mergedTheme;
 }
 
-export { mergeThemes };
-
 export const mergeThemeGetters = (
-  getter1: Function1<unknown, unknown> | undefined,
-  getter2: Function1<unknown, unknown> | undefined,
+  getter1?: Function1<unknown, unknown> | undefined,
+  getter2?: Function1<unknown, unknown> | undefined,
 ): Function1<unknown, unknown> | undefined => {
   if (getter1 === undefined && getter2 === undefined) return undefined;
   if (getter1 !== undefined && getter2 === undefined) return getter1;

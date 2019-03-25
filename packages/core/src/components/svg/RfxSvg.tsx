@@ -11,11 +11,9 @@ import { View } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 
 import { cloneElement } from '../../utils';
-import { propsPipe } from '../../utils/propsPipe';
 import { getPropsAndStyleFromTheme } from '../getPropsAndStyleFromTheme';
 import { handleChildrenProps } from '../handleChildrenProps';
 import { handlePatchThemeProps } from '../handlePatchThemeProps';
-import { handleThemeGetProps } from '../handleThemeGetProps';
 import { processComponent } from '../processComponent';
 import { validateNoStyleProps } from '../validateNoStyleProps';
 import { RfxSvgProps, RfxSvgPropsOptional } from './RfxSvgProps';
@@ -96,13 +94,9 @@ let RfxSvg: React.ComponentType<RfxSvgPropsOptional> = (
   validateNoStyleProps(props);
   let newProps = useDefaultRfxSvgProps(props);
   if (props.children === undefined || props.children === null) return null;
-  newProps = propsPipe<RfxSvgProps>([
-    handlePatchThemeProps,
-    handleThemeGetProps,
-    handleChildrenProps,
-    handleRfxSvgChildren,
-  ])(newProps);
-
+  newProps = handlePatchThemeProps(newProps);
+  newProps = handleChildrenProps(newProps);
+  newProps = handleRfxSvgChildren(newProps);
   return renderRfxSvgView(newProps);
 };
 

@@ -5,13 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { TextStyle } from 'react-native';
+import { TextProps, TextStyle } from 'react-native';
 
 import { BuiltInSimpleComponentTheme } from '../SimpleComponentTheme';
-import { RfxTextProps, RfxTextPropsOptional } from './RfxTextProps';
+import { RfxTextProps } from './RfxTextProps';
 
 export type RfxTextTheme = BuiltInSimpleComponentTheme<
   RfxTextProps,
-  RfxTextPropsOptional,
+  TextProps,
   TextStyle
 >;

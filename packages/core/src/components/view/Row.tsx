@@ -11,15 +11,13 @@ import React, { useContext } from 'react';
 import { MissingComponentThemeError } from '../../errors';
 import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
-import { propsPipe } from '../../utils/propsPipe';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { handleChildrenProps } from '../handleChildrenProps';
 import { handlePatchThemeProps } from '../handlePatchThemeProps';
-import { handleThemeGetProps } from '../handleThemeGetProps';
 import { processComponent } from '../processComponent';
 import { validateNoStyleProps } from '../validateNoStyleProps';
 import { renderRfxViewContainer } from './RfxView';
-import { RfxViewProps, RfxViewPropsOptional } from './RfxViewProps';
+import { RfxViewPropsOptional } from './RfxViewProps';
 import { useDefaultRfxViewProps } from './useDefaultRfxViewProps';
 
 let Row: React.ComponentType<RfxViewPropsOptional> = (
@@ -36,16 +34,9 @@ let Row: React.ComponentType<RfxViewPropsOptional> = (
 
   validateNoStyleProps(props);
   let newProps = useDefaultRfxViewProps(props);
-  newProps = propsPipe<RfxViewProps>([
-    handlePatchThemeProps,
-    handleThemeGetProps,
-    handleChildrenProps,
-  ])(newProps);
-  newProps = {
-    ...newProps,
-    ...useOnLayout(newProps),
-    theme,
-  };
+  newProps = { ...newProps, ...useOnLayout(newProps), theme };
+  newProps = handlePatchThemeProps(newProps);
+  newProps = handleChildrenProps(newProps);
 
   return (
     <ColorThemeContext.Provider value={newProps.colorTheme}>
