@@ -9,24 +9,25 @@ import * as React from 'react';
 import { View, ViewProps } from 'react-native';
 
 import { BuiltInSimpleComponentProps } from '../BuiltInSimpleComponentProps';
-import { reflexComponent } from '../reflexComponent';
+import { processComponent } from '../processComponent';
 
-export const DefaultView = reflexComponent<
+let DefaultView: React.ComponentType<
+  BuiltInSimpleComponentProps<unknown> & ViewProps
+> = ({ complexComponentProps, ...otherProps }) => (
   /*
-   * it's ok to disable it here as it's a dead end, i.e.
-   * it doesn't leak and affect other parts of the codebase.
+   * otherProps is used to pass lib provided props, users'custom props,
+   * as well as to deal with a TouchableWithoutFeedback's issue:
+   * https://github.com/facebook/react-native/issues/1352
+   * It's still an issue. Ref:
+   * https://github.com/facebook/react-native/issues/10180
    */
-  // tslint:disable-next-line:no-any
-  BuiltInSimpleComponentProps<any> & ViewProps
->({ name: 'DefaultView' })(
-  ({ children, complexComponentProps, ...otherProps }) => (
-    /*
-     * otherProps is used to pass lib provided props, users'custom props,
-     * as well as to deal with a TouchableWithoutFeedback's issue:
-     * https://github.com/facebook/react-native/issues/1352
-     * It's still an issue. Ref:
-     * https://github.com/facebook/react-native/issues/10180
-     */
-    <View {...otherProps}>{children}</View>
-  ),
+  <View {...otherProps} />
 );
+
+DefaultView = processComponent<
+  BuiltInSimpleComponentProps<unknown> & ViewProps
+>(DefaultView, {
+  name: 'DefaultView',
+});
+
+export { DefaultView };
