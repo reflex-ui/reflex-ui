@@ -7,8 +7,7 @@
 
 import { useContext } from 'react';
 
-// tslint:disable-next-line:max-line-length
-import { MissingComponentThemeError } from '../../errors/MissingComponentThemeError';
+import { MissingComponentThemeError } from '../../errors';
 import { InteractionType } from '../../interaction';
 import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
