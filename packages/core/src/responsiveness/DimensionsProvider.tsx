@@ -5,53 +5,58 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import * as React from 'react';
+// tslint:disable-next-line:import-name
+import React, { useEffect, useState } from 'react';
 import { Dimensions, ScaledSize } from 'react-native';
 
-import { reflexComponent } from '../components/reflexComponent';
+import { processComponent } from '../components/processComponent';
 import { DimensionsContext } from './DimensionsContext';
+import { DimensionsInfo } from './DimensionsInfo';
 import { DimensionsProps } from './DimensionsProps';
 import { DimensionsProviderProps } from './DimensionsProviderProps';
 
-export const DimensionsProvider = reflexComponent<DimensionsProviderProps>({
-  name: 'DimensionsProvider',
-})(
-  class DimensionsProviderClass extends React.Component<
-    DimensionsProviderProps,
-    DimensionsProps
-  > {
-    public readonly state: DimensionsProps = {
-      breakpoints: this.props.breakpoints,
-      dimensions: {
-        screen: Dimensions.get('screen'),
-        window: Dimensions.get('window'),
-      },
+let DimensionsProvider: React.ComponentType<DimensionsProviderProps> = (
+  props: DimensionsProviderProps & { children?: React.ReactNode },
+) => {
+  const dimensionsChangedHandler = ({
+    screen,
+    window,
+  }: {
+    screen: ScaledSize;
+    window: ScaledSize;
+  }) => {
+    setDimensions({ screen, window });
+  };
+
+  useEffect(() => {
+    Dimensions.addEventListener('change', dimensionsChangedHandler);
+    return () => {
+      Dimensions.removeEventListener('change', dimensionsChangedHandler);
     };
+  });
 
-    public componentDidMount() {
-      Dimensions.addEventListener('change', this.dimensionsChangedHandler);
-    }
+  const [dimensions, setDimensions] = useState<DimensionsInfo>({
+    screen: Dimensions.get('screen'),
+    window: Dimensions.get('window'),
+  });
 
-    public componentWillUnmount() {
-      Dimensions.removeEventListener('change', this.dimensionsChangedHandler);
-    }
+  const dimensionsProps: DimensionsProps = {
+    breakpoints: props.breakpoints,
+    dimensions,
+  };
 
-    public render(): JSX.Element {
-      return (
-        <DimensionsContext.Provider value={this.state}>
-          {this.props.children}
-        </DimensionsContext.Provider>
-      );
-    }
+  return (
+    <DimensionsContext.Provider value={dimensionsProps}>
+      {props.children}
+    </DimensionsContext.Provider>
+  );
+};
 
-    private dimensionsChangedHandler = ({
-      screen,
-      window,
-    }: {
-      screen: ScaledSize;
-      window: ScaledSize;
-    }) => {
-      this.setState({ dimensions: { screen, window } });
-    };
+DimensionsProvider = processComponent<DimensionsProviderProps>(
+  DimensionsProvider,
+  {
+    name: 'DimensionsProvider',
   },
 );
+
+export { DimensionsProvider };
