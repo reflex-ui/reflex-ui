@@ -10,7 +10,6 @@ import {
   InteractionEvent,
   InteractionStateProps,
   InteractionType,
-  reflexComponent,
 } from '@reflex-ui/core';
 import delay from 'delay';
 import * as React from 'react';
@@ -191,167 +190,163 @@ export const withRippleEffect = <ComponentProps extends InteractionStateProps>(
 >(
   WrappedComponent: React.ComponentType<ChildProps>,
 ): React.ComponentType<ChildProps> =>
-  reflexComponent<ChildProps>({
-    wrapped: WrappedComponent,
-  })(
-    class WithRippleEffect extends React.Component<ChildProps> {
-      public static getDerivedStateFromProps(
-        props: ChildProps,
-        state: RippledComponentState,
+  class WithRippleEffect extends React.Component<ChildProps> {
+    public static getDerivedStateFromProps(
+      props: ChildProps,
+      state: RippledComponentState,
+    ) {
+      const { interactionState } = props.complexComponentProps;
+      const interactionType = interactionState.type;
+      const interactionEvent = interactionState.event;
+
+      const {
+        animationKeyframe,
+        isAnimatingPressIn,
+        isAnimatingPressOut,
+      } = state;
+
+      if (
+        interactionType === InteractionType.Pressed &&
+        animationKeyframe === AnimationKeyframe.PressOut &&
+        !isAnimatingPressOut
       ) {
-        const { interactionState } = props.complexComponentProps;
-        const interactionType = interactionState.type;
-        const interactionEvent = interactionState.event;
+        const { height, width } = state;
+        const maxDiameter = 300;
 
-        const {
-          animationKeyframe,
-          isAnimatingPressIn,
-          isAnimatingPressOut,
-        } = state;
-
-        if (
-          interactionType === InteractionType.Pressed &&
-          animationKeyframe === AnimationKeyframe.PressOut &&
-          !isAnimatingPressOut
-        ) {
-          const { height, width } = state;
-          const maxDiameter = 300;
-
-          return {
-            ...state,
-            animationKeyframe: AnimationKeyframe.PressIn,
-            isAnimatingPressIn: true,
-            rippleStyles: createComponentRippleStyles({
-              color: settings.getRippleColor(props.complexComponentProps),
-              height,
-              interactionEvent,
-              maxDiameter,
-              style: StyleSheet.flatten(props.style),
-              width,
-            }),
-          };
-        }
-
-        if (
-          interactionType !== InteractionType.Pressed &&
-          animationKeyframe === AnimationKeyframe.PressIn &&
-          !isAnimatingPressIn
-        ) {
-          return {
-            ...state,
-            animationKeyframe: AnimationKeyframe.PressOut,
-            isAnimatingPressOut: true,
-          };
-        }
-
-        return state;
+        return {
+          ...state,
+          animationKeyframe: AnimationKeyframe.PressIn,
+          isAnimatingPressIn: true,
+          rippleStyles: createComponentRippleStyles({
+            color: settings.getRippleColor(props.complexComponentProps),
+            height,
+            interactionEvent,
+            maxDiameter,
+            style: StyleSheet.flatten(props.style),
+            width,
+          }),
+        };
       }
 
-      // tslint:disable-next-line:no-any
-      public animatedView: any;
-      public rippleAnimation: (props: {
-        children?: React.ReactNode;
-        native?: boolean;
-        state: AnimationKeyframe;
-      }) => // tslint:disable-next-line:no-any
-      Keyframes<any, any>;
+      if (
+        interactionType !== InteractionType.Pressed &&
+        animationKeyframe === AnimationKeyframe.PressIn &&
+        !isAnimatingPressIn
+      ) {
+        return {
+          ...state,
+          animationKeyframe: AnimationKeyframe.PressOut,
+          isAnimatingPressOut: true,
+        };
+      }
 
-      public readonly state: RippledComponentState = {
-        animationKeyframe: AnimationKeyframe.PressOut,
-        height: 40,
+      return state;
+    }
+
+    // tslint:disable-next-line:no-any
+    public animatedView: any;
+    public rippleAnimation: (props: {
+      children?: React.ReactNode;
+      native?: boolean;
+      state: AnimationKeyframe;
+    }) => // tslint:disable-next-line:no-any
+    Keyframes<any, any>;
+
+    public readonly state: RippledComponentState = {
+      animationKeyframe: AnimationKeyframe.PressOut,
+      height: 40,
+      isAnimatingPressIn: false,
+      isAnimatingPressOut: false,
+      rippleStyles: { container: {}, ripple: {} },
+      width: 100,
+    };
+
+    public constructor(props: ChildProps) {
+      super(props);
+
+      this.animatedView = animated(View);
+      this.rippleAnimation = Keyframes.Spring({
+        // @ts-ignore Parameter 'call' implicitly has an 'any' type.
+        pressin: async call => {
+          call({
+            config: { tension: 150, friction: 20 },
+            from: {
+              opacity: 0,
+              scale: 0.001,
+            },
+            to: { opacity: 1, scale: 1 },
+          });
+          await delay(250);
+          if (this.state.isAnimatingPressIn) this.pressInAnimationComplete();
+        },
+        // @ts-ignore Parameter 'call' implicitly has an 'any' type.
+        pressout: async call => {
+          call({ config: { tension: 75, friction: 20 }, to: { opacity: 0 } });
+          await delay(250);
+          await call({
+            config: { tension: 300, friction: 20 },
+            to: { scale: 0 },
+          });
+          if (this.state.isAnimatingPressOut) {
+            this.pressOutAnimationComplete();
+          }
+        },
+      });
+      // @ts-ignore Property 'displayName' does not exist
+      // on type '(props: {}) => any'. [2339]
+      this.rippleAnimation.displayName = 'RfxRippleAnimation';
+    }
+
+    public onLayoutChanged = (event: LayoutChangeEvent) => {
+      const { height, width } = event.nativeEvent.layout;
+      this.setState({ height, width });
+    };
+
+    public render() {
+      const { children, ...otherProps } = this.props;
+      const RippleAnimation = this.rippleAnimation;
+
+      const { animationKeyframe, rippleStyles } = this.state;
+      const AnimatedView = this.animatedView;
+
+      return (
+        // @ts-ignore some issue with object spread (otherProps)
+        // is throwing an error with a message that do not point
+        // to what exactly is wrong. Needs more investigation.
+        <WrappedComponent {...otherProps} onLayout={this.onLayoutChanged}>
+          <React.Fragment>
+            <View style={rippleStyles.container}>
+              <RippleAnimation native state={animationKeyframe}>
+                {(styles: { opacity: number; scale: number }) => {
+                  const motionStyles = {
+                    opacity: styles.opacity,
+                    transform: [{ scale: styles.scale || 0 }],
+                  };
+
+                  return (
+                    <AnimatedView
+                      style={{
+                        ...rippleStyles.ripple,
+                        ...motionStyles,
+                      }}
+                    />
+                  );
+                }}
+              </RippleAnimation>
+            </View>
+          </React.Fragment>
+          {children}
+        </WrappedComponent>
+      );
+    }
+
+    private pressOutAnimationComplete() {
+      this.setState({ isAnimatingPressOut: false });
+    }
+
+    private pressInAnimationComplete() {
+      this.setState({
         isAnimatingPressIn: false,
-        isAnimatingPressOut: false,
-        rippleStyles: { container: {}, ripple: {} },
-        width: 100,
-      };
-
-      public constructor(props: ChildProps) {
-        super(props);
-
-        this.animatedView = animated(View);
-        this.rippleAnimation = Keyframes.Spring({
-          // @ts-ignore Parameter 'call' implicitly has an 'any' type.
-          pressin: async call => {
-            call({
-              config: { tension: 150, friction: 20 },
-              from: {
-                opacity: 0,
-                scale: 0.001,
-              },
-              to: { opacity: 1, scale: 1 },
-            });
-            await delay(250);
-            if (this.state.isAnimatingPressIn) this.pressInAnimationComplete();
-          },
-          // @ts-ignore Parameter 'call' implicitly has an 'any' type.
-          pressout: async call => {
-            call({ config: { tension: 75, friction: 20 }, to: { opacity: 0 } });
-            await delay(250);
-            await call({
-              config: { tension: 300, friction: 20 },
-              to: { scale: 0 },
-            });
-            if (this.state.isAnimatingPressOut) {
-              this.pressOutAnimationComplete();
-            }
-          },
-        });
-        // @ts-ignore Property 'displayName' does not exist
-        // on type '(props: {}) => any'. [2339]
-        this.rippleAnimation.displayName = 'RfxRippleAnimation';
-      }
-
-      public onLayoutChanged = (event: LayoutChangeEvent) => {
-        const { height, width } = event.nativeEvent.layout;
-        this.setState({ height, width });
-      };
-
-      public render() {
-        const { children, ...otherProps } = this.props;
-        const RippleAnimation = this.rippleAnimation;
-
-        const { animationKeyframe, rippleStyles } = this.state;
-        const AnimatedView = this.animatedView;
-
-        return (
-          // @ts-ignore some issue with object spread (otherProps)
-          // is throwing an error with a message that do not point
-          // to what exactly is wrong. Needs more investigation.
-          <WrappedComponent {...otherProps} onLayout={this.onLayoutChanged}>
-            <React.Fragment>
-              <View style={rippleStyles.container}>
-                <RippleAnimation native state={animationKeyframe}>
-                  {(styles: { opacity: number; scale: number }) => {
-                    const motionStyles = {
-                      opacity: styles.opacity,
-                      transform: [{ scale: styles.scale || 0 }],
-                    };
-
-                    return (
-                      <AnimatedView
-                        style={{
-                          ...rippleStyles.ripple,
-                          ...motionStyles,
-                        }}
-                      />
-                    );
-                  }}
-                </RippleAnimation>
-              </View>
-            </React.Fragment>
-            {children}
-          </WrappedComponent>
-        );
-      }
-
-      private pressOutAnimationComplete() {
-        this.setState({ isAnimatingPressOut: false });
-      }
-
-      private pressInAnimationComplete() {
-        this.setState({
-          isAnimatingPressIn: false,
-        });
-      }
-    },
-  );
+      });
+    }
+  };
