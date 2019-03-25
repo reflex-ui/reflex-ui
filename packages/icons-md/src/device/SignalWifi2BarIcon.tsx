@@ -2,11 +2,15 @@ import * as React from 'react';
 // tslint:disable-next-line:ordered-imports
 import { Svg, Path } from 'swgs';
 
-import { reflexComponent, RfxSvgPropsOptional, SvgIcon } from '@reflex-ui/core';
+import {
+  processComponent,
+  RfxSvgPropsOptional,
+  SvgIcon,
+} from '@reflex-ui/core';
 
-export const SignalWifi2BarIcon = reflexComponent<RfxSvgPropsOptional>({
-  name: 'SignalWifi2BarIcon',
-})((props: RfxSvgPropsOptional) => (
+let SignalWifi2BarIcon: React.ComponentType<RfxSvgPropsOptional> = (
+  props: RfxSvgPropsOptional,
+) => (
   <SvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Path
@@ -16,4 +20,9 @@ export const SignalWifi2BarIcon = reflexComponent<RfxSvgPropsOptional>({
       <Path d="M4.79 12.52l7.2 8.98H12l.01-.01 7.2-8.98C18.85 12.24 16.1 10 12 10s-6.85 2.24-7.21 2.52z" />
     </Svg>
   </SvgIcon>
-));
+);
+
+SignalWifi2BarIcon = processComponent<RfxSvgPropsOptional>(SignalWifi2BarIcon, {
+  name: 'SignalWifi2BarIcon',
+});
+export { SignalWifi2BarIcon };

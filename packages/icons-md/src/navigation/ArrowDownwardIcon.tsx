@@ -2,11 +2,15 @@ import * as React from 'react';
 // tslint:disable-next-line:ordered-imports
 import { Svg, Path } from 'swgs';
 
-import { reflexComponent, RfxSvgPropsOptional, SvgIcon } from '@reflex-ui/core';
+import {
+  processComponent,
+  RfxSvgPropsOptional,
+  SvgIcon,
+} from '@reflex-ui/core';
 
-export const ArrowDownwardIcon = reflexComponent<RfxSvgPropsOptional>({
-  name: 'ArrowDownwardIcon',
-})((props: RfxSvgPropsOptional) => (
+let ArrowDownwardIcon: React.ComponentType<RfxSvgPropsOptional> = (
+  props: RfxSvgPropsOptional,
+) => (
   <SvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Path
@@ -15,4 +19,9 @@ export const ArrowDownwardIcon = reflexComponent<RfxSvgPropsOptional>({
       />
     </Svg>
   </SvgIcon>
-));
+);
+
+ArrowDownwardIcon = processComponent<RfxSvgPropsOptional>(ArrowDownwardIcon, {
+  name: 'ArrowDownwardIcon',
+});
+export { ArrowDownwardIcon };

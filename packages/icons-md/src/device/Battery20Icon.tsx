@@ -2,11 +2,15 @@ import * as React from 'react';
 // tslint:disable-next-line:ordered-imports
 import { Svg, Path } from 'swgs';
 
-import { reflexComponent, RfxSvgPropsOptional, SvgIcon } from '@reflex-ui/core';
+import {
+  processComponent,
+  RfxSvgPropsOptional,
+  SvgIcon,
+} from '@reflex-ui/core';
 
-export const Battery20Icon = reflexComponent<RfxSvgPropsOptional>({
-  name: 'Battery20Icon',
-})((props: RfxSvgPropsOptional) => (
+let Battery20Icon: React.ComponentType<RfxSvgPropsOptional> = (
+  props: RfxSvgPropsOptional,
+) => (
   <SvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Path d="M7 17v3.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V17H7z" />
@@ -16,4 +20,9 @@ export const Battery20Icon = reflexComponent<RfxSvgPropsOptional>({
       />
     </Svg>
   </SvgIcon>
-));
+);
+
+Battery20Icon = processComponent<RfxSvgPropsOptional>(Battery20Icon, {
+  name: 'Battery20Icon',
+});
+export { Battery20Icon };

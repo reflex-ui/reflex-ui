@@ -2,11 +2,15 @@ import * as React from 'react';
 // tslint:disable-next-line:ordered-imports
 import { Svg, G, Circle, Path } from 'swgs';
 
-import { reflexComponent, RfxSvgPropsOptional, SvgIcon } from '@reflex-ui/core';
+import {
+  processComponent,
+  RfxSvgPropsOptional,
+  SvgIcon,
+} from '@reflex-ui/core';
 
-export const FiberSmartRecordIcon = reflexComponent<RfxSvgPropsOptional>({
-  name: 'FiberSmartRecordIcon',
-})((props: RfxSvgPropsOptional) => (
+let FiberSmartRecordIcon: React.ComponentType<RfxSvgPropsOptional> = (
+  props: RfxSvgPropsOptional,
+) => (
   <SvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <G fill="#010101">
@@ -15,4 +19,12 @@ export const FiberSmartRecordIcon = reflexComponent<RfxSvgPropsOptional>({
       </G>
     </Svg>
   </SvgIcon>
-));
+);
+
+FiberSmartRecordIcon = processComponent<RfxSvgPropsOptional>(
+  FiberSmartRecordIcon,
+  {
+    name: 'FiberSmartRecordIcon',
+  },
+);
+export { FiberSmartRecordIcon };

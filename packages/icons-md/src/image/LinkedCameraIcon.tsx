@@ -2,11 +2,15 @@ import * as React from 'react';
 // tslint:disable-next-line:ordered-imports
 import { Svg, Circle, Path } from 'swgs';
 
-import { reflexComponent, RfxSvgPropsOptional, SvgIcon } from '@reflex-ui/core';
+import {
+  processComponent,
+  RfxSvgPropsOptional,
+  SvgIcon,
+} from '@reflex-ui/core';
 
-export const LinkedCameraIcon = reflexComponent<RfxSvgPropsOptional>({
-  name: 'LinkedCameraIcon',
-})((props: RfxSvgPropsOptional) => (
+let LinkedCameraIcon: React.ComponentType<RfxSvgPropsOptional> = (
+  props: RfxSvgPropsOptional,
+) => (
   <SvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Circle cx={12} cy={14} r={3.2} />
@@ -14,4 +18,9 @@ export const LinkedCameraIcon = reflexComponent<RfxSvgPropsOptional>({
       <Path d="M17 9c0-1.11-.89-2-2-2V4H9L7.17 6H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9h-5zm-5 10c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" />
     </Svg>
   </SvgIcon>
-));
+);
+
+LinkedCameraIcon = processComponent<RfxSvgPropsOptional>(LinkedCameraIcon, {
+  name: 'LinkedCameraIcon',
+});
+export { LinkedCameraIcon };

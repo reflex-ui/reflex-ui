@@ -2,11 +2,15 @@ import * as React from 'react';
 // tslint:disable-next-line:ordered-imports
 import { Svg, Circle } from 'swgs';
 
-import { reflexComponent, RfxSvgPropsOptional, SvgIcon } from '@reflex-ui/core';
+import {
+  processComponent,
+  RfxSvgPropsOptional,
+  SvgIcon,
+} from '@reflex-ui/core';
 
-export const BubbleChartIcon = reflexComponent<RfxSvgPropsOptional>({
-  name: 'BubbleChartIcon',
-})((props: RfxSvgPropsOptional) => (
+let BubbleChartIcon: React.ComponentType<RfxSvgPropsOptional> = (
+  props: RfxSvgPropsOptional,
+) => (
   <SvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Circle cx={7.2} cy={14.4} r={3.2} />
@@ -14,4 +18,9 @@ export const BubbleChartIcon = reflexComponent<RfxSvgPropsOptional>({
       <Circle cx={15.2} cy={8.8} r={4.8} />
     </Svg>
   </SvgIcon>
-));
+);
+
+BubbleChartIcon = processComponent<RfxSvgPropsOptional>(BubbleChartIcon, {
+  name: 'BubbleChartIcon',
+});
+export { BubbleChartIcon };

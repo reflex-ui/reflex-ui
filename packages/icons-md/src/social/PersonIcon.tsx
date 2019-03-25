@@ -2,14 +2,23 @@ import * as React from 'react';
 // tslint:disable-next-line:ordered-imports
 import { Svg, Path } from 'swgs';
 
-import { reflexComponent, RfxSvgPropsOptional, SvgIcon } from '@reflex-ui/core';
+import {
+  processComponent,
+  RfxSvgPropsOptional,
+  SvgIcon,
+} from '@reflex-ui/core';
 
-export const PersonIcon = reflexComponent<RfxSvgPropsOptional>({
-  name: 'PersonIcon',
-})((props: RfxSvgPropsOptional) => (
+let PersonIcon: React.ComponentType<RfxSvgPropsOptional> = (
+  props: RfxSvgPropsOptional,
+) => (
   <SvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
     </Svg>
   </SvgIcon>
-));
+);
+
+PersonIcon = processComponent<RfxSvgPropsOptional>(PersonIcon, {
+  name: 'PersonIcon',
+});
+export { PersonIcon };

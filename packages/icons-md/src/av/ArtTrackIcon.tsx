@@ -2,11 +2,15 @@ import * as React from 'react';
 // tslint:disable-next-line:ordered-imports
 import { Svg, Path } from 'swgs';
 
-import { reflexComponent, RfxSvgPropsOptional, SvgIcon } from '@reflex-ui/core';
+import {
+  processComponent,
+  RfxSvgPropsOptional,
+  SvgIcon,
+} from '@reflex-ui/core';
 
-export const ArtTrackIcon = reflexComponent<RfxSvgPropsOptional>({
-  name: 'ArtTrackIcon',
-})((props: RfxSvgPropsOptional) => (
+let ArtTrackIcon: React.ComponentType<RfxSvgPropsOptional> = (
+  props: RfxSvgPropsOptional,
+) => (
   <SvgIcon {...props}>
     <Svg viewBox="0 0 24 24">
       <Path
@@ -15,4 +19,9 @@ export const ArtTrackIcon = reflexComponent<RfxSvgPropsOptional>({
       />
     </Svg>
   </SvgIcon>
-));
+);
+
+ArtTrackIcon = processComponent<RfxSvgPropsOptional>(ArtTrackIcon, {
+  name: 'ArtTrackIcon',
+});
+export { ArtTrackIcon };
