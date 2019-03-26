@@ -11,6 +11,10 @@ import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { handleChildrenProps } from '../handleChildrenProps';
 import { handlePatchThemeProps } from '../handlePatchThemeProps';
+// tslint:disable-next-line:max-line-length
+import { handleSimpleComponentThemeProps } from '../handleSimpleComponentThemeProps';
+// tslint:disable-next-line:max-line-length
+import { handleSimpleComponentThemeStyle } from '../handleSimpleComponentThemeStyle';
 import { processComponent } from '../processComponent';
 import { validateNoStyleProps } from '../validateNoStyleProps';
 import { renderRfxViewContainer } from '../view/RfxView';
@@ -25,6 +29,8 @@ let Surface: React.ComponentType<SurfacePropsOptional> = (
   newProps = { ...newProps, ...useOnLayout(newProps) };
   newProps = handlePatchThemeProps(newProps);
   newProps = handleChildrenProps(newProps);
+  newProps = handleSimpleComponentThemeProps(newProps);
+  newProps = handleSimpleComponentThemeStyle(newProps);
 
   return (
     <ColorThemeContext.Provider value={newProps.colorTheme}>

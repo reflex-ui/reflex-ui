@@ -6,26 +6,21 @@
  */
 
 import {
-  getSizedMarginStyle,
-  getSizedPaddingStyle,
   getThemedColor,
   SurfaceProps,
   SurfaceTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 
-import { getFlexboxStyle } from '../../flexbox/getFlexboxStyle';
-import { sizedSpacing } from '../../spacing/sizedSpacing';
+import { getCommonRfxViewContainerStyle } from '../view/theme';
 
 export const getSurfaceContainerStyle: ViewStyleGetter<
   SurfaceProps
 > = props => ({
+  ...getCommonRfxViewContainerStyle(props),
   backgroundColor: getThemedColor(props),
   borderRadius: 4,
   flexWrap: 'wrap',
-  ...getFlexboxStyle(props),
-  ...getSizedMarginStyle(sizedSpacing)(props),
-  ...getSizedPaddingStyle(sizedSpacing)(props),
 });
 
 export const surfaceTheme: SurfaceTheme = {
