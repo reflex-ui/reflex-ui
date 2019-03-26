@@ -11,6 +11,7 @@ import { FlexboxProps } from '../../flexbox/FlexboxProps';
 import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
 import { DimensionsProps } from '../../responsiveness/DimensionsProps';
 import { ResponsivenessProps } from '../../responsiveness/ResponsivenessProps';
+import { SizingPropsOptional } from '../../sizing/SizingProps';
 import { MarginProps } from '../../spacing/MarginProps';
 import { PaddingProps } from '../../spacing/PaddingProps';
 import { ComponentChildrenProps } from '../ComponentChildrenProps';
@@ -26,6 +27,7 @@ export interface RfxViewProps
     PaddingProps,
     PaletteThemeProps,
     ResponsivenessProps,
+    SizingPropsOptional,
     ViewProps {}
 
 export type RfxViewPropsOptional = Partial<RfxViewProps>;

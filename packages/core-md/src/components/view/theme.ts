@@ -15,6 +15,7 @@ import {
 } from '@reflex-ui/core';
 
 import { getFlexboxStyle } from '../../flexbox/getFlexboxStyle';
+import { getSizingStyle } from '../../sizing/getSizingStyle';
 import { sizedSpacing } from '../../spacing/sizedSpacing';
 
 /*
@@ -27,6 +28,7 @@ export const getCommonRfxViewContainerStyle: ViewStyleGetter<
   ...getFlexboxStyle(props),
   ...getSizedMarginStyle(sizedSpacing)(props),
   ...getSizedPaddingStyle(sizedSpacing)(props),
+  ...getSizingStyle(props),
 });
 
 /*
