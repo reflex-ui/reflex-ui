@@ -6,75 +6,35 @@
  */
 
 import * as React from 'react';
-import { View, ViewProps } from 'react-native';
+import { View } from 'react-native';
 
 import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
-import { getStyleFromTheme } from '../getStyleFromTheme';
+import { extractViewProps } from '../../utils/props';
 import { handleChildrenProps } from '../handleChildrenProps';
 import { handlePatchThemeProps } from '../handlePatchThemeProps';
+// tslint:disable-next-line:max-line-length
+import { handleSimpleComponentThemeProps } from '../handleSimpleComponentThemeProps';
+// tslint:disable-next-line:max-line-length
+import { handleSimpleComponentThemeStyle } from '../handleSimpleComponentThemeStyle';
 import { processComponent } from '../processComponent';
 import { validateNoStyleProps } from '../validateNoStyleProps';
 import { RfxViewProps, RfxViewPropsOptional } from './RfxViewProps';
 import { useDefaultRfxViewProps } from './useDefaultRfxViewProps';
 
-export const extractViewPropsFromRfxViewProps = (
-  props: RfxViewProps,
-): ViewProps => {
-  const {
-    alignContent,
-    alignItems,
-    alignSelf,
-    children,
-    colorTheme,
-    flex,
-    flexBasis,
-    flexDirection,
-    flexGrow,
-    flexShrink,
-    flexWrap,
-    getPatchTheme,
-    justifyContent,
-    margin,
-    marginBottom,
-    marginEnd,
-    marginHorizontal,
-    marginStart,
-    marginTop,
-    marginVertical,
-    padding,
-    paddingBottom,
-    paddingEnd,
-    paddingHorizontal,
-    paddingStart,
-    paddingTop,
-    paddingVertical,
-    paletteTheme,
-    theme,
-    ...viewProps
-  } = props;
-
-  return viewProps;
-};
-
 export const renderRfxViewContainer = (props: RfxViewProps): JSX.Element => {
-  const { children, onLayout, theme } = props;
+  const { children, theme } = props;
+  const Component = theme.component || View;
+  const viewProps = extractViewProps(props);
 
-  const Container = theme.component || View;
-  const viewProps = {
-    ...extractViewPropsFromRfxViewProps(props),
-    onLayout,
-    style: getStyleFromTheme(props, theme),
-  };
-
-  if (Container === View) {
-    return <Container {...viewProps}>{children}</Container>;
+  if (Component === View) {
+    return <Component {...viewProps}>{children}</Component>;
   }
 
   return (
-    <Container complexComponentProps={props} {...viewProps}>
+    <Component complexComponentProps={props} {...viewProps}>
       {children}
-    </Container>
+    </Component>
   );
 };
 
@@ -83,9 +43,11 @@ let RfxView: React.ComponentType<RfxViewPropsOptional> = (
 ) => {
   validateNoStyleProps(props);
   let newProps = useDefaultRfxViewProps(props);
-  newProps = { ...newProps, ...useOnLayout(newProps) };
   newProps = handlePatchThemeProps(newProps);
   newProps = handleChildrenProps(newProps);
+  newProps = handleSimpleComponentThemeProps(newProps);
+  newProps = { ...newProps, ...useOnLayout(newProps) };
+  newProps = handleSimpleComponentThemeStyle(newProps);
 
   return (
     <ColorThemeContext.Provider value={newProps.colorTheme}>
