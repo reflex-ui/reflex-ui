@@ -6,7 +6,6 @@
  */
 
 import isEmpty from 'lodash/isEmpty';
-import isPlainObject from 'lodash/isPlainObject';
 import { ImageStyle, TextStyle, ViewStyle } from 'react-native';
 
 import { registerStyle } from './registerStyle';
@@ -29,11 +28,11 @@ export const getStyleFromTheme = <
     return undefined;
   }
 
-  if (typeof themeStyle !== 'object' || !isPlainObject(themeStyle)) {
+  if (typeof themeStyle !== 'object') {
     throw new Error(
       [
         'Rfx: invalid object returned from theme.getStyle().',
-        `It must return a plain object, but returned: ${typeof themeStyle}`,
+        `It must return an object, but returned: ${typeof themeStyle}`,
       ].join(' '),
     );
   }
