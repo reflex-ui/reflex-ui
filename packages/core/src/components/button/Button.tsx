@@ -130,11 +130,6 @@ export const handleButtonIcon = (
         getPatchTheme: props =>
           (data.icon.props.getPatchTheme &&
             mergeThemes(
-              // data.iconTheme is validated above so this seems a TS issue.
-              // @ts-ignore Argument of type 'RfxSvgTheme | undefined' is not
-              // assignable to parameter of type 'CompositeComponentTheme'.
-              // Type 'undefined' is not assignable to type
-              // 'CompositeComponentTheme'.ts(2345)
               data.iconTheme,
               data.icon.props.getPatchTheme(props),
             )) ||
