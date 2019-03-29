@@ -17,3 +17,7 @@ export * from './extractTouchableWithoutFeedbackProps';
 export * from './extractViewProps';
 export * from './extractViewPropsAndroid';
 export * from './extractViewPropsIOS';
+export * from './filterOutAccessibilityProps';
+export * from './filterOutInteractionProps';
+export * from './filterOutTouchableWithoutFeedbackProps';
+export * from './useWhyDidYouUpdate';
