@@ -13,15 +13,17 @@ import { ResponsivenessProps } from './ResponsivenessProps';
 export const useOnLayout = <Props extends ResponsivenessProps>(
   props: Props,
 ): ResponsivenessProps => {
-  const onLayout = (event: LayoutChangeEvent): void => {
-    if (event.nativeEvent) setLayoutRectangle(event.nativeEvent.layout);
-    if (props.onLayout) props.onLayout(event);
-  };
-
   const [layoutRectangle, setLayoutRectangle] = useState<
     LayoutRectangle | undefined
     // tslint:disable-next-line:ter-func-call-spacing
   >(undefined);
+
+  if (!props.enableOnLayout) return {};
+
+  const onLayout = (event: LayoutChangeEvent): void => {
+    if (event.nativeEvent) setLayoutRectangle(event.nativeEvent.layout);
+    if (props.onLayout) props.onLayout(event);
+  };
 
   return {
     layoutRectangle,
