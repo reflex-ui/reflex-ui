@@ -6,7 +6,7 @@
  */
 
 import isEmpty from 'lodash/isEmpty';
-import { ImageStyle, TextStyle, ViewStyle } from 'react-native';
+import { ImageStyle, StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 import { registerStyle } from './registerStyle';
 import { SimpleComponentTheme } from './SimpleComponentTheme';
@@ -17,12 +17,12 @@ export const getStyleFromTheme = <
   PrimitiveProps extends StyleProps<PrimitiveStyle>,
   PrimitiveStyle extends ViewStyle | TextStyle | ImageStyle
 >(
-  componentProps: ComponentProps,
+  props: ComponentProps,
   theme?: SimpleComponentTheme<ComponentProps, PrimitiveProps, PrimitiveStyle>,
-): PrimitiveStyle | undefined => {
+): StyleProp<PrimitiveStyle> | undefined => {
   if (!theme || !theme.getStyle) return undefined;
 
-  const themeStyle = theme.getStyle(componentProps);
+  const themeStyle = theme.getStyle(props);
 
   if (themeStyle === undefined || themeStyle === null || isEmpty(themeStyle)) {
     return undefined;
