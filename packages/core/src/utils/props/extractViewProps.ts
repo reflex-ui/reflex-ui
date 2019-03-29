@@ -14,11 +14,32 @@ import {
   extractViewPropsIOS,
 } from './';
 
-export const extractViewProps = (props: ViewProps): ViewProps => {
+export const extractViewProps = <Props extends ViewProps>(
+  props: Props,
+): ViewProps => {
   const {
     hitSlop,
     nativeID,
     onLayout,
+    /*
+     * These props are necessary for web and when using
+     * TouchableWithoutFeedback, since it forwards such props
+     * to its child View component, that actually calls them them.
+     */
+    // @ts-ignore
+    disabled,
+    // @ts-ignore
+    onBlur,
+    // @ts-ignore
+    onFocus,
+    // @ts-ignore
+    onMouseEnter,
+    // @ts-ignore
+    onMouseLeave,
+    // @ts-ignore
+    onKeyDown,
+    // @ts-ignore
+    onKeyUp,
     pointerEvents,
     removeClippedSubviews,
     style,
@@ -31,9 +52,16 @@ export const extractViewProps = (props: ViewProps): ViewProps => {
     ...extractGestureResponderHandlersProps(otherProps),
     ...extractViewPropsAndroid(otherProps),
     ...extractViewPropsIOS(otherProps),
+    ...((disabled && { disabled }) || {}),
     ...((hitSlop && { hitSlop }) || {}),
     ...((nativeID && { nativeID }) || {}),
     ...((onLayout && { onLayout }) || {}),
+    ...((onBlur && { onBlur }) || {}),
+    ...((onFocus && { onFocus }) || {}),
+    ...((onMouseEnter && { onMouseEnter }) || {}),
+    ...((onMouseLeave && { onMouseLeave }) || {}),
+    ...((onKeyDown && { onKeyDown }) || {}),
+    ...((onKeyUp && { onKeyUp }) || {}),
     ...((pointerEvents && { pointerEvents }) || {}),
     ...((removeClippedSubviews && { removeClippedSubviews }) || {}),
     ...((style && { style }) || {}),
