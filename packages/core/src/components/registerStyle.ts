@@ -17,7 +17,3 @@ import { StyleObj } from './StyleObj';
 export const registerStyle = <Style extends ViewStyle | TextStyle | ImageStyle>(
   style: Style,
 ): StyleProp<Style> => StyleSheet.create<StyleObj<Style>>({ style }).style;
-/*
-export const registerStyle = <Style>(style: Style): RegisteredStyle<Style> =>
-  StyleSheet.create<StyleObj<Style>>({ style }).style;
-*/
