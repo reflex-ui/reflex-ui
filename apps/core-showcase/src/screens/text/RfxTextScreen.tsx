@@ -15,7 +15,6 @@ import {
   Headline4,
   Headline5,
   Headline6,
-  InteractionType,
   Overline,
   Paragraph1,
   Paragraph2,
@@ -33,8 +32,8 @@ const getCaptionPatchTheme: ComponentThemeGetter<
   RfxTextProps,
   RfxTextTheme
 > = () => ({
-  getProps: () => ({ interactionState: { type: InteractionType.Disabled } }),
   getStyle: () => ({
+    color: 'red',
     fontSize: 20,
   }),
 });
