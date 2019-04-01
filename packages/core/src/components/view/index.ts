@@ -7,6 +7,7 @@
 
 export * from './Column';
 export * from './DefaultView';
+export * from './renderViewComponent';
 export * from './RfxView';
 export * from './RfxViewProps';
 export * from './RfxViewTheme';

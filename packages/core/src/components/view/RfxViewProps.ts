@@ -18,10 +18,21 @@ import { ComponentChildrenProps } from '../ComponentChildrenProps';
 import { ComponentThemeProps } from '../ComponentThemeProps';
 import { RfxViewTheme } from './RfxViewTheme';
 
-export interface RfxViewProps
-  extends ComponentChildrenProps<RfxViewProps>,
-    ComponentThemeProps<RfxViewProps, RfxViewTheme>,
-    DimensionsProps,
+/**
+ * Ideally we wouldn't need this Base type, we'd have everything
+ * in RfxViewProps like this:
+ *
+ * export interface RfxViewProps<Props = RfxViewProps, Theme = RfxViewTheme>
+ *   extends ComponentChildrenProps<Props>,
+ *     ComponentThemeProps<Props, Theme>,
+ *     ...
+ *
+ * But TypeScript doesn't support using RfxViewProps
+ * as default value in generics (i.e. Props = RfxViewProps). Error:
+ * Type parameter 'Props' has a circular default.ts(2716)
+ */
+export interface RfxViewPropsBase
+  extends DimensionsProps,
     FlexboxProps,
     MarginProps,
     PaddingProps,
@@ -29,5 +40,10 @@ export interface RfxViewProps
     ResponsivenessProps,
     SizingPropsOptional,
     ViewProps {}
+
+export interface RfxViewProps
+  extends ComponentChildrenProps<RfxViewProps>,
+    ComponentThemeProps<RfxViewProps, RfxViewTheme>,
+    RfxViewPropsBase {}
 
 export type RfxViewPropsOptional = Partial<RfxViewProps>;

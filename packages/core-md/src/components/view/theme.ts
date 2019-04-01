@@ -8,7 +8,7 @@
 import {
   getSizedMarginStyle,
   getSizedPaddingStyle,
-  RfxViewProps,
+  RfxViewPropsBase,
   RfxViewTheme,
   RfxViewVariantsTheme,
   ViewStyleGetter,
@@ -23,7 +23,7 @@ import { sizedSpacing } from '../../spacing/sizedSpacing';
  */
 
 export const getCommonRfxViewContainerStyle: ViewStyleGetter<
-  RfxViewProps
+  RfxViewPropsBase
 > = props => ({
   ...getFlexboxStyle(props),
   ...getSizedMarginStyle(sizedSpacing)(props),
@@ -36,7 +36,7 @@ export const getCommonRfxViewContainerStyle: ViewStyleGetter<
  */
 
 export const getColumnContainerStyle: ViewStyleGetter<
-  RfxViewProps
+  RfxViewPropsBase
 > = props => ({
   ...getCommonRfxViewContainerStyle(props),
   flexDirection: 'column',
@@ -51,7 +51,9 @@ export const columnTheme: RfxViewTheme = {
  * ROW
  */
 
-export const getRowContainerStyle: ViewStyleGetter<RfxViewProps> = props => ({
+export const getRowContainerStyle: ViewStyleGetter<
+  RfxViewPropsBase
+> = props => ({
   ...getCommonRfxViewContainerStyle(props),
   flexDirection: 'row',
   flexWrap: 'wrap',

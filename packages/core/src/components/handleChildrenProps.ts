@@ -14,7 +14,11 @@ export const handleChildrenProps = <
 >(
   props: ComponentProps,
 ) => {
-  if (!props.children || typeof props.children !== 'function') {
+  if (
+    props.children === undefined ||
+    props.children === null ||
+    typeof props.children !== 'function'
+  ) {
     return props;
   }
 

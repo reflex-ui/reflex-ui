@@ -14,13 +14,9 @@ import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { handleChildrenProps } from '../handleChildrenProps';
 import { handlePatchThemeProps } from '../handlePatchThemeProps';
-// tslint:disable-next-line:max-line-length
-import { handleSimpleComponentThemeProps } from '../handleSimpleComponentThemeProps';
-// tslint:disable-next-line:max-line-length
-import { handleSimpleComponentThemeStyle } from '../handleSimpleComponentThemeStyle';
+import { handleThemeAndStyleProps } from '../handleThemeAndStyleProps';
 import { processComponent } from '../processComponent';
-import { validateNoStyleProps } from '../validateNoStyleProps';
-import { renderRfxViewContainer } from './RfxView';
+import { renderViewComponent } from './renderViewComponent';
 import { RfxViewPropsOptional } from './RfxViewProps';
 import { useDefaultRfxViewProps } from './useDefaultRfxViewProps';
 
@@ -36,18 +32,16 @@ let Column: React.ComponentType<RfxViewPropsOptional> = (
     theme = componentsTheme.views.column;
   }
 
-  validateNoStyleProps(props);
   let newProps = useDefaultRfxViewProps(props);
   newProps = { ...newProps, ...useOnLayout(newProps) };
   newProps = { ...newProps, theme };
   newProps = handlePatchThemeProps(newProps);
   newProps = handleChildrenProps(newProps);
-  newProps = handleSimpleComponentThemeProps(newProps);
-  newProps = handleSimpleComponentThemeStyle(newProps);
+  newProps = handleThemeAndStyleProps(newProps, newProps.theme);
 
   return (
     <ColorThemeContext.Provider value={newProps.colorTheme}>
-      {renderRfxViewContainer(newProps)}
+      {renderViewComponent(newProps, newProps.theme.component)}
     </ColorThemeContext.Provider>
   );
 };

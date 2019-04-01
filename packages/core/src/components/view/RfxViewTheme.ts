@@ -8,10 +8,10 @@
 import { ViewProps, ViewStyle } from 'react-native';
 
 import { BuiltInSimpleComponentTheme } from '../SimpleComponentTheme';
-import { RfxViewProps } from './RfxViewProps';
+import { RfxViewPropsBase } from './RfxViewProps';
 
 export type RfxViewTheme = BuiltInSimpleComponentTheme<
-  RfxViewProps,
+  RfxViewPropsBase,
   ViewProps,
   ViewStyle
 >;

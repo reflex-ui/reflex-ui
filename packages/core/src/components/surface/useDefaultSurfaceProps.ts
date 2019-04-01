@@ -8,6 +8,7 @@
 import { useContext } from 'react';
 
 import { MissingComponentThemeError } from '../../errors';
+import { InteractionType } from '../../interaction/InteractionType';
 import { ColorTheme } from '../../palette/ColorTheme';
 import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
 import { DimensionsContext } from '../../responsiveness/DimensionsContext';
@@ -31,10 +32,15 @@ export const useDefaultSurfaceProps = (
 
   const colorTheme: ColorTheme = props.colorTheme || ColorTheme.SurfaceNormal;
 
+  const interactionState = props.interactionState || {
+    type: InteractionType.Enabled,
+  };
+
   return {
     ...dimensions,
     colorTheme,
     contained: (props.contained !== undefined && props.contained) || true,
+    interactionState,
     paletteTheme,
     theme,
     ...props,

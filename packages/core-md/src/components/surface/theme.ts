@@ -7,7 +7,7 @@
 
 import {
   getThemedColor,
-  SurfaceProps,
+  SurfacePropsBase,
   SurfaceTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
@@ -15,7 +15,7 @@ import {
 import { getCommonRfxViewContainerStyle } from '../view/theme';
 
 export const getSurfaceContainerStyle: ViewStyleGetter<
-  SurfaceProps
+  SurfacePropsBase
 > = props => ({
   ...getCommonRfxViewContainerStyle(props),
   backgroundColor: getThemedColor(props),

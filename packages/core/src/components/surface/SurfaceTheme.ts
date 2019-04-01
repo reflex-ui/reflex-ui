@@ -8,10 +8,10 @@
 import { ViewProps, ViewStyle } from 'react-native';
 
 import { BuiltInSimpleComponentTheme } from '../SimpleComponentTheme';
-import { SurfaceProps } from './SurfaceProps';
+import { SurfacePropsBase } from './SurfaceProps';
 
 export type SurfaceTheme = BuiltInSimpleComponentTheme<
-  SurfaceProps,
+  SurfacePropsBase,
   ViewProps,
   ViewStyle
 >;

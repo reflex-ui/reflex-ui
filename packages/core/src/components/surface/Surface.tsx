@@ -11,30 +11,24 @@ import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { handleChildrenProps } from '../handleChildrenProps';
 import { handlePatchThemeProps } from '../handlePatchThemeProps';
-// tslint:disable-next-line:max-line-length
-import { handleSimpleComponentThemeProps } from '../handleSimpleComponentThemeProps';
-// tslint:disable-next-line:max-line-length
-import { handleSimpleComponentThemeStyle } from '../handleSimpleComponentThemeStyle';
+import { handleThemeAndStyleProps } from '../handleThemeAndStyleProps';
 import { processComponent } from '../processComponent';
-import { validateNoStyleProps } from '../validateNoStyleProps';
-import { renderRfxViewContainer } from '../view/RfxView';
+import { renderViewComponent } from '../view/renderViewComponent';
 import { SurfacePropsOptional } from './SurfaceProps';
 import { useDefaultSurfaceProps } from './useDefaultSurfaceProps';
 
 let Surface: React.ComponentType<SurfacePropsOptional> = (
   props: SurfacePropsOptional,
 ) => {
-  validateNoStyleProps(props);
   let newProps = useDefaultSurfaceProps(props);
   newProps = { ...newProps, ...useOnLayout(newProps) };
   newProps = handlePatchThemeProps(newProps);
   newProps = handleChildrenProps(newProps);
-  newProps = handleSimpleComponentThemeProps(newProps);
-  newProps = handleSimpleComponentThemeStyle(newProps);
+  newProps = handleThemeAndStyleProps(newProps, newProps.theme);
 
   return (
     <ColorThemeContext.Provider value={newProps.colorTheme}>
-      {renderRfxViewContainer(newProps)}
+      {renderViewComponent(newProps, newProps.theme.component)}
     </ColorThemeContext.Provider>
   );
 };

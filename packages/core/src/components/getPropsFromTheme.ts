@@ -6,43 +6,51 @@
  */
 
 import isEmpty from 'lodash/isEmpty';
-import { ImageStyle, StyleProp, TextStyle, ViewStyle } from 'react-native';
+import { ImageStyle, TextStyle, ViewStyle } from 'react-native';
 
-import { registerStyle } from './registerStyle';
 import { SimpleComponentTheme } from './SimpleComponentTheme';
 import { StyleProps } from './StyleProps';
 
-export const getStyleFromTheme = <
+export const getPropsFromTheme = <
   ComponentProps,
   PrimitiveProps extends StyleProps<PrimitiveStyle>,
   PrimitiveStyle extends ViewStyle | TextStyle | ImageStyle
 >(
   props: ComponentProps,
   theme?: SimpleComponentTheme<ComponentProps, PrimitiveProps, PrimitiveStyle>,
-): StyleProp<PrimitiveStyle> | undefined => {
+): PrimitiveProps | undefined => {
   if (
     theme === undefined ||
     theme === null ||
-    theme.getStyle === undefined ||
-    theme.getStyle === null
+    theme.getProps === undefined ||
+    theme.getProps === null
   ) {
     return undefined;
   }
 
-  const themeStyle = theme.getStyle(props);
+  const themeProps = theme.getProps(props);
 
-  if (themeStyle === undefined || themeStyle === null || isEmpty(themeStyle)) {
+  if (themeProps === undefined || themeProps === null || isEmpty(themeProps)) {
     return undefined;
   }
 
-  if (typeof themeStyle !== 'object') {
+  if (typeof themeProps !== 'object') {
     throw new Error(
       [
-        'Rfx: invalid object returned from theme.getStyle().',
-        `It must return an object, but returned: ${typeof themeStyle}`,
+        'Rfx: invalid object returned from theme.getProps().',
+        `It must return an object, but returned: ${typeof themeProps}`,
       ].join(' '),
     );
   }
 
-  return registerStyle<PrimitiveStyle>(themeStyle);
+  if (themeProps.style) {
+    throw new Error(
+      [
+        '"style" property is not allowed to be passed as part of',
+        'getProps() in themes. Please use getStyle() instead.',
+      ].join(' '),
+    );
+  }
+
+  return themeProps;
 };
