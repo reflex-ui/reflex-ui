@@ -34,8 +34,8 @@ export const handleThemeAndStyleProps = <
     return props;
   }
 
-  const themeProps = getPropsFromTheme(props, theme);
   let mergedProps = props;
+  const themeProps = getPropsFromTheme(props, theme);
   if (themeProps !== undefined) mergedProps = merge({}, themeProps, props);
 
   const styleFromTheme = getStyleFromTheme(mergedProps, theme);
