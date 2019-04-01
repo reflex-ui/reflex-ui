@@ -14,7 +14,9 @@ export const handlePatchThemeProps = <
 >(
   props: ComponentProps,
 ) => {
-  if (!props.getPatchTheme) return props;
+  if (props.getPatchTheme === undefined || props.getPatchTheme === null) {
+    return props;
+  }
 
   return {
     ...props,
