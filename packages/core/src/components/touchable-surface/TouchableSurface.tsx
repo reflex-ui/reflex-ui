@@ -5,23 +5,21 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import merge from 'lodash/merge';
 import * as React from 'react';
-import {
-  TouchableWithoutFeedback,
-  TouchableWithoutFeedbackProps,
-  View,
-} from 'react-native';
 
 import { InteractionStateContext } from '../../interaction';
 import { useInteraction } from '../../interaction/useInteraction';
 import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
-import { getPropsAndStyleFromTheme } from '../getPropsAndStyleFromTheme';
+import { filterOutInteractionProps } from '../../utils/props';
 import { handleChildrenProps } from '../handleChildrenProps';
 import { handlePatchThemeProps } from '../handlePatchThemeProps';
+import { handleThemeAndStyleProps } from '../handleThemeAndStyleProps';
 import { processComponent } from '../processComponent';
-import { validateNoStyleProps } from '../validateNoStyleProps';
+import { Surface } from '../surface/Surface';
+import { SurfacePropsOptional } from '../surface/SurfaceProps';
+// tslint:disable-next-line:max-line-length
+import { renderTouchableComponent } from '../touchable/renderTouchableComponent';
 import {
   TouchableSurfaceProps,
   TouchableSurfacePropsOptional,
@@ -29,86 +27,51 @@ import {
 // tslint:disable-next-line
 import { useDefaultTouchableSurfaceProps } from './useDefaultTouchableSurfaceProps';
 
-export const extractTouchablePropsFromTouchableSurface = (
+export const extractSurfacePropsFromTouchableSurfaceProps = (
   props: TouchableSurfaceProps,
-): TouchableWithoutFeedbackProps => {
-  const {
-    children,
-    colorTheme,
-    getPatchTheme,
-    interactionState,
-    paletteTheme,
-    theme,
-    ...touchableProps
-  } = props;
-
-  return touchableProps;
-};
-
-export const renderTouchableSurfaceContainer = (
-  props: TouchableSurfaceProps,
-) => {
-  const { children, theme } = props;
-  const Container = (theme.container && theme.container.component) || View;
-  const viewProps = getPropsAndStyleFromTheme(props, theme.container);
-
-  if (Container === View) {
-    return <Container {...viewProps}>{children}</Container>;
-  }
-
-  return (
-    <Container complexComponentProps={props} {...viewProps}>
-      {children}
-    </Container>
-  );
-};
-
-export const renderTouchableSurfaceTouchable = (
-  props: TouchableSurfaceProps,
-) => {
-  const { theme } = props;
-
-  const Touchable =
-    (theme.touchable && theme.touchable.component) || TouchableWithoutFeedback;
-
-  const touchablePropsFromTheme = getPropsAndStyleFromTheme(
+): SurfacePropsOptional => {
+  const { getPatchTheme, theme, ...otherProps } = filterOutInteractionProps(
     props,
-    theme.touchable,
-  );
-  const touchableProps = extractTouchablePropsFromTouchableSurface(props);
-  const mergedTouchableProps = merge(
-    {},
-    touchablePropsFromTheme,
-    touchableProps,
   );
 
-  const containerElement = renderTouchableSurfaceContainer(props);
+  let surfaceProps = otherProps as SurfacePropsOptional;
+  surfaceProps = {
+    ...surfaceProps,
+    interactionState: props.interactionState,
+  };
+  const surfaceTheme = props.theme.surface && props.theme.surface(props);
 
-  if (Touchable === TouchableWithoutFeedback) {
-    return <Touchable {...mergedTouchableProps}>{containerElement}</Touchable>;
+  if (surfaceTheme !== undefined) {
+    surfaceProps = {
+      ...surfaceProps,
+      getPatchTheme: () => surfaceTheme,
+    };
   }
 
-  return (
-    <Touchable complexComponentProps={props} {...mergedTouchableProps}>
-      {containerElement}
-    </Touchable>
-  );
+  return surfaceProps;
 };
 
 let TouchableSurface: React.ComponentType<TouchableSurfacePropsOptional> = (
   props: TouchableSurfacePropsOptional,
 ) => {
-  validateNoStyleProps(props);
   let newProps = useDefaultTouchableSurfaceProps(props);
   newProps = { ...newProps, ...useInteraction(newProps) };
   newProps = { ...newProps, ...useOnLayout(newProps) };
   newProps = handlePatchThemeProps(newProps);
   newProps = handleChildrenProps(newProps);
+  newProps = handleThemeAndStyleProps(newProps, newProps.theme.touchable);
+
+  const Touchable =
+    newProps.theme.touchable && newProps.theme.touchable.component;
+
+  const surfaceProps = extractSurfacePropsFromTouchableSurfaceProps(newProps);
+  const surface = <Surface {...surfaceProps}>{newProps.children}</Surface>;
+  newProps = { ...newProps, children: surface };
 
   return (
     <ColorThemeContext.Provider value={newProps.colorTheme}>
       <InteractionStateContext.Provider value={newProps.interactionState}>
-        {renderTouchableSurfaceTouchable(newProps)}
+        {renderTouchableComponent(newProps, Touchable)}
       </InteractionStateContext.Provider>
     </ColorThemeContext.Provider>
   );

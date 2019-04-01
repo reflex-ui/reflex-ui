@@ -5,11 +5,31 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { TouchableSurfaceTheme } from '@reflex-ui/core';
+import {
+  InteractionType,
+  SurfacePropsBase,
+  TouchableSurfaceTheme,
+  ViewStyleGetter,
+} from '@reflex-ui/core';
+import { Platform } from 'react-native';
 
-import { touchableSurfaceContainerTheme } from './container';
+export const getTouchableSurfaceSurfaceStyle: ViewStyleGetter<
+  SurfacePropsBase
+> = props => ({
+  borderRadius: 0,
+  ...Platform.select({
+    web: {
+      cursor:
+        props.interactionState.type === InteractionType.Disabled
+          ? 'default'
+          : 'pointer',
+      outlineStyle: 'none',
+    },
+  }),
+});
 
 export const touchableSurfaceTheme: TouchableSurfaceTheme = {
-  container: touchableSurfaceContainerTheme,
-  touchable: {},
+  surface: () => ({
+    getStyle: getTouchableSurfaceSurfaceStyle,
+  }),
 };
