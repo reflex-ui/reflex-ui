@@ -45,6 +45,7 @@ export function mergeThemes<Theme extends {}>(
     // @ts-ignore Element implicitly has an 'any' type
     // because type '{}' has no index signature.ts(7017)
     const theme2Obj: unknown = theme2[prop];
+
     if (theme1Obj === undefined || theme1Obj === null) {
       // @ts-ignore Element implicitly has an 'any' type
       // because type '{}' has no index signature.ts(7017)
@@ -113,10 +114,10 @@ export const mergeThemeGetters = (
   if (getter1 !== undefined && getter2 === undefined) return getter1;
   if (getter2 !== undefined && getter1 === undefined) return getter2;
 
-  const getter: Function1<unknown, unknown> = (props: unknown): unknown =>
+  const mergedGetter: Function1<unknown, unknown> = (props: unknown): unknown =>
     // @ts-ignore Object is possibly 'undefined'.ts(2532)
     // Really? It's checked above...
     merge({}, getter1(props) || {}, getter2(props) || {});
 
-  return getter;
+  return mergedGetter;
 };
