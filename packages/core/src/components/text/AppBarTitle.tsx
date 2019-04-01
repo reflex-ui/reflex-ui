@@ -10,7 +10,7 @@ import { useContext } from 'react';
 import { MissingComponentThemeError } from '../../errors';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { processComponent } from '../processComponent';
-import { renderRfxText } from './RfxText';
+import { renderRfxTextComponent } from './renderRfxTextComponent';
 import { RfxTextProps, RfxTextPropsOptional } from './RfxTextProps';
 import { useDefaultRfxTextProps } from './useDefaultRfxTextProps';
 
@@ -32,7 +32,7 @@ let AppBarTitle: React.ComponentType<RfxTextPropsOptional> = (
     theme,
   };
 
-  return renderRfxText(newProps);
+  return renderRfxTextComponent(newProps);
 };
 
 AppBarTitle = processComponent<RfxTextPropsOptional>(AppBarTitle, {
