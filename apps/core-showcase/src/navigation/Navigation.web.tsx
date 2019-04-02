@@ -24,6 +24,7 @@ import {
   RfxTextScreen,
   SvgShowcaseScreen,
   TestShowcaseScreen,
+  TouchableSurfaceScreen,
   XFabButtonShowcaseScreen,
 } from '../screens';
 
@@ -71,6 +72,11 @@ const AppNavigation: React.SFC = () => (
       <Route exact path="/svg" component={SvgShowcaseScreen} />
       <Route exact path="/test" component={TestShowcaseScreen} />
       <Route exact path="/text" component={RfxTextScreen} />
+      <Route
+        exact
+        path="/touchable-surface"
+        component={TouchableSurfaceScreen}
+      />
       <Redirect from="/*" to="/button/default" />
     </Switch>
   </Router>

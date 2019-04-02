@@ -22,6 +22,7 @@ import {
   RfxTextScreen,
   SvgShowcaseScreen,
   TestShowcaseScreen,
+  TouchableSurfaceScreen,
   XFabButtonShowcaseScreen,
 } from '../screens';
 import { withAppLogic } from '../withAppLogic';
@@ -65,6 +66,10 @@ const RfxTextNavigation = {
 
 const TestNavigation = {
   default: `${appNavigationPrefix}test.TestShowcaseScreen`,
+};
+
+const TouchableSurfaceNavigation = {
+  default: `${appNavigationPrefix}touchableSurface.TouchableSurfaceScreen`,
 };
 
 const registerScreens = () => {
@@ -115,6 +120,10 @@ const registerScreens = () => {
   /* TEST */
   Navigation.registerComponent(TestNavigation.default, () =>
     withAppLogic(TestShowcaseScreen),
+  );
+  /* TOUCHABLE SURFACE */
+  Navigation.registerComponent(TouchableSurfaceNavigation.default, () =>
+    withAppLogic(TouchableSurfaceScreen),
   );
   /* REFLEX TEXT */
   Navigation.registerComponent(RfxTextNavigation.default, () =>
