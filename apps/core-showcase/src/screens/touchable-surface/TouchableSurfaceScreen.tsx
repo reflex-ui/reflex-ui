@@ -32,7 +32,7 @@ import { ScrollView } from 'react-native';
 
 const onButtonPress = () => {
   // tslint:disable-next-line:no-console
-  console.log('DefaultButtonScreen().onButtonPress()');
+  console.log('TouchableSurfaceScreen().onButtonPress()');
 };
 
 const getPatchTheme: ComponentThemeGetter<
@@ -90,7 +90,6 @@ const TouchableSurfaceScreen: React.SFC<{}> = (): JSX.Element => {
           <Paragraph1>Touch me!</Paragraph1>
         </TouchableSurface>
         <TouchableSurface
-          colorTheme={ColorTheme.SurfaceNormal}
           contained={false}
           height={50}
           margin={Size.M}
@@ -149,6 +148,6 @@ const TouchableSurfaceScreen: React.SFC<{}> = (): JSX.Element => {
   );
 };
 
-TouchableSurfaceScreen.displayName = 'TestShowcaseScreen';
+TouchableSurfaceScreen.displayName = 'TouchableSurfaceScreen';
 
 export { TouchableSurfaceScreen };
