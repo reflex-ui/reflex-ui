@@ -22,6 +22,7 @@ import {
   OutlinedButtonShowcaseScreen,
   OutlinedShapedButtonShowcaseScreen,
   RfxTextScreen,
+  SurfaceScreen,
   SvgShowcaseScreen,
   TestShowcaseScreen,
   TouchableSurfaceScreen,
@@ -69,6 +70,7 @@ const AppNavigation: React.SFC = () => (
       <Route exact path="/button/xfab" component={XFabButtonShowcaseScreen} />
       <Route exact path="/icon" component={IconShowcaseScreen} />
       <Route exact path="/list" component={ListShowcaseScreen} />
+      <Route exact path="/surface" component={SurfaceScreen} />
       <Route exact path="/svg" component={SvgShowcaseScreen} />
       <Route exact path="/test" component={TestShowcaseScreen} />
       <Route exact path="/text" component={RfxTextScreen} />

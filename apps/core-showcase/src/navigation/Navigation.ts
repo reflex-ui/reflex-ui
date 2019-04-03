@@ -20,6 +20,7 @@ import {
   OutlinedButtonShowcaseScreen,
   OutlinedShapedButtonShowcaseScreen,
   RfxTextScreen,
+  SurfaceScreen,
   SvgShowcaseScreen,
   TestShowcaseScreen,
   TouchableSurfaceScreen,
@@ -54,6 +55,10 @@ const IconNavigation = {
 
 const ListNavigation = {
   default: `${appNavigationPrefix}list.ListScreen`,
+};
+
+const SurfaceNavigation = {
+  default: `${appNavigationPrefix}surface.SurfaceScreen`,
 };
 
 const SvgNavigation = {
@@ -112,6 +117,10 @@ const registerScreens = () => {
   /* LIST */
   Navigation.registerComponent(ListNavigation.default, () =>
     withAppLogic(ListShowcaseScreen),
+  );
+  /* SURFACE */
+  Navigation.registerComponent(SurfaceNavigation.default, () =>
+    withAppLogic(SurfaceScreen),
   );
   /* SVG */
   Navigation.registerComponent(SvgNavigation.default, () =>
