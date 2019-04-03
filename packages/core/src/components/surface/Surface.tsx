@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import * as React from 'react';
+// tslint:disable-next-line:import-name
+import React, { useContext } from 'react';
 
 import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
@@ -20,17 +21,24 @@ import { useDefaultSurfaceProps } from './useDefaultSurfaceProps';
 let Surface: React.ComponentType<SurfacePropsOptional> = (
   props: SurfacePropsOptional,
 ) => {
+  const colorThemeFromCtx = useContext(ColorThemeContext);
   let newProps = useDefaultSurfaceProps(props);
   newProps = { ...newProps, ...useOnLayout(newProps) };
   newProps = handlePatchThemeProps(newProps);
   newProps = handleChildrenProps(newProps);
   newProps = handleThemeAndStyleProps(newProps, newProps.theme);
 
-  return (
-    <ColorThemeContext.Provider value={newProps.colorTheme}>
-      {renderViewComponent(newProps, newProps.theme.component)}
-    </ColorThemeContext.Provider>
-  );
+  const renderedView = renderViewComponent(newProps, newProps.theme.component);
+
+  if (newProps.colorTheme !== colorThemeFromCtx) {
+    return (
+      <ColorThemeContext.Provider value={newProps.colorTheme}>
+        {renderedView}
+      </ColorThemeContext.Provider>
+    );
+  }
+
+  return renderedView;
 };
 
 Surface = processComponent<SurfacePropsOptional>(Surface, {
