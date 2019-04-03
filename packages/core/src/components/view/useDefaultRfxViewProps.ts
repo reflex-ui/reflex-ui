@@ -18,7 +18,7 @@ import { RfxViewProps, RfxViewPropsOptional } from './RfxViewProps';
 export const useDefaultRfxViewProps = (
   props: RfxViewPropsOptional,
 ): RfxViewProps => {
-  const ctxColorTheme = useContext(ColorThemeContext);
+  const colorThemeFromCtx = useContext(ColorThemeContext);
   const componentsTheme = useContext(ComponentsThemeContext);
   const dimensionsProps = useContext(DimensionsContext);
   const paletteTheme = useContext(PaletteThemeContext);
@@ -32,7 +32,7 @@ export const useDefaultRfxViewProps = (
   }
 
   const colorTheme: ColorTheme =
-    props.colorTheme || ctxColorTheme || ColorTheme.SurfaceNormal;
+    props.colorTheme || colorThemeFromCtx || ColorTheme.SurfaceNormal;
 
   return {
     ...dimensionsProps,

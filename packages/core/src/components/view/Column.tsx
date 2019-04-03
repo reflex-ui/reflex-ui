@@ -23,6 +23,7 @@ import { useDefaultRfxViewProps } from './useDefaultRfxViewProps';
 let Column: React.ComponentType<RfxViewPropsOptional> = (
   props: RfxViewPropsOptional,
 ) => {
+  const colorThemeFromCtx = useContext(ColorThemeContext);
   const componentsTheme = useContext(ComponentsThemeContext);
   let theme = props.theme;
   if (!theme) {
@@ -39,11 +40,21 @@ let Column: React.ComponentType<RfxViewPropsOptional> = (
   newProps = handleChildrenProps(newProps);
   newProps = handleThemeAndStyleProps(newProps, newProps.theme);
 
-  return (
-    <ColorThemeContext.Provider value={newProps.colorTheme}>
-      {renderViewComponent(newProps, newProps.theme.component)}
-    </ColorThemeContext.Provider>
-  );
+  const renderedView = renderViewComponent(newProps, newProps.theme.component);
+
+  if (
+    props.colorTheme !== undefined &&
+    props.colorTheme !== null &&
+    props.colorTheme !== colorThemeFromCtx
+  ) {
+    return (
+      <ColorThemeContext.Provider value={props.colorTheme}>
+        {renderedView}
+      </ColorThemeContext.Provider>
+    );
+  }
+
+  return renderedView;
 };
 
 Column = processComponent<RfxViewPropsOptional>(Column, {
