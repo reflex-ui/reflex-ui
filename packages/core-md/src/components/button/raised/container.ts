@@ -6,8 +6,10 @@
  */
 
 import {
-  BuiltInViewTheme,
   ButtonProps,
+  ComponentThemeGetter,
+  SurfacePropsBase,
+  SurfaceTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 
@@ -16,13 +18,16 @@ import { getAllVariantsButtonContainerProps } from '../all-variants/container';
 import { getContainedButtonContainerStyle } from '../contained/container';
 
 export const getRaisedButtonContainerStyle: ViewStyleGetter<
-  ButtonProps
+  SurfacePropsBase
 > = props => ({
   ...getContainedButtonContainerStyle(props),
   ...getLowElevationStylesByInteraction(props.interactionState.type),
 });
 
-export const raisedButtonContainerTheme: BuiltInViewTheme<ButtonProps> = {
+export const getRaisedButtonSurfaceTheme: ComponentThemeGetter<
+  ButtonProps,
+  SurfaceTheme
+> = () => ({
   getProps: getAllVariantsButtonContainerProps,
   getStyle: getRaisedButtonContainerStyle,
-};
+});

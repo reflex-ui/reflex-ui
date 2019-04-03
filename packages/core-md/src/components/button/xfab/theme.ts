@@ -9,16 +9,16 @@ import { ButtonTheme } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
 import { fabButtonTheme } from '../fab/theme';
-import { xfabButtonContainerTheme } from './container';
+import { getXFabButtonContainerTheme } from './container';
 import {
   getXfabButtonLeadingIconTheme,
   getXfabButtonTrailingIconTheme,
 } from './sideIcons';
 
 export const partialXFabButtonTheme: Partial<ButtonTheme> = {
-  container: xfabButtonContainerTheme,
   getLeadingIcon: getXfabButtonLeadingIconTheme,
   getTrailingIcon: getXfabButtonTrailingIconTheme,
+  surface: getXFabButtonContainerTheme,
 };
 
 export const xfabButtonTheme: ButtonTheme = merge<

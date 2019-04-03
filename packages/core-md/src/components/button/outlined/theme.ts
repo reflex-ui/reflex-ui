@@ -13,13 +13,13 @@ import {
   getDefaultButtonLeadingIconTheme,
   getDefaultButtonTrailingIconTheme,
 } from '../default/sideIcons';
-import { outlinedButtonContainerTheme } from './container';
+import { getOutlinedButtonSurfaceTheme } from './container';
 import { outlinedButtonTextTheme } from './text';
 
 export const partialOutlinedButtonTheme: Partial<ButtonTheme> = {
-  container: outlinedButtonContainerTheme,
   getLeadingIcon: getDefaultButtonLeadingIconTheme,
   getTrailingIcon: getDefaultButtonTrailingIconTheme,
+  surface: getOutlinedButtonSurfaceTheme,
   text: outlinedButtonTextTheme,
 };
 

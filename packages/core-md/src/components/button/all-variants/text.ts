@@ -59,7 +59,7 @@ export const allVariantsButtonTextSizedStyle: SizedData<TextStyle> = {
 export const getAllVariantsButtonTextStyle: TextStyleGetter<
   ButtonProps
 > = props => ({
-  ...allVariantsButtonTextSizedStyle[props.size],
+  ...(props.size && allVariantsButtonTextSizedStyle[props.size]),
   color: getThemedOnColor(props),
   fontFamily: getFontFamily(),
   fontWeight: getFontWeight(FontWeight.Medium),

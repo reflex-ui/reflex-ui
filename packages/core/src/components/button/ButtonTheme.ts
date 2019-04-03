@@ -6,16 +6,18 @@
  */
 
 import { ComponentThemeGetter } from '../ComponentThemeGetter';
+import { SurfaceTheme } from '../surface/SurfaceTheme';
 import { RfxSvgTheme } from '../svg/RfxSvgTheme';
 import { BuiltInTextTheme } from '../text/TextTheme';
 import { BuiltInTouchableTheme } from '../touchable/TouchableTheme';
-import { BuiltInViewTheme } from '../view/ViewTheme';
+// import { BuiltInViewTheme } from '../view/ViewTheme';
 import { ButtonProps } from './ButtonProps';
 
 export interface ButtonTheme {
-  readonly container?: BuiltInViewTheme<ButtonProps>;
+  // readonly container?: BuiltInViewTheme<ButtonProps>;
   readonly getIcon?: ComponentThemeGetter<ButtonProps, RfxSvgTheme>;
   readonly getLeadingIcon?: ComponentThemeGetter<ButtonProps, RfxSvgTheme>;
+  readonly surface?: ComponentThemeGetter<ButtonProps, SurfaceTheme>;
   readonly text?: BuiltInTextTheme<ButtonProps>;
   readonly touchable?: BuiltInTouchableTheme<ButtonProps>;
   readonly getTrailingIcon?: ComponentThemeGetter<ButtonProps, RfxSvgTheme>;

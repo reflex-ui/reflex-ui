@@ -6,11 +6,9 @@
  */
 
 import { InteractionProps } from '../../interaction';
-import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
-import { SizingProps } from '../../sizing/SizingProps';
-import { MarginProps } from '../../spacing/MarginProps';
 import { ComponentChildrenProps } from '../ComponentChildrenProps';
 import { ComponentThemeProps } from '../ComponentThemeProps';
+import { SurfacePropsBase } from '../surface/SurfaceProps';
 import { ButtonTheme } from './ButtonTheme';
 import { ButtonVariant } from './ButtonVariant';
 
@@ -18,10 +16,7 @@ export interface ButtonProps
   extends ComponentChildrenProps<ButtonProps>,
     ComponentThemeProps<ButtonProps, ButtonTheme>,
     InteractionProps,
-    MarginProps,
-    PaletteThemeProps,
-    SizingProps {
-  readonly fullWidth?: boolean;
+    SurfacePropsBase {
   readonly leadingIcon?: JSX.Element;
   readonly trailingIcon?: JSX.Element;
   readonly variant: ButtonVariant;

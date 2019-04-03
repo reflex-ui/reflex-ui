@@ -10,13 +10,11 @@ import { StyleSheet } from 'react-native';
 
 export const getButtonRippleColor = (props: ButtonProps): string => {
   const patchTheme = props.getPatchTheme && props.getPatchTheme(props);
-  const containerStyle =
-    patchTheme &&
-    patchTheme.container &&
-    patchTheme.container.getStyle &&
-    patchTheme.container.getStyle(props);
-  let color =
-    containerStyle && StyleSheet.flatten(containerStyle).backgroundColor;
+  const surfaceTheme =
+    patchTheme && patchTheme.surface && patchTheme.surface(props);
+  const surfaceStyle =
+    surfaceTheme && surfaceTheme.getStyle && surfaceTheme.getStyle(props);
+  let color = surfaceStyle && StyleSheet.flatten(surfaceStyle).backgroundColor;
 
   if (!color) color = getThemedColor(props);
 

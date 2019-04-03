@@ -6,9 +6,11 @@
  */
 
 import {
-  BuiltInViewTheme,
   ButtonProps,
+  ComponentThemeGetter,
   SizedData,
+  SurfacePropsBase,
+  SurfaceTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import { ViewStyle } from 'react-native';
@@ -68,13 +70,16 @@ export const xfabButtonContainerSizedStyle: SizedData<ViewStyle> = {
 };
 
 export const getXFabButtonContainerStyle: ViewStyleGetter<
-  ButtonProps
+  SurfacePropsBase
 > = props => ({
   ...getFabButtonContainerStyle(props),
-  ...xfabButtonContainerSizedStyle[props.size],
+  ...(props.size && xfabButtonContainerSizedStyle[props.size]),
 });
 
-export const xfabButtonContainerTheme: BuiltInViewTheme<ButtonProps> = {
+export const getXFabButtonContainerTheme: ComponentThemeGetter<
+  ButtonProps,
+  SurfaceTheme
+> = () => ({
   getProps: getAllVariantsButtonContainerProps,
   getStyle: getXFabButtonContainerStyle,
-};
+});

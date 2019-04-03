@@ -7,7 +7,7 @@
 
 import { ButtonTheme } from '@reflex-ui/core';
 
-import { defaultButtonContainerTheme } from './container';
+import { getDefaultButtonSurfaceTheme } from './container';
 import {
   getDefaultButtonLeadingIconTheme,
   getDefaultButtonTrailingIconTheme,
@@ -15,9 +15,8 @@ import {
 import { defaultButtonTextTheme } from './text';
 
 export const defaultButtonTheme: ButtonTheme = {
-  container: defaultButtonContainerTheme,
   getLeadingIcon: getDefaultButtonLeadingIconTheme,
   getTrailingIcon: getDefaultButtonTrailingIconTheme,
+  surface: getDefaultButtonSurfaceTheme,
   text: defaultButtonTextTheme,
-  touchable: {},
 };

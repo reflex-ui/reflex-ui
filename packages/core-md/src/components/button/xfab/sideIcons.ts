@@ -40,7 +40,7 @@ export const xfabButtonLeadingIconContainerSizedStyle: SizedData<ViewStyle> = {
 export const getXFabButtonLeadingIconContainerStyle: ViewStyleGetter<
   ButtonProps
 > = props => ({
-  ...xfabButtonLeadingIconContainerSizedStyle[props.size],
+  ...(props.size && xfabButtonLeadingIconContainerSizedStyle[props.size]),
 });
 
 export const xfabButtonTrailingIconContainerSizedStyle: SizedData<ViewStyle> = {
@@ -62,7 +62,7 @@ export const xfabButtonTrailingIconContainerSizedStyle: SizedData<ViewStyle> = {
 export const getXFabButtonTrailingIconContainerStyle: ViewStyleGetter<
   ButtonProps
 > = props => ({
-  ...xfabButtonTrailingIconContainerSizedStyle[props.size],
+  ...(props.size && xfabButtonTrailingIconContainerSizedStyle[props.size]),
 });
 
 export const xfabButtonLeadingIconSizedProps: SizedData<SvgProps> = {
@@ -85,14 +85,14 @@ export const getXFabButtonLeadingIconProps: SvgPropsGetter<
   ButtonProps
 > = props => ({
   ...getAllVariantsButtonLeadingIconProps(props),
-  ...xfabButtonLeadingIconSizedProps[props.size],
+  ...(props.size && xfabButtonLeadingIconSizedProps[props.size]),
 });
 
 export const getXFabButtonTrailingIconProps: SvgPropsGetter<
   ButtonProps
 > = props => ({
   ...getAllVariantsButtonTrailingIconProps(props),
-  ...xfabButtonLeadingIconSizedProps[props.size],
+  ...(props.size && xfabButtonLeadingIconSizedProps[props.size]),
 });
 
 export const getXfabButtonLeadingIconTheme: ComponentThemeGetter<

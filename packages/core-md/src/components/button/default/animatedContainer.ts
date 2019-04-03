@@ -6,11 +6,13 @@
  */
 
 import {
-  BuiltInViewTheme,
   ButtonProps,
+  ComponentThemeGetter,
   DefaultView,
   InteractionType,
   isTouchDevice,
+  SurfacePropsBase,
+  SurfaceTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 
@@ -19,7 +21,7 @@ import { withRippleEffect } from '../withRippleEffect';
 import { getDefaultButtonContainerStyle } from './container';
 
 export const getAnimatedDefaultButtonContainerStyle: ViewStyleGetter<
-  ButtonProps
+  SurfacePropsBase
 > = props => {
   const updatedProps =
     props.interactionState.type === InteractionType.Pressed
@@ -40,11 +42,12 @@ export const getAnimatedDefaultButtonContainerStyle: ViewStyleGetter<
   return getDefaultButtonContainerStyle(updatedProps);
 };
 
-export const animatedDefaultButtonContainerTheme: BuiltInViewTheme<
-  ButtonProps
-> = {
+export const getAnimatedDefaultButtonSurfaceTheme: ComponentThemeGetter<
+  ButtonProps,
+  SurfaceTheme
+> = () => ({
   component: withRippleEffect({
     getRippleColor: getButtonRippleColor,
   })(DefaultView),
   getStyle: getAnimatedDefaultButtonContainerStyle,
-};
+});
