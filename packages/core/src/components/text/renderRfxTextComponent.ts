@@ -7,6 +7,7 @@
 
 import * as React from 'react';
 
+import { extractTextProps } from '../../utils/props';
 import { handleChildrenProps } from '../handleChildrenProps';
 import { handlePatchThemeProps } from '../handlePatchThemeProps';
 import { handleThemeAndStyleProps } from '../handleThemeAndStyleProps';
@@ -16,7 +17,12 @@ import { RfxTextProps } from './RfxTextProps';
 export const renderRfxTextComponent = (
   props: RfxTextProps,
 ): React.ReactElement | null => {
-  const { children } = props;
+  let newProps = handlePatchThemeProps(props);
+  newProps = handleChildrenProps(newProps);
+  newProps = handleThemeAndStyleProps(newProps, newProps.theme);
+  const { children } = newProps;
+
+  if (children === undefined || children === null) return null;
 
   if (
     typeof children === 'string' ||
@@ -24,13 +30,13 @@ export const renderRfxTextComponent = (
     typeof children === 'boolean' ||
     Array.isArray(children)
   ) {
-    let newProps = handlePatchThemeProps(props);
-    newProps = handleChildrenProps(newProps);
-    newProps = handleThemeAndStyleProps(newProps, newProps.theme);
-    return renderTextComponent(newProps, newProps.theme.component);
+    const textProps = {
+      ...extractTextProps(newProps),
+      children,
+    };
+    return renderTextComponent(newProps, textProps, newProps.theme.component);
   }
 
-  if (children === undefined || children === null) return null;
   if ('type' in children) return children;
 
   return null;

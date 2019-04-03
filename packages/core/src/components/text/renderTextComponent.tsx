@@ -8,27 +8,16 @@
 import * as React from 'react';
 import { Text, TextProps } from 'react-native';
 
-import { extractTextProps } from '../../utils/props';
 import { BuiltInSimpleComponentProps } from '../BuiltInSimpleComponentProps';
 
-export const renderTextComponent = <
-  ComponentProps extends TextProps & Readonly<{ children?: React.ReactNode }>
->(
+export const renderTextComponent = <ComponentProps extends {}>(
   props: ComponentProps,
+  textProps: TextProps & Readonly<{ children?: React.ReactNode }>,
   Component:
     | typeof Text
     | React.ComponentType<BuiltInSimpleComponentProps<ComponentProps>> &
         TextProps = Text,
 ): JSX.Element => {
-  const textProps = extractTextProps(props);
-
-  if (Component === Text) {
-    return <Component {...textProps}>{props.children}</Component>;
-  }
-
-  return (
-    <Component complexComponentProps={props} {...textProps}>
-      {props.children}
-    </Component>
-  );
+  if (Component === Text) return <Component {...textProps} />;
+  return <Component complexComponentProps={props} {...textProps} />;
 };

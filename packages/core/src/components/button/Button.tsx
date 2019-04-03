@@ -6,14 +6,12 @@
  */
 
 import * as React from 'react';
-import { Text as RNText } from 'react-native';
 
 import { InteractionStateContext } from '../../interaction';
 import { useInteraction } from '../../interaction/useInteraction';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { cloneElement } from '../../utils/cloneElement';
 import { filterOutInteractionProps } from '../../utils/props';
-import { useWhyDidYouUpdate } from '../../utils/props/useWhyDidYouUpdate';
 import { getPropsAndStyleFromTheme } from '../getPropsAndStyleFromTheme';
 import { handleChildrenProps } from '../handleChildrenProps';
 import { handlePatchThemeProps } from '../handlePatchThemeProps';
@@ -24,6 +22,7 @@ import { Surface } from '../surface/Surface';
 import { SurfacePropsOptional } from '../surface/SurfaceProps';
 import { RfxSvgPropsOptional } from '../svg/RfxSvgProps';
 import { RfxSvgTheme } from '../svg/RfxSvgTheme';
+import { renderTextComponent } from '../text';
 // tslint:disable-next-line:max-line-length
 import { renderTouchableComponent } from '../touchable/renderTouchableComponent';
 import { ButtonProps, ButtonPropsOptional } from './ButtonProps';
@@ -39,7 +38,13 @@ export const handleButtonChildren = (props: ButtonProps): React.ReactNode => {
     typeof children === 'number' ||
     typeof children === 'boolean'
   ) {
-    return handleButtonStringChildren(children.toString(), props);
+    const Text = props.theme.text && props.theme.text.component;
+    const textProps = {
+      ...getPropsAndStyleFromTheme(props, props.theme.text),
+      children: children.toString(),
+      key: 'text',
+    };
+    return renderTextComponent(props, textProps, Text);
   }
 
   if (
@@ -54,28 +59,6 @@ export const handleButtonChildren = (props: ButtonProps): React.ReactNode => {
   }
 
   return children;
-};
-
-export const handleButtonStringChildren = (
-  children: string,
-  props: ButtonProps,
-): JSX.Element => {
-  const Text = (props.theme.text && props.theme.text.component) || RNText;
-  const textProps = getPropsAndStyleFromTheme(props, props.theme.text);
-
-  if (Text === RNText) {
-    return (
-      <Text key="text" {...textProps}>
-        {children}
-      </Text>
-    );
-  }
-
-  return (
-    <Text complexComponentProps={props} key="text" {...textProps}>
-      {children}
-    </Text>
-  );
 };
 
 export interface ButtonIconHandlerInput {
@@ -165,7 +148,6 @@ export const extractSurfacePropsFromButtonProps = (
 let Button: React.ComponentType<ButtonPropsOptional> = (
   props: ButtonPropsOptional,
 ) => {
-  useWhyDidYouUpdate('Button', props);
   let newProps = useDefaultButtonProps(props);
   newProps = { ...newProps, ...useInteraction(newProps) };
   newProps = { ...newProps, ...useOnLayout(newProps) };
