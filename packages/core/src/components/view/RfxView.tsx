@@ -10,6 +10,7 @@ import React, { useContext } from 'react';
 
 import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
+import { extractViewProps } from '../../utils/props';
 import { handleChildrenProps } from '../handleChildrenProps';
 import { handlePatchThemeProps } from '../handlePatchThemeProps';
 import { handleThemeAndStyleProps } from '../handleThemeAndStyleProps';
@@ -28,7 +29,15 @@ let RfxView: React.ComponentType<RfxViewPropsOptional> = (
   newProps = handleChildrenProps(newProps);
   newProps = handleThemeAndStyleProps(newProps, newProps.theme);
 
-  const renderedView = renderViewComponent(newProps, newProps.theme.component);
+  const viewProps = {
+    ...extractViewProps(newProps),
+    children: newProps.children,
+  };
+  const renderedView = renderViewComponent(
+    newProps,
+    viewProps,
+    newProps.theme.component,
+  );
 
   if (
     props.colorTheme !== undefined &&

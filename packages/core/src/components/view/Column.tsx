@@ -11,6 +11,7 @@ import React, { useContext } from 'react';
 import { MissingComponentThemeError } from '../../errors';
 import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
+import { extractViewProps } from '../../utils/props';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { handleChildrenProps } from '../handleChildrenProps';
 import { handlePatchThemeProps } from '../handlePatchThemeProps';
@@ -40,7 +41,15 @@ let Column: React.ComponentType<RfxViewPropsOptional> = (
   newProps = handleChildrenProps(newProps);
   newProps = handleThemeAndStyleProps(newProps, newProps.theme);
 
-  const renderedView = renderViewComponent(newProps, newProps.theme.component);
+  const viewProps = {
+    ...extractViewProps(newProps),
+    children: newProps.children,
+  };
+  const renderedView = renderViewComponent(
+    newProps,
+    viewProps,
+    newProps.theme.component,
+  );
 
   if (
     props.colorTheme !== undefined &&
