@@ -9,7 +9,6 @@ import * as React from 'react';
 
 import { InteractionStateContext } from '../../interaction';
 import { useInteraction } from '../../interaction/useInteraction';
-import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { filterOutInteractionProps } from '../../utils/props';
 import { handleChildrenProps } from '../handleChildrenProps';
@@ -69,11 +68,9 @@ let TouchableSurface: React.ComponentType<TouchableSurfacePropsOptional> = (
   newProps = { ...newProps, children: surface };
 
   return (
-    <ColorThemeContext.Provider value={newProps.colorTheme}>
-      <InteractionStateContext.Provider value={newProps.interactionState}>
-        {renderTouchableComponent(newProps, Touchable)}
-      </InteractionStateContext.Provider>
-    </ColorThemeContext.Provider>
+    <InteractionStateContext.Provider value={newProps.interactionState}>
+      {renderTouchableComponent(newProps, Touchable)}
+    </InteractionStateContext.Provider>
   );
 };
 
