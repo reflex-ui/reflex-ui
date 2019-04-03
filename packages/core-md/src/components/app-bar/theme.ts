@@ -9,7 +9,7 @@ import {
   AppBarProps,
   AppBarTheme,
   AppBarVariantsTheme,
-  getThemedColor,
+  SurfacePropsBase,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
@@ -27,11 +27,11 @@ export const getCommonAppBarCenterAreaStyle: ViewStyleGetter<
   marginStart: 20,
 });
 
-export const getCommonAppBarContainerAreaStyle: ViewStyleGetter<
-  AppBarProps
-> = props => ({
+export const getCommonAppBarSurfaceStyle: ViewStyleGetter<
+  SurfacePropsBase
+> = () => ({
   alignItems: 'center',
-  backgroundColor: getThemedColor(props),
+  borderRadius: 0,
   flex: 1,
   flexDirection: 'row',
   overflow: 'hidden',
@@ -56,10 +56,10 @@ export const getCommonAppBarTrailingAreaStyle: ViewStyleGetter<
  * AppBarVariant.DEFAULT
  */
 
-export const getDefaultAppBarContainerAreaStyle: ViewStyleGetter<
-  AppBarProps
+export const getDefaultAppBarSurfaceStyle: ViewStyleGetter<
+  SurfacePropsBase
 > = props => ({
-  ...getCommonAppBarContainerAreaStyle(props),
+  ...getCommonAppBarSurfaceStyle(props),
   flexWrap: 'nowrap',
   height:
     props.dimensions.window.width <= props.breakpoints.largeTablet ? 56 : 64,
@@ -69,12 +69,12 @@ export const defaultAppBarTheme: AppBarTheme = {
   centerArea: {
     getStyle: getCommonAppBarCenterAreaStyle,
   },
-  container: {
-    getStyle: getDefaultAppBarContainerAreaStyle,
-  },
   leadingArea: {
     getStyle: getCommonAppBarLeadingAreaStyle,
   },
+  surface: () => ({
+    getStyle: getDefaultAppBarSurfaceStyle,
+  }),
   trailingArea: {
     getStyle: getCommonAppBarTrailingAreaStyle,
   },
@@ -84,10 +84,10 @@ export const defaultAppBarTheme: AppBarTheme = {
  * AppBarVariant.DENSE
  */
 
-export const getDenseAppBarContainerAreaStyle: ViewStyleGetter<
-  AppBarProps
+export const getDenseAppBarSurfaceStyle: ViewStyleGetter<
+  SurfacePropsBase
 > = props => ({
-  ...getCommonAppBarContainerAreaStyle(props),
+  ...getCommonAppBarSurfaceStyle(props),
   height: 48,
   paddingVertical: 0,
 });
@@ -96,12 +96,12 @@ export const denseAppBarTheme: AppBarTheme = {
   centerArea: {
     getStyle: getCommonAppBarCenterAreaStyle,
   },
-  container: {
-    getStyle: getDenseAppBarContainerAreaStyle,
-  },
   leadingArea: {
     getStyle: getCommonAppBarLeadingAreaStyle,
   },
+  surface: () => ({
+    getStyle: getDenseAppBarSurfaceStyle,
+  }),
   trailingArea: {
     getStyle: getCommonAppBarTrailingAreaStyle,
   },
@@ -119,10 +119,10 @@ export const getProminentAppBarCenterAreaStyle: ViewStyleGetter<
   marginBottom: 10,
 });
 
-export const getProminentAppBarContainerAreaStyle: ViewStyleGetter<
-  AppBarProps
+export const getProminentAppBarSurfaceStyle: ViewStyleGetter<
+  SurfacePropsBase
 > = props => ({
-  ...getCommonAppBarContainerAreaStyle(props),
+  ...getCommonAppBarSurfaceStyle(props),
   alignItems: 'flex-start',
   height: 128,
 });
@@ -131,12 +131,12 @@ export const prominentAppBarTheme: AppBarTheme = {
   centerArea: {
     getStyle: getProminentAppBarCenterAreaStyle,
   },
-  container: {
-    getStyle: getProminentAppBarContainerAreaStyle,
-  },
   leadingArea: {
     getStyle: getCommonAppBarLeadingAreaStyle,
   },
+  surface: () => ({
+    getStyle: getProminentAppBarSurfaceStyle,
+  }),
   trailingArea: {
     getStyle: getCommonAppBarTrailingAreaStyle,
   },
@@ -146,17 +146,17 @@ export const prominentAppBarTheme: AppBarTheme = {
  * AppBarVariant.PROMINENT_DENSE
  */
 
-export const getProminentDenseAppBarContainerAreaStyle: ViewStyleGetter<
-  AppBarProps
+export const getProminentDenseAppBarSurfaceStyle: ViewStyleGetter<
+  SurfacePropsBase
 > = props => ({
-  ...getProminentAppBarContainerAreaStyle(props),
+  ...getProminentAppBarSurfaceStyle(props),
   height: 98,
 });
 
 export const partialProminentDenseAppBarTheme: Partial<AppBarTheme> = {
-  container: {
-    getStyle: getProminentDenseAppBarContainerAreaStyle,
-  },
+  surface: () => ({
+    getStyle: getProminentDenseAppBarSurfaceStyle,
+  }),
 };
 
 export const prominentDenseAppBarTheme: AppBarTheme = merge(
