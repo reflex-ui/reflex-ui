@@ -5,9 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { processComponent } from '../processComponent';
+import { processComponentProps } from '../processComponentProps';
+import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
 import { renderRfxViewComponent } from '../view/renderRfxViewComponent';
-import { useRfxViewPropsPipe } from '../view/useRfxViewPropsPipe';
 import { useShouldProvideColorTheme } from '../view/useShouldProvideColorTheme';
 import { SurfacePropsOptional } from './SurfaceProps';
 import { useDefaultSurfaceProps } from './useDefaultSurfaceProps';
@@ -16,7 +18,9 @@ let Surface: React.ComponentType<SurfacePropsOptional> = (
   props: SurfacePropsOptional,
 ) => {
   let newProps = useDefaultSurfaceProps(props);
-  newProps = useRfxViewPropsPipe(newProps);
+  newProps = { ...newProps, ...useOnLayout(newProps) };
+  newProps = processComponentProps(newProps);
+  newProps = processThemeAndStyleProps(newProps, newProps.theme);
 
   const shouldProvideColorTheme = useShouldProvideColorTheme(newProps);
   return renderRfxViewComponent(newProps, shouldProvideColorTheme);
