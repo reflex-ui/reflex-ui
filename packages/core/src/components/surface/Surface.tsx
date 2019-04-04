@@ -5,49 +5,21 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-// tslint:disable-next-line:import-name
-import React, { useContext } from 'react';
-
-import { ColorThemeContext } from '../../palette/ColorThemeContext';
-import { useOnLayout } from '../../responsiveness/useOnLayout';
-import { extractViewProps } from '../../utils/props';
-import { handleChildrenProps } from '../handleChildrenProps';
-import { handlePatchThemeProps } from '../handlePatchThemeProps';
-import { handleThemeAndStyleProps } from '../handleThemeAndStyleProps';
 import { processComponent } from '../processComponent';
-import { renderViewComponent } from '../view/renderViewComponent';
+import { renderRfxViewComponent } from '../view/renderRfxViewComponent';
+import { useRfxViewPropsPipe } from '../view/useRfxViewPropsPipe';
+import { useShouldProvideColorTheme } from '../view/useShouldProvideColorTheme';
 import { SurfacePropsOptional } from './SurfaceProps';
 import { useDefaultSurfaceProps } from './useDefaultSurfaceProps';
 
 let Surface: React.ComponentType<SurfacePropsOptional> = (
   props: SurfacePropsOptional,
 ) => {
-  const colorThemeFromCtx = useContext(ColorThemeContext);
   let newProps = useDefaultSurfaceProps(props);
-  newProps = { ...newProps, ...useOnLayout(newProps) };
-  newProps = handlePatchThemeProps(newProps);
-  newProps = handleChildrenProps(newProps);
-  newProps = handleThemeAndStyleProps(newProps, newProps.theme);
+  newProps = useRfxViewPropsPipe(newProps);
 
-  const viewProps = {
-    ...extractViewProps(newProps),
-    children: newProps.children,
-  };
-  const renderedView = renderViewComponent(
-    newProps,
-    viewProps,
-    newProps.theme.component,
-  );
-
-  if (newProps.colorTheme !== colorThemeFromCtx) {
-    return (
-      <ColorThemeContext.Provider value={newProps.colorTheme}>
-        {renderedView}
-      </ColorThemeContext.Provider>
-    );
-  }
-
-  return renderedView;
+  const shouldProvideColorTheme = useShouldProvideColorTheme(newProps);
+  return renderRfxViewComponent(newProps, shouldProvideColorTheme);
 };
 
 Surface = processComponent<SurfacePropsOptional>(Surface, {
