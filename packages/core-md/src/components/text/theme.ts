@@ -18,10 +18,12 @@ import {
 } from '@reflex-ui/core';
 import { Platform, TextStyle } from 'react-native';
 
+import { getFlexboxStyle } from '../../flexbox/getFlexboxStyle';
 import { sizedSpacing } from '../../spacing/sizedSpacing';
 import { getFontFamily } from './getFontFamily';
 
 export const getCommonRfxTextStyle: TextStyleGetter<RfxTextProps> = props => ({
+  ...getFlexboxStyle(props),
   ...getSizedMarginStyle(sizedSpacing)(props),
   ...getSizedPaddingStyle(sizedSpacing)(props),
   color: getThemedOnColor(props),
