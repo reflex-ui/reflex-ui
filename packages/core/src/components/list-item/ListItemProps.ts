@@ -5,27 +5,14 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ViewProps } from 'react-native';
-
-import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
-import { DimensionsProps } from '../../responsiveness/DimensionsProps';
-import { ResponsivenessProps } from '../../responsiveness/ResponsivenessProps';
-import { SizingProps } from '../../sizing/SizingProps';
-import { MarginProps } from '../../spacing/MarginProps';
-import { PaddingProps } from '../../spacing/PaddingProps';
 import { ComponentChildrenProps } from '../ComponentChildrenProps';
 import { ComponentThemeProps } from '../ComponentThemeProps';
+import { RfxViewPropsBase } from '../view/RfxViewProps';
 import { ListItemTheme } from './ListItemTheme';
 
 export interface ListItemProps
   extends ComponentChildrenProps<ListItemProps>,
     ComponentThemeProps<ListItemProps, ListItemTheme>,
-    DimensionsProps,
-    MarginProps,
-    PaddingProps,
-    PaletteThemeProps,
-    ResponsivenessProps,
-    SizingProps,
-    ViewProps {}
+    RfxViewPropsBase {}
 
 export type ListItemPropsOptional = Partial<ListItemProps>;

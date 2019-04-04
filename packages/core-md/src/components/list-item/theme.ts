@@ -6,8 +6,6 @@
  */
 
 import {
-  getSizedMarginStyle,
-  getSizedPaddingStyle,
   ListItemProps,
   ListItemTheme,
   SizedData,
@@ -15,8 +13,7 @@ import {
 } from '@reflex-ui/core';
 import { ViewStyle } from 'react-native';
 
-import { getSizingStyle } from '../../sizing/getSizingStyle';
-import { sizedSpacing } from '../../spacing/sizedSpacing';
+import { getCommonRfxViewContainerStyle } from '../view/theme';
 
 export const listItemContainerSizedStyle: SizedData<ViewStyle> = {
   xxsmall: { minHeight: 32 },
@@ -37,14 +34,11 @@ export const listItemContainerSizedStyle: SizedData<ViewStyle> = {
 export const getListItemContainerStyle: ViewStyleGetter<
   ListItemProps
 > = props => ({
-  ...listItemContainerSizedStyle[props.size],
+  ...getCommonRfxViewContainerStyle(props),
+  ...(props.size && listItemContainerSizedStyle[props.size]),
   alignItems: 'center',
-  backgroundColor: 'transparent',
   flexDirection: 'row',
   paddingHorizontal: 8,
-  ...getSizedMarginStyle(sizedSpacing)(props),
-  ...getSizedPaddingStyle(sizedSpacing)(props),
-  ...getSizingStyle(props),
 });
 
 export const listItemTheme: ListItemTheme = {
