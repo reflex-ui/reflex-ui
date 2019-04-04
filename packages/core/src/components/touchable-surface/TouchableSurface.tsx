@@ -11,10 +11,9 @@ import { InteractionStateContext } from '../../interaction';
 import { useInteraction } from '../../interaction/useInteraction';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { filterOutInteractionProps } from '../../utils/props';
-import { handleChildrenProps } from '../handleChildrenProps';
-import { handlePatchThemeProps } from '../handlePatchThemeProps';
-import { handleThemeAndStyleProps } from '../handleThemeAndStyleProps';
 import { processComponent } from '../processComponent';
+import { processComponentProps } from '../processComponentProps';
+import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
 import { Surface } from '../surface/Surface';
 import { SurfacePropsOptional } from '../surface/SurfaceProps';
 // tslint:disable-next-line:max-line-length
@@ -56,9 +55,8 @@ let TouchableSurface: React.ComponentType<TouchableSurfacePropsOptional> = (
   let newProps = useDefaultTouchableSurfaceProps(props);
   newProps = { ...newProps, ...useInteraction(newProps) };
   newProps = { ...newProps, ...useOnLayout(newProps) };
-  newProps = handlePatchThemeProps(newProps);
-  newProps = handleChildrenProps(newProps);
-  newProps = handleThemeAndStyleProps(newProps, newProps.theme.touchable);
+  newProps = processComponentProps(newProps);
+  newProps = processThemeAndStyleProps(newProps, newProps.theme.touchable);
 
   const Touchable =
     newProps.theme.touchable && newProps.theme.touchable.component;
