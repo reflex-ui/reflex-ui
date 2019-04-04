@@ -433,7 +433,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
             </List>
             <Column margin={Size.M}>
               <Paragraph1>
-                List: <Paragraph2>ColorTheme.PrimaryNormal</Paragraph2>
+                List: <Paragraph2>ColorTheme.PrimaryDark</Paragraph2>
               </Paragraph1>
               <Paragraph1 marginTop={Size.XXS}>
                 ListItem: <Paragraph2>Size.M</Paragraph2>
