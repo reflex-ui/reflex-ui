@@ -8,6 +8,7 @@
 import isEmpty from 'lodash/isEmpty';
 import { ImageStyle, StyleProp, TextStyle, ViewStyle } from 'react-native';
 
+import { isValidStyle } from './isValidStyle';
 import { registerStyle } from './registerStyle';
 import { SimpleComponentTheme } from './SimpleComponentTheme';
 import { StyleProps } from './StyleProps';
@@ -35,11 +36,12 @@ export const getStyleFromTheme = <
     return undefined;
   }
 
-  if (typeof themeStyle !== 'object') {
+  if (!isValidStyle(themeStyle)) {
     throw new Error(
       [
-        'Rfx: invalid object returned from theme.getStyle().',
-        `It must return an object, but returned: ${typeof themeStyle}`,
+        'ReflexUI: Invalid style object provided via theme.getStyle().',
+        'Expected a plain object, a number (registered style), or an array',
+        `of numbers (registered styles), but got: ${typeof themeStyle}`,
       ].join(' '),
     );
   }

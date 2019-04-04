@@ -5,65 +5,21 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-// tslint:disable-next-line:import-name
-import React, { useContext } from 'react';
-
-import { MissingComponentThemeError } from '../../errors';
-import { ColorThemeContext } from '../../palette/ColorThemeContext';
-import { useOnLayout } from '../../responsiveness/useOnLayout';
-import { extractViewProps } from '../../utils/props';
-import { ComponentsThemeContext } from '../ComponentsThemeContext';
-import { handleChildrenProps } from '../handleChildrenProps';
-import { handlePatchThemeProps } from '../handlePatchThemeProps';
-import { handleThemeAndStyleProps } from '../handleThemeAndStyleProps';
 import { processComponent } from '../processComponent';
-import { renderViewComponent } from './renderViewComponent';
+import { renderRfxViewComponent } from './renderRfxViewComponent';
 import { RfxViewPropsOptional } from './RfxViewProps';
-import { useDefaultRfxViewProps } from './useDefaultRfxViewProps';
+import { useDefaultRowProps } from './useDefaultRowProps';
+import { useRfxViewPropsPipe } from './useRfxViewPropsPipe';
+import { useShouldProvideColorTheme } from './useShouldProvideColorTheme';
 
 let Row: React.ComponentType<RfxViewPropsOptional> = (
   props: RfxViewPropsOptional,
 ) => {
-  const colorThemeFromCtx = useContext(ColorThemeContext);
-  const componentsTheme = useContext(ComponentsThemeContext);
-  let theme = props.theme;
-  if (!theme) {
-    if (!componentsTheme.views) {
-      throw new MissingComponentThemeError('<Row>');
-    }
-    theme = componentsTheme.views.row;
-  }
+  let newProps = useDefaultRowProps(props);
+  newProps = useRfxViewPropsPipe(newProps);
 
-  let newProps = useDefaultRfxViewProps(props);
-  newProps = { ...newProps, ...useOnLayout(newProps) };
-  newProps = { ...newProps, theme };
-  newProps = handlePatchThemeProps(newProps);
-  newProps = handleChildrenProps(newProps);
-  newProps = handleThemeAndStyleProps(newProps, newProps.theme);
-
-  const viewProps = {
-    ...extractViewProps(newProps),
-    children: newProps.children,
-  };
-  const renderedView = renderViewComponent(
-    newProps,
-    viewProps,
-    newProps.theme.component,
-  );
-
-  if (
-    props.colorTheme !== undefined &&
-    props.colorTheme !== null &&
-    props.colorTheme !== colorThemeFromCtx
-  ) {
-    return (
-      <ColorThemeContext.Provider value={props.colorTheme}>
-        {renderedView}
-      </ColorThemeContext.Provider>
-    );
-  }
-
-  return renderedView;
+  const shouldProvideColorTheme = useShouldProvideColorTheme(props);
+  return renderRfxViewComponent(newProps, shouldProvideColorTheme);
 };
 
 Row = processComponent<RfxViewPropsOptional>(Row, {

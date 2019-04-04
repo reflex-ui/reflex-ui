@@ -41,6 +41,8 @@ export interface RfxViewPropsBase
     SizingPropsOptional,
     ViewProps {}
 
+export type RfxViewPropsBaseOptional = Partial<RfxViewPropsBase>;
+
 export interface RfxViewProps
   extends ComponentChildrenProps<RfxViewProps>,
     ComponentThemeProps<RfxViewProps, RfxViewTheme>,
