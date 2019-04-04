@@ -5,74 +5,25 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import * as React from 'react';
-import { View, ViewProps } from 'react-native';
-
-import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
-import { getStyleFromTheme } from '../getStyleFromTheme';
-import { handleChildrenProps } from '../handleChildrenProps';
-import { handlePatchThemeProps } from '../handlePatchThemeProps';
 import { processComponent } from '../processComponent';
-import { validateNoStyleProps } from '../validateNoStyleProps';
-import { ListProps, ListPropsOptional } from './ListProps';
+import { processComponentProps } from '../processComponentProps';
+import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
+import { renderRfxViewComponent } from '../view/renderRfxViewComponent';
+import { useShouldProvideColorTheme } from '../view/useShouldProvideColorTheme';
+import { ListPropsOptional } from './ListProps';
 import { useDefaultListProps } from './useDefaultListProps';
-
-export const extractViewPropsFromListProps = (props: ListProps): ViewProps => {
-  const {
-    children,
-    colorTheme,
-    getPatchTheme,
-    margin,
-    marginBottom,
-    marginEnd,
-    marginHorizontal,
-    marginStart,
-    marginTop,
-    marginVertical,
-    paletteTheme,
-    theme,
-    ...viewProps
-  } = props;
-
-  return viewProps;
-};
-
-export const renderListView = (props: ListProps): JSX.Element => {
-  const { children, onLayout, theme } = props;
-
-  const Container = theme.component || View;
-  const viewProps = {
-    ...extractViewPropsFromListProps(props),
-    onLayout,
-    style: getStyleFromTheme(props, theme),
-  };
-
-  if (Container === View) {
-    return <Container {...viewProps}>{children}</Container>;
-  }
-
-  return (
-    <Container complexComponentProps={props} {...viewProps}>
-      {children}
-    </Container>
-  );
-};
 
 let List: React.ComponentType<ListPropsOptional> = (
   props: ListPropsOptional,
 ) => {
-  validateNoStyleProps(props);
   let newProps = useDefaultListProps(props);
   newProps = { ...newProps, ...useOnLayout(newProps) };
-  newProps = handlePatchThemeProps(newProps);
-  newProps = handleChildrenProps(newProps);
+  newProps = processComponentProps(newProps);
+  newProps = processThemeAndStyleProps(newProps, newProps.theme);
 
-  return (
-    <ColorThemeContext.Provider value={newProps.colorTheme}>
-      {renderListView(newProps)}
-    </ColorThemeContext.Provider>
-  );
+  const shouldProvideColorTheme = useShouldProvideColorTheme(newProps);
+  return renderRfxViewComponent(newProps, shouldProvideColorTheme);
 };
 
 List = processComponent<ListPropsOptional>(List, {
