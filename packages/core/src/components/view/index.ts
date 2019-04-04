@@ -17,7 +17,6 @@ export * from './Row';
 export * from './useDefaultColumnProps';
 export * from './useDefaultRfxViewProps';
 export * from './useDefaultRowProps';
-export * from './useRfxViewPropsPipe';
 export * from './useShouldProvideColorTheme';
 export * from './ViewPropsGetter';
 export * from './ViewStyleGetter';
