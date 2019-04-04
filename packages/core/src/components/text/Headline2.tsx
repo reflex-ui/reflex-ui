@@ -8,6 +8,7 @@
 import { useContext } from 'react';
 
 import { MissingComponentThemeError } from '../../errors';
+import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { processComponent } from '../processComponent';
 import { renderRfxTextComponent } from './renderRfxTextComponent';
@@ -29,6 +30,7 @@ let Headline2: React.ComponentType<RfxTextPropsOptional> = (
 
   const newProps: RfxTextProps = {
     ...useDefaultRfxTextProps(props),
+    ...useOnLayout(props),
     theme,
   };
 

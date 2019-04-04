@@ -8,18 +8,16 @@
 import * as React from 'react';
 
 import { extractTextProps } from '../../utils/props';
-import { handleChildrenProps } from '../handleChildrenProps';
-import { handlePatchThemeProps } from '../handlePatchThemeProps';
-import { handleThemeAndStyleProps } from '../handleThemeAndStyleProps';
+import { processComponentProps } from '../processComponentProps';
+import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
 import { renderTextComponent } from './renderTextComponent';
 import { RfxTextProps } from './RfxTextProps';
 
 export const renderRfxTextComponent = (
   props: RfxTextProps,
 ): React.ReactElement | null => {
-  let newProps = handlePatchThemeProps(props);
-  newProps = handleChildrenProps(newProps);
-  newProps = handleThemeAndStyleProps(newProps, newProps.theme);
+  let newProps = processComponentProps(props);
+  newProps = processThemeAndStyleProps(newProps, newProps.theme);
   const { children } = newProps;
 
   if (children === undefined || children === null) return null;
