@@ -6,12 +6,13 @@
  */
 
 import * as React from 'react';
+import { ViewProps } from 'react-native';
 
 import { useOnLayout } from '../../responsiveness/useOnLayout';
-import { getPropsAndStyleFromTheme } from '../getPropsAndStyleFromTheme';
-import { handleChildrenProps } from '../handleChildrenProps';
-import { handlePatchThemeProps } from '../handlePatchThemeProps';
+import { getPropsFromTheme } from '../getPropsFromTheme';
+import { getStyleFromTheme } from '../getStyleFromTheme';
 import { processComponent } from '../processComponent';
+import { processComponentProps } from '../processComponentProps';
 import { Surface } from '../surface/Surface';
 import { SurfacePropsOptional } from '../surface/SurfaceProps';
 import { renderViewComponent } from '../view/renderViewComponent';
@@ -37,48 +38,71 @@ export const extractSurfacePropsFromAppBarProps = (
 };
 
 export const renderAppBarCenterArea = (props: AppBarProps): React.ReactNode => {
-  const { children, theme } = props;
-  if (!children || !Array.isArray(children) || children.length < 2) {
+  if (
+    props.children === undefined ||
+    props.children === null ||
+    !Array.isArray(props.children) ||
+    props.children.length < 2
+  ) {
     return undefined;
   }
 
-  const ViewComponent = theme.centerArea && theme.centerArea.component;
-  const viewProps = {
-    ...getPropsAndStyleFromTheme(props, theme.centerArea),
-    children: children[1],
+  const children = props.children[1];
+  const { theme } = props;
+  const viewProps: React.PropsWithChildren<ViewProps> = {
+    ...getPropsFromTheme(props, theme.centerArea),
+    children,
+    style: getStyleFromTheme(props, theme.centerArea),
   };
+
+  const ViewComponent = theme.centerArea && theme.centerArea.component;
   return renderViewComponent(props, viewProps, ViewComponent);
 };
 
 export const renderAppBarLeadingArea = (
   props: AppBarProps,
 ): React.ReactNode => {
-  const { children, theme } = props;
-  if (!children) return children;
+  if (props.children === undefined || props.children === null) {
+    return props.children;
+  }
 
-  const leadingChildren = Array.isArray(children) ? children[0] : children;
+  const children = Array.isArray(props.children)
+    ? props.children[0]
+    : props.children;
+
+  const { theme } = props;
+
+  const viewProps: React.PropsWithChildren<ViewProps> = {
+    ...getPropsFromTheme(props, theme.leadingArea),
+    children,
+    style: getStyleFromTheme(props, theme.leadingArea),
+  };
 
   const ViewComponent = theme.leadingArea && theme.leadingArea.component;
-  const viewProps = {
-    ...getPropsAndStyleFromTheme(props, theme.leadingArea),
-    children: leadingChildren,
-  };
   return renderViewComponent(props, viewProps, ViewComponent);
 };
 
 export const renderAppBarTrailingArea = (
   props: AppBarProps,
 ): React.ReactNode => {
-  const { children, theme } = props;
-  if (!children || !Array.isArray(children) || children.length < 3) {
+  if (
+    props.children === undefined ||
+    props.children === null ||
+    !Array.isArray(props.children) ||
+    props.children.length < 3
+  ) {
     return undefined;
   }
 
-  const ViewComponent = theme.trailingArea && theme.trailingArea.component;
-  const viewProps = {
-    ...getPropsAndStyleFromTheme(props, theme.trailingArea),
-    children: children[2],
+  const children = props.children[2];
+  const { theme } = props;
+  const viewProps: React.PropsWithChildren<ViewProps> = {
+    ...getPropsFromTheme(props, theme.trailingArea),
+    children,
+    style: getStyleFromTheme(props, theme.trailingArea),
   };
+
+  const ViewComponent = theme.trailingArea && theme.trailingArea.component;
   return renderViewComponent(props, viewProps, ViewComponent);
 };
 
@@ -87,8 +111,7 @@ let AppBar: React.ComponentType<AppBarPropsOptional> = (
 ) => {
   let newProps = useDefaultAppBarProps(props);
   newProps = { ...newProps, ...useOnLayout(newProps) };
-  newProps = handlePatchThemeProps(newProps);
-  newProps = handleChildrenProps(newProps);
+  newProps = processComponentProps(newProps);
 
   if (Array.isArray(newProps.children) && newProps.children.length > 3) {
     throw new Error(
