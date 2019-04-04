@@ -13,11 +13,10 @@ import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { cloneElement } from '../../utils/cloneElement';
 import { filterOutInteractionProps } from '../../utils/props';
 import { getPropsAndStyleFromTheme } from '../getPropsAndStyleFromTheme';
-import { handleChildrenProps } from '../handleChildrenProps';
-import { handlePatchThemeProps } from '../handlePatchThemeProps';
-import { handleThemeAndStyleProps } from '../handleThemeAndStyleProps';
 import { mergeThemes } from '../mergeThemes';
 import { processComponent } from '../processComponent';
+import { processComponentProps } from '../processComponentProps';
+import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
 import { Surface } from '../surface/Surface';
 import { SurfacePropsOptional } from '../surface/SurfaceProps';
 import { RfxSvgPropsOptional } from '../svg/RfxSvgProps';
@@ -151,9 +150,8 @@ let Button: React.ComponentType<ButtonPropsOptional> = (
   let newProps = useDefaultButtonProps(props);
   newProps = { ...newProps, ...useInteraction(newProps) };
   newProps = { ...newProps, ...useOnLayout(newProps) };
-  newProps = handlePatchThemeProps(newProps);
-  newProps = handleChildrenProps(newProps);
-  newProps = handleThemeAndStyleProps(newProps, newProps.theme.touchable);
+  newProps = processComponentProps(newProps);
+  newProps = processThemeAndStyleProps(newProps, newProps.theme.touchable);
 
   const Touchable =
     newProps.theme.touchable && newProps.theme.touchable.component;
