@@ -65,6 +65,13 @@ const createParagraph1Theme = (baseTheme: RfxTextTheme): RfxTextTheme => ({
   }),
 });
 
+/*
+ * numberOfLines={1} does not work very well on web,
+ * and that's why the last Lists (starting with Brunch this weekend?)
+ * overflows the container. By deleting it we can see the content wrapping
+ * properly.
+ */
+
 const ListShowcaseScreen: React.SFC = (): JSX.Element => (
   <ScrollView>
     <Column>
