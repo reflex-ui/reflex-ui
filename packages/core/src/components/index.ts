@@ -13,7 +13,6 @@ export * from './ComponentsTheme';
 export * from './ComponentsThemeContext';
 export * from './ComponentThemeGetter';
 export * from './ComponentThemeProps';
-export * from './getPropsAndStyleFromTheme';
 export * from './getPropsFromTheme';
 export * from './getStyleFromTheme';
 export * from './handleChildrenProps';
