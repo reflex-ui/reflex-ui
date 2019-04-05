@@ -34,5 +34,4 @@ export * from './svg';
 export * from './text';
 export * from './touchable-surface';
 export * from './touchable';
-export * from './validateNoStyleProps';
 export * from './view';
