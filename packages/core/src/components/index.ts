@@ -15,7 +15,6 @@ export * from './ComponentThemeGetter';
 export * from './ComponentThemeProps';
 export * from './getPropsFromTheme';
 export * from './getStyleFromTheme';
-export * from './handleChildrenProps';
 export * from './handlePatchThemeProps';
 export * from './isValidStyle';
 export * from './list';
