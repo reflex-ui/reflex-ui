@@ -35,8 +35,8 @@ export const getCommonAppBarSurfaceStyle: ViewStyleGetter<
   flex: 1,
   flexDirection: 'row',
   overflow: 'hidden',
-  paddingHorizontal: 4,
-  paddingVertical: 4,
+  paddingHorizontal: 6,
+  paddingVertical: 6,
 });
 
 export const getCommonAppBarLeadingAreaStyle: ViewStyleGetter<
