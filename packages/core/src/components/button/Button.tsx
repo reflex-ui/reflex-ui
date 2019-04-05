@@ -13,7 +13,6 @@ import { useInteraction } from '../../interaction/useInteraction';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { cloneElement } from '../../utils/cloneElement';
 import { filterOutInteractionProps } from '../../utils/props';
-import { getPropsAndStyleFromTheme } from '../getPropsAndStyleFromTheme';
 import { getPropsFromTheme } from '../getPropsFromTheme';
 import { getStyleFromTheme } from '../getStyleFromTheme';
 import { mergeThemes } from '../mergeThemes';
@@ -43,9 +42,10 @@ export const handleButtonChildren = (props: ButtonProps): React.ReactNode => {
   ) {
     const Text = props.theme.text && props.theme.text.component;
     const textProps = {
-      ...getPropsAndStyleFromTheme(props, props.theme.text),
+      ...getPropsFromTheme(props, props.theme.text),
       children: children.toString(),
       key: 'text',
+      style: getStyleFromTheme(props, props.theme.text),
     };
     return renderTextComponent(props, textProps, Text);
   }
