@@ -12,6 +12,7 @@ import { getSurfaceContainerStyle } from '../surface/theme';
 export const getListContainerStyle: ViewStyleGetter<ListProps> = props => ({
   ...getSurfaceContainerStyle(props),
   borderRadius: 0,
+  flexWrap: 'nowrap',
   paddingVertical: 8,
 });
 

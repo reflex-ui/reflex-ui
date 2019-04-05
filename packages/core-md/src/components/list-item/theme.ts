@@ -38,6 +38,7 @@ export const getListItemContainerStyle: ViewStyleGetter<
   ...(props.size && listItemContainerSizedStyle[props.size]),
   alignItems: 'center',
   flexDirection: 'row',
+  flexWrap: 'wrap',
   paddingHorizontal: 8,
 });
 
