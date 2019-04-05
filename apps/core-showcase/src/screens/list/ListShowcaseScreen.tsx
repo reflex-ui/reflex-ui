@@ -80,7 +80,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
               </Button>
               <AppBarTitle numberOfLines={1}>List & ListItem</AppBarTitle>
             </AppBar>
-            <Column margin={Size.M}>
+            <Column margin={Size.L}>
               <Paragraph1>
                 List:{' '}
                 <Paragraph2>ColorTheme.SurfaceNormal (default)</Paragraph2>
@@ -96,12 +96,12 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 onPress={onListItemPress}
               >
                 <ListItem size={Size.XXS}>
-                  <Paragraph2 marginHorizontal={Size.XS}>Inbox</Paragraph2>
+                  <Paragraph2 marginHorizontal={Size.S}>Inbox</Paragraph2>
                 </ListItem>
               </TouchableSurface>
               <TouchableSurface contained={false} onPress={onListItemPress}>
                 <ListItem size={Size.XXS}>
-                  <Paragraph2 marginHorizontal={Size.XS}>Starred</Paragraph2>
+                  <Paragraph2 marginHorizontal={Size.S}>Starred</Paragraph2>
                 </ListItem>
               </TouchableSurface>
               <TouchableSurface
@@ -110,16 +110,16 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 onPress={onListItemPress}
               >
                 <ListItem size={Size.XXS}>
-                  <Paragraph2 marginHorizontal={Size.XS}>Snoozed</Paragraph2>
+                  <Paragraph2 marginHorizontal={Size.S}>Snoozed</Paragraph2>
                 </ListItem>
               </TouchableSurface>
               <TouchableSurface contained={false} onPress={onListItemPress}>
                 <ListItem size={Size.XXS}>
-                  <Paragraph2 marginHorizontal={Size.XS}>Important</Paragraph2>
+                  <Paragraph2 marginHorizontal={Size.S}>Important</Paragraph2>
                 </ListItem>
               </TouchableSurface>
             </List>
-            <Column margin={Size.M}>
+            <Column margin={Size.L}>
               <Paragraph1>
                 List:{' '}
                 <Paragraph2>ColorTheme.SurfaceNormal (default)</Paragraph2>
@@ -135,14 +135,18 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 onPress={onListItemPress}
               >
                 <ListItem size={Size.XXS}>
-                  <InboxIcon marginHorizontal={Size.XS} size={Size.S} />
-                  <Paragraph2 marginHorizontal={Size.XS}>Inbox</Paragraph2>
+                  <Column marginHorizontal={Size.S}>
+                    <InboxIcon size={Size.S} />
+                  </Column>
+                  <Paragraph2 marginHorizontal={Size.S}>Inbox</Paragraph2>
                 </ListItem>
               </TouchableSurface>
               <TouchableSurface contained={false} onPress={onListItemPress}>
                 <ListItem size={Size.XXS}>
-                  <StarIcon marginHorizontal={Size.XS} size={Size.S} />
-                  <Paragraph2 marginHorizontal={Size.XS}>Starred</Paragraph2>
+                  <Column marginHorizontal={Size.S}>
+                    <StarIcon size={Size.S} />
+                  </Column>
+                  <Paragraph2 marginHorizontal={Size.S}>Starred</Paragraph2>
                 </ListItem>
               </TouchableSurface>
               <TouchableSurface
@@ -151,8 +155,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 onPress={onListItemPress}
               >
                 <ListItem size={Size.XXS}>
-                  <WatchLaterIcon marginHorizontal={Size.XS} size={Size.S} />
-                  <Paragraph2 marginHorizontal={Size.XS}>Snoozed</Paragraph2>
+                  <Column marginHorizontal={Size.S}>
+                    <WatchLaterIcon size={Size.S} />
+                  </Column>
+                  <Paragraph2 marginHorizontal={Size.S}>Snoozed</Paragraph2>
                   <Column flexGrow={1} />
                   <Button
                     onPress={onListItemIconPress}
@@ -165,8 +171,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
               </TouchableSurface>
               <TouchableSurface contained={false} onPress={onListItemPress}>
                 <ListItem size={Size.XXS}>
-                  <LabelIcon marginHorizontal={Size.XS} size={Size.S} />
-                  <Paragraph2 marginHorizontal={Size.XS}>Important</Paragraph2>
+                  <Column marginHorizontal={Size.S}>
+                    <LabelIcon size={Size.S} />
+                  </Column>
+                  <Paragraph2 marginHorizontal={Size.S}>Important</Paragraph2>
                   <Column flexGrow={1} />
                   <Button
                     onPress={onListItemIconPress}
@@ -178,7 +186,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 </ListItem>
               </TouchableSurface>
             </List>
-            <Column margin={Size.M}>
+            <Column margin={Size.L}>
               <Paragraph1>
                 List:{' '}
                 <Paragraph2>ColorTheme.SurfaceNormal (default)</Paragraph2>
@@ -194,12 +202,12 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 onPress={onListItemPress}
               >
                 <ListItem size={Size.XS}>
-                  <Paragraph1 marginHorizontal={Size.XS}>Inbox</Paragraph1>
+                  <Paragraph1 marginHorizontal={Size.S}>Inbox</Paragraph1>
                 </ListItem>
               </TouchableSurface>
               <TouchableSurface contained={false} onPress={onListItemPress}>
                 <ListItem size={Size.XS}>
-                  <Paragraph1 marginHorizontal={Size.XS}>Starred</Paragraph1>
+                  <Paragraph1 marginHorizontal={Size.S}>Starred</Paragraph1>
                 </ListItem>
               </TouchableSurface>
               <TouchableSurface
@@ -208,16 +216,16 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 onPress={onListItemPress}
               >
                 <ListItem size={Size.XS}>
-                  <Paragraph1 marginHorizontal={Size.XS}>Snoozed</Paragraph1>
+                  <Paragraph1 marginHorizontal={Size.S}>Snoozed</Paragraph1>
                 </ListItem>
               </TouchableSurface>
               <TouchableSurface contained={false} onPress={onListItemPress}>
                 <ListItem size={Size.XS}>
-                  <Paragraph1 marginHorizontal={Size.XS}>Important</Paragraph1>
+                  <Paragraph1 marginHorizontal={Size.S}>Important</Paragraph1>
                 </ListItem>
               </TouchableSurface>
             </List>
-            <Column margin={Size.M}>
+            <Column margin={Size.L}>
               <Paragraph1>
                 List:{' '}
                 <Paragraph2>ColorTheme.SurfaceNormal (default)</Paragraph2>
@@ -233,14 +241,18 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 onPress={onListItemPress}
               >
                 <ListItem size={Size.XS}>
-                  <InboxIcon marginHorizontal={Size.XS} size={Size.S} />
-                  <Paragraph1 marginHorizontal={Size.XS}>Inbox</Paragraph1>
+                  <Column marginHorizontal={Size.S}>
+                    <InboxIcon size={Size.S} />
+                  </Column>
+                  <Paragraph1 marginHorizontal={Size.S}>Inbox</Paragraph1>
                 </ListItem>
               </TouchableSurface>
               <TouchableSurface contained={false} onPress={onListItemPress}>
                 <ListItem size={Size.XS}>
-                  <StarIcon marginHorizontal={Size.XS} size={Size.S} />
-                  <Paragraph1 marginHorizontal={Size.XS}>Starred</Paragraph1>
+                  <Column marginHorizontal={Size.S}>
+                    <StarIcon size={Size.S} />
+                  </Column>
+                  <Paragraph1 marginHorizontal={Size.S}>Starred</Paragraph1>
                 </ListItem>
               </TouchableSurface>
               <TouchableSurface
@@ -249,8 +261,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 onPress={onListItemPress}
               >
                 <ListItem size={Size.XS}>
-                  <WatchLaterIcon marginHorizontal={Size.XS} size={Size.S} />
-                  <Paragraph1 marginHorizontal={Size.XS}>Snoozed</Paragraph1>
+                  <Column marginHorizontal={Size.S}>
+                    <WatchLaterIcon size={Size.S} />
+                  </Column>
+                  <Paragraph1 marginHorizontal={Size.S}>Snoozed</Paragraph1>
                   <Column flexGrow={1} />
                   <Button
                     onPress={onListItemIconPress}
@@ -263,8 +277,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
               </TouchableSurface>
               <TouchableSurface contained={false} onPress={onListItemPress}>
                 <ListItem size={Size.XS}>
-                  <LabelIcon marginHorizontal={Size.XS} size={Size.S} />
-                  <Paragraph1 marginHorizontal={Size.XS}>Important</Paragraph1>
+                  <Column marginHorizontal={Size.S}>
+                    <LabelIcon size={Size.S} />
+                  </Column>
+                  <Paragraph1 marginHorizontal={Size.S}>Important</Paragraph1>
                   <Column flexGrow={1} />
                   <Button
                     onPress={onListItemIconPress}
@@ -276,7 +292,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 </ListItem>
               </TouchableSurface>
             </List>
-            <Column margin={Size.M}>
+            <Column margin={Size.L}>
               <Paragraph1>
                 List:{' '}
                 <Paragraph2>ColorTheme.SurfaceNormal (default)</Paragraph2>
@@ -292,12 +308,12 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 onPress={onListItemPress}
               >
                 <ListItem size={Size.S}>
-                  <Paragraph1 marginHorizontal={Size.XS}>Inbox</Paragraph1>
+                  <Paragraph1 marginHorizontal={Size.S}>Inbox</Paragraph1>
                 </ListItem>
               </TouchableSurface>
               <TouchableSurface contained={false} onPress={onListItemPress}>
                 <ListItem size={Size.S}>
-                  <Paragraph1 marginHorizontal={Size.XS}>Starred</Paragraph1>
+                  <Paragraph1 marginHorizontal={Size.S}>Starred</Paragraph1>
                 </ListItem>
               </TouchableSurface>
               <TouchableSurface
@@ -306,16 +322,16 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 onPress={onListItemPress}
               >
                 <ListItem size={Size.S}>
-                  <Paragraph1 marginHorizontal={Size.XS}>Snoozed</Paragraph1>
+                  <Paragraph1 marginHorizontal={Size.S}>Snoozed</Paragraph1>
                 </ListItem>
               </TouchableSurface>
               <TouchableSurface contained={false} onPress={onListItemPress}>
                 <ListItem size={Size.S}>
-                  <Paragraph1 marginHorizontal={Size.XS}>Important</Paragraph1>
+                  <Paragraph1 marginHorizontal={Size.S}>Important</Paragraph1>
                 </ListItem>
               </TouchableSurface>
             </List>
-            <Column margin={Size.M}>
+            <Column margin={Size.L}>
               <Paragraph1>
                 List:{' '}
                 <Paragraph2>ColorTheme.SurfaceNormal (default)</Paragraph2>
@@ -327,14 +343,18 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
             <List maxWidth={listMaxWidth}>
               <TouchableSurface contained={false} onPress={onListItemPress}>
                 <ListItem size={Size.S}>
-                  <InboxIcon marginHorizontal={Size.XS} />
-                  <Paragraph1 marginHorizontal={Size.XS}>Inbox</Paragraph1>
+                  <Column marginHorizontal={Size.S}>
+                    <InboxIcon />
+                  </Column>
+                  <Paragraph1 marginHorizontal={Size.S}>Inbox</Paragraph1>
                 </ListItem>
               </TouchableSurface>
               <TouchableSurface contained={false} onPress={onListItemPress}>
                 <ListItem size={Size.S}>
-                  <StarIcon marginHorizontal={Size.XS} />
-                  <Paragraph1 marginHorizontal={Size.XS}>Starred</Paragraph1>
+                  <Column marginHorizontal={Size.S}>
+                    <StarIcon />
+                  </Column>
+                  <Paragraph1 marginHorizontal={Size.S}>Starred</Paragraph1>
                 </ListItem>
               </TouchableSurface>
               <TouchableSurface
@@ -343,8 +363,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 onPress={onListItemPress}
               >
                 <ListItem size={Size.S}>
-                  <WatchLaterIcon marginHorizontal={Size.XS} />
-                  <Paragraph1 marginHorizontal={Size.XS}>Snoozed</Paragraph1>
+                  <Column marginHorizontal={Size.S}>
+                    <WatchLaterIcon />
+                  </Column>
+                  <Paragraph1 marginHorizontal={Size.S}>Snoozed</Paragraph1>
                   <Column flexGrow={1} />
                   <Button
                     onPress={onListItemIconPress}
@@ -360,8 +382,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 onPress={onListItemPress}
               >
                 <ListItem size={Size.S}>
-                  <LabelIcon marginHorizontal={Size.XS} />
-                  <Paragraph1 marginHorizontal={Size.XS}>Important</Paragraph1>
+                  <Column marginHorizontal={Size.S}>
+                    <LabelIcon />
+                  </Column>
+                  <Paragraph1 marginHorizontal={Size.S}>Important</Paragraph1>
                   <Column flexGrow={1} />
                   <Button
                     onPress={onListItemIconPress}
@@ -372,7 +396,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 </ListItem>
               </TouchableSurface>
             </List>
-            <Column margin={Size.M}>
+            <Column margin={Size.L}>
               <Paragraph1>
                 List:{' '}
                 <Paragraph2>ColorTheme.SurfaceNormal (default)</Paragraph2>
@@ -388,14 +412,18 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 onPress={onListItemPress}
               >
                 <ListItem size={Size.M}>
-                  <InboxIcon marginHorizontal={Size.XS} />
-                  <Paragraph1 marginHorizontal={Size.XS}>Inbox</Paragraph1>
+                  <Column marginHorizontal={Size.S}>
+                    <InboxIcon />
+                  </Column>
+                  <Paragraph1 marginHorizontal={Size.S}>Inbox</Paragraph1>
                 </ListItem>
               </TouchableSurface>
               <TouchableSurface contained={false} onPress={onListItemPress}>
                 <ListItem size={Size.M}>
-                  <StarIcon marginHorizontal={Size.XS} />
-                  <Paragraph1 marginHorizontal={Size.XS}>Starred</Paragraph1>
+                  <Column marginHorizontal={Size.S}>
+                    <StarIcon />
+                  </Column>
+                  <Paragraph1 marginHorizontal={Size.S}>Starred</Paragraph1>
                 </ListItem>
               </TouchableSurface>
               <TouchableSurface
@@ -404,8 +432,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 onPress={onListItemPress}
               >
                 <ListItem size={Size.M}>
-                  <WatchLaterIcon marginHorizontal={Size.XS} />
-                  <Paragraph1 marginHorizontal={Size.XS}>Snoozed</Paragraph1>
+                  <Column marginHorizontal={Size.S}>
+                    <WatchLaterIcon />
+                  </Column>
+                  <Paragraph1 marginHorizontal={Size.S}>Snoozed</Paragraph1>
                   <Column flexGrow={1} />
                   <Button
                     onPress={onListItemIconPress}
@@ -418,8 +448,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
               </TouchableSurface>
               <TouchableSurface contained={false} onPress={onListItemPress}>
                 <ListItem size={Size.M}>
-                  <LabelIcon marginHorizontal={Size.XS} />
-                  <Paragraph1 marginHorizontal={Size.XS}>Important</Paragraph1>
+                  <Column marginHorizontal={Size.S}>
+                    <LabelIcon />
+                  </Column>
+                  <Paragraph1 marginHorizontal={Size.S}>Important</Paragraph1>
                   <Column flexGrow={1} />
                   <Button
                     onPress={onListItemIconPress}
@@ -431,7 +463,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 </ListItem>
               </TouchableSurface>
             </List>
-            <Column margin={Size.M}>
+            <Column margin={Size.L}>
               <Paragraph1>
                 List: <Paragraph2>ColorTheme.PrimaryDark</Paragraph2>
               </Paragraph1>
@@ -446,14 +478,18 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 onPress={onListItemPress}
               >
                 <ListItem size={Size.M}>
-                  <InboxIcon marginHorizontal={Size.XS} />
-                  <Paragraph1 marginHorizontal={Size.XS}>Inbox</Paragraph1>
+                  <Column marginHorizontal={Size.S}>
+                    <InboxIcon />
+                  </Column>
+                  <Paragraph1 marginHorizontal={Size.S}>Inbox</Paragraph1>
                 </ListItem>
               </TouchableSurface>
               <TouchableSurface contained={false} onPress={onListItemPress}>
                 <ListItem size={Size.M}>
-                  <StarIcon marginHorizontal={Size.XS} />
-                  <Paragraph1 marginHorizontal={Size.XS}>Starred</Paragraph1>
+                  <Column marginHorizontal={Size.S}>
+                    <StarIcon />
+                  </Column>
+                  <Paragraph1 marginHorizontal={Size.S}>Starred</Paragraph1>
                 </ListItem>
               </TouchableSurface>
               <TouchableSurface
@@ -462,8 +498,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 onPress={onListItemPress}
               >
                 <ListItem size={Size.M}>
-                  <WatchLaterIcon marginHorizontal={Size.XS} />
-                  <Paragraph1 marginHorizontal={Size.XS}>Snoozed</Paragraph1>
+                  <Column marginHorizontal={Size.S}>
+                    <WatchLaterIcon />
+                  </Column>
+                  <Paragraph1 marginHorizontal={Size.S}>Snoozed</Paragraph1>
                   <Column flexGrow={1} />
                   <Button
                     onPress={onListItemIconPress}
@@ -475,8 +513,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
               </TouchableSurface>
               <TouchableSurface contained={false} onPress={onListItemPress}>
                 <ListItem size={Size.M}>
-                  <LabelIcon marginHorizontal={Size.XS} />
-                  <Paragraph1 marginHorizontal={Size.XS}>Important</Paragraph1>
+                  <Column marginHorizontal={Size.S}>
+                    <LabelIcon />
+                  </Column>
+                  <Paragraph1 marginHorizontal={Size.S}>Important</Paragraph1>
                   <Column flexGrow={1} />
                   <Button
                     onPress={onListItemIconPress}
@@ -487,7 +527,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 </ListItem>
               </TouchableSurface>
             </List>
-            <Column margin={Size.M}>
+            <Column margin={Size.L}>
               <Paragraph1>
                 List:{' '}
                 <Paragraph2>ColorTheme.SurfaceNormal (default)</Paragraph2>
@@ -517,10 +557,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                       onPress={onListItemPress}
                     >
                       <ListItem size={Size.M}>
-                        <InboxIcon marginHorizontal={Size.XS} />
-                        <Paragraph1 marginHorizontal={Size.XS}>
-                          Inbox
-                        </Paragraph1>
+                        <Column marginHorizontal={Size.S}>
+                          <InboxIcon />
+                        </Column>
+                        <Paragraph1 marginHorizontal={Size.S}>Inbox</Paragraph1>
                       </ListItem>
                     </TouchableSurface>
                     <TouchableSurface
@@ -528,8 +568,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                       onPress={onListItemPress}
                     >
                       <ListItem size={Size.M}>
-                        <StarIcon marginHorizontal={Size.XS} />
-                        <Paragraph1 marginHorizontal={Size.XS}>
+                        <Column marginHorizontal={Size.S}>
+                          <StarIcon />
+                        </Column>
+                        <Paragraph1 marginHorizontal={Size.S}>
                           Starred
                         </Paragraph1>
                       </ListItem>
@@ -540,8 +582,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                       onPress={onListItemPress}
                     >
                       <ListItem size={Size.M}>
-                        <WatchLaterIcon marginHorizontal={Size.XS} />
-                        <Paragraph1 marginHorizontal={Size.XS}>
+                        <Column marginHorizontal={Size.S}>
+                          <WatchLaterIcon />
+                        </Column>
+                        <Paragraph1 marginHorizontal={Size.S}>
                           Snoozed
                         </Paragraph1>
                         <Column flexGrow={1} />
@@ -561,8 +605,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                       onPress={onListItemPress}
                     >
                       <ListItem size={Size.M}>
-                        <LabelIcon marginHorizontal={Size.XS} />
-                        <Paragraph1 marginHorizontal={Size.XS}>
+                        <Column marginHorizontal={Size.S}>
+                          <LabelIcon />
+                        </Column>
+                        <Paragraph1 marginHorizontal={Size.S}>
                           Important
                         </Paragraph1>
                         <Column flexGrow={1} />
@@ -581,7 +627,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 </ComponentsThemeContext.Provider>
               )}
             </ComponentsThemeContext.Consumer>
-            <Column margin={Size.M}>
+            <Column margin={Size.L}>
               <Paragraph1>
                 List: <Paragraph2>ColorTheme.SurfaceNormal</Paragraph2>
               </Paragraph1>
@@ -592,7 +638,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
             <List maxWidth={listMaxWidth}>
               <TouchableSurface contained={false} onPress={onListItemPress}>
                 <ListItem size={Size.M}>
-                  <Column flexShrink={1} marginHorizontal={Size.XS}>
+                  <Column flexShrink={1} marginHorizontal={Size.S}>
                     <Paragraph1 numberOfLines={1}>
                       Brunch this weekend?
                     </Paragraph1>
@@ -611,7 +657,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 onPress={onListItemPress}
               >
                 <ListItem size={Size.L}>
-                  <Column flexShrink={1} marginHorizontal={Size.XS}>
+                  <Column flexShrink={1} marginHorizontal={Size.S}>
                     <Paragraph1 numberOfLines={1}>Summer BBQ</Paragraph1>
                     <Paragraph2 numberOfLines={1}>
                       to Alex, Scott, Jennifer -
@@ -624,7 +670,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
               </TouchableSurface>
               <TouchableSurface contained={false} onPress={onListItemPress}>
                 <ListItem size={Size.L}>
-                  <Column flexShrink={1} marginHorizontal={Size.XS}>
+                  <Column flexShrink={1} marginHorizontal={Size.S}>
                     <Paragraph1 numberOfLines={1}>Birthday Gift</Paragraph1>
                     <Paragraph2 numberOfLines={1}>
                       Trevor Hansen -
@@ -637,7 +683,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 </ListItem>
               </TouchableSurface>
             </List>
-            <Column margin={Size.M}>
+            <Column margin={Size.L}>
               <Paragraph1>
                 List:{' '}
                 <Paragraph2>ColorTheme.SurfaceNormal (default)</Paragraph2>
@@ -649,11 +695,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
             <List maxWidth={listMaxWidth}>
               <TouchableSurface contained={false} onPress={onListItemPress}>
                 <ListItem size={Size.L}>
-                  <AccountCircleIcon
-                    marginHorizontal={Size.XS}
-                    size={Size.XL}
-                  />
-                  <Column flexShrink={1} marginHorizontal={Size.XS}>
+                  <Column marginHorizontal={Size.S}>
+                    <AccountCircleIcon size={Size.XL} />
+                  </Column>
+                  <Column flexShrink={1} marginHorizontal={Size.S}>
                     <Paragraph1 numberOfLines={1}>
                       Brunch this weekend?
                     </Paragraph1>
@@ -672,11 +717,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 onPress={onListItemPress}
               >
                 <ListItem size={Size.L}>
-                  <AccountCircleIcon
-                    marginHorizontal={Size.XS}
-                    size={Size.XL}
-                  />
-                  <Column flexShrink={1} marginHorizontal={Size.XS}>
+                  <Column marginHorizontal={Size.S}>
+                    <AccountCircleIcon size={Size.XL} />
+                  </Column>
+                  <Column flexShrink={1} marginHorizontal={Size.S}>
                     <Paragraph1 numberOfLines={1}>Summer BBQ</Paragraph1>
                     <Paragraph2 numberOfLines={1}>
                       to Alex, Scott, Jennifer -
@@ -689,11 +733,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
               </TouchableSurface>
               <TouchableSurface contained={false} onPress={onListItemPress}>
                 <ListItem size={Size.L}>
-                  <AccountCircleIcon
-                    marginHorizontal={Size.XS}
-                    size={Size.XL}
-                  />
-                  <Column flexShrink={1} marginHorizontal={Size.XS}>
+                  <Column marginHorizontal={Size.S}>
+                    <AccountCircleIcon size={Size.XL} />
+                  </Column>
+                  <Column flexShrink={1} marginHorizontal={Size.S}>
                     <Paragraph1 numberOfLines={1}>Birthday Gift</Paragraph1>
                     <Paragraph2 numberOfLines={1}>
                       Trevor Hansen -
@@ -706,7 +749,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 </ListItem>
               </TouchableSurface>
             </List>
-            <Column margin={Size.M}>
+            <Column margin={Size.L}>
               <Paragraph1>
                 List:{' '}
                 <Paragraph2>ColorTheme.SurfaceNormal (default)</Paragraph2>
@@ -718,11 +761,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
             <List maxWidth={listMaxWidth}>
               <TouchableSurface contained={false} onPress={onListItemPress}>
                 <ListItem size={Size.XL}>
-                  <AccountCircleIcon
-                    marginHorizontal={Size.XS}
-                    size={Size.XL}
-                  />
-                  <Column flexShrink={1} marginHorizontal={Size.XS}>
+                  <Column marginHorizontal={Size.S}>
+                    <AccountCircleIcon size={Size.XL} />
+                  </Column>
+                  <Column flexShrink={1} marginHorizontal={Size.S}>
                     <Paragraph1 numberOfLines={1}>
                       Brunch this weekend?
                     </Paragraph1>
@@ -741,11 +783,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 onPress={onListItemPress}
               >
                 <ListItem size={Size.XL}>
-                  <AccountCircleIcon
-                    marginHorizontal={Size.XS}
-                    size={Size.XL}
-                  />
-                  <Column flexShrink={1} marginHorizontal={Size.XS}>
+                  <Column marginHorizontal={Size.S}>
+                    <AccountCircleIcon size={Size.XL} />
+                  </Column>
+                  <Column flexShrink={1} marginHorizontal={Size.S}>
                     <Paragraph1 numberOfLines={1}>Summer BBQ</Paragraph1>
                     <Paragraph2 numberOfLines={1}>
                       to Alex, Scott, Jennifer -
@@ -758,11 +799,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
               </TouchableSurface>
               <TouchableSurface contained={false} onPress={onListItemPress}>
                 <ListItem size={Size.XL}>
-                  <AccountCircleIcon
-                    marginHorizontal={Size.XS}
-                    size={Size.XL}
-                  />
-                  <Column flexShrink={1} marginHorizontal={Size.XS}>
+                  <Column marginHorizontal={Size.S}>
+                    <AccountCircleIcon size={Size.XL} />
+                  </Column>
+                  <Column flexShrink={1} marginHorizontal={Size.S}>
                     <Paragraph1 numberOfLines={1}>Birthday Gift</Paragraph1>
                     <Paragraph2 numberOfLines={1}>
                       Trevor Hansen -
@@ -775,7 +815,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 </ListItem>
               </TouchableSurface>
             </List>
-            <Column margin={Size.M}>
+            <Column margin={Size.L}>
               <Paragraph1>
                 List:{' '}
                 <Paragraph2>ColorTheme.SurfaceNormal (default)</Paragraph2>
@@ -787,11 +827,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
             <List maxWidth={listMaxWidth}>
               <TouchableSurface contained={false} onPress={onListItemPress}>
                 <ListItem size={Size.XXL}>
-                  <AccountCircleIcon
-                    marginHorizontal={Size.XS}
-                    size={Size.XL}
-                  />
-                  <Column flexShrink={1} marginHorizontal={Size.XS}>
+                  <Column marginHorizontal={Size.S}>
+                    <AccountCircleIcon size={Size.XL} />
+                  </Column>
+                  <Column flexShrink={1} marginHorizontal={Size.S}>
                     <Paragraph1 numberOfLines={1}>
                       Brunch this weekend?
                     </Paragraph1>
@@ -810,11 +849,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
                 onPress={onListItemPress}
               >
                 <ListItem size={Size.XXL}>
-                  <AccountCircleIcon
-                    marginHorizontal={Size.XS}
-                    size={Size.XL}
-                  />
-                  <Column flexShrink={1} marginHorizontal={Size.XS}>
+                  <Column marginHorizontal={Size.S}>
+                    <AccountCircleIcon size={Size.XL} />
+                  </Column>
+                  <Column flexShrink={1} marginHorizontal={Size.S}>
                     <Paragraph1 numberOfLines={1}>Summer BBQ</Paragraph1>
                     <Paragraph2 numberOfLines={2}>
                       to Alex, Scott, Jennifer -
@@ -827,11 +865,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => (
               </TouchableSurface>
               <TouchableSurface contained={false} onPress={onListItemPress}>
                 <ListItem size={Size.XXL}>
-                  <AccountCircleIcon
-                    marginHorizontal={Size.XS}
-                    size={Size.XL}
-                  />
-                  <Column flexShrink={1} marginHorizontal={Size.XS}>
+                  <Column marginHorizontal={Size.S}>
+                    <AccountCircleIcon size={Size.XL} />
+                  </Column>
+                  <Column flexShrink={1} marginHorizontal={Size.S}>
                     <Paragraph1 numberOfLines={1}>Birthday Gift</Paragraph1>
                     <Paragraph2 numberOfLines={2}>
                       Trevor Hansen -
