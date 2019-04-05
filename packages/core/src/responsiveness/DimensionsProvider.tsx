@@ -5,7 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-// tslint:disable-next-line:import-name
 import React, { useEffect, useState } from 'react';
 import { Dimensions, ScaledSize } from 'react-native';
 

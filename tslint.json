@@ -25,6 +25,7 @@
     "class-name": true,
     "curly": [true, "ignore-same-line"],
     "forin": true,
+    "import-name": [true, { "react": "React" }],
     "interface-name": [true, "never-prefix"],
     "jsdoc-format": true,
     "jsx-boolean-value": false,
