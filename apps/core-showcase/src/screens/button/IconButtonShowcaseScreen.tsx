@@ -44,16 +44,14 @@ const getButtonPatchTheme: ComponentThemeGetter<ButtonProps, ButtonTheme> = ({
       : '#ff0000';
 
   return {
-    getIcon: () => ({
-      svg: {
-        getProps: () => ({
-          fill: iconColor,
-          height: 100,
-          stroke,
-          strokeWidth: 2,
-          width: 100,
-        }),
-      },
+    icon: () => ({
+      getProps: () => ({
+        fill: iconColor,
+        height: 100,
+        stroke,
+        strokeWidth: 2,
+        width: 100,
+      }),
     }),
     surface: () => ({
       getStyle: () => ({

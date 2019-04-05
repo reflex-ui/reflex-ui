@@ -17,10 +17,10 @@ import { getOutlinedButtonSurfaceTheme } from './container';
 import { outlinedButtonTextTheme } from './text';
 
 export const partialOutlinedButtonTheme: Partial<ButtonTheme> = {
-  getLeadingIcon: getDefaultButtonLeadingIconTheme,
-  getTrailingIcon: getDefaultButtonTrailingIconTheme,
+  leadingIcon: getDefaultButtonLeadingIconTheme,
   surface: getOutlinedButtonSurfaceTheme,
   text: outlinedButtonTextTheme,
+  trailingIcon: getDefaultButtonTrailingIconTheme,
 };
 
 export const outlinedButtonTheme: ButtonTheme = merge<

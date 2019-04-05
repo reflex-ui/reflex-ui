@@ -7,24 +7,28 @@
 
 import * as React from 'react';
 
-import { handleChildrenProps } from '../handleChildrenProps';
-import { handlePatchThemeProps } from '../handlePatchThemeProps';
+import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { processComponent } from '../processComponent';
-import { validateNoStyleProps } from '../validateNoStyleProps';
-import { handleRfxSvgChildren, renderRfxSvgView } from './RfxSvg';
+import { processComponentProps } from '../processComponentProps';
+import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
+// tslint:disable-next-line:max-line-length
+import { applySvgPropsAndThemeToSvgElement } from './applySvgPropsAndThemeToSvgElement';
 import { RfxSvgPropsOptional } from './RfxSvgProps';
 import { useDefaultRfxSvgIconProps } from './useDefaultRfxSvgIconProps';
 
 let RfxSvgIcon: React.ComponentType<RfxSvgPropsOptional> = (
   props: RfxSvgPropsOptional,
 ) => {
-  validateNoStyleProps(props);
   let newProps = useDefaultRfxSvgIconProps(props);
-  if (props.children === undefined || props.children === null) return null;
-  newProps = handlePatchThemeProps(newProps);
-  newProps = handleChildrenProps(newProps);
-  newProps = handleRfxSvgChildren(newProps);
-  return renderRfxSvgView(newProps);
+  newProps = { ...newProps, ...useOnLayout(newProps) };
+  if (newProps.children === undefined || newProps.children === null) {
+    return null;
+  }
+  newProps = processComponentProps(newProps);
+  newProps = processThemeAndStyleProps(newProps, newProps.theme);
+
+  const svgElement = applySvgPropsAndThemeToSvgElement(newProps);
+  return <React.Fragment>{svgElement}</React.Fragment>;
 };
 
 RfxSvgIcon = processComponent<RfxSvgPropsOptional>(RfxSvgIcon, {

@@ -6,20 +6,13 @@
  */
 
 import {
-  BuiltInViewTheme,
-  getSizedMarginStyle,
   getThemedOnColor,
   RfxSvgProps,
   RfxSvgTheme,
   SizedData,
   SvgPropsGetter,
-  SvgTheme,
-  ViewStyleGetter,
 } from '@reflex-ui/core';
 import { SvgProps } from 'react-native-svg';
-
-import { getSizingStyle } from '../../sizing/getSizingStyle';
-import { sizedSpacing } from '../../spacing/sizedSpacing';
 
 export const rfxSvgSvgSizedProps: SizedData<SvgProps> = {
   xxsmall: { height: 50, width: 50 },
@@ -46,24 +39,10 @@ export const getSvgColorProps: SvgPropsGetter<RfxSvgProps> = props => {
 };
 
 export const getRfxSvgSvgProps: SvgPropsGetter<RfxSvgProps> = props => ({
-  ...rfxSvgSvgSizedProps[props.size],
+  ...(props.size && rfxSvgSvgSizedProps[props.size]),
   ...getSvgColorProps(props),
 });
 
-export const rfxSvgSvgTheme: SvgTheme<RfxSvgProps> = {
-  getProps: getRfxSvgSvgProps,
-};
-
-export const getRfxSvgContainerStyle: ViewStyleGetter<RfxSvgProps> = props => ({
-  ...getSizedMarginStyle(sizedSpacing)(props),
-  ...getSizingStyle(props),
-});
-
-export const rfxSvgContainerTheme: BuiltInViewTheme<RfxSvgProps> = {
-  getStyle: getRfxSvgContainerStyle,
-};
-
 export const rfxSvgTheme: RfxSvgTheme = {
-  container: rfxSvgContainerTheme,
-  svg: rfxSvgSvgTheme,
+  getProps: getRfxSvgSvgProps,
 };

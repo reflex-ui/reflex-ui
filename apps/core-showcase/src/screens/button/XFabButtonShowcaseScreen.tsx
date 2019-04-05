@@ -43,15 +43,8 @@ const getButtonPatchTheme: ComponentThemeGetter<ButtonProps, ButtonTheme> = ({
       : '#fff';
 
   return {
-    getLeadingIcon: () => ({
-      svg: {
-        getProps: () => ({ fill: textColor }),
-      },
-    }),
-    getTrailingIcon: () => ({
-      svg: {
-        getProps: () => ({ fill: textColor }),
-      },
+    leadingIcon: () => ({
+      getProps: () => ({ fill: textColor }),
     }),
     surface: () => ({
       getStyle: () => ({ backgroundColor }),
@@ -59,6 +52,9 @@ const getButtonPatchTheme: ComponentThemeGetter<ButtonProps, ButtonTheme> = ({
     text: {
       getStyle: () => ({ color: textColor }),
     },
+    trailingIcon: () => ({
+      getProps: () => ({ fill: textColor }),
+    }),
   };
 };
 

@@ -6,6 +6,7 @@
  */
 
 import * as React from 'react';
+import { ViewProps } from 'react-native';
 
 import { InteractionStateContext } from '../../interaction';
 import { useInteraction } from '../../interaction/useInteraction';
@@ -13,6 +14,8 @@ import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { cloneElement } from '../../utils/cloneElement';
 import { filterOutInteractionProps } from '../../utils/props';
 import { getPropsAndStyleFromTheme } from '../getPropsAndStyleFromTheme';
+import { getPropsFromTheme } from '../getPropsFromTheme';
+import { getStyleFromTheme } from '../getStyleFromTheme';
 import { mergeThemes } from '../mergeThemes';
 import { processComponent } from '../processComponent';
 import { processComponentProps } from '../processComponentProps';
@@ -24,6 +27,7 @@ import { RfxSvgTheme } from '../svg/RfxSvgTheme';
 import { renderTextComponent } from '../text';
 // tslint:disable-next-line:max-line-length
 import { renderTouchableComponent } from '../touchable/renderTouchableComponent';
+import { renderViewComponent } from '../view/renderViewComponent';
 import { ButtonProps, ButtonPropsOptional } from './ButtonProps';
 import { ButtonVariant } from './ButtonVariant';
 import { useDefaultButtonProps } from './useDefaultButtonProps';
@@ -50,11 +54,21 @@ export const handleButtonChildren = (props: ButtonProps): React.ReactNode => {
     props.variant === ButtonVariant.Fab ||
     props.variant === ButtonVariant.Icon
   ) {
-    return handleButtonIcon({
+    const iconElement = handleButtonIcon({
       icon: children as React.ReactElement<RfxSvgPropsOptional>,
-      iconTheme: theme.getIcon && theme.getIcon(props),
+      iconTheme: theme.icon && theme.icon(props),
       mergeProps: { key: 'icon' },
     });
+
+    const viewProps: React.PropsWithChildren<ViewProps> & { key?: string } = {
+      ...getPropsFromTheme(props, theme.iconContainer),
+      children: iconElement,
+      key: 'iconContainer',
+      style: getStyleFromTheme(props, theme.iconContainer),
+    };
+
+    const ViewComponent = theme.iconContainer && theme.iconContainer.component;
+    return renderViewComponent(props, viewProps, ViewComponent);
   }
 
   return children;
@@ -97,22 +111,47 @@ export const handleButtonIcon = (
 
 export const handleLeadingIcon = (
   props: ButtonProps,
-): JSX.Element | undefined =>
-  handleButtonIcon({
+): JSX.Element | undefined => {
+  const iconElement = handleButtonIcon({
     icon: props.leadingIcon as React.ReactElement<RfxSvgPropsOptional>,
-    iconTheme: props.theme.getLeadingIcon && props.theme.getLeadingIcon(props),
+    iconTheme: props.theme.leadingIcon && props.theme.leadingIcon(props),
     mergeProps: { key: 'leadingIcon' },
   });
 
+  const { theme } = props;
+  const viewProps: React.PropsWithChildren<ViewProps> & { key?: string } = {
+    ...getPropsFromTheme(props, theme.leadingIconContainer),
+    children: iconElement,
+    key: 'leadingIconContainer',
+    style: getStyleFromTheme(props, theme.leadingIconContainer),
+  };
+
+  const ViewComponent =
+    theme.leadingIconContainer && theme.leadingIconContainer.component;
+  return renderViewComponent(props, viewProps, ViewComponent);
+};
+
 export const handleTrailingIcon = (
   props: ButtonProps,
-): JSX.Element | undefined =>
-  handleButtonIcon({
+): JSX.Element | undefined => {
+  const iconElement = handleButtonIcon({
     icon: props.trailingIcon as React.ReactElement<RfxSvgPropsOptional>,
-    iconTheme:
-      props.theme.getTrailingIcon && props.theme.getTrailingIcon(props),
+    iconTheme: props.theme.trailingIcon && props.theme.trailingIcon(props),
     mergeProps: { key: 'trailingIcon' },
   });
+
+  const { theme } = props;
+  const viewProps: React.PropsWithChildren<ViewProps> & { key?: string } = {
+    ...getPropsFromTheme(props, theme.trailingIconContainer),
+    children: iconElement,
+    key: 'trailingIconContainer',
+    style: getStyleFromTheme(props, theme.trailingIconContainer),
+  };
+
+  const ViewComponent =
+    theme.trailingIconContainer && theme.trailingIconContainer.component;
+  return renderViewComponent(props, viewProps, ViewComponent);
+};
 
 export const extractSurfacePropsFromButtonProps = (
   props: ButtonProps,

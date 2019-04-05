@@ -13,7 +13,7 @@ import { getFabButtonSurfaceTheme } from './container';
 import { getFabButtonIconTheme } from './icon';
 
 export const partialFabButtonTheme: Partial<ButtonTheme> = {
-  getIcon: getFabButtonIconTheme,
+  icon: getFabButtonIconTheme,
   surface: getFabButtonSurfaceTheme,
 };
 

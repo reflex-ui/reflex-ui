@@ -5,11 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { BuiltInViewTheme } from '../view/ViewTheme';
 import { RfxSvgProps } from './RfxSvgProps';
 import { SvgTheme } from './SvgTheme';
 
-export interface RfxSvgTheme {
-  readonly container?: BuiltInViewTheme<RfxSvgProps>;
-  readonly svg?: SvgTheme<RfxSvgProps>;
-}
+export type RfxSvgTheme = SvgTheme<RfxSvgProps>;

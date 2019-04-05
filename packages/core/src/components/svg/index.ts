@@ -5,6 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+export * from './applySvgPropsAndThemeToSvgElement';
+export * from './extractSvgPropsFromRfxSvgProps';
 export * from './RfxSvg';
 export * from './RfxSvgIcon';
 export * from './RfxSvgProps';

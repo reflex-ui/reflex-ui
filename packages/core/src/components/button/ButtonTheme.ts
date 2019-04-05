@@ -10,13 +10,17 @@ import { SurfaceTheme } from '../surface/SurfaceTheme';
 import { RfxSvgTheme } from '../svg/RfxSvgTheme';
 import { BuiltInTextTheme } from '../text/TextTheme';
 import { BuiltInTouchableTheme } from '../touchable/TouchableTheme';
+import { BuiltInViewTheme } from '../view/ViewTheme';
 import { ButtonProps } from './ButtonProps';
 
 export interface ButtonTheme {
-  readonly getIcon?: ComponentThemeGetter<ButtonProps, RfxSvgTheme>;
-  readonly getLeadingIcon?: ComponentThemeGetter<ButtonProps, RfxSvgTheme>;
+  readonly icon?: ComponentThemeGetter<ButtonProps, RfxSvgTheme>;
+  readonly iconContainer?: BuiltInViewTheme<ButtonProps>;
+  readonly leadingIcon?: ComponentThemeGetter<ButtonProps, RfxSvgTheme>;
+  readonly leadingIconContainer?: BuiltInViewTheme<ButtonProps>;
   readonly surface?: ComponentThemeGetter<ButtonProps, SurfaceTheme>;
   readonly text?: BuiltInTextTheme<ButtonProps>;
   readonly touchable?: BuiltInTouchableTheme<ButtonProps>;
-  readonly getTrailingIcon?: ComponentThemeGetter<ButtonProps, RfxSvgTheme>;
+  readonly trailingIcon?: ComponentThemeGetter<ButtonProps, RfxSvgTheme>;
+  readonly trailingIconContainer?: BuiltInViewTheme<ButtonProps>;
 }

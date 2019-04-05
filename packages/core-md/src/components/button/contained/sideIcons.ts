@@ -12,10 +12,6 @@ import {
 } from '@reflex-ui/core';
 
 import {
-  getAllVariantsButtonLeadingIconContainerStyle,
-  getAllVariantsButtonTrailingIconContainerStyle,
-} from '../all-variants/sideIconContainers';
-import {
   getAllVariantsButtonLeadingIconProps,
   getAllVariantsButtonTrailingIconProps,
 } from '../all-variants/sideIcons';
@@ -24,22 +20,12 @@ export const getContainedButtonLeadingIconTheme: ComponentThemeGetter<
   ButtonProps,
   RfxSvgTheme
 > = (props): RfxSvgTheme => ({
-  container: {
-    getStyle: () => getAllVariantsButtonLeadingIconContainerStyle(props),
-  },
-  svg: {
-    getProps: () => getAllVariantsButtonLeadingIconProps(props),
-  },
+  getProps: () => getAllVariantsButtonLeadingIconProps(props),
 });
 
 export const getContainedButtonTrailingIconTheme: ComponentThemeGetter<
   ButtonProps,
   RfxSvgTheme
 > = (props): RfxSvgTheme => ({
-  container: {
-    getStyle: () => getAllVariantsButtonTrailingIconContainerStyle(props),
-  },
-  svg: {
-    getProps: () => getAllVariantsButtonTrailingIconProps(props),
-  },
+  getProps: () => getAllVariantsButtonTrailingIconProps(props),
 });

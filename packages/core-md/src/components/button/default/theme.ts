@@ -9,14 +9,20 @@ import { ButtonTheme } from '@reflex-ui/core';
 
 import { getDefaultButtonSurfaceTheme } from './container';
 import {
+  defaultButtonLeadingIconContainerTheme,
+  defaultButtonTrailingIconContainerTheme,
+} from './sideIconContainers';
+import {
   getDefaultButtonLeadingIconTheme,
   getDefaultButtonTrailingIconTheme,
 } from './sideIcons';
 import { defaultButtonTextTheme } from './text';
 
 export const defaultButtonTheme: ButtonTheme = {
-  getLeadingIcon: getDefaultButtonLeadingIconTheme,
-  getTrailingIcon: getDefaultButtonTrailingIconTheme,
+  leadingIcon: getDefaultButtonLeadingIconTheme,
+  leadingIconContainer: defaultButtonLeadingIconContainerTheme,
   surface: getDefaultButtonSurfaceTheme,
   text: defaultButtonTextTheme,
+  trailingIcon: getDefaultButtonTrailingIconTheme,
+  trailingIconContainer: defaultButtonTrailingIconContainerTheme,
 };
