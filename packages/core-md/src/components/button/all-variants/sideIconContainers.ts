@@ -50,7 +50,10 @@ export const allVariantsButtonLeadingIconContainerSizedStyle: SizedData<
 
 export const getAllVariantsButtonLeadingIconContainerStyle: ViewStyleGetter<
   ButtonProps
-> = props => allVariantsButtonLeadingIconContainerSizedStyle[props.size];
+> = props => ({
+  ...(props.size &&
+    allVariantsButtonLeadingIconContainerSizedStyle[props.size]),
+});
 
 export const allVariantsButtonTrailingIconContainerSizedStyle: SizedData<
   ViewStyle
@@ -93,4 +96,6 @@ export const allVariantsButtonTrailingIconContainerSizedStyle: SizedData<
 
 export const getAllVariantsButtonTrailingIconContainerStyle: ViewStyleGetter<
   ButtonProps
-> = ({ size }) => allVariantsButtonTrailingIconContainerSizedStyle[size];
+> = ({ size }) => ({
+  ...(size && allVariantsButtonTrailingIconContainerSizedStyle[size]),
+});

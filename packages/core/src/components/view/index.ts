@@ -7,12 +7,16 @@
 
 export * from './Column';
 export * from './DefaultView';
-export * from './RfxView';
+export * from './renderRfxViewComponent';
+export * from './renderViewComponent';
 export * from './RfxViewProps';
 export * from './RfxViewTheme';
 export * from './RfxViewVariantsTheme';
 export * from './Row';
+export * from './useDefaultColumnProps';
 export * from './useDefaultRfxViewProps';
+export * from './useDefaultRowProps';
+export * from './useShouldProvideColorTheme';
 export * from './ViewPropsGetter';
 export * from './ViewStyleGetter';
 export * from './ViewTheme';

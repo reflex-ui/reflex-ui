@@ -8,16 +8,13 @@
 import { ComponentThemeProps } from './ComponentThemeProps';
 import { mergeThemes } from './mergeThemes';
 
-export const handlePatchThemeProps = <
+export const mergeThemeAndPatchTheme = <
   ComponentProps extends ComponentThemeProps<ComponentProps, ComponentTheme>,
   ComponentTheme
 >(
   props: ComponentProps,
-) => {
-  if (!props.getPatchTheme) return props;
-
-  return {
-    ...props,
-    theme: mergeThemes(props.theme, props.getPatchTheme(props)),
-  };
+): ComponentTheme => {
+  const { getPatchTheme, theme } = props;
+  if (getPatchTheme === undefined || getPatchTheme === null) return theme;
+  return mergeThemes(theme, getPatchTheme(props));
 };

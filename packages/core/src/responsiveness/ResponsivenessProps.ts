@@ -8,6 +8,7 @@
 import { LayoutChangeEvent, LayoutRectangle } from 'react-native';
 
 export interface ResponsivenessProps {
+  readonly enableOnLayout?: boolean;
   readonly layoutRectangle?: LayoutRectangle;
   /*
    * We cannot use 'readonly' here because it causes

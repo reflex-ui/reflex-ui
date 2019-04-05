@@ -39,22 +39,18 @@ const getButtonPatchTheme: ComponentThemeGetter<ButtonProps, ButtonTheme> = ({
       : '#c70ad0';
 
   return {
-    container: {
-      getStyle: () => ({ backgroundColor, borderColor: textColor }),
-    },
-    getLeadingIcon: () => ({
-      svg: {
-        getProps: () => ({ fill: textColor }),
-      },
+    leadingIcon: () => ({
+      getProps: () => ({ fill: textColor }),
     }),
-    getTrailingIcon: () => ({
-      svg: {
-        getProps: () => ({ fill: textColor }),
-      },
+    surface: () => ({
+      getStyle: () => ({ backgroundColor, borderColor: textColor }),
     }),
     text: {
       getStyle: () => ({ color: textColor }),
     },
+    trailingIcon: () => ({
+      getProps: () => ({ fill: textColor }),
+    }),
   };
 };
 

@@ -20,8 +20,10 @@ import {
   OutlinedButtonShowcaseScreen,
   OutlinedShapedButtonShowcaseScreen,
   RfxTextScreen,
+  SurfaceScreen,
   SvgShowcaseScreen,
   TestShowcaseScreen,
+  TouchableSurfaceScreen,
   XFabButtonShowcaseScreen,
 } from '../screens';
 import { withAppLogic } from '../withAppLogic';
@@ -55,6 +57,10 @@ const ListNavigation = {
   default: `${appNavigationPrefix}list.ListScreen`,
 };
 
+const SurfaceNavigation = {
+  default: `${appNavigationPrefix}surface.SurfaceScreen`,
+};
+
 const SvgNavigation = {
   default: `${appNavigationPrefix}svg.SvgScreen`,
 };
@@ -65,6 +71,10 @@ const RfxTextNavigation = {
 
 const TestNavigation = {
   default: `${appNavigationPrefix}test.TestShowcaseScreen`,
+};
+
+const TouchableSurfaceNavigation = {
+  default: `${appNavigationPrefix}touchableSurface.TouchableSurfaceScreen`,
 };
 
 const registerScreens = () => {
@@ -108,6 +118,10 @@ const registerScreens = () => {
   Navigation.registerComponent(ListNavigation.default, () =>
     withAppLogic(ListShowcaseScreen),
   );
+  /* SURFACE */
+  Navigation.registerComponent(SurfaceNavigation.default, () =>
+    withAppLogic(SurfaceScreen),
+  );
   /* SVG */
   Navigation.registerComponent(SvgNavigation.default, () =>
     withAppLogic(SvgShowcaseScreen),
@@ -115,6 +129,10 @@ const registerScreens = () => {
   /* TEST */
   Navigation.registerComponent(TestNavigation.default, () =>
     withAppLogic(TestShowcaseScreen),
+  );
+  /* TOUCHABLE SURFACE */
+  Navigation.registerComponent(TouchableSurfaceNavigation.default, () =>
+    withAppLogic(TouchableSurfaceScreen),
   );
   /* REFLEX TEXT */
   Navigation.registerComponent(RfxTextNavigation.default, () =>

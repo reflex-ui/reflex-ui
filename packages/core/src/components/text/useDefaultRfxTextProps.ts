@@ -12,6 +12,7 @@ import { InteractionStateContext } from '../../interaction';
 import { ColorTheme } from '../../palette/ColorTheme';
 import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
+import { DimensionsContext } from '../../responsiveness/DimensionsContext';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { RfxTextProps, RfxTextPropsOptional } from './RfxTextProps';
 
@@ -20,6 +21,7 @@ export const useDefaultRfxTextProps = (
 ): RfxTextProps => {
   const colorThemeOnCtx = useContext(ColorThemeContext);
   const componentsTheme = useContext(ComponentsThemeContext);
+  const dimensionsProps = useContext(DimensionsContext);
   const interactionStateFromCtx = useContext(InteractionStateContext);
   const paletteTheme = useContext(PaletteThemeContext);
 
@@ -36,6 +38,7 @@ export const useDefaultRfxTextProps = (
 
   return {
     colorTheme,
+    ...dimensionsProps,
     interactionState: interactionStateFromCtx,
     paletteTheme,
     theme,

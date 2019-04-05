@@ -5,24 +5,14 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  getSizedMarginStyle,
-  getSizedPaddingStyle,
-  getThemedColor,
-  ListProps,
-  ListTheme,
-  ViewStyleGetter,
-} from '@reflex-ui/core';
+import { ListProps, ListTheme, ViewStyleGetter } from '@reflex-ui/core';
 
-import { getSizingStyle } from '../../sizing/getSizingStyle';
-import { sizedSpacing } from '../../spacing/sizedSpacing';
+import { getSurfaceContainerStyle } from '../surface/theme';
 
 export const getListContainerStyle: ViewStyleGetter<ListProps> = props => ({
-  backgroundColor: getThemedColor(props),
+  ...getSurfaceContainerStyle(props),
+  borderRadius: 0,
   paddingVertical: 8,
-  ...getSizedMarginStyle(sizedSpacing)(props),
-  ...getSizedPaddingStyle(sizedSpacing)(props),
-  ...getSizingStyle(props),
 });
 
 export const listTheme: ListTheme = {

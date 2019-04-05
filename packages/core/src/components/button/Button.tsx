@@ -5,58 +5,31 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import merge from 'lodash/merge';
 import * as React from 'react';
-import {
-  Text as RNText,
-  TouchableWithoutFeedback,
-  TouchableWithoutFeedbackProps,
-  View,
-} from 'react-native';
+import { ViewProps } from 'react-native';
 
+import { InteractionStateContext } from '../../interaction';
 import { useInteraction } from '../../interaction/useInteraction';
+import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { cloneElement } from '../../utils/cloneElement';
-import { getPropsAndStyleFromTheme } from '../getPropsAndStyleFromTheme';
-import { handleChildrenProps } from '../handleChildrenProps';
-import { handlePatchThemeProps } from '../handlePatchThemeProps';
+import { filterOutInteractionProps } from '../../utils/props';
+import { getPropsFromTheme } from '../getPropsFromTheme';
+import { getStyleFromTheme } from '../getStyleFromTheme';
 import { mergeThemes } from '../mergeThemes';
 import { processComponent } from '../processComponent';
+import { processComponentProps } from '../processComponentProps';
+import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
+import { Surface } from '../surface/Surface';
+import { SurfacePropsOptional } from '../surface/SurfaceProps';
 import { RfxSvgPropsOptional } from '../svg/RfxSvgProps';
 import { RfxSvgTheme } from '../svg/RfxSvgTheme';
-import { validateNoStyleProps } from '../validateNoStyleProps';
+import { renderTextComponent } from '../text';
+// tslint:disable-next-line:max-line-length
+import { renderTouchableComponent } from '../touchable/renderTouchableComponent';
+import { renderViewComponent } from '../view/renderViewComponent';
 import { ButtonProps, ButtonPropsOptional } from './ButtonProps';
 import { ButtonVariant } from './ButtonVariant';
 import { useDefaultButtonProps } from './useDefaultButtonProps';
-
-export const extractTouchablePropsFromButtonProps = (
-  props: ButtonProps,
-): TouchableWithoutFeedbackProps => {
-  const {
-    children,
-    colorTheme,
-    contained,
-    fullWidth,
-    getPatchTheme,
-    interactionState,
-    invertColor,
-    leadingIcon,
-    margin,
-    marginBottom,
-    marginEnd,
-    marginHorizontal,
-    marginStart,
-    marginTop,
-    marginVertical,
-    paletteTheme,
-    trailingIcon,
-    size,
-    theme,
-    variant,
-    ...touchableProps
-  } = props;
-
-  return touchableProps;
-};
 
 export const handleButtonChildren = (props: ButtonProps): React.ReactNode => {
   const { children, theme } = props;
@@ -67,59 +40,54 @@ export const handleButtonChildren = (props: ButtonProps): React.ReactNode => {
     typeof children === 'number' ||
     typeof children === 'boolean'
   ) {
-    return handleButtonStringChildren(children.toString(), props);
+    const Text = props.theme.text && props.theme.text.component;
+    const textProps = {
+      ...getPropsFromTheme(props, props.theme.text),
+      children: children.toString(),
+      key: 'text',
+      style: getStyleFromTheme(props, props.theme.text),
+    };
+    return renderTextComponent(props, textProps, Text);
   }
 
   if (
     props.variant === ButtonVariant.Fab ||
     props.variant === ButtonVariant.Icon
   ) {
-    return handleButtonIcon({
+    const iconElement = handleButtonIcon({
       icon: children as React.ReactElement<RfxSvgPropsOptional>,
-      iconTheme: theme.getIcon && theme.getIcon(props),
-      props,
+      iconTheme: theme.icon && theme.icon(props),
+      mergeProps: { key: 'icon' },
     });
+
+    const viewProps: React.PropsWithChildren<ViewProps> & { key?: string } = {
+      ...getPropsFromTheme(props, theme.iconContainer),
+      children: iconElement,
+      key: 'iconContainer',
+      style: getStyleFromTheme(props, theme.iconContainer),
+    };
+
+    const ViewComponent = theme.iconContainer && theme.iconContainer.component;
+    return renderViewComponent(props, viewProps, ViewComponent);
   }
 
   return children;
 };
 
-export const handleButtonStringChildren = (
-  children: string,
-  props: ButtonProps,
-): JSX.Element => {
-  const Text = (props.theme.text && props.theme.text.component) || RNText;
-  const textProps = getPropsAndStyleFromTheme(props, props.theme.text);
-
-  if (Text === RNText) {
-    return <Text {...textProps}>{children}</Text>;
-  }
-
-  return (
-    <Text complexComponentProps={props} {...textProps}>
-      {children}
-    </Text>
-  );
-};
-
 export interface ButtonIconHandlerInput {
   readonly icon: React.ReactElement<RfxSvgPropsOptional>;
   readonly iconTheme?: RfxSvgTheme;
-  readonly props: ButtonProps;
+  readonly mergeProps?: RfxSvgPropsOptional & { key?: string };
 }
 
 export const handleButtonIcon = (
   data: ButtonIconHandlerInput,
 ): JSX.Element | undefined => {
-  const iconProps: RfxSvgPropsOptional = {
-    colorTheme: data.props.colorTheme,
-  };
-
   let newIcon =
     data.icon &&
     cloneElement<RfxSvgPropsOptional>({
       element: data.icon,
-      props: iconProps,
+      props: data.mergeProps,
     });
 
   if (data.iconTheme) {
@@ -130,11 +98,6 @@ export const handleButtonIcon = (
         getPatchTheme: props =>
           (data.icon.props.getPatchTheme &&
             mergeThemes(
-              // data.iconTheme is validated above so this seems a TS issue.
-              // @ts-ignore Argument of type 'RfxSvgTheme | undefined' is not
-              // assignable to parameter of type 'CompositeComponentTheme'.
-              // Type 'undefined' is not assignable to type
-              // 'CompositeComponentTheme'.ts(2345)
               data.iconTheme,
               data.icon.props.getPatchTheme(props),
             )) ||
@@ -148,86 +111,105 @@ export const handleButtonIcon = (
 
 export const handleLeadingIcon = (
   props: ButtonProps,
-): JSX.Element | undefined =>
-  handleButtonIcon({
+): JSX.Element | undefined => {
+  const iconElement = handleButtonIcon({
     icon: props.leadingIcon as React.ReactElement<RfxSvgPropsOptional>,
-    iconTheme: props.theme.getLeadingIcon && props.theme.getLeadingIcon(props),
-    props,
+    iconTheme: props.theme.leadingIcon && props.theme.leadingIcon(props),
+    mergeProps: { key: 'leadingIcon' },
   });
+
+  const { theme } = props;
+  const viewProps: React.PropsWithChildren<ViewProps> & { key?: string } = {
+    ...getPropsFromTheme(props, theme.leadingIconContainer),
+    children: iconElement,
+    key: 'leadingIconContainer',
+    style: getStyleFromTheme(props, theme.leadingIconContainer),
+  };
+
+  const ViewComponent =
+    theme.leadingIconContainer && theme.leadingIconContainer.component;
+  return renderViewComponent(props, viewProps, ViewComponent);
+};
 
 export const handleTrailingIcon = (
   props: ButtonProps,
-): JSX.Element | undefined =>
-  handleButtonIcon({
+): JSX.Element | undefined => {
+  const iconElement = handleButtonIcon({
     icon: props.trailingIcon as React.ReactElement<RfxSvgPropsOptional>,
-    iconTheme:
-      props.theme.getTrailingIcon && props.theme.getTrailingIcon(props),
-    props,
+    iconTheme: props.theme.trailingIcon && props.theme.trailingIcon(props),
+    mergeProps: { key: 'trailingIcon' },
   });
 
-export const renderButtonContainer = (props: ButtonProps) => {
   const { theme } = props;
-  const Container = (theme.container && theme.container.component) || View;
-  const viewProps = getPropsAndStyleFromTheme(props, theme.container);
+  const viewProps: React.PropsWithChildren<ViewProps> & { key?: string } = {
+    ...getPropsFromTheme(props, theme.trailingIconContainer),
+    children: iconElement,
+    key: 'trailingIconContainer',
+    style: getStyleFromTheme(props, theme.trailingIconContainer),
+  };
 
-  const children = (
-    <React.Fragment>
-      {props.leadingIcon && handleLeadingIcon(props)}
-      {props.children && handleButtonChildren(props)}
-      {props.trailingIcon && handleTrailingIcon(props)}
-    </React.Fragment>
-  );
-
-  if (Container === View) {
-    return <Container {...viewProps}>{children}</Container>;
-  }
-
-  return (
-    <Container complexComponentProps={props} {...viewProps}>
-      {children}
-    </Container>
-  );
+  const ViewComponent =
+    theme.trailingIconContainer && theme.trailingIconContainer.component;
+  return renderViewComponent(props, viewProps, ViewComponent);
 };
 
-export const renderButtonTouchable = (props: ButtonProps) => {
-  const { theme } = props;
+export const extractSurfacePropsFromButtonProps = (
+  props: ButtonProps,
+): SurfacePropsOptional => {
+  const {
+    getPatchTheme,
+    leadingIcon,
+    trailingIcon,
+    theme,
+    variant,
+    ...otherProps
+  } = filterOutInteractionProps(props);
 
-  const Touchable =
-    (theme.touchable && theme.touchable.component) || TouchableWithoutFeedback;
+  let surfaceProps = otherProps as SurfacePropsOptional;
+  surfaceProps = {
+    ...surfaceProps,
+    interactionState: props.interactionState,
+  };
 
-  const touchablePropsFromTheme = getPropsAndStyleFromTheme(
-    props,
-    theme.touchable,
-  );
-  const touchableProps = extractTouchablePropsFromButtonProps(props);
-  const mergedTouchableProps = merge(
-    {},
-    touchablePropsFromTheme,
-    touchableProps,
-  );
+  const surfaceTheme = props.theme.surface && props.theme.surface(props);
 
-  const containerElement = renderButtonContainer(props);
-
-  if (Touchable === TouchableWithoutFeedback) {
-    return <Touchable {...mergedTouchableProps}>{containerElement}</Touchable>;
+  if (surfaceTheme !== undefined) {
+    surfaceProps = {
+      ...surfaceProps,
+      getPatchTheme: () => surfaceTheme,
+    };
   }
 
-  return (
-    <Touchable complexComponentProps={props} {...mergedTouchableProps}>
-      {containerElement}
-    </Touchable>
-  );
+  return surfaceProps;
 };
 
 let Button: React.ComponentType<ButtonPropsOptional> = (
   props: ButtonPropsOptional,
 ) => {
-  validateNoStyleProps(props);
   let newProps = useDefaultButtonProps(props);
   newProps = { ...newProps, ...useInteraction(newProps) };
-  newProps = handlePatchThemeProps(newProps);
-  newProps = handleChildrenProps(newProps);
-  return renderButtonTouchable(newProps);
+  newProps = { ...newProps, ...useOnLayout(newProps) };
+  newProps = processComponentProps(newProps);
+  newProps = processThemeAndStyleProps(newProps, newProps.theme.touchable);
+
+  const Touchable =
+    newProps.theme.touchable && newProps.theme.touchable.component;
+
+  const surfaceProps = extractSurfacePropsFromButtonProps(newProps);
+  const surface = (
+    <Surface {...surfaceProps}>
+      {newProps.leadingIcon && handleLeadingIcon(newProps)}
+      {newProps.children && handleButtonChildren(newProps)}
+      {newProps.trailingIcon && handleTrailingIcon(newProps)}
+    </Surface>
+  );
+  newProps = { ...newProps, children: surface };
+
+  return (
+    <InteractionStateContext.Provider value={newProps.interactionState}>
+      {renderTouchableComponent(newProps, Touchable)}
+    </InteractionStateContext.Provider>
+  );
 };
 
 Button = processComponent<ButtonPropsOptional>(Button, {

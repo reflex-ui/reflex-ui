@@ -8,9 +8,10 @@
 import { useContext } from 'react';
 
 import { MissingComponentThemeError } from '../../errors';
+import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { processComponent } from '../processComponent';
-import { renderRfxText } from './RfxText';
+import { renderRfxTextComponent } from './renderRfxTextComponent';
 import { RfxTextProps, RfxTextPropsOptional } from './RfxTextProps';
 import { useDefaultRfxTextProps } from './useDefaultRfxTextProps';
 
@@ -29,10 +30,11 @@ let Headline4: React.ComponentType<RfxTextPropsOptional> = (
 
   const newProps: RfxTextProps = {
     ...useDefaultRfxTextProps(props),
+    ...useOnLayout(props),
     theme,
   };
 
-  return renderRfxText(newProps);
+  return renderRfxTextComponent(newProps);
 };
 
 Headline4 = processComponent<RfxTextPropsOptional>(Headline4, {

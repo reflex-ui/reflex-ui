@@ -6,10 +6,12 @@
  */
 
 import {
-  BuiltInViewTheme,
   ButtonProps,
+  ComponentThemeGetter,
   getThemedOnColor,
   SizedData,
+  SurfacePropsBase,
+  SurfaceTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import { ViewStyle } from 'react-native';
@@ -55,14 +57,17 @@ export const outlinedButtonContainerSizedStyle: SizedData<ViewStyle> = {
 };
 
 export const getOutlinedButtonContainerStyle: ViewStyleGetter<
-  ButtonProps
+  SurfacePropsBase
 > = props => ({
   ...getDefaultButtonContainerStyle(props),
-  ...outlinedButtonContainerSizedStyle[props.size],
+  ...(props.size && outlinedButtonContainerSizedStyle[props.size]),
   borderColor: getThemedOnColor(props),
 });
 
-export const outlinedButtonContainerTheme: BuiltInViewTheme<ButtonProps> = {
+export const getOutlinedButtonSurfaceTheme: ComponentThemeGetter<
+  ButtonProps,
+  SurfaceTheme
+> = () => ({
   getProps: getAllVariantsButtonContainerProps,
   getStyle: getOutlinedButtonContainerStyle,
-};
+});

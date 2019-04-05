@@ -8,11 +8,11 @@
 import { ButtonTheme } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
-import { animatedXFabButtonContainerTheme } from './animatedContainer';
+import { getAnimatedXFabButtonSurfaceTheme } from './animatedContainer';
 import { xfabButtonTheme } from './theme';
 
 export const partialAnimatedXFabButtonTheme: Partial<ButtonTheme> = {
-  container: animatedXFabButtonContainerTheme,
+  surface: getAnimatedXFabButtonSurfaceTheme,
 };
 
 export const animatedXFabButtonTheme: ButtonTheme = merge<

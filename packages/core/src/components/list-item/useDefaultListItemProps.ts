@@ -8,22 +8,15 @@
 import { useContext } from 'react';
 
 import { MissingComponentThemeError } from '../../errors';
-import { ColorTheme } from '../../palette/ColorTheme';
-import { ColorThemeContext } from '../../palette/ColorThemeContext';
-import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
-import { DimensionsContext } from '../../responsiveness/DimensionsContext';
-import { Size } from '../../sizing/Size';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
+import { RfxViewPropsOptional } from '../view/RfxViewProps';
+import { useDefaultRfxViewProps } from '../view/useDefaultRfxViewProps';
 import { ListItemProps, ListItemPropsOptional } from './ListItemProps';
 
 export const useDefaultListItemProps = (
   props: ListItemPropsOptional,
 ): ListItemProps => {
-  const colorThemeOnCtx = useContext(ColorThemeContext);
   const componentsTheme = useContext(ComponentsThemeContext);
-  const dimensions = useContext(DimensionsContext);
-  const paletteTheme = useContext(PaletteThemeContext);
-
   let theme = props.theme;
   if (!theme) {
     if (!componentsTheme.listItem) {
@@ -32,15 +25,6 @@ export const useDefaultListItemProps = (
     theme = componentsTheme.listItem;
   }
 
-  const colorTheme: ColorTheme =
-    props.colorTheme || colorThemeOnCtx || ColorTheme.SurfaceNormal;
-
-  return {
-    ...dimensions,
-    colorTheme,
-    paletteTheme,
-    size: Size.M,
-    theme,
-    ...props,
-  };
+  const rfxViewProps = useDefaultRfxViewProps(props as RfxViewPropsOptional);
+  return { ...rfxViewProps, theme } as ListItemProps;
 };

@@ -5,12 +5,14 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { ComponentThemeGetter } from '../ComponentThemeGetter';
+import { SurfaceTheme } from '../surface/SurfaceTheme';
 import { BuiltInViewTheme } from '../view/ViewTheme';
 import { AppBarProps } from './AppBarProps';
 
 export interface AppBarTheme {
   readonly centerArea?: BuiltInViewTheme<AppBarProps>;
-  readonly container?: BuiltInViewTheme<AppBarProps>;
   readonly leadingArea?: BuiltInViewTheme<AppBarProps>;
+  readonly surface?: ComponentThemeGetter<AppBarProps, SurfaceTheme>;
   readonly trailingArea?: BuiltInViewTheme<AppBarProps>;
 }

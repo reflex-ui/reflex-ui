@@ -9,11 +9,11 @@ import { ButtonTheme } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
 // tslint:disable-next-line:max-line-length
-import { animatedContainedShapedButtonContainerTheme } from './animatedContainer';
+import { getAnimatedContainedShapedButtonSurfaceTheme } from './animatedContainer';
 import { containedShapedButtonTheme } from './theme';
 
 export const partialAnimatedContainedShapedButtonTheme: Partial<ButtonTheme> = {
-  container: animatedContainedShapedButtonContainerTheme,
+  surface: getAnimatedContainedShapedButtonSurfaceTheme,
 };
 
 export const animatedContainedShapedButtonTheme: ButtonTheme = merge<

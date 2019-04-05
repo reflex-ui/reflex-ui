@@ -6,9 +6,9 @@
  */
 
 import isEmpty from 'lodash/isEmpty';
-import isPlainObject from 'lodash/isPlainObject';
-import { ImageStyle, TextStyle, ViewStyle } from 'react-native';
+import { ImageStyle, StyleProp, TextStyle, ViewStyle } from 'react-native';
 
+import { isValidStyle } from './isValidStyle';
 import { registerStyle } from './registerStyle';
 import { SimpleComponentTheme } from './SimpleComponentTheme';
 import { StyleProps } from './StyleProps';
@@ -18,22 +18,30 @@ export const getStyleFromTheme = <
   PrimitiveProps extends StyleProps<PrimitiveStyle>,
   PrimitiveStyle extends ViewStyle | TextStyle | ImageStyle
 >(
-  componentProps: ComponentProps,
+  props: ComponentProps,
   theme?: SimpleComponentTheme<ComponentProps, PrimitiveProps, PrimitiveStyle>,
-): PrimitiveStyle | undefined => {
-  if (!theme || !theme.getStyle) return undefined;
+): StyleProp<PrimitiveStyle> | undefined => {
+  if (
+    theme === undefined ||
+    theme === null ||
+    theme.getStyle === undefined ||
+    theme.getStyle === null
+  ) {
+    return undefined;
+  }
 
-  const themeStyle = theme.getStyle(componentProps);
+  const themeStyle = theme.getStyle(props);
 
   if (themeStyle === undefined || themeStyle === null || isEmpty(themeStyle)) {
     return undefined;
   }
 
-  if (typeof themeStyle !== 'object' || !isPlainObject(themeStyle)) {
+  if (!isValidStyle(themeStyle)) {
     throw new Error(
       [
-        'Rfx: invalid object returned from theme.getStyle().',
-        `It must return a plain object, but returned: ${typeof themeStyle}`,
+        'ReflexUI: Invalid style object provided via theme.getStyle().',
+        'Expected a plain object, a number (registered style), or an array',
+        `of numbers (registered styles), but got: ${typeof themeStyle}`,
       ].join(' '),
     );
   }

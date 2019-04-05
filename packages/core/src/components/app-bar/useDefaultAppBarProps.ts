@@ -8,6 +8,7 @@
 import { useContext } from 'react';
 
 import { MissingComponentThemeError } from '../../errors';
+import { InteractionType } from '../../interaction/InteractionType';
 import { ColorTheme } from '../../palette/ColorTheme';
 import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
 import { DimensionsContext } from '../../responsiveness/DimensionsContext';
@@ -34,10 +35,15 @@ export const useDefaultAppBarProps = (
 
   const colorTheme: ColorTheme = props.colorTheme || ColorTheme.PrimaryNormal;
 
+  const interactionState = props.interactionState || {
+    type: InteractionType.Enabled,
+  };
+
   return {
     ...dimensions,
     colorTheme,
-    contained: true,
+    contained: (props.contained !== undefined && props.contained) || true,
+    interactionState,
     paletteTheme,
     theme,
     variant,

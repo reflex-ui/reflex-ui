@@ -5,11 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { ComponentThemeGetter } from '../ComponentThemeGetter';
+import { SurfaceTheme } from '../surface/SurfaceTheme';
 import { BuiltInTouchableTheme } from '../touchable/TouchableTheme';
-import { BuiltInViewTheme } from '../view/ViewTheme';
 import { TouchableSurfaceProps } from './TouchableSurfaceProps';
 
 export interface TouchableSurfaceTheme {
-  readonly container?: BuiltInViewTheme<TouchableSurfaceProps>;
+  readonly surface?: ComponentThemeGetter<TouchableSurfaceProps, SurfaceTheme>;
   readonly touchable?: BuiltInTouchableTheme<TouchableSurfaceProps>;
 }

@@ -6,11 +6,12 @@
  */
 
 import {
-  ButtonProps,
+  // ButtonProps,
   getSizedMarginStyle,
-  getThemedColor,
+  // getThemedColor,
   InteractionType,
   Size,
+  SurfacePropsBase,
   ViewPropsGetter,
   ViewStyleGetter,
 } from '@reflex-ui/core';
@@ -20,19 +21,17 @@ import { getSizingStyle } from '../../../sizing/getSizingStyle';
 import { sizedSpacing } from '../../../spacing/sizedSpacing';
 
 export const getAllVariantsButtonContainerProps: ViewPropsGetter<
-  ButtonProps
+  SurfacePropsBase
 > = () => ({
   pointerEvents: 'box-only',
 });
 
 export const getAllVariantsButtonContainerStyle: ViewStyleGetter<
-  ButtonProps
+  SurfacePropsBase
 > = props => ({
   alignItems: 'center',
-  backgroundColor: getThemedColor(props),
   borderRadius: props.size === Size.XL || props.size === Size.XXL ? 6 : 4,
   flexDirection: 'row',
-  flexGrow: props.fullWidth ? 1 : undefined,
   justifyContent: 'center',
   ...Platform.select({
     web: {

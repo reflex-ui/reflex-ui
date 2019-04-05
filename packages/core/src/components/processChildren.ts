@@ -9,23 +9,24 @@ import * as ReactIs from 'react-is';
 
 import { ComponentChildrenProps } from './ComponentChildrenProps';
 
-export const handleChildrenProps = <
+export const processChildren = <
   ComponentProps extends ComponentChildrenProps<ComponentProps>
 >(
   props: ComponentProps,
-) => {
-  if (!props.children || typeof props.children !== 'function') {
-    return props;
+): React.ReactNode => {
+  if (
+    props.children === undefined ||
+    props.children === null ||
+    typeof props.children !== 'function'
+  ) {
+    return props.children;
   }
 
-  let children = props.children(props);
+  let children: React.ReactNode = props.children(props);
 
   if (ReactIs.isFragment(children) && children.props) {
     children = children.props.children;
   }
 
-  return {
-    ...props,
-    children,
-  };
+  return children;
 };

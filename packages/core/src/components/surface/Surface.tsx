@@ -5,32 +5,25 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import * as React from 'react';
-
-import { ColorThemeContext } from '../../palette/ColorThemeContext';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
-import { handleChildrenProps } from '../handleChildrenProps';
-import { handlePatchThemeProps } from '../handlePatchThemeProps';
 import { processComponent } from '../processComponent';
-import { validateNoStyleProps } from '../validateNoStyleProps';
-import { renderRfxViewContainer } from '../view/RfxView';
+import { processComponentProps } from '../processComponentProps';
+import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
+import { renderRfxViewComponent } from '../view/renderRfxViewComponent';
+import { useShouldProvideColorTheme } from '../view/useShouldProvideColorTheme';
 import { SurfacePropsOptional } from './SurfaceProps';
 import { useDefaultSurfaceProps } from './useDefaultSurfaceProps';
 
 let Surface: React.ComponentType<SurfacePropsOptional> = (
   props: SurfacePropsOptional,
 ) => {
-  validateNoStyleProps(props);
   let newProps = useDefaultSurfaceProps(props);
   newProps = { ...newProps, ...useOnLayout(newProps) };
-  newProps = handlePatchThemeProps(newProps);
-  newProps = handleChildrenProps(newProps);
+  newProps = processComponentProps(newProps);
+  newProps = processThemeAndStyleProps(newProps, newProps.theme);
 
-  return (
-    <ColorThemeContext.Provider value={newProps.colorTheme}>
-      {renderRfxViewContainer(newProps)}
-    </ColorThemeContext.Provider>
-  );
+  const shouldProvideColorTheme = useShouldProvideColorTheme(newProps);
+  return renderRfxViewComponent(newProps, shouldProvideColorTheme);
 };
 
 Surface = processComponent<SurfacePropsOptional>(Surface, {

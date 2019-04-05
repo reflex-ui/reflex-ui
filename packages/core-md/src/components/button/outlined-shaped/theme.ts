@@ -9,10 +9,10 @@ import { ButtonTheme } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
 import { outlinedButtonTheme } from '../outlined/theme';
-import { outlinedShapedButtonContainerTheme } from './container';
+import { getOutlinedShapedButtonSurfaceTheme } from './container';
 
 export const partialOutlinedShapedButtonTheme: Partial<ButtonTheme> = {
-  container: outlinedShapedButtonContainerTheme,
+  surface: getOutlinedShapedButtonSurfaceTheme,
 };
 
 export const outlinedShapedButtonTheme: ButtonTheme = merge<

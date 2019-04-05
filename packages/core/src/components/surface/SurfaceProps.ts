@@ -5,14 +5,17 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { InteractionStateProps } from '../../interaction';
 import { ComponentChildrenProps } from '../ComponentChildrenProps';
 import { ComponentThemeProps } from '../ComponentThemeProps';
-import { RfxViewProps } from '../view/RfxViewProps';
+import { RfxViewPropsBase } from '../view/RfxViewProps';
 import { SurfaceTheme } from './SurfaceTheme';
+
+export type SurfacePropsBase = RfxViewPropsBase & InteractionStateProps;
 
 export interface SurfaceProps
   extends ComponentChildrenProps<SurfaceProps>,
     ComponentThemeProps<SurfaceProps, SurfaceTheme>,
-    RfxViewProps {}
+    SurfacePropsBase {}
 
 export type SurfacePropsOptional = Partial<SurfaceProps>;

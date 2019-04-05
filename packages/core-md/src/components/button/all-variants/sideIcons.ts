@@ -32,7 +32,7 @@ export const allVariantsButtonLeadingIconSizedProps: SizedData<SvgProps> = {
 export const getAllVariantsButtonLeadingIconProps: SvgPropsGetter<
   ButtonProps
 > = props => ({
-  ...allVariantsButtonLeadingIconSizedProps[props.size],
+  ...(props.size && allVariantsButtonLeadingIconSizedProps[props.size]),
   fill: getThemedOnColor(props),
 });
 

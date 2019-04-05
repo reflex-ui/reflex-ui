@@ -10,8 +10,8 @@ import { SvgProps } from 'react-native-svg';
 // tslint:disable-next-line:max-line-length
 import { InteractionStatePropsOptional } from '../../interaction/InteractionStateProps';
 import { PaletteThemeProps } from '../../palette';
-import { SizingProps } from '../../sizing/SizingProps';
-import { MarginProps } from '../../spacing';
+import { ResponsivenessProps } from '../../responsiveness/ResponsivenessProps';
+import { Size } from '../../sizing/Size';
 import { ComponentChildrenProps } from '../ComponentChildrenProps';
 import { ComponentThemeProps } from '../ComponentThemeProps';
 import { RfxSvgTheme } from './RfxSvgTheme';
@@ -20,11 +20,10 @@ export interface RfxSvgProps
   extends ComponentChildrenProps<RfxSvgProps>,
     ComponentThemeProps<RfxSvgProps, RfxSvgTheme>,
     InteractionStatePropsOptional,
-    MarginProps,
     PaletteThemeProps,
-    SizingProps,
+    ResponsivenessProps,
     SvgProps {
-  readonly skipContainer?: boolean;
+  readonly size?: Size;
 }
 
 export type RfxSvgPropsOptional = Partial<RfxSvgProps>;

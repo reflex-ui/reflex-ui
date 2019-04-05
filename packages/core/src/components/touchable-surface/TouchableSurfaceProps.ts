@@ -6,19 +6,15 @@
  */
 
 import { InteractionProps } from '../../interaction';
-import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
-import { DimensionsProps } from '../../responsiveness/DimensionsProps';
-import { ResponsivenessProps } from '../../responsiveness/ResponsivenessProps';
 import { ComponentChildrenProps } from '../ComponentChildrenProps';
 import { ComponentThemeProps } from '../ComponentThemeProps';
+import { SurfacePropsBase } from '../surface/SurfaceProps';
 import { TouchableSurfaceTheme } from './TouchableSurfaceTheme';
 
 export interface TouchableSurfaceProps
   extends ComponentChildrenProps<TouchableSurfaceProps>,
     ComponentThemeProps<TouchableSurfaceProps, TouchableSurfaceTheme>,
-    DimensionsProps,
     InteractionProps,
-    PaletteThemeProps,
-    ResponsivenessProps {}
+    SurfacePropsBase {}
 
 export type TouchableSurfacePropsOptional = Partial<TouchableSurfaceProps>;
