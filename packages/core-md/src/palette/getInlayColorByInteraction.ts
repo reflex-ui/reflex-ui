@@ -17,7 +17,7 @@ export const getInlayColorByInteraction = ({
     return color;
   }
 
-  const rgbColor: Color = Color.hsl(color);
+  const rgbColor: Color = Color.rgb(color);
   const luminosity = rgbColor.luminosity();
   let rate;
 
