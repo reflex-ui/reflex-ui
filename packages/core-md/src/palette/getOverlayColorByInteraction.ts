@@ -13,6 +13,20 @@ export const getOverlayColorByInteraction = ({
   color,
   type,
 }: ColorByInteractionGetterInput): string => {
+  /*
+   * When a color is too light (white or close to it)
+   * we cannot apply .fade() to it as the change will be
+   * undiscriminated (or almost undiscriminated),
+   * so we darken it a little to be able to see the change.
+   */
+  let rgbColor = Color.rgb(color);
+  const luminosity = rgbColor.luminosity();
+
+  if (luminosity >= 0.92) {
+    rgbColor = rgbColor.darken(luminosity - 0.6);
+  }
+  /**/
+
   switch (type) {
     case InteractionType.Disabled:
       return 'transparent';
@@ -20,17 +34,11 @@ export const getOverlayColorByInteraction = ({
       return 'transparent';
     case InteractionType.Activated:
     case InteractionType.Focused:
-      return Color.rgb(color)
-        .fade(0.81)
-        .toString();
+      return rgbColor.fade(0.81).toString();
     case InteractionType.Hovered:
-      return Color.rgb(color)
-        .fade(0.86)
-        .toString();
+      return rgbColor.fade(0.86).toString();
     case InteractionType.Pressed:
-      return Color.rgb(color)
-        .fade(0.73)
-        .toString();
+      return rgbColor.fade(0.73).toString();
     default:
       return 'transparent';
   }
