@@ -12,7 +12,7 @@ import * as React from 'react';
 import { ButtonCollectionProps } from './ButtonCollectionProps';
 
 const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
-  colorTheme,
+  colorArrangement,
   getPatchTheme,
   invertColor,
   onPress,
@@ -21,7 +21,7 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
   <React.Fragment>
     <Row>
       <Button
-        colorTheme={colorTheme}
+        colorArrangement={colorArrangement}
         getPatchTheme={getPatchTheme}
         invertColor={invertColor}
         marginHorizontal={Size.M}
@@ -32,7 +32,7 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
         Sign In
       </Button>
       <Button
-        colorTheme={colorTheme}
+        colorArrangement={colorArrangement}
         disabled
         getPatchTheme={getPatchTheme}
         invertColor={invertColor}
@@ -46,7 +46,7 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
     </Row>
     <Row>
       <Button
-        colorTheme={colorTheme}
+        colorArrangement={colorArrangement}
         getPatchTheme={getPatchTheme}
         invertColor={invertColor}
         leadingIcon={<FavoriteIcon />}
@@ -58,7 +58,7 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
         Favorite
       </Button>
       <Button
-        colorTheme={colorTheme}
+        colorArrangement={colorArrangement}
         disabled
         getPatchTheme={getPatchTheme}
         invertColor={invertColor}
@@ -73,7 +73,7 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
     </Row>
     <Row>
       <Button
-        colorTheme={colorTheme}
+        colorArrangement={colorArrangement}
         getPatchTheme={getPatchTheme}
         invertColor={invertColor}
         marginHorizontal={Size.M}
@@ -85,7 +85,7 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
         Favorite
       </Button>
       <Button
-        colorTheme={colorTheme}
+        colorArrangement={colorArrangement}
         disabled
         getPatchTheme={getPatchTheme}
         invertColor={invertColor}
@@ -100,7 +100,7 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
     </Row>
     <Row>
       <Button
-        colorTheme={colorTheme}
+        colorArrangement={colorArrangement}
         getPatchTheme={getPatchTheme}
         invertColor={invertColor}
         leadingIcon={<FavoriteIcon />}
@@ -113,7 +113,7 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
         Favorite
       </Button>
       <Button
-        colorTheme={colorTheme}
+        colorArrangement={colorArrangement}
         disabled
         getPatchTheme={getPatchTheme}
         invertColor={invertColor}

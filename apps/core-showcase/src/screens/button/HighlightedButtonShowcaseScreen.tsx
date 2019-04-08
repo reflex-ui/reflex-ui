@@ -11,12 +11,11 @@ import {
   ButtonPropsOptional,
   ButtonTheme,
   ButtonVariant,
-  ColorTheme,
   ComponentThemeGetter,
   InteractionType,
 } from '@reflex-ui/core';
 import {
-  disabledGrey300_500,
+  disabledGrey300Contained,
   getInlayColorByInteraction,
 } from '@reflex-ui/core-md';
 import { FavoriteIcon } from '@reflex-ui/icons-md';
@@ -30,7 +29,7 @@ const getButtonPatchTheme: ComponentThemeGetter<ButtonProps, ButtonTheme> = ({
 }): ButtonTheme => {
   const backgroundColor =
     interactionType === InteractionType.Disabled
-      ? disabledGrey300_500.normal.color
+      ? disabledGrey300Contained.color
       : // prettier-ignore
         getInlayColorByInteraction({
           color: '#c70ad0',
@@ -39,7 +38,7 @@ const getButtonPatchTheme: ComponentThemeGetter<ButtonProps, ButtonTheme> = ({
 
   const textColor =
     interactionType === InteractionType.Disabled
-      ? disabledGrey300_500.normal.onColor
+      ? disabledGrey300Contained.onColor
       : '#fff';
 
   return {
@@ -73,9 +72,7 @@ const HighlightedButtonShowcaseScreen: React.SFC = (): JSX.Element => (
     ButtonCollection={LabelButtonCollection}
     customCollections={[
       {
-        colorTheme: ColorTheme.PrimaryNormal,
         getPatchTheme: getButtonPatchTheme,
-        surfaceColorTheme: ColorTheme.SurfaceNormal,
         title: 'custom',
         variant: ButtonVariant.Highlighted,
       },

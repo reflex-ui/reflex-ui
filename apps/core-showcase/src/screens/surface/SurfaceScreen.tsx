@@ -12,13 +12,11 @@ import {
   AppBarVariant,
   Button,
   ButtonVariant,
-  ColorTheme,
-  Column,
   ComponentThemeGetter,
   JustifyContent,
+  PaletteThemeContext,
   Paragraph1,
-  // RfxViewProps,
-  // RfxViewTheme,
+  Paragraph2,
   Row,
   Size,
   Surface,
@@ -26,7 +24,7 @@ import {
   SurfaceTheme,
 } from '@reflex-ui/core';
 import { MenuIcon } from '@reflex-ui/icons-md';
-import * as React from 'react';
+import React, { useContext } from 'react';
 import { ScrollView } from 'react-native';
 
 const onButtonPress = () => {
@@ -52,6 +50,8 @@ const getPatchTheme: ComponentThemeGetter<
 };
 
 const SurfaceScreen: React.SFC<{}> = (): JSX.Element => {
+  const paletteTheme = useContext(PaletteThemeContext);
+
   return (
     <ScrollView>
       <AppBar variant={AppBarVariant.Default}>
@@ -60,9 +60,9 @@ const SurfaceScreen: React.SFC<{}> = (): JSX.Element => {
         </Button>
         <AppBarTitle numberOfLines={1}>Surface</AppBarTitle>
       </AppBar>
-      <Column margin={Size.M}>
-        <Paragraph1>ColorTheme.SurfaceNormal (default)</Paragraph1>
-      </Column>
+      <Paragraph2 margin={Size.M}>
+        {'<Surface colorArrangement={paletteTheme.surface.normal}> (default)'}
+      </Paragraph2>
       <Row>
         <Surface height={50} margin={Size.M} width={100}>
           <Paragraph1>Hello Surface!</Paragraph1>
@@ -71,13 +71,13 @@ const SurfaceScreen: React.SFC<{}> = (): JSX.Element => {
           <Paragraph1>Hello Surface! (contained=false)</Paragraph1>
         </Surface>
       </Row>
-      <Column margin={Size.M}>
-        <Paragraph1>ColorTheme.SurfaceNormal (default)</Paragraph1>
-      </Column>
+      <Paragraph2 margin={Size.M}>
+        {'<Surface colorArrangement={paletteTheme.primary.normal}>'}
+      </Paragraph2>
       <Row>
         <Surface
           alignContent={AlignContent.Center}
-          colorTheme={ColorTheme.PrimaryNormal}
+          colorArrangement={paletteTheme.primary.normal}
           height={50}
           justifyContent={JustifyContent.Center}
           margin={Size.M}
@@ -86,7 +86,7 @@ const SurfaceScreen: React.SFC<{}> = (): JSX.Element => {
           <Paragraph1>Hello Surface!</Paragraph1>
         </Surface>
         <Surface
-          colorTheme={ColorTheme.PrimaryNormal}
+          colorArrangement={paletteTheme.primary.normal}
           contained={false}
           height={50}
           invertColor
@@ -96,19 +96,19 @@ const SurfaceScreen: React.SFC<{}> = (): JSX.Element => {
           <Paragraph1>Hello Surface! (contained=false)</Paragraph1>
         </Surface>
       </Row>
-      <Column margin={Size.M}>
-        <Paragraph1>Custom styles via getPatchTheme()</Paragraph1>
-      </Column>
+      <Paragraph2 margin={Size.M}>
+        {'<Surface getPatchTheme={getPatchTheme}>'}
+      </Paragraph2>
       <Row>
         <Surface
-          colorTheme={ColorTheme.PrimaryNormal}
+          colorArrangement={paletteTheme.primary.normal}
           getPatchTheme={getPatchTheme}
           margin={Size.M}
         >
           <Paragraph1>Hello Surface!</Paragraph1>
         </Surface>
         <Surface
-          colorTheme={ColorTheme.PrimaryNormal}
+          colorArrangement={paletteTheme.primary.normal}
           contained={false}
           getPatchTheme={getPatchTheme}
           invertColor

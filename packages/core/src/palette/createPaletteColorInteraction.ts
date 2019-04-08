@@ -6,7 +6,6 @@
  */
 
 import { InteractionType } from '../interaction/InteractionType';
-import { createPaletteColor } from './createPaletteColor';
 import { PaletteColorInteraction } from './PaletteColorInteraction';
 // tslint:disable-next-line:max-line-length
 import { PaletteColorInteractionFactoryInput } from './PaletteColorInteractionFactoryInput';
@@ -14,30 +13,25 @@ import { PaletteColorInteractionFactoryInput } from './PaletteColorInteractionFa
 export const createPaletteColorInteraction = (
   config: PaletteColorInteractionFactoryInput,
 ): PaletteColorInteraction => ({
-  activated: createPaletteColor({
-    color: config.color,
-    colorVariantFactory: config.colorVariantFactory,
+  activated: config.colorVariantFactory({
+    color: config.colorVariant,
     interactionType: InteractionType.Activated,
   }),
-  disabled: config.disabledColor,
-  enabled: createPaletteColor({
-    color: config.color,
-    colorVariantFactory: config.colorVariantFactory,
+  disabled: config.disabledColorVariant,
+  enabled: config.colorVariantFactory({
+    color: config.colorVariant,
     interactionType: InteractionType.Enabled,
   }),
-  focused: createPaletteColor({
-    color: config.color,
-    colorVariantFactory: config.colorVariantFactory,
+  focused: config.colorVariantFactory({
+    color: config.colorVariant,
     interactionType: InteractionType.Focused,
   }),
-  hovered: createPaletteColor({
-    color: config.color,
-    colorVariantFactory: config.colorVariantFactory,
+  hovered: config.colorVariantFactory({
+    color: config.colorVariant,
     interactionType: InteractionType.Hovered,
   }),
-  pressed: createPaletteColor({
-    color: config.color,
-    colorVariantFactory: config.colorVariantFactory,
+  pressed: config.colorVariantFactory({
+    color: config.colorVariant,
     interactionType: InteractionType.Pressed,
   }),
 });

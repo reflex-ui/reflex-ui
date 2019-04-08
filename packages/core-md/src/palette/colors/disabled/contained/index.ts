@@ -5,4 +5,4 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './disabledGrey300_500';
+export * from './disabledGrey300Contained';

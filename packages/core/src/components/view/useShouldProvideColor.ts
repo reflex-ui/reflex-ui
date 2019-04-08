@@ -7,17 +7,17 @@
 
 import { useContext } from 'react';
 
-import { ColorThemeContext } from '../../palette/ColorThemeContext';
+import { ColorContext } from '../../palette/ColorContext';
 import { RfxViewPropsBaseOptional } from './RfxViewProps';
 
-export const useShouldProvideColorTheme = (
+export const useShouldProvideColor = (
   props: RfxViewPropsBaseOptional,
 ): boolean => {
-  const colorThemeFromCtx = useContext(ColorThemeContext);
-  const { colorTheme } = props;
+  const colorFromCtx = useContext(ColorContext);
+  const { colorArrangement } = props;
   return (
-    colorTheme !== undefined &&
-    colorTheme !== null &&
-    colorTheme !== colorThemeFromCtx
+    colorArrangement !== undefined &&
+    colorArrangement !== null &&
+    colorArrangement !== colorFromCtx
   );
 };

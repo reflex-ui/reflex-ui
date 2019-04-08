@@ -12,7 +12,7 @@ import * as React from 'react';
 import { IconCollectionProps } from './IconCollectionProps';
 
 const IconCollection: React.SFC<IconCollectionProps> = ({
-  colorTheme,
+  colorArrangement,
   invertColor,
   title,
 }): JSX.Element => (
@@ -22,33 +22,36 @@ const IconCollection: React.SFC<IconCollectionProps> = ({
     </Row>
     <Row>
       <AlarmIcon
-        colorTheme={colorTheme}
+        colorArrangement={colorArrangement}
         invertColor={invertColor}
         size={Size.XXS}
       />
       <AlarmIcon
-        colorTheme={colorTheme}
+        colorArrangement={colorArrangement}
         invertColor={invertColor}
         size={Size.XS}
       />
       <AlarmIcon
-        colorTheme={colorTheme}
+        colorArrangement={colorArrangement}
         invertColor={invertColor}
         size={Size.S}
       />
-      <AlarmIcon colorTheme={colorTheme} invertColor={invertColor} />
       <AlarmIcon
-        colorTheme={colorTheme}
+        colorArrangement={colorArrangement}
+        invertColor={invertColor}
+      />
+      <AlarmIcon
+        colorArrangement={colorArrangement}
         invertColor={invertColor}
         size={Size.L}
       />
       <AlarmIcon
-        colorTheme={colorTheme}
+        colorArrangement={colorArrangement}
         invertColor={invertColor}
         size={Size.XL}
       />
       <AlarmIcon
-        colorTheme={colorTheme}
+        colorArrangement={colorArrangement}
         invertColor={invertColor}
         size={Size.XXL}
       />

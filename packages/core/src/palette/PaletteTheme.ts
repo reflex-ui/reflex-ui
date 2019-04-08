@@ -5,21 +5,18 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  PaletteColorArrangement,
-  PaletteColorArrangementOptional,
-} from './PaletteColorArrangement';
+import { PaletteColor, PaletteColorOptional } from './PaletteColor';
 
 export interface PaletteTheme {
-  readonly background: PaletteColorArrangement;
-  readonly error: PaletteColorArrangement;
-  readonly primary: PaletteColorArrangement;
-  readonly secondary: PaletteColorArrangement;
-  readonly success: PaletteColorArrangement;
-  readonly surface: PaletteColorArrangement;
-  readonly warning: PaletteColorArrangement;
+  readonly background: PaletteColor;
+  readonly error: PaletteColor;
+  readonly primary: PaletteColor;
+  readonly secondary: PaletteColor;
+  readonly success: PaletteColor;
+  readonly surface: PaletteColor;
+  readonly warning: PaletteColor;
 }
 
 export type PaletteThemeOptional = {
-  [P in keyof PaletteTheme]?: PaletteColorArrangementOptional
+  [P in keyof PaletteTheme]?: PaletteColorOptional
 };

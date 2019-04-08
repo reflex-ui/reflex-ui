@@ -7,47 +7,105 @@
 
 import {
   createPaletteColorInteraction,
-  createPaletteColorUsingColorOnly,
-  createPaletteColorUsingOnColorOnly,
-  invertPaletteColor,
+  createPaletteColorVariantUsingColorOnly,
+  createPaletteColorVariantUsingOnColorOnly,
+  invertPaletteColorVariant,
 } from '@reflex-ui/core';
 
 // tslint:disable-next-line:max-line-length
 import { createContainedPaletteColorVariant } from '../../createContainedPaletteColorVariant';
 // tslint:disable-next-line:max-line-length
 import { createUncontainedPaletteColorVariant } from '../../createUncontainedPaletteColorVariant';
-import { disabledGrey300_500 } from '../disabled/contained/disabledGrey300_500';
-// tslint:disable-next-line:max-line-length
-import { disabledGrey400_500_600 } from '../disabled/uncontained/disabledGrey400_500_600';
-import { disabledGrey500 } from '../disabled/uncontained/disabledGrey500';
+import { disabledGrey300Contained } from '../disabled/contained';
+import {
+  disabledGrey400Uncontained,
+  disabledGrey500Uncontained,
+  disabledGrey600Uncontained,
+} from '../disabled/uncontained';
 import { MaterialPaletteColorItem } from '../MaterialPaletteColorItem';
-import { blue500 } from './blue500';
+import { blue500Dark, blue500Light, blue500Normal } from './blue500';
 
 export const mdBlue500: MaterialPaletteColorItem = {
   color: {
-    inverted: {
-      contained: createPaletteColorInteraction({
-        color: invertPaletteColor(blue500),
-        colorVariantFactory: createContainedPaletteColorVariant,
-        disabledColor: disabledGrey300_500,
-      }),
-      uncontained: createPaletteColorInteraction({
-        color: createPaletteColorUsingColorOnly(blue500),
-        colorVariantFactory: createUncontainedPaletteColorVariant,
-        disabledColor: disabledGrey500,
-      }),
+    dark: {
+      inverted: {
+        contained: createPaletteColorInteraction({
+          colorVariant: invertPaletteColorVariant(blue500Dark),
+          colorVariantFactory: createContainedPaletteColorVariant,
+          disabledColorVariant: disabledGrey300Contained,
+        }),
+        uncontained: createPaletteColorInteraction({
+          colorVariant: createPaletteColorVariantUsingColorOnly(blue500Dark),
+          colorVariantFactory: createUncontainedPaletteColorVariant,
+          disabledColorVariant: disabledGrey500Uncontained,
+        }),
+      },
+      regular: {
+        contained: createPaletteColorInteraction({
+          colorVariant: blue500Dark,
+          colorVariantFactory: createContainedPaletteColorVariant,
+          disabledColorVariant: disabledGrey300Contained,
+        }),
+        uncontained: createPaletteColorInteraction({
+          colorVariant: createPaletteColorVariantUsingOnColorOnly(blue500Dark),
+          colorVariantFactory: createUncontainedPaletteColorVariant,
+          disabledColorVariant: disabledGrey500Uncontained,
+        }),
+      },
     },
-    regular: {
-      contained: createPaletteColorInteraction({
-        color: blue500,
-        colorVariantFactory: createContainedPaletteColorVariant,
-        disabledColor: disabledGrey300_500,
-      }),
-      uncontained: createPaletteColorInteraction({
-        color: createPaletteColorUsingOnColorOnly(blue500),
-        colorVariantFactory: createUncontainedPaletteColorVariant,
-        disabledColor: disabledGrey400_500_600,
-      }),
+    light: {
+      inverted: {
+        contained: createPaletteColorInteraction({
+          colorVariant: invertPaletteColorVariant(blue500Light),
+          colorVariantFactory: createContainedPaletteColorVariant,
+          disabledColorVariant: disabledGrey300Contained,
+        }),
+        uncontained: createPaletteColorInteraction({
+          colorVariant: createPaletteColorVariantUsingColorOnly(blue500Light),
+          colorVariantFactory: createUncontainedPaletteColorVariant,
+          disabledColorVariant: disabledGrey500Uncontained,
+        }),
+      },
+      regular: {
+        contained: createPaletteColorInteraction({
+          colorVariant: blue500Light,
+          colorVariantFactory: createContainedPaletteColorVariant,
+          disabledColorVariant: disabledGrey300Contained,
+        }),
+        uncontained: createPaletteColorInteraction({
+          colorVariant: createPaletteColorVariantUsingOnColorOnly(blue500Light),
+          colorVariantFactory: createUncontainedPaletteColorVariant,
+          disabledColorVariant: disabledGrey600Uncontained,
+        }),
+      },
+    },
+    normal: {
+      inverted: {
+        contained: createPaletteColorInteraction({
+          colorVariant: invertPaletteColorVariant(blue500Normal),
+          colorVariantFactory: createContainedPaletteColorVariant,
+          disabledColorVariant: disabledGrey300Contained,
+        }),
+        uncontained: createPaletteColorInteraction({
+          colorVariant: createPaletteColorVariantUsingColorOnly(blue500Normal),
+          colorVariantFactory: createUncontainedPaletteColorVariant,
+          disabledColorVariant: disabledGrey500Uncontained,
+        }),
+      },
+      regular: {
+        contained: createPaletteColorInteraction({
+          colorVariant: blue500Normal,
+          colorVariantFactory: createContainedPaletteColorVariant,
+          disabledColorVariant: disabledGrey300Contained,
+        }),
+        uncontained: createPaletteColorInteraction({
+          colorVariant: createPaletteColorVariantUsingOnColorOnly(
+            blue500Normal,
+          ),
+          colorVariantFactory: createUncontainedPaletteColorVariant,
+          disabledColorVariant: disabledGrey400Uncontained,
+        }),
+      },
     },
   },
   name: 'Blue',

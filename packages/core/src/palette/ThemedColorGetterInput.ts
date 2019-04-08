@@ -7,10 +7,10 @@
 
 // tslint:disable-next-line:max-line-length
 import { InteractionStatePropsOptional } from '../interaction/InteractionStateProps';
-import { PaletteThemeProps } from './PaletteThemeProps';
+import { ColorProps } from './ColorProps';
 
 export interface ThemedColorGetterInput
-  extends InteractionStatePropsOptional,
-    PaletteThemeProps {
+  extends ColorProps,
+    InteractionStatePropsOptional {
   readonly onColor?: boolean;
 }

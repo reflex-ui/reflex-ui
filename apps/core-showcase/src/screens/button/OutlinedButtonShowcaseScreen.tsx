@@ -11,12 +11,11 @@ import {
   ButtonPropsOptional,
   ButtonTheme,
   ButtonVariant,
-  ColorTheme,
   ComponentThemeGetter,
   InteractionType,
 } from '@reflex-ui/core';
 import {
-  disabledGrey300_500,
+  disabledGrey300Contained,
   getOverlayColorByInteraction,
 } from '@reflex-ui/core-md';
 import { FavoriteIcon } from '@reflex-ui/icons-md';
@@ -35,7 +34,7 @@ const getButtonPatchTheme: ComponentThemeGetter<ButtonProps, ButtonTheme> = ({
 
   const textColor =
     interactionType === InteractionType.Disabled
-      ? disabledGrey300_500.normal.onColor
+      ? disabledGrey300Contained.onColor
       : '#c70ad0';
 
   return {
@@ -69,9 +68,7 @@ const OutlinedButtonShowcaseScreen: React.SFC = (): JSX.Element => (
     ButtonCollection={LabelButtonCollection}
     customCollections={[
       {
-        colorTheme: ColorTheme.PrimaryNormal,
         getPatchTheme: getButtonPatchTheme,
-        surfaceColorTheme: ColorTheme.SurfaceNormal,
         title: 'custom',
         variant: ButtonVariant.Outlined,
       },

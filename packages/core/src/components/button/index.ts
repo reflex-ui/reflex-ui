@@ -10,5 +10,5 @@ export * from './ButtonProps';
 export * from './ButtonTheme';
 export * from './ButtonVariant';
 export * from './ButtonVariantsTheme';
-export * from './getButtonVariantColorTheme';
+export * from './getButtonVariantColor';
 export * from './useDefaultButtonProps';

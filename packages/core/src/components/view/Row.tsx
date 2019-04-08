@@ -12,7 +12,7 @@ import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
 import { renderRfxViewComponent } from './renderRfxViewComponent';
 import { RfxViewPropsOptional } from './RfxViewProps';
 import { useDefaultRowProps } from './useDefaultRowProps';
-import { useShouldProvideColorTheme } from './useShouldProvideColorTheme';
+import { useShouldProvideColor } from './useShouldProvideColor';
 
 let Row: React.ComponentType<RfxViewPropsOptional> = (
   props: RfxViewPropsOptional,
@@ -22,8 +22,8 @@ let Row: React.ComponentType<RfxViewPropsOptional> = (
   newProps = processComponentProps(newProps);
   newProps = processThemeAndStyleProps(newProps, newProps.theme);
 
-  const shouldProvideColorTheme = useShouldProvideColorTheme(props);
-  return renderRfxViewComponent(newProps, shouldProvideColorTheme);
+  const shouldProvideColor = useShouldProvideColor(props);
+  return renderRfxViewComponent(newProps, shouldProvideColor);
 };
 
 Row = processComponent<RfxViewPropsOptional>(Row, {

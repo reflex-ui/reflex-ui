@@ -14,14 +14,13 @@ export const extractSvgPropsFromRfxSvgProps = (
 ): SvgProps => {
   const {
     children,
-    colorTheme,
+    colorArrangement,
     enableOnLayout,
     getPatchTheme,
     interactionState,
     invertColor,
     layoutRectangle,
     onLayout,
-    paletteTheme,
     size,
     theme,
     ...svgProps

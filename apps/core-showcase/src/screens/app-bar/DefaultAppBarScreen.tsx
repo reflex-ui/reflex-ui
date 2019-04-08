@@ -13,9 +13,11 @@ import {
   AppBarVariant,
   Button,
   ButtonVariant,
-  Caption,
-  ColorTheme,
+  Column,
   ComponentThemeGetter,
+  PaletteThemeContext,
+  Paragraph1,
+  Paragraph2,
   Row,
   Size,
 } from '@reflex-ui/core';
@@ -25,7 +27,7 @@ import {
   MoreVertIcon,
   SearchIcon,
 } from '@reflex-ui/icons-md';
-import * as React from 'react';
+import React, { useContext } from 'react';
 import { ScrollView, View } from 'react-native';
 
 const onButtonPress = () => {
@@ -33,7 +35,7 @@ const onButtonPress = () => {
   console.log('DefaultButtonScreen().onButtonPress()');
 };
 
-const getAppBarPatchTheme: ComponentThemeGetter<AppBarProps, AppBarTheme> = ({
+const getPatchTheme: ComponentThemeGetter<AppBarProps, AppBarTheme> = ({
   dimensions,
   breakpoints,
 }): AppBarTheme => ({
@@ -44,18 +46,34 @@ const getAppBarPatchTheme: ComponentThemeGetter<AppBarProps, AppBarTheme> = ({
   },
 });
 
-const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
-  <ScrollView>
-    <AppBar getPatchTheme={getAppBarPatchTheme} variant={AppBarVariant.Default}>
-      <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
-        <MenuIcon />
-      </Button>
-      <AppBarTitle numberOfLines={1}>AppBar</AppBarTitle>
-    </AppBar>
-    <Caption margin={Size.L}>
-      AppBarVariant.Default, ColorTheme.PrimaryNormal (default)
-    </Caption>
-    <Row>
+const DefaultAppBarScreen: React.SFC = (): JSX.Element => {
+  const paletteTheme = useContext(PaletteThemeContext);
+  const verticalMargin = 70;
+
+  return (
+    <ScrollView>
+      <AppBar getPatchTheme={getPatchTheme} variant={AppBarVariant.Default}>
+        <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
+          <MenuIcon />
+        </Button>
+        <AppBarTitle numberOfLines={1}>AppBar</AppBarTitle>
+      </AppBar>
+      <Column margin={Size.L} marginBottom={0}>
+        <Paragraph1>
+          This screen showcases the {'<AppBar>'} component.
+        </Paragraph1>
+        <Paragraph1 marginTop={Size.XS}>
+          These are the most common props and their default values:
+        </Paragraph1>
+        <Paragraph2 marginStart={Size.XS} marginTop={Size.XXS}>
+          {'colorArrangement={paletteTheme.primary.normal}'}
+          {'\n'}
+          {'variant={AppBarVariant.Default}'}
+        </Paragraph2>
+      </Column>
+      <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
+        {'<AppBar>'}
+      </Paragraph2>
       <AppBar>
         {() => (
           <React.Fragment>
@@ -77,26 +95,19 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
           </React.Fragment>
         )}
       </AppBar>
-    </Row>
-    <Caption margin={Size.L}>
-      AppBarVariant.Default, ColorTheme.PrimaryNormal (default)
-    </Caption>
-    <Row>
-      <AppBar
-        getPatchTheme={getAppBarPatchTheme}
-        variant={AppBarVariant.Default}
-      >
+      <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
+        {'<AppBar getPatchTheme={getPatchTheme}>'}
+      </Paragraph2>
+      <AppBar getPatchTheme={getPatchTheme}>
         <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
           <MenuIcon />
         </Button>
         <AppBarTitle numberOfLines={1}>My Application</AppBarTitle>
       </AppBar>
-    </Row>
-    <Caption margin={Size.L}>
-      AppBarVariant.Default, ColorTheme.PrimaryNormal (default)
-    </Caption>
-    <Row>
-      <AppBar>
+      <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
+        {'<AppBar>'}
+      </Paragraph2>
+      <AppBar marginBottom={Size.XXL}>
         {() => (
           <React.Fragment>
             <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
@@ -107,11 +118,9 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
           </React.Fragment>
         )}
       </AppBar>
-    </Row>
-    <Caption margin={Size.L}>
-      AppBarVariant.Default, ColorTheme.PrimaryNormal (default)
-    </Caption>
-    <Row>
+      <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
+        {'<AppBar>'}
+      </Paragraph2>
       <AppBar>
         {() => (
           <React.Fragment>
@@ -129,12 +138,10 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
           </React.Fragment>
         )}
       </AppBar>
-    </Row>
-    <Caption margin={Size.L}>
-      AppBarVariant.Default, ColorTheme.PrimaryNormal (default)
-    </Caption>
-    <Row>
-      <AppBar colorTheme={ColorTheme.PrimaryDark}>
+      <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
+        {'<AppBar colorArrangement={paletteTheme.primary.dark}>'}
+      </Paragraph2>
+      <AppBar colorArrangement={paletteTheme.primary.dark}>
         {() => (
           <React.Fragment>
             <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
@@ -151,11 +158,9 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
           </React.Fragment>
         )}
       </AppBar>
-    </Row>
-    <Caption margin={Size.L}>
-      AppBarVariant.Dense, ColorTheme.PrimaryNormal (default)
-    </Caption>
-    <Row>
+      <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
+        {'<AppBar variant={AppBarVariant.Dense}>'}
+      </Paragraph2>
       <AppBar variant={AppBarVariant.Dense}>
         {() => (
           <React.Fragment>
@@ -169,11 +174,9 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
           </React.Fragment>
         )}
       </AppBar>
-    </Row>
-    <Caption margin={Size.L}>
-      AppBarVariant.Prominent, ColorTheme.PrimaryNormal (default)
-    </Caption>
-    <Row>
+      <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
+        {'<AppBar variant={AppBarVariant.Prominent}>'}
+      </Paragraph2>
       <AppBar variant={AppBarVariant.Prominent}>
         {() => (
           <React.Fragment>
@@ -187,11 +190,9 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
           </React.Fragment>
         )}
       </AppBar>
-    </Row>
-    <Caption margin={Size.L}>
-      AppBarVariant.Prominent, ColorTheme.PrimaryNormal (default)
-    </Caption>
-    <Row>
+      <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
+        {'<AppBar variant={AppBarVariant.Prominent}>'}
+      </Paragraph2>
       <AppBar variant={AppBarVariant.Prominent}>
         {() => (
           <React.Fragment>
@@ -207,11 +208,9 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
           </React.Fragment>
         )}
       </AppBar>
-    </Row>
-    <Caption margin={Size.L}>
-      AppBarVariant.Prominent, ColorTheme.PrimaryNormal (default)
-    </Caption>
-    <Row>
+      <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
+        {'<AppBar variant={AppBarVariant.Prominent}>'}
+      </Paragraph2>
       <AppBar variant={AppBarVariant.Prominent}>
         {() => (
           <React.Fragment>
@@ -246,11 +245,9 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
           </React.Fragment>
         )}
       </AppBar>
-    </Row>
-    <Caption margin={Size.L}>
-      AppBarVariant.ProminentDense, ColorTheme.PrimaryNormal (default)
-    </Caption>
-    <Row>
+      <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
+        {'<AppBar variant={AppBarVariant.ProminentDense}>'}
+      </Paragraph2>
       <AppBar variant={AppBarVariant.ProminentDense}>
         {() => (
           <React.Fragment>
@@ -264,11 +261,9 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
           </React.Fragment>
         )}
       </AppBar>
-    </Row>
-    <Caption margin={Size.L}>
-      AppBarVariant.ProminentDense, ColorTheme.PrimaryNormal (default)
-    </Caption>
-    <Row>
+      <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
+        {'<AppBar variant={AppBarVariant.ProminentDense}>'}
+      </Paragraph2>
       <AppBar variant={AppBarVariant.ProminentDense}>
         {() => (
           <React.Fragment>
@@ -284,12 +279,10 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
           </React.Fragment>
         )}
       </AppBar>
-    </Row>
-    <Caption margin={Size.L}>
-      AppBarVariant.Default, ColorTheme.SecondaryNormal
-    </Caption>
-    <Row>
-      <AppBar colorTheme={ColorTheme.SecondaryNormal}>
+      <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
+        {'<AppBar colorArrangement={paletteTheme.secondary.normal}>'}
+      </Paragraph2>
+      <AppBar colorArrangement={paletteTheme.secondary.normal}>
         {() => (
           <React.Fragment>
             <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
@@ -310,22 +303,18 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
           </React.Fragment>
         )}
       </AppBar>
-    </Row>
-    <Caption margin={Size.L}>
-      AppBarVariant.Default, ColorTheme.SecondaryLight
-    </Caption>
-    <Row>
-      <AppBar colorTheme={ColorTheme.SecondaryLight}>
+      <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
+        {'<AppBar colorArrangement={paletteTheme.secondary.light}>'}
+      </Paragraph2>
+      <AppBar colorArrangement={paletteTheme.secondary.light}>
         <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
           <MenuIcon />
         </Button>
         <AppBarTitle numberOfLines={1}>My Application</AppBarTitle>
       </AppBar>
-    </Row>
-    <Caption margin={Size.L}>
-      AppBarVariant.Default, ColorTheme.PrimaryNormal (default)
-    </Caption>
-    <Row>
+      <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
+        {'<AppBar>'}
+      </Paragraph2>
       <AppBar>
         <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
           <MenuIcon />
@@ -335,31 +324,28 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
           <FavoriteIcon />
         </Button>
       </AppBar>
-    </Row>
-    <Caption margin={Size.L}>
-      AppBarVariant.Default, ColorTheme.PrimaryNormal (default)
-    </Caption>
-    <Row>
+      <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
+        {'<AppBar>'}
+      </Paragraph2>
       <AppBar>
         <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
           <MenuIcon />
         </Button>
       </AppBar>
-    </Row>
-    <Caption margin={Size.L}>
-      AppBarVariant.Default, ColorTheme.WarningNormal
-    </Caption>
-    <Row>
-      <AppBar colorTheme={ColorTheme.WarningNormal}>
+      <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
+        {'<AppBar colorArrangement={paletteTheme.warning.normal}>'}
+      </Paragraph2>
+      <AppBar colorArrangement={paletteTheme.warning.normal}>
         {() => <AppBarTitle numberOfLines={1}>My Application</AppBarTitle>}
       </AppBar>
-    </Row>
-    <Caption margin={Size.L}>
-      AppBarVariant.Prominent, ColorTheme.SecondaryNormal (default)
-    </Caption>
-    <Row>
+      <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
+        {[
+          '<AppBar colorArrangement={paletteTheme.secondary.normal}',
+          'variant={AppBarVariant.Prominent}>',
+        ].join(' ')}
+      </Paragraph2>
       <AppBar
-        colorTheme={ColorTheme.SecondaryNormal}
+        colorArrangement={paletteTheme.secondary.normal}
         variant={AppBarVariant.Prominent}
       >
         {() => (
@@ -374,13 +360,14 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
           </React.Fragment>
         )}
       </AppBar>
-    </Row>
-    <Caption margin={Size.L}>
-      AppBarVariant.Prominent, ColorTheme.SecondaryDark
-    </Caption>
-    <Row>
+      <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
+        {[
+          '<AppBar colorArrangement={paletteTheme.secondary.dark}',
+          'variant={AppBarVariant.Prominent}>',
+        ].join(' ')}
+      </Paragraph2>
       <AppBar
-        colorTheme={ColorTheme.SecondaryDark}
+        colorArrangement={paletteTheme.secondary.dark}
         variant={AppBarVariant.Prominent}
       >
         {() => (
@@ -400,13 +387,14 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
           </React.Fragment>
         )}
       </AppBar>
-    </Row>
-    <Caption margin={Size.L}>
-      AppBarVariant.Prominent, ColorTheme.SecondaryLight
-    </Caption>
-    <Row>
+      <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
+        {[
+          '<AppBar colorArrangement={paletteTheme.secondary.light}',
+          'variant={AppBarVariant.Prominent}>',
+        ].join(' ')}
+      </Paragraph2>
       <AppBar
-        colorTheme={ColorTheme.SecondaryLight}
+        colorArrangement={paletteTheme.secondary.light}
         variant={AppBarVariant.Prominent}
       >
         <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
@@ -414,9 +402,9 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => (
         </Button>
         <AppBarTitle numberOfLines={1}>My Application</AppBarTitle>
       </AppBar>
-    </Row>
-  </ScrollView>
-);
+    </ScrollView>
+  );
+};
 
 DefaultAppBarScreen.displayName = 'DefaultAppBarScreen';
 

@@ -5,12 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { PaletteColorVariant } from './PaletteColorVariant';
+import { PaletteColorArrangement } from './PaletteColorArrangement';
 
 export interface PaletteColor {
-  readonly dark: PaletteColorVariant;
-  readonly light: PaletteColorVariant;
-  readonly normal: PaletteColorVariant;
+  readonly dark: PaletteColorArrangement;
+  readonly light: PaletteColorArrangement;
+  readonly normal: PaletteColorArrangement;
 }
 
 export type PaletteColorOptional = Partial<PaletteColor>;

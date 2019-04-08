@@ -12,7 +12,7 @@ import * as React from 'react';
 import { ButtonCollectionProps } from './ButtonCollectionProps';
 
 const IconButtonCollection: React.SFC<ButtonCollectionProps> = ({
-  colorTheme,
+  colorArrangement,
   getPatchTheme,
   invertColor,
   onPress,
@@ -22,7 +22,7 @@ const IconButtonCollection: React.SFC<ButtonCollectionProps> = ({
   <React.Fragment>
     <Row justifyContent={JustifyContent.Center}>
       <Button
-        colorTheme={colorTheme}
+        colorArrangement={colorArrangement}
         getPatchTheme={getPatchTheme}
         invertColor={invertColor}
         margin={Size.M}
@@ -33,7 +33,7 @@ const IconButtonCollection: React.SFC<ButtonCollectionProps> = ({
       </Button>
       {showDisabled && (
         <Button
-          colorTheme={colorTheme}
+          colorArrangement={colorArrangement}
           disabled
           getPatchTheme={getPatchTheme}
           invertColor={invertColor}

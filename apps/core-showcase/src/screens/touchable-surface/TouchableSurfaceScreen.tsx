@@ -12,22 +12,19 @@ import {
   AppBarVariant,
   Button,
   ButtonVariant,
-  ColorTheme,
-  Column,
   ComponentThemeGetter,
   JustifyContent,
+  PaletteThemeContext,
   Paragraph1,
-  // RfxViewProps,
-  // RfxViewTheme,
+  Paragraph2,
   Row,
   Size,
-  // Surface,
   TouchableSurface,
   TouchableSurfaceProps,
   TouchableSurfaceTheme,
 } from '@reflex-ui/core';
 import { MenuIcon } from '@reflex-ui/icons-md';
-import * as React from 'react';
+import React, { useContext } from 'react';
 import { ScrollView } from 'react-native';
 
 const onButtonPress = () => {
@@ -74,6 +71,8 @@ const getPatchTheme: ComponentThemeGetter<
 };
 
 const TouchableSurfaceScreen: React.SFC<{}> = (): JSX.Element => {
+  const paletteTheme = useContext(PaletteThemeContext);
+
   return (
     <ScrollView>
       <AppBar variant={AppBarVariant.Default}>
@@ -82,9 +81,7 @@ const TouchableSurfaceScreen: React.SFC<{}> = (): JSX.Element => {
         </Button>
         <AppBarTitle numberOfLines={1}>TouchableSurface</AppBarTitle>
       </AppBar>
-      <Column margin={Size.M}>
-        <Paragraph1>ColorTheme.SurfaceNormal (default)</Paragraph1>
-      </Column>
+      <Paragraph2 margin={Size.M}>{'<TouchableSurface>'}</Paragraph2>
       <Row>
         <TouchableSurface height={50} margin={Size.M} width={100}>
           <Paragraph1>Touch me!</Paragraph1>
@@ -98,13 +95,13 @@ const TouchableSurfaceScreen: React.SFC<{}> = (): JSX.Element => {
           <Paragraph1>Touch me! (contained=false)</Paragraph1>
         </TouchableSurface>
       </Row>
-      <Column margin={Size.M}>
-        <Paragraph1>ColorTheme.SurfaceNormal (default)</Paragraph1>
-      </Column>
+      <Paragraph2 margin={Size.M}>
+        {'<TouchableSurface colorArrangement={paletteTheme.primary.normal}>'}
+      </Paragraph2>
       <Row>
         <TouchableSurface
           alignContent={AlignContent.Center}
-          colorTheme={ColorTheme.PrimaryNormal}
+          colorArrangement={paletteTheme.primary.normal}
           height={50}
           justifyContent={JustifyContent.Center}
           margin={Size.M}
@@ -113,7 +110,7 @@ const TouchableSurfaceScreen: React.SFC<{}> = (): JSX.Element => {
           <Paragraph1>Touch me!</Paragraph1>
         </TouchableSurface>
         <TouchableSurface
-          colorTheme={ColorTheme.PrimaryNormal}
+          colorArrangement={paletteTheme.primary.normal}
           contained={false}
           height={50}
           invertColor
@@ -123,19 +120,22 @@ const TouchableSurfaceScreen: React.SFC<{}> = (): JSX.Element => {
           <Paragraph1>Touch me! (contained=false)</Paragraph1>
         </TouchableSurface>
       </Row>
-      <Column margin={Size.M}>
-        <Paragraph1>Custom styles via getPatchTheme()</Paragraph1>
-      </Column>
+      <Paragraph2 margin={Size.M}>
+        {[
+          '<TouchableSurface colorArrangement={paletteTheme.primary.normal}',
+          '<getPatchTheme={getPatchTheme}>',
+        ].join('')}
+      </Paragraph2>
       <Row>
         <TouchableSurface
-          colorTheme={ColorTheme.PrimaryNormal}
+          colorArrangement={paletteTheme.primary.normal}
           getPatchTheme={getPatchTheme}
           margin={Size.M}
         >
           <Paragraph1>Touch me!</Paragraph1>
         </TouchableSurface>
         <TouchableSurface
-          colorTheme={ColorTheme.PrimaryNormal}
+          colorArrangement={paletteTheme.primary.normal}
           contained={false}
           getPatchTheme={getPatchTheme}
           invertColor

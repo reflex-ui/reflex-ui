@@ -5,22 +5,22 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { PaletteColor } from './PaletteColor';
+import { PaletteColorVariant } from './PaletteColorVariant';
 
 export interface PaletteColorInteraction {
-  readonly activated: PaletteColor;
-  readonly disabled: PaletteColor;
-  readonly enabled: PaletteColor;
-  readonly focused: PaletteColor;
-  readonly hovered: PaletteColor;
-  readonly pressed: PaletteColor;
+  readonly activated: PaletteColorVariant;
+  readonly disabled: PaletteColorVariant;
+  readonly enabled: PaletteColorVariant;
+  readonly focused: PaletteColorVariant;
+  readonly hovered: PaletteColorVariant;
+  readonly pressed: PaletteColorVariant;
 }
 
 export interface PaletteColorInteractionOptional {
-  readonly activated?: PaletteColor;
-  readonly disabled: PaletteColor;
-  readonly enabled: PaletteColor;
-  readonly focused?: PaletteColor;
-  readonly hovered?: PaletteColor;
-  readonly pressed?: PaletteColor;
+  readonly activated?: PaletteColorVariant;
+  readonly disabled: PaletteColorVariant;
+  readonly enabled: PaletteColorVariant;
+  readonly focused?: PaletteColorVariant;
+  readonly hovered?: PaletteColorVariant;
+  readonly pressed?: PaletteColorVariant;
 }

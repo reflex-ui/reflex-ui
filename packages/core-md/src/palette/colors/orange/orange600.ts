@@ -5,21 +5,21 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { PaletteColor } from '@reflex-ui/core';
+import { PaletteColorVariant } from '@reflex-ui/core';
 
 import { black } from '../black/black';
 
-export const orange600: PaletteColor = {
-  dark: {
-    color: '#c25e00',
-    onColor: black,
-  },
-  light: {
-    color: '#ffbd45',
-    onColor: black,
-  },
-  normal: {
-    color: '#fb8c00',
-    onColor: black,
-  },
+export const orange600Dark: PaletteColorVariant = {
+  color: '#c25e00',
+  onColor: black,
+};
+
+export const orange600Light: PaletteColorVariant = {
+  color: '#ffbd45',
+  onColor: black,
+};
+
+export const orange600Normal: PaletteColorVariant = {
+  color: '#fb8c00',
+  onColor: black,
 };
