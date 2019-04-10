@@ -6,9 +6,6 @@
  */
 
 import {
-  // ButtonProps,
-  getSizedMarginStyle,
-  // getThemedColor,
   InteractionType,
   Size,
   SurfacePropsBase,
@@ -16,9 +13,6 @@ import {
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import { Platform } from 'react-native';
-
-import { getSizingStyle } from '../../../sizing/getSizingStyle';
-import { sizedSpacing } from '../../../spacing/sizedSpacing';
 
 export const getAllVariantsButtonContainerProps: ViewPropsGetter<
   SurfacePropsBase
@@ -42,6 +36,4 @@ export const getAllVariantsButtonContainerStyle: ViewStyleGetter<
       outlineStyle: 'none',
     },
   }),
-  ...getSizedMarginStyle(sizedSpacing)(props),
-  ...getSizingStyle(props),
 });
