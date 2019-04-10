@@ -6,107 +6,70 @@
  */
 
 import {
-  createPaletteColorInteraction,
-  createPaletteColorVariantUsingColorOnly,
-  createPaletteColorVariantUsingOnColorOnly,
-  invertPaletteColorVariant,
+  createFlexColor,
+  createLayeredColorUsingColorOnly,
+  createLayeredColorUsingOnColorOnly,
+  invertLayeredColor,
+  PaletteColor,
 } from '@reflex-ui/core';
 
+import { createContainedLayeredColor } from '../../createContainedLayeredColor';
 // tslint:disable-next-line:max-line-length
-import { createContainedPaletteColorVariant } from '../../createContainedPaletteColorVariant';
-// tslint:disable-next-line:max-line-length
-import { createUncontainedPaletteColorVariant } from '../../createUncontainedPaletteColorVariant';
+import { createUncontainedLayeredColor } from '../../createUncontainedLayeredColor';
 import { disabledGrey300Contained } from '../disabled/contained';
 import {
   disabledGrey500Uncontained,
   disabledGrey600Uncontained,
 } from '../disabled/uncontained';
-import { MaterialPaletteColorItem } from '../MaterialPaletteColorItem';
-import { grey900Dark, grey900Light, grey900Normal } from './grey900';
+import { grey900, grey900Dark, grey900Light } from './grey900';
 
-export const mdGrey900: MaterialPaletteColorItem = {
-  color: {
-    dark: {
-      inverted: {
-        contained: createPaletteColorInteraction({
-          colorVariant: invertPaletteColorVariant(grey900Dark),
-          colorVariantFactory: createContainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey300Contained,
-        }),
-        uncontained: createPaletteColorInteraction({
-          colorVariant: createPaletteColorVariantUsingColorOnly(grey900Dark),
-          colorVariantFactory: createUncontainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey500Uncontained,
-        }),
-      },
-      regular: {
-        contained: createPaletteColorInteraction({
-          colorVariant: grey900Dark,
-          colorVariantFactory: createContainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey300Contained,
-        }),
-        uncontained: createPaletteColorInteraction({
-          colorVariant: createPaletteColorVariantUsingOnColorOnly(grey900Dark),
-          colorVariantFactory: createUncontainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey500Uncontained,
-        }),
-      },
-    },
-    light: {
-      inverted: {
-        contained: createPaletteColorInteraction({
-          colorVariant: invertPaletteColorVariant(grey900Light),
-          colorVariantFactory: createContainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey300Contained,
-        }),
-        uncontained: createPaletteColorInteraction({
-          colorVariant: createPaletteColorVariantUsingColorOnly(grey900Light),
-          colorVariantFactory: createUncontainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey500Uncontained,
-        }),
-      },
-      regular: {
-        contained: createPaletteColorInteraction({
-          colorVariant: grey900Light,
-          colorVariantFactory: createContainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey300Contained,
-        }),
-        uncontained: createPaletteColorInteraction({
-          colorVariant: createPaletteColorVariantUsingOnColorOnly(grey900Light),
-          colorVariantFactory: createUncontainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey600Uncontained,
-        }),
-      },
-    },
-    normal: {
-      inverted: {
-        contained: createPaletteColorInteraction({
-          colorVariant: invertPaletteColorVariant(grey900Normal),
-          colorVariantFactory: createContainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey300Contained,
-        }),
-        uncontained: createPaletteColorInteraction({
-          colorVariant: createPaletteColorVariantUsingColorOnly(grey900Normal),
-          colorVariantFactory: createUncontainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey500Uncontained,
-        }),
-      },
-      regular: {
-        contained: createPaletteColorInteraction({
-          colorVariant: grey900Normal,
-          colorVariantFactory: createContainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey300Contained,
-        }),
-        uncontained: createPaletteColorInteraction({
-          colorVariant: createPaletteColorVariantUsingOnColorOnly(
-            grey900Normal,
-          ),
-          colorVariantFactory: createUncontainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey600Uncontained,
-        }),
-      },
-    },
-  },
+export const mdGrey900: PaletteColor = {
+  color: createFlexColor({
+    containedColor: grey900,
+    containedColorDisabled: disabledGrey300Contained,
+    containedColorFactory: createContainedLayeredColor,
+    containedInvertedColor: invertLayeredColor(grey900),
+    containedInvertedColorDisabled: disabledGrey300Contained,
+    uncontainedColor: createLayeredColorUsingOnColorOnly(grey900),
+    uncontainedColorDisabled: disabledGrey600Uncontained,
+    uncontainedColorFactory: createUncontainedLayeredColor,
+    uncontainedInvertedColor: createLayeredColorUsingColorOnly(grey900),
+    uncontainedInvertedColorDisabled: disabledGrey500Uncontained,
+  }),
   name: 'Grey',
   tone: '900',
+};
+
+export const mdGrey900Dark: PaletteColor = {
+  color: createFlexColor({
+    containedColor: grey900Dark,
+    containedColorDisabled: disabledGrey300Contained,
+    containedColorFactory: createContainedLayeredColor,
+    containedInvertedColor: invertLayeredColor(grey900Dark),
+    containedInvertedColorDisabled: disabledGrey300Contained,
+    uncontainedColor: createLayeredColorUsingOnColorOnly(grey900Dark),
+    uncontainedColorDisabled: disabledGrey500Uncontained,
+    uncontainedColorFactory: createUncontainedLayeredColor,
+    uncontainedInvertedColor: createLayeredColorUsingColorOnly(grey900Dark),
+    uncontainedInvertedColorDisabled: disabledGrey500Uncontained,
+  }),
+  name: 'Grey',
+  tone: '900 Dark',
+};
+
+export const mdGrey900Light: PaletteColor = {
+  color: createFlexColor({
+    containedColor: grey900Light,
+    containedColorDisabled: disabledGrey300Contained,
+    containedColorFactory: createContainedLayeredColor,
+    containedInvertedColor: invertLayeredColor(grey900Light),
+    containedInvertedColorDisabled: disabledGrey300Contained,
+    uncontainedColor: createLayeredColorUsingOnColorOnly(grey900Light),
+    uncontainedColorDisabled: disabledGrey600Uncontained,
+    uncontainedColorFactory: createUncontainedLayeredColor,
+    uncontainedInvertedColor: createLayeredColorUsingColorOnly(grey900Light),
+    uncontainedInvertedColorDisabled: disabledGrey500Uncontained,
+  }),
+  name: 'Grey',
+  tone: '900 Light',
 };

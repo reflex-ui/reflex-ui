@@ -5,21 +5,21 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { PaletteColorVariant } from '@reflex-ui/core';
+import { LayeredColor } from '@reflex-ui/core';
 
 import { black } from '../black/black';
 
-export const tealA700Dark: PaletteColorVariant = {
+export const tealA700: LayeredColor = {
+  color: '#00bfa5',
+  onColor: black,
+};
+
+export const tealA700Dark: LayeredColor = {
   color: '#008e76',
   onColor: black,
 };
 
-export const tealA700Light: PaletteColorVariant = {
+export const tealA700Light: LayeredColor = {
   color: '#5df2d6',
-  onColor: black,
-};
-
-export const tealA700Normal: PaletteColorVariant = {
-  color: '#00bfa5',
   onColor: black,
 };

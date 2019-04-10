@@ -5,10 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { PaletteColor } from '@reflex-ui/core';
-
-export interface MaterialPaletteColorItem {
-  readonly color: PaletteColor;
-  readonly name: string;
-  readonly tone?: string;
+export interface LayeredColor {
+  readonly color: string;
+  readonly onColor: string;
 }

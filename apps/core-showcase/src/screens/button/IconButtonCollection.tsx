@@ -12,20 +12,20 @@ import * as React from 'react';
 import { ButtonCollectionProps } from './ButtonCollectionProps';
 
 const IconButtonCollection: React.SFC<ButtonCollectionProps> = ({
-  colorArrangement,
   getPatchTheme,
   invertColor,
   onPress,
+  paletteColor,
   showDisabled = true,
   variant,
 }): JSX.Element => (
   <React.Fragment>
     <Row justifyContent={JustifyContent.Center}>
       <Button
-        colorArrangement={colorArrangement}
         getPatchTheme={getPatchTheme}
         invertColor={invertColor}
         margin={Size.M}
+        paletteColor={paletteColor}
         onPress={onPress}
         variant={variant}
       >
@@ -33,12 +33,12 @@ const IconButtonCollection: React.SFC<ButtonCollectionProps> = ({
       </Button>
       {showDisabled && (
         <Button
-          colorArrangement={colorArrangement}
           disabled
           getPatchTheme={getPatchTheme}
           invertColor={invertColor}
           margin={Size.M}
           onPress={onPress}
+          paletteColor={paletteColor}
           variant={variant}
         >
           <FavoriteIcon />

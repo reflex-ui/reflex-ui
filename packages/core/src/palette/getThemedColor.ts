@@ -9,20 +9,23 @@ import { InteractionType } from '../interaction/InteractionType';
 import { ThemedColorGetter } from './ThemedColorGetter';
 
 export const getThemedColor: ThemedColorGetter = ({
-  colorArrangement,
   contained,
   interactionState = { type: InteractionType.Enabled },
   invertColor,
   onColor,
+  paletteColor,
 }): string => {
-  const colorContainment = invertColor
-    ? colorArrangement.inverted
-    : colorArrangement.regular;
-  const colorInteraction = contained
-    ? colorContainment.contained
-    : colorContainment.uncontained;
+  const colorGamut = paletteColor.color[interactionState.type];
+  let layeredColor;
+  if (contained) {
+    layeredColor = invertColor
+      ? colorGamut.containedInverted
+      : colorGamut.contained;
+  } else {
+    layeredColor = invertColor
+      ? colorGamut.uncontainedInverted
+      : colorGamut.uncontained;
+  }
 
-  const colorVariant = colorInteraction[interactionState.type];
-
-  return onColor ? colorVariant.onColor : colorVariant.color;
+  return onColor ? layeredColor.onColor : layeredColor.color;
 };

@@ -6,121 +6,78 @@
  */
 
 import {
-  createPaletteColorInteraction,
-  createPaletteColorVariantUsingColorOnly,
-  createPaletteColorVariantUsingOnColorOnly,
-  invertPaletteColorVariant,
+  createFlexColor,
+  createLayeredColorUsingColorOnly,
+  createLayeredColorUsingOnColorOnly,
+  invertLayeredColor,
+  PaletteColor,
 } from '@reflex-ui/core';
 
+import { createContainedLayeredColor } from '../../createContainedLayeredColor';
 // tslint:disable-next-line:max-line-length
-import { createContainedPaletteColorVariant } from '../../createContainedPaletteColorVariant';
-// tslint:disable-next-line:max-line-length
-import { createUncontainedPaletteColorVariant } from '../../createUncontainedPaletteColorVariant';
+import { createUncontainedLayeredColor } from '../../createUncontainedLayeredColor';
 import { disabledGrey300Contained } from '../disabled/contained';
 import {
   disabledGrey400Uncontained,
   disabledGrey500Uncontained,
 } from '../disabled/uncontained';
-import { MaterialPaletteColorItem } from '../MaterialPaletteColorItem';
 import {
+  deepPurple500,
   deepPurple500Dark,
   deepPurple500Light,
-  deepPurple500Normal,
 } from './deepPurple500';
 
-export const mdDeepPurple500: MaterialPaletteColorItem = {
-  color: {
-    dark: {
-      inverted: {
-        contained: createPaletteColorInteraction({
-          colorVariant: invertPaletteColorVariant(deepPurple500Dark),
-          colorVariantFactory: createContainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey300Contained,
-        }),
-        uncontained: createPaletteColorInteraction({
-          colorVariant: createPaletteColorVariantUsingColorOnly(
-            deepPurple500Dark,
-          ),
-          colorVariantFactory: createUncontainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey500Uncontained,
-        }),
-      },
-      regular: {
-        contained: createPaletteColorInteraction({
-          colorVariant: deepPurple500Dark,
-          colorVariantFactory: createContainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey300Contained,
-        }),
-        uncontained: createPaletteColorInteraction({
-          colorVariant: createPaletteColorVariantUsingOnColorOnly(
-            deepPurple500Dark,
-          ),
-          colorVariantFactory: createUncontainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey500Uncontained,
-        }),
-      },
-    },
-    light: {
-      inverted: {
-        contained: createPaletteColorInteraction({
-          colorVariant: invertPaletteColorVariant(deepPurple500Light),
-          colorVariantFactory: createContainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey300Contained,
-        }),
-        uncontained: createPaletteColorInteraction({
-          colorVariant: createPaletteColorVariantUsingColorOnly(
-            deepPurple500Light,
-          ),
-          colorVariantFactory: createUncontainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey500Uncontained,
-        }),
-      },
-      regular: {
-        contained: createPaletteColorInteraction({
-          colorVariant: deepPurple500Light,
-          colorVariantFactory: createContainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey300Contained,
-        }),
-        uncontained: createPaletteColorInteraction({
-          colorVariant: createPaletteColorVariantUsingOnColorOnly(
-            deepPurple500Light,
-          ),
-          colorVariantFactory: createUncontainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey400Uncontained,
-        }),
-      },
-    },
-    normal: {
-      inverted: {
-        contained: createPaletteColorInteraction({
-          colorVariant: invertPaletteColorVariant(deepPurple500Normal),
-          colorVariantFactory: createContainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey300Contained,
-        }),
-        uncontained: createPaletteColorInteraction({
-          colorVariant: createPaletteColorVariantUsingColorOnly(
-            deepPurple500Normal,
-          ),
-          colorVariantFactory: createUncontainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey500Uncontained,
-        }),
-      },
-      regular: {
-        contained: createPaletteColorInteraction({
-          colorVariant: deepPurple500Normal,
-          colorVariantFactory: createContainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey300Contained,
-        }),
-        uncontained: createPaletteColorInteraction({
-          colorVariant: createPaletteColorVariantUsingOnColorOnly(
-            deepPurple500Normal,
-          ),
-          colorVariantFactory: createUncontainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey500Uncontained,
-        }),
-      },
-    },
-  },
+export const mdDeepPurple500: PaletteColor = {
+  color: createFlexColor({
+    containedColor: deepPurple500,
+    containedColorDisabled: disabledGrey300Contained,
+    containedColorFactory: createContainedLayeredColor,
+    containedInvertedColor: invertLayeredColor(deepPurple500),
+    containedInvertedColorDisabled: disabledGrey300Contained,
+    uncontainedColor: createLayeredColorUsingOnColorOnly(deepPurple500),
+    uncontainedColorDisabled: disabledGrey500Uncontained,
+    uncontainedColorFactory: createUncontainedLayeredColor,
+    uncontainedInvertedColor: createLayeredColorUsingColorOnly(deepPurple500),
+    uncontainedInvertedColorDisabled: disabledGrey500Uncontained,
+  }),
   name: 'Deep Purple',
   tone: '500',
+};
+
+export const mdDeepPurple500Dark: PaletteColor = {
+  color: createFlexColor({
+    containedColor: deepPurple500Dark,
+    containedColorDisabled: disabledGrey300Contained,
+    containedColorFactory: createContainedLayeredColor,
+    containedInvertedColor: invertLayeredColor(deepPurple500Dark),
+    containedInvertedColorDisabled: disabledGrey300Contained,
+    uncontainedColor: createLayeredColorUsingOnColorOnly(deepPurple500Dark),
+    uncontainedColorDisabled: disabledGrey500Uncontained,
+    uncontainedColorFactory: createUncontainedLayeredColor,
+    uncontainedInvertedColor: createLayeredColorUsingColorOnly(
+      deepPurple500Dark,
+    ),
+    uncontainedInvertedColorDisabled: disabledGrey500Uncontained,
+  }),
+  name: 'Deep Purple',
+  tone: '500 Dark',
+};
+
+export const mdDeepPurple500Light: PaletteColor = {
+  color: createFlexColor({
+    containedColor: deepPurple500Light,
+    containedColorDisabled: disabledGrey300Contained,
+    containedColorFactory: createContainedLayeredColor,
+    containedInvertedColor: invertLayeredColor(deepPurple500Light),
+    containedInvertedColorDisabled: disabledGrey300Contained,
+    uncontainedColor: createLayeredColorUsingOnColorOnly(deepPurple500Light),
+    uncontainedColorDisabled: disabledGrey400Uncontained,
+    uncontainedColorFactory: createUncontainedLayeredColor,
+    uncontainedInvertedColor: createLayeredColorUsingColorOnly(
+      deepPurple500Light,
+    ),
+    uncontainedInvertedColorDisabled: disabledGrey500Uncontained,
+  }),
+  name: 'Deep Purple',
+  tone: '500 Light',
 };

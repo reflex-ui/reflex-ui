@@ -6,113 +6,70 @@
  */
 
 import {
-  createPaletteColorInteraction,
-  createPaletteColorVariantUsingColorOnly,
-  createPaletteColorVariantUsingOnColorOnly,
-  invertPaletteColorVariant,
+  createFlexColor,
+  createLayeredColorUsingColorOnly,
+  createLayeredColorUsingOnColorOnly,
+  invertLayeredColor,
+  PaletteColor,
 } from '@reflex-ui/core';
 
+import { createContainedLayeredColor } from '../../createContainedLayeredColor';
 // tslint:disable-next-line:max-line-length
-import { createContainedPaletteColorVariant } from '../../createContainedPaletteColorVariant';
-// tslint:disable-next-line:max-line-length
-import { createUncontainedPaletteColorVariant } from '../../createUncontainedPaletteColorVariant';
+import { createUncontainedLayeredColor } from '../../createUncontainedLayeredColor';
 import { disabledGrey300Contained } from '../disabled/contained';
 import {
   disabledGrey500Uncontained,
   disabledGrey600Uncontained,
 } from '../disabled/uncontained';
-import { MaterialPaletteColorItem } from '../MaterialPaletteColorItem';
-import { yellow600Dark, yellow600Light, yellow600Normal } from './yellow600';
+import { yellow600, yellow600Dark, yellow600Light } from './yellow600';
 
-export const mdYellow600: MaterialPaletteColorItem = {
-  color: {
-    dark: {
-      inverted: {
-        contained: createPaletteColorInteraction({
-          colorVariant: invertPaletteColorVariant(yellow600Dark),
-          colorVariantFactory: createContainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey300Contained,
-        }),
-        uncontained: createPaletteColorInteraction({
-          colorVariant: createPaletteColorVariantUsingColorOnly(yellow600Dark),
-          colorVariantFactory: createUncontainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey500Uncontained,
-        }),
-      },
-      regular: {
-        contained: createPaletteColorInteraction({
-          colorVariant: yellow600Dark,
-          colorVariantFactory: createContainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey300Contained,
-        }),
-        uncontained: createPaletteColorInteraction({
-          colorVariant: createPaletteColorVariantUsingOnColorOnly(
-            yellow600Dark,
-          ),
-          colorVariantFactory: createUncontainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey600Uncontained,
-        }),
-      },
-    },
-    light: {
-      inverted: {
-        contained: createPaletteColorInteraction({
-          colorVariant: invertPaletteColorVariant(yellow600Light),
-          colorVariantFactory: createContainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey300Contained,
-        }),
-        uncontained: createPaletteColorInteraction({
-          colorVariant: createPaletteColorVariantUsingColorOnly(yellow600Light),
-          colorVariantFactory: createUncontainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey500Uncontained,
-        }),
-      },
-      regular: {
-        contained: createPaletteColorInteraction({
-          colorVariant: yellow600Light,
-          colorVariantFactory: createContainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey300Contained,
-        }),
-        uncontained: createPaletteColorInteraction({
-          colorVariant: createPaletteColorVariantUsingOnColorOnly(
-            yellow600Light,
-          ),
-          colorVariantFactory: createUncontainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey600Uncontained,
-        }),
-      },
-    },
-    normal: {
-      inverted: {
-        contained: createPaletteColorInteraction({
-          colorVariant: invertPaletteColorVariant(yellow600Normal),
-          colorVariantFactory: createContainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey300Contained,
-        }),
-        uncontained: createPaletteColorInteraction({
-          colorVariant: createPaletteColorVariantUsingColorOnly(
-            yellow600Normal,
-          ),
-          colorVariantFactory: createUncontainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey500Uncontained,
-        }),
-      },
-      regular: {
-        contained: createPaletteColorInteraction({
-          colorVariant: yellow600Normal,
-          colorVariantFactory: createContainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey300Contained,
-        }),
-        uncontained: createPaletteColorInteraction({
-          colorVariant: createPaletteColorVariantUsingOnColorOnly(
-            yellow600Normal,
-          ),
-          colorVariantFactory: createUncontainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey600Uncontained,
-        }),
-      },
-    },
-  },
+export const mdYellow600: PaletteColor = {
+  color: createFlexColor({
+    containedColor: yellow600,
+    containedColorDisabled: disabledGrey300Contained,
+    containedColorFactory: createContainedLayeredColor,
+    containedInvertedColor: invertLayeredColor(yellow600),
+    containedInvertedColorDisabled: disabledGrey300Contained,
+    uncontainedColor: createLayeredColorUsingOnColorOnly(yellow600),
+    uncontainedColorDisabled: disabledGrey600Uncontained,
+    uncontainedColorFactory: createUncontainedLayeredColor,
+    uncontainedInvertedColor: createLayeredColorUsingColorOnly(yellow600),
+    uncontainedInvertedColorDisabled: disabledGrey500Uncontained,
+  }),
   name: 'Yellow',
   tone: '600',
+};
+
+export const mdYellow600Dark: PaletteColor = {
+  color: createFlexColor({
+    containedColor: yellow600Dark,
+    containedColorDisabled: disabledGrey300Contained,
+    containedColorFactory: createContainedLayeredColor,
+    containedInvertedColor: invertLayeredColor(yellow600Dark),
+    containedInvertedColorDisabled: disabledGrey300Contained,
+    uncontainedColor: createLayeredColorUsingOnColorOnly(yellow600Dark),
+    uncontainedColorDisabled: disabledGrey600Uncontained,
+    uncontainedColorFactory: createUncontainedLayeredColor,
+    uncontainedInvertedColor: createLayeredColorUsingColorOnly(yellow600Dark),
+    uncontainedInvertedColorDisabled: disabledGrey500Uncontained,
+  }),
+  name: 'Yellow',
+  tone: '600 Dark',
+};
+
+export const mdYellow600Light: PaletteColor = {
+  color: createFlexColor({
+    containedColor: yellow600Light,
+    containedColorDisabled: disabledGrey300Contained,
+    containedColorFactory: createContainedLayeredColor,
+    containedInvertedColor: invertLayeredColor(yellow600Light),
+    containedInvertedColorDisabled: disabledGrey300Contained,
+    uncontainedColor: createLayeredColorUsingOnColorOnly(yellow600Light),
+    uncontainedColorDisabled: disabledGrey600Uncontained,
+    uncontainedColorFactory: createUncontainedLayeredColor,
+    uncontainedInvertedColor: createLayeredColorUsingColorOnly(yellow600Light),
+    uncontainedInvertedColorDisabled: disabledGrey500Uncontained,
+  }),
+  name: 'Yellow',
+  tone: '600 Light',
 };

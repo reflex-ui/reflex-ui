@@ -6,136 +6,41 @@
  */
 
 import {
-  createPaletteColorInteraction,
-  createPaletteColorVariantUsingOnColorOnly,
-  invertPaletteColorVariant,
-  PaletteColorInteraction,
-  PaletteColorVariant,
+  createFlexColor,
+  createLayeredColorUsingColorOnly,
+  createLayeredColorUsingOnColorOnly,
+  invertLayeredColor,
+  LayeredColor,
+  PaletteColor,
 } from '@reflex-ui/core';
 
+import { createContainedLayeredColor } from '../../createContainedLayeredColor';
 // tslint:disable-next-line:max-line-length
-import { createContainedPaletteColorVariant } from '../../createContainedPaletteColorVariant';
-// tslint:disable-next-line:max-line-length
-import { createUncontainedPaletteColorVariant } from '../../createUncontainedPaletteColorVariant';
+import { createUncontainedLayeredColor } from '../../createUncontainedLayeredColor';
 import { black } from '../black/black';
 import { disabledGrey300Contained } from '../disabled/contained';
-import {
-  disabledGrey500Uncontained,
-  disabledGrey600Uncontained,
-} from '../disabled/uncontained';
-import { MaterialPaletteColorItem } from '../MaterialPaletteColorItem';
-import { transparent } from '../transparent';
+import { disabledGrey500Uncontained } from '../disabled/uncontained';
 import { white } from './white';
 
-const whiteRegularContainedBaseColor: PaletteColorVariant = {
+const whiteLayeredColor: LayeredColor = {
   color: white,
   onColor: black,
 };
 
-const whiteDarkRegularUncontainedColorInteraction: PaletteColorInteraction = {
-  activated: {
-    color: '#e0e0e0',
-    onColor: white,
-  },
-  disabled: disabledGrey500Uncontained,
-  enabled: {
-    color: transparent,
-    onColor: white,
-  },
-  focused: {
-    color: '#e0e0e0',
-    onColor: white,
-  },
-  hovered: {
-    color: '#f5f5f5',
-    onColor: white,
-  },
-  pressed: {
-    color: '#d6d6d6',
-    onColor: white,
-  },
-};
-
-export const mdWhite: MaterialPaletteColorItem = {
-  color: {
-    dark: {
-      inverted: {
-        contained: createPaletteColorInteraction({
-          colorVariant: invertPaletteColorVariant(
-            whiteRegularContainedBaseColor,
-          ),
-          colorVariantFactory: createContainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey300Contained,
-        }),
-        uncontained: whiteDarkRegularUncontainedColorInteraction,
-      },
-      regular: {
-        contained: createPaletteColorInteraction({
-          colorVariant: whiteRegularContainedBaseColor,
-          colorVariantFactory: createContainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey300Contained,
-        }),
-        uncontained: createPaletteColorInteraction({
-          colorVariant: createPaletteColorVariantUsingOnColorOnly(
-            whiteRegularContainedBaseColor,
-          ),
-          colorVariantFactory: createUncontainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey500Uncontained,
-        }),
-      },
-    },
-    light: {
-      inverted: {
-        contained: createPaletteColorInteraction({
-          colorVariant: invertPaletteColorVariant(
-            whiteRegularContainedBaseColor,
-          ),
-          colorVariantFactory: createContainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey300Contained,
-        }),
-        uncontained: whiteDarkRegularUncontainedColorInteraction,
-      },
-      regular: {
-        contained: createPaletteColorInteraction({
-          colorVariant: whiteRegularContainedBaseColor,
-          colorVariantFactory: createContainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey300Contained,
-        }),
-        uncontained: createPaletteColorInteraction({
-          colorVariant: createPaletteColorVariantUsingOnColorOnly(
-            whiteRegularContainedBaseColor,
-          ),
-          colorVariantFactory: createUncontainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey600Uncontained,
-        }),
-      },
-    },
-    normal: {
-      inverted: {
-        contained: createPaletteColorInteraction({
-          colorVariant: invertPaletteColorVariant(
-            whiteRegularContainedBaseColor,
-          ),
-          colorVariantFactory: createContainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey300Contained,
-        }),
-        uncontained: whiteDarkRegularUncontainedColorInteraction,
-      },
-      regular: {
-        contained: createPaletteColorInteraction({
-          colorVariant: whiteRegularContainedBaseColor,
-          colorVariantFactory: createContainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey300Contained,
-        }),
-        uncontained: createPaletteColorInteraction({
-          colorVariant: createPaletteColorVariantUsingOnColorOnly(
-            whiteRegularContainedBaseColor,
-          ),
-          colorVariantFactory: createUncontainedPaletteColorVariant,
-          disabledColorVariant: disabledGrey600Uncontained,
-        }),
-      },
-    },
-  },
+export const mdWhite: PaletteColor = {
+  color: createFlexColor({
+    containedColor: whiteLayeredColor,
+    containedColorDisabled: disabledGrey300Contained,
+    containedColorFactory: createContainedLayeredColor,
+    containedInvertedColor: invertLayeredColor(whiteLayeredColor),
+    containedInvertedColorDisabled: disabledGrey300Contained,
+    uncontainedColor: createLayeredColorUsingOnColorOnly(whiteLayeredColor),
+    uncontainedColorDisabled: disabledGrey500Uncontained,
+    uncontainedColorFactory: createUncontainedLayeredColor,
+    uncontainedInvertedColor: createLayeredColorUsingColorOnly(
+      whiteLayeredColor,
+    ),
+    uncontainedInvertedColorDisabled: disabledGrey500Uncontained,
+  }),
   name: 'White',
 };

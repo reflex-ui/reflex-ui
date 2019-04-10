@@ -8,7 +8,7 @@
 import * as React from 'react';
 import { ViewProps } from 'react-native';
 
-import { ColorContext } from '../../palette/ColorContext';
+import { PaletteColorContext } from '../../palette/PaletteColorContext';
 import { extractViewProps } from '../../utils/props';
 import { ComponentChildrenProps } from '../ComponentChildrenProps';
 import { ComponentThemeProps } from '../ComponentThemeProps';
@@ -25,7 +25,7 @@ export const renderRfxViewComponent = <
   props: Props,
   shouldProvideColor: boolean = false,
 ): React.ReactElement => {
-  const { children, colorArrangement, theme } = props;
+  const { children, paletteColor, theme } = props;
   const viewProps: React.PropsWithChildren<ViewProps> = {
     ...extractViewProps(props),
     children,
@@ -34,9 +34,9 @@ export const renderRfxViewComponent = <
 
   if (shouldProvideColor) {
     return (
-      <ColorContext.Provider value={colorArrangement}>
+      <PaletteColorContext.Provider value={paletteColor}>
         {renderedView}
-      </ColorContext.Provider>
+      </PaletteColorContext.Provider>
     );
   }
 

@@ -5,22 +5,22 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { PaletteColorVariant } from '@reflex-ui/core';
+import { LayeredColor } from '@reflex-ui/core';
 
 import { black } from '../black/black';
 import { white } from '../white/white';
 
-export const deepPurple500Dark: PaletteColorVariant = {
+export const deepPurple500: LayeredColor = {
+  color: '#673ab7',
+  onColor: white,
+};
+
+export const deepPurple500Dark: LayeredColor = {
   color: '#320b86',
   onColor: white,
 };
 
-export const deepPurple500Light: PaletteColorVariant = {
+export const deepPurple500Light: LayeredColor = {
   color: '#9a67ea',
   onColor: black,
-};
-
-export const deepPurple500Normal: PaletteColorVariant = {
-  color: '#673ab7',
-  onColor: white,
 };

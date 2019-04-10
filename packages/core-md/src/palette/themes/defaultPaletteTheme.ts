@@ -7,17 +7,39 @@
 
 import { PaletteTheme } from '@reflex-ui/core';
 
-import { mdGreen800 } from '../colors/green/mdGreen800';
-import { mdRed900 } from '../colors/red/mdRed900';
+import {
+  mdGreen800,
+  mdGreen800Dark,
+  mdGreen800Light,
+} from '../colors/green/mdGreen800';
+import { mdRed900, mdRed900Dark, mdRed900Light } from '../colors/red/mdRed900';
 import { mdWhite } from '../colors/white/mdWhite';
-import { mdYellow600 } from '../colors/yellow/mdYellow600';
+import {
+  mdYellow600,
+  mdYellow600Dark,
+  mdYellow600Light,
+} from '../colors/yellow/mdYellow600';
 
 export const defaultPaletteTheme: PaletteTheme = {
-  background: mdWhite.color,
-  error: mdRed900.color,
-  primary: mdWhite.color,
-  secondary: mdWhite.color,
-  success: mdGreen800.color,
-  surface: mdWhite.color,
-  warning: mdYellow600.color,
+  background: mdWhite,
+  backgroundDark: mdWhite,
+  backgroundLight: mdWhite,
+  error: mdRed900,
+  errorDark: mdRed900Dark,
+  errorLight: mdRed900Light,
+  primary: mdWhite,
+  primaryDark: mdWhite,
+  primaryLight: mdWhite,
+  secondary: mdWhite,
+  secondaryDark: mdWhite,
+  secondaryLight: mdWhite,
+  success: mdGreen800,
+  successDark: mdGreen800Dark,
+  successLight: mdGreen800Light,
+  surface: mdWhite,
+  surfaceDark: mdWhite,
+  surfaceLight: mdWhite,
+  warning: mdYellow600,
+  warningDark: mdYellow600Dark,
+  warningLight: mdYellow600Light,
 };

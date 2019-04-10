@@ -7,11 +7,11 @@
 
 import * as React from 'react';
 
-import { PaletteColorArrangement } from './PaletteColorArrangement';
+import { PaletteColor } from './PaletteColor';
 
-const ColorContext = React.createContext<PaletteColorArrangement | undefined>(
+const PaletteColorContext = React.createContext<PaletteColor | undefined>(
   undefined,
 );
-ColorContext.displayName = 'ColorContext';
+PaletteColorContext.displayName = 'PaletteColorContext';
 
-export { ColorContext };
+export { PaletteColorContext };

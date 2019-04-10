@@ -7,8 +7,16 @@
 
 import { PaletteTheme } from '@reflex-ui/core';
 
-import { mdDeepPurple500 } from '../colors/deepPurple/mdDeepPurple500';
-import { mdTealA700 } from '../colors/teal/mdTealA700';
+import {
+  mdDeepPurple500,
+  mdDeepPurple500Dark,
+  mdDeepPurple500Light,
+} from '../colors/deepPurple/mdDeepPurple500';
+import {
+  mdTealA700,
+  mdTealA700Dark,
+  mdTealA700Light,
+} from '../colors/teal/mdTealA700';
 import { createPaletteTheme } from './createPaletteTheme';
 import { defaultPaletteTheme } from './defaultPaletteTheme';
 
@@ -16,7 +24,11 @@ import { defaultPaletteTheme } from './defaultPaletteTheme';
 export const deepPurple500TealA700PaletteTheme: PaletteTheme = createPaletteTheme(
   defaultPaletteTheme,
   {
-    primary: mdDeepPurple500.color,
-    secondary: mdTealA700.color,
+    primary: mdDeepPurple500,
+    primaryDark: mdDeepPurple500Dark,
+    primaryLight: mdDeepPurple500Light,
+    secondary: mdTealA700,
+    secondaryDark: mdTealA700Dark,
+    secondaryLight: mdTealA700Light,
   },
 );

@@ -6,16 +6,16 @@
  */
 
 import {
-  PaletteColorVariant,
-  PaletteColorVariantFactory,
-  PaletteColorVariantFactoryInput,
+  LayeredColor,
+  LayeredColorFactory,
+  LayeredColorFactoryInput,
 } from '@reflex-ui/core';
 
 import { getInlayColorByInteraction } from './getInlayColorByInteraction';
 
-export const createContainedPaletteColorVariant: PaletteColorVariantFactory = (
-  config: PaletteColorVariantFactoryInput,
-): PaletteColorVariant => ({
+export const createContainedLayeredColor: LayeredColorFactory = (
+  config: LayeredColorFactoryInput,
+): LayeredColor => ({
   color: getInlayColorByInteraction({
     color: config.color.color,
     type: config.interactionType,

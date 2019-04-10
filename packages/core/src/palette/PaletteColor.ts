@@ -5,12 +5,16 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { PaletteColorArrangement } from './PaletteColorArrangement';
+import { FlexColor, FlexColorOptional } from './FlexColor';
 
 export interface PaletteColor {
-  readonly dark: PaletteColorArrangement;
-  readonly light: PaletteColorArrangement;
-  readonly normal: PaletteColorArrangement;
+  readonly color: FlexColor;
+  readonly name: string;
+  readonly tone?: string;
 }
 
-export type PaletteColorOptional = Partial<PaletteColor>;
+export interface PaletteColorOptional {
+  readonly color: FlexColorOptional;
+  readonly name: string;
+  readonly tone?: string;
+}

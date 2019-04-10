@@ -11,7 +11,6 @@ export * from './deepPurple';
 export * from './disabled';
 export * from './green';
 export * from './grey';
-export * from './MaterialPaletteColorItem';
 export * from './orange';
 export * from './red';
 export * from './teal';

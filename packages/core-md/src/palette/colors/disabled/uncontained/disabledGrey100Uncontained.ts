@@ -5,12 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { PaletteColorVariant } from '@reflex-ui/core';
+import { LayeredColor } from '@reflex-ui/core';
 
-import { grey100Normal } from '../../grey/grey100';
+import { grey100 } from '../../grey/grey100';
 import { transparent } from '../../transparent';
 
-export const disabledGrey100Uncontained: PaletteColorVariant = {
+export const disabledGrey100Uncontained: LayeredColor = {
   color: transparent,
-  onColor: grey100Normal.color,
+  onColor: grey100.color,
 };

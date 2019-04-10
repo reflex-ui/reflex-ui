@@ -5,10 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { PaletteColorArrangement } from '@reflex-ui/core';
+import { PaletteColor } from '@reflex-ui/core';
 
 export interface IconCollectionProps {
-  readonly colorArrangement: PaletteColorArrangement;
   readonly invertColor?: boolean;
+  readonly paletteColor: PaletteColor;
   readonly title: string;
 }

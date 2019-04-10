@@ -9,8 +9,7 @@ import { useContext } from 'react';
 
 import { MissingComponentThemeError } from '../../errors';
 import { InteractionStateContext } from '../../interaction';
-import { ColorContext } from '../../palette/ColorContext';
-import { PaletteColorArrangement } from '../../palette/PaletteColorArrangement';
+import { PaletteColorContext } from '../../palette/PaletteColorContext';
 import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
 import { DimensionsContext } from '../../responsiveness/DimensionsContext';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
@@ -19,7 +18,7 @@ import { RfxTextProps, RfxTextPropsOptional } from './RfxTextProps';
 export const useDefaultRfxTextProps = (
   props: RfxTextPropsOptional,
 ): RfxTextProps => {
-  const colorOnCtx = useContext(ColorContext);
+  const paletteColorOnCtx = useContext(PaletteColorContext);
   const componentsTheme = useContext(ComponentsThemeContext);
   const dimensionsProps = useContext(DimensionsContext);
   const interactionStateFromCtx = useContext(InteractionStateContext);
@@ -33,13 +32,13 @@ export const useDefaultRfxTextProps = (
     theme = componentsTheme.text.paragraph1;
   }
 
-  const colorArrangement: PaletteColorArrangement =
-    props.colorArrangement || colorOnCtx || paletteTheme.surface.normal;
+  const paletteColor =
+    props.paletteColor || paletteColorOnCtx || paletteTheme.surface;
 
   return {
-    colorArrangement,
     ...dimensionsProps,
     interactionState: interactionStateFromCtx,
+    paletteColor,
     theme,
     ...props,
   };

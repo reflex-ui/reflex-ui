@@ -5,24 +5,23 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+export * from './ColorGamut';
 export * from './ColorProps';
-export * from './createPaletteColorInteraction';
-export * from './createPaletteColorVariantUsingColorOnly';
-export * from './createPaletteColorVariantUsingOnColorOnly';
+export * from './createFlexColor';
+export * from './createLayeredColorUsingColorOnly';
+export * from './createLayeredColorUsingOnColorOnly';
 export * from './createPaletteTheme';
 export * from './defaultPaletteTheme';
+export * from './FlexColor';
+export * from './FlexColorFactoryInput';
 export * from './getThemedColor';
 export * from './getThemedOnColor';
-export * from './invertPaletteColorVariant';
+export * from './invertLayeredColor';
+export * from './LayeredColor';
+export * from './LayeredColorFactory';
+export * from './LayeredColorFactoryInput';
 export * from './PaletteColor';
-export * from './PaletteColorArrangement';
-export * from './PaletteColorContainment';
-export * from './PaletteColorFactoryInput';
-export * from './PaletteColorInteraction';
-export * from './PaletteColorInteractionFactoryInput';
-export * from './PaletteColorVariant';
-export * from './PaletteColorVariantFactory';
-export * from './PaletteColorVariantFactoryInput';
+export * from './PaletteColorContext';
 export * from './PaletteTheme';
 export * from './PaletteThemeContext';
 export * from './ThemedColorGetter';

@@ -5,145 +5,149 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { FlexColor } from './FlexColor';
+import { LayeredColor } from './LayeredColor';
 import { PaletteColor } from './PaletteColor';
-import { PaletteColorArrangement } from './PaletteColorArrangement';
-import { PaletteColorInteraction } from './PaletteColorInteraction';
-import { PaletteColorVariant } from './PaletteColorVariant';
 import { PaletteTheme } from './PaletteTheme';
 
 const black = '#000';
 const transparent = 'transparent';
 const white = '#fff';
 
-const disabledContainedPaletteColorVariant: PaletteColorVariant = {
+const disabledContainedLayeredColor: LayeredColor = {
   color: '#e0e0e0',
   onColor: '#9e9e9e',
 };
 
-const disabledUncontainedPaletteColorVariant: PaletteColorVariant = {
+const disabledUncontainedLayeredColor: LayeredColor = {
   color: transparent,
   onColor: '#9e9e9e',
 };
 
-const whiteRegularContainedColorInteraction: PaletteColorInteraction = {
+const whiteFlexColor: FlexColor = {
   activated: {
-    color: '#e0e0e0',
-    onColor: black,
+    contained: {
+      color: '#e0e0e0',
+      onColor: black,
+    },
+    containedInverted: {
+      color: '#5c5c5c',
+      onColor: white,
+    },
+    uncontained: {
+      color: '#e0e0e0',
+      onColor: white,
+    },
+    uncontainedInverted: {
+      color: '#cfcfcf',
+      onColor: black,
+    },
   },
-  disabled: disabledContainedPaletteColorVariant,
+  disabled: {
+    contained: disabledContainedLayeredColor,
+    containedInverted: disabledContainedLayeredColor,
+    uncontained: disabledUncontainedLayeredColor,
+    uncontainedInverted: disabledUncontainedLayeredColor,
+  },
   enabled: {
-    color: white,
-    onColor: black,
+    contained: {
+      color: white,
+      onColor: black,
+    },
+    containedInverted: {
+      color: black,
+      onColor: white,
+    },
+    uncontained: {
+      color: transparent,
+      onColor: white,
+    },
+    uncontainedInverted: {
+      color: transparent,
+      onColor: black,
+    },
   },
   focused: {
-    color: '#e0e0e0',
-    onColor: black,
+    contained: {
+      color: '#e0e0e0',
+      onColor: black,
+    },
+    containedInverted: {
+      color: '#5c5c5c',
+      onColor: white,
+    },
+    uncontained: {
+      color: '#e0e0e0',
+      onColor: white,
+    },
+    uncontainedInverted: {
+      color: '#cfcfcf',
+      onColor: black,
+    },
   },
   hovered: {
-    color: '#f5f5f5',
-    onColor: black,
+    contained: {
+      color: '#f5f5f5',
+      onColor: black,
+    },
+    containedInverted: {
+      color: '#292929',
+      onColor: white,
+    },
+    uncontained: {
+      color: '#f5f5f5',
+      onColor: white,
+    },
+    uncontainedInverted: {
+      color: '#dbdbdb',
+      onColor: black,
+    },
   },
   pressed: {
-    color: '#d6d6d6',
-    onColor: black,
-  },
-};
-
-const whiteRegularUncontainedColorInteraction: PaletteColorInteraction = {
-  activated: {
-    color: '#e0e0e0',
-    onColor: white,
-  },
-  disabled: disabledUncontainedPaletteColorVariant,
-  enabled: {
-    color: transparent,
-    onColor: white,
-  },
-  focused: {
-    color: '#e0e0e0',
-    onColor: white,
-  },
-  hovered: {
-    color: '#f5f5f5',
-    onColor: white,
-  },
-  pressed: {
-    color: '#d6d6d6',
-    onColor: white,
-  },
-};
-
-const whiteInvertedContainedColorInteraction: PaletteColorInteraction = {
-  activated: {
-    color: '#5c5c5c',
-    onColor: white,
-  },
-  disabled: disabledContainedPaletteColorVariant,
-  enabled: {
-    color: black,
-    onColor: white,
-  },
-  focused: {
-    color: '#5c5c5c',
-    onColor: white,
-  },
-  hovered: {
-    color: '#292929',
-    onColor: white,
-  },
-  pressed: {
-    color: '#6b6b6b',
-    onColor: white,
-  },
-};
-
-const whiteInvertedUncontainedColorInteraction: PaletteColorInteraction = {
-  activated: {
-    color: '#cfcfcf',
-    onColor: black,
-  },
-  disabled: disabledUncontainedPaletteColorVariant,
-  enabled: {
-    color: transparent,
-    onColor: black,
-  },
-  focused: {
-    color: '#cfcfcf',
-    onColor: black,
-  },
-  hovered: {
-    color: '#dbdbdb',
-    onColor: black,
-  },
-  pressed: {
-    color: '#bababa',
-    onColor: black,
-  },
-};
-
-const whitePaletteColorArrangement: PaletteColorArrangement = {
-  inverted: {
-    contained: whiteInvertedContainedColorInteraction,
-    uncontained: whiteInvertedUncontainedColorInteraction,
-  },
-  regular: {
-    contained: whiteRegularContainedColorInteraction,
-    uncontained: whiteRegularUncontainedColorInteraction,
+    contained: {
+      color: '#d6d6d6',
+      onColor: black,
+    },
+    containedInverted: {
+      color: '#6b6b6b',
+      onColor: white,
+    },
+    uncontained: {
+      color: '#d6d6d6',
+      onColor: white,
+    },
+    uncontainedInverted: {
+      color: '#bababa',
+      onColor: black,
+    },
   },
 };
 
 const whitePaletteColor: PaletteColor = {
-  dark: whitePaletteColorArrangement,
-  light: whitePaletteColorArrangement,
-  normal: whitePaletteColorArrangement,
+  color: whiteFlexColor,
+  name: 'White (@reflex-ui/core',
 };
 
 export const defaultPaletteTheme: PaletteTheme = {
   background: whitePaletteColor,
+  backgroundDark: whitePaletteColor,
+  backgroundLight: whitePaletteColor,
   error: whitePaletteColor,
+  errorDark: whitePaletteColor,
+  errorLight: whitePaletteColor,
   primary: whitePaletteColor,
+  primaryDark: whitePaletteColor,
+  primaryLight: whitePaletteColor,
   secondary: whitePaletteColor,
+  secondaryDark: whitePaletteColor,
+  secondaryLight: whitePaletteColor,
   success: whitePaletteColor,
+  successDark: whitePaletteColor,
+  successLight: whitePaletteColor,
   surface: whitePaletteColor,
+  surfaceDark: whitePaletteColor,
+  surfaceLight: whitePaletteColor,
   warning: whitePaletteColor,
+  warningDark: whitePaletteColor,
+  warningLight: whitePaletteColor,
 };

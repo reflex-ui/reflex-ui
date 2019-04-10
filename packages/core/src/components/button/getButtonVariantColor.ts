@@ -5,13 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { PaletteColorArrangement, PaletteTheme } from '../../palette';
+import { PaletteColor, PaletteTheme } from '../../palette';
 import { ButtonVariant } from './ButtonVariant';
 
 export const getButtonVariantColor = (
   variant: ButtonVariant,
   paletteTheme: PaletteTheme,
-): PaletteColorArrangement =>
+): PaletteColor =>
   variant === ButtonVariant.Fab || variant === ButtonVariant.XFab
-    ? paletteTheme.secondary.normal
-    : paletteTheme.primary.normal;
+    ? paletteTheme.secondary
+    : paletteTheme.primary;

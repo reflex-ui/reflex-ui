@@ -61,7 +61,7 @@ const SurfaceScreen: React.SFC<{}> = (): JSX.Element => {
         <AppBarTitle numberOfLines={1}>Surface</AppBarTitle>
       </AppBar>
       <Paragraph2 margin={Size.M}>
-        {'<Surface colorArrangement={paletteTheme.surface.normal}> (default)'}
+        {'<Surface paletteColor={paletteTheme.surface}> (default)'}
       </Paragraph2>
       <Row>
         <Surface height={50} margin={Size.M} width={100}>
@@ -72,47 +72,50 @@ const SurfaceScreen: React.SFC<{}> = (): JSX.Element => {
         </Surface>
       </Row>
       <Paragraph2 margin={Size.M}>
-        {'<Surface colorArrangement={paletteTheme.primary.normal}>'}
+        {'<Surface paletteColor={paletteTheme.primary}>'}
       </Paragraph2>
       <Row>
         <Surface
           alignContent={AlignContent.Center}
-          colorArrangement={paletteTheme.primary.normal}
           height={50}
           justifyContent={JustifyContent.Center}
           margin={Size.M}
+          paletteColor={paletteTheme.primary}
           width={100}
         >
           <Paragraph1>Hello Surface!</Paragraph1>
         </Surface>
         <Surface
-          colorArrangement={paletteTheme.primary.normal}
           contained={false}
           height={50}
           invertColor
           margin={Size.M}
+          paletteColor={paletteTheme.primary}
           width={100}
         >
           <Paragraph1>Hello Surface! (contained=false)</Paragraph1>
         </Surface>
       </Row>
       <Paragraph2 margin={Size.M}>
-        {'<Surface getPatchTheme={getPatchTheme}>'}
+        {[
+          '<Surface getPatchTheme={getPatchTheme}',
+          'paletteColor={paletteTheme.primary}>',
+        ].join('')}
       </Paragraph2>
       <Row>
         <Surface
-          colorArrangement={paletteTheme.primary.normal}
           getPatchTheme={getPatchTheme}
           margin={Size.M}
+          paletteColor={paletteTheme.primary}
         >
           <Paragraph1>Hello Surface!</Paragraph1>
         </Surface>
         <Surface
-          colorArrangement={paletteTheme.primary.normal}
           contained={false}
           getPatchTheme={getPatchTheme}
           invertColor
           margin={Size.M}
+          paletteColor={paletteTheme.primary}
         >
           <Paragraph1>Hello Surface! (contained=false)</Paragraph1>
         </Surface>

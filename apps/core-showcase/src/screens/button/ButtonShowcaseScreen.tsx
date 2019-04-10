@@ -64,64 +64,64 @@ const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
   const paletteTheme = useContext(PaletteThemeContext);
   const colors = [
     {
-      color: paletteTheme.primary.normal,
-      name: 'primary.normal',
+      color: paletteTheme.primary,
+      name: 'primary',
     },
     {
-      color: paletteTheme.primary.dark,
-      name: 'primary.dark',
+      color: paletteTheme.primaryDark,
+      name: 'primaryDark',
     },
     {
-      color: paletteTheme.primary.light,
-      name: 'primary.light',
+      color: paletteTheme.primaryLight,
+      name: 'primaryLight',
     },
     {
-      color: paletteTheme.secondary.normal,
-      name: 'secondary.normal',
+      color: paletteTheme.secondary,
+      name: 'secondary',
     },
     {
-      color: paletteTheme.secondary.dark,
-      name: 'secondary.dark',
+      color: paletteTheme.secondaryDark,
+      name: 'secondaryDark',
     },
     {
-      color: paletteTheme.secondary.light,
-      name: 'secondary.light',
+      color: paletteTheme.secondaryLight,
+      name: 'secondaryLight',
     },
     {
-      color: paletteTheme.error.normal,
-      name: 'error.normal',
+      color: paletteTheme.error,
+      name: 'error',
     },
     {
-      color: paletteTheme.error.dark,
-      name: 'error.dark',
+      color: paletteTheme.errorDark,
+      name: 'errorDark',
     },
     {
-      color: paletteTheme.error.light,
-      name: 'error.light',
+      color: paletteTheme.errorLight,
+      name: 'errorLight',
     },
     {
-      color: paletteTheme.success.normal,
-      name: 'success.normal',
+      color: paletteTheme.success,
+      name: 'success',
     },
     {
-      color: paletteTheme.success.dark,
-      name: 'success.dark',
+      color: paletteTheme.successDark,
+      name: 'successDark',
     },
     {
-      color: paletteTheme.success.light,
-      name: 'success.light',
+      color: paletteTheme.successLight,
+      name: 'successLight',
     },
     {
-      color: paletteTheme.warning.normal,
-      name: 'warning.normal',
+      color: paletteTheme.warning,
+      name: 'warning',
     },
     {
-      color: paletteTheme.warning.dark,
-      name: 'warning.dark',
+      color: paletteTheme.warningDark,
+      name: 'warningDark',
     },
     {
-      color: paletteTheme.warning.light,
-      name: 'warning.light',
+      color: paletteTheme.warningLight,
+      name: 'warningLight',
     },
   ];
 
@@ -173,9 +173,9 @@ const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
                             <Caption>{size}</Caption>
                             <Row>
                               <ScaleButton
-                                colorArrangement={paletteTheme.primary.normal}
                                 invertColor={invertColor}
                                 onPress={onButtonPress}
+                                paletteColor={paletteTheme.primary}
                                 size={size}
                                 variant={variant}
                               />
@@ -194,7 +194,7 @@ const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
                 >
                   <Surface marginStart={marginSize}>
                     <Paragraph1 margin={Size.M} marginBottom={Size.XXS}>
-                      Surface color: <Paragraph2>surface_normal</Paragraph2>
+                      Surface color: <Paragraph2>surface</Paragraph2>
                     </Paragraph1>
                     <Paragraph1 margin={Size.M} marginTop={0}>
                       Button color:
@@ -205,15 +205,15 @@ const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
                       </Paragraph2>
                     </Paragraph1>
                     <ButtonCollection
-                      colorArrangement={paletteColor.color}
                       invertColor={invertColor}
                       onPress={onButtonPress}
+                      paletteColor={paletteColor.color}
                       variant={variant}
                     />
                   </Surface>
                   <Surface
-                    colorArrangement={paletteColor.color}
                     marginStart={marginSize}
+                    paletteColor={paletteColor.color}
                   >
                     <Paragraph1 margin={Size.M} marginBottom={Size.XXS}>
                       Surface color:{' '}
@@ -228,9 +228,9 @@ const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
                       </Paragraph2>
                     </Paragraph1>
                     <ButtonCollection
-                      colorArrangement={paletteColor.color}
                       invertColor={!invertColor}
                       onPress={onButtonPress}
+                      paletteColor={paletteColor.color}
                       variant={variant}
                     />
                   </Surface>
@@ -245,19 +245,19 @@ const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
                     marginVertical={marginSize}
                   >
                     <Surface
-                      colorArrangement={paletteTheme.surface.normal}
                       marginStart={marginSize}
+                      paletteColor={paletteTheme.surface}
                     >
                       <Paragraph1 margin={Size.M} marginBottom={Size.XXS}>
-                        Surface color: <Paragraph2>surface_normal</Paragraph2>
+                        Surface color: <Paragraph2>surface</Paragraph2>
                       </Paragraph1>
                       <Paragraph1 margin={Size.M} marginTop={0}>
                         Button color: <Paragraph2>{custom.title}</Paragraph2>
                       </Paragraph1>
                       <ButtonCollection
-                        colorArrangement={paletteTheme.primary.normal}
                         getPatchTheme={custom.getPatchTheme}
                         onPress={onButtonPress}
+                        paletteColor={paletteTheme.primary}
                         variant={custom.variant}
                       />
                     </Surface>

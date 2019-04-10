@@ -10,15 +10,15 @@ import {
   ButtonTheme,
   ButtonVariant,
   ComponentThemeGetter,
-  PaletteColorArrangement,
+  PaletteColor,
   Size,
 } from '@reflex-ui/core';
 
 export interface ButtonCollectionProps {
-  readonly colorArrangement: PaletteColorArrangement;
   readonly getPatchTheme?: ComponentThemeGetter<ButtonProps, ButtonTheme>;
   readonly invertColor?: boolean;
   readonly onPress?: () => void;
+  readonly paletteColor: PaletteColor;
   readonly showDisabled?: boolean;
   readonly size?: Size;
   readonly variant: ButtonVariant;

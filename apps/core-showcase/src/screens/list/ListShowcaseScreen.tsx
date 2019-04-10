@@ -100,7 +100,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => {
                   These are the most common props and their default values:
                 </Paragraph1>
                 <Paragraph2 marginStart={Size.XS} marginTop={Size.XXS}>
-                  {'colorArrangement={paletteTheme.surface.normal}'}
+                  {'paletteColor={paletteTheme.surface}'}
                 </Paragraph2>
                 <Paragraph1 marginTop={Size.XL}>
                   We also pass {'maxWidth={listMaxWidth}'} to all lists in this
@@ -477,14 +477,14 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => {
               </List>
               <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
                 {[
-                  '<List colorArrangement={paletteTheme.primary.dark}',
+                  '<List paletteColor={paletteTheme.primaryDark}',
                   'maxWidth={listMaxWidth}>',
                 ].join(' ')}
                 {'\n'}
                 {'<ListItem size={Size.M}>'}
               </Paragraph2>
               <List
-                colorArrangement={paletteTheme.primary.dark}
+                paletteColor={paletteTheme.primaryDark}
                 maxWidth={listMaxWidth}
               >
                 <TouchableSurface

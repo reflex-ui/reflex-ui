@@ -18,10 +18,10 @@ const TestShowcaseScreen: React.SFC<{}> = (): JSX.Element => {
 
   return (
     <TouchableSurface
-      colorArrangement={paletteTheme.primary.dark}
       contained={false}
       height={100}
       margin={Size.M}
+      paletteColor={paletteTheme.primaryDark}
       width={100}
     >
       <Paragraph1>Touch me! (contained=false)</Paragraph1>

@@ -9,8 +9,7 @@ import { useContext } from 'react';
 
 import { MissingComponentThemeError } from '../../errors';
 import { InteractionStateContext } from '../../interaction';
-import { ColorContext } from '../../palette/ColorContext';
-import { PaletteColorArrangement } from '../../palette/PaletteColorArrangement';
+import { PaletteColorContext } from '../../palette/PaletteColorContext';
 import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
 import { Size } from '../../sizing/Size';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
@@ -19,7 +18,7 @@ import { RfxSvgProps, RfxSvgPropsOptional } from './RfxSvgProps';
 export const useDefaultRfxSvgProps = (
   props: RfxSvgPropsOptional,
 ): RfxSvgProps => {
-  const colorFromCtx = useContext(ColorContext);
+  const paletteColorFromCtx = useContext(PaletteColorContext);
   const componentsTheme = useContext(ComponentsThemeContext);
   const interactionStateFromCtx = useContext(InteractionStateContext);
   const paletteTheme = useContext(PaletteThemeContext);
@@ -32,12 +31,12 @@ export const useDefaultRfxSvgProps = (
     theme = componentsTheme.svg.rfxSvg;
   }
 
-  const colorArrangement: PaletteColorArrangement =
-    props.colorArrangement || colorFromCtx || paletteTheme.surface.normal;
+  const paletteColor =
+    props.paletteColor || paletteColorFromCtx || paletteTheme.surface;
 
   return {
-    colorArrangement,
     interactionState: interactionStateFromCtx,
+    paletteColor,
     size: Size.M,
     theme,
     ...props,

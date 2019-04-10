@@ -6,6 +6,10 @@
  */
 
 import {
+  AppBar,
+  AppBarTitle,
+  Button,
+  ButtonVariant,
   Caption,
   ComponentThemeGetter,
   Headline1,
@@ -25,8 +29,14 @@ import {
   Subtitle2,
   Surface,
 } from '@reflex-ui/core';
+import { MenuIcon } from '@reflex-ui/icons-md';
 import React, { useContext } from 'react';
 import { ScrollView } from 'react-native';
+
+const onButtonPress = () => {
+  // tslint:disable-next-line:no-console
+  console.log('RfxTextScreen().onButtonPress()');
+};
 
 const getCaptionPatchTheme: ComponentThemeGetter<
   RfxTextProps,
@@ -43,6 +53,12 @@ const RfxTextScreen: React.SFC = (): JSX.Element => {
 
   return (
     <ScrollView>
+      <AppBar>
+        <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
+          <MenuIcon />
+        </Button>
+        <AppBarTitle numberOfLines={1}>Text</AppBarTitle>
+      </AppBar>
       <Surface margin={Size.M} padding={Size.M}>
         <Headline1>Hello Headline 1</Headline1>
         <Headline2>Hello Headline 2</Headline2>
@@ -89,23 +105,23 @@ const RfxTextScreen: React.SFC = (): JSX.Element => {
         </Paragraph1>
       </Surface>
       <Surface
-        colorArrangement={paletteTheme.primary.normal}
         margin={Size.M}
         padding={Size.M}
+        paletteColor={paletteTheme.primary}
       >
         <Paragraph1 marginVertical={Size.XS}>
           This is a {'<Paragraph1>'} inside a{' '}
-          {'<Surface colorArrangement={paletteTheme.primary.normal}>'}.
+          {'<Surface paletteColor={paletteTheme.primary}>'}.
         </Paragraph1>
       </Surface>
       <Surface
-        colorArrangement={paletteTheme.primary.dark}
         margin={Size.M}
         padding={Size.M}
+        paletteColor={paletteTheme.primaryDark}
       >
         <Paragraph1 marginVertical={Size.XS}>
           This is a {'<Paragraph1>'} inside a{' '}
-          {'<Surface colorArrangement={paletteTheme.primary.dark}>'}.
+          {'<Surface paletteColor={paletteTheme.primaryDark}>'}.
         </Paragraph1>
       </Surface>
     </ScrollView>

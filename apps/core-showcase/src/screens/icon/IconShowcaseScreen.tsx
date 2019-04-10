@@ -33,64 +33,64 @@ const IconShowcaseScreen: React.SFC<{}> = (): JSX.Element => {
   const paletteTheme = useContext(PaletteThemeContext);
   const colors = [
     {
-      color: paletteTheme.primary.normal,
-      name: 'primary.normal',
+      color: paletteTheme.primary,
+      name: 'primary',
     },
     {
-      color: paletteTheme.primary.dark,
-      name: 'primary.dark',
+      color: paletteTheme.primaryDark,
+      name: 'primaryDark',
     },
     {
-      color: paletteTheme.primary.light,
-      name: 'primary.light',
+      color: paletteTheme.primaryLight,
+      name: 'primaryLight',
     },
     {
-      color: paletteTheme.secondary.normal,
-      name: 'secondary.normal',
+      color: paletteTheme.secondary,
+      name: 'secondary',
     },
     {
-      color: paletteTheme.secondary.dark,
-      name: 'secondary.dark',
+      color: paletteTheme.secondaryDark,
+      name: 'secondaryDark',
     },
     {
-      color: paletteTheme.secondary.light,
-      name: 'secondary.light',
+      color: paletteTheme.secondaryLight,
+      name: 'secondaryLight',
     },
     {
-      color: paletteTheme.error.normal,
-      name: 'error.normal',
+      color: paletteTheme.error,
+      name: 'error',
     },
     {
-      color: paletteTheme.error.dark,
-      name: 'error.dark',
+      color: paletteTheme.errorDark,
+      name: 'errorDark',
     },
     {
-      color: paletteTheme.error.light,
-      name: 'error.light',
+      color: paletteTheme.errorLight,
+      name: 'errorLight',
     },
     {
-      color: paletteTheme.success.normal,
-      name: 'success.normal',
+      color: paletteTheme.success,
+      name: 'success',
     },
     {
-      color: paletteTheme.success.dark,
-      name: 'success.dark',
+      color: paletteTheme.successDark,
+      name: 'successDark',
     },
     {
-      color: paletteTheme.success.light,
-      name: 'success.light',
+      color: paletteTheme.successLight,
+      name: 'successLight',
     },
     {
-      color: paletteTheme.warning.normal,
-      name: 'warning.normal',
+      color: paletteTheme.warning,
+      name: 'warning',
     },
     {
-      color: paletteTheme.warning.dark,
-      name: 'warning.dark',
+      color: paletteTheme.warningDark,
+      name: 'warningDark',
     },
     {
-      color: paletteTheme.warning.light,
-      name: 'warning.light',
+      color: paletteTheme.warningLight,
+      name: 'warningLight',
     },
   ];
 
@@ -122,17 +122,17 @@ const IconShowcaseScreen: React.SFC<{}> = (): JSX.Element => {
                 >
                   <Surface marginStart={marginSize}>
                     <IconCollection
-                      colorArrangement={paletteColor.color}
                       invertColor
+                      paletteColor={paletteColor.color}
                       title={paletteColor.name}
                     />
                   </Surface>
                   <Surface
-                    colorArrangement={paletteColor.color}
                     marginStart={marginSize}
+                    paletteColor={paletteColor.color}
                   >
                     <IconCollection
-                      colorArrangement={paletteColor.color}
+                      paletteColor={paletteColor.color}
                       title={`${paletteColor.name} invertColor`}
                     />
                   </Surface>

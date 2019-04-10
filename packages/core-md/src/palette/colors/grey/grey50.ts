@@ -5,22 +5,22 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { PaletteColorVariant } from '@reflex-ui/core';
+import { LayeredColor } from '@reflex-ui/core';
 
 import { black } from '../black/black';
 import { white } from '../white/white';
 
-export const grey50Dark: PaletteColorVariant = {
+export const grey50: LayeredColor = {
+  color: '#fafafa',
+  onColor: black,
+};
+
+export const grey50Dark: LayeredColor = {
   color: '#c7c7c7',
   onColor: black,
 };
 
-export const grey50Light: PaletteColorVariant = {
+export const grey50Light: LayeredColor = {
   color: white,
-  onColor: black,
-};
-
-export const grey50Normal: PaletteColorVariant = {
-  color: '#fafafa',
   onColor: black,
 };

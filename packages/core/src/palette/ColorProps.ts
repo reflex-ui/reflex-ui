@@ -5,11 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { PaletteColorArrangement } from './PaletteColorArrangement';
+import { PaletteColor } from './PaletteColor';
 
 export interface ColorProps {
-  readonly colorArrangement: PaletteColorArrangement;
   readonly contained?: boolean;
+  readonly paletteColor: PaletteColor;
   readonly invertColor?: boolean;
 }
 

@@ -96,25 +96,25 @@ const TouchableSurfaceScreen: React.SFC<{}> = (): JSX.Element => {
         </TouchableSurface>
       </Row>
       <Paragraph2 margin={Size.M}>
-        {'<TouchableSurface colorArrangement={paletteTheme.primary.normal}>'}
+        {'<TouchableSurface paletteColor={paletteTheme.primary}>'}
       </Paragraph2>
       <Row>
         <TouchableSurface
           alignContent={AlignContent.Center}
-          colorArrangement={paletteTheme.primary.normal}
           height={50}
           justifyContent={JustifyContent.Center}
           margin={Size.M}
+          paletteColor={paletteTheme.primary}
           width={100}
         >
           <Paragraph1>Touch me!</Paragraph1>
         </TouchableSurface>
         <TouchableSurface
-          colorArrangement={paletteTheme.primary.normal}
           contained={false}
           height={50}
           invertColor
           margin={Size.M}
+          paletteColor={paletteTheme.primary}
           width={100}
         >
           <Paragraph1>Touch me! (contained=false)</Paragraph1>
@@ -122,24 +122,24 @@ const TouchableSurfaceScreen: React.SFC<{}> = (): JSX.Element => {
       </Row>
       <Paragraph2 margin={Size.M}>
         {[
-          '<TouchableSurface colorArrangement={paletteTheme.primary.normal}',
-          '<getPatchTheme={getPatchTheme}>',
+          '<TouchableSurface getPatchTheme={getPatchTheme}',
+          'paletteColor={paletteTheme.primary}>',
         ].join('')}
       </Paragraph2>
       <Row>
         <TouchableSurface
-          colorArrangement={paletteTheme.primary.normal}
           getPatchTheme={getPatchTheme}
           margin={Size.M}
+          paletteColor={paletteTheme.primary}
         >
           <Paragraph1>Touch me!</Paragraph1>
         </TouchableSurface>
         <TouchableSurface
-          colorArrangement={paletteTheme.primary.normal}
           contained={false}
           getPatchTheme={getPatchTheme}
           invertColor
           margin={Size.M}
+          paletteColor={paletteTheme.primary}
         >
           <Paragraph1>Touch me! (contained=false)</Paragraph1>
         </TouchableSurface>

@@ -9,8 +9,7 @@ import { useContext } from 'react';
 
 import { MissingComponentThemeError } from '../../errors';
 import { InteractionType } from '../../interaction';
-import { ColorContext } from '../../palette/ColorContext';
-import { PaletteColorArrangement } from '../../palette/PaletteColorArrangement';
+import { PaletteColorContext } from '../../palette/PaletteColorContext';
 import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
 import { DimensionsContext } from '../../responsiveness/DimensionsContext';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
@@ -22,7 +21,7 @@ import {
 export const useDefaultTouchableSurfaceProps = (
   props: TouchableSurfacePropsOptional,
 ): TouchableSurfaceProps => {
-  const colorOnCtx = useContext(ColorContext);
+  const paletteColorOnCtx = useContext(PaletteColorContext);
   const componentsTheme = useContext(ComponentsThemeContext);
   const dimensions = useContext(DimensionsContext);
   const paletteTheme = useContext(PaletteThemeContext);
@@ -35,15 +34,15 @@ export const useDefaultTouchableSurfaceProps = (
     theme = componentsTheme.touchableSurface;
   }
 
-  const colorArrangement: PaletteColorArrangement =
-    props.colorArrangement || colorOnCtx || paletteTheme.surface.normal;
+  const paletteColor =
+    props.paletteColor || paletteColorOnCtx || paletteTheme.surface;
 
   return {
     ...dimensions,
-    colorArrangement,
     interactionState: {
       type: InteractionType.Enabled,
     },
+    paletteColor,
     theme,
     ...props,
   };

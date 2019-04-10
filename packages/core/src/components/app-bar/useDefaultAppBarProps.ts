@@ -9,7 +9,6 @@ import { useContext } from 'react';
 
 import { MissingComponentThemeError } from '../../errors';
 import { InteractionType } from '../../interaction/InteractionType';
-import { PaletteColorArrangement } from '../../palette/PaletteColorArrangement';
 import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
 import { DimensionsContext } from '../../responsiveness/DimensionsContext';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
@@ -33,8 +32,7 @@ export const useDefaultAppBarProps = (
     theme = componentsTheme.appBar[variant];
   }
 
-  const colorArrangement: PaletteColorArrangement =
-    props.colorArrangement || paletteTheme.primary.normal;
+  const paletteColor = props.paletteColor || paletteTheme.primary;
 
   const interactionState = props.interactionState || {
     type: InteractionType.Enabled,
@@ -42,9 +40,9 @@ export const useDefaultAppBarProps = (
 
   return {
     ...dimensions,
-    colorArrangement,
     contained: (props.contained !== undefined && props.contained) || true,
     interactionState,
+    paletteColor,
     theme,
     variant,
     ...props,

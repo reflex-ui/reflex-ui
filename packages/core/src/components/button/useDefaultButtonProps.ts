@@ -9,8 +9,7 @@ import { useContext } from 'react';
 
 import { MissingComponentThemeError } from '../../errors';
 import { InteractionType } from '../../interaction';
-import { ColorContext } from '../../palette/ColorContext';
-import { PaletteColorArrangement } from '../../palette/PaletteColorArrangement';
+import { PaletteColorContext } from '../../palette/PaletteColorContext';
 import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
 import { DimensionsContext } from '../../responsiveness/DimensionsContext';
 import { Size } from '../../sizing/Size';
@@ -22,7 +21,7 @@ import { getButtonVariantColor } from './getButtonVariantColor';
 export const useDefaultButtonProps = (
   props: ButtonPropsOptional,
 ): ButtonProps => {
-  const colorFromCtx = useContext(ColorContext);
+  const paletteColorFromCtx = useContext(PaletteColorContext);
   const componentsTheme = useContext(ComponentsThemeContext);
   const dimensions = useContext(DimensionsContext);
   const paletteTheme = useContext(PaletteThemeContext);
@@ -37,9 +36,9 @@ export const useDefaultButtonProps = (
     theme = componentsTheme.button[variant];
   }
 
-  const colorArrangement: PaletteColorArrangement =
-    props.colorArrangement ||
-    colorFromCtx ||
+  const paletteColor =
+    props.paletteColor ||
+    paletteColorFromCtx ||
     getButtonVariantColor(variant, paletteTheme);
 
   const contained =
@@ -66,7 +65,6 @@ export const useDefaultButtonProps = (
 
   return {
     ...dimensions,
-    colorArrangement,
     contained,
     interactionState: {
       type: InteractionType.Enabled,
@@ -80,6 +78,7 @@ export const useDefaultButtonProps = (
     // marginVertical: props.margin ? undefined : marginVertical,
     ...((props.margin && {}) || { marginHorizontal, marginVertical }),
     /**/
+    paletteColor,
     size: Size.M,
     theme,
     variant,

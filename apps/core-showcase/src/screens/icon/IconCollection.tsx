@@ -12,8 +12,8 @@ import * as React from 'react';
 import { IconCollectionProps } from './IconCollectionProps';
 
 const IconCollection: React.SFC<IconCollectionProps> = ({
-  colorArrangement,
   invertColor,
+  paletteColor,
   title,
 }): JSX.Element => (
   <React.Fragment>
@@ -22,37 +22,34 @@ const IconCollection: React.SFC<IconCollectionProps> = ({
     </Row>
     <Row>
       <AlarmIcon
-        colorArrangement={colorArrangement}
         invertColor={invertColor}
+        paletteColor={paletteColor}
         size={Size.XXS}
       />
       <AlarmIcon
-        colorArrangement={colorArrangement}
         invertColor={invertColor}
+        paletteColor={paletteColor}
         size={Size.XS}
       />
       <AlarmIcon
-        colorArrangement={colorArrangement}
         invertColor={invertColor}
+        paletteColor={paletteColor}
         size={Size.S}
       />
+      <AlarmIcon invertColor={invertColor} paletteColor={paletteColor} />
       <AlarmIcon
-        colorArrangement={colorArrangement}
         invertColor={invertColor}
-      />
-      <AlarmIcon
-        colorArrangement={colorArrangement}
-        invertColor={invertColor}
+        paletteColor={paletteColor}
         size={Size.L}
       />
       <AlarmIcon
-        colorArrangement={colorArrangement}
         invertColor={invertColor}
+        paletteColor={paletteColor}
         size={Size.XL}
       />
       <AlarmIcon
-        colorArrangement={colorArrangement}
         invertColor={invertColor}
+        paletteColor={paletteColor}
         size={Size.XXL}
       />
     </Row>

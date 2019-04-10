@@ -7,17 +7,17 @@
 
 import { useContext } from 'react';
 
-import { ColorContext } from '../../palette/ColorContext';
+import { PaletteColorContext } from '../../palette/PaletteColorContext';
 import { RfxViewPropsBaseOptional } from './RfxViewProps';
 
 export const useShouldProvideColor = (
   props: RfxViewPropsBaseOptional,
 ): boolean => {
-  const colorFromCtx = useContext(ColorContext);
-  const { colorArrangement } = props;
+  const paletteColorFromCtx = useContext(PaletteColorContext);
+  const { paletteColor } = props;
   return (
-    colorArrangement !== undefined &&
-    colorArrangement !== null &&
-    colorArrangement !== colorFromCtx
+    paletteColor !== undefined &&
+    paletteColor !== null &&
+    paletteColor !== paletteColorFromCtx
   );
 };
