@@ -8,7 +8,7 @@
 import * as React from 'react';
 import { ViewProps } from 'react-native';
 
-import { PaletteColorContext } from '../../palette/PaletteColorContext';
+import { PaletteColorContext } from '../../color/PaletteColorContext';
 import { extractViewProps } from '../../utils/props';
 import { ComponentChildrenProps } from '../ComponentChildrenProps';
 import { ComponentThemeProps } from '../ComponentThemeProps';

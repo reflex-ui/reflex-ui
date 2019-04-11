@@ -7,10 +7,10 @@
 
 import { TextProps } from 'react-native';
 
+import { ColorProps } from '../../color/ColorProps';
 import { FlexboxProps } from '../../flexbox/FlexboxProps';
 // tslint:disable-next-line:max-line-length
 import { InteractionStatePropsOptional } from '../../interaction/InteractionStateProps';
-import { ColorProps } from '../../palette/ColorProps';
 import { DimensionsProps } from '../../responsiveness/DimensionsProps';
 import { ResponsivenessProps } from '../../responsiveness/ResponsivenessProps';
 import { MarginProps } from '../../spacing/MarginProps';

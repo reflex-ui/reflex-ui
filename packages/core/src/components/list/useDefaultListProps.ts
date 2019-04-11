@@ -7,9 +7,9 @@
 
 import { useContext } from 'react';
 
+import { PaletteContext } from '../../color/PaletteContext';
 import { MissingComponentThemeError } from '../../errors';
 import { InteractionType } from '../../interaction/InteractionType';
-import { PaletteContext } from '../../palette/PaletteContext';
 import { DimensionsContext } from '../../responsiveness/DimensionsContext';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { ListProps, ListPropsOptional } from './ListProps';

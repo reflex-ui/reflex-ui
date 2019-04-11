@@ -7,9 +7,9 @@
 
 import { SvgProps } from 'react-native-svg';
 
+import { ColorProps } from '../../color/ColorProps';
 // tslint:disable-next-line:max-line-length
 import { InteractionStatePropsOptional } from '../../interaction/InteractionStateProps';
-import { ColorProps } from '../../palette/ColorProps';
 import { ResponsivenessProps } from '../../responsiveness/ResponsivenessProps';
 import { Size } from '../../sizing/Size';
 import { ComponentChildrenProps } from '../ComponentChildrenProps';

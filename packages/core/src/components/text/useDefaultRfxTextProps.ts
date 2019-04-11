@@ -7,10 +7,10 @@
 
 import { useContext } from 'react';
 
+import { PaletteColorContext } from '../../color/PaletteColorContext';
+import { PaletteContext } from '../../color/PaletteContext';
 import { MissingComponentThemeError } from '../../errors';
 import { InteractionStateContext } from '../../interaction';
-import { PaletteColorContext } from '../../palette/PaletteColorContext';
-import { PaletteContext } from '../../palette/PaletteContext';
 import { DimensionsContext } from '../../responsiveness/DimensionsContext';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { RfxTextProps, RfxTextPropsOptional } from './RfxTextProps';

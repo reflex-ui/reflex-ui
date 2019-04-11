@@ -7,7 +7,7 @@
 
 import { useContext } from 'react';
 
-import { PaletteColorContext } from '../../palette/PaletteColorContext';
+import { PaletteColorContext } from '../../color/PaletteColorContext';
 import { RfxViewPropsBaseOptional } from './RfxViewProps';
 
 export const useShouldProvideColor = (

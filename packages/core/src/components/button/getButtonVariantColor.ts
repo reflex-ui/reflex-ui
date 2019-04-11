@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { Palette, PaletteColor } from '../../palette';
+import { Palette } from '../../color/Palette';
+import { PaletteColor } from '../../color/PaletteColor';
 import { ButtonVariant } from './ButtonVariant';
 
 export const getButtonVariantColor = (

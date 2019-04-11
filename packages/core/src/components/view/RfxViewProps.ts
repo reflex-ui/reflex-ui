@@ -7,8 +7,8 @@
 
 import { ViewProps } from 'react-native';
 
+import { ColorProps } from '../../color/ColorProps';
 import { FlexboxProps } from '../../flexbox/FlexboxProps';
-import { ColorProps } from '../../palette/ColorProps';
 import { DimensionsProps } from '../../responsiveness/DimensionsProps';
 import { ResponsivenessProps } from '../../responsiveness/ResponsivenessProps';
 import { SizingPropsOptional } from '../../sizing/SizingProps';

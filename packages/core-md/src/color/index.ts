@@ -11,4 +11,4 @@ export * from './ColorByInteractionGetterInput';
 export * from './colors';
 export * from './getInlayColorByInteraction';
 export * from './getOverlayColorByInteraction';
-export * from './themes';
+export * from './palettes';
