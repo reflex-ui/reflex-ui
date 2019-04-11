@@ -6,15 +6,15 @@
  */
 
 import { InteractionType } from '../interaction/InteractionType';
-import { ThemedColorGetter } from './ThemedColorGetter';
+import { ColorGetterInput } from './ColorGetterInput';
 
-export const getThemedColor: ThemedColorGetter = ({
+export const getColor = ({
   contained,
   interactionState = { type: InteractionType.Enabled },
   invertColor,
   onColor,
   paletteColor,
-}): string => {
+}: ColorGetterInput): string => {
   const colorGamut = paletteColor.color[interactionState.type];
   let layeredColor;
   if (contained) {

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ButtonProps, getThemedColor } from '@reflex-ui/core';
+import { ButtonProps, getColor } from '@reflex-ui/core';
 import { StyleSheet } from 'react-native';
 
 export const getButtonRippleColor = (props: ButtonProps): string => {
@@ -16,7 +16,7 @@ export const getButtonRippleColor = (props: ButtonProps): string => {
     surfaceTheme && surfaceTheme.getStyle && surfaceTheme.getStyle(props);
   let color = surfaceStyle && StyleSheet.flatten(surfaceStyle).backgroundColor;
 
-  if (!color) color = getThemedColor(props);
+  if (!color) color = getColor(props);
 
   return color;
 };

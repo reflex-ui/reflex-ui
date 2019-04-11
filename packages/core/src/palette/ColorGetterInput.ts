@@ -9,7 +9,7 @@
 import { InteractionStatePropsOptional } from '../interaction/InteractionStateProps';
 import { ColorProps } from './ColorProps';
 
-export interface ThemedColorGetterInput
+export interface ColorGetterInput
   extends ColorProps,
     InteractionStatePropsOptional {
   readonly onColor?: boolean;

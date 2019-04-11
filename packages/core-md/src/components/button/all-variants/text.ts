@@ -10,7 +10,7 @@ import {
   ButtonProps,
   FontWeight,
   getFontWeight,
-  getThemedOnColor,
+  getOnColor,
   Size,
   SizedData,
   TextStyleGetter,
@@ -60,7 +60,7 @@ export const getAllVariantsButtonTextStyle: TextStyleGetter<
   ButtonProps
 > = props => ({
   ...(props.size && allVariantsButtonTextSizedStyle[props.size]),
-  color: getThemedOnColor(props),
+  color: getOnColor(props),
   fontFamily: getFontFamily(),
   fontWeight: getFontWeight(FontWeight.Medium),
   position: 'relative',
