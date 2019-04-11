@@ -10,21 +10,16 @@ import {
   AppBarTitle,
   Button,
   ButtonVariant,
-  ColorTheme,
   Column,
-  errorColorThemes,
   Headline6,
   JustifyContent,
-  primaryColorThemes,
+  PaletteContext,
   Row,
-  secondaryColorThemes,
   Size,
-  successColorThemes,
   Surface,
-  warningColorThemes,
 } from '@reflex-ui/core';
 import { AlarmIcon, MenuIcon } from '@reflex-ui/icons-md';
-import * as React from 'react';
+import React, { useContext } from 'react';
 import { ScrollView } from 'react-native';
 
 import { IconCollection } from './IconCollection';
@@ -34,77 +29,138 @@ const onButtonPress = () => {
   console.log('IconShowcaseScreen().onButtonPress()');
 };
 
-const colorThemes: ColorTheme[] = [
-  ...primaryColorThemes,
-  ...secondaryColorThemes,
-  ...errorColorThemes,
-  ...successColorThemes,
-  ...warningColorThemes,
-];
+const IconShowcaseScreen: React.SFC<{}> = (): JSX.Element => {
+  const palette = useContext(PaletteContext);
+  const colors = [
+    {
+      color: palette.primary,
+      name: 'primary',
+    },
+    {
+      color: palette.primaryDark,
+      name: 'primaryDark',
+    },
+    {
+      color: palette.primaryLight,
+      name: 'primaryLight',
+    },
+    {
+      color: palette.secondary,
+      name: 'secondary',
+    },
+    {
+      color: palette.secondaryDark,
+      name: 'secondaryDark',
+    },
+    {
+      color: palette.secondaryLight,
+      name: 'secondaryLight',
+    },
+    {
+      color: palette.error,
+      name: 'error',
+    },
+    {
+      color: palette.errorDark,
+      name: 'errorDark',
+    },
+    {
+      color: palette.errorLight,
+      name: 'errorLight',
+    },
+    {
+      color: palette.success,
+      name: 'success',
+    },
+    {
+      color: palette.successDark,
+      name: 'successDark',
+    },
+    {
+      color: palette.successLight,
+      name: 'successLight',
+    },
+    {
+      color: palette.warning,
+      name: 'warning',
+    },
+    {
+      color: palette.warningDark,
+      name: 'warningDark',
+    },
+    {
+      color: palette.warningLight,
+      name: 'warningLight',
+    },
+  ];
 
-const IconShowcaseScreen: React.SFC<{}> = (): JSX.Element => (
-  <ScrollView>
-    <AppBar>
-      <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
-        <MenuIcon />
-      </Button>
-      <AppBarTitle numberOfLines={1}>Icon</AppBarTitle>
-    </AppBar>
-    <Column marginTop={Size.M}>
-      {({ breakpoints, dimensions }) => {
-        const marginSize =
-          dimensions.window.width > breakpoints.largeHandset ? Size.M : 0;
+  return (
+    <ScrollView>
+      <AppBar>
+        <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
+          <MenuIcon />
+        </Button>
+        <AppBarTitle numberOfLines={1}>Icon</AppBarTitle>
+      </AppBar>
+      <Column marginTop={Size.M}>
+        {({ breakpoints, dimensions }) => {
+          const marginSize =
+            dimensions.window.width > breakpoints.largeHandset ? Size.M : 0;
 
-        const justifyContent =
-          dimensions.window.width <= breakpoints.smallTablet
-            ? JustifyContent.Center
-            : undefined;
+          const justifyContent =
+            dimensions.window.width <= breakpoints.smallTablet
+              ? JustifyContent.Center
+              : undefined;
 
-        return (
-          <React.Fragment>
-            {colorThemes.map(colorTheme => (
-              <Row
-                key={colorTheme}
-                justifyContent={justifyContent}
-                marginVertical={marginSize}
-              >
+          return (
+            <React.Fragment>
+              {colors.map(paletteColor => (
+                <Row
+                  key={paletteColor.name}
+                  justifyContent={justifyContent}
+                  marginVertical={marginSize}
+                >
+                  <Surface marginStart={marginSize}>
+                    <IconCollection
+                      invertColor
+                      paletteColor={paletteColor.color}
+                      title={paletteColor.name}
+                    />
+                  </Surface>
+                  <Surface
+                    marginStart={marginSize}
+                    paletteColor={paletteColor.color}
+                  >
+                    <IconCollection
+                      paletteColor={paletteColor.color}
+                      title={`${paletteColor.name} invertColor`}
+                    />
+                  </Surface>
+                </Row>
+              ))}
+              <Row justifyContent={justifyContent} marginVertical={marginSize}>
                 <Surface marginStart={marginSize}>
-                  <IconCollection
-                    colorTheme={colorTheme}
-                    invertColor
-                    title={colorTheme}
-                  />
-                </Surface>
-                <Surface colorTheme={colorTheme} marginStart={marginSize}>
-                  <IconCollection
-                    colorTheme={colorTheme}
-                    title={`${colorTheme} invertColor`}
-                  />
+                  <Row margin={Size.M}>
+                    <Headline6>Custom color</Headline6>
+                  </Row>
+                  <Row>
+                    <AlarmIcon fill="#c70ad0" size={Size.XXS} />
+                    <AlarmIcon fill="#c70ad0" size={Size.XS} />
+                    <AlarmIcon fill="#c70ad0" size={Size.S} />
+                    <AlarmIcon fill="#c70ad0" />
+                    <AlarmIcon fill="#c70ad0" size={Size.L} />
+                    <AlarmIcon fill="#c70ad0" size={Size.XL} />
+                    <AlarmIcon fill="#c70ad0" size={Size.XXL} />
+                  </Row>
                 </Surface>
               </Row>
-            ))}
-            <Row justifyContent={justifyContent} marginVertical={marginSize}>
-              <Surface marginStart={marginSize}>
-                <Row margin={Size.M}>
-                  <Headline6>Custom color</Headline6>
-                </Row>
-                <Row>
-                  <AlarmIcon fill="#c70ad0" size={Size.XXS} />
-                  <AlarmIcon fill="#c70ad0" size={Size.XS} />
-                  <AlarmIcon fill="#c70ad0" size={Size.S} />
-                  <AlarmIcon fill="#c70ad0" />
-                  <AlarmIcon fill="#c70ad0" size={Size.L} />
-                  <AlarmIcon fill="#c70ad0" size={Size.XL} />
-                  <AlarmIcon fill="#c70ad0" size={Size.XXL} />
-                </Row>
-              </Surface>
-            </Row>
-          </React.Fragment>
-        );
-      }}
-    </Column>
-  </ScrollView>
-);
+            </React.Fragment>
+          );
+        }}
+      </Column>
+    </ScrollView>
+  );
+};
 
 IconShowcaseScreen.displayName = 'IconShowcaseScreen';
 

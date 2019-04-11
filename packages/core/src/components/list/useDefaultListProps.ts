@@ -7,10 +7,9 @@
 
 import { useContext } from 'react';
 
+import { PaletteContext } from '../../color/PaletteContext';
 import { MissingComponentThemeError } from '../../errors';
 import { InteractionType } from '../../interaction/InteractionType';
-import { ColorTheme } from '../../palette/ColorTheme';
-import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
 import { DimensionsContext } from '../../responsiveness/DimensionsContext';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { ListProps, ListPropsOptional } from './ListProps';
@@ -18,7 +17,7 @@ import { ListProps, ListPropsOptional } from './ListProps';
 export const useDefaultListProps = (props: ListPropsOptional): ListProps => {
   const componentsTheme = useContext(ComponentsThemeContext);
   const dimensions = useContext(DimensionsContext);
-  const paletteTheme = useContext(PaletteThemeContext);
+  const palette = useContext(PaletteContext);
 
   let theme = props.theme;
   if (!theme) {
@@ -28,7 +27,7 @@ export const useDefaultListProps = (props: ListPropsOptional): ListProps => {
     theme = componentsTheme.list;
   }
 
-  const colorTheme: ColorTheme = props.colorTheme || ColorTheme.SurfaceNormal;
+  const paletteColor = props.paletteColor || palette.surface;
 
   const interactionState = props.interactionState || {
     type: InteractionType.Enabled,
@@ -36,10 +35,9 @@ export const useDefaultListProps = (props: ListPropsOptional): ListProps => {
 
   return {
     ...dimensions,
-    colorTheme,
     contained: (props.contained !== undefined && props.contained) || true,
     interactionState,
-    paletteTheme,
+    paletteColor,
     theme,
     ...props,
   };

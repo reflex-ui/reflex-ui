@@ -11,12 +11,11 @@ import {
   ButtonPropsOptional,
   ButtonTheme,
   ButtonVariant,
-  ColorTheme,
   ComponentThemeGetter,
   InteractionType,
 } from '@reflex-ui/core';
 import {
-  disabledGrey300_500,
+  disabledGrey300Contained,
   getOverlayColorByInteraction,
 } from '@reflex-ui/core-md';
 import { FavoriteIcon } from '@reflex-ui/icons-md';
@@ -35,12 +34,12 @@ const getButtonPatchTheme: ComponentThemeGetter<ButtonProps, ButtonTheme> = ({
 
   const iconColor =
     interactionType === InteractionType.Disabled
-      ? disabledGrey300_500.normal.onColor
+      ? disabledGrey300Contained.onColor
       : '#c70ad0';
 
   const stroke =
     interactionType === InteractionType.Disabled
-      ? disabledGrey300_500.normal.onColor
+      ? disabledGrey300Contained.onColor
       : '#ff0000';
 
   return {
@@ -75,9 +74,7 @@ const IconButtonShowcaseScreen: React.SFC = (): JSX.Element => (
     ButtonCollection={IconButtonCollection}
     customCollections={[
       {
-        colorTheme: ColorTheme.PrimaryNormal,
         getPatchTheme: getButtonPatchTheme,
-        surfaceColorTheme: ColorTheme.SurfaceNormal,
         title: 'custom',
         variant: ButtonVariant.Icon,
       },

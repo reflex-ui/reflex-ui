@@ -8,9 +8,9 @@
 import {
   FontWeight,
   getFontWeight,
+  getOnColor,
   getSizedMarginStyle,
   getSizedPaddingStyle,
-  getThemedOnColor,
   isWeb,
   RfxTextProps,
   RfxTextVariantsTheme,
@@ -26,7 +26,7 @@ export const getCommonRfxTextStyle: TextStyleGetter<RfxTextProps> = props => ({
   ...getFlexboxStyle(props),
   ...getSizedMarginStyle(sizedSpacing)(props),
   ...getSizedPaddingStyle(sizedSpacing)(props),
-  color: getThemedOnColor(props),
+  color: getOnColor(props),
   fontFamily: getFontFamily(),
   fontWeight: getFontWeight(FontWeight.Regular),
   ...Platform.select({

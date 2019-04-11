@@ -6,7 +6,7 @@
  */
 
 import {
-  getThemedOnColor,
+  getOnColor,
   RfxSvgProps,
   RfxSvgTheme,
   SizedData,
@@ -31,7 +31,7 @@ export const rfxSvgSvgSizedProps: SizedData<SvgProps> = {
 };
 
 export const getSvgColorProps: SvgPropsGetter<RfxSvgProps> = props => {
-  const themedColor = getThemedOnColor(props);
+  const themedColor = getOnColor(props);
   const fill = props.fill ? props.fill : themedColor;
   const color = props.color ? props.color : fill;
 

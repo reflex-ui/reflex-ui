@@ -10,7 +10,7 @@ import { processComponent } from '../processComponent';
 import { processComponentProps } from '../processComponentProps';
 import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
 import { renderRfxViewComponent } from '../view/renderRfxViewComponent';
-import { useShouldProvideColorTheme } from '../view/useShouldProvideColorTheme';
+import { useShouldProvideColor } from '../view/useShouldProvideColor';
 import { ListItemPropsOptional } from './ListItemProps';
 import { useDefaultListItemProps } from './useDefaultListItemProps';
 
@@ -22,8 +22,8 @@ let ListItem: React.ComponentType<ListItemPropsOptional> = (
   newProps = processComponentProps(newProps);
   newProps = processThemeAndStyleProps(newProps, newProps.theme);
 
-  const shouldProvideColorTheme = useShouldProvideColorTheme(props);
-  return renderRfxViewComponent(newProps, shouldProvideColorTheme);
+  const shouldProvideColor = useShouldProvideColor(props);
+  return renderRfxViewComponent(newProps, shouldProvideColor);
 };
 
 ListItem = processComponent<ListItemPropsOptional>(ListItem, {

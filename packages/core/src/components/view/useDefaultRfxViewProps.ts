@@ -7,10 +7,9 @@
 
 import { useContext } from 'react';
 
+import { PaletteColorContext } from '../../color/PaletteColorContext';
+import { PaletteContext } from '../../color/PaletteContext';
 import { MissingComponentThemeError } from '../../errors';
-import { ColorTheme } from '../../palette/ColorTheme';
-import { ColorThemeContext } from '../../palette/ColorThemeContext';
-import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
 import { DimensionsContext } from '../../responsiveness/DimensionsContext';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { RfxViewProps, RfxViewPropsOptional } from './RfxViewProps';
@@ -18,10 +17,10 @@ import { RfxViewProps, RfxViewPropsOptional } from './RfxViewProps';
 export const useDefaultRfxViewProps = (
   props: RfxViewPropsOptional,
 ): RfxViewProps => {
-  const colorThemeFromCtx = useContext(ColorThemeContext);
+  const paletteColorFromCtx = useContext(PaletteColorContext);
   const componentsTheme = useContext(ComponentsThemeContext);
   const dimensionsProps = useContext(DimensionsContext);
-  const paletteTheme = useContext(PaletteThemeContext);
+  const palette = useContext(PaletteContext);
 
   let theme = props.theme;
   if (!theme) {
@@ -31,13 +30,12 @@ export const useDefaultRfxViewProps = (
     theme = componentsTheme.views.column;
   }
 
-  const colorTheme: ColorTheme =
-    props.colorTheme || colorThemeFromCtx || ColorTheme.SurfaceNormal;
+  const paletteColor =
+    props.paletteColor || paletteColorFromCtx || palette.surface;
 
   return {
     ...dimensionsProps,
-    colorTheme,
-    paletteTheme,
+    paletteColor,
     theme,
     ...props,
   };

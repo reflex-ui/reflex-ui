@@ -6,7 +6,7 @@
  */
 
 import {
-  getThemedColor,
+  getColor,
   SurfacePropsBase,
   SurfaceTheme,
   ViewStyleGetter,
@@ -18,7 +18,7 @@ export const getSurfaceContainerStyle: ViewStyleGetter<
   SurfacePropsBase
 > = props => ({
   ...getCommonRfxViewContainerStyle(props),
-  backgroundColor: getThemedColor(props),
+  backgroundColor: getColor(props),
   borderRadius: 4,
   flexWrap: 'wrap',
 });

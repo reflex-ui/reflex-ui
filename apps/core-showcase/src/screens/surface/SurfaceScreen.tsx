@@ -12,13 +12,11 @@ import {
   AppBarVariant,
   Button,
   ButtonVariant,
-  ColorTheme,
-  Column,
   ComponentThemeGetter,
   JustifyContent,
+  PaletteContext,
   Paragraph1,
-  // RfxViewProps,
-  // RfxViewTheme,
+  Paragraph2,
   Row,
   Size,
   Surface,
@@ -26,7 +24,7 @@ import {
   SurfaceTheme,
 } from '@reflex-ui/core';
 import { MenuIcon } from '@reflex-ui/icons-md';
-import * as React from 'react';
+import React, { useContext } from 'react';
 import { ScrollView } from 'react-native';
 
 const onButtonPress = () => {
@@ -52,6 +50,8 @@ const getPatchTheme: ComponentThemeGetter<
 };
 
 const SurfaceScreen: React.SFC<{}> = (): JSX.Element => {
+  const palette = useContext(PaletteContext);
+
   return (
     <ScrollView>
       <AppBar variant={AppBarVariant.Default}>
@@ -60,9 +60,9 @@ const SurfaceScreen: React.SFC<{}> = (): JSX.Element => {
         </Button>
         <AppBarTitle numberOfLines={1}>Surface</AppBarTitle>
       </AppBar>
-      <Column margin={Size.M}>
-        <Paragraph1>ColorTheme.SurfaceNormal (default)</Paragraph1>
-      </Column>
+      <Paragraph2 margin={Size.M}>
+        {'<Surface paletteColor={palette.surface}> (default)'}
+      </Paragraph2>
       <Row>
         <Surface height={50} margin={Size.M} width={100}>
           <Paragraph1>Hello Surface!</Paragraph1>
@@ -71,48 +71,51 @@ const SurfaceScreen: React.SFC<{}> = (): JSX.Element => {
           <Paragraph1>Hello Surface! (contained=false)</Paragraph1>
         </Surface>
       </Row>
-      <Column margin={Size.M}>
-        <Paragraph1>ColorTheme.SurfaceNormal (default)</Paragraph1>
-      </Column>
+      <Paragraph2 margin={Size.M}>
+        {'<Surface paletteColor={palette.primary}>'}
+      </Paragraph2>
       <Row>
         <Surface
           alignContent={AlignContent.Center}
-          colorTheme={ColorTheme.PrimaryNormal}
           height={50}
           justifyContent={JustifyContent.Center}
           margin={Size.M}
+          paletteColor={palette.primary}
           width={100}
         >
           <Paragraph1>Hello Surface!</Paragraph1>
         </Surface>
         <Surface
-          colorTheme={ColorTheme.PrimaryNormal}
           contained={false}
           height={50}
           invertColor
           margin={Size.M}
+          paletteColor={palette.primary}
           width={100}
         >
           <Paragraph1>Hello Surface! (contained=false)</Paragraph1>
         </Surface>
       </Row>
-      <Column margin={Size.M}>
-        <Paragraph1>Custom styles via getPatchTheme()</Paragraph1>
-      </Column>
+      <Paragraph2 margin={Size.M}>
+        {[
+          '<Surface getPatchTheme={getPatchTheme}',
+          'paletteColor={palette.primary}>',
+        ].join('')}
+      </Paragraph2>
       <Row>
         <Surface
-          colorTheme={ColorTheme.PrimaryNormal}
           getPatchTheme={getPatchTheme}
           margin={Size.M}
+          paletteColor={palette.primary}
         >
           <Paragraph1>Hello Surface!</Paragraph1>
         </Surface>
         <Surface
-          colorTheme={ColorTheme.PrimaryNormal}
           contained={false}
           getPatchTheme={getPatchTheme}
           invertColor
           margin={Size.M}
+          paletteColor={palette.primary}
         >
           <Paragraph1>Hello Surface! (contained=false)</Paragraph1>
         </Surface>

@@ -7,10 +7,10 @@
 
 import { TextProps } from 'react-native';
 
+import { ColorProps } from '../../color/ColorProps';
 import { FlexboxProps } from '../../flexbox/FlexboxProps';
 // tslint:disable-next-line:max-line-length
 import { InteractionStatePropsOptional } from '../../interaction/InteractionStateProps';
-import { PaletteThemeProps } from '../../palette/PaletteThemeProps';
 import { DimensionsProps } from '../../responsiveness/DimensionsProps';
 import { ResponsivenessProps } from '../../responsiveness/ResponsivenessProps';
 import { MarginProps } from '../../spacing/MarginProps';
@@ -20,12 +20,12 @@ import { ComponentThemeProps } from '../ComponentThemeProps';
 import { RfxTextTheme } from './RfxTextTheme';
 
 export interface RfxTextPropsBase
-  extends DimensionsProps,
+  extends ColorProps,
+    DimensionsProps,
     FlexboxProps,
     InteractionStatePropsOptional,
     MarginProps,
     PaddingProps,
-    PaletteThemeProps,
     ResponsivenessProps,
     TextProps {}
 

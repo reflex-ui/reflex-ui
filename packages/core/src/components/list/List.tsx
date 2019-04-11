@@ -10,7 +10,7 @@ import { processComponent } from '../processComponent';
 import { processComponentProps } from '../processComponentProps';
 import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
 import { renderRfxViewComponent } from '../view/renderRfxViewComponent';
-import { useShouldProvideColorTheme } from '../view/useShouldProvideColorTheme';
+import { useShouldProvideColor } from '../view/useShouldProvideColor';
 import { ListPropsOptional } from './ListProps';
 import { useDefaultListProps } from './useDefaultListProps';
 
@@ -22,8 +22,8 @@ let List: React.ComponentType<ListPropsOptional> = (
   newProps = processComponentProps(newProps);
   newProps = processThemeAndStyleProps(newProps, newProps.theme);
 
-  const shouldProvideColorTheme = useShouldProvideColorTheme(newProps);
-  return renderRfxViewComponent(newProps, shouldProvideColorTheme);
+  const shouldProvideColor = useShouldProvideColor(newProps);
+  return renderRfxViewComponent(newProps, shouldProvideColor);
 };
 
 List = processComponent<ListPropsOptional>(List, {

@@ -8,7 +8,7 @@
 import * as React from 'react';
 import { ViewProps } from 'react-native';
 
-import { ColorThemeContext } from '../../palette/ColorThemeContext';
+import { PaletteColorContext } from '../../color/PaletteColorContext';
 import { extractViewProps } from '../../utils/props';
 import { ComponentChildrenProps } from '../ComponentChildrenProps';
 import { ComponentThemeProps } from '../ComponentThemeProps';
@@ -23,20 +23,20 @@ export const renderRfxViewComponent = <
   Theme extends BuiltInSimpleComponentTheme<Props, unknown, unknown>
 >(
   props: Props,
-  shouldProvideColorThemeContext: boolean = false,
+  shouldProvideColor: boolean = false,
 ): React.ReactElement => {
-  const { children, colorTheme, theme } = props;
+  const { children, paletteColor, theme } = props;
   const viewProps: React.PropsWithChildren<ViewProps> = {
     ...extractViewProps(props),
     children,
   };
   const renderedView = renderViewComponent(props, viewProps, theme.component);
 
-  if (shouldProvideColorThemeContext) {
+  if (shouldProvideColor) {
     return (
-      <ColorThemeContext.Provider value={colorTheme}>
+      <PaletteColorContext.Provider value={paletteColor}>
         {renderedView}
-      </ColorThemeContext.Provider>
+      </PaletteColorContext.Provider>
     );
   }
 

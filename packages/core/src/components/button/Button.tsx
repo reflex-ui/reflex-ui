@@ -57,7 +57,7 @@ export const handleButtonChildren = (props: ButtonProps): React.ReactNode => {
     const iconElement = handleButtonIcon({
       icon: children as React.ReactElement<RfxSvgPropsOptional>,
       iconTheme: theme.icon && theme.icon(props),
-      mergeProps: { key: 'icon' },
+      mergeProps: { invertColor: props.invertColor, key: 'icon' },
     });
 
     const viewProps: React.PropsWithChildren<ViewProps> & { key?: string } = {
@@ -115,7 +115,7 @@ export const handleLeadingIcon = (
   const iconElement = handleButtonIcon({
     icon: props.leadingIcon as React.ReactElement<RfxSvgPropsOptional>,
     iconTheme: props.theme.leadingIcon && props.theme.leadingIcon(props),
-    mergeProps: { key: 'leadingIcon' },
+    mergeProps: { invertColor: props.invertColor, key: 'leadingIcon' },
   });
 
   const { theme } = props;
@@ -137,7 +137,7 @@ export const handleTrailingIcon = (
   const iconElement = handleButtonIcon({
     icon: props.trailingIcon as React.ReactElement<RfxSvgPropsOptional>,
     iconTheme: props.theme.trailingIcon && props.theme.trailingIcon(props),
-    mergeProps: { key: 'trailingIcon' },
+    mergeProps: { invertColor: props.invertColor, key: 'trailingIcon' },
   });
 
   const { theme } = props;

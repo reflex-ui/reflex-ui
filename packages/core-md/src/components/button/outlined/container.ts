@@ -8,7 +8,7 @@
 import {
   ButtonProps,
   ComponentThemeGetter,
-  getThemedOnColor,
+  getOnColor,
   SizedData,
   SurfacePropsBase,
   SurfaceTheme,
@@ -61,7 +61,7 @@ export const getOutlinedButtonContainerStyle: ViewStyleGetter<
 > = props => ({
   ...getDefaultButtonContainerStyle(props),
   ...(props.size && outlinedButtonContainerSizedStyle[props.size]),
-  borderColor: getThemedOnColor(props),
+  borderColor: getOnColor(props),
 });
 
 export const getOutlinedButtonSurfaceTheme: ComponentThemeGetter<

@@ -5,12 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  ButtonProps,
-  getThemedOnColor,
-  SizedData,
-  SvgPropsGetter,
-} from '@reflex-ui/core';
+import { ButtonProps, SizedData, SvgPropsGetter } from '@reflex-ui/core';
 import { SvgProps } from 'react-native-svg';
 
 export const allVariantsButtonLeadingIconSizedProps: SizedData<SvgProps> = {
@@ -33,7 +28,6 @@ export const getAllVariantsButtonLeadingIconProps: SvgPropsGetter<
   ButtonProps
 > = props => ({
   ...(props.size && allVariantsButtonLeadingIconSizedProps[props.size]),
-  fill: getThemedOnColor(props),
 });
 
 // tslint:disable-next-line:max-line-length
