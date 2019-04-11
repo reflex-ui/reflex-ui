@@ -21,15 +21,15 @@ import {
 } from '../colors/yellow/mdYellow600';
 
 export const defaultPalette: Palette = {
-  background: mdWhite,
-  backgroundDark: mdWhite,
-  backgroundLight: mdWhite,
   error: mdRed900,
   errorDark: mdRed900Dark,
   errorLight: mdRed900Light,
   primary: mdWhite,
   primaryDark: mdWhite,
   primaryLight: mdWhite,
+  screen: mdWhite,
+  screenDark: mdWhite,
+  screenLight: mdWhite,
   secondary: mdWhite,
   secondaryDark: mdWhite,
   secondaryLight: mdWhite,

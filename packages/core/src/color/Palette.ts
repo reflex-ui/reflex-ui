@@ -8,15 +8,15 @@
 import { PaletteColor, PaletteColorOptional } from './PaletteColor';
 
 export interface Palette {
-  readonly background: PaletteColor;
-  readonly backgroundDark: PaletteColor;
-  readonly backgroundLight: PaletteColor;
   readonly error: PaletteColor;
   readonly errorDark: PaletteColor;
   readonly errorLight: PaletteColor;
   readonly primary: PaletteColor;
   readonly primaryDark: PaletteColor;
   readonly primaryLight: PaletteColor;
+  readonly screen: PaletteColor;
+  readonly screenDark: PaletteColor;
+  readonly screenLight: PaletteColor;
   readonly secondary: PaletteColor;
   readonly secondaryDark: PaletteColor;
   readonly secondaryLight: PaletteColor;

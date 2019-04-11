@@ -129,15 +129,15 @@ const whitePaletteColor: PaletteColor = {
 };
 
 export const defaultPalette: Palette = {
-  background: whitePaletteColor,
-  backgroundDark: whitePaletteColor,
-  backgroundLight: whitePaletteColor,
   error: whitePaletteColor,
   errorDark: whitePaletteColor,
   errorLight: whitePaletteColor,
   primary: whitePaletteColor,
   primaryDark: whitePaletteColor,
   primaryLight: whitePaletteColor,
+  screen: whitePaletteColor,
+  screenDark: whitePaletteColor,
+  screenLight: whitePaletteColor,
   secondary: whitePaletteColor,
   secondaryDark: whitePaletteColor,
   secondaryLight: whitePaletteColor,
