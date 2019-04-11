@@ -18,7 +18,7 @@ import {
   InteractionType,
   List,
   ListItem,
-  PaletteThemeContext,
+  PaletteContext,
   Paragraph1,
   Paragraph2,
   RfxTextTheme,
@@ -73,7 +73,7 @@ const createParagraph1Theme = (baseTheme: RfxTextTheme): RfxTextTheme => ({
  */
 
 const ListShowcaseScreen: React.SFC = (): JSX.Element => {
-  const paletteTheme = useContext(PaletteThemeContext);
+  const palette = useContext(PaletteContext);
 
   return (
     <ScrollView>
@@ -100,7 +100,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => {
                   These are the most common props and their default values:
                 </Paragraph1>
                 <Paragraph2 marginStart={Size.XS} marginTop={Size.XXS}>
-                  {'paletteColor={paletteTheme.surface}'}
+                  {'paletteColor={palette.surface}'}
                 </Paragraph2>
                 <Paragraph1 marginTop={Size.XL}>
                   We also pass {'maxWidth={listMaxWidth}'} to all lists in this
@@ -477,16 +477,13 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => {
               </List>
               <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
                 {[
-                  '<List paletteColor={paletteTheme.primaryDark}',
-                  'maxWidth={listMaxWidth}>',
+                  '<List maxWidth={listMaxWidth}>',
+                  'paletteColor={palette.primaryDark}',
                 ].join(' ')}
                 {'\n'}
                 {'<ListItem size={Size.M}>'}
               </Paragraph2>
-              <List
-                paletteColor={paletteTheme.primaryDark}
-                maxWidth={listMaxWidth}
-              >
+              <List maxWidth={listMaxWidth} paletteColor={palette.primaryDark}>
                 <TouchableSurface
                   activated
                   contained={false}

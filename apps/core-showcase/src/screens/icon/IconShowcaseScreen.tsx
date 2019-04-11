@@ -13,7 +13,7 @@ import {
   Column,
   Headline6,
   JustifyContent,
-  PaletteThemeContext,
+  PaletteContext,
   Row,
   Size,
   Surface,
@@ -30,66 +30,66 @@ const onButtonPress = () => {
 };
 
 const IconShowcaseScreen: React.SFC<{}> = (): JSX.Element => {
-  const paletteTheme = useContext(PaletteThemeContext);
+  const palette = useContext(PaletteContext);
   const colors = [
     {
-      color: paletteTheme.primary,
+      color: palette.primary,
       name: 'primary',
     },
     {
-      color: paletteTheme.primaryDark,
+      color: palette.primaryDark,
       name: 'primaryDark',
     },
     {
-      color: paletteTheme.primaryLight,
+      color: palette.primaryLight,
       name: 'primaryLight',
     },
     {
-      color: paletteTheme.secondary,
+      color: palette.secondary,
       name: 'secondary',
     },
     {
-      color: paletteTheme.secondaryDark,
+      color: palette.secondaryDark,
       name: 'secondaryDark',
     },
     {
-      color: paletteTheme.secondaryLight,
+      color: palette.secondaryLight,
       name: 'secondaryLight',
     },
     {
-      color: paletteTheme.error,
+      color: palette.error,
       name: 'error',
     },
     {
-      color: paletteTheme.errorDark,
+      color: palette.errorDark,
       name: 'errorDark',
     },
     {
-      color: paletteTheme.errorLight,
+      color: palette.errorLight,
       name: 'errorLight',
     },
     {
-      color: paletteTheme.success,
+      color: palette.success,
       name: 'success',
     },
     {
-      color: paletteTheme.successDark,
+      color: palette.successDark,
       name: 'successDark',
     },
     {
-      color: paletteTheme.successLight,
+      color: palette.successLight,
       name: 'successLight',
     },
     {
-      color: paletteTheme.warning,
+      color: palette.warning,
       name: 'warning',
     },
     {
-      color: paletteTheme.warningDark,
+      color: palette.warningDark,
       name: 'warningDark',
     },
     {
-      color: paletteTheme.warningLight,
+      color: palette.warningLight,
       name: 'warningLight',
     },
   ];

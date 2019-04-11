@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './blue500Yellow600PaletteTheme';
-export * from './createPaletteTheme';
-export * from './deepPurple500TealA700PaletteTheme';
-export * from './defaultPaletteTheme';
+export * from './blue500Yellow600Palette';
+export * from './createPalette';
+export * from './deepPurple500TealA700Palette';
+export * from './defaultPalette';

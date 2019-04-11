@@ -9,7 +9,7 @@ import { useContext } from 'react';
 
 import { MissingComponentThemeError } from '../../errors';
 import { PaletteColorContext } from '../../palette/PaletteColorContext';
-import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
+import { PaletteContext } from '../../palette/PaletteContext';
 import { DimensionsContext } from '../../responsiveness/DimensionsContext';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { RfxViewProps, RfxViewPropsOptional } from './RfxViewProps';
@@ -20,7 +20,7 @@ export const useDefaultRfxViewProps = (
   const paletteColorFromCtx = useContext(PaletteColorContext);
   const componentsTheme = useContext(ComponentsThemeContext);
   const dimensionsProps = useContext(DimensionsContext);
-  const paletteTheme = useContext(PaletteThemeContext);
+  const palette = useContext(PaletteContext);
 
   let theme = props.theme;
   if (!theme) {
@@ -31,7 +31,7 @@ export const useDefaultRfxViewProps = (
   }
 
   const paletteColor =
-    props.paletteColor || paletteColorFromCtx || paletteTheme.surface;
+    props.paletteColor || paletteColorFromCtx || palette.surface;
 
   return {
     ...dimensionsProps,

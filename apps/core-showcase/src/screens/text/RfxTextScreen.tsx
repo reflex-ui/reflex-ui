@@ -19,7 +19,7 @@ import {
   Headline5,
   Headline6,
   Overline,
-  PaletteThemeContext,
+  PaletteContext,
   Paragraph1,
   Paragraph2,
   RfxTextProps,
@@ -49,7 +49,7 @@ const getCaptionPatchTheme: ComponentThemeGetter<
 });
 
 const RfxTextScreen: React.SFC = (): JSX.Element => {
-  const paletteTheme = useContext(PaletteThemeContext);
+  const palette = useContext(PaletteContext);
 
   return (
     <ScrollView>
@@ -104,24 +104,20 @@ const RfxTextScreen: React.SFC = (): JSX.Element => {
           </Caption>
         </Paragraph1>
       </Surface>
-      <Surface
-        margin={Size.M}
-        padding={Size.M}
-        paletteColor={paletteTheme.primary}
-      >
+      <Surface margin={Size.M} padding={Size.M} paletteColor={palette.primary}>
         <Paragraph1 marginVertical={Size.XS}>
           This is a {'<Paragraph1>'} inside a{' '}
-          {'<Surface paletteColor={paletteTheme.primary}>'}.
+          {'<Surface paletteColor={palette.primary}>'}.
         </Paragraph1>
       </Surface>
       <Surface
         margin={Size.M}
         padding={Size.M}
-        paletteColor={paletteTheme.primaryDark}
+        paletteColor={palette.primaryDark}
       >
         <Paragraph1 marginVertical={Size.XS}>
           This is a {'<Paragraph1>'} inside a{' '}
-          {'<Surface paletteColor={paletteTheme.primaryDark}>'}.
+          {'<Surface paletteColor={palette.primaryDark}>'}.
         </Paragraph1>
       </Surface>
     </ScrollView>

@@ -15,7 +15,7 @@ import {
   ButtonVariant,
   Column,
   ComponentThemeGetter,
-  PaletteThemeContext,
+  PaletteContext,
   Paragraph1,
   Paragraph2,
   Row,
@@ -47,7 +47,7 @@ const getPatchTheme: ComponentThemeGetter<AppBarProps, AppBarTheme> = ({
 });
 
 const DefaultAppBarScreen: React.SFC = (): JSX.Element => {
-  const paletteTheme = useContext(PaletteThemeContext);
+  const palette = useContext(PaletteContext);
   const verticalMargin = 70;
 
   return (
@@ -66,7 +66,7 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => {
           These are the most common props and their default values:
         </Paragraph1>
         <Paragraph2 marginStart={Size.XS} marginTop={Size.XXS}>
-          {'paletteColor={paletteTheme.primary}'}
+          {'paletteColor={palette.primary}'}
           {'\n'}
           {'variant={AppBarVariant.Default}'}
         </Paragraph2>
@@ -139,9 +139,9 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => {
         )}
       </AppBar>
       <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
-        {'<AppBar paletteColor={paletteTheme.primaryDark}>'}
+        {'<AppBar paletteColor={palette.primaryDark}>'}
       </Paragraph2>
-      <AppBar paletteColor={paletteTheme.primaryDark}>
+      <AppBar paletteColor={palette.primaryDark}>
         {() => (
           <React.Fragment>
             <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
@@ -280,9 +280,9 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => {
         )}
       </AppBar>
       <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
-        {'<AppBar paletteColor={paletteTheme.secondary}>'}
+        {'<AppBar paletteColor={palette.secondary}>'}
       </Paragraph2>
-      <AppBar paletteColor={paletteTheme.secondary}>
+      <AppBar paletteColor={palette.secondary}>
         {() => (
           <React.Fragment>
             <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
@@ -304,9 +304,9 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => {
         )}
       </AppBar>
       <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
-        {'<AppBar paletteColor={paletteTheme.secondaryLight}>'}
+        {'<AppBar paletteColor={palette.secondaryLight}>'}
       </Paragraph2>
-      <AppBar paletteColor={paletteTheme.secondaryLight}>
+      <AppBar paletteColor={palette.secondaryLight}>
         <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
           <MenuIcon />
         </Button>
@@ -333,19 +333,19 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => {
         </Button>
       </AppBar>
       <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
-        {'<AppBar paletteColor={paletteTheme.warning}>'}
+        {'<AppBar paletteColor={palette.warning}>'}
       </Paragraph2>
-      <AppBar paletteColor={paletteTheme.warning}>
+      <AppBar paletteColor={palette.warning}>
         {() => <AppBarTitle numberOfLines={1}>My Application</AppBarTitle>}
       </AppBar>
       <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
         {[
-          '<AppBar paletteColor={paletteTheme.secondary}',
+          '<AppBar paletteColor={palette.secondary}',
           'variant={AppBarVariant.Prominent}>',
         ].join(' ')}
       </Paragraph2>
       <AppBar
-        paletteColor={paletteTheme.secondary}
+        paletteColor={palette.secondary}
         variant={AppBarVariant.Prominent}
       >
         {() => (
@@ -362,12 +362,12 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => {
       </AppBar>
       <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
         {[
-          '<AppBar paletteColor={paletteTheme.secondaryDark}',
+          '<AppBar paletteColor={palette.secondaryDark}',
           'variant={AppBarVariant.Prominent}>',
         ].join(' ')}
       </Paragraph2>
       <AppBar
-        paletteColor={paletteTheme.secondaryDark}
+        paletteColor={palette.secondaryDark}
         variant={AppBarVariant.Prominent}
       >
         {() => (
@@ -389,12 +389,12 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => {
       </AppBar>
       <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
         {[
-          '<AppBar paletteColor={paletteTheme.secondaryLight}',
+          '<AppBar paletteColor={palette.secondaryLight}',
           'variant={AppBarVariant.Prominent}>',
         ].join(' ')}
       </Paragraph2>
       <AppBar
-        paletteColor={paletteTheme.secondaryLight}
+        paletteColor={palette.secondaryLight}
         variant={AppBarVariant.Prominent}
       >
         <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>

@@ -6,7 +6,7 @@
  */
 
 import {
-  PaletteThemeContext,
+  PaletteContext,
   Paragraph1,
   Size,
   TouchableSurface,
@@ -14,14 +14,14 @@ import {
 import React, { useContext } from 'react';
 
 const TestShowcaseScreen: React.SFC<{}> = (): JSX.Element => {
-  const paletteTheme = useContext(PaletteThemeContext);
+  const palette = useContext(PaletteContext);
 
   return (
     <TouchableSurface
       contained={false}
       height={100}
       margin={Size.M}
-      paletteColor={paletteTheme.primaryDark}
+      paletteColor={palette.primaryDark}
       width={100}
     >
       <Paragraph1>Touch me! (contained=false)</Paragraph1>

@@ -10,7 +10,7 @@ import { useContext } from 'react';
 import { MissingComponentThemeError } from '../../errors';
 import { InteractionType } from '../../interaction';
 import { PaletteColorContext } from '../../palette/PaletteColorContext';
-import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
+import { PaletteContext } from '../../palette/PaletteContext';
 import { DimensionsContext } from '../../responsiveness/DimensionsContext';
 import { Size } from '../../sizing/Size';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
@@ -24,7 +24,7 @@ export const useDefaultButtonProps = (
   const paletteColorFromCtx = useContext(PaletteColorContext);
   const componentsTheme = useContext(ComponentsThemeContext);
   const dimensions = useContext(DimensionsContext);
-  const paletteTheme = useContext(PaletteThemeContext);
+  const palette = useContext(PaletteContext);
 
   const variant: ButtonVariant = props.variant || ButtonVariant.Default;
 
@@ -39,7 +39,7 @@ export const useDefaultButtonProps = (
   const paletteColor =
     props.paletteColor ||
     paletteColorFromCtx ||
-    getButtonVariantColor(variant, paletteTheme);
+    getButtonVariantColor(variant, palette);
 
   const contained =
     variant === ButtonVariant.Default ||

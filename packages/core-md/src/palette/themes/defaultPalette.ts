@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { PaletteTheme } from '@reflex-ui/core';
+import { Palette } from '@reflex-ui/core';
 
 import {
   mdGreen800,
@@ -20,7 +20,7 @@ import {
   mdYellow600Light,
 } from '../colors/yellow/mdYellow600';
 
-export const defaultPaletteTheme: PaletteTheme = {
+export const defaultPalette: Palette = {
   background: mdWhite,
   backgroundDark: mdWhite,
   backgroundLight: mdWhite,

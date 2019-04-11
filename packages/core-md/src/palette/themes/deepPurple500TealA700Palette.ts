@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { PaletteTheme } from '@reflex-ui/core';
+import { Palette } from '@reflex-ui/core';
 
 import {
   mdDeepPurple500,
@@ -17,12 +17,11 @@ import {
   mdTealA700Dark,
   mdTealA700Light,
 } from '../colors/teal/mdTealA700';
-import { createPaletteTheme } from './createPaletteTheme';
-import { defaultPaletteTheme } from './defaultPaletteTheme';
+import { createPalette } from './createPalette';
+import { defaultPalette } from './defaultPalette';
 
-// tslint:disable-next-line:max-line-length
-export const deepPurple500TealA700PaletteTheme: PaletteTheme = createPaletteTheme(
-  defaultPaletteTheme,
+export const deepPurple500TealA700Palette: Palette = createPalette(
+  defaultPalette,
   {
     primary: mdDeepPurple500,
     primaryDark: mdDeepPurple500Dark,

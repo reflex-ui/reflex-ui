@@ -9,7 +9,7 @@ import { useContext } from 'react';
 
 import { MissingComponentThemeError } from '../../errors';
 import { InteractionType } from '../../interaction/InteractionType';
-import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
+import { PaletteContext } from '../../palette/PaletteContext';
 import { DimensionsContext } from '../../responsiveness/DimensionsContext';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { ListProps, ListPropsOptional } from './ListProps';
@@ -17,7 +17,7 @@ import { ListProps, ListPropsOptional } from './ListProps';
 export const useDefaultListProps = (props: ListPropsOptional): ListProps => {
   const componentsTheme = useContext(ComponentsThemeContext);
   const dimensions = useContext(DimensionsContext);
-  const paletteTheme = useContext(PaletteThemeContext);
+  const palette = useContext(PaletteContext);
 
   let theme = props.theme;
   if (!theme) {
@@ -27,7 +27,7 @@ export const useDefaultListProps = (props: ListPropsOptional): ListProps => {
     theme = componentsTheme.list;
   }
 
-  const paletteColor = props.paletteColor || paletteTheme.surface;
+  const paletteColor = props.paletteColor || palette.surface;
 
   const interactionState = props.interactionState || {
     type: InteractionType.Enabled,

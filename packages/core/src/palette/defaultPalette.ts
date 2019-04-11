@@ -7,8 +7,8 @@
 
 import { FlexColor } from './FlexColor';
 import { LayeredColor } from './LayeredColor';
+import { Palette } from './Palette';
 import { PaletteColor } from './PaletteColor';
-import { PaletteTheme } from './PaletteTheme';
 
 const black = '#000';
 const transparent = 'transparent';
@@ -128,7 +128,7 @@ const whitePaletteColor: PaletteColor = {
   name: 'White (@reflex-ui/core',
 };
 
-export const defaultPaletteTheme: PaletteTheme = {
+export const defaultPalette: Palette = {
   background: whitePaletteColor,
   backgroundDark: whitePaletteColor,
   backgroundLight: whitePaletteColor,

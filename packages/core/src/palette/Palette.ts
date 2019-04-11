@@ -7,7 +7,7 @@
 
 import { PaletteColor, PaletteColorOptional } from './PaletteColor';
 
-export interface PaletteTheme {
+export interface Palette {
   readonly background: PaletteColor;
   readonly backgroundDark: PaletteColor;
   readonly backgroundLight: PaletteColor;
@@ -31,6 +31,4 @@ export interface PaletteTheme {
   readonly warningLight: PaletteColor;
 }
 
-export type PaletteThemeOptional = {
-  [P in keyof PaletteTheme]?: PaletteColorOptional
-};
+export type PaletteOptional = { [P in keyof Palette]?: PaletteColorOptional };

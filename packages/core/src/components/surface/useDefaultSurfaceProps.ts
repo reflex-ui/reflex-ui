@@ -9,7 +9,7 @@ import { useContext } from 'react';
 
 import { MissingComponentThemeError } from '../../errors';
 import { InteractionType } from '../../interaction/InteractionType';
-import { PaletteThemeContext } from '../../palette/PaletteThemeContext';
+import { PaletteContext } from '../../palette/PaletteContext';
 import { DimensionsContext } from '../../responsiveness/DimensionsContext';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { SurfaceProps, SurfacePropsOptional } from './SurfaceProps';
@@ -19,7 +19,7 @@ export const useDefaultSurfaceProps = (
 ): SurfaceProps => {
   const componentsTheme = useContext(ComponentsThemeContext);
   const dimensions = useContext(DimensionsContext);
-  const paletteTheme = useContext(PaletteThemeContext);
+  const palette = useContext(PaletteContext);
 
   let theme = props.theme;
   if (!theme) {
@@ -29,7 +29,7 @@ export const useDefaultSurfaceProps = (
     theme = componentsTheme.surface;
   }
 
-  const paletteColor = props.paletteColor || paletteTheme.surface;
+  const paletteColor = props.paletteColor || palette.surface;
 
   const interactionState = props.interactionState || {
     type: InteractionType.Enabled,

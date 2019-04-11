@@ -14,7 +14,7 @@ import {
   ButtonVariant,
   ComponentThemeGetter,
   JustifyContent,
-  PaletteThemeContext,
+  PaletteContext,
   Paragraph1,
   Paragraph2,
   Row,
@@ -50,7 +50,7 @@ const getPatchTheme: ComponentThemeGetter<
 };
 
 const SurfaceScreen: React.SFC<{}> = (): JSX.Element => {
-  const paletteTheme = useContext(PaletteThemeContext);
+  const palette = useContext(PaletteContext);
 
   return (
     <ScrollView>
@@ -61,7 +61,7 @@ const SurfaceScreen: React.SFC<{}> = (): JSX.Element => {
         <AppBarTitle numberOfLines={1}>Surface</AppBarTitle>
       </AppBar>
       <Paragraph2 margin={Size.M}>
-        {'<Surface paletteColor={paletteTheme.surface}> (default)'}
+        {'<Surface paletteColor={palette.surface}> (default)'}
       </Paragraph2>
       <Row>
         <Surface height={50} margin={Size.M} width={100}>
@@ -72,7 +72,7 @@ const SurfaceScreen: React.SFC<{}> = (): JSX.Element => {
         </Surface>
       </Row>
       <Paragraph2 margin={Size.M}>
-        {'<Surface paletteColor={paletteTheme.primary}>'}
+        {'<Surface paletteColor={palette.primary}>'}
       </Paragraph2>
       <Row>
         <Surface
@@ -80,7 +80,7 @@ const SurfaceScreen: React.SFC<{}> = (): JSX.Element => {
           height={50}
           justifyContent={JustifyContent.Center}
           margin={Size.M}
-          paletteColor={paletteTheme.primary}
+          paletteColor={palette.primary}
           width={100}
         >
           <Paragraph1>Hello Surface!</Paragraph1>
@@ -90,7 +90,7 @@ const SurfaceScreen: React.SFC<{}> = (): JSX.Element => {
           height={50}
           invertColor
           margin={Size.M}
-          paletteColor={paletteTheme.primary}
+          paletteColor={palette.primary}
           width={100}
         >
           <Paragraph1>Hello Surface! (contained=false)</Paragraph1>
@@ -99,14 +99,14 @@ const SurfaceScreen: React.SFC<{}> = (): JSX.Element => {
       <Paragraph2 margin={Size.M}>
         {[
           '<Surface getPatchTheme={getPatchTheme}',
-          'paletteColor={paletteTheme.primary}>',
+          'paletteColor={palette.primary}>',
         ].join('')}
       </Paragraph2>
       <Row>
         <Surface
           getPatchTheme={getPatchTheme}
           margin={Size.M}
-          paletteColor={paletteTheme.primary}
+          paletteColor={palette.primary}
         >
           <Paragraph1>Hello Surface!</Paragraph1>
         </Surface>
@@ -115,7 +115,7 @@ const SurfaceScreen: React.SFC<{}> = (): JSX.Element => {
           getPatchTheme={getPatchTheme}
           invertColor
           margin={Size.M}
-          paletteColor={paletteTheme.primary}
+          paletteColor={palette.primary}
         >
           <Paragraph1>Hello Surface! (contained=false)</Paragraph1>
         </Surface>

@@ -22,7 +22,7 @@ import {
   Headline6,
   isWeb,
   JustifyContent,
-  PaletteThemeContext,
+  PaletteContext,
   Paragraph1,
   Paragraph2,
   Row,
@@ -61,66 +61,66 @@ const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
   title,
   variant,
 }): JSX.Element => {
-  const paletteTheme = useContext(PaletteThemeContext);
+  const palette = useContext(PaletteContext);
   const colors = [
     {
-      color: paletteTheme.primary,
+      color: palette.primary,
       name: 'primary',
     },
     {
-      color: paletteTheme.primaryDark,
+      color: palette.primaryDark,
       name: 'primaryDark',
     },
     {
-      color: paletteTheme.primaryLight,
+      color: palette.primaryLight,
       name: 'primaryLight',
     },
     {
-      color: paletteTheme.secondary,
+      color: palette.secondary,
       name: 'secondary',
     },
     {
-      color: paletteTheme.secondaryDark,
+      color: palette.secondaryDark,
       name: 'secondaryDark',
     },
     {
-      color: paletteTheme.secondaryLight,
+      color: palette.secondaryLight,
       name: 'secondaryLight',
     },
     {
-      color: paletteTheme.error,
+      color: palette.error,
       name: 'error',
     },
     {
-      color: paletteTheme.errorDark,
+      color: palette.errorDark,
       name: 'errorDark',
     },
     {
-      color: paletteTheme.errorLight,
+      color: palette.errorLight,
       name: 'errorLight',
     },
     {
-      color: paletteTheme.success,
+      color: palette.success,
       name: 'success',
     },
     {
-      color: paletteTheme.successDark,
+      color: palette.successDark,
       name: 'successDark',
     },
     {
-      color: paletteTheme.successLight,
+      color: palette.successLight,
       name: 'successLight',
     },
     {
-      color: paletteTheme.warning,
+      color: palette.warning,
       name: 'warning',
     },
     {
-      color: paletteTheme.warningDark,
+      color: palette.warningDark,
       name: 'warningDark',
     },
     {
-      color: paletteTheme.warningLight,
+      color: palette.warningLight,
       name: 'warningLight',
     },
   ];
@@ -175,7 +175,7 @@ const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
                               <ScaleButton
                                 invertColor={invertColor}
                                 onPress={onButtonPress}
-                                paletteColor={paletteTheme.primary}
+                                paletteColor={palette.primary}
                                 size={size}
                                 variant={variant}
                               />
@@ -246,7 +246,7 @@ const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
                   >
                     <Surface
                       marginStart={marginSize}
-                      paletteColor={paletteTheme.surface}
+                      paletteColor={palette.surface}
                     >
                       <Paragraph1 margin={Size.M} marginBottom={Size.XXS}>
                         Surface color: <Paragraph2>surface</Paragraph2>
@@ -257,7 +257,7 @@ const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
                       <ButtonCollection
                         getPatchTheme={custom.getPatchTheme}
                         onPress={onButtonPress}
-                        paletteColor={paletteTheme.primary}
+                        paletteColor={palette.primary}
                         variant={custom.variant}
                       />
                     </Surface>
