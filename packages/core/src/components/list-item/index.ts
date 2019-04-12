@@ -8,4 +8,3 @@
 export * from './ListItem';
 export * from './ListItemProps';
 export * from './ListItemTheme';
-export * from './useDefaultListItemProps';

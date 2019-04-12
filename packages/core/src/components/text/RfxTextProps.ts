@@ -29,6 +29,8 @@ export interface RfxTextPropsBase
     ResponsivenessProps,
     TextProps {}
 
+export type RfxTextPropsBaseOptional = Partial<RfxTextPropsBase>;
+
 export interface RfxTextProps
   extends ComponentChildrenProps<RfxTextProps>,
     ComponentThemeProps<RfxTextProps, RfxTextTheme>,

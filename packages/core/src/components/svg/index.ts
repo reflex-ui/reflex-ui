@@ -14,5 +14,4 @@ export * from './RfxSvgTheme';
 export * from './RfxSvgVariantsTheme';
 export * from './SvgPropsGetter';
 export * from './SvgTheme';
-export * from './useDefaultRfxSvgIconProps';
-export * from './useDefaultRfxSvgProps';
+export * from './useDefaultRfxSvgPropsBase';

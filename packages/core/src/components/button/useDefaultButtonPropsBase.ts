@@ -9,32 +9,20 @@ import { useContext } from 'react';
 
 import { PaletteColorContext } from '../../color/PaletteColorContext';
 import { PaletteContext } from '../../color/PaletteContext';
-import { MissingComponentThemeError } from '../../errors';
-import { InteractionType } from '../../interaction';
-import { DimensionsContext } from '../../responsiveness/DimensionsContext';
 import { Size } from '../../sizing/Size';
-import { ComponentsThemeContext } from '../ComponentsThemeContext';
-import { ButtonProps, ButtonPropsOptional } from './ButtonProps';
+// tslint:disable-next-line:max-line-length
+import { useDefaultTouchableSurfacePropsBase } from '../touchable-surface/useDefaultTouchableSurfacePropsBase';
+import { ButtonPropsBase, ButtonPropsBaseOptional } from './ButtonProps';
 import { ButtonVariant } from './ButtonVariant';
 import { getButtonVariantColor } from './getButtonVariantColor';
 
-export const useDefaultButtonProps = (
-  props: ButtonPropsOptional,
-): ButtonProps => {
+export const useDefaultButtonPropsBase = (
+  props: ButtonPropsBaseOptional,
+): ButtonPropsBase => {
   const paletteColorFromCtx = useContext(PaletteColorContext);
-  const componentsTheme = useContext(ComponentsThemeContext);
-  const dimensions = useContext(DimensionsContext);
   const palette = useContext(PaletteContext);
 
   const variant: ButtonVariant = props.variant || ButtonVariant.Default;
-
-  let theme = props.theme;
-  if (!theme) {
-    if (!componentsTheme.button) {
-      throw new MissingComponentThemeError('<Button>');
-    }
-    theme = componentsTheme.button[variant];
-  }
 
   const paletteColor =
     props.paletteColor ||
@@ -64,11 +52,8 @@ export const useDefaultButtonProps = (
       : Size.S;
 
   return {
-    ...dimensions,
+    ...useDefaultTouchableSurfacePropsBase(props),
     contained,
-    interactionState: {
-      type: InteractionType.Enabled,
-    },
     /*
      * marginHorizontal and marginVertical are more specific
      * than margin, so we check it here to avoid overriding
@@ -79,9 +64,7 @@ export const useDefaultButtonProps = (
     ...((props.margin && {}) || { marginHorizontal, marginVertical }),
     /**/
     paletteColor,
-    size: Size.M,
-    theme,
+    size: props.size || Size.M,
     variant,
-    ...props,
   };
 };

@@ -5,21 +5,24 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { InteractionProps } from '../../interaction';
 import { ComponentChildrenProps } from '../ComponentChildrenProps';
 import { ComponentThemeProps } from '../ComponentThemeProps';
-import { SurfacePropsBase } from '../surface/SurfaceProps';
+// tslint:disable-next-line:max-line-length
+import { TouchableSurfacePropsBase } from '../touchable-surface/TouchableSurfaceProps';
 import { ButtonTheme } from './ButtonTheme';
 import { ButtonVariant } from './ButtonVariant';
 
-export interface ButtonProps
-  extends ComponentChildrenProps<ButtonProps>,
-    ComponentThemeProps<ButtonProps, ButtonTheme>,
-    InteractionProps,
-    SurfacePropsBase {
+export interface ButtonPropsBase extends TouchableSurfacePropsBase {
   readonly leadingIcon?: JSX.Element;
   readonly trailingIcon?: JSX.Element;
   readonly variant: ButtonVariant;
 }
+
+export type ButtonPropsBaseOptional = Partial<ButtonPropsBase>;
+
+export interface ButtonProps
+  extends ComponentChildrenProps<ButtonProps>,
+    ComponentThemeProps<ButtonProps, ButtonTheme>,
+    ButtonPropsBase {}
 
 export type ButtonPropsOptional = Partial<ButtonProps>;

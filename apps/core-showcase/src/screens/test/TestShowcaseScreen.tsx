@@ -5,19 +5,14 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  PaletteContext,
-  Paragraph1,
-  Size,
-  TouchableSurface,
-} from '@reflex-ui/core';
+import { PaletteContext, Paragraph1, Size, Surface } from '@reflex-ui/core';
 import React, { useContext } from 'react';
 
 const TestShowcaseScreen: React.SFC<{}> = (): JSX.Element => {
   const palette = useContext(PaletteContext);
 
   return (
-    <TouchableSurface
+    <Surface
       contained={false}
       height={100}
       margin={Size.M}
@@ -25,7 +20,7 @@ const TestShowcaseScreen: React.SFC<{}> = (): JSX.Element => {
       width={100}
     >
       <Paragraph1>Touch me! (contained=false)</Paragraph1>
-    </TouchableSurface>
+    </Surface>
   );
 };
 

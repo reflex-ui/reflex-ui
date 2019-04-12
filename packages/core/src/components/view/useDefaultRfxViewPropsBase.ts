@@ -9,34 +9,22 @@ import { useContext } from 'react';
 
 import { PaletteColorContext } from '../../color/PaletteColorContext';
 import { PaletteContext } from '../../color/PaletteContext';
-import { MissingComponentThemeError } from '../../errors';
 import { DimensionsContext } from '../../responsiveness/DimensionsContext';
-import { ComponentsThemeContext } from '../ComponentsThemeContext';
-import { RfxViewProps, RfxViewPropsOptional } from './RfxViewProps';
+import { RfxViewPropsBase, RfxViewPropsBaseOptional } from './RfxViewProps';
 
-export const useDefaultRfxViewProps = (
-  props: RfxViewPropsOptional,
-): RfxViewProps => {
+export const useDefaultRfxViewPropsBase = (
+  props: RfxViewPropsBaseOptional,
+): RfxViewPropsBase => {
   const paletteColorFromCtx = useContext(PaletteColorContext);
-  const componentsTheme = useContext(ComponentsThemeContext);
   const dimensionsProps = useContext(DimensionsContext);
   const palette = useContext(PaletteContext);
-
-  let theme = props.theme;
-  if (!theme) {
-    if (!componentsTheme.views) {
-      throw new MissingComponentThemeError('<Column>');
-    }
-    theme = componentsTheme.views.column;
-  }
 
   const paletteColor =
     props.paletteColor || paletteColorFromCtx || palette.surface;
 
   return {
+    ...props,
     ...dimensionsProps,
     paletteColor,
-    theme,
-    ...props,
   };
 };

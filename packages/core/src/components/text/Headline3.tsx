@@ -9,27 +9,33 @@ import { useContext } from 'react';
 
 import { MissingComponentThemeError } from '../../errors';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
+import { ComponentsTheme } from '../ComponentsTheme';
 import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { processComponent } from '../processComponent';
 import { renderRfxTextComponent } from './renderRfxTextComponent';
 import { RfxTextProps, RfxTextPropsOptional } from './RfxTextProps';
-import { useDefaultRfxTextProps } from './useDefaultRfxTextProps';
+import { RfxTextTheme } from './RfxTextTheme';
+import { useDefaultRfxTextPropsBase } from './useDefaultRfxTextPropsBase';
+
+const getTheme = (
+  props: RfxTextPropsOptional,
+  componentsTheme: ComponentsTheme,
+): RfxTextTheme => {
+  if (props.theme !== undefined && props.theme !== null) return props.theme;
+  if (componentsTheme.text === undefined || componentsTheme.text === null) {
+    throw new MissingComponentThemeError('<Headline3>');
+  }
+  return componentsTheme.text.headline3;
+};
 
 let Headline3: React.ComponentType<RfxTextPropsOptional> = (
   props: RfxTextPropsOptional,
 ) => {
   const componentsTheme = useContext(ComponentsThemeContext);
-
-  let theme = props.theme;
-  if (!theme) {
-    if (!componentsTheme.text) {
-      throw new MissingComponentThemeError('<Headline3>');
-    }
-    theme = componentsTheme.text.headline3;
-  }
+  const theme = getTheme(props, componentsTheme);
 
   const newProps: RfxTextProps = {
-    ...useDefaultRfxTextProps(props),
+    ...useDefaultRfxTextPropsBase(props),
     ...useOnLayout(props),
     theme,
   };

@@ -16,14 +16,19 @@ import { ComponentChildrenProps } from '../ComponentChildrenProps';
 import { ComponentThemeProps } from '../ComponentThemeProps';
 import { RfxSvgTheme } from './RfxSvgTheme';
 
-export interface RfxSvgProps
-  extends ComponentChildrenProps<RfxSvgProps>,
-    ComponentThemeProps<RfxSvgProps, RfxSvgTheme>,
-    ColorProps,
+export interface RfxSvgPropsBase
+  extends ColorProps,
     InteractionStatePropsOptional,
     ResponsivenessProps,
     SvgProps {
   readonly size?: Size;
 }
+
+export type RfxSvgPropsBaseOptional = Partial<RfxSvgPropsBase>;
+
+export interface RfxSvgProps
+  extends ComponentChildrenProps<RfxSvgProps>,
+    ComponentThemeProps<RfxSvgProps, RfxSvgTheme>,
+    RfxSvgPropsBase {}
 
 export type RfxSvgPropsOptional = Partial<RfxSvgProps>;

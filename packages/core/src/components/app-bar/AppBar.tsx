@@ -5,10 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import * as React from 'react';
+import React, { useContext } from 'react';
 import { ViewProps } from 'react-native';
 
+import { MissingComponentThemeError } from '../../errors';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
+import { ComponentsTheme } from '../ComponentsTheme';
+import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { getPropsFromTheme } from '../getPropsFromTheme';
 import { getStyleFromTheme } from '../getStyleFromTheme';
 import { processComponent } from '../processComponent';
@@ -17,7 +20,9 @@ import { Surface } from '../surface/Surface';
 import { SurfacePropsOptional } from '../surface/SurfaceProps';
 import { renderViewComponent } from '../view/renderViewComponent';
 import { AppBarProps, AppBarPropsOptional } from './AppBarProps';
-import { useDefaultAppBarProps } from './useDefaultAppBarProps';
+import { AppBarTheme } from './AppBarTheme';
+import { AppBarVariant } from './AppBarVariant';
+import { useDefaultAppBarPropsBase } from './useDefaultAppBarPropsBase';
 
 export const extractSurfacePropsFromAppBarProps = (
   props: AppBarProps,
@@ -106,10 +111,28 @@ export const renderAppBarTrailingArea = (
   return renderViewComponent(props, viewProps, ViewComponent);
 };
 
+const getTheme = (
+  props: AppBarPropsOptional,
+  componentsTheme: ComponentsTheme,
+): AppBarTheme => {
+  if (props.theme !== undefined && props.theme !== null) return props.theme;
+  if (componentsTheme.appBar === undefined || componentsTheme.appBar === null) {
+    throw new MissingComponentThemeError('<AppBar>');
+  }
+  const variant: AppBarVariant = props.variant || AppBarVariant.Default;
+  return componentsTheme.appBar[variant];
+};
+
 let AppBar: React.ComponentType<AppBarPropsOptional> = (
   props: AppBarPropsOptional,
 ) => {
-  let newProps = useDefaultAppBarProps(props);
+  const componentsTheme = useContext(ComponentsThemeContext);
+  const theme = getTheme(props, componentsTheme);
+
+  let newProps: AppBarProps = {
+    ...useDefaultAppBarPropsBase(props),
+    theme,
+  };
   newProps = { ...newProps, ...useOnLayout(newProps) };
   newProps = processComponentProps(newProps);
 

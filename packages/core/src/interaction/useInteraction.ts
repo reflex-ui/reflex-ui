@@ -5,14 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { GestureResponderEvent } from 'react-native';
 
 import { isWeb } from '../utils';
 import { InteractionEvent } from './InteractionEvent';
 import { InteractionProps, InteractionPropsOptional } from './InteractionProps';
 import { InteractionState } from './InteractionState';
-import { InteractionStateContext } from './InteractionStateContext';
 import { InteractionType } from './InteractionType';
 
 export const useInteraction = <Props extends InteractionPropsOptional>(
@@ -21,19 +20,13 @@ export const useInteraction = <Props extends InteractionPropsOptional>(
   if (props.activated && props.disabled) {
     throw new Error(
       [
-        'Rfx.WithInteractionState: activated and disabled props',
+        'ReflexUI.useInteraction(): activated and disabled props',
         ' cannot be both true.',
       ].join(''),
     );
   }
 
   const getInteractionState = (): InteractionState => {
-    if (
-      inheritedInteractionState &&
-      inheritedInteractionState.type === InteractionType.Disabled
-    ) {
-      return inheritedInteractionState;
-    }
     if (props.activated) {
       return {
         event: interactionEvent,
@@ -147,7 +140,6 @@ export const useInteraction = <Props extends InteractionPropsOptional>(
   const [isFocusing, setIsFocusing] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [isPressing, setIsPressing] = useState(false);
-  const inheritedInteractionState = useContext(InteractionStateContext);
 
   const interactionState = getInteractionState();
   const disabled = interactionState.type === InteractionType.Disabled;

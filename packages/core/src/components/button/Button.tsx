@@ -5,14 +5,17 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import * as React from 'react';
+import React, { useContext } from 'react';
 import { ViewProps } from 'react-native';
 
+import { MissingComponentThemeError } from '../../errors';
 import { InteractionStateContext } from '../../interaction';
 import { useInteraction } from '../../interaction/useInteraction';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { cloneElement } from '../../utils/cloneElement';
 import { filterOutInteractionProps } from '../../utils/props';
+import { ComponentsTheme } from '../ComponentsTheme';
+import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { getPropsFromTheme } from '../getPropsFromTheme';
 import { getStyleFromTheme } from '../getStyleFromTheme';
 import { mergeThemes } from '../mergeThemes';
@@ -28,8 +31,9 @@ import { renderTextComponent } from '../text';
 import { renderTouchableComponent } from '../touchable/renderTouchableComponent';
 import { renderViewComponent } from '../view/renderViewComponent';
 import { ButtonProps, ButtonPropsOptional } from './ButtonProps';
+import { ButtonTheme } from './ButtonTheme';
 import { ButtonVariant } from './ButtonVariant';
-import { useDefaultButtonProps } from './useDefaultButtonProps';
+import { useDefaultButtonPropsBase } from './useDefaultButtonPropsBase';
 
 export const handleButtonChildren = (props: ButtonProps): React.ReactNode => {
   const { children, theme } = props;
@@ -166,11 +170,6 @@ export const extractSurfacePropsFromButtonProps = (
   } = filterOutInteractionProps(props);
 
   let surfaceProps = otherProps as SurfacePropsOptional;
-  surfaceProps = {
-    ...surfaceProps,
-    interactionState: props.interactionState,
-  };
-
   const surfaceTheme = props.theme.surface && props.theme.surface(props);
 
   if (surfaceTheme !== undefined) {
@@ -183,10 +182,28 @@ export const extractSurfacePropsFromButtonProps = (
   return surfaceProps;
 };
 
+const getTheme = (
+  props: ButtonPropsOptional,
+  componentsTheme: ComponentsTheme,
+): ButtonTheme => {
+  if (props.theme !== undefined && props.theme !== null) return props.theme;
+  if (componentsTheme.button === undefined || componentsTheme.button === null) {
+    throw new MissingComponentThemeError('<Button>');
+  }
+  const variant: ButtonVariant = props.variant || ButtonVariant.Default;
+  return componentsTheme.button[variant];
+};
+
 let Button: React.ComponentType<ButtonPropsOptional> = (
   props: ButtonPropsOptional,
 ) => {
-  let newProps = useDefaultButtonProps(props);
+  const componentsTheme = useContext(ComponentsThemeContext);
+  const theme = getTheme(props, componentsTheme);
+
+  let newProps: ButtonProps = {
+    ...useDefaultButtonPropsBase(props),
+    theme,
+  };
   newProps = { ...newProps, ...useInteraction(newProps) };
   newProps = { ...newProps, ...useOnLayout(newProps) };
   newProps = processComponentProps(newProps);

@@ -9,28 +9,17 @@ import { useContext } from 'react';
 
 import { PaletteColorContext } from '../../color/PaletteColorContext';
 import { PaletteContext } from '../../color/PaletteContext';
-import { MissingComponentThemeError } from '../../errors';
 import { InteractionStateContext } from '../../interaction';
 import { DimensionsContext } from '../../responsiveness/DimensionsContext';
-import { ComponentsThemeContext } from '../ComponentsThemeContext';
-import { RfxTextProps, RfxTextPropsOptional } from './RfxTextProps';
+import { RfxTextPropsBase, RfxTextPropsBaseOptional } from './RfxTextProps';
 
-export const useDefaultRfxTextProps = (
-  props: RfxTextPropsOptional,
-): RfxTextProps => {
+export const useDefaultRfxTextPropsBase = (
+  props: RfxTextPropsBaseOptional,
+): RfxTextPropsBase => {
   const paletteColorOnCtx = useContext(PaletteColorContext);
-  const componentsTheme = useContext(ComponentsThemeContext);
   const dimensionsProps = useContext(DimensionsContext);
   const interactionStateFromCtx = useContext(InteractionStateContext);
   const palette = useContext(PaletteContext);
-
-  let theme = props.theme;
-  if (!theme) {
-    if (!componentsTheme.text) {
-      throw new MissingComponentThemeError('<RfxText>');
-    }
-    theme = componentsTheme.text.paragraph1;
-  }
 
   const paletteColor =
     props.paletteColor || paletteColorOnCtx || palette.surface;
@@ -39,7 +28,6 @@ export const useDefaultRfxTextProps = (
     ...dimensionsProps,
     interactionState: interactionStateFromCtx,
     paletteColor,
-    theme,
     ...props,
   };
 };

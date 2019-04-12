@@ -11,11 +11,15 @@ import { SurfacePropsBase } from '../surface/SurfaceProps';
 import { AppBarTheme } from './AppBarTheme';
 import { AppBarVariant } from './AppBarVariant';
 
+export interface AppBarPropsBase extends SurfacePropsBase {
+  readonly variant: AppBarVariant;
+}
+
+export type AppBarPropsBaseOptional = Partial<AppBarPropsBase>;
+
 export interface AppBarProps
   extends ComponentChildrenProps<AppBarProps>,
     ComponentThemeProps<AppBarProps, AppBarTheme>,
-    SurfacePropsBase {
-  readonly variant: AppBarVariant;
-}
+    AppBarPropsBase {}
 
 export type AppBarPropsOptional = Partial<AppBarProps>;
