@@ -7,6 +7,6 @@
 
 import { Breakpoints } from './Breakpoints';
 
-export interface DimensionsProviderProps {
+export interface DimensionsHandlerProps {
   readonly breakpoints: Breakpoints;
 }

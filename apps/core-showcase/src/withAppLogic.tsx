@@ -9,7 +9,7 @@ import {
   ComponentsTheme,
   ComponentsThemeContext,
   defaultBreakpoints,
-  DimensionsProvider,
+  DimensionsHandler,
   PaletteContext,
 } from '@reflex-ui/core';
 import {
@@ -27,13 +27,13 @@ const withAppLogic = <P extends {}>(
   WrappedComponent: React.ComponentType<P>,
 ): React.ComponentType<P> => {
   const WithAppLogic: React.ComponentType<P> = (props: P): JSX.Element => (
-    <DimensionsProvider breakpoints={defaultBreakpoints}>
+    <DimensionsHandler breakpoints={defaultBreakpoints}>
       <PaletteContext.Provider value={blue500Yellow600Palette}>
         <ComponentsThemeContext.Provider value={mdComponentsTheme}>
           <WrappedComponent {...props} />
         </ComponentsThemeContext.Provider>
       </PaletteContext.Provider>
-    </DimensionsProvider>
+    </DimensionsHandler>
   );
 
   WithAppLogic.displayName = `WithAppLogic(${WrappedComponent.displayName ||

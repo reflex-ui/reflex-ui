@@ -10,12 +10,12 @@ import { Dimensions, ScaledSize } from 'react-native';
 
 import { processComponent } from '../components/processComponent';
 import { DimensionsContext } from './DimensionsContext';
+import { DimensionsHandlerProps } from './DimensionsHandlerProps';
 import { DimensionsInfo } from './DimensionsInfo';
 import { DimensionsProps } from './DimensionsProps';
-import { DimensionsProviderProps } from './DimensionsProviderProps';
 
-let DimensionsProvider: React.ComponentType<DimensionsProviderProps> = (
-  props: DimensionsProviderProps & { children?: React.ReactNode },
+let DimensionsHandler: React.ComponentType<DimensionsHandlerProps> = (
+  props: DimensionsHandlerProps & { children?: React.ReactNode },
 ) => {
   const dimensionsChangedHandler = ({
     screen,
@@ -51,11 +51,11 @@ let DimensionsProvider: React.ComponentType<DimensionsProviderProps> = (
   );
 };
 
-DimensionsProvider = processComponent<DimensionsProviderProps>(
-  DimensionsProvider,
+DimensionsHandler = processComponent<DimensionsHandlerProps>(
+  DimensionsHandler,
   {
-    name: 'DimensionsProvider',
+    name: 'DimensionsHandler',
   },
 );
 
-export { DimensionsProvider };
+export { DimensionsHandler };
