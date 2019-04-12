@@ -30,6 +30,7 @@ export * from './SimpleComponentTheme';
 export * from './StyleGetter';
 export * from './StyleObj';
 export * from './StyleProps';
+export * from './screen';
 export * from './surface';
 export * from './svg';
 export * from './text';

@@ -11,6 +11,7 @@ import { appBarVariantsTheme } from './app-bar/theme';
 import { animatedButtonTheme } from './button/animatedTheme';
 import { listItemTheme } from './list-item/theme';
 import { listTheme } from './list/theme';
+import { screenTheme } from './screen/theme';
 import { surfaceTheme } from './surface/theme';
 import { rfxSvgVariantsTheme } from './svg/theme';
 import { rfxTextVariantsTheme } from './text/theme';
@@ -23,6 +24,7 @@ export const animatedMaterialDesignTheme: ComponentsTheme = {
   button: animatedButtonTheme,
   list: listTheme,
   listItem: listItemTheme,
+  screen: screenTheme,
   surface: surfaceTheme,
   svg: rfxSvgVariantsTheme,
   text: rfxTextVariantsTheme,
