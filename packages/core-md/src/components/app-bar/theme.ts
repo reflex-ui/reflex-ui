@@ -32,7 +32,6 @@ export const getCommonAppBarSurfaceStyle: ViewStyleGetter<
 > = () => ({
   alignItems: 'center',
   borderRadius: 0,
-  flex: 1,
   flexDirection: 'row',
   overflow: 'hidden',
   paddingHorizontal: 6,
