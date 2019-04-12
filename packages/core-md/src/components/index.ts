@@ -13,6 +13,7 @@ export * from './createComponentsTheme';
 export * from './list';
 export * from './list-item';
 export * from './materialDesignTheme';
+export * from './screen';
 export * from './surface';
 export * from './svg';
 export * from './text';

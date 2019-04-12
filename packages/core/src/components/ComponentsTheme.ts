@@ -18,6 +18,7 @@ export interface ComponentsTheme {
   readonly button?: ButtonVariantsTheme;
   readonly list?: SurfaceTheme;
   readonly listItem?: RfxViewTheme;
+  readonly screen?: SurfaceTheme;
   readonly surface?: SurfaceTheme;
   readonly svg?: RfxSvgVariantsTheme;
   readonly text?: RfxTextVariantsTheme;
