@@ -13,3 +13,4 @@ export * from './isIOS';
 export * from './isTouchDevice';
 export * from './isWeb';
 export * from './props';
+export * from './scrollable';
