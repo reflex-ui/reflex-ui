@@ -12,5 +12,5 @@ export * from './DimensionsHandler';
 export * from './DimensionsHandlerProps';
 export * from './DimensionsInfo';
 export * from './DimensionsProps';
+export * from './OnLayoutProps';
 export * from './useOnLayout';
-export * from './ResponsivenessProps';

@@ -10,7 +10,7 @@ import { SvgProps } from 'react-native-svg';
 import { ColorProps } from '../../color/ColorProps';
 // tslint:disable-next-line:max-line-length
 import { InteractionStatePropsOptional } from '../../interaction/InteractionStateProps';
-import { ResponsivenessProps } from '../../responsiveness/ResponsivenessProps';
+import { OnLayoutProps } from '../../responsiveness/OnLayoutProps';
 import { Size } from '../../sizing/Size';
 import { ComponentChildrenProps } from '../ComponentChildrenProps';
 import { ComponentThemeProps } from '../ComponentThemeProps';
@@ -19,7 +19,7 @@ import { RfxSvgTheme } from './RfxSvgTheme';
 export interface RfxSvgPropsBase
   extends ColorProps,
     InteractionStatePropsOptional,
-    ResponsivenessProps,
+    OnLayoutProps,
     SvgProps {
   readonly size?: Size;
 }

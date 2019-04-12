@@ -10,7 +10,7 @@ import { ViewProps } from 'react-native';
 import { ColorProps } from '../../color/ColorProps';
 import { FlexboxProps } from '../../flexbox/FlexboxProps';
 import { DimensionsProps } from '../../responsiveness/DimensionsProps';
-import { ResponsivenessProps } from '../../responsiveness/ResponsivenessProps';
+import { OnLayoutProps } from '../../responsiveness/OnLayoutProps';
 import { SizingPropsOptional } from '../../sizing/SizingProps';
 import { MarginProps } from '../../spacing/MarginProps';
 import { PaddingProps } from '../../spacing/PaddingProps';
@@ -36,8 +36,8 @@ export interface RfxViewPropsBase
     DimensionsProps,
     FlexboxProps,
     MarginProps,
+    OnLayoutProps,
     PaddingProps,
-    ResponsivenessProps,
     SizingPropsOptional,
     ViewProps {}
 

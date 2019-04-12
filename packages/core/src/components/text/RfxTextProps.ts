@@ -12,7 +12,7 @@ import { FlexboxProps } from '../../flexbox/FlexboxProps';
 // tslint:disable-next-line:max-line-length
 import { InteractionStatePropsOptional } from '../../interaction/InteractionStateProps';
 import { DimensionsProps } from '../../responsiveness/DimensionsProps';
-import { ResponsivenessProps } from '../../responsiveness/ResponsivenessProps';
+import { OnLayoutProps } from '../../responsiveness/OnLayoutProps';
 import { MarginProps } from '../../spacing/MarginProps';
 import { PaddingProps } from '../../spacing/PaddingProps';
 import { ComponentChildrenProps } from '../ComponentChildrenProps';
@@ -25,8 +25,8 @@ export interface RfxTextPropsBase
     FlexboxProps,
     InteractionStatePropsOptional,
     MarginProps,
+    OnLayoutProps,
     PaddingProps,
-    ResponsivenessProps,
     TextProps {}
 
 export type RfxTextPropsBaseOptional = Partial<RfxTextPropsBase>;

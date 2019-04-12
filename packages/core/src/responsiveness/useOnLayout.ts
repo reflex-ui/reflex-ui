@@ -8,11 +8,11 @@
 import { useState } from 'react';
 import { LayoutChangeEvent, LayoutRectangle } from 'react-native';
 
-import { ResponsivenessProps } from './ResponsivenessProps';
+import { OnLayoutProps } from './OnLayoutProps';
 
-export const useOnLayout = <Props extends ResponsivenessProps>(
+export const useOnLayout = <Props extends OnLayoutProps>(
   props: Props,
-): ResponsivenessProps => {
+): OnLayoutProps => {
   const [layoutRectangle, setLayoutRectangle] = useState<
     LayoutRectangle | undefined
     // tslint:disable-next-line:ter-func-call-spacing
