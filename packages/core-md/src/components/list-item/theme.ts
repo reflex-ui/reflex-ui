@@ -6,8 +6,8 @@
  */
 
 import {
-  ListItemProps,
-  ListItemTheme,
+  RfxViewPropsBase,
+  RfxViewTheme,
   SizedData,
   ViewStyleGetter,
 } from '@reflex-ui/core';
@@ -32,7 +32,7 @@ export const listItemContainerSizedStyle: SizedData<ViewStyle> = {
 };
 
 export const getListItemContainerStyle: ViewStyleGetter<
-  ListItemProps
+  RfxViewPropsBase
 > = props => ({
   ...getCommonRfxViewContainerStyle(props),
   ...(props.size && listItemContainerSizedStyle[props.size]),
@@ -42,6 +42,6 @@ export const getListItemContainerStyle: ViewStyleGetter<
   paddingHorizontal: 8,
 });
 
-export const listItemTheme: ListItemTheme = {
+export const listItemTheme: RfxViewTheme = {
   getStyle: getListItemContainerStyle,
 };

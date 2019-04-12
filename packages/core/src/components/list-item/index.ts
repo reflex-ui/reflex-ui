@@ -6,5 +6,3 @@
  */
 
 export * from './ListItem';
-export * from './ListItemProps';
-export * from './ListItemTheme';

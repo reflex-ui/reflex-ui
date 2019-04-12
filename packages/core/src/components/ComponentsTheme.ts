@@ -7,18 +7,17 @@
 
 import { AppBarVariantsTheme } from './app-bar';
 import { ButtonVariantsTheme } from './button';
-import { ListItemTheme } from './list-item';
 import { SurfaceTheme } from './surface';
 import { RfxSvgVariantsTheme } from './svg';
 import { RfxTextVariantsTheme } from './text';
 import { TouchableSurfaceTheme } from './touchable-surface';
-import { RfxViewVariantsTheme } from './view';
+import { RfxViewTheme, RfxViewVariantsTheme } from './view';
 
 export interface ComponentsTheme {
   readonly appBar?: AppBarVariantsTheme;
   readonly button?: ButtonVariantsTheme;
   readonly list?: SurfaceTheme;
-  readonly listItem?: ListItemTheme;
+  readonly listItem?: RfxViewTheme;
   readonly surface?: SurfaceTheme;
   readonly svg?: RfxSvgVariantsTheme;
   readonly text?: RfxTextVariantsTheme;

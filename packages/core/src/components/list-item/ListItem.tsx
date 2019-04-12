@@ -15,15 +15,15 @@ import { processComponent } from '../processComponent';
 import { processComponentProps } from '../processComponentProps';
 import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
 import { renderRfxViewComponent } from '../view/renderRfxViewComponent';
+import { RfxViewProps, RfxViewPropsOptional } from '../view/RfxViewProps';
+import { RfxViewTheme } from '../view/RfxViewTheme';
 import { useDefaultRfxViewPropsBase } from '../view/useDefaultRfxViewPropsBase';
 import { useShouldProvideColor } from '../view/useShouldProvideColor';
-import { ListItemProps, ListItemPropsOptional } from './ListItemProps';
-import { ListItemTheme } from './ListItemTheme';
 
 const getTheme = (
-  props: ListItemPropsOptional,
+  props: RfxViewPropsOptional,
   componentsTheme: ComponentsTheme,
-): ListItemTheme => {
+): RfxViewTheme => {
   if (props.theme !== undefined && props.theme !== null) return props.theme;
   if (
     componentsTheme.listItem === undefined ||
@@ -34,13 +34,13 @@ const getTheme = (
   return componentsTheme.listItem;
 };
 
-let ListItem: React.ComponentType<ListItemPropsOptional> = (
-  props: ListItemPropsOptional,
+let ListItem: React.ComponentType<RfxViewPropsOptional> = (
+  props: RfxViewPropsOptional,
 ) => {
   const componentsTheme = useContext(ComponentsThemeContext);
   const theme = getTheme(props, componentsTheme);
 
-  let newProps: ListItemProps = {
+  let newProps: RfxViewProps = {
     ...useDefaultRfxViewPropsBase(props),
     theme,
   };
@@ -52,7 +52,7 @@ let ListItem: React.ComponentType<ListItemPropsOptional> = (
   return renderRfxViewComponent(newProps, shouldProvideColor);
 };
 
-ListItem = processComponent<ListItemPropsOptional>(ListItem, {
+ListItem = processComponent<RfxViewPropsOptional>(ListItem, {
   name: 'ListItem',
 });
 
