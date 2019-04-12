@@ -7,7 +7,6 @@
 
 import { AppBarVariantsTheme } from './app-bar';
 import { ButtonVariantsTheme } from './button';
-import { ListTheme } from './list';
 import { ListItemTheme } from './list-item';
 import { SurfaceTheme } from './surface';
 import { RfxSvgVariantsTheme } from './svg';
@@ -18,7 +17,7 @@ import { RfxViewVariantsTheme } from './view';
 export interface ComponentsTheme {
   readonly appBar?: AppBarVariantsTheme;
   readonly button?: ButtonVariantsTheme;
-  readonly list?: ListTheme;
+  readonly list?: SurfaceTheme;
   readonly listItem?: ListItemTheme;
   readonly surface?: SurfaceTheme;
   readonly svg?: RfxSvgVariantsTheme;

@@ -5,17 +5,23 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ListProps, ListTheme, ViewStyleGetter } from '@reflex-ui/core';
+import {
+  SurfacePropsBase,
+  SurfaceTheme,
+  ViewStyleGetter,
+} from '@reflex-ui/core';
 
 import { getSurfaceContainerStyle } from '../surface/theme';
 
-export const getListContainerStyle: ViewStyleGetter<ListProps> = props => ({
+export const getListContainerStyle: ViewStyleGetter<
+  SurfacePropsBase
+> = props => ({
   ...getSurfaceContainerStyle(props),
   borderRadius: 0,
   flexWrap: 'nowrap',
   paddingVertical: 8,
 });
 
-export const listTheme: ListTheme = {
+export const listTheme: SurfaceTheme = {
   getStyle: getListContainerStyle,
 };

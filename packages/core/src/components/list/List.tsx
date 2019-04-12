@@ -14,17 +14,17 @@ import { ComponentsThemeContext } from '../ComponentsThemeContext';
 import { processComponent } from '../processComponent';
 import { processComponentProps } from '../processComponentProps';
 import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
+import { SurfaceProps, SurfacePropsOptional } from '../surface/SurfaceProps';
+import { SurfaceTheme } from '../surface/SurfaceTheme';
 // tslint:disable-next-line:max-line-length
 import { useDefaultSurfacePropsBase } from '../surface/useDefaultSurfacePropsBase';
 import { renderRfxViewComponent } from '../view/renderRfxViewComponent';
 import { useShouldProvideColor } from '../view/useShouldProvideColor';
-import { ListProps, ListPropsOptional } from './ListProps';
-import { ListTheme } from './ListTheme';
 
 const getTheme = (
-  props: ListPropsOptional,
+  props: SurfacePropsOptional,
   componentsTheme: ComponentsTheme,
-): ListTheme => {
+): SurfaceTheme => {
   if (props.theme !== undefined && props.theme !== null) return props.theme;
   if (componentsTheme.list === undefined || componentsTheme.list === null) {
     throw new MissingComponentThemeError('<List>');
@@ -32,13 +32,13 @@ const getTheme = (
   return componentsTheme.list;
 };
 
-let List: React.ComponentType<ListPropsOptional> = (
-  props: ListPropsOptional,
+let List: React.ComponentType<SurfacePropsOptional> = (
+  props: SurfacePropsOptional,
 ) => {
   const componentsTheme = useContext(ComponentsThemeContext);
   const theme = getTheme(props, componentsTheme);
 
-  let newProps: ListProps = {
+  let newProps: SurfaceProps = {
     ...useDefaultSurfacePropsBase(props),
     theme,
   };
@@ -51,7 +51,7 @@ let List: React.ComponentType<ListPropsOptional> = (
   return renderRfxViewComponent(newProps, shouldProvideColor);
 };
 
-List = processComponent<ListPropsOptional>(List, {
+List = processComponent<SurfacePropsOptional>(List, {
   name: 'List',
 });
 
