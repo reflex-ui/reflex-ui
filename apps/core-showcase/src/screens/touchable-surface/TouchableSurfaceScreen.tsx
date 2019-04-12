@@ -18,6 +18,7 @@ import {
   Paragraph1,
   Paragraph2,
   Row,
+  Screen,
   Size,
   TouchableSurface,
   TouchableSurfaceProps,
@@ -74,77 +75,79 @@ const TouchableSurfaceScreen: React.SFC<{}> = (): JSX.Element => {
   const palette = useContext(PaletteContext);
 
   return (
-    <ScrollView>
+    <Screen>
       <AppBar variant={AppBarVariant.Default}>
         <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
           <MenuIcon />
         </Button>
         <AppBarTitle numberOfLines={1}>TouchableSurface</AppBarTitle>
       </AppBar>
-      <Paragraph2 margin={Size.M}>{'<TouchableSurface>'}</Paragraph2>
-      <Row>
-        <TouchableSurface height={50} margin={Size.M} width={100}>
-          <Paragraph1>Touch me!</Paragraph1>
-        </TouchableSurface>
-        <TouchableSurface
-          contained={false}
-          height={50}
-          margin={Size.M}
-          width={100}
-        >
-          <Paragraph1>Touch me! (contained=false)</Paragraph1>
-        </TouchableSurface>
-      </Row>
-      <Paragraph2 margin={Size.M}>
-        {'<TouchableSurface paletteColor={palette.primary}>'}
-      </Paragraph2>
-      <Row>
-        <TouchableSurface
-          alignContent={AlignContent.Center}
-          height={50}
-          justifyContent={JustifyContent.Center}
-          margin={Size.M}
-          paletteColor={palette.primary}
-          width={100}
-        >
-          <Paragraph1>Touch me!</Paragraph1>
-        </TouchableSurface>
-        <TouchableSurface
-          contained={false}
-          height={50}
-          invertColor
-          margin={Size.M}
-          paletteColor={palette.primary}
-          width={100}
-        >
-          <Paragraph1>Touch me! (contained=false)</Paragraph1>
-        </TouchableSurface>
-      </Row>
-      <Paragraph2 margin={Size.M}>
-        {[
-          '<TouchableSurface getPatchTheme={getPatchTheme}',
-          'paletteColor={palette.primary}>',
-        ].join('')}
-      </Paragraph2>
-      <Row>
-        <TouchableSurface
-          getPatchTheme={getPatchTheme}
-          margin={Size.M}
-          paletteColor={palette.primary}
-        >
-          <Paragraph1>Touch me!</Paragraph1>
-        </TouchableSurface>
-        <TouchableSurface
-          contained={false}
-          getPatchTheme={getPatchTheme}
-          invertColor
-          margin={Size.M}
-          paletteColor={palette.primary}
-        >
-          <Paragraph1>Touch me! (contained=false)</Paragraph1>
-        </TouchableSurface>
-      </Row>
-    </ScrollView>
+      <ScrollView>
+        <Paragraph2 margin={Size.M}>{'<TouchableSurface>'}</Paragraph2>
+        <Row>
+          <TouchableSurface height={50} margin={Size.M} width={100}>
+            <Paragraph1>Touch me!</Paragraph1>
+          </TouchableSurface>
+          <TouchableSurface
+            contained={false}
+            height={50}
+            margin={Size.M}
+            width={100}
+          >
+            <Paragraph1>Touch me! (contained=false)</Paragraph1>
+          </TouchableSurface>
+        </Row>
+        <Paragraph2 margin={Size.M}>
+          {'<TouchableSurface paletteColor={palette.primary}>'}
+        </Paragraph2>
+        <Row>
+          <TouchableSurface
+            alignContent={AlignContent.Center}
+            height={50}
+            justifyContent={JustifyContent.Center}
+            margin={Size.M}
+            paletteColor={palette.primary}
+            width={100}
+          >
+            <Paragraph1>Touch me!</Paragraph1>
+          </TouchableSurface>
+          <TouchableSurface
+            contained={false}
+            height={50}
+            invertColor
+            margin={Size.M}
+            paletteColor={palette.primary}
+            width={100}
+          >
+            <Paragraph1>Touch me! (contained=false)</Paragraph1>
+          </TouchableSurface>
+        </Row>
+        <Paragraph2 margin={Size.M}>
+          {[
+            '<TouchableSurface getPatchTheme={getPatchTheme}',
+            'paletteColor={palette.primary}>',
+          ].join('')}
+        </Paragraph2>
+        <Row>
+          <TouchableSurface
+            getPatchTheme={getPatchTheme}
+            margin={Size.M}
+            paletteColor={palette.primary}
+          >
+            <Paragraph1>Touch me!</Paragraph1>
+          </TouchableSurface>
+          <TouchableSurface
+            contained={false}
+            getPatchTheme={getPatchTheme}
+            invertColor
+            margin={Size.M}
+            paletteColor={palette.primary}
+          >
+            <Paragraph1>Touch me! (contained=false)</Paragraph1>
+          </TouchableSurface>
+        </Row>
+      </ScrollView>
+    </Screen>
   );
 };
 

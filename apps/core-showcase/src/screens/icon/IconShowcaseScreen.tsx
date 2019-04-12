@@ -15,6 +15,7 @@ import {
   JustifyContent,
   PaletteContext,
   Row,
+  Screen,
   Size,
   Surface,
 } from '@reflex-ui/core';
@@ -95,70 +96,75 @@ const IconShowcaseScreen: React.SFC<{}> = (): JSX.Element => {
   ];
 
   return (
-    <ScrollView>
+    <Screen>
       <AppBar>
         <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
           <MenuIcon />
         </Button>
         <AppBarTitle numberOfLines={1}>Icon</AppBarTitle>
       </AppBar>
-      <Column marginTop={Size.M}>
-        {({ breakpoints, dimensions }) => {
-          const marginSize =
-            dimensions.window.width > breakpoints.largeHandset ? Size.M : 0;
+      <ScrollView>
+        <Column marginTop={Size.M}>
+          {({ breakpoints, dimensions }) => {
+            const marginSize =
+              dimensions.window.width > breakpoints.largeHandset ? Size.M : 0;
 
-          const justifyContent =
-            dimensions.window.width <= breakpoints.smallTablet
-              ? JustifyContent.Center
-              : undefined;
+            const justifyContent =
+              dimensions.window.width <= breakpoints.smallTablet
+                ? JustifyContent.Center
+                : undefined;
 
-          return (
-            <React.Fragment>
-              {colors.map(paletteColor => (
+            return (
+              <React.Fragment>
+                {colors.map(paletteColor => (
+                  <Row
+                    key={paletteColor.name}
+                    justifyContent={justifyContent}
+                    marginVertical={marginSize}
+                  >
+                    <Surface marginStart={marginSize}>
+                      <IconCollection
+                        invertColor
+                        paletteColor={paletteColor.color}
+                        title={paletteColor.name}
+                      />
+                    </Surface>
+                    <Surface
+                      marginStart={marginSize}
+                      paletteColor={paletteColor.color}
+                    >
+                      <IconCollection
+                        paletteColor={paletteColor.color}
+                        title={`${paletteColor.name} invertColor`}
+                      />
+                    </Surface>
+                  </Row>
+                ))}
                 <Row
-                  key={paletteColor.name}
                   justifyContent={justifyContent}
                   marginVertical={marginSize}
                 >
                   <Surface marginStart={marginSize}>
-                    <IconCollection
-                      invertColor
-                      paletteColor={paletteColor.color}
-                      title={paletteColor.name}
-                    />
-                  </Surface>
-                  <Surface
-                    marginStart={marginSize}
-                    paletteColor={paletteColor.color}
-                  >
-                    <IconCollection
-                      paletteColor={paletteColor.color}
-                      title={`${paletteColor.name} invertColor`}
-                    />
+                    <Row margin={Size.M}>
+                      <Headline6>Custom color</Headline6>
+                    </Row>
+                    <Row>
+                      <AlarmIcon fill="#c70ad0" size={Size.XXS} />
+                      <AlarmIcon fill="#c70ad0" size={Size.XS} />
+                      <AlarmIcon fill="#c70ad0" size={Size.S} />
+                      <AlarmIcon fill="#c70ad0" />
+                      <AlarmIcon fill="#c70ad0" size={Size.L} />
+                      <AlarmIcon fill="#c70ad0" size={Size.XL} />
+                      <AlarmIcon fill="#c70ad0" size={Size.XXL} />
+                    </Row>
                   </Surface>
                 </Row>
-              ))}
-              <Row justifyContent={justifyContent} marginVertical={marginSize}>
-                <Surface marginStart={marginSize}>
-                  <Row margin={Size.M}>
-                    <Headline6>Custom color</Headline6>
-                  </Row>
-                  <Row>
-                    <AlarmIcon fill="#c70ad0" size={Size.XXS} />
-                    <AlarmIcon fill="#c70ad0" size={Size.XS} />
-                    <AlarmIcon fill="#c70ad0" size={Size.S} />
-                    <AlarmIcon fill="#c70ad0" />
-                    <AlarmIcon fill="#c70ad0" size={Size.L} />
-                    <AlarmIcon fill="#c70ad0" size={Size.XL} />
-                    <AlarmIcon fill="#c70ad0" size={Size.XXL} />
-                  </Row>
-                </Surface>
-              </Row>
-            </React.Fragment>
-          );
-        }}
-      </Column>
-    </ScrollView>
+              </React.Fragment>
+            );
+          }}
+        </Column>
+      </ScrollView>
+    </Screen>
   );
 };
 

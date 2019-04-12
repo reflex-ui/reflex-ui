@@ -14,6 +14,7 @@ import {
   Headline6,
   JustifyContent,
   Row,
+  Screen,
   Size,
   Surface,
 } from '@reflex-ui/core';
@@ -29,41 +30,43 @@ const onButtonPress = () => {
 };
 
 const SvgShowcaseScreen: React.SFC<{}> = (): JSX.Element => (
-  <ScrollView>
+  <Screen>
     <AppBar>
       <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
         <MenuIcon />
       </Button>
       <AppBarTitle numberOfLines={1}>Svg</AppBarTitle>
     </AppBar>
-    <Column marginTop={Size.M}>
-      {({ breakpoints, dimensions }) => {
-        const marginSize =
-          dimensions.window.width > breakpoints.largeHandset ? Size.M : 0;
+    <ScrollView>
+      <Column marginTop={Size.M}>
+        {({ breakpoints, dimensions }) => {
+          const marginSize =
+            dimensions.window.width > breakpoints.largeHandset ? Size.M : 0;
 
-        const justifyContent =
-          dimensions.window.width <= breakpoints.smallTablet
-            ? JustifyContent.Center
-            : undefined;
+          const justifyContent =
+            dimensions.window.width <= breakpoints.smallTablet
+              ? JustifyContent.Center
+              : undefined;
 
-        return (
-          <Row justifyContent={justifyContent} marginVertical={marginSize}>
-            <Surface marginStart={marginSize}>
-              <Row margin={Size.M}>
-                <Headline6>Pencil</Headline6>
-              </Row>
-              <Row>
-                <PencilSvg />
-              </Row>
-              <Row marginTop={50}>
-                <PencilSvg height={75} width={75} />
-              </Row>
-            </Surface>
-          </Row>
-        );
-      }}
-    </Column>
-  </ScrollView>
+          return (
+            <Row justifyContent={justifyContent} marginVertical={marginSize}>
+              <Surface marginStart={marginSize}>
+                <Row margin={Size.M}>
+                  <Headline6>Pencil</Headline6>
+                </Row>
+                <Row>
+                  <PencilSvg />
+                </Row>
+                <Row marginTop={50}>
+                  <PencilSvg height={75} width={75} />
+                </Row>
+              </Surface>
+            </Row>
+          );
+        }}
+      </Column>
+    </ScrollView>
+  </Screen>
 );
 
 SvgShowcaseScreen.displayName = 'SvgShowcaseScreen';
