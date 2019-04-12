@@ -6,7 +6,6 @@
  */
 
 import isEmpty from 'lodash/isEmpty';
-import merge from 'lodash/merge';
 import { ImageStyle, TextStyle, ViewStyle } from 'react-native';
 
 import { getPropsFromTheme } from './getPropsFromTheme';
@@ -36,7 +35,7 @@ export const processThemeAndStyleProps = <
 
   let mergedProps = props;
   const themeProps = getPropsFromTheme(props, theme);
-  if (themeProps !== undefined) mergedProps = merge({}, themeProps, props);
+  if (themeProps !== undefined) mergedProps = { ...themeProps, ...props };
 
   const styleFromProps = props.style;
 
