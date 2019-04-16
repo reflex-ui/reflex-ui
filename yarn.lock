@@ -9048,7 +9048,7 @@ prompts@^0.1.9:
     kleur "^2.0.1"
     sisteransi "^0.1.1"
 
-prop-types@15.x.x, prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.2:
+prop-types@15.x.x, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -9328,10 +9328,10 @@ react-native-navigation@2.15.0:
     react-lifecycles-compat "2.0.0"
     tslib "1.9.3"
 
-react-native-svg@9.3.5:
-  version "9.3.5"
-  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-9.3.5.tgz#86ea5f6de4b9996c51784c3e7f84859915519466"
-  integrity sha512-wQqW8NxePnXGOGcWo6zGsEucNQ6L+5qjstTGH8n6cLN79dI1v3yavYwYxmd5m/kTtaEv1ZtQz3qb990UFiyw3w==
+react-native-svg@9.4.0:
+  version "9.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-9.4.0.tgz#e428e0eae55aebd2355f1ff4f22675dad4611960"
+  integrity sha512-IVJlVbS2dAPerPr927fEi4uXzrPXzlra5ddgyJXZZ2IKA2ZygyYWFZDM+vsQs+Vj20CfL8nOWszQQV57vdQgFg==
 
 react-native-web@0.11.1:
   version "0.11.1"
@@ -9916,11 +9916,6 @@ rimraf@~2.2.6:
   version "2.2.8"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.2.8.tgz#e439be2aaee327321952730f99a8929e4fc50582"
   integrity sha1-5Dm+Kq7jJzIZUnMPmaiSnk/FBYI=
-
-rip-out@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/rip-out/-/rip-out-1.0.0.tgz#d622a7b607e1cdadc8b079bf9fb3da42c13b98e3"
-  integrity sha1-1iKntgfhza3IsHm/n7PaQsE7mOM=
 
 ripemd160@^2.0.0, ripemd160@^2.0.1:
   version "2.0.2"
@@ -10716,14 +10711,6 @@ svgo@^1.0.0, svgo@^1.1.1:
     stable "^0.1.8"
     unquote "~1.1.1"
     util.promisify "~1.0.0"
-
-swgs@3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/swgs/-/swgs-3.3.0.tgz#7cc8e4a363020b50f695e1bd2d508eddae20c04b"
-  integrity sha512-OeY8i3du8Yz51P44pMXVonvF/EbqfvWEUj1NFSsNFiAM+/Ssk3CusLpScFZ2JTteW8qA8TGequKrhiT4jlTetA==
-  dependencies:
-    prop-types "^15.5.10"
-    rip-out "^1.0.0"
 
 symbol-tree@^3.2.2:
   version "3.2.2"

@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 // tslint:disable-next-line:ordered-imports
-import { Svg, Circle } from 'swgs';
+import { Svg, Circle } from 'react-native-svg';
 
 import {
   processComponent,

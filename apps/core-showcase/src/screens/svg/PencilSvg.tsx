@@ -9,8 +9,7 @@
  */
 
 import * as React from 'react';
-import { SvgProps } from 'react-native-svg';
-import { Path, Svg } from 'swgs';
+import { Path, Svg, SvgProps } from 'react-native-svg';
 
 export const PencilSvg = (props: SvgProps) => (
   <Svg
