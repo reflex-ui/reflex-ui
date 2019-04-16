@@ -15,12 +15,19 @@ import { getSurfaceContainerStyle } from '../surface/theme';
 
 export const getListContainerStyle: ViewStyleGetter<
   SurfacePropsBase
-> = props => ({
-  ...getSurfaceContainerStyle(props),
-  borderRadius: 0,
-  flexWrap: 'nowrap',
-  paddingVertical: 8,
-});
+> = props => {
+  const paddingVertical =
+    props.padding === undefined && props.paddingVertical === undefined
+      ? 8
+      : undefined;
+
+  return {
+    ...getSurfaceContainerStyle(props),
+    borderRadius: 0,
+    flexWrap: props.flexWrap || 'nowrap',
+    ...(paddingVertical && { paddingVertical }),
+  };
+};
 
 export const listTheme: SurfaceTheme = {
   getStyle: getListContainerStyle,
