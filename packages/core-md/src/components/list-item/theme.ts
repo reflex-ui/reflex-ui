@@ -34,12 +34,12 @@ export const listItemContainerSizedStyle: SizedData<ViewStyle> = {
 export const getListItemContainerStyle: ViewStyleGetter<
   RfxViewPropsBase
 > = props => ({
-  ...getCommonRfxViewContainerStyle(props),
   ...(props.size && listItemContainerSizedStyle[props.size]),
   alignItems: 'center',
   flexDirection: 'row',
   flexWrap: 'wrap',
   paddingHorizontal: 8,
+  ...getCommonRfxViewContainerStyle(props),
 });
 
 export const listItemTheme: RfxViewTheme = {
