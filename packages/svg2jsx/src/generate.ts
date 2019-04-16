@@ -164,12 +164,11 @@ export const svg2jsx: FileDataTransformer = ({ fileData, filePath }) => {
 export const svgr2SvgIcon: FileDataTransformer = ({ fileData, filePath }) => {
   let svgIcon: string = fileData.replace(
     'import React from "react";',
-    `import * as React from 'react';
+    `import React from "react";
     // tslint:disable-next-line:ordered-imports`,
   );
 
   svgIcon = svgIcon.replace('import Svg, { ', 'import { Svg, ');
-  svgIcon = svgIcon.replace(/react-native-svg/g, 'swgs');
 
   svgIcon = svgIcon.replace(
     'const SvgComponent = props => ',

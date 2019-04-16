@@ -49,9 +49,8 @@
     "react": ">=16.7.0",
     "react-dom": ">=16.7.0",
     "react-native": ">=0.58.3",
-    "react-native-svg": ">=9.0.0",
-    "react-native-web": ">=0.10.0",
-    "swgs": ">=3.3.0"
+    "react-native-svg": ">=9.4.0",
+    "react-native-web": ">=0.10.0"
   },
   "sideEffects": false
 }
