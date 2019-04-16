@@ -17,10 +17,10 @@ import { getCommonRfxViewContainerStyle } from '../view/theme';
 export const getSurfaceContainerStyle: ViewStyleGetter<
   SurfacePropsBase
 > = props => ({
-  ...getCommonRfxViewContainerStyle(props),
   backgroundColor: getColor(props),
   borderRadius: 4,
   flexWrap: 'wrap',
+  ...getCommonRfxViewContainerStyle(props),
 });
 
 export const surfaceTheme: SurfaceTheme = {
