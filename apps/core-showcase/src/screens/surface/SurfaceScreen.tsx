@@ -13,6 +13,7 @@ import {
   Button,
   ButtonVariant,
   ComponentThemeGetter,
+  FlexDirection,
   JustifyContent,
   PaletteContext,
   Paragraph1,
@@ -26,7 +27,7 @@ import {
 } from '@reflex-ui/core';
 import { MenuIcon } from '@reflex-ui/icons-md';
 import React, { useContext } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
 
 const onButtonPress = () => {
   // tslint:disable-next-line:no-console
@@ -49,6 +50,18 @@ const getPatchTheme: ComponentThemeGetter<
     }),
   };
 };
+
+const Square = () => (
+  <View
+    style={{
+      backgroundColor: 'red',
+      borderColor: 'yellow',
+      borderWidth: 1,
+      height: 50,
+      width: 50,
+    }}
+  />
+);
 
 const SurfaceScreen: React.SFC<{}> = (): JSX.Element => {
   const palette = useContext(PaletteContext);
@@ -98,6 +111,42 @@ const SurfaceScreen: React.SFC<{}> = (): JSX.Element => {
             <Paragraph1>Hello Surface! (contained=false)</Paragraph1>
           </Surface>
         </Row>
+        <Paragraph2 margin={Size.M}>
+          {'<Surface paletteColor={palette.primary}>'}
+        </Paragraph2>
+        <Row>
+          <Surface
+            alignContent={AlignContent.Center}
+            justifyContent={JustifyContent.Center}
+            margin={Size.M}
+            paletteColor={palette.primary}
+            width={200}
+          >
+            <Paragraph1>Hello Surface! Lorem ipsum dolor.</Paragraph1>
+          </Surface>
+        </Row>
+        <Paragraph2 margin={Size.M}>
+          {'<Surface paletteColor={palette.primary}>'}
+        </Paragraph2>
+        <Surface margin={Size.M} paletteColor={palette.primary} width={175}>
+          <Square />
+          <Square />
+          <Square />
+          <Square />
+          <Square />
+        </Surface>
+        <Surface
+          flexDirection={FlexDirection.Row}
+          margin={Size.M}
+          paletteColor={palette.primary}
+          width={175}
+        >
+          <Square />
+          <Square />
+          <Square />
+          <Square />
+          <Square />
+        </Surface>
         <Paragraph2 margin={Size.M}>
           {[
             '<Surface getPatchTheme={getPatchTheme}',
