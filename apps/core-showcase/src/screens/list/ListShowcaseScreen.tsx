@@ -13,6 +13,7 @@ import {
   Caption,
   Column,
   ComponentsThemeContext,
+  FlexWrap,
   FontWeight,
   getFontWeight,
   InteractionType,
@@ -666,7 +667,11 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => {
                   {'<ListItem size={Size.M}>'}
                 </Paragraph2>
                 <List maxWidth={listMaxWidth}>
-                  <TouchableSurface contained={false} onPress={onListItemPress}>
+                  <TouchableSurface
+                    contained={false}
+                    flexWrap={FlexWrap.Nowrap}
+                    onPress={onListItemPress}
+                  >
                     <ListItem size={Size.M}>
                       <Column flexShrink={1} marginHorizontal={Size.S}>
                         <Paragraph1 numberOfLines={1}>
@@ -685,6 +690,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => {
                   <TouchableSurface
                     contained={false}
                     disabled
+                    flexWrap={FlexWrap.Nowrap}
                     onPress={onListItemPress}
                   >
                     <ListItem size={Size.L}>
@@ -699,7 +705,11 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => {
                       </Column>
                     </ListItem>
                   </TouchableSurface>
-                  <TouchableSurface contained={false} onPress={onListItemPress}>
+                  <TouchableSurface
+                    contained={false}
+                    flexWrap={FlexWrap.Nowrap}
+                    onPress={onListItemPress}
+                  >
                     <ListItem size={Size.L}>
                       <Column flexShrink={1} marginHorizontal={Size.S}>
                         <Paragraph1 numberOfLines={1}>Birthday Gift</Paragraph1>
@@ -720,8 +730,12 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => {
                   {'<ListItem size={Size.L}>'}
                 </Paragraph2>
                 <List maxWidth={listMaxWidth}>
-                  <TouchableSurface contained={false} onPress={onListItemPress}>
-                    <ListItem size={Size.L}>
+                  <TouchableSurface
+                    contained={false}
+                    flexWrap={FlexWrap.Nowrap}
+                    onPress={onListItemPress}
+                  >
+                    <ListItem flexWrap={FlexWrap.Nowrap} size={Size.L}>
                       <Column marginHorizontal={Size.S}>
                         <AccountCircleIcon size={Size.XL} />
                       </Column>
@@ -742,9 +756,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => {
                   <TouchableSurface
                     contained={false}
                     disabled
+                    flexWrap={FlexWrap.Nowrap}
                     onPress={onListItemPress}
                   >
-                    <ListItem size={Size.L}>
+                    <ListItem flexWrap={FlexWrap.Nowrap} size={Size.L}>
                       <Column marginHorizontal={Size.S}>
                         <AccountCircleIcon size={Size.XL} />
                       </Column>
@@ -759,8 +774,12 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => {
                       </Column>
                     </ListItem>
                   </TouchableSurface>
-                  <TouchableSurface contained={false} onPress={onListItemPress}>
-                    <ListItem size={Size.L}>
+                  <TouchableSurface
+                    contained={false}
+                    flexWrap={FlexWrap.Nowrap}
+                    onPress={onListItemPress}
+                  >
+                    <ListItem flexWrap={FlexWrap.Nowrap} size={Size.L}>
                       <Column marginHorizontal={Size.S}>
                         <AccountCircleIcon size={Size.XL} />
                       </Column>
@@ -783,8 +802,12 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => {
                   {'<ListItem size={Size.XL}>'}
                 </Paragraph2>
                 <List maxWidth={listMaxWidth}>
-                  <TouchableSurface contained={false} onPress={onListItemPress}>
-                    <ListItem size={Size.XL}>
+                  <TouchableSurface
+                    contained={false}
+                    flexWrap={FlexWrap.Nowrap}
+                    onPress={onListItemPress}
+                  >
+                    <ListItem flexWrap={FlexWrap.Nowrap} size={Size.XL}>
                       <Column marginHorizontal={Size.S}>
                         <AccountCircleIcon size={Size.XL} />
                       </Column>
@@ -805,9 +828,10 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => {
                   <TouchableSurface
                     contained={false}
                     disabled
+                    flexWrap={FlexWrap.Nowrap}
                     onPress={onListItemPress}
                   >
-                    <ListItem size={Size.XL}>
+                    <ListItem flexWrap={FlexWrap.Nowrap} size={Size.XL}>
                       <Column marginHorizontal={Size.S}>
                         <AccountCircleIcon size={Size.XL} />
                       </Column>
@@ -822,8 +846,12 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => {
                       </Column>
                     </ListItem>
                   </TouchableSurface>
-                  <TouchableSurface contained={false} onPress={onListItemPress}>
-                    <ListItem size={Size.XL}>
+                  <TouchableSurface
+                    contained={false}
+                    flexWrap={FlexWrap.Nowrap}
+                    onPress={onListItemPress}
+                  >
+                    <ListItem flexWrap={FlexWrap.Nowrap} size={Size.XL}>
                       <Column marginHorizontal={Size.S}>
                         <AccountCircleIcon size={Size.XL} />
                       </Column>
@@ -847,7 +875,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => {
                 </Paragraph2>
                 <List maxWidth={listMaxWidth}>
                   <TouchableSurface contained={false} onPress={onListItemPress}>
-                    <ListItem size={Size.XXL}>
+                    <ListItem flexWrap={FlexWrap.Nowrap} size={Size.XXL}>
                       <Column marginHorizontal={Size.S}>
                         <AccountCircleIcon size={Size.XL} />
                       </Column>
@@ -870,7 +898,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => {
                     disabled
                     onPress={onListItemPress}
                   >
-                    <ListItem size={Size.XXL}>
+                    <ListItem flexWrap={FlexWrap.Nowrap} size={Size.XXL}>
                       <Column marginHorizontal={Size.S}>
                         <AccountCircleIcon size={Size.XL} />
                       </Column>
@@ -886,7 +914,7 @@ const ListShowcaseScreen: React.SFC = (): JSX.Element => {
                     </ListItem>
                   </TouchableSurface>
                   <TouchableSurface contained={false} onPress={onListItemPress}>
-                    <ListItem size={Size.XXL}>
+                    <ListItem flexWrap={FlexWrap.Nowrap} size={Size.XXL}>
                       <Column marginHorizontal={Size.S}>
                         <AccountCircleIcon size={Size.XL} />
                       </Column>
