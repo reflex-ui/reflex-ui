@@ -18,9 +18,9 @@ export const getScreenContainerStyle: ViewStyleGetter<
 > = props => ({
   ...getSurfaceContainerStyle(props),
   borderRadius: 0,
-  flex: 1,
-  flexDirection: 'column',
-  flexWrap: 'nowrap',
+  flex: props.flex !== undefined ? props.flex : 1,
+  flexDirection: props.flexDirection || 'column',
+  flexWrap: props.flexWrap || 'nowrap',
 });
 
 export const screenTheme: SurfaceTheme = {
