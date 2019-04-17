@@ -6,7 +6,6 @@
  */
 
 import { isSizeEnumValue } from '../sizing/isSizeEnumValue';
-import { Size } from './Size';
 import { SizedData } from './SizedData';
 
 export const getSizedDataValue = <Data extends SizedData<Value>, Value>(
@@ -14,5 +13,5 @@ export const getSizedDataValue = <Data extends SizedData<Value>, Value>(
   size: Value,
 ) =>
   typeof size === 'string' && isSizeEnumValue(size)
-    ? sizedObject[size as Size]
+    ? sizedObject[size]
     : size;
