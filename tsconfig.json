@@ -5,7 +5,7 @@
     "allowUnusedLabels": false,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "lib": ["es6", "dom"],
+    "lib": ["es2017", "dom"],
     "module": "esnext",
     "moduleResolution": "node",
     "noEmitOnError": true,
