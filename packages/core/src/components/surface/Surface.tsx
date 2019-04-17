@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { useContext } from 'react';
+import { forwardRef, Ref, useContext } from 'react';
+import { View } from 'react-native';
 
 import { MissingComponentThemeError } from '../../errors';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
@@ -34,23 +35,23 @@ const getTheme = (
   return componentsTheme.surface;
 };
 
-let Surface: React.ComponentType<SurfacePropsOptional> = (
-  props: SurfacePropsOptional,
-) => {
-  const componentsTheme = useContext(ComponentsThemeContext);
-  const theme = getTheme(props, componentsTheme);
+let Surface: React.ComponentType<SurfacePropsOptional> = forwardRef(
+  (props: SurfacePropsOptional, ref: Ref<View>) => {
+    const componentsTheme = useContext(ComponentsThemeContext);
+    const theme = getTheme(props, componentsTheme);
 
-  let newProps: SurfaceProps = {
-    ...useDefaultSurfacePropsBase(props),
-    theme,
-  };
-  newProps = { ...newProps, ...useOnLayout(newProps) };
-  newProps = processComponentProps(newProps);
-  newProps = processThemeAndStyleProps(newProps, newProps.theme);
+    let newProps: SurfaceProps = {
+      ...useDefaultSurfacePropsBase(props),
+      theme,
+    };
+    newProps = { ...newProps, ...useOnLayout(newProps) };
+    newProps = processComponentProps(newProps);
+    newProps = processThemeAndStyleProps(newProps, newProps.theme);
 
-  const shouldProvideColor = useShouldProvideColor(newProps);
-  return renderRfxViewComponent(newProps, shouldProvideColor);
-};
+    const shouldProvideColor = useShouldProvideColor(newProps);
+    return renderRfxViewComponent({ props: newProps, shouldProvideColor, ref });
+  },
+);
 
 Surface = processComponent<SurfacePropsOptional>(Surface, {
   name: 'Surface',

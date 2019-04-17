@@ -5,8 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { useContext } from 'react';
-import { ViewProps } from 'react-native';
+import React, { forwardRef, Ref, useContext } from 'react';
+import { View, ViewProps } from 'react-native';
 
 import { MissingComponentThemeError } from '../../errors';
 import { InteractionStateContext } from '../../interaction';
@@ -44,14 +44,14 @@ export const handleButtonChildren = (props: ButtonProps): React.ReactNode => {
     typeof children === 'number' ||
     typeof children === 'boolean'
   ) {
-    const Text = props.theme.text && props.theme.text.component;
+    const Component = props.theme.text && props.theme.text.component;
     const textProps = {
       ...getPropsFromTheme(props, props.theme.text),
       children: children.toString(),
       key: 'text',
       style: getStyleFromTheme(props, props.theme.text),
     };
-    return renderTextComponent(props, textProps, Text);
+    return renderTextComponent({ Component, props, textProps });
   }
 
   if (
@@ -71,8 +71,8 @@ export const handleButtonChildren = (props: ButtonProps): React.ReactNode => {
       style: getStyleFromTheme(props, theme.iconContainer),
     };
 
-    const ViewComponent = theme.iconContainer && theme.iconContainer.component;
-    return renderViewComponent(props, viewProps, ViewComponent);
+    const Component = theme.iconContainer && theme.iconContainer.component;
+    return renderViewComponent({ props, viewProps, Component });
   }
 
   return children;
@@ -130,9 +130,9 @@ export const handleLeadingIcon = (
     style: getStyleFromTheme(props, theme.leadingIconContainer),
   };
 
-  const ViewComponent =
+  const Component =
     theme.leadingIconContainer && theme.leadingIconContainer.component;
-  return renderViewComponent(props, viewProps, ViewComponent);
+  return renderViewComponent({ props, viewProps, Component });
 };
 
 export const handleTrailingIcon = (
@@ -152,9 +152,9 @@ export const handleTrailingIcon = (
     style: getStyleFromTheme(props, theme.trailingIconContainer),
   };
 
-  const ViewComponent =
+  const Component =
     theme.trailingIconContainer && theme.trailingIconContainer.component;
-  return renderViewComponent(props, viewProps, ViewComponent);
+  return renderViewComponent({ props, viewProps, Component });
 };
 
 export const extractSurfacePropsFromButtonProps = (
@@ -194,40 +194,40 @@ const getTheme = (
   return componentsTheme.button[variant];
 };
 
-let Button: React.ComponentType<ButtonPropsOptional> = (
-  props: ButtonPropsOptional,
-) => {
-  const componentsTheme = useContext(ComponentsThemeContext);
-  const theme = getTheme(props, componentsTheme);
+let Button: React.ComponentType<ButtonPropsOptional> = forwardRef(
+  (props: ButtonPropsOptional, ref: Ref<View>) => {
+    const componentsTheme = useContext(ComponentsThemeContext);
+    const theme = getTheme(props, componentsTheme);
 
-  let newProps: ButtonProps = {
-    ...useDefaultButtonPropsBase(props),
-    theme,
-  };
-  newProps = { ...newProps, ...useInteraction(newProps) };
-  newProps = { ...newProps, ...useOnLayout(newProps) };
-  newProps = processComponentProps(newProps);
-  newProps = processThemeAndStyleProps(newProps, newProps.theme.touchable);
+    let newProps: ButtonProps = {
+      ...useDefaultButtonPropsBase(props),
+      theme,
+    };
+    newProps = { ...newProps, ...useInteraction(newProps) };
+    newProps = { ...newProps, ...useOnLayout(newProps) };
+    newProps = processComponentProps(newProps);
+    newProps = processThemeAndStyleProps(newProps, newProps.theme.touchable);
 
-  const Touchable =
-    newProps.theme.touchable && newProps.theme.touchable.component;
+    const Touchable =
+      newProps.theme.touchable && newProps.theme.touchable.component;
 
-  const surfaceProps = extractSurfacePropsFromButtonProps(newProps);
-  const surface = (
-    <Surface {...surfaceProps}>
-      {newProps.leadingIcon && handleLeadingIcon(newProps)}
-      {newProps.children && handleButtonChildren(newProps)}
-      {newProps.trailingIcon && handleTrailingIcon(newProps)}
-    </Surface>
-  );
-  newProps = { ...newProps, children: surface };
+    const surfaceProps = extractSurfacePropsFromButtonProps(newProps);
+    const surface = (
+      <Surface {...surfaceProps} ref={ref}>
+        {newProps.leadingIcon && handleLeadingIcon(newProps)}
+        {newProps.children && handleButtonChildren(newProps)}
+        {newProps.trailingIcon && handleTrailingIcon(newProps)}
+      </Surface>
+    );
+    newProps = { ...newProps, children: surface };
 
-  return (
-    <InteractionStateContext.Provider value={newProps.interactionState}>
-      {renderTouchableComponent(newProps, Touchable)}
-    </InteractionStateContext.Provider>
-  );
-};
+    return (
+      <InteractionStateContext.Provider value={newProps.interactionState}>
+        {renderTouchableComponent(newProps, Touchable)}
+      </InteractionStateContext.Provider>
+    );
+  },
+);
 
 Button = processComponent<ButtonPropsOptional>(Button, {
   name: 'Button',

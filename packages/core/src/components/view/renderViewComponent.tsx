@@ -5,19 +5,27 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import * as React from 'react';
+import React, { Ref } from 'react';
 import { View, ViewProps } from 'react-native';
 
 import { BuiltInSimpleComponentProps } from '../BuiltInSimpleComponentProps';
 
-export const renderViewComponent = <ComponentProps extends {}>(
-  props: ComponentProps,
-  viewProps: ViewProps & Readonly<{ children?: React.ReactNode }>,
-  Component:
+export interface ViewComponentRendererInput<ComponentProps> {
+  readonly Component?:
     | typeof View
     | React.ComponentType<BuiltInSimpleComponentProps<ComponentProps>> &
-        ViewProps = View,
+        ViewProps;
+  readonly props: ComponentProps;
+  readonly ref?: Ref<View>;
+  readonly viewProps: ViewProps & Readonly<{ children?: React.ReactNode }>;
+}
+
+export const renderViewComponent = <ComponentProps extends {}>(
+  input: ViewComponentRendererInput<ComponentProps>,
 ): JSX.Element => {
-  if (Component === View) return <Component {...viewProps} />;
+  const { Component, props, ref, viewProps } = input;
+  if (Component === undefined || Component === View) {
+    return <View {...viewProps} ref={ref} />;
+  }
   return <Component complexComponentProps={props} {...viewProps} />;
 };

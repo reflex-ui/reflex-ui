@@ -5,19 +5,27 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import * as React from 'react';
+import React, { Ref } from 'react';
 import { Text, TextProps } from 'react-native';
 
 import { BuiltInSimpleComponentProps } from '../BuiltInSimpleComponentProps';
 
-export const renderTextComponent = <ComponentProps extends {}>(
-  props: ComponentProps,
-  textProps: TextProps & Readonly<{ children?: React.ReactNode }>,
-  Component:
+export interface TextComponentRendererInput<ComponentProps> {
+  Component?:
     | typeof Text
     | React.ComponentType<BuiltInSimpleComponentProps<ComponentProps>> &
-        TextProps = Text,
+        TextProps;
+  props: ComponentProps;
+  ref?: Ref<Text>;
+  textProps: TextProps & Readonly<{ children?: React.ReactNode }>;
+}
+
+export const renderTextComponent = <ComponentProps extends {}>(
+  input: TextComponentRendererInput<ComponentProps>,
 ): JSX.Element => {
-  if (Component === Text) return <Component {...textProps} />;
+  const { Component, props, ref, textProps } = input;
+  if (Component === undefined || Component === Text) {
+    return <Text {...textProps} ref={ref} />;
+  }
   return <Component complexComponentProps={props} {...textProps} />;
 };

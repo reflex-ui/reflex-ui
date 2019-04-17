@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { useContext } from 'react';
+import React, { forwardRef, Ref, useContext } from 'react';
+import { View } from 'react-native';
 
 import { MissingComponentThemeError } from '../../errors';
 import { InteractionStateContext } from '../../interaction';
@@ -63,9 +64,9 @@ const getTheme = (
   return componentsTheme.touchableSurface;
 };
 
-let TouchableSurface: React.ComponentType<TouchableSurfacePropsOptional> = (
-  props: TouchableSurfacePropsOptional,
-) => {
+let TouchableSurface: React.ComponentType<
+  TouchableSurfacePropsOptional
+> = forwardRef((props: TouchableSurfacePropsOptional, ref: Ref<View>) => {
   const componentsTheme = useContext(ComponentsThemeContext);
   const theme = getTheme(props, componentsTheme);
 
@@ -82,7 +83,11 @@ let TouchableSurface: React.ComponentType<TouchableSurfacePropsOptional> = (
     newProps.theme.touchable && newProps.theme.touchable.component;
 
   const surfaceProps = extractSurfacePropsFromTouchableSurfaceProps(newProps);
-  const surface = <Surface {...surfaceProps}>{newProps.children}</Surface>;
+  const surface = (
+    <Surface {...surfaceProps} ref={ref}>
+      {newProps.children}
+    </Surface>
+  );
   newProps = { ...newProps, children: surface };
 
   return (
@@ -90,7 +95,7 @@ let TouchableSurface: React.ComponentType<TouchableSurfacePropsOptional> = (
       {renderTouchableComponent(newProps, Touchable)}
     </InteractionStateContext.Provider>
   );
-};
+});
 
 TouchableSurface = processComponent<TouchableSurfacePropsOptional>(
   TouchableSurface,

@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { useContext } from 'react';
+import { forwardRef, Ref, useContext } from 'react';
+import { Text } from 'react-native';
 
 import { MissingComponentThemeError } from '../../errors';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
@@ -28,20 +29,20 @@ const getTheme = (
   return componentsTheme.text.caption;
 };
 
-let Caption: React.ComponentType<RfxTextPropsOptional> = (
-  props: RfxTextPropsOptional,
-) => {
-  const componentsTheme = useContext(ComponentsThemeContext);
-  const theme = getTheme(props, componentsTheme);
+let Caption: React.ComponentType<RfxTextPropsOptional> = forwardRef(
+  (props: RfxTextPropsOptional, ref: Ref<Text>) => {
+    const componentsTheme = useContext(ComponentsThemeContext);
+    const theme = getTheme(props, componentsTheme);
 
-  const newProps: RfxTextProps = {
-    ...useDefaultRfxTextPropsBase(props),
-    ...useOnLayout(props),
-    theme,
-  };
+    const newProps: RfxTextProps = {
+      ...useDefaultRfxTextPropsBase(props),
+      ...useOnLayout(props),
+      theme,
+    };
 
-  return renderRfxTextComponent(newProps);
-};
+    return renderRfxTextComponent(newProps, ref);
+  },
+);
 
 Caption = processComponent<RfxTextPropsOptional>(Caption, {
   name: 'Caption',

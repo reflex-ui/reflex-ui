@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import * as React from 'react';
+import React, { Ref } from 'react';
+import { Text } from 'react-native';
 
 import { extractTextProps } from '../../utils/props';
 import { processComponentProps } from '../processComponentProps';
@@ -15,6 +16,7 @@ import { RfxTextProps } from './RfxTextProps';
 
 export const renderRfxTextComponent = (
   props: RfxTextProps,
+  ref: Ref<Text>,
 ): React.ReactElement | null => {
   let newProps = processComponentProps(props);
   newProps = processThemeAndStyleProps(newProps, newProps.theme);
@@ -28,11 +30,12 @@ export const renderRfxTextComponent = (
     typeof children === 'boolean' ||
     Array.isArray(children)
   ) {
+    const Component = newProps.theme.component;
     const textProps = {
       ...extractTextProps(newProps),
       children,
     };
-    return renderTextComponent(newProps, textProps, newProps.theme.component);
+    return renderTextComponent({ Component, props: newProps, ref, textProps });
   }
 
   if ('type' in children) return children;

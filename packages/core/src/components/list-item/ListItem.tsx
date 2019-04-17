@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { useContext } from 'react';
+import { forwardRef, Ref, useContext } from 'react';
+import { View } from 'react-native';
 
 import { MissingComponentThemeError } from '../../errors';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
@@ -34,23 +35,23 @@ const getTheme = (
   return componentsTheme.listItem;
 };
 
-let ListItem: React.ComponentType<RfxViewPropsOptional> = (
-  props: RfxViewPropsOptional,
-) => {
-  const componentsTheme = useContext(ComponentsThemeContext);
-  const theme = getTheme(props, componentsTheme);
+let ListItem: React.ComponentType<RfxViewPropsOptional> = forwardRef(
+  (props: RfxViewPropsOptional, ref: Ref<View>) => {
+    const componentsTheme = useContext(ComponentsThemeContext);
+    const theme = getTheme(props, componentsTheme);
 
-  let newProps: RfxViewProps = {
-    ...useDefaultRfxViewPropsBase(props),
-    theme,
-  };
-  newProps = { ...newProps, ...useOnLayout(newProps) };
-  newProps = processComponentProps(newProps);
-  newProps = processThemeAndStyleProps(newProps, newProps.theme);
+    let newProps: RfxViewProps = {
+      ...useDefaultRfxViewPropsBase(props),
+      theme,
+    };
+    newProps = { ...newProps, ...useOnLayout(newProps) };
+    newProps = processComponentProps(newProps);
+    newProps = processThemeAndStyleProps(newProps, newProps.theme);
 
-  const shouldProvideColor = useShouldProvideColor(props);
-  return renderRfxViewComponent(newProps, shouldProvideColor);
-};
+    const shouldProvideColor = useShouldProvideColor(props);
+    return renderRfxViewComponent({ props: newProps, shouldProvideColor, ref });
+  },
+);
 
 ListItem = processComponent<RfxViewPropsOptional>(ListItem, {
   name: 'ListItem',
