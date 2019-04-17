@@ -5,8 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import * as React from 'react';
-import { ViewProps } from 'react-native';
+import React, { Ref } from 'react';
+import { View, ViewProps } from 'react-native';
 
 import { PaletteColorContext } from '../../color/PaletteColorContext';
 import { extractViewProps } from '../../utils/props';
@@ -16,21 +16,32 @@ import { BuiltInSimpleComponentTheme } from '../SimpleComponentTheme';
 import { renderViewComponent } from './renderViewComponent';
 import { RfxViewPropsBase } from './RfxViewProps';
 
+export interface RfxViewComponentRendererInput<Props> {
+  readonly props: Props;
+  readonly ref?: Ref<View>;
+  readonly shouldProvideColor?: boolean;
+}
+
 export const renderRfxViewComponent = <
   Props extends RfxViewPropsBase &
     ComponentThemeProps<Props, Theme> &
     ComponentChildrenProps<Props>,
   Theme extends BuiltInSimpleComponentTheme<Props, unknown, unknown>
 >(
-  props: Props,
-  shouldProvideColor: boolean = false,
+  input: RfxViewComponentRendererInput<Props>,
 ): React.ReactElement => {
+  const { props, ref, shouldProvideColor } = input;
   const { children, paletteColor, theme } = props;
   const viewProps: React.PropsWithChildren<ViewProps> = {
     ...extractViewProps(props),
     children,
   };
-  const renderedView = renderViewComponent(props, viewProps, theme.component);
+  const renderedView = renderViewComponent({
+    Component: theme.component,
+    props,
+    ref,
+    viewProps,
+  });
 
   if (shouldProvideColor) {
     return (

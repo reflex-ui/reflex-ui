@@ -5,8 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { useContext } from 'react';
-import { ViewProps } from 'react-native';
+import React, { forwardRef, Ref, useContext } from 'react';
+import { View, ViewProps } from 'react-native';
 
 import { MissingComponentThemeError } from '../../errors';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
@@ -60,8 +60,8 @@ export const renderAppBarCenterArea = (props: AppBarProps): React.ReactNode => {
     style: getStyleFromTheme(props, theme.centerArea),
   };
 
-  const ViewComponent = theme.centerArea && theme.centerArea.component;
-  return renderViewComponent(props, viewProps, ViewComponent);
+  const Component = theme.centerArea && theme.centerArea.component;
+  return renderViewComponent({ props, viewProps, Component });
 };
 
 export const renderAppBarLeadingArea = (
@@ -83,8 +83,8 @@ export const renderAppBarLeadingArea = (
     style: getStyleFromTheme(props, theme.leadingArea),
   };
 
-  const ViewComponent = theme.leadingArea && theme.leadingArea.component;
-  return renderViewComponent(props, viewProps, ViewComponent);
+  const Component = theme.leadingArea && theme.leadingArea.component;
+  return renderViewComponent({ props, viewProps, Component });
 };
 
 export const renderAppBarTrailingArea = (
@@ -107,8 +107,8 @@ export const renderAppBarTrailingArea = (
     style: getStyleFromTheme(props, theme.trailingArea),
   };
 
-  const ViewComponent = theme.trailingArea && theme.trailingArea.component;
-  return renderViewComponent(props, viewProps, ViewComponent);
+  const Component = theme.trailingArea && theme.trailingArea.component;
+  return renderViewComponent({ props, viewProps, Component });
 };
 
 const getTheme = (
@@ -123,36 +123,36 @@ const getTheme = (
   return componentsTheme.appBar[variant];
 };
 
-let AppBar: React.ComponentType<AppBarPropsOptional> = (
-  props: AppBarPropsOptional,
-) => {
-  const componentsTheme = useContext(ComponentsThemeContext);
-  const theme = getTheme(props, componentsTheme);
+let AppBar: React.ComponentType<AppBarPropsOptional> = forwardRef(
+  (props: AppBarPropsOptional, ref: Ref<View>) => {
+    const componentsTheme = useContext(ComponentsThemeContext);
+    const theme = getTheme(props, componentsTheme);
 
-  let newProps: AppBarProps = {
-    ...useDefaultAppBarPropsBase(props),
-    theme,
-  };
-  newProps = { ...newProps, ...useOnLayout(newProps) };
-  newProps = processComponentProps(newProps);
+    let newProps: AppBarProps = {
+      ...useDefaultAppBarPropsBase(props),
+      theme,
+    };
+    newProps = { ...newProps, ...useOnLayout(newProps) };
+    newProps = processComponentProps(newProps);
 
-  if (Array.isArray(newProps.children) && newProps.children.length > 3) {
-    throw new Error(
-      [
-        'Rfx: SimpleAppBar.children cannot take more than 3 top-level nodes. ',
-        'You probably forgot to wrap some components into e.g. a <Row>.',
-      ].join(''),
+    if (Array.isArray(newProps.children) && newProps.children.length > 3) {
+      throw new Error(
+        [
+          'Rfx: SimpleAppBar.children cannot take more than 3 top-level nodes.',
+          'You probably forgot to wrap some components into e.g. a <Row>.',
+        ].join(' '),
+      );
+    }
+
+    return (
+      <Surface {...extractSurfacePropsFromAppBarProps(newProps)} ref={ref}>
+        {renderAppBarLeadingArea(newProps)}
+        {renderAppBarCenterArea(newProps)}
+        {renderAppBarTrailingArea(newProps)}
+      </Surface>
     );
-  }
-
-  return (
-    <Surface {...extractSurfacePropsFromAppBarProps(newProps)}>
-      {renderAppBarLeadingArea(newProps)}
-      {renderAppBarCenterArea(newProps)}
-      {renderAppBarTrailingArea(newProps)}
-    </Surface>
-  );
-};
+  },
+);
 
 AppBar = processComponent<AppBarPropsOptional>(AppBar, {
   name: 'AppBar',

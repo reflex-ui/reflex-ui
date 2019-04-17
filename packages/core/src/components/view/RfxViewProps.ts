@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ViewProps } from 'react-native';
+import { Ref } from 'react';
+import { View, ViewProps } from 'react-native';
 
 import { ColorProps } from '../../color/ColorProps';
 import { FlexboxProps } from '../../flexbox/FlexboxProps';
@@ -39,7 +40,9 @@ export interface RfxViewPropsBase
     OnLayoutProps,
     PaddingProps,
     SizingPropsOptional,
-    ViewProps {}
+    ViewProps {
+  readonly ref?: Ref<View>;
+}
 
 export type RfxViewPropsBaseOptional = Partial<RfxViewPropsBase>;
 

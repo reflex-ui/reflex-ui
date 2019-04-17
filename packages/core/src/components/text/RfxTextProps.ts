@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { TextProps } from 'react-native';
+import { Ref } from 'react';
+import { Text, TextProps } from 'react-native';
 
 import { ColorProps } from '../../color/ColorProps';
 import { FlexboxProps } from '../../flexbox/FlexboxProps';
@@ -27,7 +28,9 @@ export interface RfxTextPropsBase
     MarginProps,
     OnLayoutProps,
     PaddingProps,
-    TextProps {}
+    TextProps {
+  readonly ref?: Ref<Text>;
+}
 
 export type RfxTextPropsBaseOptional = Partial<RfxTextPropsBase>;
 
