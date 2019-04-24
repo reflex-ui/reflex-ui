@@ -1,0 +1,9 @@
+{
+  "files": [],
+  "include": [],
+  "references": [
+    { "path": "./core/tsconfig.json" },
+    { "path": "./core-md/tsconfig.json" },
+    { "path": "./svg2jsx/tsconfig.json" }
+  ]
+}
