@@ -18,7 +18,7 @@ import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
 import { renderRfxViewComponent } from '../view/renderRfxViewComponent';
 import { RfxViewProps, RfxViewPropsOptional } from '../view/RfxViewProps';
 import { RfxViewTheme } from '../view/RfxViewTheme';
-import { useDefaultRfxViewPropsBase } from '../view/useDefaultRfxViewPropsBase';
+import { useDefaultRfxViewProps } from '../view/useDefaultRfxViewProps';
 import { useShouldProvideColor } from '../view/useShouldProvideColor';
 
 const getTheme = (
@@ -40,15 +40,12 @@ let ListItem: React.ComponentType<RfxViewPropsOptional> = forwardRef(
     const componentsTheme = useContext(ComponentsThemeContext);
     const theme = getTheme(props, componentsTheme);
 
-    let newProps: RfxViewProps = {
-      ...useDefaultRfxViewPropsBase(props),
-      theme,
-    };
+    let newProps: RfxViewProps = useDefaultRfxViewProps(props, theme);
     newProps = { ...newProps, ...useOnLayout(newProps) };
     newProps = processComponentProps(newProps);
     newProps = processThemeAndStyleProps(newProps, newProps.theme);
 
-    const shouldProvideColor = useShouldProvideColor(props);
+    const shouldProvideColor = useShouldProvideColor(props.paletteColor);
     return renderRfxViewComponent({ props: newProps, shouldProvideColor, ref });
   },
 );

@@ -11,3 +11,4 @@ export * from './InteractionState';
 export * from './InteractionStateContext';
 export * from './InteractionStateProps';
 export * from './InteractionType';
+export * from './suppressPressedState';

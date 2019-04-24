@@ -6,20 +6,20 @@
  */
 
 import { InteractionProps } from '../../interaction';
-import { ComponentChildrenProps } from '../ComponentChildrenProps';
-import { ComponentThemeProps } from '../ComponentThemeProps';
 import { SurfacePropsBase } from '../surface/SurfaceProps';
 import { TouchableSurfaceTheme } from './TouchableSurfaceTheme';
 
-export type TouchableSurfacePropsBase = InteractionProps & SurfacePropsBase;
+export type TouchableSurfacePropsBase<Props, Theme> = InteractionProps &
+  SurfacePropsBase<Props, Theme>;
 
-export type TouchableSurfacePropsBaseOptional = Partial<
-  TouchableSurfacePropsBase
+export type TouchableSurfacePropsBaseOptional<Props, Theme> = Partial<
+  TouchableSurfacePropsBase<Props, Theme>
 >;
 
 export interface TouchableSurfaceProps
-  extends ComponentChildrenProps<TouchableSurfaceProps>,
-    ComponentThemeProps<TouchableSurfaceProps, TouchableSurfaceTheme>,
-    TouchableSurfacePropsBase {}
+  extends TouchableSurfacePropsBase<
+    TouchableSurfaceProps,
+    TouchableSurfaceTheme
+  > {}
 
 export type TouchableSurfacePropsOptional = Partial<TouchableSurfaceProps>;

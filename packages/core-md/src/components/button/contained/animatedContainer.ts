@@ -8,46 +8,34 @@
 import {
   ButtonProps,
   ComponentThemeGetter,
-  DefaultView,
-  InteractionType,
-  isTouchDevice,
-  SurfacePropsBase,
+  getColor,
+  suppressPressedState,
+  SurfaceProps,
   SurfaceTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 
-import { getButtonRippleColor } from '../getButtonRippleColor';
-import { withRippleEffect } from '../withRippleEffect';
+import { getAllVariantsButtonContainerProps } from '../all-variants/container';
+import { createAnimatedRippleView } from '../createAnimatedRippleView';
+import { getSurfaceRippleColor } from '../getSurfaceRippleColor';
 import { getContainedButtonContainerStyle } from './container';
 
 export const getAnimatedContainedButtonContainerStyle: ViewStyleGetter<
-  SurfacePropsBase
-> = props => {
-  const updatedProps =
-    props.interactionState.type === InteractionType.Pressed
-      ? {
-          // tslint:disable-next-line:ter-indent
-          ...props,
-          // tslint:disable-next-line:ter-indent
-          interactionState: {
-            ...props.interactionState,
-            type: isTouchDevice
-              ? InteractionType.Enabled
-              : InteractionType.Hovered,
-          },
-          // tslint:disable-next-line:ter-indent
-        }
-      : props;
+  SurfaceProps
+> = props => ({
+  ...getContainedButtonContainerStyle(props),
+  backgroundColor: getColor(suppressPressedState(props)),
+});
 
-  return getContainedButtonContainerStyle(updatedProps);
-};
+const AnimatedRippleView = createAnimatedRippleView<SurfaceProps, SurfaceTheme>(
+  getSurfaceRippleColor,
+);
 
 export const getAnimatedContainedButtonSurfaceTheme: ComponentThemeGetter<
   ButtonProps,
   SurfaceTheme
 > = () => ({
-  component: withRippleEffect({
-    getRippleColor: getButtonRippleColor,
-  })(DefaultView),
+  component: AnimatedRippleView,
+  getProps: getAllVariantsButtonContainerProps,
   getStyle: getAnimatedContainedButtonContainerStyle,
 });

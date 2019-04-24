@@ -7,7 +7,7 @@
 
 import { TouchableWithoutFeedbackProps } from 'react-native';
 
-import { extractAccessibilityProps } from './';
+import { extractAccessibilityProps } from './extractAccessibilityProps';
 
 export const extractTouchableWithoutFeedbackProps = (
   props: TouchableWithoutFeedbackProps,

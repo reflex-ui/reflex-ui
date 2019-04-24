@@ -22,7 +22,7 @@ import { renderViewComponent } from '../view/renderViewComponent';
 import { AppBarProps, AppBarPropsOptional } from './AppBarProps';
 import { AppBarTheme } from './AppBarTheme';
 import { AppBarVariant } from './AppBarVariant';
-import { useDefaultAppBarPropsBase } from './useDefaultAppBarPropsBase';
+import { useDefaultAppBarProps } from './useDefaultAppBarProps';
 
 export const extractSurfacePropsFromAppBarProps = (
   props: AppBarProps,
@@ -128,10 +128,7 @@ let AppBar: React.ComponentType<AppBarPropsOptional> = forwardRef(
     const componentsTheme = useContext(ComponentsThemeContext);
     const theme = getTheme(props, componentsTheme);
 
-    let newProps: AppBarProps = {
-      ...useDefaultAppBarPropsBase(props),
-      theme,
-    };
+    let newProps: AppBarProps = useDefaultAppBarProps(props, theme);
     newProps = { ...newProps, ...useOnLayout(newProps) };
     newProps = processComponentProps(newProps);
 

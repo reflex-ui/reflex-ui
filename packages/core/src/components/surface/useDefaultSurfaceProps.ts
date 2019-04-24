@@ -10,31 +10,22 @@ import { useContext } from 'react';
 // tslint:disable-next-line:max-line-length
 import { InteractionStateContext } from '../../interaction/InteractionStateContext';
 import { InteractionType } from '../../interaction/InteractionType';
-// tslint:disable-next-line:max-line-length
-import { useDefaultSurfacePropsBase } from '../surface/useDefaultSurfacePropsBase';
-import {
-  TouchableSurfacePropsBase,
-  TouchableSurfacePropsBaseOptional,
-} from './TouchableSurfaceProps';
+import { useDefaultRfxViewProps } from '../view/useDefaultRfxViewProps';
+import { SurfacePropsBase } from './SurfaceProps';
 
-export const useDefaultTouchableSurfacePropsBase = (
-  props: TouchableSurfacePropsBaseOptional,
-): TouchableSurfacePropsBase => {
+export const useDefaultSurfaceProps = <
+  Props extends SurfacePropsBase<Props, Theme>,
+  Theme
+>(
+  props: Partial<Props>,
+  theme: Theme,
+): Props => {
   const interactionStateFromContext = useContext(InteractionStateContext);
 
-  let interactionState;
-  if (props.interactionState) {
-    interactionState = props.interactionState;
-  } else if (
-    interactionStateFromContext &&
-    interactionStateFromContext.type === InteractionType.Disabled
-  ) {
-    interactionState = interactionStateFromContext;
-  } else {
-    interactionState = {
+  const interactionState = props.interactionState ||
+    interactionStateFromContext || {
       type: InteractionType.Enabled,
     };
-  }
 
   const activated =
     props.activated === true ||
@@ -43,9 +34,12 @@ export const useDefaultTouchableSurfacePropsBase = (
     props.disabled === true ||
     interactionState.type === InteractionType.Disabled;
 
+  const contained = props.contained === false ? false : true;
+
   return {
-    ...useDefaultSurfacePropsBase(props),
+    ...useDefaultRfxViewProps(props, theme),
     activated,
+    contained,
     disabled,
     interactionState,
   };

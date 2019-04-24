@@ -86,6 +86,7 @@ export const useInteraction = <Props extends InteractionPropsOptional>(
   };
 
   const onMouseEnter = (event: React.MouseEvent): void => {
+    if (!pointerHovers) setPointerHovers(true);
     if (props.disabled || isHovering) {
       return;
     }
@@ -140,6 +141,7 @@ export const useInteraction = <Props extends InteractionPropsOptional>(
   const [isFocusing, setIsFocusing] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [isPressing, setIsPressing] = useState(false);
+  const [pointerHovers, setPointerHovers] = useState(false);
 
   const interactionState = getInteractionState();
   const disabled = interactionState.type === InteractionType.Disabled;
@@ -153,5 +155,6 @@ export const useInteraction = <Props extends InteractionPropsOptional>(
     ...((isWeb && { onMouseLeave }) || {}),
     onPressIn,
     onPressOut,
+    pointerHovers,
   };
 };

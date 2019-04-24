@@ -6,18 +6,23 @@
  */
 
 export * from './all-variants';
+export * from './AnimatedElevationView';
+export * from './AnimatedRippleElevationView';
+export * from './AnimatedRippleView';
+export * from './animatedTheme';
 export * from './contained';
 export * from './contained-shaped';
+export * from './createAnimatedElevationView';
+export * from './createAnimatedRippleElevationView';
+export * from './createAnimatedRippleView';
 export * from './default';
 export * from './fab';
+export * from './getSurfaceRippleColor';
 export * from './icon';
 export * from './outlined';
 export * from './outlined-shaped';
 export * from './raised';
 export * from './xfab';
-
-export * from './animatedTheme';
-export * from './getButtonRippleColor';
 export * from './theme';
-export * from './withRaiseEffect';
-export * from './withRippleEffect';
+export * from './useElevationAnimation';
+export * from './useRippleAnimation';

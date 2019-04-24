@@ -15,10 +15,12 @@ export interface InteractionProps
   extends InteractionStateProps,
     TouchableWithoutFeedbackProps {
   readonly activated?: boolean;
+  readonly pointerHovers?: boolean;
 }
 
 export interface InteractionPropsOptional
   extends InteractionStatePropsOptional,
     TouchableWithoutFeedbackProps {
   readonly activated?: boolean;
+  readonly pointerHovers?: boolean;
 }

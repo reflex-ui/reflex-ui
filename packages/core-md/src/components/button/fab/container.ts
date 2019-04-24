@@ -9,7 +9,7 @@ import {
   ButtonProps,
   ComponentThemeGetter,
   SizedData,
-  SurfacePropsBase,
+  SurfaceProps,
   SurfaceTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
@@ -78,7 +78,7 @@ export const fabButtonContainerSizedStyle: SizedData<ViewStyle> = {
 };
 
 export const getFabButtonContainerStyle: ViewStyleGetter<
-  SurfacePropsBase
+  SurfaceProps
 > = props => ({
   ...getRaisedButtonContainerStyle(props),
   ...getMidElevationStylesByInteraction(props.interactionState.type),

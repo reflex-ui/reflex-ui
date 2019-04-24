@@ -17,8 +17,7 @@ import { processComponentProps } from '../processComponentProps';
 import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
 import { SurfaceProps, SurfacePropsOptional } from '../surface/SurfaceProps';
 import { SurfaceTheme } from '../surface/SurfaceTheme';
-// tslint:disable-next-line:max-line-length
-import { useDefaultSurfacePropsBase } from '../surface/useDefaultSurfacePropsBase';
+import { useDefaultSurfaceProps } from '../surface/useDefaultSurfaceProps';
 import { renderRfxViewComponent } from '../view/renderRfxViewComponent';
 import { useShouldProvideColor } from '../view/useShouldProvideColor';
 
@@ -38,16 +37,13 @@ let List: React.ComponentType<SurfacePropsOptional> = forwardRef(
     const componentsTheme = useContext(ComponentsThemeContext);
     const theme = getTheme(props, componentsTheme);
 
-    let newProps: SurfaceProps = {
-      ...useDefaultSurfacePropsBase(props),
-      theme,
-    };
+    let newProps: SurfaceProps = useDefaultSurfaceProps(props, theme);
 
     newProps = { ...newProps, ...useOnLayout(newProps) };
     newProps = processComponentProps(newProps);
     newProps = processThemeAndStyleProps(newProps, newProps.theme);
 
-    const shouldProvideColor = useShouldProvideColor(newProps);
+    const shouldProvideColor = useShouldProvideColor(newProps.paletteColor);
     return renderRfxViewComponent({ props: newProps, shouldProvideColor, ref });
   },
 );

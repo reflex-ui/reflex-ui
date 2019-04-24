@@ -20,8 +20,10 @@ import { ComponentChildrenProps } from '../ComponentChildrenProps';
 import { ComponentThemeProps } from '../ComponentThemeProps';
 import { RfxTextTheme } from './RfxTextTheme';
 
-export interface RfxTextPropsBase
-  extends ColorProps,
+export interface RfxTextPropsBase<Props, Theme>
+  extends ComponentChildrenProps<Props>,
+    ComponentThemeProps<Props, Theme>,
+    ColorProps,
     DimensionsProps,
     FlexboxProps,
     InteractionStatePropsOptional,
@@ -32,11 +34,11 @@ export interface RfxTextPropsBase
   readonly ref?: Ref<Text>;
 }
 
-export type RfxTextPropsBaseOptional = Partial<RfxTextPropsBase>;
+export type RfxTextPropsBaseOptional<Props, Theme> = Partial<
+  RfxTextPropsBase<Props, Theme>
+>;
 
 export interface RfxTextProps
-  extends ComponentChildrenProps<RfxTextProps>,
-    ComponentThemeProps<RfxTextProps, RfxTextTheme>,
-    RfxTextPropsBase {}
+  extends RfxTextPropsBase<RfxTextProps, RfxTextTheme> {}
 
 export type RfxTextPropsOptional = Partial<RfxTextProps>;

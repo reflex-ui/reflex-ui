@@ -32,8 +32,11 @@ import { RfxViewTheme } from './RfxViewTheme';
  * as default value in generics (i.e. Props = RfxViewProps). Error:
  * Type parameter 'Props' has a circular default.ts(2716)
  */
-export interface RfxViewPropsBase
-  extends ColorProps,
+
+export interface RfxViewPropsBase<Props, Theme>
+  extends ComponentChildrenProps<Props>,
+    ComponentThemeProps<Props, Theme>,
+    ColorProps,
     DimensionsProps,
     FlexboxProps,
     MarginProps,
@@ -44,11 +47,11 @@ export interface RfxViewPropsBase
   readonly ref?: Ref<View>;
 }
 
-export type RfxViewPropsBaseOptional = Partial<RfxViewPropsBase>;
+export type RfxViewPropsBaseOptional<Props, Theme> = Partial<
+  RfxViewPropsBase<Props, Theme>
+>;
 
 export interface RfxViewProps
-  extends ComponentChildrenProps<RfxViewProps>,
-    ComponentThemeProps<RfxViewProps, RfxViewTheme>,
-    RfxViewPropsBase {}
+  extends RfxViewPropsBase<RfxViewProps, RfxViewTheme> {}
 
 export type RfxViewPropsOptional = Partial<RfxViewProps>;

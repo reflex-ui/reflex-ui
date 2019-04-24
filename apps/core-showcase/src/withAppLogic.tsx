@@ -14,14 +14,14 @@ import {
 } from '@reflex-ui/core';
 import {
   blue500Yellow600Palette,
-  // createAnimatedComponentsTheme,
-  createComponentsTheme,
+  createAnimatedComponentsTheme,
+  // createComponentsTheme,
   // deepPurple500TealA700Palette,
 } from '@reflex-ui/core-md';
 import * as React from 'react';
 
-const mdComponentsTheme: ComponentsTheme = createComponentsTheme();
-// const mdComponentsTheme: ComponentsTheme = createAnimatedComponentsTheme();
+// const mdComponentsTheme: ComponentsTheme = createComponentsTheme();
+const mdComponentsTheme: ComponentsTheme = createAnimatedComponentsTheme();
 
 const withAppLogic = <P extends {}>(
   WrappedComponent: React.ComponentType<P>,

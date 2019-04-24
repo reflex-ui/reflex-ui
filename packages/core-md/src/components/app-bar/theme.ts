@@ -9,7 +9,7 @@ import {
   AppBarProps,
   AppBarTheme,
   AppBarVariantsTheme,
-  SurfacePropsBase,
+  SurfaceProps,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
@@ -28,7 +28,7 @@ export const getCommonAppBarCenterAreaStyle: ViewStyleGetter<
 });
 
 export const getCommonAppBarSurfaceStyle: ViewStyleGetter<
-  SurfacePropsBase
+  SurfaceProps
 > = () => ({
   alignItems: 'center',
   borderRadius: 0,
@@ -56,7 +56,7 @@ export const getCommonAppBarTrailingAreaStyle: ViewStyleGetter<
  */
 
 export const getDefaultAppBarSurfaceStyle: ViewStyleGetter<
-  SurfacePropsBase
+  SurfaceProps
 > = props => ({
   ...getCommonAppBarSurfaceStyle(props),
   flexWrap: 'nowrap',
@@ -84,7 +84,7 @@ export const defaultAppBarTheme: AppBarTheme = {
  */
 
 export const getDenseAppBarSurfaceStyle: ViewStyleGetter<
-  SurfacePropsBase
+  SurfaceProps
 > = props => ({
   ...getCommonAppBarSurfaceStyle(props),
   height: 48,
@@ -119,7 +119,7 @@ export const getProminentAppBarCenterAreaStyle: ViewStyleGetter<
 });
 
 export const getProminentAppBarSurfaceStyle: ViewStyleGetter<
-  SurfacePropsBase
+  SurfaceProps
 > = props => ({
   ...getCommonAppBarSurfaceStyle(props),
   alignItems: 'flex-start',
@@ -146,7 +146,7 @@ export const prominentAppBarTheme: AppBarTheme = {
  */
 
 export const getProminentDenseAppBarSurfaceStyle: ViewStyleGetter<
-  SurfacePropsBase
+  SurfaceProps
 > = props => ({
   ...getProminentAppBarSurfaceStyle(props),
   height: 98,

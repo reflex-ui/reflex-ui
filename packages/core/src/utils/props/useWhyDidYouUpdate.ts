@@ -1,6 +1,8 @@
 /*
- * This code is copied from:
+ * This code was copied from:
  * https://usehooks.com/useWhyDidYouUpdate/
+ *
+ * And adapted to TypeScript.
  *
  * A huge thanks to Bruno Lemos for the idea and original code:
  * https://twitter.com/brunolemos/status/1090377532845801473

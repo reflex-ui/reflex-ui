@@ -9,7 +9,7 @@ import {
   ButtonProps,
   ComponentThemeGetter,
   SizedData,
-  SurfacePropsBase,
+  SurfaceProps,
   SurfaceTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
@@ -70,7 +70,7 @@ export const xfabButtonContainerSizedStyle: SizedData<ViewStyle> = {
 };
 
 export const getXFabButtonContainerStyle: ViewStyleGetter<
-  SurfacePropsBase
+  SurfaceProps
 > = props => ({
   ...getFabButtonContainerStyle(props),
   ...(props.size && xfabButtonContainerSizedStyle[props.size]),

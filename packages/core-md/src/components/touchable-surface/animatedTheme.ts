@@ -6,52 +6,29 @@
  */
 
 import {
-  DefaultView,
-  InteractionType,
-  isTouchDevice,
-  SurfacePropsBase,
+  SurfaceProps,
+  SurfaceTheme,
   TouchableSurfaceTheme,
-  ViewStyleGetter,
 } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
-import { getButtonRippleColor } from '../button/getButtonRippleColor';
-import { withRippleEffect } from '../button/withRippleEffect';
+import { createAnimatedRippleView } from '../button/createAnimatedRippleView';
+import { getSurfaceRippleColor } from '../button/getSurfaceRippleColor';
 import {
   getTouchableSurfaceSurfaceStyle,
   touchableSurfaceTheme,
 } from './theme';
 
-export const getAnimatedTouchableSurfaceSurfaceStyle: ViewStyleGetter<
-  SurfacePropsBase
-> = props => {
-  const updatedProps =
-    props.interactionState.type === InteractionType.Pressed
-      ? {
-          // tslint:disable-next-line:ter-indent
-          ...props,
-          // tslint:disable-next-line:ter-indent
-          interactionState: {
-            ...props.interactionState,
-            type: isTouchDevice
-              ? InteractionType.Enabled
-              : InteractionType.Hovered,
-          },
-          // tslint:disable-next-line:ter-indent
-        }
-      : props;
-
-  return getTouchableSurfaceSurfaceStyle(updatedProps);
-};
+const AnimatedRippleView = createAnimatedRippleView<SurfaceProps, SurfaceTheme>(
+  getSurfaceRippleColor,
+);
 
 export const partialAnimatedTouchableSurfaceTheme: Partial<
   TouchableSurfaceTheme
 > = {
   surface: () => ({
-    component: withRippleEffect({
-      getRippleColor: getButtonRippleColor,
-    })(DefaultView),
-    getStyle: getAnimatedTouchableSurfaceSurfaceStyle,
+    component: AnimatedRippleView,
+    getStyle: getTouchableSurfaceSurfaceStyle,
   }),
 };
 

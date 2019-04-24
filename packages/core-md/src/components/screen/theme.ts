@@ -5,16 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  SurfacePropsBase,
-  SurfaceTheme,
-  ViewStyleGetter,
-} from '@reflex-ui/core';
+import { SurfaceProps, SurfaceTheme, ViewStyleGetter } from '@reflex-ui/core';
 
 import { getSurfaceContainerStyle } from '../surface/theme';
 
 export const getScreenContainerStyle: ViewStyleGetter<
-  SurfacePropsBase
+  SurfaceProps
 > = props => ({
   ...getSurfaceContainerStyle(props),
   borderRadius: 0,

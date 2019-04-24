@@ -8,11 +8,13 @@
 import {
   getSizedMarginStyle,
   getSizedPaddingStyle,
+  RfxViewProps,
   RfxViewPropsBase,
   RfxViewTheme,
   RfxViewVariantsTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
+import { ViewStyle } from 'react-native';
 
 import { getFlexboxStyle } from '../../flexbox/getFlexboxStyle';
 import { getSizingStyle } from '../../sizing/getSizingStyle';
@@ -22,9 +24,12 @@ import { sizedSpacing } from '../../spacing/sizedSpacing';
  * COMMON STYLES
  */
 
-export const getCommonRfxViewContainerStyle: ViewStyleGetter<
-  RfxViewPropsBase
-> = props => ({
+export const getCommonRfxViewContainerStyle = <
+  Props extends RfxViewPropsBase<Props, Theme>,
+  Theme
+>(
+  props: Props,
+): ViewStyle => ({
   ...getFlexboxStyle(props),
   ...getSizedMarginStyle(sizedSpacing)(props),
   ...getSizedPaddingStyle(sizedSpacing)(props),
@@ -36,7 +41,7 @@ export const getCommonRfxViewContainerStyle: ViewStyleGetter<
  */
 
 export const getColumnContainerStyle: ViewStyleGetter<
-  RfxViewPropsBase
+  RfxViewProps
 > = props => ({
   ...getCommonRfxViewContainerStyle(props),
   flexDirection: 'column',
@@ -51,9 +56,7 @@ export const columnTheme: RfxViewTheme = {
  * ROW
  */
 
-export const getRowContainerStyle: ViewStyleGetter<
-  RfxViewPropsBase
-> = props => ({
+export const getRowContainerStyle: ViewStyleGetter<RfxViewProps> = props => ({
   ...getCommonRfxViewContainerStyle(props),
   flexDirection: 'row',
   flexWrap: 'wrap',
