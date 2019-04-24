@@ -9,7 +9,7 @@ import {
   ButtonProps,
   ComponentThemeGetter,
   SizedData,
-  SurfacePropsBase,
+  SurfaceProps,
   SurfaceTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
@@ -35,7 +35,7 @@ export const outlinedShapedButtonContainerSizedStyle: SizedData<ViewStyle> = {
 };
 
 export const getOutlinedShapedButtonContainerStyle: ViewStyleGetter<
-  SurfacePropsBase
+  SurfaceProps
 > = props => ({
   ...getOutlinedButtonContainerStyle(props),
   ...(props.size && outlinedShapedButtonContainerSizedStyle[props.size]),

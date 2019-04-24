@@ -8,20 +8,21 @@
 import { useContext } from 'react';
 
 import { PaletteContext } from '../../color/PaletteContext';
-// tslint:disable-next-line:max-line-length
-import { useDefaultSurfacePropsBase } from '../surface/useDefaultSurfacePropsBase';
-import { AppBarPropsBase, AppBarPropsBaseOptional } from './AppBarProps';
+import { useDefaultSurfaceProps } from '../surface/useDefaultSurfaceProps';
+import { AppBarProps, AppBarPropsOptional } from './AppBarProps';
+import { AppBarTheme } from './AppBarTheme';
 import { AppBarVariant } from './AppBarVariant';
 
-export const useDefaultAppBarPropsBase = (
-  props: AppBarPropsBaseOptional,
-): AppBarPropsBase => {
+export const useDefaultAppBarProps = (
+  props: AppBarPropsOptional,
+  theme: AppBarTheme,
+): AppBarProps => {
   const palette = useContext(PaletteContext);
   const variant: AppBarVariant = props.variant || AppBarVariant.Default;
   const paletteColor = props.paletteColor || palette.primary;
 
   return {
-    ...useDefaultSurfacePropsBase(props),
+    ...useDefaultSurfaceProps(props, theme),
     paletteColor,
     variant,
   };

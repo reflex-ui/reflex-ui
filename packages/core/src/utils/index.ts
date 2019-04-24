@@ -10,7 +10,7 @@ export * from './createComponentDisplayName';
 export * from './getComponentDisplayName';
 export * from './isAndroid';
 export * from './isIOS';
-export * from './isTouchDevice';
 export * from './isWeb';
 export * from './props';
 export * from './scrollable';
+export * from './useTimeout';

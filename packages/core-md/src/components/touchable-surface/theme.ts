@@ -7,14 +7,14 @@
 
 import {
   InteractionType,
-  SurfacePropsBase,
+  SurfaceProps,
   TouchableSurfaceTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import { Platform } from 'react-native';
 
 export const getTouchableSurfaceSurfaceStyle: ViewStyleGetter<
-  SurfacePropsBase
+  SurfaceProps
 > = props => ({
   borderRadius: 0,
   ...Platform.select({

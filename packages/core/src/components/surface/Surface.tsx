@@ -19,7 +19,7 @@ import { renderRfxViewComponent } from '../view/renderRfxViewComponent';
 import { useShouldProvideColor } from '../view/useShouldProvideColor';
 import { SurfaceProps, SurfacePropsOptional } from './SurfaceProps';
 import { SurfaceTheme } from './SurfaceTheme';
-import { useDefaultSurfacePropsBase } from './useDefaultSurfacePropsBase';
+import { useDefaultSurfaceProps } from './useDefaultSurfaceProps';
 
 const getTheme = (
   props: SurfacePropsOptional,
@@ -40,15 +40,12 @@ let Surface: React.ComponentType<SurfacePropsOptional> = forwardRef(
     const componentsTheme = useContext(ComponentsThemeContext);
     const theme = getTheme(props, componentsTheme);
 
-    let newProps: SurfaceProps = {
-      ...useDefaultSurfacePropsBase(props),
-      theme,
-    };
+    let newProps: SurfaceProps = useDefaultSurfaceProps(props, theme);
     newProps = { ...newProps, ...useOnLayout(newProps) };
     newProps = processComponentProps(newProps);
     newProps = processThemeAndStyleProps(newProps, newProps.theme);
 
-    const shouldProvideColor = useShouldProvideColor(newProps);
+    const shouldProvideColor = useShouldProvideColor(newProps.paletteColor);
     return renderRfxViewComponent({ props: newProps, shouldProvideColor, ref });
   },
 );

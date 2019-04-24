@@ -21,8 +21,8 @@ export const pushStyle = <
     newStyles = newStyles.concat(style);
   } else if (typeof style === 'number') {
     newStyles.push(style);
-  } else if (typeof style === 'object' && !isEmpty(style)) {
-    newStyles.push(registerStyle(style as PrimitiveStyle));
+  } else if (typeof style === 'object') {
+    if (!isEmpty(style)) newStyles.push(registerStyle(style as PrimitiveStyle));
   } else {
     throw new Error(
       [

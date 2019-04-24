@@ -18,7 +18,7 @@ import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
 import { renderRfxViewComponent } from './renderRfxViewComponent';
 import { RfxViewProps, RfxViewPropsOptional } from './RfxViewProps';
 import { RfxViewTheme } from './RfxViewTheme';
-import { useDefaultRfxViewPropsBase } from './useDefaultRfxViewPropsBase';
+import { useDefaultRfxViewProps } from './useDefaultRfxViewProps';
 import { useShouldProvideColor } from './useShouldProvideColor';
 
 const getTheme = (
@@ -37,15 +37,12 @@ let Row: React.ComponentType<RfxViewPropsOptional> = forwardRef(
     const componentsTheme = useContext(ComponentsThemeContext);
     const theme = getTheme(props, componentsTheme);
 
-    let newProps: RfxViewProps = {
-      ...useDefaultRfxViewPropsBase(props),
-      theme,
-    };
+    let newProps: RfxViewProps = useDefaultRfxViewProps(props, theme);
     newProps = { ...newProps, ...useOnLayout(newProps) };
     newProps = processComponentProps(newProps);
     newProps = processThemeAndStyleProps(newProps, newProps.theme);
 
-    const shouldProvideColor = useShouldProvideColor(props);
+    const shouldProvideColor = useShouldProvideColor(props.paletteColor);
     return renderRfxViewComponent({ props: newProps, shouldProvideColor, ref });
   },
 );

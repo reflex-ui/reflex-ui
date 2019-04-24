@@ -11,11 +11,15 @@ import { PaletteColorContext } from '../../color/PaletteColorContext';
 import { PaletteContext } from '../../color/PaletteContext';
 import { InteractionStateContext } from '../../interaction';
 import { Size } from '../../sizing/Size';
-import { RfxSvgPropsBase, RfxSvgPropsBaseOptional } from './RfxSvgProps';
+import { RfxSvgPropsBase } from './RfxSvgProps';
 
-export const useDefaultRfxSvgPropsBase = (
-  props: RfxSvgPropsBaseOptional,
-): RfxSvgPropsBase => {
+export const useDefaultRfxSvgProps = <
+  Props extends RfxSvgPropsBase<Props, Theme>,
+  Theme
+>(
+  props: Partial<Props>,
+  theme: Theme,
+): Props => {
   const paletteColorFromCtx = useContext(PaletteColorContext);
   const interactionStateFromCtx = useContext(InteractionStateContext);
   const palette = useContext(PaletteContext);
@@ -25,10 +29,20 @@ export const useDefaultRfxSvgPropsBase = (
   const paletteColor =
     props.paletteColor || paletteColorFromCtx || palette.surface;
 
-  return {
+  const rfxSvgProps: RfxSvgPropsBase<Props, Theme> = {
     ...props,
     interactionState,
     paletteColor,
     size: props.size || Size.M,
+    theme,
   };
+
+  /*
+   * This error is really strange. If the above do not throws any errors,
+   * then the below shouldn't either. Besides, the lack of information on
+   * why it's not assignable makes really hard to understand why that'd wrong.
+   */
+  // @ts-ignore Type 'RfxSvgPropsBase<Props, Theme>'
+  // is not assignable to type 'Props'.ts(2322)
+  return rfxSvgProps;
 };

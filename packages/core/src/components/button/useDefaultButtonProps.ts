@@ -11,14 +11,16 @@ import { PaletteColorContext } from '../../color/PaletteColorContext';
 import { PaletteContext } from '../../color/PaletteContext';
 import { Size } from '../../sizing/Size';
 // tslint:disable-next-line:max-line-length
-import { useDefaultTouchableSurfacePropsBase } from '../touchable-surface/useDefaultTouchableSurfacePropsBase';
-import { ButtonPropsBase, ButtonPropsBaseOptional } from './ButtonProps';
+import { useDefaultTouchableSurfaceProps } from '../touchable-surface/useDefaultTouchableSurfaceProps';
+import { ButtonProps, ButtonPropsOptional } from './ButtonProps';
+import { ButtonTheme } from './ButtonTheme';
 import { ButtonVariant } from './ButtonVariant';
 import { getButtonVariantColor } from './getButtonVariantColor';
 
-export const useDefaultButtonPropsBase = (
-  props: ButtonPropsBaseOptional,
-): ButtonPropsBase => {
+export const useDefaultButtonProps = (
+  props: ButtonPropsOptional,
+  theme: ButtonTheme,
+): ButtonProps => {
   const paletteColorFromCtx = useContext(PaletteColorContext);
   const palette = useContext(PaletteContext);
 
@@ -52,15 +54,13 @@ export const useDefaultButtonPropsBase = (
       : Size.S;
 
   return {
-    ...useDefaultTouchableSurfacePropsBase(props),
+    ...useDefaultTouchableSurfaceProps(props, theme),
     contained,
     /*
      * marginHorizontal and marginVertical are more specific
      * than margin, so we check it here to avoid overriding
      * users' margin when provided.
      */
-    // marginHorizontal: props.margin ? undefined : marginHorizontal,
-    // marginVertical: props.margin ? undefined : marginVertical,
     ...((props.margin && {}) || { marginHorizontal, marginVertical }),
     /**/
     paletteColor,

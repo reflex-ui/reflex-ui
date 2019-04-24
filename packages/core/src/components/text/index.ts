@@ -29,4 +29,4 @@ export * from './Subtitle2';
 export * from './TextPropsGetter';
 export * from './TextStyleGetter';
 export * from './TextTheme';
-export * from './useDefaultRfxTextPropsBase';
+export * from './useDefaultRfxTextProps';

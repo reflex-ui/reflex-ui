@@ -7,11 +7,9 @@
 
 import { TextProps } from 'react-native';
 
-import {
-  extractAccessibilityProps,
-  extractTextPropsAndroid,
-  extractTextPropsIOS,
-} from './';
+import { extractAccessibilityProps } from './extractAccessibilityProps';
+import { extractTextPropsAndroid } from './extractTextPropsAndroid';
+import { extractTextPropsIOS } from './extractTextPropsIOS';
 
 export const extractTextProps = (props: TextProps): TextProps => {
   const {

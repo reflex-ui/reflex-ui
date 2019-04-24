@@ -5,17 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  SurfacePropsBase,
-  SurfaceTheme,
-  ViewStyleGetter,
-} from '@reflex-ui/core';
+import { SurfaceProps, SurfaceTheme, ViewStyleGetter } from '@reflex-ui/core';
 
 import { getSurfaceContainerStyle } from '../surface/theme';
 
-export const getListContainerStyle: ViewStyleGetter<
-  SurfacePropsBase
-> = props => {
+export const getListContainerStyle: ViewStyleGetter<SurfaceProps> = props => {
   const paddingVertical =
     props.padding === undefined && props.paddingVertical === undefined
       ? 8

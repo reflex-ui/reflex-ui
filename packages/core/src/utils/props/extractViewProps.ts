@@ -7,12 +7,11 @@
 
 import { ViewProps } from 'react-native';
 
-import {
-  extractAccessibilityProps,
-  extractGestureResponderHandlersProps,
-  extractViewPropsAndroid,
-  extractViewPropsIOS,
-} from './';
+import { extractAccessibilityProps } from './extractAccessibilityProps';
+// tslint:disable-next-line:max-line-length
+import { extractGestureResponderHandlersProps } from './extractGestureResponderHandlersProps';
+import { extractViewPropsAndroid } from './extractViewPropsAndroid';
+import { extractViewPropsIOS } from './extractViewPropsIOS';
 
 export const extractViewProps = <Props extends ViewProps>(
   props: Props,

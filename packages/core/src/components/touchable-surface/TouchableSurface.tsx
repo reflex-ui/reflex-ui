@@ -20,8 +20,7 @@ import { processComponentProps } from '../processComponentProps';
 import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
 import { Surface } from '../surface/Surface';
 import { SurfacePropsOptional } from '../surface/SurfaceProps';
-// tslint:disable-next-line:max-line-length
-import { useDefaultSurfacePropsBase } from '../surface/useDefaultSurfacePropsBase';
+import { useDefaultSurfaceProps } from '../surface/useDefaultSurfaceProps';
 // tslint:disable-next-line:max-line-length
 import { renderTouchableComponent } from '../touchable/renderTouchableComponent';
 import {
@@ -70,10 +69,7 @@ let TouchableSurface: React.ComponentType<
   const componentsTheme = useContext(ComponentsThemeContext);
   const theme = getTheme(props, componentsTheme);
 
-  let newProps: TouchableSurfaceProps = {
-    ...useDefaultSurfacePropsBase(props),
-    theme,
-  };
+  let newProps: TouchableSurfaceProps = useDefaultSurfaceProps(props, theme);
   newProps = { ...newProps, ...useInteraction(newProps) };
   newProps = { ...newProps, ...useOnLayout(newProps) };
   newProps = processComponentProps(newProps);

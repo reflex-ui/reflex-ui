@@ -6,23 +6,21 @@
  */
 
 import { InteractionStateProps } from '../../interaction';
-import { ComponentChildrenProps } from '../ComponentChildrenProps';
-import { ComponentThemeProps } from '../ComponentThemeProps';
 import { RfxViewPropsBase } from '../view/RfxViewProps';
 import { SurfaceTheme } from './SurfaceTheme';
 
-export interface SurfacePropsBase
-  extends RfxViewPropsBase,
+export interface SurfacePropsBase<Props, Theme>
+  extends RfxViewPropsBase<Props, Theme>,
     InteractionStateProps {
   readonly activated?: boolean;
   readonly disabled?: boolean;
 }
 
-export type SurfacePropsBaseOptional = Partial<SurfacePropsBase>;
+export type SurfacePropsBaseOptional<Props, Theme> = Partial<
+  SurfacePropsBase<Props, Theme>
+>;
 
 export interface SurfaceProps
-  extends ComponentChildrenProps<SurfaceProps>,
-    ComponentThemeProps<SurfaceProps, SurfaceTheme>,
-    SurfacePropsBase {}
+  extends SurfacePropsBase<SurfaceProps, SurfaceTheme> {}
 
 export type SurfacePropsOptional = Partial<SurfaceProps>;

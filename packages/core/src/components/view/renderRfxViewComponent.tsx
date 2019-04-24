@@ -23,7 +23,7 @@ export interface RfxViewComponentRendererInput<Props> {
 }
 
 export const renderRfxViewComponent = <
-  Props extends RfxViewPropsBase &
+  Props extends RfxViewPropsBase<Props, Theme> &
     ComponentThemeProps<Props, Theme> &
     ComponentChildrenProps<Props>,
   Theme extends BuiltInSimpleComponentTheme<Props, unknown, unknown>

@@ -7,7 +7,7 @@
 
 import { TouchableWithoutFeedbackProps } from 'react-native';
 
-import { filterOutAccessibilityProps } from './';
+import { filterOutAccessibilityProps } from './filterOutAccessibilityProps';
 
 export const filterOutTouchableWithoutFeedbackProps = <
   Props extends TouchableWithoutFeedbackProps

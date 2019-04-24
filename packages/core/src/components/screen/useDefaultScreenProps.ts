@@ -8,21 +8,19 @@
 import { useContext } from 'react';
 
 import { PaletteContext } from '../../color/PaletteContext';
-import {
-  SurfacePropsBase,
-  SurfacePropsBaseOptional,
-} from '../surface/SurfaceProps';
-// tslint:disable-next-line:max-line-length
-import { useDefaultSurfacePropsBase } from '../surface/useDefaultSurfacePropsBase';
+import { SurfaceProps, SurfacePropsOptional } from '../surface/SurfaceProps';
+import { SurfaceTheme } from '../surface/SurfaceTheme';
+import { useDefaultSurfaceProps } from '../surface/useDefaultSurfaceProps';
 
-export const useDefaultScreenPropsBase = (
-  props: SurfacePropsBaseOptional,
-): SurfacePropsBase => {
+export const useDefaultScreenProps = (
+  props: SurfacePropsOptional,
+  theme: SurfaceTheme,
+): SurfaceProps => {
   const palette = useContext(PaletteContext);
   const paletteColor = props.paletteColor || palette.screen;
 
   return {
-    ...useDefaultSurfacePropsBase(props),
+    ...useDefaultSurfaceProps(props, theme),
     paletteColor,
   };
 };

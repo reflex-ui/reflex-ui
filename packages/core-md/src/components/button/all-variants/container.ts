@@ -8,20 +8,20 @@
 import {
   InteractionType,
   Size,
-  SurfacePropsBase,
+  SurfaceProps,
   ViewPropsGetter,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import { Platform } from 'react-native';
 
 export const getAllVariantsButtonContainerProps: ViewPropsGetter<
-  SurfacePropsBase
+  SurfaceProps
 > = () => ({
   pointerEvents: 'box-only',
 });
 
 export const getAllVariantsButtonContainerStyle: ViewStyleGetter<
-  SurfacePropsBase
+  SurfaceProps
 > = props => ({
   alignItems: 'center',
   borderRadius: props.size === Size.XL || props.size === Size.XXL ? 6 : 4,

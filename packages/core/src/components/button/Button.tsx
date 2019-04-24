@@ -33,7 +33,7 @@ import { renderViewComponent } from '../view/renderViewComponent';
 import { ButtonProps, ButtonPropsOptional } from './ButtonProps';
 import { ButtonTheme } from './ButtonTheme';
 import { ButtonVariant } from './ButtonVariant';
-import { useDefaultButtonPropsBase } from './useDefaultButtonPropsBase';
+import { useDefaultButtonProps } from './useDefaultButtonProps';
 
 export const handleButtonChildren = (props: ButtonProps): React.ReactNode => {
   const { children, theme } = props;
@@ -199,10 +199,7 @@ let Button: React.ComponentType<ButtonPropsOptional> = forwardRef(
     const componentsTheme = useContext(ComponentsThemeContext);
     const theme = getTheme(props, componentsTheme);
 
-    let newProps: ButtonProps = {
-      ...useDefaultButtonPropsBase(props),
-      theme,
-    };
+    let newProps: ButtonProps = useDefaultButtonProps(props, theme);
     newProps = { ...newProps, ...useInteraction(newProps) };
     newProps = { ...newProps, ...useOnLayout(newProps) };
     newProps = processComponentProps(newProps);

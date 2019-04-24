@@ -948,6 +948,13 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
+"@babel/runtime@^7.3.1":
+  version "7.4.3"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.4.3.tgz#79888e452034223ad9609187a0ad1fe0d2ad4bdc"
+  integrity sha512-9lsJwJLxDh/T3Q3SZszfWOTkk3pHbkmH+3KY+zwIDmsNlxsumuhS2TH3NIpktU4kNvfzy+k3eLT7aTJSPTo0OA==
+  dependencies:
+    regenerator-runtime "^0.13.2"
+
 "@babel/template@^7.0.0", "@babel/template@^7.1.0", "@babel/template@^7.2.2", "@babel/template@^7.4.0":
   version "7.4.0"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.4.0.tgz#12474e9c077bae585c5d835a95c0b0b790c25c8b"
@@ -9496,12 +9503,13 @@ react-scripts@2.1.8:
   optionalDependencies:
     fsevents "1.2.4"
 
-react-spring@5.6.14:
-  version "5.6.14"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-5.6.14.tgz#c172a9015cec513fe7f7be7b25caa712f23242a8"
-  integrity sha512-quwHrlO+JTpuyUBpfG68T0lpQuXoYAdGUtHywWWNMlF6dziCOCTJtG901g09QPoxoXl31Mz1H8NYGikDq1AXDw==
+react-spring@9.0.0-beta.5:
+  version "9.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-9.0.0-beta.5.tgz#569cdbcac4511e8caef71dd3e82f8cf1e7fd1806"
+  integrity sha512-K+2uYWGg6n3NWXlYbeDPsmLqtIXolEYu/aBEHi6Myq9yH7yNxAGwnDLD/ZgCl6JjrdqVOURd+mERsyTWrRXTTA==
   dependencies:
-    "@babel/runtime" "^7.0.0"
+    "@babel/runtime" "^7.3.1"
+    prop-types "^15.5.8"
 
 react-test-renderer@^16.8.4:
   version "16.8.4"

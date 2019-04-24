@@ -6,7 +6,8 @@
  */
 
 import { InteractionProps } from '../../interaction/InteractionProps';
-import { filterOutTouchableWithoutFeedbackProps } from './';
+// tslint:disable-next-line:max-line-length
+import { filterOutTouchableWithoutFeedbackProps } from './filterOutTouchableWithoutFeedbackProps';
 
 export const filterOutInteractionProps = <Props extends InteractionProps>(
   props: Props,

@@ -7,10 +7,9 @@
 
 import { AccessibilityProps } from 'react-native';
 
-import {
-  extractAccessibilityPropsAndroid,
-  extractAccessibilityPropsIOS,
-} from './';
+// tslint:disable-next-line:max-line-length
+import { extractAccessibilityPropsAndroid } from './extractAccessibilityPropsAndroid';
+import { extractAccessibilityPropsIOS } from './extractAccessibilityPropsIOS';
 
 export const extractAccessibilityProps = (
   props: AccessibilityProps,

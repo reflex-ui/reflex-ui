@@ -6,7 +6,7 @@
  */
 
 import {
-  RfxViewPropsBase,
+  RfxViewProps,
   RfxViewTheme,
   SizedData,
   ViewStyleGetter,
@@ -32,7 +32,7 @@ export const listItemContainerSizedStyle: SizedData<ViewStyle> = {
 };
 
 export const getListItemContainerStyle: ViewStyleGetter<
-  RfxViewPropsBase
+  RfxViewProps
 > = props => ({
   ...(props.size && listItemContainerSizedStyle[props.size]),
   alignItems: 'center',

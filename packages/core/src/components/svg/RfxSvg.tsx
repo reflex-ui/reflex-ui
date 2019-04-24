@@ -18,7 +18,7 @@ import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
 import { applySvgPropsAndThemeToSvgElement } from './applySvgPropsAndThemeToSvgElement';
 import { RfxSvgProps, RfxSvgPropsOptional } from './RfxSvgProps';
 import { RfxSvgTheme } from './RfxSvgTheme';
-import { useDefaultRfxSvgPropsBase } from './useDefaultRfxSvgPropsBase';
+import { useDefaultRfxSvgProps } from './useDefaultRfxSvgProps';
 
 const getTheme = (
   props: RfxSvgPropsOptional,
@@ -37,10 +37,7 @@ let RfxSvg: React.ComponentType<RfxSvgPropsOptional> = (
   const componentsTheme = useContext(ComponentsThemeContext);
   const theme = getTheme(props, componentsTheme);
 
-  let newProps: RfxSvgProps = {
-    ...useDefaultRfxSvgPropsBase(props),
-    theme,
-  };
+  let newProps: RfxSvgProps = useDefaultRfxSvgProps(props, theme);
   newProps = { ...newProps, ...useOnLayout(newProps) };
   if (newProps.children === undefined || newProps.children === null) {
     return null;

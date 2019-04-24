@@ -16,7 +16,7 @@ import { processComponent } from '../processComponent';
 import { renderRfxTextComponent } from './renderRfxTextComponent';
 import { RfxTextProps, RfxTextPropsOptional } from './RfxTextProps';
 import { RfxTextTheme } from './RfxTextTheme';
-import { useDefaultRfxTextPropsBase } from './useDefaultRfxTextPropsBase';
+import { useDefaultRfxTextProps } from './useDefaultRfxTextProps';
 
 const getTheme = (
   props: RfxTextPropsOptional,
@@ -35,9 +35,8 @@ let Headline3: React.ComponentType<RfxTextPropsOptional> = forwardRef(
     const theme = getTheme(props, componentsTheme);
 
     const newProps: RfxTextProps = {
-      ...useDefaultRfxTextPropsBase(props),
+      ...useDefaultRfxTextProps(props, theme),
       ...useOnLayout(props),
-      theme,
     };
 
     return renderRfxTextComponent(newProps, ref);

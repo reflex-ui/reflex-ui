@@ -6,4 +6,4 @@
  */
 
 export * from './Screen';
-export * from './useDefaultScreenPropsBase';
+export * from './useDefaultScreenProps';
