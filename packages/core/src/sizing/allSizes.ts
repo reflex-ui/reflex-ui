@@ -7,12 +7,4 @@
 
 import { Size } from './Size';
 
-export const allSizes: Size[] = [
-  Size.XXS,
-  Size.XS,
-  Size.S,
-  Size.M,
-  Size.L,
-  Size.XL,
-  Size.XXL,
-];
+export const allSizes: Size[] = Object.values(Size);

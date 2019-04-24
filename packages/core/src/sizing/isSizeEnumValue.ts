@@ -5,11 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export const isSizeEnumValue = (value: string): boolean =>
-  value === 'xxsmall' ||
-  value === 'xsmall' ||
-  value === 'small' ||
-  value === 'medium' ||
-  value === 'large' ||
-  value === 'xlarge' ||
-  value === 'xxlarge';
+import { allSizes } from './allSizes';
+import { Size } from './Size';
+
+export const isSizeEnumValue = (value: string): value is Size =>
+  allSizes.includes(value as Size);
