@@ -7,6 +7,7 @@
     "tslint-react-hooks"
   ],
   "rules": {
+    "align": false,
     "arrow-return-shorthand": true,
     "array-type": [false],
     "ban": [
