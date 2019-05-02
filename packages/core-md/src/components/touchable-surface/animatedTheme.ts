@@ -10,10 +10,12 @@ import {
   SurfaceTheme,
   TouchableSurfaceTheme,
 } from '@reflex-ui/core';
+import {
+  createAnimatedRippleView,
+  getSurfaceRippleColor,
+} from '@reflex-ui/ripple-md';
 import merge from 'lodash/merge';
 
-import { createAnimatedRippleView } from '../button/createAnimatedRippleView';
-import { getSurfaceRippleColor } from '../button/getSurfaceRippleColor';
 import {
   getTouchableSurfaceSurfaceStyle,
   touchableSurfaceTheme,

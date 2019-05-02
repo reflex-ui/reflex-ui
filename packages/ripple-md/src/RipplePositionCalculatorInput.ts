@@ -5,8 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './color';
-export * from './components';
-export * from './flexbox';
-export * from './sizing';
-export * from './spacing';
+import { Position2D } from './Position2D';
+
+export interface RipplePositionCalculatorInput {
+  readonly diameter: number;
+  readonly interactionPosition: Position2D;
+}

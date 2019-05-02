@@ -12,8 +12,8 @@ import {
   SurfaceTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
+import { getLowElevationStylesByInteraction } from '@reflex-ui/elevation-md';
 
-import { getLowElevationStylesByInteraction } from '../../../elevation';
 import { getAllVariantsButtonContainerProps } from '../all-variants/container';
 import { getContainedButtonContainerStyle } from '../contained/container';
 

@@ -13,9 +13,9 @@ import {
   SurfaceTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
+import { getMidElevationStylesByInteraction } from '@reflex-ui/elevation-md';
 import { ViewStyle } from 'react-native';
 
-import { getMidElevationStylesByInteraction } from '../../../elevation';
 import { getAllVariantsButtonContainerProps } from '../all-variants/container';
 import { getRaisedButtonContainerStyle } from '../raised/container';
 

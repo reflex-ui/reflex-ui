@@ -5,7 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+export * from './AnimatedElevationView';
 export * from './convertInteractionToElevation';
+export * from './createAnimatedElevationView';
 export * from './ElevationDegree';
 export * from './ElevationStyleGetter';
 export * from './elevationStyles';
@@ -13,3 +15,4 @@ export * from './getElevationStyles';
 export * from './getHighElevationStylesByInteraction';
 export * from './getLowElevationStylesByInteraction';
 export * from './getMidElevationStylesByInteraction';
+export * from './useElevationAnimation';

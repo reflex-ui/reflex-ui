@@ -14,10 +14,12 @@ import {
   SurfaceTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
+import {
+  createAnimatedRippleView,
+  getSurfaceRippleColor,
+} from '@reflex-ui/ripple-md';
 
 import { getAllVariantsButtonContainerProps } from '../all-variants/container';
-import { createAnimatedRippleView } from '../createAnimatedRippleView';
-import { getSurfaceRippleColor } from '../getSurfaceRippleColor';
 import { getOutlinedButtonContainerStyle } from './container';
 
 export const getAnimatedOutlinedButtonContainerStyle: ViewStyleGetter<

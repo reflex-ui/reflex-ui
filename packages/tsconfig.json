@@ -4,6 +4,9 @@
   "references": [
     { "path": "./core/tsconfig.json" },
     { "path": "./core-md/tsconfig.json" },
+    { "path": "./elevation-md/tsconfig.json" },
+    { "path": "./ripple-md/tsconfig.json" },
+    { "path": "./ripple-elevation-md/tsconfig.json" },
     { "path": "./svg2jsx/tsconfig.json" }
   ]
 }
