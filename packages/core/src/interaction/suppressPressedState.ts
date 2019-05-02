@@ -13,15 +13,12 @@ export const suppressPressedState = <Props extends InteractionProps>(
 ): Props =>
   props.interactionState.type === InteractionType.Pressed
     ? {
-        // tslint:disable-next-line:ter-indent
         ...props,
-        // tslint:disable-next-line:ter-indent
         interactionState: {
           ...props.interactionState,
           type: props.pointerHovers
             ? InteractionType.Hovered
             : InteractionType.Enabled,
         },
-        // tslint:disable-next-line:ter-indent
       }
     : props;

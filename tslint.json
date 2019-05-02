@@ -1,10 +1,10 @@
 {
   "extends": [
     "tslint:recommended",
-    "tslint-config-prettier",
     "tslint-config-airbnb",
     "tslint-react",
-    "tslint-react-hooks"
+    "tslint-react-hooks",
+    "tslint-config-prettier"
   ],
   "rules": {
     "align": false,

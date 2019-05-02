@@ -15,7 +15,6 @@ export const useOnLayout = <Props extends OnLayoutProps>(
 ): OnLayoutProps => {
   const [layoutRectangle, setLayoutRectangle] = useState<
     LayoutRectangle | undefined
-    // tslint:disable-next-line:ter-func-call-spacing
   >(undefined);
 
   if (!props.enableOnLayout) return {};

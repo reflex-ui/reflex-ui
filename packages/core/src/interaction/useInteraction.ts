@@ -136,7 +136,6 @@ export const useInteraction = <Props extends InteractionPropsOptional>(
 
   const [interactionEvent, setInteractionEvent] = useState<
     InteractionEvent | undefined
-    // tslint:disable-next-line:ter-func-call-spacing
   >(undefined);
   const [isFocusing, setIsFocusing] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
