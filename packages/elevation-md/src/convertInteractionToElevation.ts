@@ -5,8 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { InteractionType } from '@reflex-ui/core';
-import { ElevationDegree } from './ElevationDegree';
+import { ElevationDegree, InteractionType } from '@reflex-ui/core';
 
 export const convertInteractionToElevation = (
   interactionType: InteractionType,

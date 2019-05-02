@@ -6,8 +6,11 @@
  */
 
 import {
+  BuiltInSimpleComponentProps,
   ButtonProps,
   ComponentThemeGetter,
+  Elevation,
+  ElevationDegree,
   getColor,
   InteractionType,
   suppressPressedState,
@@ -15,21 +18,33 @@ import {
   SurfaceTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import {
-  ElevationDegree,
-  getMidElevationStylesByInteraction,
-} from '@reflex-ui/elevation-md';
+import { getMidElevationStylesByInteraction } from '@reflex-ui/elevation-md';
 // tslint:disable-next-line:max-line-length
 import { createAnimatedRippleElevationView } from '@reflex-ui/ripple-elevation-md';
 import { getSurfaceRippleColor } from '@reflex-ui/ripple-md';
+import { ComponentType } from 'react';
 
 import { getAllVariantsButtonContainerProps } from '../all-variants/container';
 import { getFabButtonContainerStyle } from './container';
 
-const AnimatedRippleElevationView = createAnimatedRippleElevationView<
-  SurfaceProps,
-  SurfaceTheme
->(ElevationDegree.Mid, getSurfaceRippleColor);
+/*
+ * Basic memoization implementation.
+ */
+let currentElevation: Elevation;
+let currentComponent: ComponentType<BuiltInSimpleComponentProps<SurfaceProps>>;
+const createComponent = (elevation: Elevation = ElevationDegree.Mid) => {
+  if (elevation === currentElevation && currentComponent !== undefined) {
+    return currentComponent;
+  }
+
+  currentElevation = elevation;
+  currentComponent = createAnimatedRippleElevationView<
+    SurfaceProps,
+    SurfaceTheme
+  >(elevation, getSurfaceRippleColor);
+  return currentComponent;
+};
+/**/
 
 export const getAnimatedFabButtonContainerStyle: ViewStyleGetter<
   SurfaceProps
@@ -42,8 +57,8 @@ export const getAnimatedFabButtonContainerStyle: ViewStyleGetter<
 export const getAnimatedFabButtonSurfaceTheme: ComponentThemeGetter<
   ButtonProps,
   SurfaceTheme
-> = () => ({
-  component: AnimatedRippleElevationView,
+> = props => ({
+  component: createComponent(props.elevation),
   getProps: getAllVariantsButtonContainerProps,
   getStyle: getAnimatedFabButtonContainerStyle,
 });

@@ -8,46 +8,39 @@
 import {
   BuiltInSimpleComponentProps,
   InteractionStateProps,
-  RfxViewPropsBase,
+  SurfacePropsBase,
   ViewTheme,
 } from '@reflex-ui/core';
 import React from 'react';
 import { View, ViewProps } from 'react-native';
 import { animated } from 'react-spring/native';
 
-import { ElevationDegree } from './ElevationDegree';
 import { useElevationAnimation } from './useElevationAnimation';
 
 export interface AnimatedElevationViewProps<ComponentProps>
   extends BuiltInSimpleComponentProps<ComponentProps>,
     ViewProps {
   readonly children?: React.ReactNode;
-  readonly elevationDegree: ElevationDegree;
 }
 
 const AnimatedView = animated(View);
 
 export const AnimatedElevationView = <
-  ComponentProps extends RfxViewPropsBase<ComponentProps, Theme> &
+  ComponentProps extends SurfacePropsBase<ComponentProps, Theme> &
     InteractionStateProps,
   Theme extends ViewTheme<ComponentProps>
 >(
   props: AnimatedElevationViewProps<ComponentProps>,
 ): JSX.Element => {
-  const {
-    children,
-    complexComponentProps,
-    elevationDegree,
-    ...otherProps
-  } = props;
-  const { interactionState } = complexComponentProps;
+  const { children, complexComponentProps, ...otherProps } = props;
+  const { elevation = 0, interactionState } = complexComponentProps;
 
   const {
     elevationContainerStyle,
     elevationMotionStyle,
   } = useElevationAnimation({
     containerStyle: props.style,
-    elevationDegree,
+    elevation,
     interactionState,
   });
 

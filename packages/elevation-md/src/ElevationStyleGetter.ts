@@ -5,6 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { Elevation, InteractionType } from '@reflex-ui/core';
 import { ViewStyle } from 'react-native';
 
-export type ElevationStyleGetter = (elevation: number) => ViewStyle;
+export type ElevationStyleGetter = (
+  elevation: Elevation,
+  interactionType?: InteractionType,
+) => ViewStyle;

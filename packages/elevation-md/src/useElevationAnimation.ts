@@ -5,12 +5,15 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { InteractionState, InteractionType, isIOS } from '@reflex-ui/core';
+import {
+  Elevation,
+  InteractionState,
+  InteractionType,
+  isIOS,
+} from '@reflex-ui/core';
 import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
 import { useSpring } from 'react-spring/native';
 
-import { convertInteractionToElevation } from './convertInteractionToElevation';
-import { ElevationDegree } from './ElevationDegree';
 import { getElevationStyles } from './getElevationStyles';
 
 interface RaiseStyles {
@@ -33,7 +36,7 @@ const createRaiseStyles: RaiseStylesCreator = style => ({
 });
 
 interface MotionRaiseStylesCreatorData {
-  readonly elevationDegree: ElevationDegree;
+  readonly elevation: Elevation;
   readonly interactionType: InteractionType;
 }
 
@@ -42,16 +45,13 @@ type MotionRaiseStylesCreator = (
 ) => ViewStyle;
 
 export const createMotionRaiseStyles: MotionRaiseStylesCreator = ({
-  elevationDegree,
+  elevation,
   interactionType,
 }) => {
-  const elevation = convertInteractionToElevation(
-    interactionType,
-    elevationDegree,
-  );
-
   // We do this to avoid mutating the original object
-  const styles = JSON.parse(JSON.stringify(getElevationStyles(elevation)));
+  const styles = JSON.parse(
+    JSON.stringify(getElevationStyles(elevation, interactionType)),
+  );
 
   /*
    * We flatten values here to animate them.
@@ -68,7 +68,7 @@ export const createMotionRaiseStyles: MotionRaiseStylesCreator = ({
 
 export interface ElevationAnimationInput {
   readonly containerStyle: StyleProp<ViewStyle>;
-  readonly elevationDegree: ElevationDegree;
+  readonly elevation: Elevation;
   readonly interactionState: InteractionState;
 }
 
@@ -79,7 +79,7 @@ export interface ElevationAnimationOutput {
 
 export const useElevationAnimation = ({
   containerStyle,
-  elevationDegree,
+  elevation,
   interactionState,
 }: ElevationAnimationInput): ElevationAnimationOutput => {
   const elevationStyle = createRaiseStyles(StyleSheet.flatten(containerStyle));
@@ -87,7 +87,7 @@ export const useElevationAnimation = ({
     config: { friction: 10, tension: 100 },
     to: {
       ...createMotionRaiseStyles({
-        elevationDegree,
+        elevation,
         interactionType: interactionState.type,
       }),
     },

@@ -5,8 +5,19 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { InteractionType } from '@reflex-ui/core';
+import { convertInteractionToElevation } from './convertInteractionToElevation';
 import { ElevationStyleGetter } from './ElevationStyleGetter';
 import { elevationStyles } from './elevationStyles';
 
-export const getElevationStyles: ElevationStyleGetter = elevation =>
-  elevationStyles[elevation];
+export const getElevationStyles: ElevationStyleGetter = (
+  elevation,
+  interactionType = InteractionType.Enabled,
+) => {
+  const elevationNumber =
+    typeof elevation === 'number'
+      ? elevation
+      : convertInteractionToElevation(interactionType, elevation);
+
+  return elevationStyles[elevationNumber];
+};
