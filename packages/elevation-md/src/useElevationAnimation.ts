@@ -5,66 +5,14 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  Elevation,
-  InteractionState,
-  InteractionType,
-  isIOS,
-} from '@reflex-ui/core';
+import { Elevation, InteractionState, isIOS } from '@reflex-ui/core';
 import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
 import { useSpring } from 'react-spring/native';
 
-import { getElevationStyles } from './getElevationStyles';
-
-interface RaiseStyles {
-  container: ViewStyle;
-  shadow: ViewStyle;
-}
-
-type RaiseStylesCreator = (style: ViewStyle) => RaiseStyles;
-
-const createRaiseStyles: RaiseStylesCreator = style => ({
-  container: {
-    ...StyleSheet.absoluteFillObject,
-    zIndex: 0,
-  },
-  shadow: {
-    backgroundColor: style.backgroundColor,
-    borderRadius: style.borderRadius,
-    ...StyleSheet.absoluteFillObject,
-  },
-});
-
-interface MotionRaiseStylesCreatorData {
-  readonly elevation: Elevation;
-  readonly interactionType: InteractionType;
-}
-
-type MotionRaiseStylesCreator = (
-  props: MotionRaiseStylesCreatorData,
-) => ViewStyle;
-
-export const createMotionRaiseStyles: MotionRaiseStylesCreator = ({
-  elevation,
-  interactionType,
-}) => {
-  // We do this to avoid mutating the original object
-  const styles = JSON.parse(
-    JSON.stringify(getElevationStyles(elevation, interactionType)),
-  );
-
-  /*
-   * We flatten values here to animate them.
-   */
-  if (isIOS && styles.shadowOffset) {
-    styles.height = styles.shadowOffset.height;
-    styles.width = styles.shadowOffset.width;
-    delete styles.shadowOffset;
-  }
-  /**/
-
-  return styles;
-};
+import { createElevationContainerStyle } from './createElevationContainerStyle';
+import { createElevationShadowStyle } from './createElevationShadowStyle';
+// tslint:disable-next-line:max-line-length
+import { createMotionElevationShadowStyle } from './createMotionElevationShadowStyle';
 
 export interface ElevationAnimationInput {
   readonly containerStyle: StyleProp<ViewStyle>;
@@ -82,15 +30,13 @@ export const useElevationAnimation = ({
   elevation,
   interactionState,
 }: ElevationAnimationInput): ElevationAnimationOutput => {
-  const elevationStyle = createRaiseStyles(StyleSheet.flatten(containerStyle));
+  const elevationContainerStyle = createElevationContainerStyle();
+  const elevationShadowStyle = createElevationShadowStyle(
+    StyleSheet.flatten(containerStyle),
+  );
   const animationProps = useSpring({
     config: { friction: 10, tension: 100 },
-    to: {
-      ...createMotionRaiseStyles({
-        elevation,
-        interactionType: interactionState.type,
-      }),
-    },
+    to: createMotionElevationShadowStyle(elevation, interactionState.type),
   });
 
   let animationStyle = animationProps;
@@ -106,10 +52,10 @@ export const useElevationAnimation = ({
       shadowRadius: animationProps.shadowRadius,
     };
   }
-  const elevationMotionStyle = { ...elevationStyle.shadow, ...animationStyle };
+  const elevationMotionStyle = { ...elevationShadowStyle, ...animationStyle };
 
   return {
-    elevationContainerStyle: elevationStyle.container,
+    elevationContainerStyle,
     elevationMotionStyle,
   };
 };
