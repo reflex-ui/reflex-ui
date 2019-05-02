@@ -7,7 +7,7 @@
 
 import {
   InteractionStateProps,
-  RfxViewPropsBase,
+  SurfacePropsBase,
   ViewTheme,
 } from '@reflex-ui/core';
 import {
@@ -29,20 +29,14 @@ export interface AnimatedRippleElevationViewProps<ComponentProps>
 const AnimatedView = animated(View);
 
 export const AnimatedRippleElevationView = <
-  ComponentProps extends RfxViewPropsBase<ComponentProps, Theme> &
+  ComponentProps extends SurfacePropsBase<ComponentProps, Theme> &
     InteractionStateProps,
   Theme extends ViewTheme<ComponentProps>
 >(
   props: AnimatedRippleElevationViewProps<ComponentProps>,
 ): JSX.Element => {
-  const {
-    children,
-    complexComponentProps,
-    elevationDegree,
-    onLayout,
-    ...otherProps
-  } = props;
-  const { interactionState } = complexComponentProps;
+  const { children, complexComponentProps, onLayout, ...otherProps } = props;
+  const { elevation = 0, interactionState } = complexComponentProps;
 
   const [containerSize, setContainerSize] = useState({ height: 0, width: 0 });
 
@@ -64,7 +58,7 @@ export const AnimatedRippleElevationView = <
     elevationMotionStyle,
   } = useElevationAnimation({
     containerStyle: props.style,
-    elevationDegree,
+    elevation,
     interactionState,
   });
 

@@ -7,25 +7,29 @@
 
 import {
   BuiltInSimpleComponentProps,
+  Elevation,
   InteractionStateProps,
-  RfxViewPropsBase,
+  SurfacePropsBase,
   ViewTheme,
 } from '@reflex-ui/core';
 import React from 'react';
 
 import { AnimatedElevationView } from './AnimatedElevationView';
-import { ElevationDegree } from './ElevationDegree';
 
 export const createAnimatedElevationView = <
-  Props extends RfxViewPropsBase<Props, Theme> & InteractionStateProps,
+  Props extends SurfacePropsBase<Props, Theme> & InteractionStateProps,
   Theme extends ViewTheme<Props>
 >(
-  elevationDegree: ElevationDegree,
+  elevation: Elevation,
 ) =>
   function AnimatedElevationViewFactory(
     props: BuiltInSimpleComponentProps<Props>,
   ) {
+    const { complexComponentProps, ...otherProps } = props;
     return (
-      <AnimatedElevationView {...props} elevationDegree={elevationDegree} />
+      <AnimatedElevationView
+        {...otherProps}
+        complexComponentProps={{ ...complexComponentProps, elevation }}
+      />
     );
   };

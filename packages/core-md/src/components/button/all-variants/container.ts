@@ -12,6 +12,7 @@ import {
   ViewPropsGetter,
   ViewStyleGetter,
 } from '@reflex-ui/core';
+import { getElevationStyles } from '@reflex-ui/elevation-md';
 import { Platform } from 'react-native';
 
 export const getAllVariantsButtonContainerProps: ViewPropsGetter<
@@ -27,6 +28,10 @@ export const getAllVariantsButtonContainerStyle: ViewStyleGetter<
   borderRadius: props.size === Size.XL || props.size === Size.XXL ? 6 : 4,
   flexDirection: 'row',
   justifyContent: 'center',
+  ...(props.elevation !== 0 &&
+    props.elevation !== undefined &&
+    props.elevation !== null &&
+    getElevationStyles(props.elevation)),
   ...Platform.select({
     web: {
       cursor:

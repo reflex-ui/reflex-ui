@@ -13,6 +13,7 @@ import {
   Button,
   ButtonVariant,
   ComponentThemeGetter,
+  ElevationDegree,
   FlexDirection,
   JustifyContent,
   PaletteContext,
@@ -112,11 +113,15 @@ const SurfaceScreen: React.SFC<{}> = (): JSX.Element => {
           </Surface>
         </Row>
         <Paragraph2 margin={Size.M}>
-          {'<Surface paletteColor={palette.primary}>'}
+          {[
+            '<Surface elevation={ElevationDegree.Low}',
+            'paletteColor={palette.primary}>',
+          ].join(' ')}
         </Paragraph2>
         <Row>
           <Surface
             alignContent={AlignContent.Center}
+            elevation={ElevationDegree.Low}
             justifyContent={JustifyContent.Center}
             margin={Size.M}
             paletteColor={palette.primary}

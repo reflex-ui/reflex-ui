@@ -8,7 +8,7 @@
 import {
   BuiltInSimpleComponentProps,
   InteractionStateProps,
-  RfxViewPropsBase,
+  SurfacePropsBase,
   ViewTheme,
 } from '@reflex-ui/core';
 import React, { useState } from 'react';
@@ -31,7 +31,7 @@ export interface AnimatedRippleViewProps<ComponentProps>
 const AnimatedView = animated(View);
 
 export const AnimatedRippleView = <
-  ComponentProps extends RfxViewPropsBase<ComponentProps, Theme> &
+  ComponentProps extends SurfacePropsBase<ComponentProps, Theme> &
     InteractionStateProps,
   Theme extends ViewTheme<ComponentProps>
 >(

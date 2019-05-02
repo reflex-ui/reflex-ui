@@ -11,6 +11,7 @@ import {
   SurfaceTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
+import { getElevationStyles } from '@reflex-ui/elevation-md';
 
 import { getCommonRfxViewContainerStyle } from '../view/theme';
 
@@ -21,6 +22,10 @@ export const getSurfaceContainerStyle: ViewStyleGetter<
   borderRadius: 4,
   flexWrap: 'wrap',
   ...getCommonRfxViewContainerStyle(props),
+  ...(props.elevation !== 0 &&
+    props.elevation !== undefined &&
+    props.elevation !== null &&
+    getElevationStyles(props.elevation, props.interactionState.type)),
 });
 
 export const surfaceTheme: SurfaceTheme = {

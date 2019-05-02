@@ -8,11 +8,12 @@
 import {
   ButtonProps,
   ComponentThemeGetter,
+  ElevationDegree,
   SurfaceProps,
   SurfaceTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import { getLowElevationStylesByInteraction } from '@reflex-ui/elevation-md';
+import { getElevationStyles } from '@reflex-ui/elevation-md';
 
 import { getAllVariantsButtonContainerProps } from '../all-variants/container';
 import { getContainedButtonContainerStyle } from '../contained/container';
@@ -21,7 +22,11 @@ export const getRaisedButtonContainerStyle: ViewStyleGetter<
   SurfaceProps
 > = props => ({
   ...getContainedButtonContainerStyle(props),
-  ...getLowElevationStylesByInteraction(props.interactionState.type),
+  ...getElevationStyles(
+    props.elevation || ElevationDegree.Low,
+    props.interactionState.type,
+  ),
+  // ...getLowElevationStylesByInteraction(props.interactionState.type),
 });
 
 export const getRaisedButtonSurfaceTheme: ComponentThemeGetter<

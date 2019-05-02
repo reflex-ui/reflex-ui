@@ -5,9 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { InteractionType, ViewStyleGetter } from '@reflex-ui/core';
+import {
+  ElevationDegree,
+  InteractionType,
+  ViewStyleGetter,
+} from '@reflex-ui/core';
 import { convertInteractionToElevation } from './convertInteractionToElevation';
-import { ElevationDegree } from './ElevationDegree';
 import { getElevationStyles } from './getElevationStyles';
 
 export const getMidElevationStylesByInteraction: ViewStyleGetter<

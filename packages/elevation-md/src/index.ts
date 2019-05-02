@@ -7,8 +7,6 @@
 
 export * from './AnimatedElevationView';
 export * from './convertInteractionToElevation';
-export * from './createAnimatedElevationView';
-export * from './ElevationDegree';
 export * from './ElevationStyleGetter';
 export * from './elevationStyles';
 export * from './getElevationStyles';
