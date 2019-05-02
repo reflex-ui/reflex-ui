@@ -10,7 +10,4 @@ export * from './convertInteractionToElevation';
 export * from './ElevationStyleGetter';
 export * from './elevationStyles';
 export * from './getElevationStyles';
-export * from './getHighElevationStylesByInteraction';
-export * from './getLowElevationStylesByInteraction';
-export * from './getMidElevationStylesByInteraction';
 export * from './useElevationAnimation';

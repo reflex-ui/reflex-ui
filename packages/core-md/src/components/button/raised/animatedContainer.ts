@@ -12,13 +12,12 @@ import {
   Elevation,
   ElevationDegree,
   getColor,
-  InteractionType,
   suppressPressedState,
   SurfaceProps,
   SurfaceTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-import { getLowElevationStylesByInteraction } from '@reflex-ui/elevation-md';
+import { getElevationStyles } from '@reflex-ui/elevation-md';
 // tslint:disable-next-line:max-line-length
 import { createAnimatedRippleElevationView } from '@reflex-ui/ripple-elevation-md';
 import { getSurfaceRippleColor } from '@reflex-ui/ripple-md';
@@ -50,7 +49,7 @@ export const getAnimatedRaisedButtonContainerStyle: ViewStyleGetter<
   SurfaceProps
 > = props => ({
   ...getRaisedButtonContainerStyle(props),
-  ...getLowElevationStylesByInteraction(InteractionType.Disabled),
+  ...getElevationStyles(0),
   backgroundColor: getColor(suppressPressedState(props)),
 });
 

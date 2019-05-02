@@ -26,7 +26,6 @@ export const getRaisedButtonContainerStyle: ViewStyleGetter<
     props.elevation || ElevationDegree.Low,
     props.interactionState.type,
   ),
-  // ...getLowElevationStylesByInteraction(props.interactionState.type),
 });
 
 export const getRaisedButtonSurfaceTheme: ComponentThemeGetter<
