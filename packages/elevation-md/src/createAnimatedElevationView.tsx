@@ -13,8 +13,8 @@ import {
 } from '@reflex-ui/core';
 import React from 'react';
 
-import { ElevationDegree } from '../../elevation/ElevationDegree';
 import { AnimatedElevationView } from './AnimatedElevationView';
+import { ElevationDegree } from './ElevationDegree';
 
 export const createAnimatedElevationView = <
   Props extends RfxViewPropsBase<Props, Theme> & InteractionStateProps,

@@ -15,7 +15,7 @@ import React from 'react';
 import { View, ViewProps } from 'react-native';
 import { animated } from 'react-spring/native';
 
-import { ElevationDegree } from '../../elevation';
+import { ElevationDegree } from './ElevationDegree';
 import { useElevationAnimation } from './useElevationAnimation';
 
 export interface AnimatedElevationViewProps<ComponentProps>

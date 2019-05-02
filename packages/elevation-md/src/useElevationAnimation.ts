@@ -9,11 +9,9 @@ import { InteractionState, InteractionType, isIOS } from '@reflex-ui/core';
 import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
 import { useSpring } from 'react-spring/native';
 
-import {
-  convertInteractionToElevation,
-  ElevationDegree,
-  getElevationStyles,
-} from '../../elevation';
+import { convertInteractionToElevation } from './convertInteractionToElevation';
+import { ElevationDegree } from './ElevationDegree';
+import { getElevationStyles } from './getElevationStyles';
 
 interface RaiseStyles {
   container: ViewStyle;

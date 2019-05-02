@@ -10,14 +10,17 @@ import {
   RfxViewPropsBase,
   ViewTheme,
 } from '@reflex-ui/core';
+import {
+  AnimatedElevationViewProps,
+  useElevationAnimation,
+} from '@reflex-ui/elevation-md';
+import {
+  AnimatedRippleViewProps,
+  useRippleAnimation,
+} from '@reflex-ui/ripple-md';
 import React, { useState } from 'react';
 import { LayoutChangeEvent, View } from 'react-native';
 import { animated } from 'react-spring/native';
-
-import { AnimatedElevationViewProps } from './AnimatedElevationView';
-import { AnimatedRippleViewProps } from './AnimatedRippleView';
-import { useElevationAnimation } from './useElevationAnimation';
-import { useRippleAnimation } from './useRippleAnimation';
 
 export interface AnimatedRippleElevationViewProps<ComponentProps>
   extends AnimatedRippleViewProps<ComponentProps>,

@@ -15,15 +15,15 @@ import {
   SurfaceTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
-
 import {
   ElevationDegree,
   getMidElevationStylesByInteraction,
-} from '../../../elevation';
-import { getAllVariantsButtonContainerProps } from '../all-variants/container';
+} from '@reflex-ui/elevation-md';
 // tslint:disable-next-line:max-line-length
-import { createAnimatedRippleElevationView } from '../createAnimatedRippleElevationView';
-import { getSurfaceRippleColor } from '../getSurfaceRippleColor';
+import { createAnimatedRippleElevationView } from '@reflex-ui/ripple-elevation-md';
+import { getSurfaceRippleColor } from '@reflex-ui/ripple-md';
+
+import { getAllVariantsButtonContainerProps } from '../all-variants/container';
 import { getFabButtonContainerStyle } from './container';
 
 const AnimatedRippleElevationView = createAnimatedRippleElevationView<

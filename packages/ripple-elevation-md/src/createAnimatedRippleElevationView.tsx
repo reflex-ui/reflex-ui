@@ -11,11 +11,11 @@ import {
   RfxViewPropsBase,
   ViewTheme,
 } from '@reflex-ui/core';
+import { ElevationDegree } from '@reflex-ui/elevation-md';
+import { RippleColorGetter } from '@reflex-ui/ripple-md';
 import React from 'react';
 
-import { ElevationDegree } from '../../elevation/ElevationDegree';
 import { AnimatedRippleElevationView } from './AnimatedRippleElevationView';
-import { RippleColorGetter } from './AnimatedRippleView';
 
 export const createAnimatedRippleElevationView = <
   Props extends RfxViewPropsBase<Props, Theme> & InteractionStateProps,

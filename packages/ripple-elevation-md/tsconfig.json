@@ -9,7 +9,6 @@
   "references": [
     { "path": "../core/tsconfig.json" },
     { "path": "../elevation-md/tsconfig.json" },
-    { "path": "../ripple-md/tsconfig.json" },
-    { "path": "../ripple-elevation-md/tsconfig.json" }
+    { "path": "../ripple-md/tsconfig.json" }
   ]
 }
