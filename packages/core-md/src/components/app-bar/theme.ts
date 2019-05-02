@@ -12,6 +12,7 @@ import {
   SurfaceProps,
   ViewStyleGetter,
 } from '@reflex-ui/core';
+import { getElevationStyles } from '@reflex-ui/elevation-md';
 import merge from 'lodash/merge';
 
 /*
@@ -29,13 +30,16 @@ export const getCommonAppBarCenterAreaStyle: ViewStyleGetter<
 
 export const getCommonAppBarSurfaceStyle: ViewStyleGetter<
   SurfaceProps
-> = () => ({
+> = props => ({
   alignItems: 'center',
   borderRadius: 0,
   flexDirection: 'row',
   overflow: 'hidden',
   paddingHorizontal: 6,
   paddingVertical: 6,
+  zIndex: 1,
+  ...(props.elevation !== 0 &&
+    getElevationStyles(props.elevation || 4, props.interactionState.type)),
 });
 
 export const getCommonAppBarLeadingAreaStyle: ViewStyleGetter<
