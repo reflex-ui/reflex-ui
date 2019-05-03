@@ -9,7 +9,7 @@ import { InteractionType } from '@reflex-ui/core';
 import * as Color from 'color';
 import { ColorByInteractionGetterInput } from './ColorByInteractionGetterInput';
 
-export const getInlayColorByInteraction = ({
+export const getContainedColorByInteraction = ({
   color,
   type,
 }: ColorByInteractionGetterInput): string => {

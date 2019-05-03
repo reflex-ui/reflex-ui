@@ -11,12 +11,13 @@ import {
   LayeredColorFactoryInput,
 } from '@reflex-ui/core';
 
-import { getOverlayColorByInteraction } from './getOverlayColorByInteraction';
+// tslint:disable-next-line:max-line-length
+import { getUncontainedColorByInteraction } from './getUncontainedColorByInteraction';
 
 export const createUncontainedLayeredColor: LayeredColorFactory = (
   config: LayeredColorFactoryInput,
 ): LayeredColor => ({
-  color: getOverlayColorByInteraction({
+  color: getUncontainedColorByInteraction({
     color: config.color.color,
     type: config.interactionType,
   }),

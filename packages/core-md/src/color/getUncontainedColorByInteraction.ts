@@ -9,7 +9,7 @@ import { InteractionType } from '@reflex-ui/core';
 import * as Color from 'color';
 import { ColorByInteractionGetterInput } from './ColorByInteractionGetterInput';
 
-export const getOverlayColorByInteraction = ({
+export const getUncontainedColorByInteraction = ({
   color,
   type,
 }: ColorByInteractionGetterInput): string => {
