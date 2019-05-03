@@ -211,44 +211,6 @@ const DefaultAppBarScreen: React.SFC = (): JSX.Element => {
           )}
         </AppBar>
         <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
-          {'<AppBar variant={AppBarVariant.Prominent}>'}
-        </Paragraph2>
-        <AppBar variant={AppBarVariant.Prominent}>
-          {() => (
-            <React.Fragment>
-              <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
-                <MenuIcon />
-              </Button>
-              <AppBarTitle>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium totam rem aperiam eaque ipsa
-                quae ab illo inventore veritatis. Sed ut perspiciatis unde omnis
-                iste natus error sit voluptatem accusantium doloremque
-                laudantium totam rem aperiam eaque ipsa quae ab illo inventore
-                veritatis. Sed ut perspiciatis unde omnis iste natus error sit
-                voluptatem accusantium doloremque laudantium totam rem aperiam
-                eaque ipsa quae ab illo inventore veritatis. Sed ut perspiciatis
-                unde omnis iste natus error sit voluptatem accusantium
-                doloremque laudantium totam rem aperiam eaque ipsa quae ab illo
-                inventore veritatis. Sed ut perspiciatis unde omnis iste natus
-                error sit voluptatem accusantium doloremque laudantium totam rem
-                aperiam eaque ipsa quae ab illo inventore veritatis. Sed ut
-                perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium totam rem aperiam eaque ipsa
-                quae ab illo inventore veritatis. Sed ut perspiciatis unde omnis
-                iste natus error sit voluptatem accusantium doloremque
-                laudantium totam rem aperiam eaque ipsa quae ab illo inventore
-                veritatis. Sed ut perspiciatis unde omnis iste natus error sit
-                voluptatem accusantium doloremque laudantium totam rem aperiam
-                eaque ipsa quae ab illo inventore veritatis
-              </AppBarTitle>
-              <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
-                <FavoriteIcon />
-              </Button>
-            </React.Fragment>
-          )}
-        </AppBar>
-        <Paragraph2 margin={Size.L} marginTop={verticalMargin}>
           {'<AppBar variant={AppBarVariant.ProminentDense}>'}
         </Paragraph2>
         <AppBar variant={AppBarVariant.ProminentDense}>
