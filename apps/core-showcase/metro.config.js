@@ -10,7 +10,10 @@ const path = require('path');
 const packagesPaths = [
   path.resolve(__dirname, '../../packages/core'),
   path.resolve(__dirname, '../../packages/core-md'),
+  path.resolve(__dirname, '../../packages/elevation-md'),
   path.resolve(__dirname, '../../packages/icons-md'),
+  path.resolve(__dirname, '../../packages/ripple-elevation-md'),
+  path.resolve(__dirname, '../../packages/ripple-md'),
 ];
 /**/
 
