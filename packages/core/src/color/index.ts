@@ -6,8 +6,10 @@
  */
 
 export * from './ColorGamut';
+export * from './ColorGamutFactoryInput';
 export * from './ColorGetterInput';
 export * from './ColorProps';
+export * from './createColorGamut';
 export * from './createFlexColor';
 export * from './createLayeredColorUsingColorOnly';
 export * from './createLayeredColorUsingOnColorOnly';

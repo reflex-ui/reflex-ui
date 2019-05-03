@@ -5,17 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  createFlexColor,
-  createLayeredColorUsingColorOnly,
-  createLayeredColorUsingOnColorOnly,
-  invertLayeredColor,
-  PaletteColor,
-} from '@reflex-ui/core';
+import { PaletteColor } from '@reflex-ui/core';
 
-import { createContainedLayeredColor } from '../../createContainedLayeredColor';
-// tslint:disable-next-line:max-line-length
-import { createUncontainedLayeredColor } from '../../createUncontainedLayeredColor';
+import { createMdFlexColor } from '../../createMdFlexColor';
 import { disabledGrey300Contained } from '../disabled/contained';
 import {
   disabledGrey400Uncontained,
@@ -25,16 +17,11 @@ import {
 import { tealA700, tealA700Dark, tealA700Light } from './tealA700';
 
 export const mdTealA700: PaletteColor = {
-  color: createFlexColor({
+  color: createMdFlexColor({
     containedColor: tealA700,
     containedColorDisabled: disabledGrey300Contained,
-    containedColorFactory: createContainedLayeredColor,
-    containedInvertedColor: invertLayeredColor(tealA700),
     containedInvertedColorDisabled: disabledGrey300Contained,
-    uncontainedColor: createLayeredColorUsingOnColorOnly(tealA700),
     uncontainedColorDisabled: disabledGrey600Uncontained,
-    uncontainedColorFactory: createUncontainedLayeredColor,
-    uncontainedInvertedColor: createLayeredColorUsingColorOnly(tealA700),
     uncontainedInvertedColorDisabled: disabledGrey500Uncontained,
   }),
   name: 'Teal',
@@ -42,16 +29,11 @@ export const mdTealA700: PaletteColor = {
 };
 
 export const mdTealA700Dark: PaletteColor = {
-  color: createFlexColor({
+  color: createMdFlexColor({
     containedColor: tealA700Dark,
     containedColorDisabled: disabledGrey300Contained,
-    containedColorFactory: createContainedLayeredColor,
-    containedInvertedColor: invertLayeredColor(tealA700Dark),
     containedInvertedColorDisabled: disabledGrey300Contained,
-    uncontainedColor: createLayeredColorUsingOnColorOnly(tealA700Dark),
     uncontainedColorDisabled: disabledGrey400Uncontained,
-    uncontainedColorFactory: createUncontainedLayeredColor,
-    uncontainedInvertedColor: createLayeredColorUsingColorOnly(tealA700Dark),
     uncontainedInvertedColorDisabled: disabledGrey500Uncontained,
   }),
   name: 'Teal',
@@ -59,16 +41,11 @@ export const mdTealA700Dark: PaletteColor = {
 };
 
 export const mdTealA700Light: PaletteColor = {
-  color: createFlexColor({
+  color: createMdFlexColor({
     containedColor: tealA700Light,
     containedColorDisabled: disabledGrey300Contained,
-    containedColorFactory: createContainedLayeredColor,
-    containedInvertedColor: invertLayeredColor(tealA700Light),
     containedInvertedColorDisabled: disabledGrey300Contained,
-    uncontainedColor: createLayeredColorUsingOnColorOnly(tealA700Light),
     uncontainedColorDisabled: disabledGrey600Uncontained,
-    uncontainedColorFactory: createUncontainedLayeredColor,
-    uncontainedInvertedColor: createLayeredColorUsingColorOnly(tealA700Light),
     uncontainedInvertedColorDisabled: disabledGrey500Uncontained,
   }),
   name: 'Teal',

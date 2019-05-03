@@ -5,18 +5,17 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { LayeredColor } from './LayeredColor';
-import { LayeredColorFactory } from './LayeredColorFactory';
+import { LayeredColor, LayeredColorFactory } from '@reflex-ui/core';
 
-export interface FlexColorFactoryInput {
+export interface MdFlexColorFactoryInput {
   readonly containedColor: LayeredColor;
   readonly containedColorDisabled: LayeredColor;
-  readonly containedColorFactory: LayeredColorFactory;
+  readonly containedColorFactory?: LayeredColorFactory;
   readonly containedInvertedColor?: LayeredColor;
   readonly containedInvertedColorDisabled: LayeredColor;
   readonly uncontainedColor?: LayeredColor;
   readonly uncontainedColorDisabled: LayeredColor;
-  readonly uncontainedColorFactory: LayeredColorFactory;
+  readonly uncontainedColorFactory?: LayeredColorFactory;
   readonly uncontainedInvertedColor?: LayeredColor;
   readonly uncontainedInvertedColorDisabled: LayeredColor;
 }
