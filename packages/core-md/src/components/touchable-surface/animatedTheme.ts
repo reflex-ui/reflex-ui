@@ -6,9 +6,12 @@
  */
 
 import {
+  getColor,
+  suppressPressedState,
   SurfaceProps,
   SurfaceTheme,
   TouchableSurfaceTheme,
+  ViewStyleGetter,
 } from '@reflex-ui/core';
 import {
   createAnimatedRippleView,
@@ -25,12 +28,19 @@ const AnimatedRippleView = createAnimatedRippleView<SurfaceProps, SurfaceTheme>(
   getSurfaceRippleColor,
 );
 
+export const getAnimatedTouchableSurfaceSurfaceStyle: ViewStyleGetter<
+  SurfaceProps
+> = props => ({
+  ...getTouchableSurfaceSurfaceStyle(props),
+  backgroundColor: getColor(suppressPressedState(props)),
+});
+
 export const partialAnimatedTouchableSurfaceTheme: Partial<
   TouchableSurfaceTheme
 > = {
   surface: () => ({
     component: AnimatedRippleView,
-    getStyle: getTouchableSurfaceSurfaceStyle,
+    getStyle: getAnimatedTouchableSurfaceSurfaceStyle,
   }),
 };
 
