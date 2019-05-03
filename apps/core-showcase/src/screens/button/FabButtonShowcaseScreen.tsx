@@ -14,39 +14,26 @@ import {
   ComponentThemeGetter,
   InteractionType,
 } from '@reflex-ui/core';
-import {
-  disabledGrey300Contained,
-  getInlayColorByInteraction,
-} from '@reflex-ui/core-md';
 import { FavoriteIcon } from '@reflex-ui/icons-md';
 import * as React from 'react';
 
+import { pink } from '../../colors/pink';
 import { ButtonShowcaseScreen } from './ButtonShowcaseScreen';
 import { IconButtonCollection } from './IconButtonCollection';
 
 const getButtonPatchTheme: ComponentThemeGetter<ButtonProps, ButtonTheme> = ({
   interactionState: { type: interactionType },
 }): ButtonTheme => {
-  const backgroundColor =
-    interactionType === InteractionType.Disabled
-      ? disabledGrey300Contained.color
-      : // prettier-ignore
-        getInlayColorByInteraction({
-          color: '#c70ad0',
-          type: interactionType,
-        });
+  const isHoveredOrPressed =
+    interactionType === InteractionType.Hovered ||
+    interactionType === InteractionType.Pressed;
 
-  const iconColor =
-    interactionType === InteractionType.Disabled
-      ? disabledGrey300Contained.onColor
-      : '#fff';
+  const strokeWidth = isHoveredOrPressed ? 3 : 0;
+  const stroke = isHoveredOrPressed ? 'red' : undefined;
 
   return {
     icon: () => ({
-      getProps: () => ({ fill: iconColor }),
-    }),
-    surface: () => ({
-      getStyle: () => ({ backgroundColor }),
+      getProps: () => ({ stroke, strokeWidth }),
     }),
   };
 };
@@ -63,6 +50,7 @@ const FabButtonShowcaseScreen: React.SFC = (): JSX.Element => (
     customCollections={[
       {
         getPatchTheme: getButtonPatchTheme,
+        paletteColor: pink,
         title: 'custom',
         variant: ButtonVariant.Fab,
       },

@@ -14,45 +14,40 @@ import {
   ComponentThemeGetter,
   InteractionType,
 } from '@reflex-ui/core';
-import {
-  disabledGrey300Contained,
-  getInlayColorByInteraction,
-} from '@reflex-ui/core-md';
 import { FavoriteIcon } from '@reflex-ui/icons-md';
 import * as React from 'react';
 
+import { pink } from '../../colors/pink';
 import { ButtonShowcaseScreen } from './ButtonShowcaseScreen';
 import { LabelButtonCollection } from './LabelButtonCollection';
 
 const getButtonPatchTheme: ComponentThemeGetter<ButtonProps, ButtonTheme> = ({
   interactionState: { type: interactionType },
 }): ButtonTheme => {
-  const backgroundColor =
-    interactionType === InteractionType.Disabled
-      ? disabledGrey300Contained.color
-      : // prettier-ignore
-        getInlayColorByInteraction({
-          color: '#c70ad0',
-          type: interactionType,
-        });
+  const isHoveredOrPressed =
+    interactionType === InteractionType.Hovered ||
+    interactionType === InteractionType.Pressed;
 
-  const textColor =
-    interactionType === InteractionType.Disabled
-      ? disabledGrey300Contained.onColor
-      : '#fff';
+  const strokeWidth = isHoveredOrPressed ? 3 : 0;
+  const stroke = isHoveredOrPressed ? 'red' : undefined;
 
   return {
     leadingIcon: () => ({
-      getProps: () => ({ fill: textColor }),
+      getProps: () => ({ stroke, strokeWidth }),
     }),
     surface: () => ({
-      getStyle: () => ({ backgroundColor }),
+      getStyle: () => ({ borderRadius: 0 }),
     }),
     text: {
-      getStyle: () => ({ color: textColor }),
+      getStyle: () => {
+        if (interactionType === InteractionType.Disabled) return {};
+        return {
+          textDecorationLine: isHoveredOrPressed ? 'line-through' : 'underline',
+        };
+      },
     },
     trailingIcon: () => ({
-      getProps: () => ({ fill: textColor }),
+      getProps: () => ({ stroke, strokeWidth }),
     }),
   };
 };
@@ -73,6 +68,7 @@ const ContainedButtonShowcaseScreen: React.SFC = (): JSX.Element => (
     customCollections={[
       {
         getPatchTheme: getButtonPatchTheme,
+        paletteColor: pink,
         title: 'custom',
         variant: ButtonVariant.Contained,
       },
