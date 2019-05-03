@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "allowJs": true,
+    "declaration": false,
     "esModuleInterop": true,
     "isolatedModules": true,
     "jsx": "preserve",
