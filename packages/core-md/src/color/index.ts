@@ -6,9 +6,11 @@
  */
 
 export * from './createContainedLayeredColor';
+export * from './createMdFlexColor';
 export * from './createUncontainedLayeredColor';
 export * from './ColorByInteractionGetterInput';
 export * from './colors';
 export * from './getInlayColorByInteraction';
 export * from './getOverlayColorByInteraction';
+export * from './MdFlexColorFactoryInput';
 export * from './palettes';

@@ -6,93 +6,76 @@
  */
 
 import { InteractionType } from '../interaction/InteractionType';
-import { ColorGamut } from './ColorGamut';
+import { createColorGamut } from './createColorGamut';
+// tslint:disable-next-line:max-line-length
+import { createLayeredColorUsingColorOnly } from './createLayeredColorUsingColorOnly';
+// tslint:disable-next-line:max-line-length
+import { createLayeredColorUsingOnColorOnly } from './createLayeredColorUsingOnColorOnly';
 import { FlexColor } from './FlexColor';
 import { FlexColorFactoryInput } from './FlexColorFactoryInput';
-import { LayeredColor } from './LayeredColor';
-import { LayeredColorFactory } from './LayeredColorFactory';
+import { invertLayeredColor } from './invertLayeredColor';
 
-export interface ColorGamutFactoryInput {
-  readonly containedColor: LayeredColor;
-  readonly containedColorFactory: LayeredColorFactory;
-  readonly containedInvertedColor: LayeredColor;
-  readonly interactionType: InteractionType;
-  readonly uncontainedColor: LayeredColor;
-  readonly uncontainedColorFactory: LayeredColorFactory;
-  readonly uncontainedInvertedColor: LayeredColor;
-}
-
-export const createColorGamut = (
-  config: ColorGamutFactoryInput,
-): ColorGamut => ({
-  contained: config.containedColorFactory({
-    color: config.containedColor,
-    interactionType: config.interactionType,
-  }),
-  containedInverted: config.containedColorFactory({
-    color: config.containedInvertedColor,
-    interactionType: config.interactionType,
-  }),
-  uncontained: config.uncontainedColorFactory({
-    color: config.uncontainedColor,
-    interactionType: config.interactionType,
-  }),
-  uncontainedInverted: config.uncontainedColorFactory({
-    color: config.uncontainedInvertedColor,
-    interactionType: config.interactionType,
-  }),
-});
-
-export const createFlexColor = (config: FlexColorFactoryInput): FlexColor => ({
+export const createFlexColor = ({
+  containedColor,
+  containedColorDisabled,
+  containedColorFactory,
+  containedInvertedColor = invertLayeredColor(containedColor),
+  containedInvertedColorDisabled,
+  uncontainedColor = createLayeredColorUsingOnColorOnly(containedColor),
+  uncontainedColorDisabled,
+  uncontainedColorFactory,
+  uncontainedInvertedColor = createLayeredColorUsingColorOnly(containedColor),
+  uncontainedInvertedColorDisabled,
+}: FlexColorFactoryInput): FlexColor => ({
   activated: createColorGamut({
-    containedColor: config.containedColor,
-    containedColorFactory: config.containedColorFactory,
-    containedInvertedColor: config.containedInvertedColor,
+    containedColor,
+    containedColorFactory,
+    containedInvertedColor,
     interactionType: InteractionType.Activated,
-    uncontainedColor: config.uncontainedColor,
-    uncontainedColorFactory: config.uncontainedColorFactory,
-    uncontainedInvertedColor: config.uncontainedInvertedColor,
+    uncontainedColor,
+    uncontainedColorFactory,
+    uncontainedInvertedColor,
   }),
   disabled: {
-    contained: config.containedColorDisabled,
-    containedInverted: config.containedInvertedColorDisabled,
-    uncontained: config.uncontainedColorDisabled,
-    uncontainedInverted: config.uncontainedInvertedColorDisabled,
+    contained: containedColorDisabled,
+    containedInverted: containedInvertedColorDisabled,
+    uncontained: uncontainedColorDisabled,
+    uncontainedInverted: uncontainedInvertedColorDisabled,
   },
   enabled: createColorGamut({
-    containedColor: config.containedColor,
-    containedColorFactory: config.containedColorFactory,
-    containedInvertedColor: config.containedInvertedColor,
+    containedColor,
+    containedColorFactory,
+    containedInvertedColor,
     interactionType: InteractionType.Enabled,
-    uncontainedColor: config.uncontainedColor,
-    uncontainedColorFactory: config.uncontainedColorFactory,
-    uncontainedInvertedColor: config.uncontainedInvertedColor,
+    uncontainedColor,
+    uncontainedColorFactory,
+    uncontainedInvertedColor,
   }),
   focused: createColorGamut({
-    containedColor: config.containedColor,
-    containedColorFactory: config.containedColorFactory,
-    containedInvertedColor: config.containedInvertedColor,
+    containedColor,
+    containedColorFactory,
+    containedInvertedColor,
     interactionType: InteractionType.Focused,
-    uncontainedColor: config.uncontainedColor,
-    uncontainedColorFactory: config.uncontainedColorFactory,
-    uncontainedInvertedColor: config.uncontainedInvertedColor,
+    uncontainedColor,
+    uncontainedColorFactory,
+    uncontainedInvertedColor,
   }),
   hovered: createColorGamut({
-    containedColor: config.containedColor,
-    containedColorFactory: config.containedColorFactory,
-    containedInvertedColor: config.containedInvertedColor,
+    containedColor,
+    containedColorFactory,
+    containedInvertedColor,
     interactionType: InteractionType.Hovered,
-    uncontainedColor: config.uncontainedColor,
-    uncontainedColorFactory: config.uncontainedColorFactory,
-    uncontainedInvertedColor: config.uncontainedInvertedColor,
+    uncontainedColor,
+    uncontainedColorFactory,
+    uncontainedInvertedColor,
   }),
   pressed: createColorGamut({
-    containedColor: config.containedColor,
-    containedColorFactory: config.containedColorFactory,
-    containedInvertedColor: config.containedInvertedColor,
+    containedColor,
+    containedColorFactory,
+    containedInvertedColor,
     interactionType: InteractionType.Pressed,
-    uncontainedColor: config.uncontainedColor,
-    uncontainedColorFactory: config.uncontainedColorFactory,
-    uncontainedInvertedColor: config.uncontainedInvertedColor,
+    uncontainedColor,
+    uncontainedColorFactory,
+    uncontainedInvertedColor,
   }),
 });

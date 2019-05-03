@@ -5,17 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  createFlexColor,
-  createLayeredColorUsingColorOnly,
-  createLayeredColorUsingOnColorOnly,
-  invertLayeredColor,
-  PaletteColor,
-} from '@reflex-ui/core';
+import { PaletteColor } from '@reflex-ui/core';
 
-import { createContainedLayeredColor } from '../../createContainedLayeredColor';
-// tslint:disable-next-line:max-line-length
-import { createUncontainedLayeredColor } from '../../createUncontainedLayeredColor';
+import { createMdFlexColor } from '../../createMdFlexColor';
 import { disabledGrey300Contained } from '../disabled/contained';
 import {
   disabledGrey500Uncontained,
@@ -24,16 +16,11 @@ import {
 import { yellow600, yellow600Dark, yellow600Light } from './yellow600';
 
 export const mdYellow600: PaletteColor = {
-  color: createFlexColor({
+  color: createMdFlexColor({
     containedColor: yellow600,
     containedColorDisabled: disabledGrey300Contained,
-    containedColorFactory: createContainedLayeredColor,
-    containedInvertedColor: invertLayeredColor(yellow600),
     containedInvertedColorDisabled: disabledGrey300Contained,
-    uncontainedColor: createLayeredColorUsingOnColorOnly(yellow600),
     uncontainedColorDisabled: disabledGrey600Uncontained,
-    uncontainedColorFactory: createUncontainedLayeredColor,
-    uncontainedInvertedColor: createLayeredColorUsingColorOnly(yellow600),
     uncontainedInvertedColorDisabled: disabledGrey500Uncontained,
   }),
   name: 'Yellow',
@@ -41,16 +28,11 @@ export const mdYellow600: PaletteColor = {
 };
 
 export const mdYellow600Dark: PaletteColor = {
-  color: createFlexColor({
+  color: createMdFlexColor({
     containedColor: yellow600Dark,
     containedColorDisabled: disabledGrey300Contained,
-    containedColorFactory: createContainedLayeredColor,
-    containedInvertedColor: invertLayeredColor(yellow600Dark),
     containedInvertedColorDisabled: disabledGrey300Contained,
-    uncontainedColor: createLayeredColorUsingOnColorOnly(yellow600Dark),
     uncontainedColorDisabled: disabledGrey600Uncontained,
-    uncontainedColorFactory: createUncontainedLayeredColor,
-    uncontainedInvertedColor: createLayeredColorUsingColorOnly(yellow600Dark),
     uncontainedInvertedColorDisabled: disabledGrey500Uncontained,
   }),
   name: 'Yellow',
@@ -58,16 +40,11 @@ export const mdYellow600Dark: PaletteColor = {
 };
 
 export const mdYellow600Light: PaletteColor = {
-  color: createFlexColor({
+  color: createMdFlexColor({
     containedColor: yellow600Light,
     containedColorDisabled: disabledGrey300Contained,
-    containedColorFactory: createContainedLayeredColor,
-    containedInvertedColor: invertLayeredColor(yellow600Light),
     containedInvertedColorDisabled: disabledGrey300Contained,
-    uncontainedColor: createLayeredColorUsingOnColorOnly(yellow600Light),
     uncontainedColorDisabled: disabledGrey600Uncontained,
-    uncontainedColorFactory: createUncontainedLayeredColor,
-    uncontainedInvertedColor: createLayeredColorUsingColorOnly(yellow600Light),
     uncontainedInvertedColorDisabled: disabledGrey500Uncontained,
   }),
   name: 'Yellow',

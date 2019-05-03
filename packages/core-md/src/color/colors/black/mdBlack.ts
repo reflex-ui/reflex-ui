@@ -5,18 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  createFlexColor,
-  createLayeredColorUsingColorOnly,
-  createLayeredColorUsingOnColorOnly,
-  invertLayeredColor,
-  LayeredColor,
-  PaletteColor,
-} from '@reflex-ui/core';
+import { LayeredColor, PaletteColor } from '@reflex-ui/core';
 
-import { createContainedLayeredColor } from '../../createContainedLayeredColor';
-// tslint:disable-next-line:max-line-length
-import { createUncontainedLayeredColor } from '../../createUncontainedLayeredColor';
+import { createMdFlexColor } from '../../createMdFlexColor';
 import { disabledGrey300Contained } from '../disabled/contained';
 import {
   disabledGrey500Uncontained,
@@ -31,18 +22,11 @@ const blackLayeredColor: LayeredColor = {
 };
 
 export const mdBlack: PaletteColor = {
-  color: createFlexColor({
+  color: createMdFlexColor({
     containedColor: blackLayeredColor,
     containedColorDisabled: disabledGrey300Contained,
-    containedColorFactory: createContainedLayeredColor,
-    containedInvertedColor: invertLayeredColor(blackLayeredColor),
     containedInvertedColorDisabled: disabledGrey300Contained,
-    uncontainedColor: createLayeredColorUsingOnColorOnly(blackLayeredColor),
     uncontainedColorDisabled: disabledGrey600Uncontained,
-    uncontainedColorFactory: createUncontainedLayeredColor,
-    uncontainedInvertedColor: createLayeredColorUsingColorOnly(
-      blackLayeredColor,
-    ),
     uncontainedInvertedColorDisabled: disabledGrey500Uncontained,
   }),
   name: 'Black',
