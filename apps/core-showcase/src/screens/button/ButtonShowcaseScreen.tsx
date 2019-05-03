@@ -22,6 +22,7 @@ import {
   Headline6,
   isWeb,
   JustifyContent,
+  PaletteColor,
   PaletteContext,
   Paragraph1,
   Paragraph2,
@@ -43,6 +44,8 @@ const onButtonPress = () => {
 
 export interface CustomButtonCollection {
   readonly getPatchTheme?: ComponentThemeGetter<ButtonProps, ButtonTheme>;
+  readonly invertColor?: boolean;
+  readonly paletteColor?: PaletteColor;
   readonly title: string;
   readonly variant: ButtonVariant;
 }
@@ -258,8 +261,9 @@ const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
                         </Paragraph1>
                         <ButtonCollection
                           getPatchTheme={custom.getPatchTheme}
+                          invertColor={custom.invertColor}
                           onPress={onButtonPress}
-                          paletteColor={palette.primary}
+                          paletteColor={custom.paletteColor || palette.primary}
                           variant={custom.variant}
                         />
                       </Surface>
