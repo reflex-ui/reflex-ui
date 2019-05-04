@@ -9,7 +9,6 @@ import { useState } from 'react';
 import { GestureResponderEvent } from 'react-native';
 
 import { isWeb } from '../utils';
-import { InteractionEvent } from './InteractionEvent';
 import { InteractionProps, InteractionPropsOptional } from './InteractionProps';
 import { InteractionState } from './InteractionState';
 import { InteractionType } from './InteractionType';
@@ -26,127 +25,128 @@ export const useInteraction = <Props extends InteractionPropsOptional>(
     );
   }
 
-  const getInteractionState = (): InteractionState => {
-    if (props.activated) {
-      return {
-        event: interactionEvent,
-        type: InteractionType.Activated,
-      };
-    }
-    if (props.disabled) {
-      return {
-        event: interactionEvent,
-        type: InteractionType.Disabled,
-      };
-    }
-    if (isPressing) {
-      return {
-        event: interactionEvent,
-        type: InteractionType.Pressed,
-      };
-    }
-    if (isFocusing) {
-      return {
-        event: interactionEvent,
-        type: InteractionType.Focused,
-      };
-    }
-    if (isHovering) {
-      return {
-        event: interactionEvent,
-        type: InteractionType.Hovered,
-      };
-    }
-    return {
-      event: interactionEvent,
-      type: InteractionType.Enabled,
-    };
-  };
-
   const onBlur = (event: React.FocusEvent): void => {
-    if (props.disabled || !isFocusing) return;
+    if (interactionState.type === InteractionType.Disabled) return;
 
-    if (!props.activated) {
-      setInteractionEvent(undefined);
-      setIsFocusing(false);
+    if (
+      interactionState.type !== InteractionType.Activated &&
+      interactionState.type !== InteractionType.Enabled
+    ) {
+      setInteractionState({
+        event,
+        type: InteractionType.Enabled,
+      });
     }
+
     if (props.onBlur) props.onBlur(event);
   };
 
   const onFocus = (event: React.FocusEvent): void => {
-    if (props.disabled || isFocusing || isPressing) {
+    if (
+      interactionState.type === InteractionType.Disabled ||
+      interactionState.type === InteractionType.Pressed
+    ) {
       return;
     }
 
-    if (!props.activated) {
-      setInteractionEvent(event);
-      setIsFocusing(true);
+    if (interactionState.type !== InteractionType.Activated) {
+      setInteractionState({
+        event,
+        type: InteractionType.Focused,
+      });
     }
+
     if (props.onFocus) props.onFocus(event);
   };
 
   const onMouseEnter = (event: React.MouseEvent): void => {
     if (!pointerHovers) setPointerHovers(true);
-    if (props.disabled || isHovering) {
-      return;
+    if (interactionState.type === InteractionType.Disabled) return;
+
+    if (interactionState.type !== InteractionType.Activated) {
+      setIsHovering(true);
+      setInteractionState({
+        event,
+        type: InteractionType.Hovered,
+      });
     }
 
-    if (!props.activated) {
-      setInteractionEvent(event);
-      setIsHovering(true);
-    }
     if (props.onMouseEnter) props.onMouseEnter(event);
   };
 
   const onMouseLeave = (event: React.MouseEvent): void => {
-    if (props.disabled || !isHovering) {
+    if (interactionState.type === InteractionType.Disabled) {
       return;
     }
 
-    if (!props.activated) {
-      setInteractionEvent(undefined);
-      setIsHovering(false);
+    setIsHovering(false);
+    if (interactionState.type === InteractionType.Hovered) {
+      setInteractionState({
+        event,
+        type: InteractionType.Enabled,
+      });
     }
+
     if (props.onMouseLeave) props.onMouseLeave(event);
   };
 
   const onPressIn = (event: GestureResponderEvent): void => {
-    if (props.disabled || isPressing) {
-      return;
+    if (interactionState.type === InteractionType.Disabled) return;
+
+    if (interactionState.type !== InteractionType.Activated) {
+      setInteractionState({
+        event,
+        type: InteractionType.Pressed,
+      });
     }
 
-    if (!props.activated) {
-      setInteractionEvent(event);
-      setIsPressing(true);
-    }
     if (props.onPressIn) props.onPressIn(event);
   };
 
   const onPressOut = (event: GestureResponderEvent): void => {
-    if (props.disabled || !isPressing) {
-      return;
+    if (interactionState.type === InteractionType.Disabled) return;
+
+    if (interactionState.type !== InteractionType.Activated) {
+      setInteractionState({
+        event,
+        type: isHovering ? InteractionType.Hovered : InteractionType.Enabled,
+      });
     }
 
-    if (!props.activated) {
-      setInteractionEvent(event);
-      setIsPressing(false);
-    }
     if (props.onPressOut) props.onPressOut(event);
   };
 
-  const [interactionEvent, setInteractionEvent] = useState<
-    InteractionEvent | undefined
-  >(undefined);
-  const [isFocusing, setIsFocusing] = useState(false);
+  const [interactionState, setInteractionState] = useState<InteractionState>(
+    () => {
+      if (props.interactionState) return props.interactionState;
+      return { type: InteractionType.Enabled };
+    },
+  );
+
+  if (props.disabled && interactionState.type !== InteractionType.Disabled) {
+    setInteractionState({ type: InteractionType.Disabled });
+  } else if (
+    props.activated &&
+    interactionState.type !== InteractionType.Activated
+  ) {
+    setInteractionState({ type: InteractionType.Activated });
+  } else if (
+    !props.disabled &&
+    interactionState.type === InteractionType.Disabled
+  ) {
+    setInteractionState({ type: InteractionType.Enabled });
+  } else if (
+    !props.activated &&
+    interactionState.type === InteractionType.Activated
+  ) {
+    setInteractionState({ type: InteractionType.Enabled });
+  }
+
   const [isHovering, setIsHovering] = useState(false);
-  const [isPressing, setIsPressing] = useState(false);
   const [pointerHovers, setPointerHovers] = useState(false);
 
-  const interactionState = getInteractionState();
-  const disabled = interactionState.type === InteractionType.Disabled;
-
   return {
-    disabled,
+    disabled: interactionState.type === InteractionType.Disabled,
     interactionState,
     ...((isWeb && { onBlur }) || {}),
     ...((isWeb && { onFocus }) || {}),
