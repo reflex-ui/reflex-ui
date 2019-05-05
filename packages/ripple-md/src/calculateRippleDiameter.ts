@@ -9,7 +9,7 @@ import { RippleDiameterCalculatorInput } from './RippleDiameterCalculatorInput';
 
 export const calculateRippleDiameter = ({
   height,
-  maxDiameter = 300,
+  maxDiameter = 2000,
   offset = 1.2,
   posX,
   width,

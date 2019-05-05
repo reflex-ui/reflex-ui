@@ -12,7 +12,7 @@ export interface ComponentRippleStylesFactoryInput {
   readonly color: string;
   readonly height: number;
   readonly interactionEvent?: InteractionEvent;
-  readonly maxDiameter: number;
+  readonly maxDiameter?: number;
   readonly style: ViewStyle;
   readonly width: number;
 }

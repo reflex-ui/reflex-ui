@@ -18,6 +18,7 @@ export interface RippleAnimationInput {
   readonly containerSize: { height: number; width: number };
   readonly containerStyle: StyleProp<ViewStyle>;
   readonly interactionState: InteractionState;
+  readonly maxDiameter?: number;
 }
 
 export interface RippleAnimationOutput {
@@ -30,6 +31,7 @@ export const useRippleAnimation = ({
   containerSize,
   containerStyle,
   interactionState,
+  maxDiameter,
 }: RippleAnimationInput): RippleAnimationOutput => {
   const [isAnimatingPressIn, setIsAnimatingPressIn] = useState(false);
   const [isShowingPressInAnimation, setIsShowingPressInAnimation] = useState(
@@ -78,7 +80,6 @@ export const useRippleAnimation = ({
   /**/
 
   const { event: interactionEvent, type: interactionType } = interactionState;
-  const maxDiameter = 300;
 
   const shouldStartPressInAnimation = () =>
     interactionType === InteractionType.Pressed &&
