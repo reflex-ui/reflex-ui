@@ -20,6 +20,7 @@ import {
 import merge from 'lodash/merge';
 
 import {
+  getTouchableSurfaceSurfaceProps,
   getTouchableSurfaceSurfaceStyle,
   touchableSurfaceTheme,
 } from './theme';
@@ -40,6 +41,7 @@ export const partialAnimatedTouchableSurfaceTheme: Partial<
 > = {
   surface: () => ({
     component: AnimatedRippleView,
+    getProps: getTouchableSurfaceSurfaceProps,
     getStyle: getAnimatedTouchableSurfaceSurfaceStyle,
   }),
 };

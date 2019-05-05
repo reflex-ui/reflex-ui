@@ -9,9 +9,16 @@ import {
   InteractionType,
   SurfaceProps,
   TouchableSurfaceTheme,
+  ViewPropsGetter,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import { Platform } from 'react-native';
+
+export const getTouchableSurfaceSurfaceProps: ViewPropsGetter<
+  SurfaceProps
+> = () => ({
+  pointerEvents: 'box-only',
+});
 
 export const getTouchableSurfaceSurfaceStyle: ViewStyleGetter<
   SurfaceProps
@@ -30,6 +37,7 @@ export const getTouchableSurfaceSurfaceStyle: ViewStyleGetter<
 
 export const touchableSurfaceTheme: TouchableSurfaceTheme = {
   surface: () => ({
+    getProps: getTouchableSurfaceSurfaceProps,
     getStyle: getTouchableSurfaceSurfaceStyle,
   }),
 };
