@@ -7,25 +7,39 @@
 
 import { Navigation } from 'react-native-navigation';
 
+import { DefaultAppBarScreen } from '../screens/app-bar';
 import {
   ContainedButtonShowcaseScreen,
   ContainedShapedButtonShowcaseScreen,
-  DefaultAppBarScreen,
   DefaultButtonShowcaseScreen,
   FabButtonShowcaseScreen,
   HighlightedButtonShowcaseScreen,
   IconButtonShowcaseScreen,
-  IconShowcaseScreen,
-  ListShowcaseScreen,
   OutlinedButtonShowcaseScreen,
   OutlinedShapedButtonShowcaseScreen,
-  RfxTextScreen,
-  SurfaceScreen,
-  SvgShowcaseScreen,
-  TestShowcaseScreen,
-  TouchableSurfaceScreen,
   XFabButtonShowcaseScreen,
-} from '../screens';
+} from '../screens/button';
+import { IconShowcaseScreen } from '../screens/icon';
+import {
+  LargeListIconTwoLinesScreen,
+  LargeListTwoLinesScreen,
+  ListShowcaseScreen,
+  MediumListIconCustomThemeScreen,
+  MediumListIconScreen,
+  SmallListIconScreen,
+  SmallListScreen,
+  XLargeListIconTwoLinesScreen,
+  XSmallListIconScreen,
+  XSmallListScreen,
+  XXLargeListIconThreeLinesScreen,
+  XXSmallListIconScreen,
+  XXSmallListScreen,
+} from '../screens/list';
+import { SurfaceScreen } from '../screens/surface';
+import { SvgShowcaseScreen } from '../screens/svg';
+import { TestShowcaseScreen } from '../screens/test';
+import { RfxTextScreen } from '../screens/text';
+import { TouchableSurfaceScreen } from '../screens/touchable-surface';
 import { withAppLogic } from '../withAppLogic';
 
 const appNavigationPrefix = 'reflexui.showcase.navigation';
@@ -54,7 +68,21 @@ const IconNavigation = {
 };
 
 const ListNavigation = {
-  default: `${appNavigationPrefix}list.ListScreen`,
+  largeIconTwoLines: `${appNavigationPrefix}list.LargeListIconTwoLinesScreen`,
+  largeTwoLines: `${appNavigationPrefix}list.LargeListTwoLinesScreen`,
+  mediumIcon: `${appNavigationPrefix}list.MediumListIconScreen`,
+  // tslint:disable-next-line:max-line-length
+  mediumIconCustomTheme: `${appNavigationPrefix}list.MediumListIconCustomThemeScreen`,
+  small: `${appNavigationPrefix}list.ListSizeMScreen`,
+  smallIcon: `${appNavigationPrefix}list.ListSizeSIconScreen`,
+  welcome: `${appNavigationPrefix}list.ListScreen`,
+  xlargeIconTwoLines: `${appNavigationPrefix}list.XLargeListIconTwoLinesScreen`,
+  xsmall: `${appNavigationPrefix}list.ListSizeXSScreen`,
+  xsmallIcon: `${appNavigationPrefix}list.ListSizeXSIconScreen`,
+  // tslint:disable-next-line:max-line-length
+  xxlargeIconThreeLines: `${appNavigationPrefix}list.XXLargeListIconThreeLinesScreen`,
+  xxsmall: `${appNavigationPrefix}list.ListSizeXXSScreen`,
+  xxsmallIcon: `${appNavigationPrefix}list.ListSizeXXSIconScreen`,
 };
 
 const SurfaceNavigation = {
@@ -115,8 +143,44 @@ const registerScreens = () => {
     withAppLogic(IconShowcaseScreen),
   );
   /* LIST */
-  Navigation.registerComponent(ListNavigation.default, () =>
+  Navigation.registerComponent(ListNavigation.welcome, () =>
     withAppLogic(ListShowcaseScreen),
+  );
+  Navigation.registerComponent(ListNavigation.xxsmall, () =>
+    withAppLogic(XXSmallListScreen),
+  );
+  Navigation.registerComponent(ListNavigation.xxsmallIcon, () =>
+    withAppLogic(XXSmallListIconScreen),
+  );
+  Navigation.registerComponent(ListNavigation.xsmall, () =>
+    withAppLogic(XSmallListScreen),
+  );
+  Navigation.registerComponent(ListNavigation.xsmallIcon, () =>
+    withAppLogic(XSmallListIconScreen),
+  );
+  Navigation.registerComponent(ListNavigation.small, () =>
+    withAppLogic(SmallListScreen),
+  );
+  Navigation.registerComponent(ListNavigation.smallIcon, () =>
+    withAppLogic(SmallListIconScreen),
+  );
+  Navigation.registerComponent(ListNavigation.mediumIcon, () =>
+    withAppLogic(MediumListIconScreen),
+  );
+  Navigation.registerComponent(ListNavigation.mediumIconCustomTheme, () =>
+    withAppLogic(MediumListIconCustomThemeScreen),
+  );
+  Navigation.registerComponent(ListNavigation.largeTwoLines, () =>
+    withAppLogic(LargeListTwoLinesScreen),
+  );
+  Navigation.registerComponent(ListNavigation.largeIconTwoLines, () =>
+    withAppLogic(LargeListIconTwoLinesScreen),
+  );
+  Navigation.registerComponent(ListNavigation.xlargeIconTwoLines, () =>
+    withAppLogic(XLargeListIconTwoLinesScreen),
+  );
+  Navigation.registerComponent(ListNavigation.xxlargeIconThreeLines, () =>
+    withAppLogic(XXLargeListIconThreeLinesScreen),
   );
   /* SURFACE */
   Navigation.registerComponent(SurfaceNavigation.default, () =>
@@ -147,7 +211,7 @@ export const AppNavigation = () => {
     Navigation.setRoot({
       root: {
         component: {
-          name: AppBarNavigation.default,
+          name: ListNavigation.xxlargeIconThreeLines,
         },
       },
     });
