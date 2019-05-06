@@ -11,18 +11,19 @@ import {
   Button,
   ButtonVariant,
   Column,
+  DimensionsContext,
   FlexWrap,
   List,
   ListItem,
   Paragraph1,
   Paragraph2,
-  RfxViewProps,
   Screen,
   Size,
+  SurfacePropsOptional,
   TouchableSurface,
 } from '@reflex-ui/core';
 import { MenuIcon } from '@reflex-ui/icons-md';
-import React from 'react';
+import React, { useContext } from 'react';
 import { ScrollView } from 'react-native';
 
 import { getListMaxWidth } from './getListMaxWidth';
@@ -37,8 +38,8 @@ const onListItemPress = () => {
   console.log('ListSizeXXSScreen().onListItemPress()');
 };
 
-const renderList = ({ breakpoints, dimensions }: RfxViewProps): JSX.Element => (
-  <List maxWidth={getListMaxWidth({ breakpoints, dimensions })}>
+const MyList = (props: SurfacePropsOptional): JSX.Element => (
+  <List maxWidth={getListMaxWidth(useContext(DimensionsContext))} {...props}>
     <TouchableSurface
       contained={false}
       flexWrap={FlexWrap.Nowrap}
@@ -108,7 +109,7 @@ const LargeListTwoLinesScreen: React.SFC = (): JSX.Element => (
         {'\n'}
         {'<ListItem size={Size.L}>'}
       </Paragraph2>
-      <Column>{renderList}</Column>
+      <MyList />
     </ScrollView>
   </Screen>
 );
