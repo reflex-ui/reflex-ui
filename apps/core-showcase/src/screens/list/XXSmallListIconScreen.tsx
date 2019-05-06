@@ -11,12 +11,13 @@ import {
   Button,
   ButtonVariant,
   Column,
+  DimensionsContext,
   List,
   ListItem,
   Paragraph2,
-  RfxViewProps,
   Screen,
   Size,
+  SurfacePropsOptional,
   TouchableSurface,
 } from '@reflex-ui/core';
 import {
@@ -27,7 +28,7 @@ import {
   StarIcon,
   WatchLaterIcon,
 } from '@reflex-ui/icons-md';
-import React from 'react';
+import React, { useContext } from 'react';
 import { ScrollView } from 'react-native';
 
 import { getListMaxWidth } from './getListMaxWidth';
@@ -47,8 +48,8 @@ const onListItemIconPress = () => {
   console.log('ListSizeXXSIconScreen().onListItemIconPress()');
 };
 
-const renderList = ({ breakpoints, dimensions }: RfxViewProps): JSX.Element => (
-  <List maxWidth={getListMaxWidth({ breakpoints, dimensions })}>
+const MyList = (props: SurfacePropsOptional): JSX.Element => (
+  <List maxWidth={getListMaxWidth(useContext(DimensionsContext))} {...props}>
     <TouchableSurface activated contained={false} onPress={onListItemPress}>
       <ListItem size={Size.XXS}>
         <Column marginHorizontal={Size.S}>
@@ -114,7 +115,7 @@ const XXSmallListIconScreen: React.SFC = (): JSX.Element => (
         {'\n'}
         {'<ListItem size={Size.XXS}>'}
       </Paragraph2>
-      <Column>{renderList}</Column>
+      <MyList />
     </ScrollView>
   </Screen>
 );
