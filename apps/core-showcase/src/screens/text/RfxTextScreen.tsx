@@ -19,7 +19,6 @@ import {
   Headline5,
   Headline6,
   Overline,
-  PaletteContext,
   Paragraph1,
   Paragraph2,
   RfxTextProps,
@@ -29,9 +28,10 @@ import {
   Subtitle1,
   Subtitle2,
   Surface,
+  usePalette,
 } from '@reflex-ui/core';
 import { MenuIcon } from '@reflex-ui/icons-md';
-import React, { useContext } from 'react';
+import React from 'react';
 import { ScrollView } from 'react-native';
 
 const onButtonPress = () => {
@@ -50,7 +50,7 @@ const getCaptionPatchTheme: ComponentThemeGetter<
 });
 
 const RfxTextScreen: React.SFC = (): JSX.Element => {
-  const palette = useContext(PaletteContext);
+  const { palette } = usePalette();
 
   return (
     <Screen>

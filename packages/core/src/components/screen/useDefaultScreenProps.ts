@@ -5,9 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { useContext } from 'react';
-
-import { PaletteContext } from '../../color/PaletteContext';
+import { usePalette } from '../../color/Palette';
 import { SurfaceProps, SurfacePropsOptional } from '../surface/SurfaceProps';
 import { SurfaceTheme } from '../surface/SurfaceTheme';
 import { useDefaultSurfaceProps } from '../surface/useDefaultSurfaceProps';
@@ -16,7 +14,7 @@ export const useDefaultScreenProps = (
   props: SurfacePropsOptional,
   theme: SurfaceTheme,
 ): SurfaceProps => {
-  const palette = useContext(PaletteContext);
+  const { palette } = usePalette();
   const paletteColor = props.paletteColor || palette.screen;
 
   return {

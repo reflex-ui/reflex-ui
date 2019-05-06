@@ -23,16 +23,16 @@ import {
   isWeb,
   JustifyContent,
   PaletteColor,
-  PaletteContext,
   Paragraph1,
   Paragraph2,
   Row,
   Screen,
   Size,
   Surface,
+  usePalette,
 } from '@reflex-ui/core';
 import { MenuIcon } from '@reflex-ui/icons-md';
-import React, { useContext } from 'react';
+import React from 'react';
 import { ScrollView } from 'react-native';
 
 import { ButtonCollectionProps } from './ButtonCollectionProps';
@@ -65,7 +65,7 @@ const ButtonShowcaseScreen: React.SFC<ButtonShowcaseScreenProps> = ({
   title,
   variant,
 }): JSX.Element => {
-  const palette = useContext(PaletteContext);
+  const { palette } = usePalette();
   const colors = [
     {
       color: palette.primary,

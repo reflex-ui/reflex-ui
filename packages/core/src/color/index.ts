@@ -24,6 +24,5 @@ export * from './LayeredColor';
 export * from './LayeredColorFactory';
 export * from './LayeredColorFactoryInput';
 export * from './Palette';
-export * from './PaletteContext';
 export * from './PaletteColor';
 export * from './PaletteColorContext';
