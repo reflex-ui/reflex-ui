@@ -7,8 +7,8 @@
 
 import { useContext } from 'react';
 
+import { usePalette } from '../../color/Palette';
 import { PaletteColorContext } from '../../color/PaletteColorContext';
-import { PaletteContext } from '../../color/PaletteContext';
 import { Size } from '../../sizing/Size';
 // tslint:disable-next-line:max-line-length
 import { useDefaultTouchableSurfaceProps } from '../touchable-surface/useDefaultTouchableSurfaceProps';
@@ -22,7 +22,7 @@ export const useDefaultButtonProps = (
   theme: ButtonTheme,
 ): ButtonProps => {
   const paletteColorFromCtx = useContext(PaletteColorContext);
-  const palette = useContext(PaletteContext);
+  const { palette } = usePalette();
 
   const variant: ButtonVariant = props.variant || ButtonVariant.Default;
 

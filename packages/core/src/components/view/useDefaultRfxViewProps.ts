@@ -7,9 +7,9 @@
 
 import { useContext } from 'react';
 
+import { usePalette } from '../../color/Palette';
 import { PaletteColor } from '../../color/PaletteColor';
 import { PaletteColorContext } from '../../color/PaletteColorContext';
-import { PaletteContext } from '../../color/PaletteContext';
 import { DimensionsContext } from '../../responsiveness/DimensionsContext';
 import { RfxViewPropsBase } from './RfxViewProps';
 
@@ -22,7 +22,7 @@ export const useDefaultRfxViewProps = <
 ): Props => {
   const paletteColorFromCtx = useContext(PaletteColorContext);
   const dimensionsProps = useContext(DimensionsContext);
-  const palette = useContext(PaletteContext);
+  const { palette } = usePalette();
 
   const paletteColor: PaletteColor =
     props.paletteColor || paletteColorFromCtx || palette.surface;

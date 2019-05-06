@@ -13,14 +13,14 @@ import {
   Column,
   Headline6,
   JustifyContent,
-  PaletteContext,
   Row,
   Screen,
   Size,
   Surface,
+  usePalette,
 } from '@reflex-ui/core';
 import { AlarmIcon, MenuIcon } from '@reflex-ui/icons-md';
-import React, { useContext } from 'react';
+import React from 'react';
 import { ScrollView } from 'react-native';
 
 import { IconCollection } from './IconCollection';
@@ -31,7 +31,7 @@ const onButtonPress = () => {
 };
 
 const IconShowcaseScreen: React.SFC<{}> = (): JSX.Element => {
-  const palette = useContext(PaletteContext);
+  const { palette } = usePalette();
   const colors = [
     {
       color: palette.primary,

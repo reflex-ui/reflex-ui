@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { Button, Row, Size } from '@reflex-ui/core';
+import { Button, Column, Row, Size } from '@reflex-ui/core';
 import { FavoriteIcon } from '@reflex-ui/icons-md';
 import * as React from 'react';
 
@@ -18,7 +18,7 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
   paletteColor,
   variant,
 }): JSX.Element => (
-  <React.Fragment>
+  <Column paletteColor={paletteColor}>
     <Row>
       <Button
         getPatchTheme={getPatchTheme}
@@ -26,7 +26,6 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
         marginHorizontal={Size.M}
         marginVertical={Size.S}
         onPress={onPress}
-        paletteColor={paletteColor}
         variant={variant}
       >
         Sign In
@@ -38,7 +37,6 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
         marginHorizontal={Size.M}
         marginVertical={Size.S}
         onPress={onPress}
-        paletteColor={paletteColor}
         variant={variant}
       >
         Sign In
@@ -52,7 +50,6 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
         marginHorizontal={Size.M}
         marginVertical={Size.S}
         onPress={onPress}
-        paletteColor={paletteColor}
         variant={variant}
       >
         Favorite
@@ -65,7 +62,6 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
         marginHorizontal={Size.M}
         marginVertical={Size.S}
         onPress={onPress}
-        paletteColor={paletteColor}
         variant={variant}
       >
         Favorite
@@ -78,7 +74,6 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
         marginHorizontal={Size.M}
         marginVertical={Size.S}
         onPress={onPress}
-        paletteColor={paletteColor}
         trailingIcon={<FavoriteIcon />}
         variant={variant}
       >
@@ -91,7 +86,6 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
         marginHorizontal={Size.M}
         marginVertical={Size.S}
         onPress={onPress}
-        paletteColor={paletteColor}
         trailingIcon={<FavoriteIcon />}
         variant={variant}
       >
@@ -106,7 +100,6 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
         marginHorizontal={Size.M}
         marginVertical={Size.S}
         onPress={onPress}
-        paletteColor={paletteColor}
         trailingIcon={<FavoriteIcon />}
         variant={variant}
       >
@@ -120,14 +113,13 @@ const LabelButtonCollection: React.SFC<ButtonCollectionProps> = ({
         marginHorizontal={Size.M}
         marginVertical={Size.S}
         onPress={onPress}
-        paletteColor={paletteColor}
         trailingIcon={<FavoriteIcon />}
         variant={variant}
       >
         Favorite
       </Button>
     </Row>
-  </React.Fragment>
+  </Column>
 );
 
 LabelButtonCollection.displayName = 'LabelButtonCollection';

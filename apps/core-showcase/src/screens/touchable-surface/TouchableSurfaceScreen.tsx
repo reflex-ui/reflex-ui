@@ -14,7 +14,6 @@ import {
   ButtonVariant,
   ComponentThemeGetter,
   JustifyContent,
-  PaletteContext,
   Paragraph1,
   Paragraph2,
   Row,
@@ -23,9 +22,10 @@ import {
   TouchableSurface,
   TouchableSurfaceProps,
   TouchableSurfaceTheme,
+  usePalette,
 } from '@reflex-ui/core';
 import { MenuIcon } from '@reflex-ui/icons-md';
-import React, { useContext } from 'react';
+import React from 'react';
 import { ScrollView } from 'react-native';
 
 const onButtonPress = () => {
@@ -72,7 +72,7 @@ const getPatchTheme: ComponentThemeGetter<
 };
 
 const TouchableSurfaceScreen: React.SFC<{}> = (): JSX.Element => {
-  const palette = useContext(PaletteContext);
+  const { palette } = usePalette();
 
   return (
     <Screen>

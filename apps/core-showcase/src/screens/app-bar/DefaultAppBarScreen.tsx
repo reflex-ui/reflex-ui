@@ -15,12 +15,12 @@ import {
   ButtonVariant,
   Column,
   ComponentThemeGetter,
-  PaletteContext,
   Paragraph1,
   Paragraph2,
   Row,
   Screen,
   Size,
+  usePalette,
 } from '@reflex-ui/core';
 import {
   FavoriteIcon,
@@ -28,7 +28,7 @@ import {
   MoreVertIcon,
   SearchIcon,
 } from '@reflex-ui/icons-md';
-import React, { useContext } from 'react';
+import React from 'react';
 import { ScrollView, View } from 'react-native';
 
 const onButtonPress = () => {
@@ -48,7 +48,7 @@ const getPatchTheme: ComponentThemeGetter<AppBarProps, AppBarTheme> = ({
 });
 
 const DefaultAppBarScreen: React.SFC = (): JSX.Element => {
-  const palette = useContext(PaletteContext);
+  const { palette } = usePalette();
   const verticalMargin = 70;
 
   return (
