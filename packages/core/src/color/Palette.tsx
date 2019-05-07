@@ -76,15 +76,14 @@ export const PaletteProvider = ({ children, value }: PaletteProviderProps) => {
 };
 
 export const usePalette = (): PaletteContextValue => {
-  const context = useContext(PaletteContext);
-  if (context === undefined) {
+  const contextValue = useContext(PaletteContext);
+  if (contextValue === undefined) {
     throw new Error(
       'ReflexUI: usePalette must be used within a PaletteProvider.',
     );
   }
 
-  const { palette, setPalette } = context;
-  if (palette === undefined) {
+  if (contextValue.palette === undefined) {
     throw new Error(
       [
         'ReflexUI: You must provide a Palette object to PaletteProvider, like:',
@@ -93,8 +92,5 @@ export const usePalette = (): PaletteContextValue => {
     );
   }
 
-  return {
-    palette,
-    setPalette,
-  };
+  return contextValue;
 };
