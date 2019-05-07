@@ -5,17 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  createPalette as createPaletteCore,
-  Palette,
-  PaletteOptional,
-} from '@reflex-ui/core';
+import { Palette, PaletteOptional } from '@reflex-ui/core';
 import merge from 'lodash/merge';
 
 export const createPalette = (
   basePalette: Palette,
   palette: PaletteOptional,
-): Palette =>
-  createPaletteCore(
-    merge<{}, Palette, PaletteOptional>({}, basePalette, palette),
-  );
+): Palette => merge<{}, Palette, PaletteOptional>({}, basePalette, palette);

@@ -13,8 +13,6 @@ export * from './createColorGamut';
 export * from './createFlexColor';
 export * from './createLayeredColorUsingColorOnly';
 export * from './createLayeredColorUsingOnColorOnly';
-export * from './createPalette';
-export * from './defaultPalette';
 export * from './FlexColor';
 export * from './FlexColorFactoryInput';
 export * from './getColor';
