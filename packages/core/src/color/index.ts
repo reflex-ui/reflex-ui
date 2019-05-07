@@ -23,4 +23,3 @@ export * from './LayeredColorFactory';
 export * from './LayeredColorFactoryInput';
 export * from './Palette';
 export * from './PaletteColor';
-export * from './PaletteColorContext';

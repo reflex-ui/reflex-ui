@@ -5,10 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { useContext } from 'react';
-
 import { usePalette } from '../../color/Palette';
-import { PaletteColorContext } from '../../color/PaletteColorContext';
+import { usePaletteColor } from '../../color/PaletteColor';
 import { Size } from '../../sizing/Size';
 // tslint:disable-next-line:max-line-length
 import { useDefaultTouchableSurfaceProps } from '../touchable-surface/useDefaultTouchableSurfaceProps';
@@ -21,14 +19,15 @@ export const useDefaultButtonProps = (
   props: ButtonPropsOptional,
   theme: ButtonTheme,
 ): ButtonProps => {
-  const paletteColorFromCtx = useContext(PaletteColorContext);
   const { palette } = usePalette();
+  const paletteColorCtxValue = usePaletteColor();
+  let paletteColor = paletteColorCtxValue && paletteColorCtxValue.paletteColor;
 
   const variant: ButtonVariant = props.variant || ButtonVariant.Default;
 
-  const paletteColor =
+  paletteColor =
     props.paletteColor ||
-    paletteColorFromCtx ||
+    paletteColor ||
     getButtonVariantColor(variant, palette);
 
   const contained =
