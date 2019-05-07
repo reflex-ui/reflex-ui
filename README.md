@@ -5,8 +5,10 @@
 </h1>
 
 <p align="center">
-  Build cross-platform iOS, Android and Web apps<br>
-  sharing the same UI system and components.
+  Build cross-platform, themeable design systems<br>
+  on top of a highly flexible, style-agnostic UI Framework & Toolkit.
 </p>
 
+<br>
+<br>
 More information coming soon.
