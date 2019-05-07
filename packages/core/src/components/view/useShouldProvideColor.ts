@@ -5,13 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { useContext } from 'react';
-
-import { PaletteColor } from '../../color/PaletteColor';
-import { PaletteColorContext } from '../../color/PaletteColorContext';
+import { PaletteColor, usePaletteColor } from '../../color/PaletteColor';
 
 export const useShouldProvideColor = (paletteColor?: PaletteColor): boolean => {
-  const paletteColorFromCtx = useContext(PaletteColorContext);
+  const paletteColorCtxValue = usePaletteColor();
+  const paletteColorFromCtx =
+    paletteColorCtxValue && paletteColorCtxValue.paletteColor;
   return (
     paletteColor !== undefined &&
     paletteColor !== null &&

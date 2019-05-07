@@ -8,7 +8,7 @@
 import { useContext } from 'react';
 
 import { usePalette } from '../../color/Palette';
-import { PaletteColorContext } from '../../color/PaletteColorContext';
+import { usePaletteColor } from '../../color/PaletteColor';
 import { InteractionStateContext } from '../../interaction';
 import { DimensionsContext } from '../../responsiveness/DimensionsContext';
 import { RfxTextPropsBase } from './RfxTextProps';
@@ -20,13 +20,13 @@ export const useDefaultRfxTextProps = <
   props: Partial<Props>,
   theme: Theme,
 ): Props => {
-  const paletteColorOnCtx = useContext(PaletteColorContext);
   const dimensionsProps = useContext(DimensionsContext);
   const interactionStateFromCtx = useContext(InteractionStateContext);
   const { palette } = usePalette();
+  const paletteColorCtxValue = usePaletteColor();
+  let paletteColor = paletteColorCtxValue && paletteColorCtxValue.paletteColor;
 
-  const paletteColor =
-    props.paletteColor || paletteColorOnCtx || palette.surface;
+  paletteColor = props.paletteColor || paletteColor || palette.surface;
 
   const rfxTextProps: RfxTextPropsBase<Props, Theme> = {
     ...dimensionsProps,

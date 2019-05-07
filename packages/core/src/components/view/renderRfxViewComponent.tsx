@@ -8,7 +8,7 @@
 import React, { Ref } from 'react';
 import { View, ViewProps } from 'react-native';
 
-import { PaletteColorContext } from '../../color/PaletteColorContext';
+import { PaletteColorProvider } from '../../color/PaletteColor';
 import { extractViewProps } from '../../utils/props';
 import { ComponentChildrenProps } from '../ComponentChildrenProps';
 import { ComponentThemeProps } from '../ComponentThemeProps';
@@ -45,9 +45,9 @@ export const renderRfxViewComponent = <
 
   if (shouldProvideColor) {
     return (
-      <PaletteColorContext.Provider value={paletteColor}>
+      <PaletteColorProvider value={paletteColor}>
         {renderedView}
-      </PaletteColorContext.Provider>
+      </PaletteColorProvider>
     );
   }
 

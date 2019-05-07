@@ -8,7 +8,7 @@
 import { useContext } from 'react';
 
 import { usePalette } from '../../color/Palette';
-import { PaletteColorContext } from '../../color/PaletteColorContext';
+import { usePaletteColor } from '../../color/PaletteColor';
 import { InteractionStateContext } from '../../interaction';
 import { Size } from '../../sizing/Size';
 import { RfxSvgPropsBase } from './RfxSvgProps';
@@ -20,14 +20,14 @@ export const useDefaultRfxSvgProps = <
   props: Partial<Props>,
   theme: Theme,
 ): Props => {
-  const paletteColorFromCtx = useContext(PaletteColorContext);
   const interactionStateFromCtx = useContext(InteractionStateContext);
   const { palette } = usePalette();
+  const paletteColorCtxValue = usePaletteColor();
+  let paletteColor = paletteColorCtxValue && paletteColorCtxValue.paletteColor;
 
   const interactionState = props.interactionState || interactionStateFromCtx;
 
-  const paletteColor =
-    props.paletteColor || paletteColorFromCtx || palette.surface;
+  paletteColor = props.paletteColor || paletteColor || palette.surface;
 
   const rfxSvgProps: RfxSvgPropsBase<Props, Theme> = {
     ...props,
