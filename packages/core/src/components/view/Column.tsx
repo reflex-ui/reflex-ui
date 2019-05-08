@@ -5,13 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { forwardRef, Ref, useContext } from 'react';
+import { forwardRef, Ref } from 'react';
 import { View } from 'react-native';
 
 import { MissingComponentThemeError } from '../../errors';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
-import { ComponentsTheme } from '../ComponentsTheme';
-import { ComponentsThemeContext } from '../ComponentsThemeContext';
+import { useComponentsTheme } from '../ComponentsTheme';
 import { processComponent } from '../processComponent';
 import { processComponentProps } from '../processComponentProps';
 import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
@@ -21,21 +20,20 @@ import { RfxViewTheme } from './RfxViewTheme';
 import { useDefaultRfxViewProps } from './useDefaultRfxViewProps';
 import { useShouldProvideColor } from './useShouldProvideColor';
 
-const getTheme = (
-  props: RfxViewPropsOptional,
-  componentsTheme: ComponentsTheme,
-): RfxViewTheme => {
-  if (props.theme !== undefined && props.theme !== null) return props.theme;
+const useTheme = (theme?: RfxViewTheme): RfxViewTheme => {
+  const { componentsTheme } = useComponentsTheme();
+
+  if (theme !== undefined && theme !== null) return theme;
   if (componentsTheme.views === undefined || componentsTheme.views === null) {
     throw new MissingComponentThemeError('<Column>');
   }
+
   return componentsTheme.views.column;
 };
 
 let Column: React.ComponentType<RfxViewPropsOptional> = forwardRef(
   (props: RfxViewPropsOptional, ref: Ref<View>) => {
-    const componentsTheme = useContext(ComponentsThemeContext);
-    const theme = getTheme(props, componentsTheme);
+    const theme = useTheme(props.theme);
 
     let newProps: RfxViewProps = useDefaultRfxViewProps(props, theme);
     newProps = { ...newProps, ...useOnLayout(newProps) };

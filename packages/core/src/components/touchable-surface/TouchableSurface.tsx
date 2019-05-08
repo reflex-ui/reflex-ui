@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { forwardRef, Ref, useContext } from 'react';
+import React, { forwardRef, Ref } from 'react';
 import { View } from 'react-native';
 
 import { MissingComponentThemeError } from '../../errors';
@@ -13,8 +13,7 @@ import { InteractionStateProvider } from '../../interaction';
 import { useInteraction } from '../../interaction/useInteraction';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { filterOutInteractionProps } from '../../utils/props';
-import { ComponentsTheme } from '../ComponentsTheme';
-import { ComponentsThemeContext } from '../ComponentsThemeContext';
+import { useComponentsTheme } from '../ComponentsTheme';
 import { processComponent } from '../processComponent';
 import { processComponentProps } from '../processComponentProps';
 import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
@@ -49,25 +48,24 @@ export const extractSurfacePropsFromTouchableSurfaceProps = (
   return surfaceProps;
 };
 
-const getTheme = (
-  props: TouchableSurfacePropsOptional,
-  componentsTheme: ComponentsTheme,
-): TouchableSurfaceTheme => {
-  if (props.theme !== undefined && props.theme !== null) return props.theme;
+const useTheme = (theme?: TouchableSurfaceTheme): TouchableSurfaceTheme => {
+  const { componentsTheme } = useComponentsTheme();
+
+  if (theme !== undefined && theme !== null) return theme;
   if (
     componentsTheme.touchableSurface === undefined ||
     componentsTheme.touchableSurface === null
   ) {
     throw new MissingComponentThemeError('<TouchableSurface>');
   }
+
   return componentsTheme.touchableSurface;
 };
 
 let TouchableSurface: React.ComponentType<
   TouchableSurfacePropsOptional
 > = forwardRef((props: TouchableSurfacePropsOptional, ref: Ref<View>) => {
-  const componentsTheme = useContext(ComponentsThemeContext);
-  const theme = getTheme(props, componentsTheme);
+  const theme = useTheme(props.theme);
 
   let newProps: TouchableSurfaceProps = useDefaultSurfaceProps(props, theme);
   newProps = { ...newProps, ...useInteraction(newProps) };

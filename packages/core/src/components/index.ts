@@ -10,7 +10,6 @@ export * from './BuiltInSimpleComponentProps';
 export * from './button';
 export * from './ComponentChildrenProps';
 export * from './ComponentsTheme';
-export * from './ComponentsThemeContext';
 export * from './ComponentThemeGetter';
 export * from './ComponentThemeProps';
 export * from './getPropsFromTheme';

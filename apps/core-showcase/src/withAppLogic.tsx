@@ -7,7 +7,7 @@
 
 import {
   ComponentsTheme,
-  ComponentsThemeContext,
+  ComponentsThemeProvider,
   PaletteProvider,
   ResponsivenessProvider,
 } from '@reflex-ui/core';
@@ -29,9 +29,9 @@ const withAppLogic = <P extends {}>(
   const WithAppLogic: React.ComponentType<P> = (props: P): JSX.Element => (
     <ResponsivenessProvider breakpoints={defaultBreakpoints}>
       <PaletteProvider value={blue500Yellow600Palette}>
-        <ComponentsThemeContext.Provider value={mdComponentsTheme}>
+        <ComponentsThemeProvider value={mdComponentsTheme}>
           <WrappedComponent {...props} />
-        </ComponentsThemeContext.Provider>
+        </ComponentsThemeProvider>
       </PaletteProvider>
     </ResponsivenessProvider>
   );
