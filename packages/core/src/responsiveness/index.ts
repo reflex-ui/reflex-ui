@@ -6,11 +6,9 @@
  */
 
 export * from './Breakpoints';
-export * from './defaultBreakpoints';
-export * from './DimensionsContext';
-export * from './DimensionsHandler';
-export * from './DimensionsHandlerProps';
 export * from './DimensionsInfo';
 export * from './DimensionsProps';
 export * from './OnLayoutProps';
+export * from './Responsiveness';
+export * from './useDimensions';
 export * from './useOnLayout';

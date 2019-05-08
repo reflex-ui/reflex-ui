@@ -11,7 +11,6 @@ import {
   Button,
   ButtonVariant,
   Column,
-  DimensionsContext,
   List,
   ListItem,
   Paragraph2,
@@ -19,6 +18,7 @@ import {
   Size,
   SurfacePropsOptional,
   TouchableSurface,
+  useResponsiveness,
 } from '@reflex-ui/core';
 import {
   InboxIcon,
@@ -28,7 +28,7 @@ import {
   StarIcon,
   WatchLaterIcon,
 } from '@reflex-ui/icons-md';
-import React, { useContext } from 'react';
+import React from 'react';
 import { ScrollView } from 'react-native';
 
 import { getListMaxWidth } from './getListMaxWidth';
@@ -49,7 +49,7 @@ const onListItemIconPress = () => {
 };
 
 const MyList = (props: SurfacePropsOptional): JSX.Element => (
-  <List maxWidth={getListMaxWidth(useContext(DimensionsContext))} {...props}>
+  <List maxWidth={getListMaxWidth(useResponsiveness())} {...props}>
     <TouchableSurface activated contained={false} onPress={onListItemPress}>
       <ListItem size={Size.XXS}>
         <Column marginHorizontal={Size.S}>

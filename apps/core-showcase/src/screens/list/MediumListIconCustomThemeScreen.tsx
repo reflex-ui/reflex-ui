@@ -14,7 +14,6 @@ import {
   Column,
   ComponentsTheme,
   ComponentsThemeContext,
-  DimensionsContext,
   FontWeight,
   getFontWeight,
   InteractionType,
@@ -28,6 +27,7 @@ import {
   Size,
   SurfacePropsOptional,
   TouchableSurface,
+  useResponsiveness,
 } from '@reflex-ui/core';
 import {
   InboxIcon,
@@ -83,7 +83,7 @@ const MyList = (props: SurfacePropsOptional): JSX.Element => (
   <ComponentsThemeContext.Provider
     value={createCustomTheme(useContext(ComponentsThemeContext))}
   >
-    <List maxWidth={getListMaxWidth(useContext(DimensionsContext))} {...props}>
+    <List maxWidth={getListMaxWidth(useResponsiveness())} {...props}>
       <TouchableSurface activated contained={false} onPress={onListItemPress}>
         <ListItem size={Size.M}>
           <Column marginHorizontal={Size.S}>

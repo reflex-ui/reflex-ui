@@ -11,7 +11,6 @@ import {
   Button,
   ButtonVariant,
   Column,
-  DimensionsContext,
   FlexWrap,
   List,
   ListItem,
@@ -21,9 +20,10 @@ import {
   Size,
   SurfacePropsOptional,
   TouchableSurface,
+  useResponsiveness,
 } from '@reflex-ui/core';
 import { MenuIcon } from '@reflex-ui/icons-md';
-import React, { useContext } from 'react';
+import React from 'react';
 import { ScrollView } from 'react-native';
 
 import { getListMaxWidth } from './getListMaxWidth';
@@ -39,7 +39,7 @@ const onListItemPress = () => {
 };
 
 const MyList = (props: SurfacePropsOptional): JSX.Element => (
-  <List maxWidth={getListMaxWidth(useContext(DimensionsContext))} {...props}>
+  <List maxWidth={getListMaxWidth(useResponsiveness())} {...props}>
     <TouchableSurface
       contained={false}
       flexWrap={FlexWrap.Nowrap}
