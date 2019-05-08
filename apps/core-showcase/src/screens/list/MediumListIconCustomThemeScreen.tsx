@@ -13,7 +13,7 @@ import {
   Caption,
   Column,
   ComponentsTheme,
-  ComponentsThemeContext,
+  ComponentsThemeProvider,
   FontWeight,
   getFontWeight,
   InteractionType,
@@ -27,6 +27,7 @@ import {
   Size,
   SurfacePropsOptional,
   TouchableSurface,
+  useComponentsTheme,
   useResponsiveness,
 } from '@reflex-ui/core';
 import {
@@ -37,7 +38,7 @@ import {
   StarIcon,
   WatchLaterIcon,
 } from '@reflex-ui/icons-md';
-import React, { useContext } from 'react';
+import React from 'react';
 import { ScrollView } from 'react-native';
 
 import { getListMaxWidth } from './getListMaxWidth';
@@ -80,8 +81,8 @@ const createParagraph1Theme = (baseTheme: RfxTextTheme): RfxTextTheme => ({
 });
 
 const MyList = (props: SurfacePropsOptional): JSX.Element => (
-  <ComponentsThemeContext.Provider
-    value={createCustomTheme(useContext(ComponentsThemeContext))}
+  <ComponentsThemeProvider
+    value={createCustomTheme(useComponentsTheme().componentsTheme)}
   >
     <List maxWidth={getListMaxWidth(useResponsiveness())} {...props}>
       <TouchableSurface activated contained={false} onPress={onListItemPress}>
@@ -127,7 +128,7 @@ const MyList = (props: SurfacePropsOptional): JSX.Element => (
         </ListItem>
       </TouchableSurface>
     </List>
-  </ComponentsThemeContext.Provider>
+  </ComponentsThemeProvider>
 );
 
 const MediumListIconCustomThemeScreen: React.SFC = (): JSX.Element => (

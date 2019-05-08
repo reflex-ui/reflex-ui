@@ -5,24 +5,22 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { forwardRef, Ref, useContext } from 'react';
+import { forwardRef, Ref } from 'react';
 import { Text } from 'react-native';
 
 import { MissingComponentThemeError } from '../../errors';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
-import { ComponentsTheme } from '../ComponentsTheme';
-import { ComponentsThemeContext } from '../ComponentsThemeContext';
+import { useComponentsTheme } from '../ComponentsTheme';
 import { processComponent } from '../processComponent';
 import { renderRfxTextComponent } from './renderRfxTextComponent';
 import { RfxTextProps, RfxTextPropsOptional } from './RfxTextProps';
 import { RfxTextTheme } from './RfxTextTheme';
 import { useDefaultRfxTextProps } from './useDefaultRfxTextProps';
 
-const getTheme = (
-  props: RfxTextPropsOptional,
-  componentsTheme: ComponentsTheme,
-): RfxTextTheme => {
-  if (props.theme !== undefined && props.theme !== null) return props.theme;
+const useTheme = (theme?: RfxTextTheme): RfxTextTheme => {
+  const { componentsTheme } = useComponentsTheme();
+
+  if (theme !== undefined && theme !== null) return theme;
   if (componentsTheme.text === undefined || componentsTheme.text === null) {
     throw new MissingComponentThemeError('<Subtitle2>');
   }
@@ -31,9 +29,7 @@ const getTheme = (
 
 let Subtitle2: React.ComponentType<RfxTextPropsOptional> = forwardRef(
   (props: RfxTextPropsOptional, ref: Ref<Text>) => {
-    const componentsTheme = useContext(ComponentsThemeContext);
-    const theme = getTheme(props, componentsTheme);
-
+    const theme = useTheme(props.theme);
     const newProps: RfxTextProps = {
       ...useDefaultRfxTextProps(props, theme),
       ...useOnLayout(props),

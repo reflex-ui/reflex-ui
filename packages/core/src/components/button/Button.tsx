@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { forwardRef, Ref, useContext } from 'react';
+import React, { forwardRef, Ref } from 'react';
 import { View, ViewProps } from 'react-native';
 
 import { MissingComponentThemeError } from '../../errors';
@@ -14,8 +14,7 @@ import { useInteraction } from '../../interaction/useInteraction';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { cloneElement } from '../../utils/cloneElement';
 import { filterOutInteractionProps } from '../../utils/props';
-import { ComponentsTheme } from '../ComponentsTheme';
-import { ComponentsThemeContext } from '../ComponentsThemeContext';
+import { useComponentsTheme } from '../ComponentsTheme';
 import { getPropsFromTheme } from '../getPropsFromTheme';
 import { getStyleFromTheme } from '../getStyleFromTheme';
 import { mergeThemes } from '../mergeThemes';
@@ -182,22 +181,23 @@ export const extractSurfacePropsFromButtonProps = (
   return surfaceProps;
 };
 
-const getTheme = (
-  props: ButtonPropsOptional,
-  componentsTheme: ComponentsTheme,
+const useTheme = (
+  theme?: ButtonTheme,
+  variant?: ButtonVariant,
 ): ButtonTheme => {
-  if (props.theme !== undefined && props.theme !== null) return props.theme;
+  const { componentsTheme } = useComponentsTheme();
+
+  if (theme !== undefined && theme !== null) return theme;
   if (componentsTheme.button === undefined || componentsTheme.button === null) {
     throw new MissingComponentThemeError('<Button>');
   }
-  const variant: ButtonVariant = props.variant || ButtonVariant.Default;
-  return componentsTheme.button[variant];
+
+  return componentsTheme.button[variant || ButtonVariant.Default];
 };
 
 let Button: React.ComponentType<ButtonPropsOptional> = forwardRef(
   (props: ButtonPropsOptional, ref: Ref<View>) => {
-    const componentsTheme = useContext(ComponentsThemeContext);
-    const theme = getTheme(props, componentsTheme);
+    const theme = useTheme(props.theme, props.variant);
 
     let newProps: ButtonProps = useDefaultButtonProps(props, theme);
     newProps = { ...newProps, ...useInteraction(newProps) };

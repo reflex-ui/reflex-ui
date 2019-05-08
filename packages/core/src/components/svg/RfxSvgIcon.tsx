@@ -5,12 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { useContext } from 'react';
+import React from 'react';
 
 import { MissingComponentThemeError } from '../../errors';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
-import { ComponentsTheme } from '../ComponentsTheme';
-import { ComponentsThemeContext } from '../ComponentsThemeContext';
+import { useComponentsTheme } from '../ComponentsTheme';
 import { processComponent } from '../processComponent';
 import { processComponentProps } from '../processComponentProps';
 import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
@@ -20,22 +19,21 @@ import { RfxSvgProps, RfxSvgPropsOptional } from './RfxSvgProps';
 import { RfxSvgTheme } from './RfxSvgTheme';
 import { useDefaultRfxSvgProps } from './useDefaultRfxSvgProps';
 
-const getTheme = (
-  props: RfxSvgPropsOptional,
-  componentsTheme: ComponentsTheme,
-): RfxSvgTheme => {
-  if (props.theme !== undefined && props.theme !== null) return props.theme;
+const useTheme = (theme?: RfxSvgTheme): RfxSvgTheme => {
+  const { componentsTheme } = useComponentsTheme();
+
+  if (theme !== undefined && theme !== null) return theme;
   if (componentsTheme.svg === undefined || componentsTheme.svg === null) {
     throw new MissingComponentThemeError('<RfxSvgIcon>');
   }
+
   return componentsTheme.svg.svgIcon;
 };
 
 let RfxSvgIcon: React.ComponentType<RfxSvgPropsOptional> = (
   props: RfxSvgPropsOptional,
 ) => {
-  const componentsTheme = useContext(ComponentsThemeContext);
-  const theme = getTheme(props, componentsTheme);
+  const theme = useTheme(props.theme);
 
   let newProps: RfxSvgProps = useDefaultRfxSvgProps(props, theme);
   newProps = { ...newProps, ...useOnLayout(newProps) };
