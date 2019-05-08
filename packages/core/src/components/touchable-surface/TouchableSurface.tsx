@@ -9,7 +9,7 @@ import React, { forwardRef, Ref, useContext } from 'react';
 import { View } from 'react-native';
 
 import { MissingComponentThemeError } from '../../errors';
-import { InteractionStateContext } from '../../interaction';
+import { InteractionStateProvider } from '../../interaction';
 import { useInteraction } from '../../interaction/useInteraction';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { filterOutInteractionProps } from '../../utils/props';
@@ -87,9 +87,9 @@ let TouchableSurface: React.ComponentType<
   newProps = { ...newProps, children: surface };
 
   return (
-    <InteractionStateContext.Provider value={newProps.interactionState}>
+    <InteractionStateProvider value={newProps.interactionState}>
       {renderTouchableComponent(newProps, Touchable)}
-    </InteractionStateContext.Provider>
+    </InteractionStateProvider>
   );
 });
 

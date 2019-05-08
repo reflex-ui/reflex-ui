@@ -5,11 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { useContext } from 'react';
-
 import { usePalette } from '../../color/Palette';
 import { usePaletteColor } from '../../color/PaletteColor';
-import { InteractionStateContext } from '../../interaction';
+import { useInteractionState } from '../../interaction/InteractionState';
 import { Size } from '../../sizing/Size';
 import { RfxSvgPropsBase } from './RfxSvgProps';
 
@@ -20,12 +18,13 @@ export const useDefaultRfxSvgProps = <
   props: Partial<Props>,
   theme: Theme,
 ): Props => {
-  const interactionStateFromCtx = useContext(InteractionStateContext);
+  const interactionStateCtxValue = useInteractionState();
+  const interactionState =
+    props.interactionState ||
+    (interactionStateCtxValue && interactionStateCtxValue.interactionState);
   const { palette } = usePalette();
   const paletteColorCtxValue = usePaletteColor();
   let paletteColor = paletteColorCtxValue && paletteColorCtxValue.paletteColor;
-
-  const interactionState = props.interactionState || interactionStateFromCtx;
 
   paletteColor = props.paletteColor || paletteColor || palette.surface;
 

@@ -8,7 +8,6 @@
 export * from './InteractionEvent';
 export * from './InteractionProps';
 export * from './InteractionState';
-export * from './InteractionStateContext';
 export * from './InteractionStateProps';
 export * from './InteractionType';
 export * from './suppressPressedState';
