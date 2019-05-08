@@ -5,11 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { useContext } from 'react';
-
 import { usePalette } from '../../color/Palette';
 import { usePaletteColor } from '../../color/PaletteColor';
-import { InteractionStateContext } from '../../interaction';
+import { useInteractionState } from '../../interaction/InteractionState';
 import { useResponsiveness } from '../../responsiveness/Responsiveness';
 import { RfxTextPropsBase } from './RfxTextProps';
 
@@ -21,7 +19,9 @@ export const useDefaultRfxTextProps = <
   theme: Theme,
 ): Props => {
   const { breakpoints, dimensions } = useResponsiveness();
-  const interactionStateFromCtx = useContext(InteractionStateContext);
+  const interactionStateCtxValue = useInteractionState();
+  const interactionState =
+    interactionStateCtxValue && interactionStateCtxValue.interactionState;
   const { palette } = usePalette();
   const paletteColorCtxValue = usePaletteColor();
   let paletteColor = paletteColorCtxValue && paletteColorCtxValue.paletteColor;
@@ -31,7 +31,7 @@ export const useDefaultRfxTextProps = <
   const rfxTextProps: RfxTextPropsBase<Props, Theme> = {
     breakpoints,
     dimensions,
-    interactionState: interactionStateFromCtx,
+    interactionState,
     paletteColor,
     theme,
     ...props,

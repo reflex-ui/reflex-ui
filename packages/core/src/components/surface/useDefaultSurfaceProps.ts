@@ -5,10 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { useContext } from 'react';
+import { useState } from 'react';
 
-// tslint:disable-next-line:max-line-length
-import { InteractionStateContext } from '../../interaction/InteractionStateContext';
+import { useInteractionState } from '../../interaction/InteractionState';
 import { InteractionType } from '../../interaction/InteractionType';
 import { useDefaultRfxViewProps } from '../view/useDefaultRfxViewProps';
 import { SurfacePropsBase } from './SurfaceProps';
@@ -20,12 +19,12 @@ export const useDefaultSurfaceProps = <
   props: Partial<Props>,
   theme: Theme,
 ): Props => {
-  const interactionStateFromContext = useContext(InteractionStateContext);
-
-  const interactionState = props.interactionState ||
-    interactionStateFromContext || {
-      type: InteractionType.Enabled,
-    };
+  const [defaultInteractionState] = useState({ type: InteractionType.Enabled });
+  const interactionStateCtxValue = useInteractionState();
+  const interactionState =
+    props.interactionState ||
+    (interactionStateCtxValue && interactionStateCtxValue.interactionState) ||
+    defaultInteractionState;
 
   const activated =
     props.activated === true ||

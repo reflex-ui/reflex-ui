@@ -5,10 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 
-// tslint:disable-next-line:max-line-length
-import { InteractionStateContext } from '../../interaction/InteractionStateContext';
+import { useInteractionState } from '../../interaction/InteractionState';
 import { InteractionType } from '../../interaction/InteractionType';
 import { useDefaultSurfaceProps } from '../surface/useDefaultSurfaceProps';
 import { TouchableSurfacePropsBase } from './TouchableSurfaceProps';
@@ -21,17 +20,16 @@ export const useDefaultTouchableSurfaceProps = <
   theme: Theme,
 ): Props => {
   const [defaultInteractionState] = useState({ type: InteractionType.Enabled });
-  const interactionStateFromContext = useContext(InteractionStateContext);
+  const interactionStateCtxValue = useInteractionState();
+  let interactionState =
+    interactionStateCtxValue && interactionStateCtxValue.interactionState;
 
-  let interactionState;
   if (props.interactionState) {
     interactionState = props.interactionState;
   } else if (
-    interactionStateFromContext &&
-    interactionStateFromContext.type === InteractionType.Disabled
+    interactionState === undefined ||
+    interactionState.type !== InteractionType.Disabled
   ) {
-    interactionState = interactionStateFromContext;
-  } else {
     interactionState = defaultInteractionState;
   }
 

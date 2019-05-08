@@ -9,7 +9,7 @@ import React, { forwardRef, Ref, useContext } from 'react';
 import { View, ViewProps } from 'react-native';
 
 import { MissingComponentThemeError } from '../../errors';
-import { InteractionStateContext } from '../../interaction';
+import { InteractionStateProvider } from '../../interaction';
 import { useInteraction } from '../../interaction/useInteraction';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { cloneElement } from '../../utils/cloneElement';
@@ -219,9 +219,9 @@ let Button: React.ComponentType<ButtonPropsOptional> = forwardRef(
     newProps = { ...newProps, children: surface };
 
     return (
-      <InteractionStateContext.Provider value={newProps.interactionState}>
+      <InteractionStateProvider value={newProps.interactionState}>
         {renderTouchableComponent(newProps, Touchable)}
-      </InteractionStateContext.Provider>
+      </InteractionStateProvider>
     );
   },
 );
