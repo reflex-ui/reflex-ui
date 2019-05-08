@@ -5,11 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { useContext } from 'react';
-
 import { usePalette } from '../../color/Palette';
 import { usePaletteColor } from '../../color/PaletteColor';
-import { DimensionsContext } from '../../responsiveness/DimensionsContext';
+import { useResponsiveness } from '../../responsiveness/Responsiveness';
 import { RfxViewPropsBase } from './RfxViewProps';
 
 export const useDefaultRfxViewProps = <
@@ -19,7 +17,7 @@ export const useDefaultRfxViewProps = <
   props: Partial<Props>,
   theme: Theme,
 ): Props => {
-  const dimensionsProps = useContext(DimensionsContext);
+  const { breakpoints, dimensions } = useResponsiveness();
   const { palette } = usePalette();
   const paletteColorCtxValue = usePaletteColor();
   let paletteColor = paletteColorCtxValue && paletteColorCtxValue.paletteColor;
@@ -28,8 +26,8 @@ export const useDefaultRfxViewProps = <
 
   const rfxProps: RfxViewPropsBase<Props, Theme> = {
     ...props,
-    breakpoints: dimensionsProps.breakpoints,
-    dimensions: dimensionsProps.dimensions,
+    breakpoints,
+    dimensions,
     paletteColor,
     theme,
   };

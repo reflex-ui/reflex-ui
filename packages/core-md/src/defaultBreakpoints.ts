@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { Breakpoints } from './Breakpoints';
+import { Breakpoints } from '@reflex-ui/core';
 
 export const defaultBreakpoints: Breakpoints = {
   desktop: 1920,
