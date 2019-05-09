@@ -19,6 +19,7 @@ import {
   InteractionType,
   List,
   ListItem,
+  PaletteColor,
   Paragraph1,
   Paragraph2,
   RfxTextTheme,
@@ -28,6 +29,7 @@ import {
   SurfacePropsOptional,
   TouchableSurface,
   useComponentsTheme,
+  usePalette,
   useResponsiveness,
 } from '@reflex-ui/core';
 import {
@@ -75,16 +77,37 @@ const createParagraph1Theme = (baseTheme: RfxTextTheme): RfxTextTheme => ({
     fontWeight:
       props.interactionState &&
       props.interactionState.type === InteractionType.Activated
-        ? getFontWeight(FontWeight.Medium)
+        ? getFontWeight(FontWeight.Bold)
         : getFontWeight(FontWeight.Regular),
   }),
 });
+
+const useCustomPaletteColor = (): PaletteColor => {
+  const palette = usePalette().palette;
+  return {
+    color: {
+      ...palette.surface.color,
+      activated: {
+        ...palette.surface.color.activated,
+        uncontained: {
+          color: palette.primary.color.activated.uncontainedInverted.color,
+          onColor: palette.primary.color.enabled.uncontainedInverted.onColor,
+        },
+      },
+    },
+    name: 'My custom color',
+  };
+};
 
 const MyList = (props: SurfacePropsOptional): JSX.Element => (
   <ComponentsThemeProvider
     value={createCustomTheme(useComponentsTheme().componentsTheme)}
   >
-    <List maxWidth={getListMaxWidth(useResponsiveness())} {...props}>
+    <List
+      maxWidth={getListMaxWidth(useResponsiveness())}
+      {...props}
+      paletteColor={useCustomPaletteColor()}
+    >
       <TouchableSurface activated contained={false} onPress={onListItemPress}>
         <ListItem size={Size.M}>
           <Column marginHorizontal={Size.S}>
