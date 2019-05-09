@@ -14,3 +14,4 @@ export * from './surface';
 export * from './test';
 export * from './text';
 export * from './touchable-surface';
+export * from './view';
