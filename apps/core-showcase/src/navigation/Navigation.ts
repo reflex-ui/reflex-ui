@@ -40,6 +40,7 @@ import { SvgShowcaseScreen } from '../screens/svg';
 import { TestShowcaseScreen } from '../screens/test';
 import { RfxTextScreen } from '../screens/text';
 import { TouchableSurfaceScreen } from '../screens/touchable-surface';
+import { ViewScreen } from '../screens/view';
 import { withAppLogic } from '../withAppLogic';
 
 const appNavigationPrefix = 'reflexui.showcase.navigation';
@@ -103,6 +104,10 @@ const TestNavigation = {
 
 const TouchableSurfaceNavigation = {
   default: `${appNavigationPrefix}touchableSurface.TouchableSurfaceScreen`,
+};
+
+const ViewNavigation = {
+  default: `${appNavigationPrefix}view.ViewScreen`,
 };
 
 const registerScreens = () => {
@@ -198,9 +203,13 @@ const registerScreens = () => {
   Navigation.registerComponent(TouchableSurfaceNavigation.default, () =>
     withAppLogic(TouchableSurfaceScreen),
   );
-  /* REFLEX TEXT */
+  /* TEXT */
   Navigation.registerComponent(RfxTextNavigation.default, () =>
     withAppLogic(RfxTextScreen),
+  );
+  /* VIEW */
+  Navigation.registerComponent(ViewNavigation.default, () =>
+    withAppLogic(ViewScreen),
   );
 };
 
@@ -211,7 +220,7 @@ export const AppNavigation = () => {
     Navigation.setRoot({
       root: {
         component: {
-          name: ListNavigation.xxlargeIconThreeLines,
+          name: ViewNavigation.default,
         },
       },
     });
