@@ -12,6 +12,7 @@ export * from './RfxViewProps';
 export * from './RfxViewTheme';
 export * from './RfxViewVariantsTheme';
 export * from './Row';
+export * from './SpaceBetween';
 export * from './useDefaultRfxViewProps';
 export * from './useShouldProvideColor';
 export * from './ViewPropsGetter';

@@ -67,10 +67,29 @@ export const rowTheme: RfxViewTheme = {
 };
 
 /*
+ * SPACE BETWEEN
+ */
+
+export const getSpaceBetweenContainerStyle: ViewStyleGetter<
+  RfxViewProps
+> = props => ({
+  ...getCommonRfxViewContainerStyle(props),
+  alignItems: 'center',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  justifyContent: 'space-between',
+});
+
+export const spaceBetweenTheme: RfxViewTheme = {
+  getStyle: getSpaceBetweenContainerStyle,
+};
+
+/*
  * RfxViewVariantsTheme
  */
 
 export const rfxViewTheme: RfxViewVariantsTheme = {
   column: columnTheme,
   row: rowTheme,
+  spaceBetween: spaceBetweenTheme,
 };

@@ -10,4 +10,5 @@ import { RfxViewTheme } from './RfxViewTheme';
 export interface RfxViewVariantsTheme {
   readonly column: RfxViewTheme;
   readonly row: RfxViewTheme;
+  readonly spaceBetween: RfxViewTheme;
 }
