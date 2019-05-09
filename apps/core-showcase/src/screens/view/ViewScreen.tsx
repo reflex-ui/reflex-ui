@@ -27,14 +27,7 @@ const onButtonPress = () => {
   console.log('ViewScreen().onButtonPress()');
 };
 
-const Box = () => (
-  <Surface
-    height={50}
-    margin={Size.XS}
-    paletteColor={usePalette().palette.primary}
-    width={50}
-  />
-);
+const Box = () => <Surface height={50} margin={Size.XS} width={50} />;
 
 const ViewScreen: React.SFC<{}> = (): JSX.Element => (
   <Screen>
@@ -45,7 +38,11 @@ const ViewScreen: React.SFC<{}> = (): JSX.Element => (
       <AppBarTitle numberOfLines={1}>View</AppBarTitle>
     </AppBar>
     <ScrollView>
-      <Column margin={Size.S} marginTop={Size.XXL}>
+      <Column
+        margin={Size.S}
+        marginTop={Size.XXL}
+        paletteColor={usePalette().palette.primary}
+      >
         <Row>
           <Box />
           <Box />
