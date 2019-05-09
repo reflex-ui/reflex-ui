@@ -40,7 +40,7 @@ import {
   StarIcon,
   WatchLaterIcon,
 } from '@reflex-ui/icons-md';
-import React from 'react';
+import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
 
 import { getListMaxWidth } from './getListMaxWidth';
@@ -48,16 +48,6 @@ import { getListMaxWidth } from './getListMaxWidth';
 const onButtonPress = () => {
   // tslint:disable-next-line:no-console
   console.log('ListSizeXXSIconScreen().onButtonPress()');
-};
-
-const onListItemPress = () => {
-  // tslint:disable-next-line:no-console
-  console.log('ListSizeXXSIconScreen().onListItemPress()');
-};
-
-const onListItemIconPress = () => {
-  // tslint:disable-next-line:no-console
-  console.log('ListSizeXXSIconScreen().onListItemIconPress()');
 };
 
 const createCustomTheme = (componentsTheme: ComponentsTheme) => ({
@@ -99,60 +89,92 @@ const useCustomPaletteColor = (): PaletteColor => {
   };
 };
 
-const MyList = (props: SurfacePropsOptional): JSX.Element => (
-  <ComponentsThemeProvider
-    value={createCustomTheme(useComponentsTheme().componentsTheme)}
-  >
-    <List
-      maxWidth={getListMaxWidth(useResponsiveness())}
-      {...props}
-      paletteColor={useCustomPaletteColor()}
+const MyList = (props: SurfacePropsOptional): JSX.Element => {
+  const [activatedId, setActivatedId] = useState('inbox');
+
+  const onListItemPress = (id: string) => {
+    // tslint:disable-next-line:no-console
+    console.log('ListSizeXXSIconScreen().onListItemPress()');
+    setActivatedId(id);
+  };
+
+  const onListItemIconPress = () => {
+    // tslint:disable-next-line:no-console
+    console.log('ListSizeXXSIconScreen().onListItemIconPress()');
+  };
+
+  return (
+    <ComponentsThemeProvider
+      value={createCustomTheme(useComponentsTheme().componentsTheme)}
     >
-      <TouchableSurface activated contained={false} onPress={onListItemPress}>
-        <ListItem size={Size.M}>
-          <Column marginHorizontal={Size.S}>
-            <InboxIcon />
-          </Column>
-          <Paragraph1 marginHorizontal={Size.S}>Inbox</Paragraph1>
-        </ListItem>
-      </TouchableSurface>
-      <TouchableSurface contained={false} onPress={onListItemPress}>
-        <ListItem size={Size.M}>
-          <Column marginHorizontal={Size.S}>
-            <StarIcon />
-          </Column>
-          <Paragraph1 marginHorizontal={Size.S}>Starred</Paragraph1>
-        </ListItem>
-      </TouchableSurface>
-      <TouchableSurface contained={false} disabled onPress={onListItemPress}>
-        <ListItem size={Size.M}>
-          <Column marginHorizontal={Size.S}>
-            <WatchLaterIcon />
-          </Column>
-          <Paragraph1 marginHorizontal={Size.S}>Snoozed</Paragraph1>
-          <Column flexGrow={1} />
-          <Button onPress={onListItemIconPress} variant={ButtonVariant.Icon}>
-            <MoreVertIcon />
-          </Button>
-          <Caption marginHorizontal={Size.XS}>Jan 26, 2019</Caption>
-        </ListItem>
-      </TouchableSurface>
-      <TouchableSurface contained={false} onPress={onListItemPress}>
-        <ListItem size={Size.M}>
-          <Column marginHorizontal={Size.S}>
-            <LabelIcon />
-          </Column>
-          <Paragraph1 marginHorizontal={Size.S}>Important</Paragraph1>
-          <Column flexGrow={1} />
-          <Button onPress={onListItemIconPress} variant={ButtonVariant.Icon}>
-            <MoreVertIcon />
-          </Button>
-          <Caption marginHorizontal={Size.XS}>Jan 26, 2019</Caption>
-        </ListItem>
-      </TouchableSurface>
-    </List>
-  </ComponentsThemeProvider>
-);
+      <List
+        maxWidth={getListMaxWidth(useResponsiveness())}
+        {...props}
+        paletteColor={useCustomPaletteColor()}
+      >
+        <TouchableSurface
+          activated={activatedId === 'inbox'}
+          contained={false}
+          onPress={() => onListItemPress('inbox')}
+        >
+          <ListItem size={Size.M}>
+            <Column marginHorizontal={Size.S}>
+              <InboxIcon />
+            </Column>
+            <Paragraph1 marginHorizontal={Size.S}>Inbox</Paragraph1>
+          </ListItem>
+        </TouchableSurface>
+        <TouchableSurface
+          activated={activatedId === 'starred'}
+          contained={false}
+          onPress={() => onListItemPress('starred')}
+        >
+          <ListItem size={Size.M}>
+            <Column marginHorizontal={Size.S}>
+              <StarIcon />
+            </Column>
+            <Paragraph1 marginHorizontal={Size.S}>Starred</Paragraph1>
+          </ListItem>
+        </TouchableSurface>
+        <TouchableSurface
+          activated={activatedId === 'snoozed'}
+          contained={false}
+          disabled
+          onPress={() => onListItemPress('snoozed')}
+        >
+          <ListItem size={Size.M}>
+            <Column marginHorizontal={Size.S}>
+              <WatchLaterIcon />
+            </Column>
+            <Paragraph1 marginHorizontal={Size.S}>Snoozed</Paragraph1>
+            <Column flexGrow={1} />
+            <Button onPress={onListItemIconPress} variant={ButtonVariant.Icon}>
+              <MoreVertIcon />
+            </Button>
+            <Caption marginHorizontal={Size.XS}>Jan 26, 2019</Caption>
+          </ListItem>
+        </TouchableSurface>
+        <TouchableSurface
+          activated={activatedId === 'important'}
+          contained={false}
+          onPress={() => onListItemPress('important')}
+        >
+          <ListItem size={Size.M}>
+            <Column marginHorizontal={Size.S}>
+              <LabelIcon />
+            </Column>
+            <Paragraph1 marginHorizontal={Size.S}>Important</Paragraph1>
+            <Column flexGrow={1} />
+            <Button onPress={onListItemIconPress} variant={ButtonVariant.Icon}>
+              <MoreVertIcon />
+            </Button>
+            <Caption marginHorizontal={Size.XS}>Jan 26, 2019</Caption>
+          </ListItem>
+        </TouchableSurface>
+      </List>
+    </ComponentsThemeProvider>
+  );
+};
 
 const MediumListIconCustomThemeScreen: React.SFC = (): JSX.Element => (
   <Screen>
