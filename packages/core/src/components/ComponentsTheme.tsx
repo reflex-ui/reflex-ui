@@ -12,7 +12,7 @@ import { ButtonVariantsTheme } from './button';
 import { SurfaceTheme } from './surface';
 import { RfxSvgVariantsTheme } from './svg';
 import { RfxTextVariantsTheme } from './text';
-import { TouchableSurfaceTheme } from './touchable-surface';
+import { TouchableSurfaceVariantsTheme } from './touchable-surface';
 import { RfxViewTheme, RfxViewVariantsTheme } from './view';
 
 export interface ComponentsTheme {
@@ -24,7 +24,7 @@ export interface ComponentsTheme {
   readonly surface?: SurfaceTheme;
   readonly svg?: RfxSvgVariantsTheme;
   readonly text?: RfxTextVariantsTheme;
-  readonly touchableSurface?: TouchableSurfaceTheme;
+  readonly touchableSurface?: TouchableSurfaceVariantsTheme;
   readonly views?: RfxViewVariantsTheme;
 }
 

@@ -19,7 +19,6 @@ import { processComponentProps } from '../processComponentProps';
 import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
 import { Surface } from '../surface/Surface';
 import { SurfacePropsOptional } from '../surface/SurfaceProps';
-import { useDefaultSurfaceProps } from '../surface/useDefaultSurfaceProps';
 // tslint:disable-next-line:max-line-length
 import { renderTouchableComponent } from '../touchable/renderTouchableComponent';
 import {
@@ -27,6 +26,9 @@ import {
   TouchableSurfacePropsOptional,
 } from './TouchableSurfaceProps';
 import { TouchableSurfaceTheme } from './TouchableSurfaceTheme';
+import { TouchableSurfaceVariant } from './TouchableSurfaceVariant';
+// tslint:disable-next-line:max-line-length
+import { useDefaultTouchableSurfaceProps } from './useDefaultTouchableSurfaceProps';
 
 export const extractSurfacePropsFromTouchableSurfaceProps = (
   props: TouchableSurfaceProps,
@@ -48,7 +50,10 @@ export const extractSurfacePropsFromTouchableSurfaceProps = (
   return surfaceProps;
 };
 
-const useTheme = (theme?: TouchableSurfaceTheme): TouchableSurfaceTheme => {
+const useTheme = (
+  theme?: TouchableSurfaceTheme,
+  variant?: TouchableSurfaceVariant,
+): TouchableSurfaceTheme => {
   const { componentsTheme } = useComponentsTheme();
 
   if (theme !== undefined && theme !== null) return theme;
@@ -59,15 +64,21 @@ const useTheme = (theme?: TouchableSurfaceTheme): TouchableSurfaceTheme => {
     throw new MissingComponentThemeError('<TouchableSurface>');
   }
 
-  return componentsTheme.touchableSurface;
+  return componentsTheme.touchableSurface[
+    variant || TouchableSurfaceVariant.Default
+  ];
 };
 
 let TouchableSurface: React.ComponentType<
   TouchableSurfacePropsOptional
 > = forwardRef((props: TouchableSurfacePropsOptional, ref: Ref<View>) => {
-  const theme = useTheme(props.theme);
+  const variant = props.variant || TouchableSurfaceVariant.Default;
+  const theme = useTheme(props.theme, variant);
 
-  let newProps: TouchableSurfaceProps = useDefaultSurfaceProps(props, theme);
+  let newProps: TouchableSurfaceProps = {
+    ...useDefaultTouchableSurfaceProps(props, theme),
+    variant: props.variant || TouchableSurfaceVariant.Default,
+  };
   newProps = { ...newProps, ...useInteraction(newProps) };
   newProps = { ...newProps, ...useOnLayout(newProps) };
   newProps = processComponentProps(newProps);
@@ -76,13 +87,44 @@ let TouchableSurface: React.ComponentType<
   const Touchable =
     newProps.theme.touchable && newProps.theme.touchable.component;
 
+  /*
   const surfaceProps = extractSurfacePropsFromTouchableSurfaceProps(newProps);
+  */
+  const {
+    children,
+    ...surfaceProps
+  } = extractSurfacePropsFromTouchableSurfaceProps(newProps);
+  /*
+  if (
+    props.variant === undefined ||
+    props.variant === null ||
+    props.variant === TouchableSurfaceVariant.Default
+  ) {
+    surfaceProps = {
+      ...surfaceProps,
+      children,
+    };
+  }
+  */
   const surface = (
-    <Surface {...surfaceProps} ref={ref}>
-      {newProps.children}
-    </Surface>
+    <Surface
+      {...surfaceProps}
+      {...variant === TouchableSurfaceVariant.Default && { children }}
+      ref={ref}
+    />
   );
-  newProps = { ...newProps, children: surface };
+
+  if (variant === TouchableSurfaceVariant.Default) {
+    newProps = { ...newProps, children: surface };
+  } else {
+    const Container = (
+      <View>
+        {children}
+        {surface}
+      </View>
+    );
+    newProps = { ...newProps, children: Container };
+  }
 
   return (
     <InteractionStateProvider value={newProps.interactionState}>

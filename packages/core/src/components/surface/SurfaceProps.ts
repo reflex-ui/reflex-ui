@@ -15,7 +15,20 @@ export interface SurfacePropsBase<Props, Theme>
     ElevationProps,
     InteractionStateProps {
   readonly activated?: boolean;
-  readonly disabled?: boolean;
+  /*
+   * We cannot use 'readonly' here because it causes
+   * a TypeScript error, since other react-native interfaces
+   * (e.g. TouchableWithoutFeedbackProps) also declares disabled,
+   * but without 'readonly', so if we want to extend such an interface
+   * AND this one we get an error if this one has 'readonly'.
+   * Example error:
+   * [ts] Interface 'SomeComponentProps' cannot simultaneously
+   * extend types 'InteractionProps' and 'SurfacePropsBase'.
+   * Named property 'disabled' of types 'InteractionProps' and
+   * 'SurfacePropsBase' are not identical. [2320]
+   */
+  disabled?: boolean;
+  /**/
 }
 
 export type SurfacePropsBaseOptional<Props, Theme> = Partial<
