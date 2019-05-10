@@ -8,6 +8,7 @@
 import { InteractionProps } from '../../interaction';
 import { SurfacePropsBase } from '../surface/SurfaceProps';
 import { TouchableSurfaceTheme } from './TouchableSurfaceTheme';
+import { TouchableSurfaceVariant } from './TouchableSurfaceVariant';
 
 export type TouchableSurfacePropsBase<Props, Theme> = InteractionProps &
   SurfacePropsBase<Props, Theme>;
@@ -20,6 +21,8 @@ export interface TouchableSurfaceProps
   extends TouchableSurfacePropsBase<
     TouchableSurfaceProps,
     TouchableSurfaceTheme
-  > {}
+  > {
+  readonly variant: TouchableSurfaceVariant;
+}
 
 export type TouchableSurfacePropsOptional = Partial<TouchableSurfaceProps>;

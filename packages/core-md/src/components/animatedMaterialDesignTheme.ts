@@ -16,7 +16,7 @@ import { surfaceTheme } from './surface/theme';
 import { rfxSvgVariantsTheme } from './svg/theme';
 import { rfxTextVariantsTheme } from './text/theme';
 // tslint:disable-next-line:max-line-length
-import { animatedTouchableSurfaceTheme } from './touchable-surface/animatedTheme';
+import { animatedTouchableSurfaceVariantsTheme } from './touchable-surface/animatedTheme';
 import { rfxViewTheme } from './view/theme';
 
 export const animatedMaterialDesignTheme: ComponentsTheme = {
@@ -28,6 +28,6 @@ export const animatedMaterialDesignTheme: ComponentsTheme = {
   surface: surfaceTheme,
   svg: rfxSvgVariantsTheme,
   text: rfxTextVariantsTheme,
-  touchableSurface: animatedTouchableSurfaceTheme,
+  touchableSurface: animatedTouchableSurfaceVariantsTheme,
   views: rfxViewTheme,
 };

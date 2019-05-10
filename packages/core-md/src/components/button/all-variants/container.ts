@@ -14,20 +14,20 @@ import {
 import { getElevationStyles } from '@reflex-ui/elevation-md';
 
 import {
-  getTouchableSurfaceSurfaceProps,
-  getTouchableSurfaceSurfaceStyle,
+  getCommonTouchableSurfaceSurfaceProps,
+  getCommonTouchableSurfaceSurfaceStyle,
 } from '../../touchable-surface/theme';
 
 export const getAllVariantsButtonContainerProps: ViewPropsGetter<
   SurfaceProps
 > = props => ({
-  ...getTouchableSurfaceSurfaceProps(props),
+  ...getCommonTouchableSurfaceSurfaceProps(props),
 });
 
 export const getAllVariantsButtonContainerStyle: ViewStyleGetter<
   SurfaceProps
 > = props => ({
-  ...getTouchableSurfaceSurfaceStyle(props),
+  ...getCommonTouchableSurfaceSurfaceStyle(props),
   alignItems: 'center',
   borderRadius: props.size === Size.XL || props.size === Size.XXL ? 6 : 4,
   flexDirection: 'row',

@@ -11,6 +11,7 @@ import {
   SurfaceProps,
   SurfaceTheme,
   TouchableSurfaceTheme,
+  TouchableSurfaceVariantsTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import {
@@ -20,34 +21,75 @@ import {
 import merge from 'lodash/merge';
 
 import {
-  getTouchableSurfaceSurfaceProps,
-  getTouchableSurfaceSurfaceStyle,
-  touchableSurfaceTheme,
+  defaultTouchableSurfaceTheme,
+  getCommonTouchableSurfaceSurfaceProps,
+  getCommonTouchableSurfaceSurfaceStyle,
+  getOverlayTouchableSurfaceSurfaceStyle,
+  overlayTouchableSurfaceTheme,
 } from './theme';
 
 const AnimatedRippleView = createAnimatedRippleView<SurfaceProps, SurfaceTheme>(
   getSurfaceRippleColor,
 );
 
-export const getAnimatedTouchableSurfaceSurfaceStyle: ViewStyleGetter<
+export const getAnimatedCommonTouchableSurfaceSurfaceStyle: ViewStyleGetter<
   SurfaceProps
 > = props => ({
-  ...getTouchableSurfaceSurfaceStyle(props),
+  ...getCommonTouchableSurfaceSurfaceStyle(props),
   backgroundColor: getColor(suppressPressedState(props)),
 });
 
-export const partialAnimatedTouchableSurfaceTheme: Partial<
+export const getAnimatedOverlayTouchableSurfaceSurfaceStyle: ViewStyleGetter<
+  SurfaceProps
+> = props => ({
+  ...getOverlayTouchableSurfaceSurfaceStyle(props),
+  backgroundColor: getColor(suppressPressedState(props)),
+});
+
+export const partialAnimatedDefaultTouchableSurfaceTheme: Partial<
   TouchableSurfaceTheme
 > = {
   surface: () => ({
     component: AnimatedRippleView,
-    getProps: getTouchableSurfaceSurfaceProps,
-    getStyle: getAnimatedTouchableSurfaceSurfaceStyle,
+    getProps: getCommonTouchableSurfaceSurfaceProps,
+    getStyle: getAnimatedCommonTouchableSurfaceSurfaceStyle,
   }),
 };
 
-export const animatedTouchableSurfaceTheme: TouchableSurfaceTheme = merge<
+export const partialAnimatedOverlayTouchableSurfaceTheme: Partial<
+  TouchableSurfaceTheme
+> = {
+  surface: () => ({
+    component: AnimatedRippleView,
+    getProps: getCommonTouchableSurfaceSurfaceProps,
+    getStyle: getAnimatedOverlayTouchableSurfaceSurfaceStyle,
+  }),
+};
+
+// tslint:disable-next-line:max-line-length
+export const animatedDefaultTouchableSurfaceTheme: TouchableSurfaceTheme = merge<
   {},
   TouchableSurfaceTheme,
   Partial<TouchableSurfaceTheme>
->({}, touchableSurfaceTheme, partialAnimatedTouchableSurfaceTheme);
+>(
+  {},
+  defaultTouchableSurfaceTheme,
+  partialAnimatedDefaultTouchableSurfaceTheme,
+);
+
+// tslint:disable-next-line:max-line-length
+export const animatedOverlayTouchableSurfaceTheme: TouchableSurfaceTheme = merge<
+  {},
+  TouchableSurfaceTheme,
+  Partial<TouchableSurfaceTheme>
+>(
+  {},
+  overlayTouchableSurfaceTheme,
+  partialAnimatedOverlayTouchableSurfaceTheme,
+);
+
+// tslint:disable-next-line:max-line-length
+export const animatedTouchableSurfaceVariantsTheme: TouchableSurfaceVariantsTheme = {
+  default: animatedDefaultTouchableSurfaceTheme,
+  overlay: animatedOverlayTouchableSurfaceTheme,
+};
