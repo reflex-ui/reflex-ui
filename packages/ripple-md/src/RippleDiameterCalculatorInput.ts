@@ -8,7 +8,7 @@
 export interface RippleDiameterCalculatorInput {
   readonly height: number;
   readonly maxDiameter?: number;
-  readonly offset?: number;
   readonly posX: number;
+  readonly posY: number;
   readonly width: number;
 }
