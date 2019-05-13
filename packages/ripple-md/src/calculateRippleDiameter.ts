@@ -10,16 +10,19 @@ import { RippleDiameterCalculatorInput } from './RippleDiameterCalculatorInput';
 export const calculateRippleDiameter = ({
   height,
   maxDiameter = 2000,
-  offset = 1.2,
   posX,
+  posY,
   width,
 }: RippleDiameterCalculatorInput): number => {
-  let diameter = Math.ceil(Math.sqrt(width * width + height * height));
-
-  const dist = Math.round(Math.sqrt(Math.pow(posX - diameter / 2, 2)));
-  const distRate = (dist * 1) / (diameter / 2) + offset;
-
-  diameter *= distRate;
+  const pointerOffsetX = Math.abs(posX - width / 2);
+  const pointerOffsetY = Math.abs(posY - height / 2);
+  const widthWithOffset = width + pointerOffsetX * 2;
+  const heightWithOffset = height + pointerOffsetY * 2;
+  const diameter = Math.ceil(
+    Math.sqrt(
+      widthWithOffset * widthWithOffset + heightWithOffset * heightWithOffset,
+    ),
+  );
 
   return Math.min(diameter, maxDiameter);
 };

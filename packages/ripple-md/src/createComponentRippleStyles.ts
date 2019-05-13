@@ -26,6 +26,7 @@ export const createComponentRippleStyles = ({
     height,
     maxDiameter,
     posX: interactionPosition.x,
+    posY: interactionPosition.y,
     width,
   });
 
