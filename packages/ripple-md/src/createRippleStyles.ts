@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 
 import { RippleStyles } from './RippleStyles';
 import { RippleStylesFactoryInput } from './RippleStylesFactoryInput';
@@ -19,8 +19,17 @@ export const createRippleStyles = ({
   container: {
     borderRadius: style.borderRadius,
     overflow: 'hidden',
-    zIndex: 0,
     ...StyleSheet.absoluteFillObject,
+    ...Platform.select({
+      web: {
+        /*
+         * This is necessary on web otherwise ripple animation
+         * render over children.
+         */
+        zIndex: -1,
+        /**/
+      },
+    }),
   },
   ripple: {
     backgroundColor: color,
