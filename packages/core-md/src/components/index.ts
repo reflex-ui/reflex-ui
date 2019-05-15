@@ -7,6 +7,7 @@
 
 export * from './animatedMaterialDesignTheme';
 export * from './app-bar';
+export * from './avatar';
 export * from './button';
 export * from './createAnimatedComponentsTheme';
 export * from './createComponentsTheme';

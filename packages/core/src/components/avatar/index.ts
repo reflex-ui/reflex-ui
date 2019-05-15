@@ -5,4 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './TestShowcaseScreen';
+export * from './Avatar';
+export * from './AvatarProps';
+export * from './AvatarTheme';
+export * from './useDefaultAvatarProps';

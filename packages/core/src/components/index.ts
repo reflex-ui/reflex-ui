@@ -6,6 +6,7 @@
  */
 
 export * from './app-bar';
+export * from './avatar';
 export * from './BuiltInSimpleComponentProps';
 export * from './button';
 export * from './ComponentChildrenProps';

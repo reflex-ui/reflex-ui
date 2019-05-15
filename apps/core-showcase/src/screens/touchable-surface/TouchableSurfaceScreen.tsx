@@ -18,7 +18,7 @@ import {
   JustifyContent,
   Paragraph1,
   Paragraph2,
-  RfxViewProps,
+  RfxViewPropsOptional,
   Row,
   Screen,
   Size,
@@ -76,7 +76,7 @@ const getPatchTheme: ComponentThemeGetter<
   };
 };
 
-const TouchableImage = (props: RfxViewProps) => {
+const TouchableImage = (props: RfxViewPropsOptional) => {
   const { palette } = usePalette();
   const { breakpoints, dimensions } = useResponsiveness();
   const isLargeHandset = dimensions.window.width >= breakpoints.largeHandset;

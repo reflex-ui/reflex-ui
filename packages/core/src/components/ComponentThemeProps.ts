@@ -11,3 +11,8 @@ export interface ComponentThemeProps<ComponentProps, ComponentTheme> {
   readonly getPatchTheme?: Function1<ComponentProps, ComponentTheme>;
   readonly theme: ComponentTheme;
 }
+
+export type ComponentThemePropsOptional<
+  ComponentProps,
+  ComponentTheme
+> = Partial<ComponentThemeProps<ComponentProps, ComponentTheme>>;

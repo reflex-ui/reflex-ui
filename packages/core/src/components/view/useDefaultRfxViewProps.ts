@@ -21,7 +21,6 @@ export const useDefaultRfxViewProps = <
   const { palette } = usePalette();
   const paletteColorCtxValue = usePaletteColor();
   let paletteColor = paletteColorCtxValue && paletteColorCtxValue.paletteColor;
-
   paletteColor = props.paletteColor || paletteColor || palette.surface;
 
   const rfxProps: RfxViewPropsBase<Props, Theme> = {

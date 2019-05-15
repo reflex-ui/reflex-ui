@@ -21,6 +21,8 @@ export * from './Paragraph1';
 export * from './Paragraph2';
 export * from './renderRfxTextComponent';
 export * from './renderTextComponent';
+export * from './RfxSizedTextProps';
+export * from './RfxSizedTextTheme';
 export * from './RfxTextProps';
 export * from './RfxTextTheme';
 export * from './RfxTextVariantsTheme';

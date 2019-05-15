@@ -6,16 +6,20 @@
  */
 
 import React, { Ref } from 'react';
-import { Text } from 'react-native';
+import { Text, TextProps, TextStyle } from 'react-native';
 
 import { extractTextProps } from '../../utils/props';
 import { processComponentProps } from '../processComponentProps';
 import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
+import { BuiltInSimpleComponentTheme } from '../SimpleComponentTheme';
 import { renderTextComponent } from './renderTextComponent';
-import { RfxTextProps } from './RfxTextProps';
+import { RfxTextPropsBase } from './RfxTextProps';
 
-export const renderRfxTextComponent = (
-  props: RfxTextProps,
+export const renderRfxTextComponent = <
+  Props extends RfxTextPropsBase<Props, Theme>,
+  Theme extends BuiltInSimpleComponentTheme<Props, TextProps, TextStyle>
+>(
+  props: Props,
   ref: Ref<Text>,
 ): React.ReactElement | null => {
   let newProps = processComponentProps(props);
