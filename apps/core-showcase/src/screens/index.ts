@@ -6,6 +6,7 @@
  */
 
 export * from './app-bar';
+export * from './avatar';
 export * from './button';
 export * from './icon';
 export * from './list';

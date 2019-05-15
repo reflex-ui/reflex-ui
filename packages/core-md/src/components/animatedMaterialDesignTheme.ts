@@ -8,6 +8,7 @@
 import { ComponentsTheme } from '@reflex-ui/core';
 
 import { appBarVariantsTheme } from './app-bar/theme';
+import { avatarTheme } from './avatar/theme';
 import { animatedButtonTheme } from './button/animatedTheme';
 import { listItemTheme } from './list-item/theme';
 import { listTheme } from './list/theme';
@@ -21,6 +22,7 @@ import { rfxViewTheme } from './view/theme';
 
 export const animatedMaterialDesignTheme: ComponentsTheme = {
   appBar: appBarVariantsTheme,
+  avatar: avatarTheme,
   button: animatedButtonTheme,
   list: listTheme,
   listItem: listItemTheme,

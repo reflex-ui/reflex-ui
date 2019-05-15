@@ -8,6 +8,7 @@
 import { Navigation } from 'react-native-navigation';
 
 import { DefaultAppBarScreen } from '../screens/app-bar';
+import { AvatarScreen } from '../screens/avatar';
 import {
   ContainedButtonShowcaseScreen,
   ContainedShapedButtonShowcaseScreen,
@@ -37,7 +38,6 @@ import {
 } from '../screens/list';
 import { SurfaceScreen } from '../screens/surface';
 import { SvgShowcaseScreen } from '../screens/svg';
-import { TestShowcaseScreen } from '../screens/test';
 import { RfxTextScreen } from '../screens/text';
 import { TouchableSurfaceScreen } from '../screens/touchable-surface';
 import { ViewScreen } from '../screens/view';
@@ -50,6 +50,10 @@ const createNavScreenId = (screenId: string) =>
 
 const AppBarNavigation = {
   default: `${appNavigationPrefix}appBar.DefaultAppBarScreen`,
+};
+
+const AvatarNavigation = {
+  default: `${appNavigationPrefix}avatar.AvatarScreen`,
 };
 
 const ButtonNavigation = {
@@ -98,10 +102,6 @@ const RfxTextNavigation = {
   default: `${appNavigationPrefix}text.RfxTextScreen`,
 };
 
-const TestNavigation = {
-  default: `${appNavigationPrefix}test.TestShowcaseScreen`,
-};
-
 const TouchableSurfaceNavigation = {
   default: `${appNavigationPrefix}touchableSurface.TouchableSurfaceScreen`,
 };
@@ -114,6 +114,10 @@ const registerScreens = () => {
   /* APP BAR */
   Navigation.registerComponent(AppBarNavigation.default, () =>
     withAppLogic(DefaultAppBarScreen),
+  );
+  /* AVATAR */
+  Navigation.registerComponent(AvatarNavigation.default, () =>
+    withAppLogic(AvatarScreen),
   );
   /* BUTTON */
   Navigation.registerComponent(ButtonNavigation.contained, () =>
@@ -195,10 +199,6 @@ const registerScreens = () => {
   Navigation.registerComponent(SvgNavigation.default, () =>
     withAppLogic(SvgShowcaseScreen),
   );
-  /* TEST */
-  Navigation.registerComponent(TestNavigation.default, () =>
-    withAppLogic(TestShowcaseScreen),
-  );
   /* TOUCHABLE SURFACE */
   Navigation.registerComponent(TouchableSurfaceNavigation.default, () =>
     withAppLogic(TouchableSurfaceScreen),
@@ -220,7 +220,7 @@ export const AppNavigation = () => {
     Navigation.setRoot({
       root: {
         component: {
-          name: ViewNavigation.default,
+          name: AvatarNavigation.default,
         },
       },
     });

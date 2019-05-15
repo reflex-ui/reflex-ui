@@ -6,23 +6,28 @@
  */
 
 import {
+  BuiltInSimpleComponentTheme,
   FontWeight,
   getFontWeight,
   getOnColor,
   getSizedMarginStyle,
   getSizedPaddingStyle,
   isWeb,
-  RfxTextProps,
+  RfxTextPropsBase,
   RfxTextVariantsTheme,
-  TextStyleGetter,
 } from '@reflex-ui/core';
-import { Platform, TextStyle } from 'react-native';
+import { Platform, TextProps, TextStyle } from 'react-native';
 
 import { getFlexboxStyle } from '../../flexbox/getFlexboxStyle';
 import { sizedSpacing } from '../../spacing/sizedSpacing';
 import { getFontFamily } from './getFontFamily';
 
-export const getCommonRfxTextStyle: TextStyleGetter<RfxTextProps> = props => ({
+export const getCommonRfxTextStyle = <
+  Props extends RfxTextPropsBase<Props, Theme>,
+  Theme extends BuiltInSimpleComponentTheme<Props, TextProps, TextStyle>
+>(
+  props: Props,
+): TextStyle => ({
   ...getFlexboxStyle(props),
   ...getSizedMarginStyle(sizedSpacing)(props),
   ...getSizedPaddingStyle(sizedSpacing)(props),

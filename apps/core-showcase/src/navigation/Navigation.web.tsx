@@ -10,6 +10,7 @@ import * as React from 'react';
 import { Redirect, Route, Router, Switch } from 'react-router-dom';
 
 import { DefaultAppBarScreen } from '../screens/app-bar';
+import { AvatarScreen } from '../screens/avatar';
 import {
   ContainedButtonShowcaseScreen,
   ContainedShapedButtonShowcaseScreen,
@@ -39,7 +40,6 @@ import {
 } from '../screens/list';
 import { SurfaceScreen } from '../screens/surface';
 import { SvgShowcaseScreen } from '../screens/svg';
-import { TestShowcaseScreen } from '../screens/test';
 import { RfxTextScreen } from '../screens/text';
 import { TouchableSurfaceScreen } from '../screens/touchable-surface';
 import { ViewScreen } from '../screens/view';
@@ -50,6 +50,7 @@ const AppNavigation: React.SFC = () => (
   <Router history={navigator}>
     <Switch>
       <Route exact path="/app-bar" component={DefaultAppBarScreen} />
+      <Route exact path="/avatar" component={AvatarScreen} />
       <Route
         exact
         path="/button/contained"
@@ -88,7 +89,7 @@ const AppNavigation: React.SFC = () => (
       <Route exact path="/list/xxsmall-list" component={XXSmallListScreen} />
       <Route
         exact
-        path="/list/xxsmall-icon"
+        path="/list/xxsmall-list-icon"
         component={XXSmallListIconScreen}
       />
       <Route exact path="/list/xsmall-list" component={XSmallListScreen} />
@@ -135,7 +136,6 @@ const AppNavigation: React.SFC = () => (
       />
       <Route exact path="/surface" component={SurfaceScreen} />
       <Route exact path="/svg" component={SvgShowcaseScreen} />
-      <Route exact path="/test" component={TestShowcaseScreen} />
       <Route exact path="/text" component={RfxTextScreen} />
       <Route
         exact
