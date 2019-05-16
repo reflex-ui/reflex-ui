@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { FlexboxProps, ViewStyleGetter } from '@reflex-ui/core';
+import { FlexboxProps } from '@reflex-ui/core';
 
-export const getFlexboxStyle: ViewStyleGetter<FlexboxProps> = ({
+export const getFlexboxStyle = ({
   alignContent,
   alignItems,
   alignSelf,
@@ -18,7 +18,7 @@ export const getFlexboxStyle: ViewStyleGetter<FlexboxProps> = ({
   flexShrink,
   flexWrap,
   justifyContent,
-}) => ({
+}: FlexboxProps): FlexboxProps => ({
   ...(alignContent ? { alignContent } : {}),
   ...(alignItems ? { alignItems } : {}),
   ...(alignSelf ? { alignSelf } : {}),

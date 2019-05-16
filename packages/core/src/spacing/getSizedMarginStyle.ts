@@ -17,13 +17,12 @@ export const getSizedMarginStyle = (sizedData: SizedData<number | string>) => ({
   marginStart: mS,
   marginTop: mT,
   marginVertical: mV,
-}: MarginProps) => ({
-  // prettier-ignore
+}: MarginProps): MarginProps => ({
   ...(m !== undefined && m !== null
     ? {
-      marginHorizontal: getSizedDataValue(sizedData, m),
-      marginVertical: getSizedDataValue(sizedData, m),
-    }
+        marginHorizontal: getSizedDataValue(sizedData, m),
+        marginVertical: getSizedDataValue(sizedData, m),
+      }
     : {}),
   ...(mH !== undefined && mH !== null
     ? { marginHorizontal: getSizedDataValue(sizedData, mH) }
