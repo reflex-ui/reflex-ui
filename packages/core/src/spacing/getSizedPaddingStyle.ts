@@ -19,13 +19,12 @@ export const getSizedPaddingStyle = (
   paddingStart: pS,
   paddingTop: pT,
   paddingVertical: pV,
-}: PaddingProps) => ({
-  // prettier-ignore
+}: PaddingProps): PaddingProps => ({
   ...(p !== undefined && p !== null
     ? {
-      paddingHorizontal: getSizedDataValue(sizedData, p),
-      paddingVertical: getSizedDataValue(sizedData, p),
-    }
+        paddingHorizontal: getSizedDataValue(sizedData, p),
+        paddingVertical: getSizedDataValue(sizedData, p),
+      }
     : {}),
   ...(pH !== undefined && pH !== null
     ? { paddingHorizontal: getSizedDataValue(sizedData, pH) }

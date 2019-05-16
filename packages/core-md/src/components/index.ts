@@ -11,6 +11,7 @@ export * from './avatar';
 export * from './button';
 export * from './createAnimatedComponentsTheme';
 export * from './createComponentsTheme';
+export * from './image';
 export * from './list';
 export * from './list-item';
 export * from './materialDesignTheme';

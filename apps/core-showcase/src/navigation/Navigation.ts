@@ -21,6 +21,7 @@ import {
   XFabButtonShowcaseScreen,
 } from '../screens/button';
 import { IconShowcaseScreen } from '../screens/icon';
+import { RfxImageScreen } from '../screens/image';
 import {
   LargeListIconTwoLinesScreen,
   LargeListTwoLinesScreen,
@@ -70,6 +71,10 @@ const ButtonNavigation = {
 
 const IconNavigation = {
   default: `${appNavigationPrefix}icon.IconScreen`,
+};
+
+const ImageNavigation = {
+  default: `${appNavigationPrefix}image.RfxImageScreen`,
 };
 
 const ListNavigation = {
@@ -150,6 +155,10 @@ const registerScreens = () => {
   /* ICON */
   Navigation.registerComponent(IconNavigation.default, () =>
     withAppLogic(IconShowcaseScreen),
+  );
+  /* IMAGE */
+  Navigation.registerComponent(ImageNavigation.default, () =>
+    withAppLogic(RfxImageScreen),
   );
   /* LIST */
   Navigation.registerComponent(ListNavigation.welcome, () =>

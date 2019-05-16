@@ -23,6 +23,7 @@ import {
   XFabButtonShowcaseScreen,
 } from '../screens/button';
 import { IconShowcaseScreen } from '../screens/icon';
+import { RfxImageScreen } from '../screens/image';
 import {
   LargeListIconTwoLinesScreen,
   LargeListTwoLinesScreen,
@@ -85,6 +86,7 @@ const AppNavigation: React.SFC = () => (
       />
       <Route exact path="/button/xfab" component={XFabButtonShowcaseScreen} />
       <Route exact path="/icon" component={IconShowcaseScreen} />
+      <Route exact path="/image" component={RfxImageScreen} />
       <Route exact path="/list" component={ListShowcaseScreen} />
       <Route exact path="/list/xxsmall-list" component={XXSmallListScreen} />
       <Route
