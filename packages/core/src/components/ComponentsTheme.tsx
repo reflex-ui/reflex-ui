@@ -10,7 +10,7 @@ import React, { createContext, useContext, useMemo, useState } from 'react';
 import { AppBarVariantsTheme } from './app-bar';
 import { AvatarTheme } from './avatar';
 import { ButtonVariantsTheme } from './button';
-import { RfxImageTheme } from './image';
+import { RfxImageTheme, RfxSizedImageTheme } from './image';
 import { SurfaceTheme } from './surface';
 import { RfxSvgVariantsTheme } from './svg';
 import { RfxTextVariantsTheme } from './text';
@@ -20,6 +20,7 @@ import { RfxViewTheme, RfxViewVariantsTheme } from './view';
 export interface ComponentsTheme {
   readonly appBar?: AppBarVariantsTheme;
   readonly avatar?: AvatarTheme;
+  readonly avatarImage?: RfxSizedImageTheme;
   readonly button?: ButtonVariantsTheme;
   readonly image?: RfxImageTheme;
   readonly list?: SurfaceTheme;

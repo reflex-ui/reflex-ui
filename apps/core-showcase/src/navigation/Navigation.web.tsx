@@ -11,6 +11,7 @@ import { Redirect, Route, Router, Switch } from 'react-router-dom';
 
 import { DefaultAppBarScreen } from '../screens/app-bar';
 import { AvatarScreen } from '../screens/avatar';
+import { AvatarImageScreen } from '../screens/avatar-image';
 import {
   ContainedButtonShowcaseScreen,
   ContainedShapedButtonShowcaseScreen,
@@ -52,6 +53,7 @@ const AppNavigation: React.SFC = () => (
     <Switch>
       <Route exact path="/app-bar" component={DefaultAppBarScreen} />
       <Route exact path="/avatar" component={AvatarScreen} />
+      <Route exact path="/avatar-image" component={AvatarImageScreen} />
       <Route
         exact
         path="/button/contained"
