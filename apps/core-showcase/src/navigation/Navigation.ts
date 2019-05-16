@@ -9,6 +9,7 @@ import { Navigation } from 'react-native-navigation';
 
 import { DefaultAppBarScreen } from '../screens/app-bar';
 import { AvatarScreen } from '../screens/avatar';
+import { AvatarImageScreen } from '../screens/avatar-image';
 import {
   ContainedButtonShowcaseScreen,
   ContainedShapedButtonShowcaseScreen,
@@ -55,6 +56,10 @@ const AppBarNavigation = {
 
 const AvatarNavigation = {
   default: `${appNavigationPrefix}avatar.AvatarScreen`,
+};
+
+const AvatarImageNavigation = {
+  default: `${appNavigationPrefix}avatarImage.AvatarImageScreen`,
 };
 
 const ButtonNavigation = {
@@ -123,6 +128,10 @@ const registerScreens = () => {
   /* AVATAR */
   Navigation.registerComponent(AvatarNavigation.default, () =>
     withAppLogic(AvatarScreen),
+  );
+  /* AVATAR IMAGE */
+  Navigation.registerComponent(AvatarImageNavigation.default, () =>
+    withAppLogic(AvatarImageScreen),
   );
   /* BUTTON */
   Navigation.registerComponent(ButtonNavigation.contained, () =>
@@ -229,7 +238,7 @@ export const AppNavigation = () => {
     Navigation.setRoot({
       root: {
         component: {
-          name: AvatarNavigation.default,
+          name: AvatarImageNavigation.default,
         },
       },
     });
