@@ -8,5 +8,4 @@
 export * from './color';
 export * from './components';
 export * from './defaultBreakpoints';
-export * from './flexbox';
 export * from './spacing';

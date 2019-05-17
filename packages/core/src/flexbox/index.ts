@@ -8,6 +8,7 @@
 export * from './AlignContent';
 export * from './AlignItems';
 export * from './AlignSelf';
+export * from './extractFlexboxStyle';
 export * from './FlexboxProps';
 export * from './FlexDirection';
 export * from './FlexWrap';

@@ -7,6 +7,7 @@
 
 import {
   BuiltInSimpleComponentTheme,
+  extractFlexboxStyle,
   FontWeight,
   getFontWeight,
   getOnColor,
@@ -18,7 +19,6 @@ import {
 } from '@reflex-ui/core';
 import { Platform, TextProps, TextStyle } from 'react-native';
 
-import { getFlexboxStyle } from '../../flexbox/getFlexboxStyle';
 import { sizedSpacing } from '../../spacing/sizedSpacing';
 import { getFontFamily } from './getFontFamily';
 
@@ -28,7 +28,7 @@ export const getCommonRfxTextStyle = <
 >(
   props: Props,
 ): TextStyle => ({
-  ...getFlexboxStyle(props),
+  ...extractFlexboxStyle(props),
   ...getSizedMarginStyle(sizedSpacing)(props),
   ...getSizedPaddingStyle(sizedSpacing)(props),
   color: getOnColor(props),

@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { FlexboxProps } from '@reflex-ui/core';
+import { FlexboxProps } from './FlexboxProps';
 
-export const getFlexboxStyle = ({
+export const extractFlexboxStyle = ({
   alignContent,
   alignItems,
   alignSelf,
