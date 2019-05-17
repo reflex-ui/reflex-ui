@@ -43,6 +43,7 @@ import {
 import { SurfaceScreen } from '../screens/surface';
 import { SvgShowcaseScreen } from '../screens/svg';
 import { RfxTextScreen } from '../screens/text';
+import { TouchableScreen } from '../screens/touchable';
 import { TouchableSurfaceScreen } from '../screens/touchable-surface';
 import { ViewScreen } from '../screens/view';
 
@@ -141,6 +142,7 @@ const AppNavigation: React.SFC = () => (
       <Route exact path="/surface" component={SurfaceScreen} />
       <Route exact path="/svg" component={SvgShowcaseScreen} />
       <Route exact path="/text" component={RfxTextScreen} />
+      <Route exact path="/touchable" component={TouchableScreen} />
       <Route
         exact
         path="/touchable-surface"

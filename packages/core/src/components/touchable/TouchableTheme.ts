@@ -5,20 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { TouchableWithoutFeedbackProps, ViewStyle } from 'react-native';
-import {
-  BuiltInSimpleComponentTheme,
-  SimpleComponentTheme,
-} from '../SimpleComponentTheme';
+import { TouchableProps } from './TouchableProps';
+// tslint:disable-next-line:max-line-length
+import { BuiltInTouchableWithoutFeedbackTheme } from './TouchableWithoutFeedbackTheme';
 
-export type TouchableChildTheme<ComponentProps> = SimpleComponentTheme<
-  ComponentProps,
-  TouchableWithoutFeedbackProps,
-  ViewStyle
->;
-
-export type BuiltInTouchableTheme<ComponentProps> = BuiltInSimpleComponentTheme<
-  ComponentProps,
-  TouchableWithoutFeedbackProps,
-  ViewStyle
+export type TouchableTheme = BuiltInTouchableWithoutFeedbackTheme<
+  TouchableProps
 >;

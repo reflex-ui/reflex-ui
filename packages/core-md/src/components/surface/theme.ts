@@ -7,13 +7,22 @@
 
 import {
   getColor,
+  InteractionType,
   SurfaceProps,
   SurfaceTheme,
+  ViewPropsGetter,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import { getElevationStyles } from '@reflex-ui/elevation-md';
+import { Platform } from 'react-native';
 
 import { getCommonRfxViewContainerStyle } from '../view/theme';
+
+export const getSurfaceContainerProps: ViewPropsGetter<
+  SurfaceProps
+> = props => ({
+  ...(props.isTouchableHandler && { pointerEvents: 'box-only' }),
+});
 
 export const getSurfaceContainerStyle: ViewStyleGetter<
   SurfaceProps
@@ -21,6 +30,16 @@ export const getSurfaceContainerStyle: ViewStyleGetter<
   backgroundColor: getColor(props),
   borderRadius: 4,
   flexWrap: 'wrap',
+  ...(props.isTouchableHandler &&
+    Platform.select({
+      web: {
+        cursor:
+          props.interactionState.type === InteractionType.Disabled
+            ? 'default'
+            : 'pointer',
+        outlineStyle: 'none',
+      },
+    })),
   ...getCommonRfxViewContainerStyle(props),
   ...(props.elevation !== 0 &&
     props.elevation !== undefined &&
@@ -29,5 +48,6 @@ export const getSurfaceContainerStyle: ViewStyleGetter<
 });
 
 export const surfaceTheme: SurfaceTheme = {
+  getProps: getSurfaceContainerProps,
   getStyle: getSurfaceContainerStyle,
 };

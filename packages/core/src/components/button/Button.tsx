@@ -43,7 +43,10 @@ export const handleButtonChildren = (props: ButtonProps): React.ReactNode => {
     typeof children === 'number' ||
     typeof children === 'boolean'
   ) {
-    const Component = props.theme.text && props.theme.text.component;
+    const Component =
+      props.theme.text &&
+      props.theme.text.getComponent &&
+      props.theme.text.getComponent(props);
     const textProps = {
       ...getPropsFromTheme(props, props.theme.text),
       children: children.toString(),
@@ -70,7 +73,10 @@ export const handleButtonChildren = (props: ButtonProps): React.ReactNode => {
       style: getStyleFromTheme(props, theme.iconContainer),
     };
 
-    const Component = theme.iconContainer && theme.iconContainer.component;
+    const Component =
+      theme.iconContainer &&
+      theme.iconContainer.getComponent &&
+      theme.iconContainer.getComponent(props);
     return renderViewComponent({ props, viewProps, Component });
   }
 
@@ -130,7 +136,9 @@ export const handleLeadingIcon = (
   };
 
   const Component =
-    theme.leadingIconContainer && theme.leadingIconContainer.component;
+    theme.leadingIconContainer &&
+    theme.leadingIconContainer.getComponent &&
+    theme.leadingIconContainer.getComponent(props);
   return renderViewComponent({ props, viewProps, Component });
 };
 
@@ -152,7 +160,9 @@ export const handleTrailingIcon = (
   };
 
   const Component =
-    theme.trailingIconContainer && theme.trailingIconContainer.component;
+    theme.trailingIconContainer &&
+    theme.trailingIconContainer.getComponent &&
+    theme.trailingIconContainer.getComponent(props);
   return renderViewComponent({ props, viewProps, Component });
 };
 
@@ -203,10 +213,12 @@ let Button: React.ComponentType<ButtonPropsOptional> = forwardRef(
     newProps = { ...newProps, ...useInteraction(newProps) };
     newProps = { ...newProps, ...useOnLayout(newProps) };
     newProps = processComponentProps(newProps);
-    newProps = processThemeAndStyleProps(newProps, newProps.theme.touchable);
+    newProps = processThemeAndStyleProps(newProps, theme.touchable);
 
     const Touchable =
-      newProps.theme.touchable && newProps.theme.touchable.component;
+      theme.touchable &&
+      theme.touchable.getComponent &&
+      theme.touchable.getComponent(newProps);
 
     const surfaceProps = extractSurfacePropsFromButtonProps(newProps);
     const surface = (

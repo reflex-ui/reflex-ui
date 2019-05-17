@@ -34,7 +34,8 @@ export const renderRfxTextComponent = <
     typeof children === 'boolean' ||
     Array.isArray(children)
   ) {
-    const Component = newProps.theme.component;
+    const Component =
+      newProps.theme.getComponent && newProps.theme.getComponent(newProps);
     const textProps = {
       ...extractTextProps(newProps),
       children,

@@ -8,18 +8,19 @@
 import { ComponentsTheme } from '@reflex-ui/core';
 
 import { appBarVariantsTheme } from './app-bar/theme';
-import { avatarTheme } from './avatar/theme';
 import { avatarImageTheme } from './avatar-image/theme';
+import { avatarTheme } from './avatar/theme';
 import { animatedButtonTheme } from './button/animatedTheme';
 import { imageTheme } from './image/theme';
 import { listItemTheme } from './list-item/theme';
 import { listTheme } from './list/theme';
 import { screenTheme } from './screen/theme';
-import { surfaceTheme } from './surface/theme';
+import { animatedSurfaceTheme } from './surface/animatedTheme';
 import { rfxSvgVariantsTheme } from './svg/theme';
 import { rfxTextVariantsTheme } from './text/theme';
 // tslint:disable-next-line:max-line-length
 import { animatedTouchableSurfaceVariantsTheme } from './touchable-surface/animatedTheme';
+import { touchableTheme } from './touchable/theme';
 import { rfxViewTheme } from './view/theme';
 
 export const animatedMaterialDesignTheme: ComponentsTheme = {
@@ -31,9 +32,10 @@ export const animatedMaterialDesignTheme: ComponentsTheme = {
   list: listTheme,
   listItem: listItemTheme,
   screen: screenTheme,
-  surface: surfaceTheme,
+  surface: animatedSurfaceTheme,
   svg: rfxSvgVariantsTheme,
   text: rfxTextVariantsTheme,
+  touchable: touchableTheme,
   touchableSurface: animatedTouchableSurfaceVariantsTheme,
   views: rfxViewTheme,
 };

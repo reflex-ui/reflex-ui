@@ -37,7 +37,7 @@ export const getAnimatedIconButtonSurfaceTheme: ComponentThemeGetter<
   ButtonProps,
   SurfaceTheme
 > = () => ({
-  component: AnimatedRippleView,
+  getComponent: () => AnimatedRippleView,
   getProps: getAllVariantsButtonContainerProps,
   getStyle: getAnimatedIconButtonContainerStyle,
 });

@@ -7,10 +7,13 @@
 
 import { ComponentThemeGetter } from '../ComponentThemeGetter';
 import { SurfaceTheme } from '../surface/SurfaceTheme';
-import { BuiltInTouchableTheme } from '../touchable/TouchableTheme';
+// tslint:disable-next-line:max-line-length
+import { BuiltInTouchableWithoutFeedbackTheme } from '../touchable/TouchableWithoutFeedbackTheme';
 import { TouchableSurfaceProps } from './TouchableSurfaceProps';
 
 export interface TouchableSurfaceTheme {
   readonly surface?: ComponentThemeGetter<TouchableSurfaceProps, SurfaceTheme>;
-  readonly touchable?: BuiltInTouchableTheme<TouchableSurfaceProps>;
+  readonly touchable?: BuiltInTouchableWithoutFeedbackTheme<
+    TouchableSurfaceProps
+  >;
 }

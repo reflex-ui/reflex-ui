@@ -85,7 +85,9 @@ let TouchableSurface: React.ComponentType<
   newProps = processThemeAndStyleProps(newProps, newProps.theme.touchable);
 
   const Touchable =
-    newProps.theme.touchable && newProps.theme.touchable.component;
+    newProps.theme.touchable &&
+    newProps.theme.touchable.getComponent &&
+    newProps.theme.touchable.getComponent(newProps);
 
   /*
   const surfaceProps = extractSurfacePropsFromTouchableSurfaceProps(newProps);

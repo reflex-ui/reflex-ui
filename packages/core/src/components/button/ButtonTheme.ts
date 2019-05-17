@@ -9,7 +9,8 @@ import { ComponentThemeGetter } from '../ComponentThemeGetter';
 import { SurfaceTheme } from '../surface/SurfaceTheme';
 import { RfxSvgTheme } from '../svg/RfxSvgTheme';
 import { BuiltInTextTheme } from '../text/TextTheme';
-import { BuiltInTouchableTheme } from '../touchable/TouchableTheme';
+// tslint:disable-next-line:max-line-length
+import { BuiltInTouchableWithoutFeedbackTheme } from '../touchable/TouchableWithoutFeedbackTheme';
 import { BuiltInViewTheme } from '../view/ViewTheme';
 import { ButtonProps } from './ButtonProps';
 
@@ -20,7 +21,7 @@ export interface ButtonTheme {
   readonly leadingIconContainer?: BuiltInViewTheme<ButtonProps>;
   readonly surface?: ComponentThemeGetter<ButtonProps, SurfaceTheme>;
   readonly text?: BuiltInTextTheme<ButtonProps>;
-  readonly touchable?: BuiltInTouchableTheme<ButtonProps>;
+  readonly touchable?: BuiltInTouchableWithoutFeedbackTheme<ButtonProps>;
   readonly trailingIcon?: ComponentThemeGetter<ButtonProps, RfxSvgTheme>;
   readonly trailingIconContainer?: BuiltInViewTheme<ButtonProps>;
 }

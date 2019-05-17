@@ -23,7 +23,7 @@ export const extractViewProps = <Props extends ViewProps>(
     /*
      * These props are necessary for web and when using
      * TouchableWithoutFeedback, since it forwards such props
-     * to its child View component, that actually calls them them.
+     * to its child View component, that actually calls them.
      */
     // @ts-ignore
     disabled,

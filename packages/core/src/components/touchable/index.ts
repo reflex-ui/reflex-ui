@@ -6,4 +6,8 @@
  */
 
 export * from './renderTouchableComponent';
+export * from './Touchable';
+export * from './TouchableProps';
 export * from './TouchableTheme';
+export * from './TouchableWithoutFeedbackTheme';
+export * from './useDefaultTouchableProps';
