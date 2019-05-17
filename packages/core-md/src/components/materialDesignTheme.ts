@@ -8,8 +8,8 @@
 import { ComponentsTheme } from '@reflex-ui/core';
 
 import { appBarVariantsTheme } from './app-bar/theme';
-import { avatarTheme } from './avatar/theme';
 import { avatarImageTheme } from './avatar-image/theme';
+import { avatarTheme } from './avatar/theme';
 import { buttonTheme } from './button/theme';
 import { imageTheme } from './image/theme';
 import { listItemTheme } from './list-item/theme';
@@ -19,6 +19,7 @@ import { surfaceTheme } from './surface/theme';
 import { rfxSvgVariantsTheme } from './svg/theme';
 import { rfxTextVariantsTheme } from './text/theme';
 import { touchableSurfaceVariantsTheme } from './touchable-surface/theme';
+import { touchableTheme } from './touchable/theme';
 import { rfxViewTheme } from './view/theme';
 
 export const materialDesignTheme: ComponentsTheme = {
@@ -33,6 +34,7 @@ export const materialDesignTheme: ComponentsTheme = {
   surface: surfaceTheme,
   svg: rfxSvgVariantsTheme,
   text: rfxTextVariantsTheme,
+  touchable: touchableTheme,
   touchableSurface: touchableSurfaceVariantsTheme,
   views: rfxViewTheme,
 };

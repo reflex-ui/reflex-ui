@@ -7,7 +7,7 @@
 
 export class MissingComponentThemeError extends Error {
   constructor(message: string) {
-    super(`Rfx: Missing theme for component: ${message}.`);
+    super(`ReflexUI: Missing theme for component: ${message}.`);
 
     if (Error.captureStackTrace) {
       Error.captureStackTrace(this, MissingComponentThemeError);

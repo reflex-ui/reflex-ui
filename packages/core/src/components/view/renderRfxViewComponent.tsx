@@ -37,7 +37,7 @@ export const renderRfxViewComponent = <
     children,
   };
   const renderedView = renderViewComponent({
-    Component: theme.component,
+    Component: theme.getComponent && theme.getComponent(props),
     props,
     ref,
     viewProps,

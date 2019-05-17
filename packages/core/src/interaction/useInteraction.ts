@@ -6,16 +6,21 @@
  */
 
 import { useState } from 'react';
-import { GestureResponderEvent } from 'react-native';
+import {
+  GestureResponderEvent,
+  TouchableWithoutFeedbackProps,
+} from 'react-native';
 
 import { isWeb } from '../utils';
 import { InteractionProps, InteractionPropsOptional } from './InteractionProps';
 import { InteractionState } from './InteractionState';
 import { InteractionType } from './InteractionType';
 
-export const useInteraction = <Props extends InteractionPropsOptional>(
+export const useInteraction = <
+  Props extends InteractionPropsOptional & TouchableWithoutFeedbackProps
+>(
   props: Props,
-): InteractionProps => {
+): InteractionProps & TouchableWithoutFeedbackProps => {
   if (props.activated && props.disabled) {
     throw new Error(
       [

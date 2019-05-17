@@ -55,7 +55,8 @@ export const handleAvatarChildren = (
     typeof children === 'number' ||
     typeof children === 'boolean'
   ) {
-    const Component = theme.text && theme.text.component;
+    const Component =
+      theme.text && theme.text.getComponent && theme.text.getComponent(props);
     const textProps = {
       ...getPropsFromTheme(props, theme.text),
       children: children.toString(),

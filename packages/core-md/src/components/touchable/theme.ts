@@ -5,7 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { BuiltInViewTheme } from '../view/ViewTheme';
-import { SurfaceProps } from './SurfaceProps';
+import { TouchableTheme } from '@reflex-ui/core';
 
-export type SurfaceTheme = BuiltInViewTheme<SurfaceProps>;
+export const touchableTheme: TouchableTheme = {};

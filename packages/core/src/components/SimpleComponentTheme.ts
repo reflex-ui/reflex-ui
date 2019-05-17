@@ -23,7 +23,11 @@ export interface BuiltInSimpleComponentTheme<
   OutputProps,
   OutputStyle
 > extends SimpleComponentTheme<ComponentProps, OutputProps, OutputStyle> {
-  readonly component?: React.ComponentType<
-    BuiltInSimpleComponentProps<ComponentProps> & OutputProps
+  readonly getComponent?: Function1<
+    ComponentProps,
+    | undefined
+    | React.ComponentType<
+        BuiltInSimpleComponentProps<ComponentProps> & OutputProps
+      >
   >;
 }

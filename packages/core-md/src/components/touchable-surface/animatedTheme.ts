@@ -50,7 +50,7 @@ export const partialAnimatedDefaultTouchableSurfaceTheme: Partial<
   TouchableSurfaceTheme
 > = {
   surface: () => ({
-    component: AnimatedRippleView,
+    getComponent: () => AnimatedRippleView,
     getProps: getCommonTouchableSurfaceSurfaceProps,
     getStyle: getAnimatedCommonTouchableSurfaceSurfaceStyle,
   }),
@@ -60,7 +60,7 @@ export const partialAnimatedOverlayTouchableSurfaceTheme: Partial<
   TouchableSurfaceTheme
 > = {
   surface: () => ({
-    component: AnimatedRippleView,
+    getComponent: () => AnimatedRippleView,
     getProps: getCommonTouchableSurfaceSurfaceProps,
     getStyle: getAnimatedOverlayTouchableSurfaceSurfaceStyle,
   }),

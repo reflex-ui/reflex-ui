@@ -59,7 +59,10 @@ export const renderAppBarCenterArea = (props: AppBarProps): React.ReactNode => {
     style: getStyleFromTheme(props, theme.centerArea),
   };
 
-  const Component = theme.centerArea && theme.centerArea.component;
+  const Component =
+    theme.centerArea &&
+    theme.centerArea.getComponent &&
+    theme.centerArea.getComponent(props);
   return renderViewComponent({ props, viewProps, Component });
 };
 
@@ -82,7 +85,10 @@ export const renderAppBarLeadingArea = (
     style: getStyleFromTheme(props, theme.leadingArea),
   };
 
-  const Component = theme.leadingArea && theme.leadingArea.component;
+  const Component =
+    theme.leadingArea &&
+    theme.leadingArea.getComponent &&
+    theme.leadingArea.getComponent(props);
   return renderViewComponent({ props, viewProps, Component });
 };
 
@@ -106,7 +112,10 @@ export const renderAppBarTrailingArea = (
     style: getStyleFromTheme(props, theme.trailingArea),
   };
 
-  const Component = theme.trailingArea && theme.trailingArea.component;
+  const Component =
+    theme.trailingArea &&
+    theme.trailingArea.getComponent &&
+    theme.trailingArea.getComponent(props);
   return renderViewComponent({ props, viewProps, Component });
 };
 

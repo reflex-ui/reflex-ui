@@ -56,8 +56,8 @@ export const getAnimatedXFabButtonContainerStyle: ViewStyleGetter<
 export const getAnimatedXFabButtonSurfaceTheme: ComponentThemeGetter<
   ButtonProps,
   SurfaceTheme
-> = props => ({
-  component: createComponent(props.elevation),
+> = () => ({
+  getComponent: props => createComponent(props.elevation),
   getProps: getAllVariantsButtonContainerProps,
   getStyle: getAnimatedXFabButtonContainerStyle,
 });

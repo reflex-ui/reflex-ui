@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import * as React from 'react';
+import React, { Ref } from 'react';
 import {
   TouchableWithoutFeedback,
   TouchableWithoutFeedbackProps,
@@ -23,11 +23,16 @@ export const renderTouchableComponent = <
     | typeof TouchableWithoutFeedback
     | React.ComponentType<BuiltInSimpleComponentProps<ComponentProps>> &
         TouchableWithoutFeedbackProps = TouchableWithoutFeedback,
+  ref?: Ref<TouchableWithoutFeedback>,
 ): JSX.Element => {
   const touchableProps = extractTouchableWithoutFeedbackProps(props);
 
   if (Component === TouchableWithoutFeedback) {
-    return <Component {...touchableProps}>{props.children}</Component>;
+    return (
+      <Component ref={ref} {...touchableProps}>
+        {props.children}
+      </Component>
+    );
   }
 
   return (
