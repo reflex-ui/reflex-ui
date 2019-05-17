@@ -12,20 +12,30 @@ import { MissingComponentThemeError } from '../../errors';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { useComponentsTheme } from '../ComponentsTheme';
 import { processComponent } from '../processComponent';
-import { renderRfxTextComponent } from './renderRfxTextComponent';
-import { RfxTextProps, RfxTextPropsOptional } from './RfxTextProps';
-import { RfxTextTheme } from './RfxTextTheme';
-import { useDefaultRfxTextProps } from './useDefaultRfxTextProps';
+import { renderRfxTextComponent } from '../text/renderRfxTextComponent';
+import { RfxTextProps, RfxTextPropsOptional } from '../text/RfxTextProps';
+import { RfxTextTheme } from '../text/RfxTextTheme';
+import { useDefaultRfxTextProps } from '../text/useDefaultRfxTextProps';
+import { AppBarVariant } from './AppBarVariant';
 
-const useTheme = (theme?: RfxTextTheme): RfxTextTheme => {
+const useTheme = (
+  theme?: RfxTextTheme,
+  variant?: AppBarVariant,
+): RfxTextTheme => {
   const { componentsTheme } = useComponentsTheme();
 
   if (theme !== undefined && theme !== null) return theme;
-  if (componentsTheme.text === undefined || componentsTheme.text === null) {
+  if (componentsTheme.appBar === undefined || componentsTheme.appBar === null) {
     throw new MissingComponentThemeError('<AppBarTitle>');
   }
 
-  return componentsTheme.text.appBarTitle;
+  const appBarTheme = componentsTheme.appBar[variant || AppBarVariant.Default];
+
+  if (appBarTheme.title === undefined || appBarTheme.title === null) {
+    throw new MissingComponentThemeError('<AppBarTitle>');
+  }
+
+  return appBarTheme.title;
 };
 
 let AppBarTitle: React.ComponentType<RfxTextPropsOptional> = forwardRef(

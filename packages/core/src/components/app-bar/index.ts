@@ -8,6 +8,7 @@
 export * from './AppBar';
 export * from './AppBarProps';
 export * from './AppBarTheme';
+export * from './AppBarTitle';
 export * from './AppBarVariant';
 export * from './AppBarVariantsTheme';
 export * from './useDefaultAppBarProps';

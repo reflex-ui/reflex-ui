@@ -5,7 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './AppBarTitle';
 export * from './Caption';
 export * from './FontWeight';
 export * from './FontWeightValues';

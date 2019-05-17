@@ -13,7 +13,6 @@ import {
   getOnColor,
   getSizedMarginStyle,
   getSizedPaddingStyle,
-  isWeb,
   RfxTextPropsBase,
   RfxTextVariantsTheme,
 } from '@reflex-ui/core';
@@ -43,16 +42,6 @@ export const getCommonRfxTextStyle = <
 });
 
 export const rfxTextVariantsTheme: RfxTextVariantsTheme = {
-  appBarTitle: {
-    getStyle: (props): TextStyle => ({
-      ...getCommonRfxTextStyle(props),
-      fontSize: 20,
-      fontWeight: getFontWeight(FontWeight.Medium),
-      letterSpacing: 0.0075,
-      marginTop: isWeb ? -1 : 0,
-      overflow: 'hidden',
-    }),
-  },
   caption: {
     getStyle: props => ({
       ...getCommonRfxTextStyle(props),

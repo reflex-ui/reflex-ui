@@ -7,6 +7,7 @@
 
 import { ComponentThemeGetter } from '../ComponentThemeGetter';
 import { SurfaceTheme } from '../surface/SurfaceTheme';
+import { RfxTextTheme } from '../text/RfxTextTheme';
 import { BuiltInViewTheme } from '../view/ViewTheme';
 import { AppBarProps } from './AppBarProps';
 
@@ -14,5 +15,6 @@ export interface AppBarTheme {
   readonly centerArea?: BuiltInViewTheme<AppBarProps>;
   readonly leadingArea?: BuiltInViewTheme<AppBarProps>;
   readonly surface?: ComponentThemeGetter<AppBarProps, SurfaceTheme>;
+  readonly title?: RfxTextTheme;
   readonly trailingArea?: BuiltInViewTheme<AppBarProps>;
 }

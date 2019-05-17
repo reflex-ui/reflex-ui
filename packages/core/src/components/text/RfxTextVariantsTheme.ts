@@ -8,7 +8,6 @@
 import { RfxTextTheme } from './RfxTextTheme';
 
 export interface RfxTextVariantsTheme {
-  readonly appBarTitle: RfxTextTheme;
   readonly caption: RfxTextTheme;
   readonly headline1: RfxTextTheme;
   readonly headline2: RfxTextTheme;

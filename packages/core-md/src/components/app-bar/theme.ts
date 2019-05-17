@@ -9,11 +9,18 @@ import {
   AppBarProps,
   AppBarTheme,
   AppBarVariantsTheme,
+  FontWeight,
+  getFontWeight,
+  isWeb,
+  RfxTextProps,
   SurfaceProps,
+  TextStyleGetter,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import { getElevationStyles } from '@reflex-ui/elevation-md';
 import merge from 'lodash/merge';
+
+import { getCommonRfxTextStyle } from '../text/theme';
 
 /*
  * COMMON STYLES
@@ -54,6 +61,17 @@ export const getCommonAppBarTrailingAreaStyle: ViewStyleGetter<
   justifyContent: 'flex-end',
 });
 
+export const getCommonAppBarTitleStyle: TextStyleGetter<
+  RfxTextProps
+> = props => ({
+  ...getCommonRfxTextStyle(props),
+  fontSize: 20,
+  fontWeight: getFontWeight(FontWeight.Medium),
+  letterSpacing: 0.0075,
+  marginTop: isWeb ? -1 : 0,
+  overflow: 'hidden',
+});
+
 /*
  * AppBarVariant.DEFAULT
  */
@@ -77,6 +95,9 @@ export const defaultAppBarTheme: AppBarTheme = {
   surface: () => ({
     getStyle: getDefaultAppBarSurfaceStyle,
   }),
+  title: {
+    getStyle: getCommonAppBarTitleStyle,
+  },
   trailingArea: {
     getStyle: getCommonAppBarTrailingAreaStyle,
   },
@@ -104,6 +125,9 @@ export const denseAppBarTheme: AppBarTheme = {
   surface: () => ({
     getStyle: getDenseAppBarSurfaceStyle,
   }),
+  title: {
+    getStyle: getCommonAppBarTitleStyle,
+  },
   trailingArea: {
     getStyle: getCommonAppBarTrailingAreaStyle,
   },
@@ -139,6 +163,9 @@ export const prominentAppBarTheme: AppBarTheme = {
   surface: () => ({
     getStyle: getProminentAppBarSurfaceStyle,
   }),
+  title: {
+    getStyle: getCommonAppBarTitleStyle,
+  },
   trailingArea: {
     getStyle: getCommonAppBarTrailingAreaStyle,
   },
