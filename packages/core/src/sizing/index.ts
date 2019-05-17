@@ -6,6 +6,7 @@
  */
 
 export * from './allSizes';
+export * from './extractSizingStyle';
 export * from './getSizedDataValue';
 export * from './isSizeEnumValue';
 export * from './Size';

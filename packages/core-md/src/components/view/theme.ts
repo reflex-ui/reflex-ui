@@ -6,6 +6,7 @@
  */
 
 import {
+  extractSizingStyle,
   getSizedMarginStyle,
   getSizedPaddingStyle,
   RfxViewProps,
@@ -17,7 +18,6 @@ import {
 import { ViewStyle } from 'react-native';
 
 import { getFlexboxStyle } from '../../flexbox/getFlexboxStyle';
-import { getSizingStyle } from '../../sizing/getSizingStyle';
 import { sizedSpacing } from '../../spacing/sizedSpacing';
 
 /*
@@ -30,10 +30,10 @@ export const getCommonRfxViewContainerStyle = <
 >(
   props: Props,
 ): ViewStyle => ({
+  ...extractSizingStyle(props),
   ...getFlexboxStyle(props),
   ...getSizedMarginStyle(sizedSpacing)(props),
   ...getSizedPaddingStyle(sizedSpacing)(props),
-  ...getSizingStyle(props),
 });
 
 /*

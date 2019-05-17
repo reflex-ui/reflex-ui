@@ -5,9 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { SizingPropsOptional, ViewStyleGetter } from '@reflex-ui/core';
+import { ViewStyleGetter } from '../components/view';
+import { SizingPropsOptional } from './SizingProps';
 
-export const getSizingStyle: ViewStyleGetter<SizingPropsOptional> = ({
+export const extractSizingStyle: ViewStyleGetter<SizingPropsOptional> = ({
   height,
   maxHeight,
   maxWidth,
