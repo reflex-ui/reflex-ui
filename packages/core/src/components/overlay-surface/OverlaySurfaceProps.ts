@@ -8,7 +8,14 @@
 import { SurfacePropsBase } from '../surface/SurfaceProps';
 import { OverlaySurfaceTheme } from './OverlaySurfaceTheme';
 
+export interface OverlaySurfacePropsBase<Props, Theme>
+  extends SurfacePropsBase<Props, Theme> {}
+
+export type OverlaySurfacePropsBaseOptional<Props, Theme> = Partial<
+  OverlaySurfacePropsBase<Props, Theme>
+>;
+
 export interface OverlaySurfaceProps
-  extends SurfacePropsBase<OverlaySurfaceProps, OverlaySurfaceTheme> {}
+  extends OverlaySurfacePropsBase<OverlaySurfaceProps, OverlaySurfaceTheme> {}
 
 export type OverlaySurfacePropsOptional = Partial<OverlaySurfaceProps>;

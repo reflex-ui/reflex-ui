@@ -9,6 +9,7 @@ export * from './animatedMaterialDesignTheme';
 export * from './app-bar';
 export * from './avatar';
 export * from './avatar-image';
+export * from './avatar-overlay-surface';
 export * from './button';
 export * from './createAnimatedComponentsTheme';
 export * from './createComponentsTheme';

@@ -16,7 +16,6 @@ import { getStyleFromTheme } from '../getStyleFromTheme';
 import { processComponent } from '../processComponent';
 import { processComponentProps } from '../processComponentProps';
 import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
-import { useDefaultSurfaceProps } from '../surface/useDefaultSurfaceProps';
 import { renderRfxViewComponent } from '../view/renderRfxViewComponent';
 import { renderViewComponent } from '../view/renderViewComponent';
 import { useShouldProvideColor } from '../view/useShouldProvideColor';
@@ -25,6 +24,7 @@ import {
   OverlaySurfacePropsOptional,
 } from './OverlaySurfaceProps';
 import { OverlaySurfaceTheme } from './OverlaySurfaceTheme';
+import { useDefaultOverlaySurfaceProps } from './useDefaultOverlaySurfaceProps';
 
 const useTheme = (theme?: OverlaySurfaceTheme): OverlaySurfaceTheme => {
   const { componentsTheme } = useComponentsTheme();
@@ -45,7 +45,10 @@ let OverlaySurface: React.ComponentType<
 > = forwardRef((props: OverlaySurfacePropsOptional, ref: Ref<View>) => {
   const theme = useTheme(props.theme);
 
-  let newProps: OverlaySurfaceProps = useDefaultSurfaceProps(props, theme);
+  let newProps: OverlaySurfaceProps = useDefaultOverlaySurfaceProps(
+    props,
+    theme,
+  );
   newProps = { ...newProps, ...useOnLayout(newProps) };
   newProps = processComponentProps(newProps);
   newProps = processThemeAndStyleProps(newProps, newProps.theme.surface);
