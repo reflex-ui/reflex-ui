@@ -11,6 +11,9 @@ import {
   AppBar,
   AppBarTitle,
   AppBarVariant,
+  Avatar,
+  AvatarImage,
+  AvatarOverlaySurface,
   Button,
   ButtonVariant,
   Column,
@@ -27,7 +30,7 @@ import {
   usePalette,
   useResponsiveness,
 } from '@reflex-ui/core';
-import { MenuIcon } from '@reflex-ui/icons-md';
+import { FolderIcon, MenuIcon } from '@reflex-ui/icons-md';
 import React from 'react';
 import { Image, ScrollView } from 'react-native';
 
@@ -51,11 +54,7 @@ const TouchableImage = (props: RfxViewPropsOptional) => {
       {...props}
     >
       <Touchable>
-        <OverlaySurface
-          contained={false}
-          invertColor
-          paletteColor={palette.primary}
-        >
+        <OverlaySurface invertColor paletteColor={palette.primary}>
           <Image
             source={require('./flower.jpg')}
             style={{ height: 215, width: 300 }}
@@ -79,26 +78,26 @@ const TouchableScreen: React.SFC<{}> = (): JSX.Element => {
       </AppBar>
       <ScrollView>
         <Paragraph2 margin={Size.M}>{'<Touchable>'}</Paragraph2>
-        <Row>
+        <Row margin={Size.M}>
           <Touchable>
-            <Surface height={50} margin={Size.M} width={100}>
+            <Surface height={50} marginEnd={Size.M} width={100}>
               <Paragraph1>Touch me!</Paragraph1>
             </Surface>
           </Touchable>
           <Touchable>
-            <Surface contained={false} height={50} margin={Size.M} width={100}>
+            <Surface contained={false} height={50} width={100}>
               <Paragraph1>Touch me! (contained=false)</Paragraph1>
             </Surface>
           </Touchable>
         </Row>
         <Paragraph2 margin={Size.M}>{'<Touchable>'}</Paragraph2>
-        <Row>
+        <Row margin={Size.M}>
           <Touchable>
             <Surface
               alignContent={AlignContent.Center}
               height={50}
               justifyContent={JustifyContent.Center}
-              margin={Size.M}
+              marginEnd={Size.M}
               paletteColor={palette.primary}
               width={100}
             >
@@ -110,12 +109,39 @@ const TouchableScreen: React.SFC<{}> = (): JSX.Element => {
               contained={false}
               height={50}
               invertColor
-              margin={Size.M}
+              marginEnd={Size.M}
               paletteColor={palette.primary}
               width={100}
             >
               <Paragraph1>Touch me! (contained=false)</Paragraph1>
             </Surface>
+          </Touchable>
+        </Row>
+        <Row margin={Size.M}>
+          <Touchable>
+            <Avatar marginEnd={Size.XS} paletteColor={palette.primary}>
+              m
+            </Avatar>
+          </Touchable>
+          <Touchable>
+            <Avatar marginEnd={Size.XS} paletteColor={palette.primary}>
+              <FolderIcon />
+            </Avatar>
+          </Touchable>
+          <Touchable>
+            <AvatarImage
+              marginEnd={Size.XS}
+              source={require('../avatar-image/avatar.jpg')}
+            />
+          </Touchable>
+          <Touchable>
+            <AvatarOverlaySurface
+              invertColor
+              marginEnd={Size.XS}
+              paletteColor={palette.primary}
+            >
+              <AvatarImage source={require('../avatar-image/avatar.jpg')} />
+            </AvatarOverlaySurface>
           </Touchable>
         </Row>
         <TouchableImage />

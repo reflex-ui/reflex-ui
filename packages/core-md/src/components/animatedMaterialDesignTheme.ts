@@ -9,6 +9,8 @@ import { ComponentsTheme } from '@reflex-ui/core';
 
 import { appBarVariantsTheme } from './app-bar/theme';
 import { avatarImageTheme } from './avatar-image/theme';
+// tslint:disable-next-line:max-line-length
+import { animatedAvatarOverlaySurfaceTheme } from './avatar-overlay-surface/animatedTheme';
 import { avatarTheme } from './avatar/theme';
 import { animatedButtonTheme } from './button/animatedTheme';
 import { imageTheme } from './image/theme';
@@ -28,6 +30,7 @@ export const animatedMaterialDesignTheme: ComponentsTheme = {
   appBar: appBarVariantsTheme,
   avatar: avatarTheme,
   avatarImage: avatarImageTheme,
+  avatarOverlaySurface: animatedAvatarOverlaySurfaceTheme,
   button: animatedButtonTheme,
   image: imageTheme,
   list: listTheme,

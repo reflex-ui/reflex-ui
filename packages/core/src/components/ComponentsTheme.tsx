@@ -23,6 +23,7 @@ export interface ComponentsTheme {
   readonly appBar?: AppBarVariantsTheme;
   readonly avatar?: AvatarTheme;
   readonly avatarImage?: RfxSizedImageTheme;
+  readonly avatarOverlaySurface?: OverlaySurfaceTheme;
   readonly button?: ButtonVariantsTheme;
   readonly image?: RfxImageTheme;
   readonly list?: SurfaceTheme;

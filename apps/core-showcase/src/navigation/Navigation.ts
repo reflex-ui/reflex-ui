@@ -247,7 +247,7 @@ export const AppNavigation = () => {
     Navigation.setRoot({
       root: {
         component: {
-          name: TouchableSurfaceNavigation.default,
+          name: TouchableNavigation.default,
         },
       },
     });

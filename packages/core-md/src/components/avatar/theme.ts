@@ -19,7 +19,7 @@ import {
 } from '@reflex-ui/core';
 import { Platform, TextStyle, ViewStyle } from 'react-native';
 
-import { getSurfaceContainerStyle } from '../surface/theme';
+// import { getSurfaceContainerStyle } from '../surface/theme';
 import { getFontFamily } from '../text/getFontFamily';
 
 /*
@@ -57,7 +57,6 @@ export const avatarSizedStyle: SizedData<ViewStyle> = {
 };
 
 export const getAvatarSurfaceStyle: ViewStyleGetter<SurfaceProps> = props => ({
-  ...getSurfaceContainerStyle(props),
   ...avatarSizedStyle[props.size || Size.M],
   alignItems: 'center',
   flexDirection: 'row',
