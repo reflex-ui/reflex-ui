@@ -44,7 +44,12 @@ let Surface: React.ComponentType<SurfacePropsOptional> = forwardRef(
     newProps = processThemeAndStyleProps(newProps, newProps.theme);
 
     const shouldProvideColor = useShouldProvideColor(newProps.paletteColor);
-    return renderRfxViewComponent({ props: newProps, shouldProvideColor, ref });
+    return renderRfxViewComponent({
+      props: newProps,
+      ref,
+      shouldProvideColor,
+      theme: newProps.theme,
+    });
   },
 );
 

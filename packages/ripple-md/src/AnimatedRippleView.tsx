@@ -9,7 +9,6 @@ import {
   BuiltInSimpleComponentProps,
   InteractionStateProps,
   SurfacePropsBase,
-  ViewTheme,
 } from '@reflex-ui/core';
 import React, { useState } from 'react';
 import { LayoutChangeEvent, View, ViewProps } from 'react-native';
@@ -33,7 +32,7 @@ const AnimatedView = animated(View);
 export const AnimatedRippleView = <
   ComponentProps extends SurfacePropsBase<ComponentProps, Theme> &
     InteractionStateProps,
-  Theme extends ViewTheme<ComponentProps>
+  Theme
 >(
   props: AnimatedRippleViewProps<ComponentProps>,
 ): JSX.Element => {

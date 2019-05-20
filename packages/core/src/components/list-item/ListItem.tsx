@@ -44,7 +44,12 @@ let ListItem: React.ComponentType<RfxViewPropsOptional> = forwardRef(
     newProps = processThemeAndStyleProps(newProps, newProps.theme);
 
     const shouldProvideColor = useShouldProvideColor(props.paletteColor);
-    return renderRfxViewComponent({ props: newProps, shouldProvideColor, ref });
+    return renderRfxViewComponent({
+      props: newProps,
+      ref,
+      shouldProvideColor,
+      theme: newProps.theme,
+    });
   },
 );
 
