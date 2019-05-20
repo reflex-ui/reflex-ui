@@ -14,6 +14,7 @@ import { buttonTheme } from './button/theme';
 import { imageTheme } from './image/theme';
 import { listItemTheme } from './list-item/theme';
 import { listTheme } from './list/theme';
+import { overlaySurfaceTheme } from './overlay-surface/theme';
 import { screenTheme } from './screen/theme';
 import { surfaceTheme } from './surface/theme';
 import { rfxSvgVariantsTheme } from './svg/theme';
@@ -30,6 +31,7 @@ export const materialDesignTheme: ComponentsTheme = {
   image: imageTheme,
   list: listTheme,
   listItem: listItemTheme,
+  overlaySurface: overlaySurfaceTheme,
   screen: screenTheme,
   surface: surfaceTheme,
   svg: rfxSvgVariantsTheme,

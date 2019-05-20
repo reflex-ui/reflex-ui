@@ -9,7 +9,6 @@ import {
   BuiltInSimpleComponentProps,
   InteractionStateProps,
   SurfacePropsBase,
-  ViewTheme,
 } from '@reflex-ui/core';
 import React from 'react';
 
@@ -17,7 +16,7 @@ import { AnimatedRippleView, RippleColorGetter } from './AnimatedRippleView';
 
 export const createAnimatedRippleView = <
   Props extends SurfacePropsBase<Props, Theme> & InteractionStateProps,
-  Theme extends ViewTheme<Props>
+  Theme
 >(
   getRippleColor: RippleColorGetter<Props>,
 ) =>

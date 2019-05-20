@@ -11,6 +11,7 @@ import { AppBarVariantsTheme } from './app-bar';
 import { AvatarTheme } from './avatar';
 import { ButtonVariantsTheme } from './button';
 import { RfxImageTheme, RfxSizedImageTheme } from './image';
+import { OverlaySurfaceTheme } from './overlay-surface';
 import { SurfaceTheme } from './surface';
 import { RfxSvgVariantsTheme } from './svg';
 import { RfxTextVariantsTheme } from './text';
@@ -26,6 +27,7 @@ export interface ComponentsTheme {
   readonly image?: RfxImageTheme;
   readonly list?: SurfaceTheme;
   readonly listItem?: RfxViewTheme;
+  readonly overlaySurface?: OverlaySurfaceTheme;
   readonly screen?: SurfaceTheme;
   readonly surface?: SurfaceTheme;
   readonly svg?: RfxSvgVariantsTheme;

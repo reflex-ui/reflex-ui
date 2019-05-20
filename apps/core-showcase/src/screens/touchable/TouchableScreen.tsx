@@ -7,28 +7,63 @@
 
 import {
   AlignContent,
+  AlignItems,
   AppBar,
   AppBarTitle,
   AppBarVariant,
   Button,
   ButtonVariant,
+  Column,
   JustifyContent,
+  OverlaySurface,
   Paragraph1,
   Paragraph2,
+  RfxViewPropsOptional,
   Row,
   Screen,
   Size,
   Surface,
   Touchable,
   usePalette,
+  useResponsiveness,
 } from '@reflex-ui/core';
 import { MenuIcon } from '@reflex-ui/icons-md';
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { Image, ScrollView } from 'react-native';
 
 const onButtonPress = () => {
   // tslint:disable-next-line:no-console
   console.log('TouchableSurfaceScreen().onButtonPress()');
+};
+
+const TouchableImage = (props: RfxViewPropsOptional) => {
+  const { palette } = usePalette();
+  const { breakpoints, dimensions } = useResponsiveness();
+  const isLargeHandset = dimensions.window.width >= breakpoints.largeHandset;
+  const alignItems = isLargeHandset ? AlignItems.FlexStart : AlignItems.Center;
+  const marginHorizontal = isLargeHandset ? Size.M : 0;
+
+  return (
+    <Column
+      alignItems={alignItems}
+      marginHorizontal={marginHorizontal}
+      marginVertical={Size.XXL}
+      {...props}
+    >
+      <Touchable>
+        <OverlaySurface
+          contained={false}
+          invertColor
+          paletteColor={palette.primary}
+        >
+          <Image
+            source={require('./flower.jpg')}
+            style={{ height: 215, width: 300 }}
+          />
+        </OverlaySurface>
+      </Touchable>
+    </Column>
+  );
 };
 
 const TouchableScreen: React.SFC<{}> = (): JSX.Element => {
@@ -83,6 +118,7 @@ const TouchableScreen: React.SFC<{}> = (): JSX.Element => {
             </Surface>
           </Touchable>
         </Row>
+        <TouchableImage />
       </ScrollView>
     </Screen>
   );

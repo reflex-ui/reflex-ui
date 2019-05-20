@@ -6,27 +6,32 @@
  */
 
 import {
+  BuiltInSimpleComponentTheme,
   getColor,
   InteractionType,
-  SurfaceProps,
+  SurfacePropsBase,
   SurfaceTheme,
-  ViewPropsGetter,
-  ViewStyleGetter,
 } from '@reflex-ui/core';
 import { getElevationStyles } from '@reflex-ui/elevation-md';
-import { Platform } from 'react-native';
+import { Platform, ViewProps, ViewStyle } from 'react-native';
 
 import { getCommonRfxViewContainerStyle } from '../view/theme';
 
-export const getSurfaceContainerProps: ViewPropsGetter<
-  SurfaceProps
-> = props => ({
+export const getSurfaceContainerProps = <
+  Props extends SurfacePropsBase<Props, Theme>,
+  Theme extends BuiltInSimpleComponentTheme<Props, ViewProps, ViewStyle>
+>(
+  props: Props,
+): ViewProps => ({
   ...(props.isTouchableHandler && { pointerEvents: 'box-only' }),
 });
 
-export const getSurfaceContainerStyle: ViewStyleGetter<
-  SurfaceProps
-> = props => ({
+export const getSurfaceContainerStyle = <
+  Props extends SurfacePropsBase<Props, Theme>,
+  Theme extends BuiltInSimpleComponentTheme<Props, ViewProps, ViewStyle>
+>(
+  props: Props,
+): ViewStyle => ({
   backgroundColor: getColor(props),
   borderRadius: 4,
   flexWrap: 'wrap',
