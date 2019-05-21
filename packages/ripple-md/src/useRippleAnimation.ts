@@ -16,7 +16,6 @@ import { RippleStyles } from './RippleStyles';
 
 export interface RippleAnimationInput {
   readonly color: string;
-  // readonly containerSize: { height: number; width: number };
   readonly containerStyle: StyleProp<ViewStyle>;
   readonly elementMeasure: ElementMeasure;
   readonly interactionState: InteractionState;
@@ -30,7 +29,6 @@ export interface RippleAnimationOutput {
 
 export const useRippleAnimation = ({
   color,
-  // containerSize,
   containerStyle,
   elementMeasure,
   interactionState,
@@ -106,12 +104,10 @@ export const useRippleAnimation = ({
          */
         color,
         /**/
-        // height: containerSize.height,
         elementMeasure,
         interactionEvent,
         maxDiameter,
         style: StyleSheet.flatten(containerStyle),
-        // width: containerSize.width,
       }),
     );
     setIsAnimatingPressIn(true);
