@@ -11,12 +11,14 @@ import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
 import { useSpring, UseSpringProps } from 'react-spring/native';
 
 import { createComponentRippleStyles } from './createComponentRippleStyles';
+import { ElementMeasure } from './ElementMeasure';
 import { RippleStyles } from './RippleStyles';
 
 export interface RippleAnimationInput {
   readonly color: string;
-  readonly containerSize: { height: number; width: number };
+  // readonly containerSize: { height: number; width: number };
   readonly containerStyle: StyleProp<ViewStyle>;
+  readonly elementMeasure: ElementMeasure;
   readonly interactionState: InteractionState;
   readonly maxDiameter?: number;
 }
@@ -28,8 +30,9 @@ export interface RippleAnimationOutput {
 
 export const useRippleAnimation = ({
   color,
-  containerSize,
+  // containerSize,
   containerStyle,
+  elementMeasure,
   interactionState,
   maxDiameter,
 }: RippleAnimationInput): RippleAnimationOutput => {
@@ -103,11 +106,12 @@ export const useRippleAnimation = ({
          */
         color,
         /**/
-        height: containerSize.height,
+        // height: containerSize.height,
+        elementMeasure,
         interactionEvent,
         maxDiameter,
         style: StyleSheet.flatten(containerStyle),
-        width: containerSize.width,
+        // width: containerSize.width,
       }),
     );
     setIsAnimatingPressIn(true);

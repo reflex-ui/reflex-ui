@@ -32,6 +32,16 @@ export const createAnimatedRippleElevationView = <
       <AnimatedRippleElevationView
         {...otherProps}
         complexComponentProps={{ ...complexComponentProps, elevation }}
+        /*
+         * I don't know why this error is hapenning, and how to fix it.
+         * It needs further investigation, and there's a chance that this is
+         * a TypeScript issue.
+         */
+        // @ts-ignore Type 'RippleColorGetter<Props>' is not assignable to type
+        // 'RippleColorGetter<SurfacePropsBase<any, any>
+        // & InteractionStateProps>'.
+        // Type 'SurfacePropsBase<any, any> & InteractionStateProps'
+        // is not assignable to type 'Props'.ts(2322)
         getRippleColor={getRippleColor}
       />
     );
