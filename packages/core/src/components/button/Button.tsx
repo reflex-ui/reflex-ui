@@ -23,7 +23,7 @@ import { processComponentProps } from '../processComponentProps';
 import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
 import { Surface } from '../surface/Surface';
 import { SurfacePropsOptional } from '../surface/SurfaceProps';
-import { RfxSvgPropsOptional } from '../svg/RfxSvgProps';
+import { RfxSvgProps, RfxSvgPropsOptional } from '../svg/RfxSvgProps';
 import { RfxSvgTheme } from '../svg/RfxSvgTheme';
 import { renderTextComponent } from '../text';
 // tslint:disable-next-line:max-line-length
@@ -104,7 +104,7 @@ export const handleButtonIcon = (
       ...newIcon,
       props: {
         ...newIcon.props,
-        getPatchTheme: props =>
+        getPatchTheme: (props: RfxSvgProps) =>
           (data.icon.props.getPatchTheme &&
             mergeThemes(
               data.iconTheme,

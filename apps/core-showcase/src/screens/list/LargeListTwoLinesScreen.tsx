@@ -19,7 +19,7 @@ import {
   Screen,
   Size,
   SurfacePropsOptional,
-  TouchableSurface,
+  Touchable,
   useResponsiveness,
 } from '@reflex-ui/core';
 import { MenuIcon } from '@reflex-ui/icons-md';
@@ -40,58 +40,45 @@ const onListItemPress = () => {
 
 const MyList = (props: SurfacePropsOptional): JSX.Element => (
   <List maxWidth={getListMaxWidth(useResponsiveness())} {...props}>
-    <TouchableSurface
-      contained={false}
-      flexWrap={FlexWrap.Nowrap}
-      onPress={onListItemPress}
-    >
-      <ListItem size={Size.L}>
+    <Touchable onPress={onListItemPress}>
+      <ListItem flexWrap={FlexWrap.Nowrap} size={Size.L}>
         <Column flexShrink={1} marginHorizontal={Size.S}>
           <Paragraph1 numberOfLines={1}>Brunch this weekend?</Paragraph1>
           <Paragraph2 numberOfLines={1}>
-            Ali Connors -
+            Ali Connors -{' '}
             <Paragraph2>
               I'll be in your neighborhood doing errands this weekend.
             </Paragraph2>
           </Paragraph2>
         </Column>
       </ListItem>
-    </TouchableSurface>
-    <TouchableSurface
-      contained={false}
-      disabled
-      flexWrap={FlexWrap.Nowrap}
-      onPress={onListItemPress}
-    >
-      <ListItem size={Size.L}>
+    </Touchable>
+    <Touchable disabled onPress={onListItemPress}>
+      <ListItem flexWrap={FlexWrap.Nowrap} size={Size.L}>
         <Column flexShrink={1} marginHorizontal={Size.S}>
           <Paragraph1 numberOfLines={1}>Summer BBQ</Paragraph1>
           <Paragraph2 numberOfLines={1}>
-            to Alex, Scott, Jennifer -
+            to Alex, Scott, Jennifer -{' '}
             <Paragraph2>
               Wish I could come, but I'm out of town this weekend.
             </Paragraph2>
           </Paragraph2>
         </Column>
       </ListItem>
-    </TouchableSurface>
-    <TouchableSurface
-      contained={false}
-      flexWrap={FlexWrap.Nowrap}
-      onPress={onListItemPress}
-    >
-      <ListItem size={Size.L}>
+    </Touchable>
+    <Touchable onPress={onListItemPress}>
+      <ListItem flexWrap={FlexWrap.Nowrap} size={Size.L}>
         <Column flexShrink={1} marginHorizontal={Size.S}>
           <Paragraph1 numberOfLines={1}>Birthday Gift</Paragraph1>
           <Paragraph2 numberOfLines={1}>
-            Trevor Hansen -
+            Trevor Hansen -{' '}
             <Paragraph2>
               Have any ideas about what we should get Heidi for her birthday?
             </Paragraph2>
           </Paragraph2>
         </Column>
       </ListItem>
-    </TouchableSurface>
+    </Touchable>
   </List>
 );
 

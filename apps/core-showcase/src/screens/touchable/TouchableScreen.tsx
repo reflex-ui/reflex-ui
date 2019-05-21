@@ -36,7 +36,7 @@ import { Image, ScrollView } from 'react-native';
 
 const onButtonPress = () => {
   // tslint:disable-next-line:no-console
-  console.log('TouchableSurfaceScreen().onButtonPress()');
+  console.log('TouchableScreen().onButtonPress()');
 };
 
 const TouchableImage = (props: RfxViewPropsOptional) => {

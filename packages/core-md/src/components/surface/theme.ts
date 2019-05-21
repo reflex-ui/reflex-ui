@@ -23,7 +23,7 @@ export const getSurfaceContainerProps = <
 >(
   props: Props,
 ): ViewProps => ({
-  ...(props.isTouchableHandler && { pointerEvents: 'box-only' }),
+  ...(!props.isTouchableHandler && { pointerEvents: 'box-none' }),
 });
 
 export const getSurfaceContainerStyle = <

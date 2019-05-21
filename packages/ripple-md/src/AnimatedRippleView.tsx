@@ -62,11 +62,16 @@ export const AnimatedRippleView = <
    */
   // @ts-ignore error TS2589: Type instantiation
   // is excessively deep and possibly infinite.
-  const renderedAnimatedView = <AnimatedView style={rippleMotionStyle} />;
+  const renderedAnimatedView = (
+    // @ts-ignore error TS2589: Type instantiation
+    <AnimatedView key="rippleAnimation" style={rippleMotionStyle} />
+  );
 
   return (
-    <View {...otherProps} onLayout={onLayoutChanged}>
-      <View style={rippleContainerStyle}>{renderedAnimatedView}</View>
+    <View key="rippleSurface" {...otherProps} onLayout={onLayoutChanged}>
+      <View key="rippleContainer" style={rippleContainerStyle}>
+        {renderedAnimatedView}
+      </View>
       {children}
     </View>
   );

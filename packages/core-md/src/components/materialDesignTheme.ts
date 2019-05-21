@@ -20,7 +20,6 @@ import { screenTheme } from './screen/theme';
 import { surfaceTheme } from './surface/theme';
 import { rfxSvgVariantsTheme } from './svg/theme';
 import { rfxTextVariantsTheme } from './text/theme';
-import { touchableSurfaceVariantsTheme } from './touchable-surface/theme';
 import { touchableTheme } from './touchable/theme';
 import { rfxViewTheme } from './view/theme';
 
@@ -39,6 +38,5 @@ export const materialDesignTheme: ComponentsTheme = {
   svg: rfxSvgVariantsTheme,
   text: rfxTextVariantsTheme,
   touchable: touchableTheme,
-  touchableSurface: touchableSurfaceVariantsTheme,
   views: rfxViewTheme,
 };

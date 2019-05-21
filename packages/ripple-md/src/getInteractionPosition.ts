@@ -15,7 +15,10 @@ export const getInteractionPosition = (
   let x = 0;
   let y = 0;
 
-  if (interactionEvent) {
+  if (
+    interactionEvent &&
+    (interactionEvent as GestureResponderEvent).nativeEvent
+  ) {
     x = (interactionEvent as GestureResponderEvent).nativeEvent.locationX;
     y = (interactionEvent as GestureResponderEvent).nativeEvent.locationY;
   }

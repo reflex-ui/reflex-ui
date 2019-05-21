@@ -6,14 +6,14 @@
  */
 
 import flatten from 'lodash/flatten';
-import merge from 'lodash/merge';
+// import merge from 'lodash/merge';
 import * as React from 'react';
 import { ImageStyle, StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 import { StyleProps } from '../components/StyleProps';
 
 export const cloneElement = <
-  ComponentProps extends {} & StyleProps<ViewStyle | TextStyle | ImageStyle>
+  ComponentProps extends StyleProps<ViewStyle | TextStyle | ImageStyle>
 >({
   element,
   props,
@@ -22,9 +22,9 @@ export const cloneElement = <
   readonly props?: ComponentProps;
 }) => {
   // @ts-ignore Type '{}' is not assignable to type 'ComponentProps'.ts(2322)
-  // Why not? If ComponentProps extends {} & StyleProps,
-  // which only contains optional fields,
-  // then it doesn't seem wrong to assign an empty object to it as {}.
+  // If ComponentProps extends StyleProps,
+  // which only contain optional fields,
+  // then it seems ok to assign an empty object here.
   if (!element.props) element.props = {};
   const { style: elementStyle, ...otherElementProps } = element.props;
   let styles: StyleProp<ViewStyle | TextStyle | ImageStyle>[] = [];
@@ -40,5 +40,6 @@ export const cloneElement = <
     // It's fine to mutate it here.
     props.style = styles;
   }
-  return React.cloneElement(element, merge({}, props, otherElementProps));
+  // @ts-ignore
+  return React.cloneElement(element, { ...props, ...otherElementProps });
 };

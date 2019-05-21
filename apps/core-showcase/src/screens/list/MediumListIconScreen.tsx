@@ -19,7 +19,7 @@ import {
   Screen,
   Size,
   SurfacePropsOptional,
-  TouchableSurface,
+  Touchable,
   useResponsiveness,
 } from '@reflex-ui/core';
 import {
@@ -52,23 +52,23 @@ const onListItemIconPress = () => {
 
 const MyList = (props: SurfacePropsOptional): JSX.Element => (
   <List maxWidth={getListMaxWidth(useResponsiveness())} {...props}>
-    <TouchableSurface activated contained={false} onPress={onListItemPress}>
+    <Touchable activated onPress={onListItemPress}>
       <ListItem size={Size.M}>
         <Column marginHorizontal={Size.S}>
           <InboxIcon />
         </Column>
         <Paragraph1 marginHorizontal={Size.S}>Inbox</Paragraph1>
       </ListItem>
-    </TouchableSurface>
-    <TouchableSurface contained={false} onPress={onListItemPress}>
+    </Touchable>
+    <Touchable onPress={onListItemPress}>
       <ListItem size={Size.M}>
         <Column marginHorizontal={Size.S}>
           <StarIcon />
         </Column>
         <Paragraph1 marginHorizontal={Size.S}>Starred</Paragraph1>
       </ListItem>
-    </TouchableSurface>
-    <TouchableSurface contained={false} disabled onPress={onListItemPress}>
+    </Touchable>
+    <Touchable disabled onPress={onListItemPress}>
       <ListItem size={Size.M}>
         <Column marginHorizontal={Size.S}>
           <WatchLaterIcon />
@@ -80,8 +80,8 @@ const MyList = (props: SurfacePropsOptional): JSX.Element => (
         </Button>
         <Caption marginHorizontal={Size.XS}>Jan 26, 2019</Caption>
       </ListItem>
-    </TouchableSurface>
-    <TouchableSurface contained={false} onPress={onListItemPress}>
+    </Touchable>
+    <Touchable onPress={onListItemPress}>
       <ListItem size={Size.M}>
         <Column marginHorizontal={Size.S}>
           <LabelIcon />
@@ -93,7 +93,7 @@ const MyList = (props: SurfacePropsOptional): JSX.Element => (
         </Button>
         <Caption marginHorizontal={Size.XS}>Jan 26, 2019</Caption>
       </ListItem>
-    </TouchableSurface>
+    </Touchable>
   </List>
 );
 

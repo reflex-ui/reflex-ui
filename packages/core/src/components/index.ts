@@ -38,6 +38,5 @@ export * from './screen';
 export * from './surface';
 export * from './svg';
 export * from './text';
-export * from './touchable-surface';
 export * from './touchable';
 export * from './view';

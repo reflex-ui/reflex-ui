@@ -14,13 +14,13 @@ import { useComponentsTheme } from '../ComponentsTheme';
 import { processComponent } from '../processComponent';
 import { processComponentProps } from '../processComponentProps';
 import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
+import { SurfaceProps, SurfacePropsOptional } from '../surface/SurfaceProps';
+import { SurfaceTheme } from '../surface/SurfaceTheme';
 import { renderRfxViewComponent } from '../view/renderRfxViewComponent';
-import { RfxViewProps, RfxViewPropsOptional } from '../view/RfxViewProps';
-import { RfxViewTheme } from '../view/RfxViewTheme';
-import { useDefaultRfxViewProps } from '../view/useDefaultRfxViewProps';
 import { useShouldProvideColor } from '../view/useShouldProvideColor';
+import { useDefaultListItemProps } from './useDefaultListItemProps';
 
-const useTheme = (theme?: RfxViewTheme): RfxViewTheme => {
+const useTheme = (theme?: SurfaceTheme): SurfaceTheme => {
   const { componentsTheme } = useComponentsTheme();
 
   if (theme !== undefined && theme !== null) return theme;
@@ -34,16 +34,16 @@ const useTheme = (theme?: RfxViewTheme): RfxViewTheme => {
   return componentsTheme.listItem;
 };
 
-let ListItem: React.ComponentType<RfxViewPropsOptional> = forwardRef(
-  (props: RfxViewPropsOptional, ref: Ref<View>) => {
+let ListItem: React.ComponentType<SurfacePropsOptional> = forwardRef(
+  (props: SurfacePropsOptional, ref: Ref<View>) => {
     const theme = useTheme(props.theme);
 
-    let newProps: RfxViewProps = useDefaultRfxViewProps(props, theme);
+    let newProps: SurfaceProps = useDefaultListItemProps(props, theme);
     newProps = { ...newProps, ...useOnLayout(newProps) };
     newProps = processComponentProps(newProps);
     newProps = processThemeAndStyleProps(newProps, newProps.theme);
 
-    const shouldProvideColor = useShouldProvideColor(props.paletteColor);
+    const shouldProvideColor = useShouldProvideColor(newProps.paletteColor);
     return renderRfxViewComponent({
       props: newProps,
       ref,
@@ -53,7 +53,7 @@ let ListItem: React.ComponentType<RfxViewPropsOptional> = forwardRef(
   },
 );
 
-ListItem = processComponent<RfxViewPropsOptional>(ListItem, {
+ListItem = processComponent<SurfacePropsOptional>(ListItem, {
   name: 'ListItem',
 });
 

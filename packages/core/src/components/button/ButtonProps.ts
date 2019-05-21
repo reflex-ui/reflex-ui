@@ -5,13 +5,17 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-// tslint:disable-next-line:max-line-length
-import { TouchableSurfacePropsBase } from '../touchable-surface/TouchableSurfaceProps';
+import { TouchableWithoutFeedbackProps } from 'react-native';
+
+import { InteractionProps } from '../../interaction';
+import { SurfacePropsBase } from '../surface/SurfaceProps';
 import { ButtonTheme } from './ButtonTheme';
 import { ButtonVariant } from './ButtonVariant';
 
 export interface ButtonPropsBase<Props, Theme>
-  extends TouchableSurfacePropsBase<Props, Theme> {
+  extends InteractionProps,
+    SurfacePropsBase<Props, Theme>,
+    TouchableWithoutFeedbackProps {
   readonly leadingIcon?: JSX.Element;
   readonly trailingIcon?: JSX.Element;
   readonly variant: ButtonVariant;
