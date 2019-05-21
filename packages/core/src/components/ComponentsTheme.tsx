@@ -16,8 +16,7 @@ import { SurfaceTheme } from './surface';
 import { RfxSvgVariantsTheme } from './svg';
 import { RfxTextVariantsTheme } from './text';
 import { TouchableTheme } from './touchable';
-import { TouchableSurfaceVariantsTheme } from './touchable-surface';
-import { RfxViewTheme, RfxViewVariantsTheme } from './view';
+import { RfxViewVariantsTheme } from './view';
 
 export interface ComponentsTheme {
   readonly appBar?: AppBarVariantsTheme;
@@ -27,14 +26,13 @@ export interface ComponentsTheme {
   readonly button?: ButtonVariantsTheme;
   readonly image?: RfxImageTheme;
   readonly list?: SurfaceTheme;
-  readonly listItem?: RfxViewTheme;
+  readonly listItem?: SurfaceTheme;
   readonly overlaySurface?: OverlaySurfaceTheme;
   readonly screen?: SurfaceTheme;
   readonly surface?: SurfaceTheme;
   readonly svg?: RfxSvgVariantsTheme;
   readonly text?: RfxTextVariantsTheme;
   readonly touchable?: TouchableTheme;
-  readonly touchableSurface?: TouchableSurfaceVariantsTheme;
   readonly views?: RfxViewVariantsTheme;
 }
 

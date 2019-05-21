@@ -19,7 +19,7 @@ import {
   Screen,
   Size,
   SurfacePropsOptional,
-  TouchableSurface,
+  Touchable,
   useResponsiveness,
 } from '@reflex-ui/core';
 import { AccountCircleIcon, MenuIcon } from '@reflex-ui/icons-md';
@@ -40,11 +40,7 @@ const onListItemPress = () => {
 
 const MyList = (props: SurfacePropsOptional): JSX.Element => (
   <List maxWidth={getListMaxWidth(useResponsiveness())} {...props}>
-    <TouchableSurface
-      contained={false}
-      flexWrap={FlexWrap.Nowrap}
-      onPress={onListItemPress}
-    >
+    <Touchable onPress={onListItemPress}>
       <ListItem flexWrap={FlexWrap.Nowrap} size={Size.XL}>
         <Column marginHorizontal={Size.S}>
           <AccountCircleIcon size={Size.XL} />
@@ -59,13 +55,8 @@ const MyList = (props: SurfacePropsOptional): JSX.Element => (
           </Paragraph2>
         </Column>
       </ListItem>
-    </TouchableSurface>
-    <TouchableSurface
-      contained={false}
-      disabled
-      flexWrap={FlexWrap.Nowrap}
-      onPress={onListItemPress}
-    >
+    </Touchable>
+    <Touchable disabled onPress={onListItemPress}>
       <ListItem flexWrap={FlexWrap.Nowrap} size={Size.XL}>
         <Column marginHorizontal={Size.S}>
           <AccountCircleIcon size={Size.XL} />
@@ -80,12 +71,8 @@ const MyList = (props: SurfacePropsOptional): JSX.Element => (
           </Paragraph2>
         </Column>
       </ListItem>
-    </TouchableSurface>
-    <TouchableSurface
-      contained={false}
-      flexWrap={FlexWrap.Nowrap}
-      onPress={onListItemPress}
-    >
+    </Touchable>
+    <Touchable onPress={onListItemPress}>
       <ListItem flexWrap={FlexWrap.Nowrap} size={Size.XL}>
         <Column marginHorizontal={Size.S}>
           <AccountCircleIcon size={Size.XL} />
@@ -100,7 +87,7 @@ const MyList = (props: SurfacePropsOptional): JSX.Element => (
           </Paragraph2>
         </Column>
       </ListItem>
-    </TouchableSurface>
+    </Touchable>
   </List>
 );
 

@@ -27,7 +27,7 @@ import {
   Screen,
   Size,
   SurfacePropsOptional,
-  TouchableSurface,
+  Touchable,
   useComponentsTheme,
   usePalette,
   useResponsiveness,
@@ -112,9 +112,8 @@ const MyList = (props: SurfacePropsOptional): JSX.Element => {
         {...props}
         paletteColor={useCustomPaletteColor()}
       >
-        <TouchableSurface
+        <Touchable
           activated={activatedId === 'inbox'}
-          contained={false}
           onPress={() => onListItemPress('inbox')}
         >
           <ListItem size={Size.M}>
@@ -123,10 +122,9 @@ const MyList = (props: SurfacePropsOptional): JSX.Element => {
             </Column>
             <Paragraph1 marginHorizontal={Size.S}>Inbox</Paragraph1>
           </ListItem>
-        </TouchableSurface>
-        <TouchableSurface
+        </Touchable>
+        <Touchable
           activated={activatedId === 'starred'}
-          contained={false}
           onPress={() => onListItemPress('starred')}
         >
           <ListItem size={Size.M}>
@@ -135,10 +133,9 @@ const MyList = (props: SurfacePropsOptional): JSX.Element => {
             </Column>
             <Paragraph1 marginHorizontal={Size.S}>Starred</Paragraph1>
           </ListItem>
-        </TouchableSurface>
-        <TouchableSurface
+        </Touchable>
+        <Touchable
           activated={activatedId === 'snoozed'}
-          contained={false}
           disabled
           onPress={() => onListItemPress('snoozed')}
         >
@@ -153,10 +150,9 @@ const MyList = (props: SurfacePropsOptional): JSX.Element => {
             </Button>
             <Caption marginHorizontal={Size.XS}>Jan 26, 2019</Caption>
           </ListItem>
-        </TouchableSurface>
-        <TouchableSurface
+        </Touchable>
+        <Touchable
           activated={activatedId === 'important'}
-          contained={false}
           onPress={() => onListItemPress('important')}
         >
           <ListItem size={Size.M}>
@@ -170,7 +166,7 @@ const MyList = (props: SurfacePropsOptional): JSX.Element => {
             </Button>
             <Caption marginHorizontal={Size.XS}>Jan 26, 2019</Caption>
           </ListItem>
-        </TouchableSurface>
+        </Touchable>
       </List>
     </ComponentsThemeProvider>
   );

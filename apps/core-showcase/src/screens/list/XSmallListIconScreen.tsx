@@ -18,7 +18,7 @@ import {
   Screen,
   Size,
   SurfacePropsOptional,
-  TouchableSurface,
+  Touchable,
   useResponsiveness,
 } from '@reflex-ui/core';
 import {
@@ -51,23 +51,23 @@ const onListItemIconPress = () => {
 
 const MyList = (props: SurfacePropsOptional): JSX.Element => (
   <List maxWidth={getListMaxWidth(useResponsiveness())} {...props}>
-    <TouchableSurface activated contained={false} onPress={onListItemPress}>
+    <Touchable activated onPress={onListItemPress}>
       <ListItem size={Size.XS}>
         <Column marginHorizontal={Size.S}>
           <InboxIcon size={Size.S} />
         </Column>
         <Paragraph1 marginHorizontal={Size.S}>Inbox</Paragraph1>
       </ListItem>
-    </TouchableSurface>
-    <TouchableSurface contained={false} onPress={onListItemPress}>
+    </Touchable>
+    <Touchable onPress={onListItemPress}>
       <ListItem size={Size.XS}>
         <Column marginHorizontal={Size.S}>
           <StarIcon size={Size.S} />
         </Column>
         <Paragraph1 marginHorizontal={Size.S}>Starred</Paragraph1>
       </ListItem>
-    </TouchableSurface>
-    <TouchableSurface contained={false} disabled onPress={onListItemPress}>
+    </Touchable>
+    <Touchable disabled onPress={onListItemPress}>
       <ListItem size={Size.XS}>
         <Column marginHorizontal={Size.S}>
           <WatchLaterIcon size={Size.S} />
@@ -82,8 +82,8 @@ const MyList = (props: SurfacePropsOptional): JSX.Element => (
           <MoreVertIcon />
         </Button>
       </ListItem>
-    </TouchableSurface>
-    <TouchableSurface contained={false} onPress={onListItemPress}>
+    </Touchable>
+    <Touchable onPress={onListItemPress}>
       <ListItem size={Size.XS}>
         <Column marginHorizontal={Size.S}>
           <LabelIcon size={Size.S} />
@@ -98,7 +98,7 @@ const MyList = (props: SurfacePropsOptional): JSX.Element => (
           <MoreVertIcon />
         </Button>
       </ListItem>
-    </TouchableSurface>
+    </Touchable>
   </List>
 );
 

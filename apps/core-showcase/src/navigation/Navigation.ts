@@ -42,7 +42,6 @@ import { SurfaceScreen } from '../screens/surface';
 import { SvgShowcaseScreen } from '../screens/svg';
 import { RfxTextScreen } from '../screens/text';
 import { TouchableScreen } from '../screens/touchable';
-import { TouchableSurfaceScreen } from '../screens/touchable-surface';
 import { ViewScreen } from '../screens/view';
 import { withAppLogic } from '../withAppLogic';
 
@@ -115,10 +114,6 @@ const RfxTextNavigation = {
 
 const TouchableNavigation = {
   default: `${appNavigationPrefix}touchable.TouchableScreen`,
-};
-
-const TouchableSurfaceNavigation = {
-  default: `${appNavigationPrefix}touchableSurface.TouchableSurfaceScreen`,
 };
 
 const ViewNavigation = {
@@ -222,17 +217,13 @@ const registerScreens = () => {
   Navigation.registerComponent(SvgNavigation.default, () =>
     withAppLogic(SvgShowcaseScreen),
   );
-  /* TOUCHABLE */
-  Navigation.registerComponent(TouchableNavigation.default, () =>
-    withAppLogic(TouchableScreen),
-  );
-  /* TOUCHABLE SURFACE */
-  Navigation.registerComponent(TouchableSurfaceNavigation.default, () =>
-    withAppLogic(TouchableSurfaceScreen),
-  );
   /* TEXT */
   Navigation.registerComponent(RfxTextNavigation.default, () =>
     withAppLogic(RfxTextScreen),
+  );
+  /* TOUCHABLE */
+  Navigation.registerComponent(TouchableNavigation.default, () =>
+    withAppLogic(TouchableScreen),
   );
   /* VIEW */
   Navigation.registerComponent(ViewNavigation.default, () =>
@@ -247,7 +238,7 @@ export const AppNavigation = () => {
     Navigation.setRoot({
       root: {
         component: {
-          name: TouchableNavigation.default,
+          name: ListNavigation.mediumIcon,
         },
       },
     });

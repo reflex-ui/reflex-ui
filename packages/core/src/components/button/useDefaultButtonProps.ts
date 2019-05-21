@@ -9,7 +9,7 @@ import { usePalette } from '../../color/Palette';
 import { usePaletteColor } from '../../color/PaletteColor';
 import { Size } from '../../sizing/Size';
 // tslint:disable-next-line:max-line-length
-import { useDefaultTouchableSurfaceProps } from '../touchable-surface/useDefaultTouchableSurfaceProps';
+import { useDefaultTouchableProps } from '../touchable/useDefaultTouchableProps';
 import { ButtonProps, ButtonPropsOptional } from './ButtonProps';
 import { ButtonTheme } from './ButtonTheme';
 import { ButtonVariant } from './ButtonVariant';
@@ -53,7 +53,7 @@ export const useDefaultButtonProps = (
       : Size.S;
 
   return {
-    ...useDefaultTouchableSurfaceProps(props, theme),
+    ...useDefaultTouchableProps(props, theme),
     contained,
     /*
      * marginHorizontal and marginVertical are more specific

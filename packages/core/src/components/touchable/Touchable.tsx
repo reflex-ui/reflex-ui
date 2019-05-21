@@ -5,7 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { forwardRef, PropsWithChildren, ReactElement, Ref } from 'react';
+import React, {
+  forwardRef,
+  PropsWithChildren,
+  ReactElement,
+  Ref,
+  useMemo,
+} from 'react';
 import { TouchableWithoutFeedback } from 'react-native';
 
 import { MissingComponentThemeError } from '../../errors';
@@ -45,24 +51,30 @@ let Touchable: React.ComponentType<TouchablePropsOptional> = forwardRef(
     newProps = { ...newProps, ...useInteraction(newProps) };
     newProps = processComponentProps(newProps);
     newProps = processThemeAndStyleProps(newProps, newProps.theme);
-    if (
-      newProps.children !== undefined &&
-      newProps.children !== null &&
-      typeof newProps.children !== 'string' &&
-      typeof newProps.children !== 'number' &&
-      typeof newProps.children !== 'boolean' &&
-      typeof newProps.children !== 'function'
-    ) {
-      newProps = {
-        ...newProps,
-        children: cloneElement({
-          element: newProps.children as ReactElement,
-          props: {
-            isTouchableHandler: true,
-            pointerHovers: newProps.pointerHovers,
-          },
-        }),
-      };
+
+    const newChildren = useMemo(() => {
+      if (
+        newProps.children == undefined ||
+        newProps.children === null ||
+        typeof newProps.children === 'string' ||
+        typeof newProps.children === 'number' ||
+        typeof newProps.children === 'boolean' ||
+        typeof newProps.children === 'function'
+      ) {
+        return newProps.children;
+      }
+
+      return cloneElement({
+        element: newProps.children as ReactElement,
+        props: {
+          isTouchableHandler: true,
+          pointerHovers: newProps.pointerHovers,
+        },
+      });
+    }, [newProps.children, newProps.pointerHovers]);
+
+    if (newChildren !== newProps.children) {
+      newProps = { ...newProps, children: newChildren };
     }
 
     const Component =

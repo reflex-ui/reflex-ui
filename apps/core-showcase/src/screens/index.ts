@@ -15,5 +15,4 @@ export * from './list';
 export * from './svg';
 export * from './surface';
 export * from './text';
-export * from './touchable-surface';
 export * from './view';

@@ -6,3 +6,4 @@
  */
 
 export * from './ListItem';
+export * from './useDefaultListItemProps';

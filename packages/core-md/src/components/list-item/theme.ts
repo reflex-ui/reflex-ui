@@ -6,14 +6,17 @@
  */
 
 import {
-  RfxViewProps,
-  RfxViewTheme,
   SizedData,
+  SurfaceProps,
+  SurfaceTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import { ViewStyle } from 'react-native';
 
-import { getCommonRfxViewContainerStyle } from '../view/theme';
+import {
+  getSurfaceContainerProps,
+  getSurfaceContainerStyle,
+} from '../surface/theme';
 
 export const listItemContainerSizedStyle: SizedData<ViewStyle> = {
   xxsmall: { minHeight: 32 },
@@ -32,16 +35,25 @@ export const listItemContainerSizedStyle: SizedData<ViewStyle> = {
 };
 
 export const getListItemContainerStyle: ViewStyleGetter<
-  RfxViewProps
-> = props => ({
-  ...(props.size && listItemContainerSizedStyle[props.size]),
-  alignItems: 'center',
-  flexDirection: 'row',
-  flexWrap: 'wrap',
-  paddingHorizontal: 8,
-  ...getCommonRfxViewContainerStyle(props),
-});
+  SurfaceProps
+> = props => {
+  const paddingHorizontal =
+    props.padding === undefined && props.paddingHorizontal === undefined
+      ? 8
+      : undefined;
 
-export const listItemTheme: RfxViewTheme = {
+  return {
+    ...getSurfaceContainerStyle(props),
+    ...(props.size && listItemContainerSizedStyle[props.size]),
+    alignItems: props.alignItems || 'center',
+    borderRadius: 0,
+    flexDirection: props.flexDirection || 'row',
+    flexWrap: props.flexWrap || 'wrap',
+    ...(paddingHorizontal && { paddingHorizontal }),
+  };
+};
+
+export const listItemTheme: SurfaceTheme = {
+  getProps: getSurfaceContainerProps,
   getStyle: getListItemContainerStyle,
 };

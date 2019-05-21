@@ -44,7 +44,6 @@ import { SurfaceScreen } from '../screens/surface';
 import { SvgShowcaseScreen } from '../screens/svg';
 import { RfxTextScreen } from '../screens/text';
 import { TouchableScreen } from '../screens/touchable';
-import { TouchableSurfaceScreen } from '../screens/touchable-surface';
 import { ViewScreen } from '../screens/view';
 
 const navigator = createBrowserHistory();
@@ -143,11 +142,6 @@ const AppNavigation: React.SFC = () => (
       <Route exact path="/svg" component={SvgShowcaseScreen} />
       <Route exact path="/text" component={RfxTextScreen} />
       <Route exact path="/touchable" component={TouchableScreen} />
-      <Route
-        exact
-        path="/touchable-surface"
-        component={TouchableSurfaceScreen}
-      />
       <Route exact path="/view" component={ViewScreen} />
       <Redirect from="/*" to="/button/default" />
     </Switch>
