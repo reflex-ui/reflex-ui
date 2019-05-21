@@ -15,19 +15,23 @@ import { RippleStyles } from './RippleStyles';
 
 export const createComponentRippleStyles = ({
   color,
-  height,
+  elementMeasure,
+  // height,
   interactionEvent,
   maxDiameter,
   style,
-  width,
-}: ComponentRippleStylesFactoryInput): RippleStyles => {
-  const interactionPosition = getInteractionPosition(interactionEvent);
+}: // width,
+ComponentRippleStylesFactoryInput): RippleStyles => {
+  const interactionPosition = getInteractionPosition(
+    elementMeasure,
+    interactionEvent,
+  );
   const diameter = calculateRippleDiameter({
-    height,
+    height: elementMeasure.height,
     maxDiameter,
     posX: interactionPosition.x,
     posY: interactionPosition.y,
-    width,
+    width: elementMeasure.width,
   });
 
   const position = calculateRipplePosition({ diameter, interactionPosition });

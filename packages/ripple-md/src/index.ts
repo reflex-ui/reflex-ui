@@ -12,6 +12,7 @@ export * from './ComponentRippleStylesFactoryInput';
 export * from './createAnimatedRippleView';
 export * from './createComponentRippleStyles';
 export * from './createRippleStyles';
+export * from './ElementMeasure';
 export * from './getInteractionPosition';
 export * from './getSurfaceRippleColor';
 export * from './Position2D';

@@ -7,9 +7,12 @@
 
 import { InteractionEvent } from '@reflex-ui/core';
 import { GestureResponderEvent } from 'react-native';
+
+import { ElementMeasure } from './ElementMeasure';
 import { Position2D } from './Position2D';
 
 export const getInteractionPosition = (
+  elementMeasure: ElementMeasure,
   interactionEvent?: InteractionEvent,
 ): Position2D => {
   let x = 0;
@@ -19,8 +22,12 @@ export const getInteractionPosition = (
     interactionEvent &&
     (interactionEvent as GestureResponderEvent).nativeEvent
   ) {
-    x = (interactionEvent as GestureResponderEvent).nativeEvent.locationX;
-    y = (interactionEvent as GestureResponderEvent).nativeEvent.locationY;
+    x =
+      (interactionEvent as GestureResponderEvent).nativeEvent.pageX -
+      elementMeasure.pageX;
+    y =
+      (interactionEvent as GestureResponderEvent).nativeEvent.pageY -
+      elementMeasure.pageY;
   }
 
   return { x, y };

@@ -8,11 +8,14 @@
 import { InteractionEvent } from '@reflex-ui/core';
 import { ViewStyle } from 'react-native';
 
+import { ElementMeasure } from './ElementMeasure';
+
 export interface ComponentRippleStylesFactoryInput {
   readonly color: string;
-  readonly height: number;
+  readonly elementMeasure: ElementMeasure;
+  // readonly height: number;
   readonly interactionEvent?: InteractionEvent;
   readonly maxDiameter?: number;
   readonly style: ViewStyle;
-  readonly width: number;
+  // readonly width: number;
 }
