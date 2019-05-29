@@ -5,6 +5,4 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './black';
-export * from './mdBlack';
-export * from './mdBlackBackdrop';
+export * from './theme';

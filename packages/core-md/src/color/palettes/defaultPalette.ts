@@ -7,6 +7,7 @@
 
 import { Palette } from '@reflex-ui/core';
 
+import { mdBlackBackdrop } from '../colors/black/mdBlackBackdrop';
 import {
   mdGreen800,
   mdGreen800Dark,
@@ -21,6 +22,7 @@ import {
 } from '../colors/yellow/mdYellow600';
 
 export const defaultPalette: Palette = {
+  backdrop: mdBlackBackdrop,
   error: mdRed900,
   errorDark: mdRed900Dark,
   errorLight: mdRed900Light,

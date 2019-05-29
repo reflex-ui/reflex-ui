@@ -10,6 +10,7 @@ import React, { createContext, useContext, useMemo, useState } from 'react';
 import { PaletteColor, PaletteColorOptional } from './PaletteColor';
 
 export interface Palette {
+  readonly backdrop: PaletteColor;
   readonly error: PaletteColor;
   readonly errorDark: PaletteColor;
   readonly errorLight: PaletteColor;
