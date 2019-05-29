@@ -9,6 +9,7 @@ import React, { createContext, useContext, useMemo, useState } from 'react';
 
 import { AppBarVariantsTheme } from './app-bar';
 import { AvatarTheme } from './avatar';
+import { BackdropTheme } from './backdrop';
 import { ButtonVariantsTheme } from './button';
 import { RfxImageTheme, RfxSizedImageTheme } from './image';
 import { OverlaySurfaceTheme } from './overlay-surface';
@@ -23,6 +24,7 @@ export interface ComponentsTheme {
   readonly avatar?: AvatarTheme;
   readonly avatarImage?: RfxSizedImageTheme;
   readonly avatarOverlaySurface?: OverlaySurfaceTheme;
+  readonly backdrop?: BackdropTheme;
   readonly button?: ButtonVariantsTheme;
   readonly image?: RfxImageTheme;
   readonly list?: SurfaceTheme;

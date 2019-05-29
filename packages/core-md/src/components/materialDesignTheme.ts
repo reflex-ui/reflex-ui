@@ -11,6 +11,7 @@ import { appBarVariantsTheme } from './app-bar/theme';
 import { avatarImageTheme } from './avatar-image/theme';
 import { avatarOverlaySurfaceTheme } from './avatar-overlay-surface/theme';
 import { avatarTheme } from './avatar/theme';
+import { backdropTheme } from './backdrop/theme';
 import { buttonTheme } from './button/theme';
 import { imageTheme } from './image/theme';
 import { listItemTheme } from './list-item/theme';
@@ -28,6 +29,7 @@ export const materialDesignTheme: ComponentsTheme = {
   avatar: avatarTheme,
   avatarImage: avatarImageTheme,
   avatarOverlaySurface: avatarOverlaySurfaceTheme,
+  backdrop: backdropTheme,
   button: buttonTheme,
   image: imageTheme,
   list: listTheme,

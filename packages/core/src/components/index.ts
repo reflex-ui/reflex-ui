@@ -9,6 +9,7 @@ export * from './app-bar';
 export * from './avatar';
 export * from './avatar-image';
 export * from './avatar-overlay-surface';
+export * from './backdrop';
 export * from './BuiltInSimpleComponentProps';
 export * from './button';
 export * from './ComponentChildrenProps';
