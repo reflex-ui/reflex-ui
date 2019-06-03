@@ -14,6 +14,7 @@ import { ButtonVariantsTheme } from './button';
 import { RfxImageTheme, RfxSizedImageTheme } from './image';
 import { ModalTheme } from './modal';
 import { OverlaySurfaceTheme } from './overlay-surface';
+import { CoplanarSideSheetVariantsTheme } from './sheet';
 import { SurfaceTheme } from './surface';
 import { RfxSvgVariantsTheme } from './svg';
 import { RfxTextVariantsTheme } from './text';
@@ -27,6 +28,7 @@ export interface ComponentsTheme {
   readonly avatarOverlaySurface?: OverlaySurfaceTheme;
   readonly backdrop?: BackdropTheme;
   readonly button?: ButtonVariantsTheme;
+  readonly coplanarSideSheet?: CoplanarSideSheetVariantsTheme;
   readonly image?: RfxImageTheme;
   readonly list?: SurfaceTheme;
   readonly listItem?: SurfaceTheme;

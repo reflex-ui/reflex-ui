@@ -41,6 +41,10 @@ import {
   XXSmallListScreen,
 } from '../screens/list';
 import { ModalScreen } from '../screens/modal';
+import {
+  CoplanarSideSheetEndScreen,
+  CoplanarSideSheetStartScreen,
+} from '../screens/sheet';
 import { SurfaceScreen } from '../screens/surface';
 import { SvgShowcaseScreen } from '../screens/svg';
 import { RfxTextScreen } from '../screens/text';
@@ -140,6 +144,16 @@ const AppNavigation: React.SFC = () => (
         component={XXLargeListIconThreeLinesScreen}
       />
       <Route exact path="/modal" component={ModalScreen} />
+      <Route
+        exact
+        path="/sheet/coplanar-side-sheet-end"
+        component={CoplanarSideSheetEndScreen}
+      />
+      <Route
+        exact
+        path="/sheet/coplanar-side-sheet-start"
+        component={CoplanarSideSheetStartScreen}
+      />
       <Route exact path="/surface" component={SurfaceScreen} />
       <Route exact path="/svg" component={SvgShowcaseScreen} />
       <Route exact path="/text" component={RfxTextScreen} />

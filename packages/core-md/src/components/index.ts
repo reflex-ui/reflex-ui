@@ -21,6 +21,7 @@ export * from './materialDesignTheme';
 export * from './modal';
 export * from './overlay-surface';
 export * from './screen';
+export * from './sheet';
 export * from './surface';
 export * from './svg';
 export * from './text';

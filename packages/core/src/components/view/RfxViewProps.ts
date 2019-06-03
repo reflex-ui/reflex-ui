@@ -44,7 +44,9 @@ export interface RfxViewPropsBase<Props, Theme>
     PaddingProps,
     SizingPropsOptional,
     ViewProps {
+  readonly isOpen?: boolean;
   readonly ref?: Ref<View>;
+  readonly shouldProvideColor?: boolean;
 }
 
 export type RfxViewPropsBaseOptional<Props, Theme> = Partial<
