@@ -56,6 +56,12 @@ export const useElevationAnimation = ({
 
   return {
     elevationContainerStyle,
+    // This seems a type incompatibility issue with react-spring's
+    // animated type and React Native's ViewStyle type.
+    // @ts-ignore Type '{
+    // backfaceVisibility?: SpringValue<"visible" | "hidden" | undefined>
+    // | undefined; ... }' is not assignable to type 'ViewStyle'.
+    // Types of property 'backfaceVisibility' are incompatible.
     elevationMotionStyle,
   };
 };
