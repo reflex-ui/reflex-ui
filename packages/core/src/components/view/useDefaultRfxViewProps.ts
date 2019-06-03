@@ -23,11 +23,16 @@ export const useDefaultRfxViewProps = <
   let paletteColor = paletteColorCtxValue && paletteColorCtxValue.paletteColor;
   paletteColor = props.paletteColor || paletteColor || palette.surface;
 
+  const isOpen = props.isOpen === false ? false : true;
+  const shouldProvideColor = props.shouldProvideColor === false ? false : true;
+
   const rfxProps: RfxViewPropsBase<Props, Theme> = {
     ...props,
     breakpoints,
     dimensions,
+    isOpen,
     paletteColor,
+    shouldProvideColor,
     theme,
   };
 

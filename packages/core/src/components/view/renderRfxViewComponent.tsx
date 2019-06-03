@@ -44,7 +44,7 @@ export const renderRfxViewComponent = <
     viewProps,
   });
 
-  if (shouldProvideColor) {
+  if (shouldProvideColor && props.shouldProvideColor) {
     return (
       <PaletteColorProvider value={paletteColor}>
         {renderedView}

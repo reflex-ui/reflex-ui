@@ -19,6 +19,7 @@ import { listTheme } from './list/theme';
 import { modalTheme } from './modal/theme';
 import { overlaySurfaceTheme } from './overlay-surface/theme';
 import { screenTheme } from './screen/theme';
+import { coplanarSideSheetVariantsTheme } from './sheet';
 import { surfaceTheme } from './surface/theme';
 import { rfxSvgVariantsTheme } from './svg/theme';
 import { rfxTextVariantsTheme } from './text/theme';
@@ -32,6 +33,7 @@ export const materialDesignTheme: ComponentsTheme = {
   avatarOverlaySurface: avatarOverlaySurfaceTheme,
   backdrop: backdropTheme,
   button: buttonTheme,
+  coplanarSideSheet: coplanarSideSheetVariantsTheme,
   image: imageTheme,
   list: listTheme,
   listItem: listItemTheme,

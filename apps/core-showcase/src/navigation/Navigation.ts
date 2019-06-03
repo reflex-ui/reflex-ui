@@ -39,6 +39,10 @@ import {
   XXSmallListScreen,
 } from '../screens/list';
 import { ModalScreen } from '../screens/modal';
+import {
+  CoplanarSideSheetEndScreen,
+  CoplanarSideSheetStartScreen,
+} from '../screens/sheet';
 import { SurfaceScreen } from '../screens/surface';
 import { SvgShowcaseScreen } from '../screens/svg';
 import { RfxTextScreen } from '../screens/text';
@@ -103,6 +107,13 @@ const ListNavigation = {
 
 const ModalNavigation = {
   default: `${appNavigationPrefix}modal.ModalScreen`,
+};
+
+const SheetNavigation = {
+  // tslint:disable-next-line:max-line-length
+  coplanarSideSheetEnd: `${appNavigationPrefix}sheet.CoplanarSideSheetEndScreen`,
+  // tslint:disable-next-line:max-line-length
+  coplanarSideSheetStart: `${appNavigationPrefix}sheet.CoplanarSideSheetStartScreen`,
 };
 
 const SurfaceNavigation = {
@@ -217,6 +228,13 @@ const registerScreens = () => {
   /* MODAL */
   Navigation.registerComponent(ModalNavigation.default, () =>
     withAppLogic(ModalScreen),
+  );
+  /* SHEET */
+  Navigation.registerComponent(SheetNavigation.coplanarSideSheetEnd, () =>
+    withAppLogic(CoplanarSideSheetEndScreen),
+  );
+  Navigation.registerComponent(SheetNavigation.coplanarSideSheetStart, () =>
+    withAppLogic(CoplanarSideSheetStartScreen),
   );
   /* SURFACE */
   Navigation.registerComponent(SurfaceNavigation.default, () =>
