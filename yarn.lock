@@ -9510,10 +9510,10 @@ react-scripts@2.1.8:
   optionalDependencies:
     fsevents "1.2.4"
 
-react-spring@9.0.0-beta.5:
-  version "9.0.0-beta.5"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-9.0.0-beta.5.tgz#569cdbcac4511e8caef71dd3e82f8cf1e7fd1806"
-  integrity sha512-K+2uYWGg6n3NWXlYbeDPsmLqtIXolEYu/aBEHi6Myq9yH7yNxAGwnDLD/ZgCl6JjrdqVOURd+mERsyTWrRXTTA==
+react-spring@9.0.0-beta.8:
+  version "9.0.0-beta.8"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-9.0.0-beta.8.tgz#dd4348d3d6dd88ff596b36fa85b3328200914b15"
+  integrity sha512-pcyQqr5W9HBM5Rm0rmdbVIEQz7wocAfWBNWSUm/EEvpb4M0OQ3Xp9JW6Ayo+6ZgV7fLzJJHO/QgNdUMpAtVaTw==
   dependencies:
     "@babel/runtime" "^7.3.1"
     prop-types "^15.5.8"
