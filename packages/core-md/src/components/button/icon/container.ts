@@ -69,6 +69,8 @@ export const getIconButtonContainerStyle: ViewStyleGetter<
 > = props => ({
   ...getAllVariantsButtonContainerStyle(props),
   ...(props.size && iconButtonContainerSizedStyle[props.size]),
+  marginHorizontal: 0,
+  marginVertical: 0,
 });
 
 export const getIconButtonSurfaceTheme: ComponentThemeGetter<

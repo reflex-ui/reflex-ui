@@ -28,6 +28,8 @@ export const getAllVariantsButtonContainerStyle: ViewStyleGetter<
   borderRadius: props.size === Size.XL || props.size === Size.XXL ? 6 : 4,
   flexDirection: 'row',
   justifyContent: 'center',
+  marginHorizontal: 16,
+  marginVertical: 12,
   ...(props.elevation !== 0 &&
     props.elevation !== undefined &&
     props.elevation !== null &&

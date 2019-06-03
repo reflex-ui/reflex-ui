@@ -69,6 +69,7 @@ export const getDefaultButtonContainerStyle: ViewStyleGetter<
 > = props => ({
   ...getAllVariantsButtonContainerStyle(props),
   ...(props.size && defaultButtonContainerSizedStyle[props.size]),
+  marginHorizontal: 4,
 });
 
 export const getDefaultButtonSurfaceTheme: ComponentThemeGetter<

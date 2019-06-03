@@ -38,30 +38,9 @@ export const useDefaultButtonProps = (
       ? false
       : true;
 
-  const marginHorizontal: Size | number =
-    variant === ButtonVariant.Fab ||
-    variant === ButtonVariant.XFab ||
-    variant === ButtonVariant.Icon
-      ? 0
-      : Size.M;
-
-  const marginVertical: Size | number =
-    variant === ButtonVariant.Fab ||
-    variant === ButtonVariant.XFab ||
-    variant === ButtonVariant.Icon
-      ? 0
-      : Size.S;
-
   return {
     ...useDefaultTouchableProps(props, theme),
     contained,
-    /*
-     * marginHorizontal and marginVertical are more specific
-     * than margin, so we check it here to avoid overriding
-     * users' margin when provided.
-     */
-    ...((props.margin && {}) || { marginHorizontal, marginVertical }),
-    /**/
     paletteColor,
     size: props.size || Size.M,
     variant,
