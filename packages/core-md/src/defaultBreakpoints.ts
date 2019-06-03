@@ -13,6 +13,6 @@ export const defaultBreakpoints: Breakpoints = {
   largeHandset: 600,
   largeLaptop: 1680,
   largeTablet: 1100,
-  smallHandset: 360,
+  smallHandset: 375,
   smallTablet: 850,
 };
