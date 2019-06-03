@@ -12,6 +12,7 @@ import { AvatarTheme } from './avatar';
 import { BackdropTheme } from './backdrop';
 import { ButtonVariantsTheme } from './button';
 import { RfxImageTheme, RfxSizedImageTheme } from './image';
+import { ModalTheme } from './modal';
 import { OverlaySurfaceTheme } from './overlay-surface';
 import { SurfaceTheme } from './surface';
 import { RfxSvgVariantsTheme } from './svg';
@@ -29,6 +30,7 @@ export interface ComponentsTheme {
   readonly image?: RfxImageTheme;
   readonly list?: SurfaceTheme;
   readonly listItem?: SurfaceTheme;
+  readonly modal?: ModalTheme;
   readonly overlaySurface?: OverlaySurfaceTheme;
   readonly screen?: SurfaceTheme;
   readonly surface?: SurfaceTheme;

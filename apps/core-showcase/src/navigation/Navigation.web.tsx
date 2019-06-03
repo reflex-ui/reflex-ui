@@ -40,6 +40,7 @@ import {
   XXSmallListIconScreen,
   XXSmallListScreen,
 } from '../screens/list';
+import { ModalScreen } from '../screens/modal';
 import { SurfaceScreen } from '../screens/surface';
 import { SvgShowcaseScreen } from '../screens/svg';
 import { RfxTextScreen } from '../screens/text';
@@ -138,6 +139,7 @@ const AppNavigation: React.SFC = () => (
         path="/list/xxlarge-list-icon-three-lines"
         component={XXLargeListIconThreeLinesScreen}
       />
+      <Route exact path="/modal" component={ModalScreen} />
       <Route exact path="/surface" component={SurfaceScreen} />
       <Route exact path="/svg" component={SvgShowcaseScreen} />
       <Route exact path="/text" component={RfxTextScreen} />

@@ -12,6 +12,7 @@ export * from './button';
 export * from './icon';
 export * from './image';
 export * from './list';
+export * from './modal';
 export * from './svg';
 export * from './surface';
 export * from './text';
