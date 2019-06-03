@@ -13,4 +13,5 @@ export * from './isIOS';
 export * from './isWeb';
 export * from './props';
 export * from './scrollable';
+export * from './useDOMElement';
 export * from './useTimeout';

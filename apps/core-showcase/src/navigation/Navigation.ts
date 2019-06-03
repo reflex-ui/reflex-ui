@@ -38,6 +38,7 @@ import {
   XXSmallListIconScreen,
   XXSmallListScreen,
 } from '../screens/list';
+import { ModalScreen } from '../screens/modal';
 import { SurfaceScreen } from '../screens/surface';
 import { SvgShowcaseScreen } from '../screens/svg';
 import { RfxTextScreen } from '../screens/text';
@@ -98,6 +99,10 @@ const ListNavigation = {
   xxlargeIconThreeLines: `${appNavigationPrefix}list.XXLargeListIconThreeLinesScreen`,
   xxsmall: `${appNavigationPrefix}list.ListSizeXXSScreen`,
   xxsmallIcon: `${appNavigationPrefix}list.ListSizeXXSIconScreen`,
+};
+
+const ModalNavigation = {
+  default: `${appNavigationPrefix}modal.ModalScreen`,
 };
 
 const SurfaceNavigation = {
@@ -209,6 +214,10 @@ const registerScreens = () => {
   Navigation.registerComponent(ListNavigation.xxlargeIconThreeLines, () =>
     withAppLogic(XXLargeListIconThreeLinesScreen),
   );
+  /* MODAL */
+  Navigation.registerComponent(ModalNavigation.default, () =>
+    withAppLogic(ModalScreen),
+  );
   /* SURFACE */
   Navigation.registerComponent(SurfaceNavigation.default, () =>
     withAppLogic(SurfaceScreen),
@@ -238,7 +247,7 @@ export const AppNavigation = () => {
     Navigation.setRoot({
       root: {
         component: {
-          name: ListNavigation.mediumIcon,
+          name: ModalNavigation.default,
         },
       },
     });

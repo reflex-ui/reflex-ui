@@ -25,6 +25,7 @@ export * from './list-item';
 export * from './mergeStyles';
 export * from './mergeThemeAndPatchTheme';
 export * from './mergeThemes';
+export * from './modal';
 export * from './overlay-surface';
 export * from './processChildren';
 export * from './processComponent';
