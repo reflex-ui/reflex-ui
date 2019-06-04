@@ -14,7 +14,10 @@ import { ButtonVariantsTheme } from './button';
 import { RfxImageTheme, RfxSizedImageTheme } from './image';
 import { ModalTheme } from './modal';
 import { OverlaySurfaceTheme } from './overlay-surface';
-import { CoplanarSideSheetVariantsTheme } from './sheet';
+import {
+  CoplanarSideSheetVariantsTheme,
+  ModalSideSheetVariantsTheme,
+} from './sheet';
 import { SurfaceTheme } from './surface';
 import { RfxSvgVariantsTheme } from './svg';
 import { RfxTextVariantsTheme } from './text';
@@ -33,6 +36,7 @@ export interface ComponentsTheme {
   readonly list?: SurfaceTheme;
   readonly listItem?: SurfaceTheme;
   readonly modal?: ModalTheme;
+  readonly modalSideSheet?: ModalSideSheetVariantsTheme;
   readonly overlaySurface?: OverlaySurfaceTheme;
   readonly screen?: SurfaceTheme;
   readonly surface?: SurfaceTheme;
