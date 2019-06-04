@@ -14,15 +14,18 @@ import { ComponentChildrenProps } from '../ComponentChildrenProps';
 import { ComponentThemeProps } from '../ComponentThemeProps';
 import { ModalTheme } from './ModalTheme';
 
-export interface ModalProps
-  extends ComponentChildrenProps<ModalProps>,
-    ComponentThemeProps<ModalProps, ModalTheme>,
-    ColorProps,
+export interface ModalPropsBase
+  extends ColorProps,
     DimensionsProps,
     OnLayoutProps {
   readonly displayBackdrop?: boolean;
   readonly isOpen?: boolean;
   readonly onBackdropPress?: (event: GestureResponderEvent) => void;
 }
+
+export interface ModalProps
+  extends ComponentChildrenProps<ModalProps>,
+    ComponentThemeProps<ModalProps, ModalTheme>,
+    ModalPropsBase {}
 
 export type ModalPropsOptional = Partial<ModalProps>;

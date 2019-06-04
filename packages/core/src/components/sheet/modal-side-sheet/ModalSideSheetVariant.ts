@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './coplanar-side-sheet';
-export * from './modal-side-sheet';
-export * from './SheetPropsBase';
+export enum ModalSideSheetVariant {
+  End = 'end',
+  Start = 'start',
+}

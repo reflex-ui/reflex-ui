@@ -5,6 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './coplanar-side-sheet';
-export * from './modal-side-sheet';
-export * from './SheetPropsBase';
+import { ModalSideSheetTheme } from './ModalSideSheetTheme';
+
+export interface ModalSideSheetVariantsTheme {
+  readonly end: ModalSideSheetTheme;
+  readonly start: ModalSideSheetTheme;
+}
