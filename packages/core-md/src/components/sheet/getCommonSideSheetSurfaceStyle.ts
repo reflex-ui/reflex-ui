@@ -26,16 +26,21 @@ export const getCommonSideSheetSurfaceStyle = <
     paddingHorizontal,
     paddingVertical,
   });
-  const width =
-    props.dimensions.window.width <= props.breakpoints.largeHandset
-      ? props.dimensions.window.width - 56
-      : 320;
+  let width = props.width;
+  if (width === undefined) {
+    width =
+      props.dimensions.window.width <= props.breakpoints.largeHandset
+        ? props.dimensions.window.width - 56
+        : 320;
+  }
+  const maxWidth = props.maxWidth !== undefined ? props.maxWidth : width;
+  const height = props.height !== undefined ? props.height : '100%';
 
   return {
     display: props.isOpen ? 'flex' : 'none',
     flex,
-    height: '100%',
-    maxWidth: width,
+    height,
+    maxWidth,
     ...paddingStyle,
     width,
   };
