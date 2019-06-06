@@ -21,7 +21,7 @@ import { white } from '../white/white';
  */
 
 const blackBackdropLayeredColor: LayeredColor = {
-  color: 'rgba(0, 0, 0, 0.7)',
+  color: 'rgba(0, 0, 0, 0.5)',
   onColor: white,
 };
 

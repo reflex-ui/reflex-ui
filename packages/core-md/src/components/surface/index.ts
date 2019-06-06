@@ -5,7 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './AnimatedOpeningSurfacePusher';
+export * from './AnimatedOpenCloseTransitionSurface';
+export * from './AnimatedOpenCloseTransitionSurfacePusher';
 export * from './animatedTheme';
-export * from './createAnimatedOpeningSurfacePusher';
+export * from './createAnimatedOpenCloseTransitionSurface';
+export * from './createAnimatedOpenCloseTransitionSurfacePusher';
 export * from './theme';

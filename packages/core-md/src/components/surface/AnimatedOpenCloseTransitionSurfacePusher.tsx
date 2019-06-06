@@ -10,11 +10,11 @@ import {
   moveTransformPropsToTransformArray,
   SurfacePropsBase,
 } from '@reflex-ui/core';
-import React, { forwardRef, Ref, useRef } from 'react';
+import React, { forwardRef, Ref, useCallback, useRef } from 'react';
 import { StyleSheet, View, ViewProps } from 'react-native';
 import { animated, useSpring, UseSpringProps } from 'react-spring/native';
 
-export interface AnimatedOpeningSurfacePusherProps<ComponentProps>
+export interface AnimatedOpenCloseTransitionSurfacePusherProps<ComponentProps>
   extends BuiltInSimpleComponentProps<ComponentProps>,
     ViewProps {
   readonly children?: React.ReactNode;
@@ -26,18 +26,18 @@ export interface AnimatedOpeningSurfacePusherProps<ComponentProps>
 
 const AnimatedView = animated(View);
 
-export const AnimatedOpeningSurfacePusher = forwardRef(
+export const AnimatedOpenCloseTransitionSurfacePusher = forwardRef(
   <ComponentProps extends SurfacePropsBase<ComponentProps, Theme>, Theme>(
-    props: AnimatedOpeningSurfacePusherProps<ComponentProps>,
+    props: AnimatedOpenCloseTransitionSurfacePusherProps<ComponentProps>,
     ref: Ref<View>,
   ): JSX.Element => {
     const {
       children,
       complexComponentProps,
       closePusherAnimationProps,
-      closeSurfaceAnimationProps,
+      // closeSurfaceAnimationProps,
       openPusherAnimationProps,
-      openSurfaceAnimationProps,
+      // openSurfaceAnimationProps,
       ...otherProps
     } = props;
     const { isOpen } = complexComponentProps;
@@ -49,8 +49,26 @@ export const AnimatedOpeningSurfacePusher = forwardRef(
       isOpen ? openPusherAnimationProps : closePusherAnimationProps,
     );
 
+    const onOpenRest = useCallback(() => {
+      if (
+        complexComponentProps.componentDidOpen !== undefined &&
+        complexComponentProps.isOpening
+      ) {
+        complexComponentProps.componentDidOpen(complexComponentProps);
+      }
+    }, [complexComponentProps]);
+
+    const onCloseRest = useCallback(() => {
+      if (
+        complexComponentProps.componentDidClose !== undefined &&
+        complexComponentProps.isClosing
+      ) {
+        complexComponentProps.componentDidClose(complexComponentProps);
+      }
+    }, [complexComponentProps]);
+
     /*
-     * Since we cannot have hooks inside conditions,
+     * Since we cannot have hooks inside conditions (useSpring in this case),
      * and we cannot pass undefined to useSpring,
      * a simple solution is to introduce this emptyAnimationProps
      * object when we don't have surface animation props.
@@ -58,10 +76,38 @@ export const AnimatedOpeningSurfacePusher = forwardRef(
     const emptyAnimationProps = {
       config: { clamp: true, tension: 220, friction: 16 },
     };
+    /**/
+
+    let openSurfaceAnimationProps = props.openSurfaceAnimationProps;
+    if (openSurfaceAnimationProps === undefined) {
+      openSurfaceAnimationProps = emptyAnimationProps;
+    } else if (openSurfaceAnimationProps.onRest === undefined) {
+      openSurfaceAnimationProps = {
+        ...openSurfaceAnimationProps,
+        // onRest: onOpenRest,
+        ...(complexComponentProps.componentDidOpen !== undefined && {
+          onRest: onOpenRest,
+        }),
+        // onStart: onOpenStart,
+      };
+    }
+
+    let closeSurfaceAnimationProps = props.closeSurfaceAnimationProps;
+    if (closeSurfaceAnimationProps === undefined) {
+      closeSurfaceAnimationProps = emptyAnimationProps;
+    } else if (closeSurfaceAnimationProps.onRest === undefined) {
+      closeSurfaceAnimationProps = {
+        ...closeSurfaceAnimationProps,
+        // onRest: onCloseRest,
+        ...(complexComponentProps.componentDidClose !== undefined && {
+          onRest: onCloseRest,
+        }),
+        // onStart: onCloseStart,
+      };
+    }
+
     const surfaceAnimationProps = useSpring(
-      isOpen
-        ? openSurfaceAnimationProps || emptyAnimationProps
-        : closeSurfaceAnimationProps || emptyAnimationProps,
+      isOpen ? openSurfaceAnimationProps : closeSurfaceAnimationProps,
     );
     /**/
 
@@ -79,7 +125,7 @@ export const AnimatedOpeningSurfacePusher = forwardRef(
       // @ts-ignore Type instantiation is excessively
       // deep and possibly infinite.ts(2589)
       <AnimatedView
-        key="AnimatedOpeningView"
+        key="AnimatedOpenCloseTransitionSurfaceView"
         {...otherProps}
         ref={viewRef}
         style={finalSurfaceStyle}
@@ -92,7 +138,7 @@ export const AnimatedOpeningSurfacePusher = forwardRef(
       // @ts-ignore Type instantiation is excessively
       // deep and possibly infinite.ts(2589)
       <AnimatedView
-        key="AnimatedOpeningViewPusher"
+        key="AnimatedOpenCloseTransitionSurfacePusherView"
         style={{
           display: 'flex',
           height: '100%',

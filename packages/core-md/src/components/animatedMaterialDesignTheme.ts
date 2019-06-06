@@ -12,7 +12,7 @@ import { avatarImageTheme } from './avatar-image/theme';
 // tslint:disable-next-line:max-line-length
 import { animatedAvatarOverlaySurfaceTheme } from './avatar-overlay-surface/animatedTheme';
 import { avatarTheme } from './avatar/theme';
-import { backdropTheme } from './backdrop/theme';
+import { animatedBackdropTheme } from './backdrop/animatedTheme';
 import { animatedButtonTheme } from './button/animatedTheme';
 import { imageTheme } from './image/theme';
 import { animatedListItemTheme } from './list-item/animatedTheme';
@@ -35,7 +35,7 @@ export const animatedMaterialDesignTheme: ComponentsTheme = {
   avatar: avatarTheme,
   avatarImage: avatarImageTheme,
   avatarOverlaySurface: animatedAvatarOverlaySurfaceTheme,
-  backdrop: backdropTheme,
+  backdrop: animatedBackdropTheme,
   button: animatedButtonTheme,
   coplanarSideSheet: animatedCoplanarSideSheetVariantsTheme,
   image: imageTheme,

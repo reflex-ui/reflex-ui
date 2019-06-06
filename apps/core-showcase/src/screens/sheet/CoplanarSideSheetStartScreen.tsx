@@ -33,7 +33,7 @@ import { Filters } from '../../ui';
 
 const onButtonPress = () => {
   // tslint:disable-next-line:no-console
-  console.log('SurfaceScreen().onButtonPress()');
+  console.log('CoplanarSideSheetStartScreen().onButtonPress()');
 };
 
 const loremCopy = [
@@ -68,15 +68,35 @@ const CoplanarSideSheetStartScreen: React.SFC<{}> = (): JSX.Element => {
 
   const openCoplanarSideSheet = useCallback(() => {
     // tslint:disable-next-line:no-console
-    console.log('SheetScreen().openCoplanarSideSheet()');
+    console.log('CoplanarSideSheetStartScreen().openCoplanarSideSheet()');
     setIsShowingCoplanarSideSheet(true);
   }, [isShowingCoplanarSideSheet]);
 
   const closeCoplanarSideSheet = useCallback(() => {
     // tslint:disable-next-line:no-console
-    console.log('SheetScreen().closeCoplanarSideSheet()');
+    console.log('CoplanarSideSheetStartScreen().closeCoplanarSideSheet()');
     setIsShowingCoplanarSideSheet(false);
   }, [isShowingCoplanarSideSheet]);
+
+  const coplanarSideSheetWillOpen = useCallback(() => {
+    // tslint:disable-next-line:no-console
+    console.log('CoplanarSideSheetStartScreen().coplanarSideSheetWillOpen()');
+  }, []);
+
+  const coplanarSideSheetDidOpen = useCallback(() => {
+    // tslint:disable-next-line:no-console
+    console.log('CoplanarSideSheetStartScreen().coplanarSideSheetDidOpen()');
+  }, []);
+
+  const coplanarSideSheetWillClose = useCallback(() => {
+    // tslint:disable-next-line:no-console
+    console.log('CoplanarSideSheetStartScreen().coplanarSideSheetWillClose()');
+  }, []);
+
+  const coplanarSideSheetDidClose = useCallback(() => {
+    // tslint:disable-next-line:no-console
+    console.log('CoplanarSideSheetStartScreen().coplanarSideSheetDidClose()');
+  }, []);
 
   return (
     <Screen>
@@ -91,7 +111,12 @@ const CoplanarSideSheetStartScreen: React.SFC<{}> = (): JSX.Element => {
       </AppBar>
       <Row flex={1}>
         <CoplanarSideSheet
+          componentDidClose={coplanarSideSheetDidClose}
+          componentDidOpen={coplanarSideSheetDidOpen}
+          componentWillClose={coplanarSideSheetWillClose}
+          componentWillOpen={coplanarSideSheetWillOpen}
           isOpen={isShowingCoplanarSideSheet}
+          isOpenCloseTransitionAnimated
           paddingEnd={0}
           paddingTop={Size.XS}
           variant={CoplanarSideSheetVariant.Start}

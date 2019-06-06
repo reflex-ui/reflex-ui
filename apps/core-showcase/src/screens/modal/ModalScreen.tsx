@@ -91,6 +91,7 @@ export const getModalSurfaceTheme: ComponentThemeGetter<
     return {
       left,
       maxHeight,
+      opacity: props.isOpen ? 1 : 0,
       position: 'absolute',
       top,
       width,
@@ -101,12 +102,41 @@ export const getModalSurfaceTheme: ComponentThemeGetter<
 const MyModal = (props: ModalPropsOptional) => {
   const { palette } = usePalette();
 
+  const modalWillOpen = useCallback(() => {
+    // tslint:disable-next-line:no-console
+    console.log('ModalScreen().modalWillOpen()');
+  }, []);
+
+  const modalDidOpen = useCallback(() => {
+    // tslint:disable-next-line:no-console
+    console.log('ModalScreen().modalDidOpen()');
+  }, []);
+
+  const modalWillClose = useCallback(() => {
+    // tslint:disable-next-line:no-console
+    console.log('ModalScreen().modalWillClose()');
+  }, []);
+
+  const modalDidClose = useCallback(() => {
+    // tslint:disable-next-line:no-console
+    console.log('ModalScreen().modalDidClose()');
+  }, []);
+
   return (
-    <Modal {...props}>
+    <Modal
+      componentDidClose={modalDidClose}
+      componentDidOpen={modalDidOpen}
+      componentWillClose={modalWillClose}
+      componentWillOpen={modalWillOpen}
+      isOpenCloseTransitionAnimated
+      {...props}
+    >
       <Surface
         enableOnLayout
+        elevation={24}
         flexWrap={FlexWrap.Nowrap}
         getPatchTheme={getModalSurfaceTheme}
+        isOpen={props.isOpen}
         padding={Size.M}
         pointerEvents="auto"
       >

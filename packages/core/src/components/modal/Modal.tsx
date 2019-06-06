@@ -5,11 +5,15 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { forwardRef, Ref } from 'react';
+import React, { forwardRef, Ref, useCallback } from 'react';
 import { View } from 'react-native';
 
 import { MissingComponentThemeError } from '../../errors';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
+import {
+  filterOutOpenCloseTransitionProps,
+  useOpenCloseTransition,
+} from '../../transition';
 import { Backdrop } from '../backdrop/Backdrop';
 import { BackdropPropsOptional } from '../backdrop/BackdropProps';
 import { useComponentsTheme } from '../ComponentsTheme';
@@ -29,10 +33,13 @@ export const extractBackdropPropsFromModalProps = (
     onBackdropPress,
     theme,
     ...otherProps
-  } = props;
+  } = filterOutOpenCloseTransitionProps(props);
 
   let backdropProps = otherProps as BackdropPropsOptional;
-  backdropProps = { ...backdropProps, onPress: onBackdropPress };
+  backdropProps = {
+    ...backdropProps,
+    onPress: onBackdropPress,
+  };
 
   const backdropTheme = props.theme.backdrop && props.theme.backdrop(props);
 
@@ -63,14 +70,31 @@ let Modal: React.ComponentType<ModalPropsOptional> = forwardRef(
 
     let newProps: ModalProps = useDefaultModalProps(props, theme);
     newProps = { ...newProps, ...useOnLayout(newProps) };
+    newProps = { ...newProps, ...useOpenCloseTransition(newProps) };
     newProps = processComponentProps(newProps);
 
-    if (!newProps.isOpen) return null;
+    const componentDidOpen = useCallback(() => {
+      if (newProps.componentDidOpen !== undefined) {
+        newProps.componentDidOpen(newProps);
+      }
+    }, [newProps]);
+
+    const componentDidClose = useCallback(() => {
+      if (newProps.componentDidClose !== undefined) {
+        newProps.componentDidClose(newProps);
+      }
+    }, [newProps]);
+
+    if (!newProps.isOpen && !newProps.isClosing) return null;
 
     return (
       <ModalRoot>
         {newProps.displayBackdrop && (
           <Backdrop
+            isOpen={newProps.isOpen}
+            isOpenCloseTransitionAnimated={props.isOpenCloseTransitionAnimated}
+            componentDidClose={componentDidClose}
+            componentDidOpen={componentDidOpen}
             onPress={props.onBackdropPress}
             ref={ref}
             {...extractBackdropPropsFromModalProps(newProps)}
