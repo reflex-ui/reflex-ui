@@ -10,8 +10,12 @@ import { GestureResponderEvent } from 'react-native';
 import { ColorProps } from '../../color/ColorProps';
 import { DimensionsProps } from '../../responsiveness/DimensionsProps';
 import { OnLayoutProps } from '../../responsiveness/OnLayoutProps';
+import { OpenCloseTransitionProps } from '../../transition';
 import { ComponentChildrenProps } from '../ComponentChildrenProps';
-import { ComponentThemeProps } from '../ComponentThemeProps';
+import {
+  ComponentThemeProps,
+  ComponentThemePropsOptional,
+} from '../ComponentThemeProps';
 import { ModalTheme } from './ModalTheme';
 
 export interface ModalPropsBase
@@ -19,13 +23,19 @@ export interface ModalPropsBase
     DimensionsProps,
     OnLayoutProps {
   readonly displayBackdrop?: boolean;
-  readonly isOpen?: boolean;
   readonly onBackdropPress?: (event: GestureResponderEvent) => void;
 }
+
+export type ModalPropsBaseOptional = Partial<ModalPropsBase>;
 
 export interface ModalProps
   extends ComponentChildrenProps<ModalProps>,
     ComponentThemeProps<ModalProps, ModalTheme>,
-    ModalPropsBase {}
+    ModalPropsBase,
+    OpenCloseTransitionProps<ModalProps> {}
 
-export type ModalPropsOptional = Partial<ModalProps>;
+export interface ModalPropsOptional
+  extends ComponentChildrenProps<ModalProps>,
+    ComponentThemePropsOptional<ModalProps, ModalTheme>,
+    ModalPropsBaseOptional,
+    OpenCloseTransitionProps<ModalProps> {}

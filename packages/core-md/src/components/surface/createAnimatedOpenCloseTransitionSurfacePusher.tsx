@@ -9,26 +9,27 @@ import { BuiltInSimpleComponentProps, SurfacePropsBase } from '@reflex-ui/core';
 import React from 'react';
 import { UseSpringProps } from 'react-spring/native';
 
-import { AnimatedOpeningSurfacePusher } from './AnimatedOpeningSurfacePusher';
+// tslint:disable-next-line:max-line-length
+import { AnimatedOpenCloseTransitionSurfacePusher } from './AnimatedOpenCloseTransitionSurfacePusher';
 
-export interface AnimatedOpeningSurfacePusherFactoryInput {
+export interface AnimatedOpenCloseTransitionSurfacePusherFactoryInput {
   readonly closePusherAnimationProps: UseSpringProps;
   readonly closeSurfaceAnimationProps?: UseSpringProps;
   readonly openPusherAnimationProps: UseSpringProps;
   readonly openSurfaceAnimationProps?: UseSpringProps;
 }
 
-export const createAnimatedOpeningSurfacePusher = <
+export const createAnimatedOpenCloseTransitionSurfacePusher = <
   Props extends SurfacePropsBase<Props, Theme>,
   Theme
 >(
-  input: AnimatedOpeningSurfacePusherFactoryInput,
+  input: AnimatedOpenCloseTransitionSurfacePusherFactoryInput,
 ) =>
-  function AnimatedOpeningSurfacePusherFactory(
+  function AnimatedOpenCloseTransitionSurfacePusherFactory(
     props: BuiltInSimpleComponentProps<Props>,
   ) {
     return (
-      <AnimatedOpeningSurfacePusher
+      <AnimatedOpenCloseTransitionSurfacePusher
         closePusherAnimationProps={input.closePusherAnimationProps}
         closeSurfaceAnimationProps={input.closeSurfaceAnimationProps}
         openPusherAnimationProps={input.openPusherAnimationProps}

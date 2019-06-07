@@ -14,5 +14,6 @@ export * from './interaction';
 export * from './responsiveness';
 export * from './sizing';
 export * from './spacing';
+export * from './transition';
 export * from './utils';
 export * from './utils-ts';

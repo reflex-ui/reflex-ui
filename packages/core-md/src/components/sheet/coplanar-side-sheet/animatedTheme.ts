@@ -15,7 +15,7 @@ import {
 import { ComponentType } from 'react';
 import { StyleSheet } from 'react-native';
 
-import { createAnimatedOpeningSurfacePusher } from '../../surface';
+import { createAnimatedOpenCloseTransitionSurfacePusher } from '../../surface';
 
 import {
   getCoplanarSideSheetEndSurfaceStyle,
@@ -66,7 +66,7 @@ const createStartComponent = (maxWidth: number | string = 0) => {
   };
 
   currentStartMaxWidth = maxWidth;
-  currentStartComponent = createAnimatedOpeningSurfacePusher<
+  currentStartComponent = createAnimatedOpenCloseTransitionSurfacePusher<
     CoplanarSideSheetProps,
     CoplanarSideSheetTheme
   >({
@@ -112,7 +112,7 @@ const createEndComponent = (maxWidth: number | string = 0) => {
   };
 
   currentEndMaxWidth = maxWidth;
-  currentEndComponent = createAnimatedOpeningSurfacePusher<
+  currentEndComponent = createAnimatedOpenCloseTransitionSurfacePusher<
     CoplanarSideSheetProps,
     CoplanarSideSheetTheme
   >({

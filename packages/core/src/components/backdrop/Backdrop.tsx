@@ -10,6 +10,7 @@ import { View } from 'react-native';
 
 import { MissingComponentThemeError } from '../../errors';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
+import { useOpenCloseTransition } from '../../transition';
 import { filterOutTouchableWithoutFeedbackProps } from '../../utils/props';
 import { useComponentsTheme } from '../ComponentsTheme';
 import { processComponent } from '../processComponent';
@@ -65,6 +66,7 @@ let Backdrop: React.ComponentType<BackdropPropsOptional> = forwardRef(
 
     let newProps: BackdropProps = useDefaultBackdropProps(props, theme);
     newProps = { ...newProps, ...useOnLayout(newProps) };
+    newProps = { ...newProps, ...useOpenCloseTransition(newProps) };
     newProps = processComponentProps(newProps);
     newProps = processThemeAndStyleProps(newProps, newProps.theme.touchable);
 

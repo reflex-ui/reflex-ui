@@ -15,6 +15,7 @@ import { OnLayoutProps } from '../../responsiveness/OnLayoutProps';
 import { SizingPropsOptional } from '../../sizing/SizingProps';
 import { MarginProps } from '../../spacing/MarginProps';
 import { PaddingProps } from '../../spacing/PaddingProps';
+import { OpenCloseTransitionProps } from '../../transition';
 import { ComponentChildrenProps } from '../ComponentChildrenProps';
 import { ComponentThemeProps } from '../ComponentThemeProps';
 import { RfxViewTheme } from './RfxViewTheme';
@@ -41,10 +42,10 @@ export interface RfxViewPropsBase<Props, Theme>
     FlexboxProps,
     MarginProps,
     OnLayoutProps,
+    OpenCloseTransitionProps<Props>,
     PaddingProps,
     SizingPropsOptional,
     ViewProps {
-  readonly isOpen?: boolean;
   readonly ref?: Ref<View>;
   readonly shouldProvideColor?: boolean;
 }
