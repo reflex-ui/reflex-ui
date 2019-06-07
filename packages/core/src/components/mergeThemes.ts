@@ -66,7 +66,7 @@ export function mergeThemes<Theme extends {}>(
           );
         }
 
-        if (prop === 'component') {
+        if (prop === 'getComponent') {
           if (theme2Obj) {
             newThemeObj = theme2Obj;
           } else {
