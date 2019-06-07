@@ -12,7 +12,7 @@ import { getPropsFromTheme } from './getPropsFromTheme';
 import { getStyleFromTheme } from './getStyleFromTheme';
 import { isValidStyle } from './isValidStyle';
 import { mergeStyles } from './mergeStyles';
-import { SimpleComponentTheme } from './SimpleComponentTheme';
+import { PrimitiveComponentTheme } from './PrimitiveComponentTheme';
 import { StyleProps } from './StyleProps';
 
 export const processThemeAndStyleProps = <
@@ -21,7 +21,11 @@ export const processThemeAndStyleProps = <
   PrimitiveStyle extends ViewStyle | TextStyle | ImageStyle
 >(
   props: ComponentProps,
-  theme?: SimpleComponentTheme<ComponentProps, PrimitiveProps, PrimitiveStyle>,
+  theme?: PrimitiveComponentTheme<
+    ComponentProps,
+    PrimitiveProps,
+    PrimitiveStyle
+  >,
 ): ComponentProps => {
   if (theme === undefined || theme === null || isEmpty(theme)) {
     return props;

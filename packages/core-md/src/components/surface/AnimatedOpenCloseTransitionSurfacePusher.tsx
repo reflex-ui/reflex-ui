@@ -6,8 +6,8 @@
  */
 
 import {
-  BuiltInSimpleComponentProps,
   moveTransformPropsToTransformArray,
+  PrimitiveComponentProps,
   SurfacePropsBase,
 } from '@reflex-ui/core';
 import React, { forwardRef, Ref, useCallback, useRef } from 'react';
@@ -15,7 +15,7 @@ import { StyleSheet, View, ViewProps } from 'react-native';
 import { animated, useSpring, UseSpringProps } from 'react-spring/native';
 
 export interface AnimatedOpenCloseTransitionSurfacePusherProps<ComponentProps>
-  extends BuiltInSimpleComponentProps<ComponentProps>,
+  extends PrimitiveComponentProps<ComponentProps>,
     ViewProps {
   readonly children?: React.ReactNode;
   readonly closePusherAnimationProps: UseSpringProps;

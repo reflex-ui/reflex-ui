@@ -9,7 +9,6 @@ import {
   InteractionStateProps,
   SurfacePropsBase,
   useTimeout,
-  ViewTheme,
 } from '@reflex-ui/core';
 import {
   AnimatedElevationViewProps,
@@ -40,7 +39,7 @@ export const AnimatedRippleElevationView = forwardRef(
   <
     ComponentProps extends SurfacePropsBase<ComponentProps, Theme> &
       InteractionStateProps,
-    Theme extends ViewTheme<ComponentProps>
+    Theme
   >(
     props: AnimatedRippleElevationViewProps<ComponentProps>,
     ref: Ref<View>,

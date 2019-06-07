@@ -5,11 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  BuiltInViewTheme,
-  ButtonProps,
-  ViewStyleGetter,
-} from '@reflex-ui/core';
+import { ButtonProps, ViewStyleGetter, ViewTheme } from '@reflex-ui/core';
 
 import {
   getAllVariantsButtonLeadingIconContainerStyle,
@@ -30,14 +26,10 @@ export const getDefaultButtonTrailingIconContainerStyle: ViewStyleGetter<
   marginEnd: 0,
 });
 
-export const defaultButtonLeadingIconContainerTheme: BuiltInViewTheme<
-  ButtonProps
-> = {
+export const defaultButtonLeadingIconContainerTheme: ViewTheme<ButtonProps> = {
   getStyle: getDefaultButtonLeadingIconContainerStyle,
 };
 
-export const defaultButtonTrailingIconContainerTheme: BuiltInViewTheme<
-  ButtonProps
-> = {
+export const defaultButtonTrailingIconContainerTheme: ViewTheme<ButtonProps> = {
   getStyle: getAllVariantsButtonTrailingIconContainerStyle,
 };

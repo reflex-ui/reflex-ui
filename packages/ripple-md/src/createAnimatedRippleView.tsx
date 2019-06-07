@@ -6,8 +6,8 @@
  */
 
 import {
-  BuiltInSimpleComponentProps,
   InteractionStateProps,
+  PrimitiveComponentProps,
   SurfacePropsBase,
 } from '@reflex-ui/core';
 import React from 'react';
@@ -20,9 +20,7 @@ export const createAnimatedRippleView = <
 >(
   getRippleColor: RippleColorGetter<Props>,
 ) =>
-  function AnimatedRippleViewFactory(
-    props: BuiltInSimpleComponentProps<Props>,
-  ) {
+  function AnimatedRippleViewFactory(props: PrimitiveComponentProps<Props>) {
     /*
      * I don't know why this error is hapenning, and how to fix it.
      * It needs further investigation, and there's a chance that this is

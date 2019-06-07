@@ -6,9 +6,6 @@
  */
 
 import { TouchableProps } from './TouchableProps';
-// tslint:disable-next-line:max-line-length
-import { BuiltInTouchableWithoutFeedbackTheme } from './TouchableWithoutFeedbackTheme';
+import { TouchableWithoutFeedbackTheme } from './TouchableWithoutFeedbackTheme';
 
-export type TouchableTheme = BuiltInTouchableWithoutFeedbackTheme<
-  TouchableProps
->;
+export type TouchableTheme = TouchableWithoutFeedbackTheme<TouchableProps>;

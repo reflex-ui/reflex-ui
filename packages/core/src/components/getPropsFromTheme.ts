@@ -8,7 +8,7 @@
 import isEmpty from 'lodash/isEmpty';
 import { ImageStyle, TextStyle, ViewStyle } from 'react-native';
 
-import { SimpleComponentTheme } from './SimpleComponentTheme';
+import { PrimitiveComponentTheme } from './PrimitiveComponentTheme';
 import { StyleProps } from './StyleProps';
 
 export const getPropsFromTheme = <
@@ -17,7 +17,11 @@ export const getPropsFromTheme = <
   PrimitiveStyle extends ViewStyle | TextStyle | ImageStyle
 >(
   props: ComponentProps,
-  theme?: SimpleComponentTheme<ComponentProps, PrimitiveProps, PrimitiveStyle>,
+  theme?: PrimitiveComponentTheme<
+    ComponentProps,
+    PrimitiveProps,
+    PrimitiveStyle
+  >,
 ): PrimitiveProps | undefined => {
   if (
     theme === undefined ||

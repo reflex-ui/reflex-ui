@@ -6,12 +6,12 @@
  */
 
 import {
-  BuiltInSimpleComponentProps,
   ButtonProps,
   ComponentThemeGetter,
   Elevation,
   ElevationDegree,
   getColor,
+  PrimitiveComponentProps,
   suppressPressedState,
   SurfaceProps,
   SurfaceTheme,
@@ -30,7 +30,7 @@ import { getRaisedButtonContainerStyle } from './container';
  * Basic memoization implementation.
  */
 let currentElevation: Elevation;
-let currentComponent: ComponentType<BuiltInSimpleComponentProps<SurfaceProps>>;
+let currentComponent: ComponentType<PrimitiveComponentProps<SurfaceProps>>;
 const createComponent = (elevation: Elevation = ElevationDegree.Low) => {
   if (elevation === currentElevation && currentComponent !== undefined) {
     return currentComponent;

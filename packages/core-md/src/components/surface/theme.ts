@@ -6,9 +6,9 @@
  */
 
 import {
-  BuiltInSimpleComponentTheme,
   getColor,
   InteractionType,
+  PrimitiveComponentTheme,
   SurfacePropsBase,
   SurfaceTheme,
 } from '@reflex-ui/core';
@@ -19,7 +19,7 @@ import { getCommonRfxViewContainerStyle } from '../view/theme';
 
 export const getSurfaceContainerProps = <
   Props extends SurfacePropsBase<Props, Theme>,
-  Theme extends BuiltInSimpleComponentTheme<Props, ViewProps, ViewStyle>
+  Theme extends PrimitiveComponentTheme<Props, ViewProps, ViewStyle>
 >(
   props: Props,
 ): ViewProps => ({
@@ -28,7 +28,7 @@ export const getSurfaceContainerProps = <
 
 export const getSurfaceContainerStyle = <
   Props extends SurfacePropsBase<Props, Theme>,
-  Theme extends BuiltInSimpleComponentTheme<Props, ViewProps, ViewStyle>
+  Theme extends PrimitiveComponentTheme<Props, ViewProps, ViewStyle>
 >(
   props: Props,
 ): ViewStyle => ({

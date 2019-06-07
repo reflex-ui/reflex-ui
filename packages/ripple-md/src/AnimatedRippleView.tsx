@@ -6,8 +6,8 @@
  */
 
 import {
-  BuiltInSimpleComponentProps,
   InteractionStateProps,
+  PrimitiveComponentProps,
   SurfacePropsBase,
   useTimeout,
 } from '@reflex-ui/core';
@@ -29,7 +29,7 @@ export type RippleColorGetter<ComponentProps> = (
 ) => string;
 
 export interface AnimatedRippleViewProps<ComponentProps>
-  extends BuiltInSimpleComponentProps<ComponentProps>,
+  extends PrimitiveComponentProps<ComponentProps>,
     ViewProps {
   readonly children?: React.ReactNode;
   readonly getRippleColor: RippleColorGetter<ComponentProps>;

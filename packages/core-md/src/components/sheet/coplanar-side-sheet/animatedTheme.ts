@@ -6,10 +6,10 @@
  */
 
 import {
-  BuiltInSimpleComponentProps,
   CoplanarSideSheetProps,
   CoplanarSideSheetTheme,
   CoplanarSideSheetVariantsTheme,
+  PrimitiveComponentProps,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import { ComponentType } from 'react';
@@ -35,7 +35,7 @@ const animationConfig = { clamp: true, tension: 170, friction: 20 };
  */
 let currentStartMaxWidth: number | string;
 let currentStartComponent: ComponentType<
-  BuiltInSimpleComponentProps<CoplanarSideSheetProps>
+  PrimitiveComponentProps<CoplanarSideSheetProps>
 >;
 const createStartComponent = (maxWidth: number | string = 0) => {
   if (
@@ -84,7 +84,7 @@ const createStartComponent = (maxWidth: number | string = 0) => {
  */
 let currentEndMaxWidth: number | string;
 let currentEndComponent: ComponentType<
-  BuiltInSimpleComponentProps<CoplanarSideSheetProps>
+  PrimitiveComponentProps<CoplanarSideSheetProps>
 >;
 const createEndComponent = (maxWidth: number | string = 0) => {
   if (maxWidth === currentEndMaxWidth && currentEndComponent !== undefined) {

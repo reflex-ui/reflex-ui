@@ -8,18 +8,9 @@
 import { ViewStyle } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 
-import {
-  BuiltInSimpleComponentTheme,
-  SimpleComponentTheme,
-} from '../SimpleComponentTheme';
+import { PrimitiveComponentTheme } from '../PrimitiveComponentTheme';
 
-export type SvgTheme<ComponentProps> = SimpleComponentTheme<
-  ComponentProps,
-  SvgProps,
-  ViewStyle
->;
-
-export type BuiltInSvgTheme<ComponentProps> = BuiltInSimpleComponentTheme<
+export type SvgTheme<ComponentProps> = PrimitiveComponentTheme<
   ComponentProps,
   SvgProps,
   ViewStyle

@@ -6,19 +6,9 @@
  */
 
 import { TextProps, TextStyle } from 'react-native';
+import { PrimitiveComponentTheme } from '../PrimitiveComponentTheme';
 
-import {
-  BuiltInSimpleComponentTheme,
-  SimpleComponentTheme,
-} from '../SimpleComponentTheme';
-
-export type TextTheme<ComponentProps> = SimpleComponentTheme<
-  ComponentProps,
-  TextProps,
-  TextStyle
->;
-
-export type BuiltInTextTheme<ComponentProps> = BuiltInSimpleComponentTheme<
+export type TextTheme<ComponentProps> = PrimitiveComponentTheme<
   ComponentProps,
   TextProps,
   TextStyle

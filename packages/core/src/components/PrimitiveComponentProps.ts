@@ -5,6 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export interface BuiltInSimpleComponentProps<ComponentProps> {
+export interface PrimitiveComponentProps<ComponentProps> {
   readonly complexComponentProps: ComponentProps;
 }

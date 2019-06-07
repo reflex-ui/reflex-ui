@@ -11,7 +11,7 @@ import { Image, ImageProps, ImageStyle } from 'react-native';
 import { extractImageProps } from '../../utils/props';
 import { ComponentChildrenProps } from '../ComponentChildrenProps';
 import { ComponentThemeProps } from '../ComponentThemeProps';
-import { BuiltInSimpleComponentTheme } from '../SimpleComponentTheme';
+import { PrimitiveComponentTheme } from '../PrimitiveComponentTheme';
 import { RfxImagePropsBase } from './RfxImageProps';
 
 export interface RfxImageComponentRendererInput<Props> {
@@ -23,7 +23,7 @@ export const renderRfxImageComponent = <
   Props extends RfxImagePropsBase<Props, Theme> &
     ComponentThemeProps<Props, Theme> &
     ComponentChildrenProps<Props>,
-  Theme extends BuiltInSimpleComponentTheme<Props, ImageProps, ImageStyle>
+  Theme extends PrimitiveComponentTheme<Props, ImageProps, ImageStyle>
 >(
   input: RfxImageComponentRendererInput<Props>,
 ): React.ReactElement => {
