@@ -6,8 +6,8 @@
  */
 
 import {
-  OverlaySurfaceProps,
   OverlaySurfaceTheme,
+  SurfaceProps,
   ViewPropsGetter,
   ViewStyleGetter,
 } from '@reflex-ui/core';
@@ -19,19 +19,19 @@ import {
 } from '../surface/theme';
 
 export const getOverlaySurfaceContainerProps: ViewPropsGetter<
-  OverlaySurfaceProps
+  SurfaceProps
 > = props => getSurfaceContainerProps(props);
 
 export const getOverlaySurfaceContainerStyle: ViewStyleGetter<
-  OverlaySurfaceProps
+  SurfaceProps
 > = props => ({
   ...getSurfaceContainerStyle(props),
   ...StyleSheet.absoluteFillObject,
 });
 
 export const overlaySurfaceTheme: OverlaySurfaceTheme = {
-  surface: {
+  surface: () => ({
     getProps: getOverlaySurfaceContainerProps,
     getStyle: getOverlaySurfaceContainerStyle,
-  },
+  }),
 };

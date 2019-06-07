@@ -7,9 +7,10 @@
 
 import {
   getColor,
-  OverlaySurfaceProps,
   OverlaySurfaceTheme,
   suppressPressedState,
+  SurfaceProps,
+  SurfaceTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import {
@@ -22,23 +23,22 @@ import {
   getOverlaySurfaceContainerStyle,
 } from './theme';
 
-const AnimatedRippleView = createAnimatedRippleView<
-  OverlaySurfaceProps,
-  OverlaySurfaceTheme
->(getSurfaceRippleColor);
+const AnimatedRippleView = createAnimatedRippleView<SurfaceProps, SurfaceTheme>(
+  getSurfaceRippleColor,
+);
 
 export const getAnimatedOverlaySurfaceContainerStyle: ViewStyleGetter<
-  OverlaySurfaceProps
+  SurfaceProps
 > = props => ({
   ...getOverlaySurfaceContainerStyle(props),
   backgroundColor: getColor(suppressPressedState(props)),
 });
 
 export const animatedOverlaySurfaceTheme: OverlaySurfaceTheme = {
-  surface: {
+  surface: () => ({
     getComponent: props =>
       props.isTouchableHandler ? AnimatedRippleView : undefined,
     getProps: getOverlaySurfaceContainerProps,
     getStyle: getAnimatedOverlaySurfaceContainerStyle,
-  },
+  }),
 };

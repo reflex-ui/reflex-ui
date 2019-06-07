@@ -6,9 +6,9 @@
  */
 
 import {
-  OverlaySurfaceProps,
   OverlaySurfaceTheme,
   Size,
+  SurfaceProps,
   ViewPropsGetter,
   ViewStyleGetter,
 } from '@reflex-ui/core';
@@ -20,19 +20,19 @@ import {
 } from '../overlay-surface/theme';
 
 export const getAvatarOverlaySurfaceContainerProps: ViewPropsGetter<
-  OverlaySurfaceProps
+  SurfaceProps
 > = props => getOverlaySurfaceContainerProps(props);
 
 export const getAvatarOverlaySurfaceContainerStyle: ViewStyleGetter<
-  OverlaySurfaceProps
+  SurfaceProps
 > = props => ({
   ...getOverlaySurfaceContainerStyle(props),
   ...avatarSizedStyle[props.size || Size.M],
 });
 
 export const avatarOverlaySurfaceTheme: OverlaySurfaceTheme = {
-  surface: {
+  surface: () => ({
     getProps: getAvatarOverlaySurfaceContainerProps,
     getStyle: getAvatarOverlaySurfaceContainerStyle,
-  },
+  }),
 };
