@@ -6,6 +6,6 @@
  */
 
 import { RfxViewProps } from './RfxViewProps';
-import { BuiltInViewTheme } from './ViewTheme';
+import { ViewTheme } from './ViewTheme';
 
-export type RfxViewTheme = BuiltInViewTheme<RfxViewProps>;
+export type RfxViewTheme = ViewTheme<RfxViewProps>;

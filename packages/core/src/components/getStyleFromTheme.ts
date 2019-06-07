@@ -9,8 +9,8 @@ import isEmpty from 'lodash/isEmpty';
 import { ImageStyle, StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 import { isValidStyle } from './isValidStyle';
+import { PrimitiveComponentTheme } from './PrimitiveComponentTheme';
 import { registerStyle } from './registerStyle';
-import { SimpleComponentTheme } from './SimpleComponentTheme';
 import { StyleProps } from './StyleProps';
 
 export const getStyleFromTheme = <
@@ -19,7 +19,11 @@ export const getStyleFromTheme = <
   PrimitiveStyle extends ViewStyle | TextStyle | ImageStyle
 >(
   props: ComponentProps,
-  theme?: SimpleComponentTheme<ComponentProps, PrimitiveProps, PrimitiveStyle>,
+  theme?: PrimitiveComponentTheme<
+    ComponentProps,
+    PrimitiveProps,
+    PrimitiveStyle
+  >,
 ): StyleProp<PrimitiveStyle> | undefined => {
   if (
     theme === undefined ||

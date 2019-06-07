@@ -6,13 +6,13 @@
  */
 
 import {
-  BuiltInSimpleComponentTheme,
   extractFlexboxStyle,
   FontWeight,
   getFontWeight,
   getOnColor,
   getSizedMarginStyle,
   getSizedPaddingStyle,
+  PrimitiveComponentTheme,
   RfxTextPropsBase,
   RfxTextVariantsTheme,
 } from '@reflex-ui/core';
@@ -23,7 +23,7 @@ import { getFontFamily } from './getFontFamily';
 
 export const getCommonRfxTextStyle = <
   Props extends RfxTextPropsBase<Props, Theme>,
-  Theme extends BuiltInSimpleComponentTheme<Props, TextProps, TextStyle>
+  Theme extends PrimitiveComponentTheme<Props, TextProps, TextStyle>
 >(
   props: Props,
 ): TextStyle => ({

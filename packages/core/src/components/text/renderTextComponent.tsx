@@ -8,13 +8,12 @@
 import React, { Ref } from 'react';
 import { Text, TextProps } from 'react-native';
 
-import { BuiltInSimpleComponentProps } from '../BuiltInSimpleComponentProps';
+import { PrimitiveComponentProps } from '../PrimitiveComponentProps';
 
 export interface TextComponentRendererInput<ComponentProps> {
   Component?:
     | typeof Text
-    | React.ComponentType<BuiltInSimpleComponentProps<ComponentProps>> &
-        TextProps;
+    | React.ComponentType<PrimitiveComponentProps<ComponentProps>> & TextProps;
   props: ComponentProps;
   ref?: Ref<Text>;
   textProps: TextProps & Readonly<{ children?: React.ReactNode }>;

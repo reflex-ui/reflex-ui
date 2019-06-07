@@ -12,7 +12,7 @@ import { PaletteColorProvider } from '../../color/PaletteColor';
 import { extractViewProps } from '../../utils/props';
 import { ComponentChildrenProps } from '../ComponentChildrenProps';
 import { ComponentThemeProps } from '../ComponentThemeProps';
-import { BuiltInSimpleComponentTheme } from '../SimpleComponentTheme';
+import { PrimitiveComponentTheme } from '../PrimitiveComponentTheme';
 import { renderViewComponent } from './renderViewComponent';
 import { RfxViewPropsBase } from './RfxViewProps';
 
@@ -20,14 +20,14 @@ export interface RfxViewComponentRendererInput<Props> {
   readonly props: Props;
   readonly ref?: Ref<View>;
   readonly shouldProvideColor?: boolean;
-  readonly theme?: BuiltInSimpleComponentTheme<Props, unknown, unknown>;
+  readonly theme?: PrimitiveComponentTheme<Props, unknown, unknown>;
 }
 
 export const renderRfxViewComponent = <
   Props extends RfxViewPropsBase<Props, Theme> &
     ComponentThemeProps<Props, Theme> &
     ComponentChildrenProps<Props>,
-  Theme extends BuiltInSimpleComponentTheme<Props, unknown, unknown>
+  Theme extends PrimitiveComponentTheme<Props, unknown, unknown>
 >(
   input: RfxViewComponentRendererInput<Props>,
 ): React.ReactElement => {

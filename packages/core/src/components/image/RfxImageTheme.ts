@@ -7,10 +7,10 @@
 
 import { ImageProps, ImageStyle } from 'react-native';
 
-import { BuiltInSimpleComponentTheme } from '../SimpleComponentTheme';
+import { PrimitiveComponentTheme } from '../PrimitiveComponentTheme';
 import { RfxImageProps } from './RfxImageProps';
 
-export type RfxImageTheme = BuiltInSimpleComponentTheme<
+export type RfxImageTheme = PrimitiveComponentTheme<
   RfxImageProps,
   ImageProps,
   ImageStyle

@@ -8,20 +8,20 @@
 import { ComponentThemeGetter } from '../ComponentThemeGetter';
 import { SurfaceTheme } from '../surface/SurfaceTheme';
 import { RfxSvgTheme } from '../svg/RfxSvgTheme';
-import { BuiltInTextTheme } from '../text/TextTheme';
+import { TextTheme } from '../text/TextTheme';
 // tslint:disable-next-line:max-line-length
-import { BuiltInTouchableWithoutFeedbackTheme } from '../touchable/TouchableWithoutFeedbackTheme';
-import { BuiltInViewTheme } from '../view/ViewTheme';
+import { TouchableWithoutFeedbackTheme } from '../touchable/TouchableWithoutFeedbackTheme';
+import { ViewTheme } from '../view/ViewTheme';
 import { ButtonProps } from './ButtonProps';
 
 export interface ButtonTheme {
   readonly icon?: ComponentThemeGetter<ButtonProps, RfxSvgTheme>;
-  readonly iconContainer?: BuiltInViewTheme<ButtonProps>;
+  readonly iconContainer?: ViewTheme<ButtonProps>;
   readonly leadingIcon?: ComponentThemeGetter<ButtonProps, RfxSvgTheme>;
-  readonly leadingIconContainer?: BuiltInViewTheme<ButtonProps>;
+  readonly leadingIconContainer?: ViewTheme<ButtonProps>;
   readonly surface?: ComponentThemeGetter<ButtonProps, SurfaceTheme>;
-  readonly text?: BuiltInTextTheme<ButtonProps>;
-  readonly touchable?: BuiltInTouchableWithoutFeedbackTheme<ButtonProps>;
+  readonly text?: TextTheme<ButtonProps>;
+  readonly touchable?: TouchableWithoutFeedbackTheme<ButtonProps>;
   readonly trailingIcon?: ComponentThemeGetter<ButtonProps, RfxSvgTheme>;
-  readonly trailingIconContainer?: BuiltInViewTheme<ButtonProps>;
+  readonly trailingIconContainer?: ViewTheme<ButtonProps>;
 }

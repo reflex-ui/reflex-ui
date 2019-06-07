@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 
 import { extractTouchableWithoutFeedbackProps } from '../../utils/props';
-import { BuiltInSimpleComponentProps } from '../BuiltInSimpleComponentProps';
+import { PrimitiveComponentProps } from '../PrimitiveComponentProps';
 
 export const renderTouchableComponent = <
   ComponentProps extends TouchableWithoutFeedbackProps &
@@ -21,7 +21,7 @@ export const renderTouchableComponent = <
   props: ComponentProps,
   Component:
     | typeof TouchableWithoutFeedback
-    | React.ComponentType<BuiltInSimpleComponentProps<ComponentProps>> &
+    | React.ComponentType<PrimitiveComponentProps<ComponentProps>> &
         TouchableWithoutFeedbackProps = TouchableWithoutFeedback,
   ref?: Ref<TouchableWithoutFeedback>,
 ): JSX.Element => {

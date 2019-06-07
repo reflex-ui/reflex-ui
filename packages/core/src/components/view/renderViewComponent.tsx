@@ -8,13 +8,12 @@
 import React, { Ref } from 'react';
 import { View, ViewProps } from 'react-native';
 
-import { BuiltInSimpleComponentProps } from '../BuiltInSimpleComponentProps';
+import { PrimitiveComponentProps } from '../PrimitiveComponentProps';
 
 export interface ViewComponentRendererInput<ComponentProps> {
   readonly Component?:
     | typeof View
-    | React.ComponentType<BuiltInSimpleComponentProps<ComponentProps>> &
-        ViewProps;
+    | React.ComponentType<PrimitiveComponentProps<ComponentProps>> & ViewProps;
   readonly props: ComponentProps;
   readonly ref?: Ref<View>;
   readonly viewProps: ViewProps & Readonly<{ children?: React.ReactNode }>;

@@ -6,10 +6,9 @@
  */
 
 import {
-  BuiltInSimpleComponentProps,
   InteractionStateProps,
+  PrimitiveComponentProps,
   SurfacePropsBase,
-  ViewTheme,
 } from '@reflex-ui/core';
 import React from 'react';
 import { View, ViewProps } from 'react-native';
@@ -18,7 +17,7 @@ import { animated } from 'react-spring/native';
 import { useElevationAnimation } from './useElevationAnimation';
 
 export interface AnimatedElevationViewProps<ComponentProps>
-  extends BuiltInSimpleComponentProps<ComponentProps>,
+  extends PrimitiveComponentProps<ComponentProps>,
     ViewProps {
   readonly children?: React.ReactNode;
 }
@@ -28,7 +27,7 @@ const AnimatedView = animated(View);
 export const AnimatedElevationView = <
   ComponentProps extends SurfacePropsBase<ComponentProps, Theme> &
     InteractionStateProps,
-  Theme extends ViewTheme<ComponentProps>
+  Theme
 >(
   props: AnimatedElevationViewProps<ComponentProps>,
 ): JSX.Element => {

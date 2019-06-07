@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { BuiltInSimpleComponentProps, SurfacePropsBase } from '@reflex-ui/core';
+import { PrimitiveComponentProps, SurfacePropsBase } from '@reflex-ui/core';
 import React from 'react';
 import { UseSpringProps } from 'react-spring/native';
 
@@ -26,7 +26,7 @@ export const createAnimatedOpenCloseTransitionSurfacePusher = <
   input: AnimatedOpenCloseTransitionSurfacePusherFactoryInput,
 ) =>
   function AnimatedOpenCloseTransitionSurfacePusherFactory(
-    props: BuiltInSimpleComponentProps<Props>,
+    props: PrimitiveComponentProps<Props>,
   ) {
     return (
       <AnimatedOpenCloseTransitionSurfacePusher

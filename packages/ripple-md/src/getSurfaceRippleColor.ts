@@ -5,11 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { getColor, SurfacePropsBase, ViewTheme } from '@reflex-ui/core';
+import { getColor, SurfacePropsBase } from '@reflex-ui/core';
 
 export const getSurfaceRippleColor = <
   Props extends SurfacePropsBase<Props, Theme>,
-  Theme extends ViewTheme<Props>
+  Theme
 >(
   props: Props,
 ) => getColor(props);

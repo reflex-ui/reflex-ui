@@ -6,10 +6,10 @@
  */
 
 import {
-  BuiltInViewTheme,
   ButtonProps,
   SizedData,
   ViewStyleGetter,
+  ViewTheme,
 } from '@reflex-ui/core';
 import { ViewStyle } from 'react-native';
 import { SvgProps } from 'react-native-svg';
@@ -74,14 +74,10 @@ export const xfabButtonLeadingIconSizedProps: SizedData<SvgProps> = {
   xxlarge: { height: 40, width: 40 },
 };
 
-export const xfabButtonLeadingIconContainerTheme: BuiltInViewTheme<
-  ButtonProps
-> = {
+export const xfabButtonLeadingIconContainerTheme: ViewTheme<ButtonProps> = {
   getStyle: getXFabButtonLeadingIconContainerStyle,
 };
 
-export const xfabButtonTrailingIconContainerTheme: BuiltInViewTheme<
-  ButtonProps
-> = {
+export const xfabButtonTrailingIconContainerTheme: ViewTheme<ButtonProps> = {
   getStyle: getXFabButtonTrailingIconContainerStyle,
 };

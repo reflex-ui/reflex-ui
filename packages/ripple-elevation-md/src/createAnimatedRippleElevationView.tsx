@@ -6,11 +6,10 @@
  */
 
 import {
-  BuiltInSimpleComponentProps,
   Elevation,
   InteractionStateProps,
+  PrimitiveComponentProps,
   RfxViewPropsBase,
-  ViewTheme,
 } from '@reflex-ui/core';
 import { RippleColorGetter } from '@reflex-ui/ripple-md';
 import React from 'react';
@@ -19,13 +18,13 @@ import { AnimatedRippleElevationView } from './AnimatedRippleElevationView';
 
 export const createAnimatedRippleElevationView = <
   Props extends RfxViewPropsBase<Props, Theme> & InteractionStateProps,
-  Theme extends ViewTheme<Props>
+  Theme
 >(
   elevation: Elevation,
   getRippleColor: RippleColorGetter<Props>,
 ) =>
   function AnimatedRippleElevationViewFactory(
-    props: BuiltInSimpleComponentProps<Props>,
+    props: PrimitiveComponentProps<Props>,
   ) {
     const { complexComponentProps, ...otherProps } = props;
     return (

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { BuiltInViewTheme } from '../view/ViewTheme';
+import { ViewTheme } from '../view/ViewTheme';
 import { SurfaceProps } from './SurfaceProps';
 
-export type SurfaceTheme = BuiltInViewTheme<SurfaceProps>;
+export type SurfaceTheme = ViewTheme<SurfaceProps>;

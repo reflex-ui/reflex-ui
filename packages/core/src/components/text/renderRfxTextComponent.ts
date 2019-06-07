@@ -9,15 +9,15 @@ import React, { Ref } from 'react';
 import { Text, TextProps, TextStyle } from 'react-native';
 
 import { extractTextProps } from '../../utils/props';
+import { PrimitiveComponentTheme } from '../PrimitiveComponentTheme';
 import { processComponentProps } from '../processComponentProps';
 import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
-import { BuiltInSimpleComponentTheme } from '../SimpleComponentTheme';
 import { renderTextComponent } from './renderTextComponent';
 import { RfxTextPropsBase } from './RfxTextProps';
 
 export const renderRfxTextComponent = <
   Props extends RfxTextPropsBase<Props, Theme>,
-  Theme extends BuiltInSimpleComponentTheme<Props, TextProps, TextStyle>
+  Theme extends PrimitiveComponentTheme<Props, TextProps, TextStyle>
 >(
   props: Props,
   ref: Ref<Text>,

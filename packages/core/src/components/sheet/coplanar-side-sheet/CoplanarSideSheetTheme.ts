@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { BuiltInViewTheme } from '../../view/ViewTheme';
+import { ViewTheme } from '../../view/ViewTheme';
 import { CoplanarSideSheetProps } from './CoplanarSideSheetProps';
 
-export type CoplanarSideSheetTheme = BuiltInViewTheme<CoplanarSideSheetProps>;
+export type CoplanarSideSheetTheme = ViewTheme<CoplanarSideSheetProps>;

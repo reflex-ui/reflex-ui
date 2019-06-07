@@ -6,12 +6,12 @@
  */
 
 import {
-  BuiltInSimpleComponentProps,
   ButtonProps,
   ComponentThemeGetter,
   Elevation,
   ElevationDegree,
   getColor,
+  PrimitiveComponentProps,
   suppressPressedState,
   SurfaceProps,
   SurfaceTheme,
@@ -30,7 +30,7 @@ import { getXFabButtonContainerStyle } from './container';
  * Basic memoization implementation.
  */
 let currentElevation: Elevation;
-let currentComponent: ComponentType<BuiltInSimpleComponentProps<SurfaceProps>>;
+let currentComponent: ComponentType<PrimitiveComponentProps<SurfaceProps>>;
 const createComponent = (elevation: Elevation = ElevationDegree.Mid) => {
   if (elevation === currentElevation && currentComponent !== undefined) {
     return currentComponent;

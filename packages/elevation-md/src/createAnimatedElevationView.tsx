@@ -6,11 +6,10 @@
  */
 
 import {
-  BuiltInSimpleComponentProps,
   Elevation,
   InteractionStateProps,
+  PrimitiveComponentProps,
   SurfacePropsBase,
-  ViewTheme,
 } from '@reflex-ui/core';
 import React from 'react';
 
@@ -18,13 +17,11 @@ import { AnimatedElevationView } from './AnimatedElevationView';
 
 export const createAnimatedElevationView = <
   Props extends SurfacePropsBase<Props, Theme> & InteractionStateProps,
-  Theme extends ViewTheme<Props>
+  Theme
 >(
   elevation: Elevation,
 ) =>
-  function AnimatedElevationViewFactory(
-    props: BuiltInSimpleComponentProps<Props>,
-  ) {
+  function AnimatedElevationViewFactory(props: PrimitiveComponentProps<Props>) {
     const { complexComponentProps, ...otherProps } = props;
     return (
       <AnimatedElevationView

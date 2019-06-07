@@ -6,22 +6,11 @@
  */
 
 import { TouchableWithoutFeedbackProps, ViewStyle } from 'react-native';
-import {
-  BuiltInSimpleComponentTheme,
-  SimpleComponentTheme,
-} from '../SimpleComponentTheme';
+import { PrimitiveComponentTheme } from '../PrimitiveComponentTheme';
 
 export type TouchableWithoutFeedbackTheme<
   ComponentProps
-> = SimpleComponentTheme<
-  ComponentProps,
-  TouchableWithoutFeedbackProps,
-  ViewStyle
->;
-
-export type BuiltInTouchableWithoutFeedbackTheme<
-  ComponentProps
-> = BuiltInSimpleComponentTheme<
+> = PrimitiveComponentTheme<
   ComponentProps,
   TouchableWithoutFeedbackProps,
   ViewStyle

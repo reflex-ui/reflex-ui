@@ -7,10 +7,10 @@
 
 import { TextProps, TextStyle } from 'react-native';
 
-import { BuiltInSimpleComponentTheme } from '../SimpleComponentTheme';
+import { PrimitiveComponentTheme } from '../PrimitiveComponentTheme';
 import { RfxTextProps } from './RfxTextProps';
 
-export type RfxTextTheme = BuiltInSimpleComponentTheme<
+export type RfxTextTheme = PrimitiveComponentTheme<
   RfxTextProps,
   TextProps,
   TextStyle

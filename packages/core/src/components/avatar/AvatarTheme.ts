@@ -7,10 +7,10 @@
 
 import { ComponentThemeGetter } from '../ComponentThemeGetter';
 import { SurfaceTheme } from '../surface/SurfaceTheme';
-import { BuiltInTextTheme } from '../text/TextTheme';
+import { TextTheme } from '../text/TextTheme';
 import { AvatarProps } from './AvatarProps';
 
 export interface AvatarTheme {
   readonly surface?: ComponentThemeGetter<AvatarProps, SurfaceTheme>;
-  readonly text?: BuiltInTextTheme<AvatarProps>;
+  readonly text?: TextTheme<AvatarProps>;
 }
