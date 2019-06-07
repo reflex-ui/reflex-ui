@@ -6,14 +6,13 @@
  */
 
 import { Elevation, InteractionType, isIOS } from '@reflex-ui/core';
-import { ViewStyle } from 'react-native';
 
 import { getElevationStyles } from './getElevationStyles';
 
 export const createMotionElevationShadowStyle = (
   elevation: Elevation,
   interactionType: InteractionType,
-): ViewStyle => {
+) => {
   // We do this to avoid mutating the original object
   const styles = JSON.parse(
     JSON.stringify(getElevationStyles(elevation, interactionType)),

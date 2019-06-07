@@ -21,6 +21,12 @@ let ModalRoot: React.ComponentType<{}> = forwardRef(
     ref: Ref<View>,
   ) => {
     const [modalId] = useState(() => `my-modal-${Math.random()}`);
+    // Needs to investigate how to fix this, adding support to Refs
+    // in a cross-platform way.
+    // @ts-ignore Conversion of type 'Ref<View>' to type
+    // 'RefObject<HTMLElement>' may be a mistake because neither type
+    // sufficiently overlaps with the other. If this was intentional,
+    // convert the expression to 'unknown' first.
     const htmlElementRef = ref as RefObject<HTMLElement>;
 
     return createPortal(

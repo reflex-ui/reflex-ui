@@ -6,9 +6,13 @@
  */
 
 import * as React from 'react';
-import { GestureResponderEvent } from 'react-native';
+import {
+  GestureResponderEvent,
+  NativeSyntheticEvent,
+  TargetedEvent,
+} from 'react-native';
 
 export type InteractionEvent =
   | GestureResponderEvent
-  | React.FocusEvent
+  | NativeSyntheticEvent<TargetedEvent>
   | React.MouseEvent;

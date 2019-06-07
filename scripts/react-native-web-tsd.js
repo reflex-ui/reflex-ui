@@ -9,7 +9,7 @@
 const REACT_NATIVE_WEB_TYPINGS = `
 //////////////////////////////////////////////////////////////////////////
 //
-//  REACT-NATIVE-WEB TYPINGS
+//  START OF REACT-NATIVE-WEB TYPINGS
 //
 //////////////////////////////////////////////////////////////////////////
 export interface ImageProperties {
@@ -29,8 +29,6 @@ export interface TextInputProperties {
 }
 
 export interface TouchableWithoutFeedbackProps {
-    onBlur?: React.FocusEventHandler;
-    onFocus?: React.FocusEventHandler;
     onMouseEnter?: React.MouseEventHandler;
     onMouseLeave?: React.MouseEventHandler;
 }
@@ -228,7 +226,13 @@ export interface CheckBoxProps extends ViewProperties {
 }
 
 export interface CheckBoxStatic extends React.ComponentClass<CheckBoxProps> {}
-export type CheckBox = CheckBoxStatic;`;
+export type CheckBox = CheckBoxStatic;
+
+//////////////////////////////////////////////////////////////////////////
+//
+//  END OF REACT-NATIVE-WEB TYPINGS
+//
+//////////////////////////////////////////////////////////////////////////`;
 
 const fs = require('fs');
 const path = require('path');

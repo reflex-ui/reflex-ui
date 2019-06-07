@@ -8,6 +8,8 @@
 import { useState } from 'react';
 import {
   GestureResponderEvent,
+  NativeSyntheticEvent,
+  TargetedEvent,
   TouchableWithoutFeedbackProps,
 } from 'react-native';
 
@@ -30,7 +32,7 @@ export const useInteraction = <
     );
   }
 
-  const onBlur = (event: React.FocusEvent): void => {
+  const onBlur = (event: NativeSyntheticEvent<TargetedEvent>): void => {
     if (interactionState.type === InteractionType.Disabled) return;
 
     if (
@@ -46,7 +48,7 @@ export const useInteraction = <
     if (props.onBlur) props.onBlur(event);
   };
 
-  const onFocus = (event: React.FocusEvent): void => {
+  const onFocus = (event: NativeSyntheticEvent<TargetedEvent>): void => {
     if (
       interactionState.type === InteractionType.Disabled ||
       interactionState.type === InteractionType.Pressed
