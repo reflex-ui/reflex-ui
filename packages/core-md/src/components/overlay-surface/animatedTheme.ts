@@ -36,9 +36,11 @@ export const getAnimatedOverlaySurfaceContainerStyle: ViewStyleGetter<
 
 export const animatedOverlaySurfaceTheme: OverlaySurfaceTheme = {
   surface: () => ({
-    getComponent: props =>
-      props.isTouchableHandler ? AnimatedRippleView : undefined,
-    getProps: getOverlaySurfaceContainerProps,
-    getStyle: getAnimatedOverlaySurfaceContainerStyle,
+    view: {
+      getComponent: props =>
+        props.isTouchableHandler ? AnimatedRippleView : undefined,
+      getProps: getOverlaySurfaceContainerProps,
+      getStyle: getAnimatedOverlaySurfaceContainerStyle,
+    },
   }),
 };

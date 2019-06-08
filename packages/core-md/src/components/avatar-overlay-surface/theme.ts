@@ -32,7 +32,9 @@ export const getAvatarOverlaySurfaceContainerStyle: ViewStyleGetter<
 
 export const avatarOverlaySurfaceTheme: OverlaySurfaceTheme = {
   surface: () => ({
-    getProps: getAvatarOverlaySurfaceContainerProps,
-    getStyle: getAvatarOverlaySurfaceContainerStyle,
+    view: {
+      getProps: getAvatarOverlaySurfaceContainerProps,
+      getStyle: getAvatarOverlaySurfaceContainerStyle,
+    },
   }),
 };

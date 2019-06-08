@@ -33,8 +33,7 @@ const useTheme = (theme?: OverlaySurfaceTheme): OverlaySurfaceTheme => {
 let AvatarOverlaySurface: React.ComponentType<
   OverlaySurfacePropsOptional
 > = forwardRef((props: OverlaySurfacePropsOptional, ref: Ref<View>) => {
-  const theme = useTheme(props.theme);
-  const newProps = { ...props, theme };
+  const newProps = { ...props, theme: useTheme(props.theme) };
   return <OverlaySurface ref={ref} {...newProps} />;
 });
 

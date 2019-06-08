@@ -54,48 +54,55 @@ export const getModalSurfaceTheme: ComponentThemeGetter<
   SurfaceProps,
   SurfaceTheme
 > = () => ({
-  getStyle: props => {
-    /*
-     * In my tests it seems that onLayout is always invoked twice
-     * for this Surface component (via enableOnLayout), and on a
-     * real Android device before I was using Math.floor to calculate
-     * height below I was getting two slightly different values
-     * on first and second times (like 473.6666564941406 and 473.3333435058594).
-     * Those values are used to calculate the top position, and since its based
-     * on height, it was also returning two slightly different values.
-     * Those different values was making onLayout be called
-     * repeatedly and infinitely, rendering Surface component and
-     * calling this getModalSurfaceTheme() function
-     * also repeatedly and infinitely.
-     * Using Math.floor() solved the issue here, and I think it makes sense
-     * to adopt it as a best practice for such cases, unless you really need
-     * highly precise values, in which case you might have to find another fix.
-     */
+  view: {
+    getStyle: props => {
+      /*
+       * In my tests it seems that onLayout is always invoked twice
+       * for this Surface component (via enableOnLayout), and on a
+       * real Android device before I was using Math.floor to calculate
+       * height below I was getting two slightly different values
+       * on first and second times
+       * (like 473.6666564941406 and 473.3333435058594).
+       * Those values are used to calculate the top position,
+       * and since its based on height, it was also returning
+       * two slightly different values.
+       * Those different values was making onLayout be called
+       * repeatedly and infinitely, rendering Surface component and
+       * calling this getModalSurfaceTheme() function
+       * also repeatedly and infinitely.
+       * Using Math.floor() solved the issue here, and I think
+       * it makes sense to adopt it as a best practice for such cases,
+       * unless you really need highly precise values, in which case
+       * you might have to find another fix.
+       */
 
-    const windowWidth = props.dimensions.window.width;
-    const windowHeight = props.dimensions.window.height;
-    const isUpToSmallTablet =
-      windowWidth <= props.breakpoints.smallTablet ? true : false;
+      const windowWidth = props.dimensions.window.width;
+      const windowHeight = props.dimensions.window.height;
+      const isUpToSmallTablet =
+        windowWidth <= props.breakpoints.smallTablet ? true : false;
 
-    const width = isUpToSmallTablet ? Math.floor(windowWidth * 0.8) : 400;
-    const maxHeight = isUpToSmallTablet ? Math.floor(windowHeight * 0.8) : 400;
+      const width = isUpToSmallTablet ? Math.floor(windowWidth * 0.8) : 400;
+      const maxHeight = isUpToSmallTablet
+        ? Math.floor(windowHeight * 0.8)
+        : 400;
 
-    const left = Math.floor(windowWidth / 2 - width / 2);
-    const height = props.layoutRectangle
-      ? Math.floor(props.layoutRectangle.height)
-      : 0;
-    const top = props.layoutRectangle
-      ? Math.floor(windowHeight / 2 - height / 2)
-      : 2000;
+      const left = Math.floor(windowWidth / 2 - width / 2);
+      const height = props.layoutRectangle
+        ? Math.floor(props.layoutRectangle.height)
+        : 0;
+      const top = props.layoutRectangle
+        ? Math.floor(windowHeight / 2 - height / 2)
+        : 2000;
 
-    return {
-      left,
-      maxHeight,
-      opacity: props.isOpen ? 1 : 0,
-      position: 'absolute',
-      top,
-      width,
-    };
+      return {
+        left,
+        maxHeight,
+        opacity: props.isOpen ? 1 : 0,
+        position: 'absolute',
+        top,
+        width,
+      };
+    },
   },
 });
 

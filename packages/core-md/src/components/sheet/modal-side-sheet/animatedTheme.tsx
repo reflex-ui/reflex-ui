@@ -23,8 +23,6 @@ export const getAnimatedModalSideSheetEndSurfaceStyle: ViewStyleGetter<
 > = props => {
   return {
     ...getModalSideSheetEndSurfaceStyle(props),
-    // display: 'flex',
-    // maxWidth: 0,
   };
 };
 
@@ -33,22 +31,24 @@ export const getAnimatedModalSideSheetStartSurfaceStyle: ViewStyleGetter<
 > = props => {
   return {
     ...getModalSideSheetStartSurfaceStyle(props),
-    // display: 'flex',
-    // maxWidth: 0,
   };
 };
 
 export const animatedModalSideSheetEndTheme: ModalSideSheetTheme = {
   surface: () => ({
-    getProps: getCommonSheetSurfaceProps,
-    getStyle: getAnimatedModalSideSheetEndSurfaceStyle,
+    view: {
+      getProps: getCommonSheetSurfaceProps,
+      getStyle: getAnimatedModalSideSheetEndSurfaceStyle,
+    },
   }),
 };
 
 export const animatedModalSideSheetStartTheme: ModalSideSheetTheme = {
   surface: () => ({
-    getProps: getCommonSheetSurfaceProps,
-    getStyle: getAnimatedModalSideSheetStartSurfaceStyle,
+    view: {
+      getProps: getCommonSheetSurfaceProps,
+      getStyle: getAnimatedModalSideSheetStartSurfaceStyle,
+    },
   }),
 };
 

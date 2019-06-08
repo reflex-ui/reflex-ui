@@ -41,7 +41,9 @@ export const getBackdropSurfaceStyle: ViewStyleGetter<
 
 export const backdropTheme: BackdropTheme = {
   surface: () => ({
-    getProps: getBackdropSurfaceProps,
-    getStyle: getBackdropSurfaceStyle,
+    view: {
+      getProps: getBackdropSurfaceProps,
+      getStyle: getBackdropSurfaceStyle,
+    },
   }),
 };

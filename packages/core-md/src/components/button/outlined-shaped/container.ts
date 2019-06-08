@@ -45,6 +45,8 @@ export const getOutlinedShapedButtonSurfaceTheme: ComponentThemeGetter<
   ButtonProps,
   SurfaceTheme
 > = () => ({
-  getProps: getAllVariantsButtonContainerProps,
-  getStyle: getOutlinedShapedButtonContainerStyle,
+  view: {
+    getProps: getAllVariantsButtonContainerProps,
+    getStyle: getOutlinedShapedButtonContainerStyle,
+  },
 });

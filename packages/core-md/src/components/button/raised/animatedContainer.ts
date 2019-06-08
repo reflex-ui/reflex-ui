@@ -57,7 +57,9 @@ export const getAnimatedRaisedButtonSurfaceTheme: ComponentThemeGetter<
   ButtonProps,
   SurfaceTheme
 > = () => ({
-  getComponent: props => createComponent(props.elevation),
-  getProps: getAllVariantsButtonContainerProps,
-  getStyle: getAnimatedRaisedButtonContainerStyle,
+  view: {
+    getComponent: props => createComponent(props.elevation),
+    getProps: getAllVariantsButtonContainerProps,
+    getStyle: getAnimatedRaisedButtonContainerStyle,
+  },
 });

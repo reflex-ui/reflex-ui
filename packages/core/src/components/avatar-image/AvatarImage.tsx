@@ -12,10 +12,7 @@ import { MissingComponentThemeError } from '../../errors';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { useComponentsTheme } from '../ComponentsTheme';
 import { renderRfxImageComponent } from '../image/renderRfxImageComponent';
-import {
-  RfxSizedImageProps,
-  RfxSizedImagePropsOptional,
-} from '../image/RfxSizedImageProps';
+import { RfxSizedImagePropsOptional } from '../image/RfxSizedImageProps';
 import { RfxSizedImageTheme } from '../image/RfxSizedImageTheme';
 // tslint:disable-next-line:max-line-length
 import { useDefaultRfxSizedImageProps } from '../image/useDefaultRfxSizedImageProps';
@@ -39,15 +36,10 @@ const useTheme = (theme?: RfxSizedImageTheme): RfxSizedImageTheme => {
 
 let AvatarImage: React.ComponentType<RfxSizedImagePropsOptional> = forwardRef(
   (props: RfxSizedImagePropsOptional, ref: Ref<Image>) => {
-    const theme = useTheme(props.theme);
-
-    let newProps: RfxSizedImageProps = useDefaultRfxSizedImageProps(
-      props,
-      theme,
-    );
+    let newProps = useDefaultRfxSizedImageProps(props, useTheme(props.theme));
     newProps = { ...newProps, ...useOnLayout(newProps) };
     newProps = processComponentProps(newProps);
-    newProps = processThemeAndStyleProps(newProps, newProps.theme);
+    newProps = processThemeAndStyleProps(newProps, newProps.theme.image);
 
     return renderRfxImageComponent({
       props: newProps,

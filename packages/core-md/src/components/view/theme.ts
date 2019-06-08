@@ -49,7 +49,9 @@ export const getColumnContainerStyle: ViewStyleGetter<
 });
 
 export const columnTheme: RfxViewTheme = {
-  getStyle: getColumnContainerStyle,
+  view: {
+    getStyle: getColumnContainerStyle,
+  },
 };
 
 /*
@@ -63,7 +65,9 @@ export const getRowContainerStyle: ViewStyleGetter<RfxViewProps> = props => ({
 });
 
 export const rowTheme: RfxViewTheme = {
-  getStyle: getRowContainerStyle,
+  view: {
+    getStyle: getRowContainerStyle,
+  },
 };
 
 /*
@@ -81,7 +85,9 @@ export const getSpaceBetweenContainerStyle: ViewStyleGetter<
 });
 
 export const spaceBetweenTheme: RfxViewTheme = {
-  getStyle: getSpaceBetweenContainerStyle,
+  view: {
+    getStyle: getSpaceBetweenContainerStyle,
+  },
 };
 
 /*

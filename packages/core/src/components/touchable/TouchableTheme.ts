@@ -8,4 +8,6 @@
 import { TouchableProps } from './TouchableProps';
 import { TouchableWithoutFeedbackTheme } from './TouchableWithoutFeedbackTheme';
 
-export type TouchableTheme = TouchableWithoutFeedbackTheme<TouchableProps>;
+export interface TouchableTheme {
+  readonly touchable?: TouchableWithoutFeedbackTheme<TouchableProps>;
+}

@@ -144,15 +144,19 @@ export const getAnimatedCoplanarSideSheetEndSurfaceStyle: ViewStyleGetter<
  */
 
 export const animatedCoplanarSideSheetStartTheme: CoplanarSideSheetTheme = {
-  getComponent: props =>
-    createStartComponent(StyleSheet.flatten(props.style).maxWidth),
-  getStyle: getAnimatedCoplanarSideSheetStartSurfaceStyle,
+  view: {
+    getComponent: props =>
+      createStartComponent(StyleSheet.flatten(props.style).maxWidth),
+    getStyle: getAnimatedCoplanarSideSheetStartSurfaceStyle,
+  },
 };
 
 export const animatedCoplanarSideSheetEndTheme: CoplanarSideSheetTheme = {
-  getComponent: props =>
-    createEndComponent(StyleSheet.flatten(props.style).maxWidth),
-  getStyle: getAnimatedCoplanarSideSheetEndSurfaceStyle,
+  view: {
+    getComponent: props =>
+      createEndComponent(StyleSheet.flatten(props.style).maxWidth),
+    getStyle: getAnimatedCoplanarSideSheetEndSurfaceStyle,
+  },
 };
 
 /*

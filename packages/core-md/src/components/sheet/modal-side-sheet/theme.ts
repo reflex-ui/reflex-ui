@@ -52,15 +52,19 @@ export const getModalSideSheetEndSurfaceStyle: ViewStyleGetter<
 
 export const modalSideSheetStartTheme: ModalSideSheetTheme = {
   surface: () => ({
-    getProps: getCommonSheetSurfaceProps,
-    getStyle: getModalSideSheetStartSurfaceStyle,
+    view: {
+      getProps: getCommonSheetSurfaceProps,
+      getStyle: getModalSideSheetStartSurfaceStyle,
+    },
   }),
 };
 
 export const modalSideSheetEndTheme: ModalSideSheetTheme = {
   surface: () => ({
-    getProps: getCommonSheetSurfaceProps,
-    getStyle: getModalSideSheetEndSurfaceStyle,
+    view: {
+      getProps: getCommonSheetSurfaceProps,
+      getStyle: getModalSideSheetEndSurfaceStyle,
+    },
   }),
 };
 

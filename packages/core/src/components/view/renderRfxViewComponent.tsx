@@ -12,33 +12,35 @@ import { PaletteColorProvider } from '../../color/PaletteColor';
 import { extractViewProps } from '../../utils/props';
 import { ComponentChildrenProps } from '../ComponentChildrenProps';
 import { ComponentThemeProps } from '../ComponentThemeProps';
-import { PrimitiveComponentTheme } from '../PrimitiveComponentTheme';
+import { PrimitiveComponentProps } from '../PrimitiveComponentProps';
 import { renderViewComponent } from './renderViewComponent';
 import { RfxViewPropsBase } from './RfxViewProps';
 
 export interface RfxViewComponentRendererInput<Props> {
+  readonly Component?:
+    | typeof View
+    | React.ComponentType<PrimitiveComponentProps<Props>> & ViewProps;
   readonly props: Props;
   readonly ref?: Ref<View>;
   readonly shouldProvideColor?: boolean;
-  readonly theme?: PrimitiveComponentTheme<Props, unknown, unknown>;
 }
 
 export const renderRfxViewComponent = <
   Props extends RfxViewPropsBase<Props, Theme> &
     ComponentThemeProps<Props, Theme> &
     ComponentChildrenProps<Props>,
-  Theme extends PrimitiveComponentTheme<Props, unknown, unknown>
+  Theme
 >(
   input: RfxViewComponentRendererInput<Props>,
 ): React.ReactElement => {
-  const { props, ref, shouldProvideColor, theme } = input;
+  const { Component, props, ref, shouldProvideColor } = input;
   const { children, paletteColor } = props;
   const viewProps: React.PropsWithChildren<ViewProps> = {
     ...extractViewProps(props),
     children,
   };
   const renderedView = renderViewComponent({
-    Component: theme && theme.getComponent && theme.getComponent(props),
+    Component,
     props,
     ref,
     viewProps,

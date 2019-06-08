@@ -135,9 +135,10 @@ const useTheme = (
 
 let AppBar: React.ComponentType<AppBarPropsOptional> = forwardRef(
   (props: AppBarPropsOptional, ref: Ref<View>) => {
-    const theme = useTheme(props.theme, props.variant);
-
-    let newProps: AppBarProps = useDefaultAppBarProps(props, theme);
+    let newProps = useDefaultAppBarProps(
+      props,
+      useTheme(props.theme, props.variant),
+    );
     newProps = { ...newProps, ...useOnLayout(newProps) };
     newProps = processComponentProps(newProps);
 

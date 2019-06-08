@@ -44,5 +44,7 @@ export const getRfxSvgSvgProps: SvgPropsGetter<RfxSvgProps> = props => ({
 });
 
 export const rfxSvgTheme: RfxSvgTheme = {
-  getProps: getRfxSvgSvgProps,
+  svg: {
+    getProps: getRfxSvgSvgProps,
+  },
 };

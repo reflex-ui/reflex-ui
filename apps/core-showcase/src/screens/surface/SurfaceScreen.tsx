@@ -38,10 +38,8 @@ const onButtonPress = () => {
 const getPatchTheme: ComponentThemeGetter<
   SurfaceProps,
   SurfaceTheme
-> = (): SurfaceTheme => {
-  // tslint:disable-next-line:no-console
-  // console.log('TestShowcaseScreen().getPatchTheme() - props:', props);
-  return {
+> = (): SurfaceTheme => ({
+  view: {
     getStyle: () => ({
       borderColor: 'red',
       borderRadius: 8,
@@ -49,8 +47,8 @@ const getPatchTheme: ComponentThemeGetter<
       height: 75,
       width: 135,
     }),
-  };
-};
+  },
+});
 
 const Square = () => (
   <View

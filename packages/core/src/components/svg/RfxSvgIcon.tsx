@@ -15,7 +15,7 @@ import { processComponentProps } from '../processComponentProps';
 import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
 // tslint:disable-next-line:max-line-length
 import { applySvgPropsAndThemeToSvgElement } from './applySvgPropsAndThemeToSvgElement';
-import { RfxSvgProps, RfxSvgPropsOptional } from './RfxSvgProps';
+import { RfxSvgPropsOptional } from './RfxSvgProps';
 import { RfxSvgTheme } from './RfxSvgTheme';
 import { useDefaultRfxSvgProps } from './useDefaultRfxSvgProps';
 
@@ -33,15 +33,13 @@ const useTheme = (theme?: RfxSvgTheme): RfxSvgTheme => {
 let RfxSvgIcon: React.ComponentType<RfxSvgPropsOptional> = (
   props: RfxSvgPropsOptional,
 ) => {
-  const theme = useTheme(props.theme);
-
-  let newProps: RfxSvgProps = useDefaultRfxSvgProps(props, theme);
+  let newProps = useDefaultRfxSvgProps(props, useTheme(props.theme));
   newProps = { ...newProps, ...useOnLayout(newProps) };
   if (newProps.children === undefined || newProps.children === null) {
     return null;
   }
   newProps = processComponentProps(newProps);
-  newProps = processThemeAndStyleProps(newProps, newProps.theme);
+  newProps = processThemeAndStyleProps(newProps, newProps.theme.svg);
 
   const svgElement = applySvgPropsAndThemeToSvgElement(newProps);
   return <React.Fragment>{svgElement}</React.Fragment>;

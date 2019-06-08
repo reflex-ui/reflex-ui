@@ -207,14 +207,16 @@ const useTheme = (
 
 let Button: React.ComponentType<ButtonPropsOptional> = forwardRef(
   (props: ButtonPropsOptional, ref: Ref<View>) => {
-    const theme = useTheme(props.theme, props.variant);
-
-    let newProps: ButtonProps = useDefaultButtonProps(props, theme);
+    let newProps = useDefaultButtonProps(
+      props,
+      useTheme(props.theme, props.variant),
+    );
     newProps = { ...newProps, ...useInteraction(newProps) };
     newProps = { ...newProps, ...useOnLayout(newProps) };
     newProps = processComponentProps(newProps);
-    newProps = processThemeAndStyleProps(newProps, theme.touchable);
+    newProps = processThemeAndStyleProps(newProps, newProps.theme.touchable);
 
+    const { theme } = newProps;
     const Touchable =
       theme.touchable &&
       theme.touchable.getComponent &&

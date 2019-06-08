@@ -46,23 +46,25 @@ const useTheme = (
 let CoplanarSideSheet: React.ComponentType<
   CoplanarSideSheetPropsOptional
 > = forwardRef((props: CoplanarSideSheetPropsOptional, ref: Ref<View>) => {
-  const theme = useTheme(props.theme, props.variant);
-
   let newProps: CoplanarSideSheetProps = useDefaultCoplanarSideSheetProps(
     props,
-    theme,
+    useTheme(props.theme, props.variant),
   );
   newProps = { ...newProps, ...useOnLayout(newProps) };
   newProps = { ...newProps, ...useOpenCloseTransition(newProps) };
   newProps = processComponentProps(newProps);
-  newProps = processThemeAndStyleProps(newProps, newProps.theme);
+  newProps = processThemeAndStyleProps(newProps, newProps.theme.view);
 
+  const { theme } = newProps;
+  const Component =
+    theme.view && theme.view.getComponent && theme.view.getComponent(newProps);
   const shouldProvideColor = useShouldProvideColor(newProps.paletteColor);
+
   return renderRfxViewComponent({
+    Component,
     props: newProps,
     ref,
     shouldProvideColor,
-    theme: newProps.theme,
   });
 });
 

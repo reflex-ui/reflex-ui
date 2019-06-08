@@ -39,11 +39,15 @@ export const getCoplanarSideSheetEndSurfaceStyle: ViewStyleGetter<
 });
 
 export const coplanarSideSheetStartTheme: CoplanarSideSheetTheme = {
-  getStyle: getCoplanarSideSheetStartSurfaceStyle,
+  view: {
+    getStyle: getCoplanarSideSheetStartSurfaceStyle,
+  },
 };
 
 export const coplanarSideSheetEndTheme: CoplanarSideSheetTheme = {
-  getStyle: getCoplanarSideSheetEndSurfaceStyle,
+  view: {
+    getStyle: getCoplanarSideSheetEndSurfaceStyle,
+  },
 };
 
 /*

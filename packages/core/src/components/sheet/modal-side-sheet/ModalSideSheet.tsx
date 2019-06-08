@@ -93,11 +93,9 @@ const useTheme = (
 let ModalSideSheet: React.ComponentType<
   ModalSideSheetPropsOptional
 > = forwardRef((props: ModalSideSheetPropsOptional, ref: Ref<View>) => {
-  const theme = useTheme(props.theme, props.variant);
-
-  let newProps: ModalSideSheetProps = useDefaultModalSideSheetProps(
+  let newProps = useDefaultModalSideSheetProps(
     props,
-    theme,
+    useTheme(props.theme, props.variant),
   );
   newProps = { ...newProps, ...useOnLayout(newProps) };
   newProps = processComponentProps(newProps);

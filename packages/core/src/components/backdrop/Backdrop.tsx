@@ -62,14 +62,13 @@ const useTheme = (theme?: BackdropTheme): BackdropTheme => {
 
 let Backdrop: React.ComponentType<BackdropPropsOptional> = forwardRef(
   (props: BackdropPropsOptional, ref: Ref<View>) => {
-    const theme = useTheme(props.theme);
-
-    let newProps: BackdropProps = useDefaultBackdropProps(props, theme);
+    let newProps = useDefaultBackdropProps(props, useTheme(props.theme));
     newProps = { ...newProps, ...useOnLayout(newProps) };
     newProps = { ...newProps, ...useOpenCloseTransition(newProps) };
     newProps = processComponentProps(newProps);
     newProps = processThemeAndStyleProps(newProps, newProps.theme.touchable);
 
+    const { theme } = newProps;
     const Touchable =
       theme.touchable &&
       theme.touchable.getComponent &&

@@ -36,7 +36,9 @@ const getButtonPatchTheme: ComponentThemeGetter<ButtonProps, ButtonTheme> = ({
       getProps: () => ({ stroke, strokeWidth }),
     }),
     surface: () => ({
-      getStyle: () => ({ borderRadius: 0 }),
+      view: {
+        getStyle: () => ({ borderRadius: 0 }),
+      },
     }),
     text: {
       getStyle: () => {

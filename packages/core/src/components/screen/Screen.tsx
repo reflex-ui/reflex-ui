@@ -14,7 +14,7 @@ import { useComponentsTheme } from '../ComponentsTheme';
 import { processComponent } from '../processComponent';
 import { processComponentProps } from '../processComponentProps';
 import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
-import { SurfaceProps, SurfacePropsOptional } from '../surface/SurfaceProps';
+import { SurfacePropsOptional } from '../surface/SurfaceProps';
 import { SurfaceTheme } from '../surface/SurfaceTheme';
 import { renderRfxViewComponent } from '../view/renderRfxViewComponent';
 import { useShouldProvideColor } from '../view/useShouldProvideColor';
@@ -33,19 +33,23 @@ const useTheme = (theme?: SurfaceTheme): SurfaceTheme => {
 
 let Screen: React.ComponentType<SurfacePropsOptional> = forwardRef(
   (props: SurfacePropsOptional, ref: Ref<View>) => {
-    const theme = useTheme(props.theme);
-
-    let newProps: SurfaceProps = useDefaultScreenProps(props, theme);
+    let newProps = useDefaultScreenProps(props, useTheme(props.theme));
     newProps = { ...newProps, ...useOnLayout(newProps) };
     newProps = processComponentProps(newProps);
-    newProps = processThemeAndStyleProps(newProps, newProps.theme);
+    newProps = processThemeAndStyleProps(newProps, newProps.theme.view);
 
+    const { theme } = newProps;
+    const Component =
+      theme.view &&
+      theme.view.getComponent &&
+      theme.view.getComponent(newProps);
     const shouldProvideColor = useShouldProvideColor(newProps.paletteColor);
+
     return renderRfxViewComponent({
+      Component,
       props: newProps,
       ref,
       shouldProvideColor,
-      theme: newProps.theme,
     });
   },
 );

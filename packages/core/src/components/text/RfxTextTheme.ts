@@ -5,13 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { TextProps, TextStyle } from 'react-native';
-
-import { PrimitiveComponentTheme } from '../PrimitiveComponentTheme';
 import { RfxTextProps } from './RfxTextProps';
+import { TextTheme } from './TextTheme';
 
-export type RfxTextTheme = PrimitiveComponentTheme<
-  RfxTextProps,
-  TextProps,
-  TextStyle
->;
+export interface RfxTextTheme {
+  readonly text?: TextTheme<RfxTextProps>;
+}

@@ -80,6 +80,8 @@ export const getXFabButtonContainerTheme: ComponentThemeGetter<
   ButtonProps,
   SurfaceTheme
 > = () => ({
-  getProps: getAllVariantsButtonContainerProps,
-  getStyle: getXFabButtonContainerStyle,
+  view: {
+    getProps: getAllVariantsButtonContainerProps,
+    getStyle: getXFabButtonContainerStyle,
+  },
 });
