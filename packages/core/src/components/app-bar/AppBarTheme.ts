@@ -5,13 +5,15 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { ComponentTheme } from '../ComponentTheme';
 import { ComponentThemeGetter } from '../ComponentThemeGetter';
 import { SurfaceTheme } from '../surface/SurfaceTheme';
 import { RfxTextTheme } from '../text/RfxTextTheme';
 import { ViewTheme } from '../view/ViewTheme';
-import { AppBarProps } from './AppBarProps';
+import { AppBarProps, AppBarPropsOptional } from './AppBarProps';
 
-export interface AppBarTheme {
+export interface AppBarTheme
+  extends ComponentTheme<AppBarProps, AppBarPropsOptional> {
   readonly centerArea?: ViewTheme<AppBarProps>;
   readonly leadingArea?: ViewTheme<AppBarProps>;
   readonly surface?: ComponentThemeGetter<AppBarProps, SurfaceTheme>;

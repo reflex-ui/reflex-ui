@@ -41,7 +41,7 @@ export const getPropsFromTheme = <
   if (typeof themeProps !== 'object') {
     throw new Error(
       [
-        'Rfx: invalid object returned from theme.getProps().',
+        'ReflexUI: invalid object returned from theme.getProps().',
         `It must return an object, but returned: ${typeof themeProps}`,
       ].join(' '),
     );
@@ -50,7 +50,7 @@ export const getPropsFromTheme = <
   if (themeProps.style) {
     throw new Error(
       [
-        '"style" property is not allowed to be passed as part of',
+        'ReflexUI: "style" property is not allowed to be passed as part of',
         'getProps() in themes. Please use getStyle() instead.',
       ].join(' '),
     );

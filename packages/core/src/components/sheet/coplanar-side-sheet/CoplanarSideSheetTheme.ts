@@ -5,9 +5,17 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { ComponentTheme } from '../../ComponentTheme';
 import { ViewTheme } from '../../view/ViewTheme';
-import { CoplanarSideSheetProps } from './CoplanarSideSheetProps';
+import {
+  CoplanarSideSheetProps,
+  CoplanarSideSheetPropsOptional,
+} from './CoplanarSideSheetProps';
 
-export interface CoplanarSideSheetTheme {
+export interface CoplanarSideSheetTheme
+  extends ComponentTheme<
+    CoplanarSideSheetProps,
+    CoplanarSideSheetPropsOptional
+  > {
   readonly view?: ViewTheme<CoplanarSideSheetProps>;
 }

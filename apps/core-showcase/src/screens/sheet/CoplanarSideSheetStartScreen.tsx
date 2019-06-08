@@ -116,7 +116,6 @@ const CoplanarSideSheetStartScreen: React.SFC<{}> = (): JSX.Element => {
           componentWillClose={coplanarSideSheetWillClose}
           componentWillOpen={coplanarSideSheetWillOpen}
           isOpen={isShowingCoplanarSideSheet}
-          isOpenCloseTransitionAnimated
           paddingEnd={0}
           paddingTop={Size.XS}
           variant={CoplanarSideSheetVariant.Start}

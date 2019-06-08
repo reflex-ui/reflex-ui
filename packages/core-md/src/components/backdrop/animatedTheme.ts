@@ -47,6 +47,7 @@ export const getAnimatedBackdropSurfaceStyle: ViewStyleGetter<
 });
 
 export const animatedBackdropTheme: BackdropTheme = {
+  getProps: () => ({ isOpenCloseTransitionAnimated: true }),
   surface: () => ({
     view: {
       getComponent: getAnimatedComponent,

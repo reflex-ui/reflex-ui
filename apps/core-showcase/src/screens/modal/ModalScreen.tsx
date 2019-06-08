@@ -135,7 +135,6 @@ const MyModal = (props: ModalPropsOptional) => {
       componentDidOpen={modalDidOpen}
       componentWillClose={modalWillClose}
       componentWillOpen={modalWillOpen}
-      isOpenCloseTransitionAnimated
       {...props}
     >
       <Surface

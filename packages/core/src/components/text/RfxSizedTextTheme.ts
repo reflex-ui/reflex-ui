@@ -5,9 +5,14 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { RfxSizedTextProps } from './RfxSizedTextProps';
+import { ComponentTheme } from '../ComponentTheme';
+import {
+  RfxSizedTextProps,
+  RfxSizedTextPropsOptional,
+} from './RfxSizedTextProps';
 import { TextTheme } from './TextTheme';
 
-export interface RfxSizedTextTheme {
+export interface RfxSizedTextTheme
+  extends ComponentTheme<RfxSizedTextProps, RfxSizedTextPropsOptional> {
   readonly text?: TextTheme<RfxSizedTextProps>;
 }

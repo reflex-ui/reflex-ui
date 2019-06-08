@@ -17,7 +17,7 @@ import { animatedButtonTheme } from './button/animatedTheme';
 import { imageTheme } from './image/theme';
 import { animatedListItemTheme } from './list-item/animatedTheme';
 import { listTheme } from './list/theme';
-import { modalTheme } from './modal/theme';
+import { animatedModalTheme } from './modal/animatedTheme';
 import { animatedOverlaySurfaceTheme } from './overlay-surface/animatedTheme';
 import { screenTheme } from './screen/theme';
 import {
@@ -41,7 +41,7 @@ export const animatedMaterialDesignTheme: ComponentsTheme = {
   image: imageTheme,
   list: listTheme,
   listItem: animatedListItemTheme,
-  modal: modalTheme,
+  modal: animatedModalTheme,
   modalSideSheet: animatedModalSideSheetVariantsTheme,
   overlaySurface: animatedOverlaySurfaceTheme,
   screen: screenTheme,
