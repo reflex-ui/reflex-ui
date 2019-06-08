@@ -64,8 +64,16 @@ let Backdrop: React.ComponentType<BackdropPropsOptional> = forwardRef(
   (props: BackdropPropsOptional, ref: Ref<View>) => {
     let newProps = useDefaultBackdropProps(props, useTheme(props.theme));
     newProps = { ...newProps, ...useOnLayout(newProps) };
-    newProps = { ...newProps, ...useOpenCloseTransition(newProps) };
+    /*
+     * We put useOpenCloseTransition() after processComponentProps()
+     * because we want props provided via ComponentTheme.getProps()
+     * to be passed to useOpenCloseTransition(), specially
+     * isOpenCloseTransitionAnimated, which gives themes full control
+     * over how components should behave.
+     */
     newProps = processComponentProps(newProps);
+    newProps = { ...newProps, ...useOpenCloseTransition(newProps) };
+    /**/
     newProps = processThemeAndStyleProps(newProps, newProps.theme.touchable);
 
     const { theme } = newProps;

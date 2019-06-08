@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { ComponentTheme } from '../ComponentTheme';
 import { ComponentThemeGetter } from '../ComponentThemeGetter';
 import { SurfaceTheme } from '../surface/SurfaceTheme';
 import { RfxSvgTheme } from '../svg/RfxSvgTheme';
@@ -12,9 +13,10 @@ import { TextTheme } from '../text/TextTheme';
 // tslint:disable-next-line:max-line-length
 import { TouchableWithoutFeedbackTheme } from '../touchable/TouchableWithoutFeedbackTheme';
 import { ViewTheme } from '../view/ViewTheme';
-import { ButtonProps } from './ButtonProps';
+import { ButtonProps, ButtonPropsOptional } from './ButtonProps';
 
-export interface ButtonTheme {
+export interface ButtonTheme
+  extends ComponentTheme<ButtonProps, ButtonPropsOptional> {
   readonly icon?: ComponentThemeGetter<ButtonProps, RfxSvgTheme>;
   readonly iconContainer?: ViewTheme<ButtonProps>;
   readonly leadingIcon?: ComponentThemeGetter<ButtonProps, RfxSvgTheme>;

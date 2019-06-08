@@ -5,5 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './animatedTheme';
-export * from './theme';
+import { ModalTheme } from '@reflex-ui/core';
+
+export const animatedModalTheme: ModalTheme = {
+  getProps: () => ({ isOpenCloseTransitionAnimated: true }),
+};

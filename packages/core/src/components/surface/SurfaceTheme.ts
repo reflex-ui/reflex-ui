@@ -5,9 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { ComponentTheme } from '../ComponentTheme';
 import { ViewTheme } from '../view/ViewTheme';
-import { SurfaceProps } from './SurfaceProps';
+import { SurfaceProps, SurfacePropsOptional } from './SurfaceProps';
 
-export interface SurfaceTheme {
+export interface SurfaceTheme
+  extends ComponentTheme<SurfaceProps, SurfacePropsOptional> {
   readonly view?: ViewTheme<SurfaceProps>;
 }

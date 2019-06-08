@@ -12,6 +12,7 @@ export * from './avatar-overlay-surface';
 export * from './backdrop';
 export * from './button';
 export * from './ComponentChildrenProps';
+export * from './ComponentTheme';
 export * from './ComponentsTheme';
 export * from './ComponentThemeGetter';
 export * from './ComponentThemeProps';

@@ -5,9 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { RfxViewProps } from './RfxViewProps';
+import { ComponentTheme } from '../ComponentTheme';
+import { RfxViewProps, RfxViewPropsOptional } from './RfxViewProps';
 import { ViewTheme } from './ViewTheme';
 
-export interface RfxViewTheme {
+export interface RfxViewTheme
+  extends ComponentTheme<RfxViewProps, RfxViewPropsOptional> {
   readonly view?: ViewTheme<RfxViewProps>;
 }

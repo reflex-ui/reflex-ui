@@ -5,12 +5,17 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { ComponentTheme } from '../ComponentTheme';
 import { ComponentThemeGetter } from '../ComponentThemeGetter';
 import { SurfaceTheme } from '../surface/SurfaceTheme';
 import { ViewTheme } from '../view/ViewTheme';
-import { OverlaySurfaceProps } from './OverlaySurfaceProps';
+import {
+  OverlaySurfaceProps,
+  OverlaySurfacePropsOptional,
+} from './OverlaySurfaceProps';
 
-export interface OverlaySurfaceTheme {
+export interface OverlaySurfaceTheme
+  extends ComponentTheme<OverlaySurfaceProps, OverlaySurfacePropsOptional> {
   readonly container?: ViewTheme<OverlaySurfaceProps>;
   readonly surface?: ComponentThemeGetter<OverlaySurfaceProps, SurfaceTheme>;
 }

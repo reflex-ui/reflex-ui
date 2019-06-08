@@ -5,9 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { TouchableProps } from './TouchableProps';
+import { ComponentTheme } from '../ComponentTheme';
+import { TouchableProps, TouchablePropsOptional } from './TouchableProps';
 import { TouchableWithoutFeedbackTheme } from './TouchableWithoutFeedbackTheme';
 
-export interface TouchableTheme {
+export interface TouchableTheme
+  extends ComponentTheme<TouchableProps, TouchablePropsOptional> {
   readonly touchable?: TouchableWithoutFeedbackTheme<TouchableProps>;
 }

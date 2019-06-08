@@ -5,9 +5,14 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { ComponentTheme } from '../ComponentTheme';
 import { ImageTheme } from './ImageTheme';
-import { RfxSizedImageProps } from './RfxSizedImageProps';
+import {
+  RfxSizedImageProps,
+  RfxSizedImagePropsOptional,
+} from './RfxSizedImageProps';
 
-export interface RfxSizedImageTheme {
+export interface RfxSizedImageTheme
+  extends ComponentTheme<RfxSizedImageProps, RfxSizedImagePropsOptional> {
   readonly image?: ImageTheme<RfxSizedImageProps>;
 }

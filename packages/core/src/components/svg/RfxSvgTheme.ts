@@ -5,9 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { RfxSvgProps } from './RfxSvgProps';
+import { ComponentTheme } from '../ComponentTheme';
+import { RfxSvgProps, RfxSvgPropsOptional } from './RfxSvgProps';
 import { SvgTheme } from './SvgTheme';
 
-export interface RfxSvgTheme {
+export interface RfxSvgTheme
+  extends ComponentTheme<RfxSvgProps, RfxSvgPropsOptional> {
   readonly svg?: SvgTheme<RfxSvgProps>;
 }

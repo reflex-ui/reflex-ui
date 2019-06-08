@@ -144,6 +144,7 @@ export const getAnimatedCoplanarSideSheetEndSurfaceStyle: ViewStyleGetter<
  */
 
 export const animatedCoplanarSideSheetStartTheme: CoplanarSideSheetTheme = {
+  getProps: () => ({ isOpenCloseTransitionAnimated: true }),
   view: {
     getComponent: props =>
       createStartComponent(StyleSheet.flatten(props.style).maxWidth),
@@ -152,6 +153,7 @@ export const animatedCoplanarSideSheetStartTheme: CoplanarSideSheetTheme = {
 };
 
 export const animatedCoplanarSideSheetEndTheme: CoplanarSideSheetTheme = {
+  getProps: () => ({ isOpenCloseTransitionAnimated: true }),
   view: {
     getComponent: props =>
       createEndComponent(StyleSheet.flatten(props.style).maxWidth),

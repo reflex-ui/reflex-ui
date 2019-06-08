@@ -5,9 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { RfxTextProps } from './RfxTextProps';
+import { ComponentTheme } from '../ComponentTheme';
+import { RfxTextProps, RfxTextPropsOptional } from './RfxTextProps';
 import { TextTheme } from './TextTheme';
 
-export interface RfxTextTheme {
+export interface RfxTextTheme
+  extends ComponentTheme<RfxTextProps, RfxTextPropsOptional> {
   readonly text?: TextTheme<RfxTextProps>;
 }

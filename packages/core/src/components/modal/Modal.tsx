@@ -68,8 +68,16 @@ let Modal: React.ComponentType<ModalPropsOptional> = forwardRef(
   (props: ModalPropsOptional, ref: Ref<View>) => {
     let newProps = useDefaultModalProps(props, useTheme(props.theme));
     newProps = { ...newProps, ...useOnLayout(newProps) };
-    newProps = { ...newProps, ...useOpenCloseTransition(newProps) };
+    /*
+     * We put useOpenCloseTransition() after processComponentProps()
+     * because we want props provided via ComponentTheme.getProps()
+     * to be passed to useOpenCloseTransition(), specially
+     * isOpenCloseTransitionAnimated, which gives themes full control
+     * over how components should behave.
+     */
     newProps = processComponentProps(newProps);
+    newProps = { ...newProps, ...useOpenCloseTransition(newProps) };
+    /**/
 
     const componentDidOpen = useCallback(() => {
       if (newProps.componentDidOpen !== undefined) {
@@ -90,7 +98,9 @@ let Modal: React.ComponentType<ModalPropsOptional> = forwardRef(
         {newProps.displayBackdrop && (
           <Backdrop
             isOpen={newProps.isOpen}
-            isOpenCloseTransitionAnimated={props.isOpenCloseTransitionAnimated}
+            isOpenCloseTransitionAnimated={
+              newProps.isOpenCloseTransitionAnimated
+            }
             componentDidClose={componentDidClose}
             componentDidOpen={componentDidOpen}
             onPress={props.onBackdropPress}

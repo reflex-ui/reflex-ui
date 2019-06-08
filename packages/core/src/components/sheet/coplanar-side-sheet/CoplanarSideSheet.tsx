@@ -51,8 +51,16 @@ let CoplanarSideSheet: React.ComponentType<
     useTheme(props.theme, props.variant),
   );
   newProps = { ...newProps, ...useOnLayout(newProps) };
-  newProps = { ...newProps, ...useOpenCloseTransition(newProps) };
+  /*
+   * We put useOpenCloseTransition() after processComponentProps()
+   * because we want props provided via ComponentTheme.getProps()
+   * to be passed to useOpenCloseTransition(), specially
+   * isOpenCloseTransitionAnimated, which gives themes full control
+   * over how components should behave.
+   */
   newProps = processComponentProps(newProps);
+  newProps = { ...newProps, ...useOpenCloseTransition(newProps) };
+  /**/
   newProps = processThemeAndStyleProps(newProps, newProps.theme.view);
 
   const { theme } = newProps;

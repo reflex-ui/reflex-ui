@@ -5,12 +5,17 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { ComponentTheme } from '../../ComponentTheme';
 import { ComponentThemeGetter } from '../../ComponentThemeGetter';
 import { ModalTheme } from '../../modal/ModalTheme';
 import { SurfaceTheme } from '../../surface/SurfaceTheme';
-import { ModalSideSheetProps } from './ModalSideSheetProps';
+import {
+  ModalSideSheetProps,
+  ModalSideSheetPropsOptional,
+} from './ModalSideSheetProps';
 
-export interface ModalSideSheetTheme {
+export interface ModalSideSheetTheme
+  extends ComponentTheme<ModalSideSheetProps, ModalSideSheetPropsOptional> {
   readonly modal?: ComponentThemeGetter<ModalSideSheetProps, ModalTheme>;
   readonly surface?: ComponentThemeGetter<ModalSideSheetProps, SurfaceTheme>;
 }
