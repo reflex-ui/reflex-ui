@@ -53,12 +53,16 @@ export const getXfabButtonLeadingIconTheme: ComponentThemeGetter<
   ButtonProps,
   RfxSvgTheme
 > = (props): RfxSvgTheme => ({
-  getProps: () => getXFabButtonLeadingIconProps(props),
+  svg: {
+    getProps: () => getXFabButtonLeadingIconProps(props),
+  },
 });
 
 export const getXfabButtonTrailingIconTheme: ComponentThemeGetter<
   ButtonProps,
   RfxSvgTheme
 > = (props): RfxSvgTheme => ({
-  getProps: () => getXFabButtonTrailingIconProps(props),
+  svg: {
+    getProps: () => getXFabButtonTrailingIconProps(props),
+  },
 });

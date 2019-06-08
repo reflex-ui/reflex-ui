@@ -8,4 +8,6 @@
 import { ViewTheme } from '../view/ViewTheme';
 import { SurfaceProps } from './SurfaceProps';
 
-export type SurfaceTheme = ViewTheme<SurfaceProps>;
+export interface SurfaceTheme {
+  readonly view?: ViewTheme<SurfaceProps>;
+}

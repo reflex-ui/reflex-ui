@@ -8,4 +8,6 @@
 import { ViewTheme } from '../../view/ViewTheme';
 import { CoplanarSideSheetProps } from './CoplanarSideSheetProps';
 
-export type CoplanarSideSheetTheme = ViewTheme<CoplanarSideSheetProps>;
+export interface CoplanarSideSheetTheme {
+  readonly view?: ViewTheme<CoplanarSideSheetProps>;
+}

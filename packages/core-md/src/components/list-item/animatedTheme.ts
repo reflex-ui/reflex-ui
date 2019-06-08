@@ -32,8 +32,10 @@ export const getAnimatedListItemStyle: ViewStyleGetter<
 });
 
 export const animatedListItemTheme: SurfaceTheme = {
-  getComponent: props =>
-    props.isTouchableHandler ? AnimatedRippleView : undefined,
-  getProps: getSurfaceContainerProps,
-  getStyle: getAnimatedListItemStyle,
+  view: {
+    getComponent: props =>
+      props.isTouchableHandler ? AnimatedRippleView : undefined,
+    getProps: getSurfaceContainerProps,
+    getStyle: getAnimatedListItemStyle,
+  },
 };

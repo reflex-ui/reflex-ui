@@ -28,5 +28,7 @@ export const getAvatarImageStyle: ImageStyleGetter<
 };
 
 export const avatarImageTheme: RfxSizedImageTheme = {
-  getStyle: getAvatarImageStyle,
+  image: {
+    getStyle: getAvatarImageStyle,
+  },
 };

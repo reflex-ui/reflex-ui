@@ -17,5 +17,7 @@ export const getFabButtonIconTheme: ComponentThemeGetter<
   ButtonProps,
   RfxSvgTheme
 > = (props): RfxSvgTheme => ({
-  getProps: () => getAllVariantsButtonIconProps(props),
+  svg: {
+    getProps: () => getAllVariantsButtonIconProps(props),
+  },
 });

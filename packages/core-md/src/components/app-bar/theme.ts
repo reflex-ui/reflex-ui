@@ -93,10 +93,14 @@ export const defaultAppBarTheme: AppBarTheme = {
     getStyle: getCommonAppBarLeadingAreaStyle,
   },
   surface: () => ({
-    getStyle: getDefaultAppBarSurfaceStyle,
+    view: {
+      getStyle: getDefaultAppBarSurfaceStyle,
+    },
   }),
   title: {
-    getStyle: getCommonAppBarTitleStyle,
+    text: {
+      getStyle: getCommonAppBarTitleStyle,
+    },
   },
   trailingArea: {
     getStyle: getCommonAppBarTrailingAreaStyle,
@@ -123,10 +127,14 @@ export const denseAppBarTheme: AppBarTheme = {
     getStyle: getCommonAppBarLeadingAreaStyle,
   },
   surface: () => ({
-    getStyle: getDenseAppBarSurfaceStyle,
+    view: {
+      getStyle: getDenseAppBarSurfaceStyle,
+    },
   }),
   title: {
-    getStyle: getCommonAppBarTitleStyle,
+    text: {
+      getStyle: getCommonAppBarTitleStyle,
+    },
   },
   trailingArea: {
     getStyle: getCommonAppBarTrailingAreaStyle,
@@ -161,10 +169,14 @@ export const prominentAppBarTheme: AppBarTheme = {
     getStyle: getCommonAppBarLeadingAreaStyle,
   },
   surface: () => ({
-    getStyle: getProminentAppBarSurfaceStyle,
+    view: {
+      getStyle: getProminentAppBarSurfaceStyle,
+    },
   }),
   title: {
-    getStyle: getCommonAppBarTitleStyle,
+    text: {
+      getStyle: getCommonAppBarTitleStyle,
+    },
   },
   trailingArea: {
     getStyle: getCommonAppBarTrailingAreaStyle,
@@ -184,7 +196,9 @@ export const getProminentDenseAppBarSurfaceStyle: ViewStyleGetter<
 
 export const partialProminentDenseAppBarTheme: Partial<AppBarTheme> = {
   surface: () => ({
-    getStyle: getProminentDenseAppBarSurfaceStyle,
+    view: {
+      getStyle: getProminentDenseAppBarSurfaceStyle,
+    },
   }),
 };
 

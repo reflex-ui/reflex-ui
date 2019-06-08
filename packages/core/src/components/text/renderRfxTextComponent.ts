@@ -6,25 +6,24 @@
  */
 
 import React, { Ref } from 'react';
-import { Text, TextProps, TextStyle } from 'react-native';
+import { Text, TextProps } from 'react-native';
 
 import { extractTextProps } from '../../utils/props';
-import { PrimitiveComponentTheme } from '../PrimitiveComponentTheme';
-import { processComponentProps } from '../processComponentProps';
-import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
+import { PrimitiveComponentProps } from '../PrimitiveComponentProps';
 import { renderTextComponent } from './renderTextComponent';
 import { RfxTextPropsBase } from './RfxTextProps';
 
 export const renderRfxTextComponent = <
   Props extends RfxTextPropsBase<Props, Theme>,
-  Theme extends PrimitiveComponentTheme<Props, TextProps, TextStyle>
+  Theme
 >(
   props: Props,
   ref: Ref<Text>,
+  Component?:
+    | typeof Text
+    | React.ComponentType<PrimitiveComponentProps<Props>> & TextProps,
 ): React.ReactElement | null => {
-  let newProps = processComponentProps(props);
-  newProps = processThemeAndStyleProps(newProps, newProps.theme);
-  const { children } = newProps;
+  const { children } = props;
 
   if (children === undefined || children === null) return null;
 
@@ -34,13 +33,11 @@ export const renderRfxTextComponent = <
     typeof children === 'boolean' ||
     Array.isArray(children)
   ) {
-    const Component =
-      newProps.theme.getComponent && newProps.theme.getComponent(newProps);
     const textProps = {
-      ...extractTextProps(newProps),
+      ...extractTextProps(props),
       children,
     };
-    return renderTextComponent({ Component, props: newProps, ref, textProps });
+    return renderTextComponent({ Component, props, ref, textProps });
   }
 
   if ('type' in children) return children;

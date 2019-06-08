@@ -31,7 +31,9 @@ export const getOverlaySurfaceContainerStyle: ViewStyleGetter<
 
 export const overlaySurfaceTheme: OverlaySurfaceTheme = {
   surface: () => ({
-    getProps: getOverlaySurfaceContainerProps,
-    getStyle: getOverlaySurfaceContainerStyle,
+    view: {
+      getProps: getOverlaySurfaceContainerProps,
+      getStyle: getOverlaySurfaceContainerStyle,
+    },
   }),
 };

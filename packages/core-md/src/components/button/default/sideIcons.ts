@@ -20,12 +20,16 @@ export const getDefaultButtonLeadingIconTheme: ComponentThemeGetter<
   ButtonProps,
   RfxSvgTheme
 > = (props): RfxSvgTheme => ({
-  getProps: () => getAllVariantsButtonLeadingIconProps(props),
+  svg: {
+    getProps: () => getAllVariantsButtonLeadingIconProps(props),
+  },
 });
 
 export const getDefaultButtonTrailingIconTheme: ComponentThemeGetter<
   ButtonProps,
   RfxSvgTheme
 > = (props): RfxSvgTheme => ({
-  getProps: () => getAllVariantsButtonTrailingIconProps(props),
+  svg: {
+    getProps: () => getAllVariantsButtonTrailingIconProps(props),
+  },
 });

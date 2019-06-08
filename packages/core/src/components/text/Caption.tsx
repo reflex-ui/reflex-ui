@@ -12,8 +12,10 @@ import { MissingComponentThemeError } from '../../errors';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
 import { useComponentsTheme } from '../ComponentsTheme';
 import { processComponent } from '../processComponent';
+import { processComponentProps } from '../processComponentProps';
+import { processThemeAndStyleProps } from '../processThemeAndStyleProps';
 import { renderRfxTextComponent } from './renderRfxTextComponent';
-import { RfxTextProps, RfxTextPropsOptional } from './RfxTextProps';
+import { RfxTextPropsOptional } from './RfxTextProps';
 import { RfxTextTheme } from './RfxTextTheme';
 import { useDefaultRfxTextProps } from './useDefaultRfxTextProps';
 
@@ -30,14 +32,17 @@ const useTheme = (theme?: RfxTextTheme): RfxTextTheme => {
 
 let Caption: React.ComponentType<RfxTextPropsOptional> = forwardRef(
   (props: RfxTextPropsOptional, ref: Ref<Text>) => {
-    const theme = useTheme(props.theme);
+    let newProps = useDefaultRfxTextProps(props, useTheme(props.theme));
+    newProps = { ...newProps, ...useOnLayout(props) };
+    newProps = processComponentProps(newProps);
+    newProps = processThemeAndStyleProps(newProps, newProps.theme.text);
 
-    const newProps: RfxTextProps = {
-      ...useDefaultRfxTextProps(props, theme),
-      ...useOnLayout(props),
-    };
-
-    return renderRfxTextComponent(newProps, ref);
+    const { theme } = newProps;
+    const Component =
+      theme.text &&
+      theme.text.getComponent &&
+      theme.text.getComponent(newProps);
+    return renderRfxTextComponent(newProps, ref, Component);
   },
 );
 

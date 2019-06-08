@@ -66,9 +66,7 @@ const useTheme = (theme?: ModalTheme): ModalTheme => {
 
 let Modal: React.ComponentType<ModalPropsOptional> = forwardRef(
   (props: ModalPropsOptional, ref: Ref<View>) => {
-    const theme = useTheme(props.theme);
-
-    let newProps: ModalProps = useDefaultModalProps(props, theme);
+    let newProps = useDefaultModalProps(props, useTheme(props.theme));
     newProps = { ...newProps, ...useOnLayout(newProps) };
     newProps = { ...newProps, ...useOpenCloseTransition(newProps) };
     newProps = processComponentProps(newProps);

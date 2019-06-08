@@ -31,15 +31,13 @@ const useTheme = (theme?: RfxImageTheme): RfxImageTheme => {
 
 let RfxImage: React.ComponentType<RfxImagePropsOptional> = forwardRef(
   (props: RfxImagePropsOptional, ref: Ref<Image>) => {
-    const theme = useTheme(props.theme);
-
     let newProps: RfxImageProps = {
       ...props,
-      theme,
+      theme: useTheme(props.theme),
     };
     newProps = { ...newProps, ...useOnLayout(newProps) };
     newProps = processComponentProps(newProps);
-    newProps = processThemeAndStyleProps(newProps, newProps.theme);
+    newProps = processThemeAndStyleProps(newProps, newProps.theme.image);
 
     return renderRfxImageComponent({
       props: newProps,

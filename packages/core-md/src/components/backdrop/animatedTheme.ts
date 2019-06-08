@@ -48,8 +48,10 @@ export const getAnimatedBackdropSurfaceStyle: ViewStyleGetter<
 
 export const animatedBackdropTheme: BackdropTheme = {
   surface: () => ({
-    getComponent: getAnimatedComponent,
-    getProps: getBackdropSurfaceProps,
-    getStyle: getAnimatedBackdropSurfaceStyle,
+    view: {
+      getComponent: getAnimatedComponent,
+      getProps: getBackdropSurfaceProps,
+      getStyle: getAnimatedBackdropSurfaceStyle,
+    },
   }),
 };

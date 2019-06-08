@@ -4,91 +4,6 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-/*
-import React, { forwardRef, Ref } from 'react';
-import { View } from 'react-native';
-
-import { MissingComponentThemeError } from '../../errors';
-import { useOnLayout } from '../../responsiveness/useOnLayout';
-import { useComponentsTheme } from '../ComponentsTheme';
-import { processComponent } from '../processComponent';
-import { processComponentProps } from '../processComponentProps';
-import { Surface } from '../surface/Surface';
-import { SurfacePropsOptional } from '../surface/SurfaceProps';
-import {
-  OverlaySurfaceProps,
-  OverlaySurfacePropsOptional,
-} from './OverlaySurfaceProps';
-import { OverlaySurfaceTheme } from './OverlaySurfaceTheme';
-import { useDefaultOverlaySurfaceProps } from './useDefaultOverlaySurfaceProps';
-
-export const extractSurfacePropsFromOverlaySurfaceProps = (
-  props: OverlaySurfaceProps,
-): SurfacePropsOptional => {
-  const { children, getPatchTheme, theme, ...otherProps } = props;
-
-  let surfaceProps = otherProps as SurfacePropsOptional;
-  const surfaceTheme = props.theme.surface && props.theme.surface(props);
-
-  if (surfaceTheme !== undefined) {
-    surfaceProps = {
-      ...surfaceProps,
-      getPatchTheme: () => surfaceTheme,
-    };
-  }
-
-  console.log(
-    'extractSurfacePropsFromOverlaySurfaceProps() - surfaceProps: ',
-    surfaceProps,
-  );
-  return surfaceProps;
-};
-
-const useTheme = (theme?: OverlaySurfaceTheme): OverlaySurfaceTheme => {
-  const { componentsTheme } = useComponentsTheme();
-
-  if (theme !== undefined && theme !== null) return theme;
-  if (
-    componentsTheme.overlaySurface === undefined ||
-    componentsTheme.overlaySurface === null
-  ) {
-    throw new MissingComponentThemeError('<OverlaySurface>');
-  }
-
-  return componentsTheme.overlaySurface;
-};
-
-let OverlaySurface: React.ComponentType<
-  OverlaySurfacePropsOptional
-  // @ts-ignore
-> = forwardRef((props: OverlaySurfacePropsOptional, ref: Ref<View>) => {
-  // @ts-ignore
-  const theme = useTheme(props.theme);
-
-  let newProps: OverlaySurfaceProps = useDefaultOverlaySurfaceProps(
-    props,
-    theme,
-  );
-  newProps = { ...newProps, ...useOnLayout(newProps) };
-  newProps = processComponentProps(newProps);
-
-  return (
-    <React.Fragment>
-      {props.children}
-      <Surface
-        {...extractSurfacePropsFromOverlaySurfaceProps(newProps)}
-        ref={ref}
-      />
-    </React.Fragment>
-  );
-});
-
-OverlaySurface = processComponent<OverlaySurfacePropsOptional>(OverlaySurface, {
-  name: 'OverlaySurface',
-});
-
-export { OverlaySurface };
-*/
 
 import React, { forwardRef, Ref } from 'react';
 import { View, ViewProps } from 'react-native';
@@ -145,12 +60,7 @@ const useTheme = (theme?: OverlaySurfaceTheme): OverlaySurfaceTheme => {
 let OverlaySurface: React.ComponentType<
   OverlaySurfacePropsOptional
 > = forwardRef((props: OverlaySurfacePropsOptional, ref: Ref<View>) => {
-  const theme = useTheme(props.theme);
-
-  let newProps: OverlaySurfaceProps = useDefaultOverlaySurfaceProps(
-    props,
-    theme,
-  );
+  let newProps = useDefaultOverlaySurfaceProps(props, useTheme(props.theme));
   newProps = { ...newProps, ...useOnLayout(newProps) };
   newProps = processComponentProps(newProps);
 
@@ -164,6 +74,7 @@ let OverlaySurface: React.ComponentType<
     </React.Fragment>
   );
 
+  const { theme } = newProps;
   const viewProps: React.PropsWithChildren<ViewProps> = {
     ...getPropsFromTheme(newProps, theme.container),
     children: newChildren,

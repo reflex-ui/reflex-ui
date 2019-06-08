@@ -5,13 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ImageProps, ImageStyle } from 'react-native';
-
-import { PrimitiveComponentTheme } from '../PrimitiveComponentTheme';
+import { ImageTheme } from './ImageTheme';
 import { RfxSizedImageProps } from './RfxSizedImageProps';
 
-export type RfxSizedImageTheme = PrimitiveComponentTheme<
-  RfxSizedImageProps,
-  ImageProps,
-  ImageStyle
->;
+export interface RfxSizedImageTheme {
+  readonly image?: ImageTheme<RfxSizedImageProps>;
+}

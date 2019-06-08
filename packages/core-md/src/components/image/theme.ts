@@ -27,5 +27,7 @@ export const getCommonRfxImageStyle = <
 });
 
 export const imageTheme: RfxImageTheme = {
-  getStyle: getCommonRfxImageStyle,
+  image: {
+    getStyle: getCommonRfxImageStyle,
+  },
 };

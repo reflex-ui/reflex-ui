@@ -77,6 +77,8 @@ export const getIconButtonSurfaceTheme: ComponentThemeGetter<
   ButtonProps,
   SurfaceTheme
 > = () => ({
-  getProps: getAllVariantsButtonContainerProps,
-  getStyle: getIconButtonContainerStyle,
+  view: {
+    getProps: getAllVariantsButtonContainerProps,
+    getStyle: getIconButtonContainerStyle,
+  },
 });

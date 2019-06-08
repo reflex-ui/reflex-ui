@@ -31,8 +31,10 @@ export const getAnimatedSurfaceContainerStyle: ViewStyleGetter<
 });
 
 export const animatedSurfaceTheme: SurfaceTheme = {
-  getComponent: props =>
-    props.isTouchableHandler ? AnimatedRippleView : undefined,
-  getProps: getSurfaceContainerProps,
-  getStyle: getAnimatedSurfaceContainerStyle,
+  view: {
+    getComponent: props =>
+      props.isTouchableHandler ? AnimatedRippleView : undefined,
+    getProps: getSurfaceContainerProps,
+    getStyle: getAnimatedSurfaceContainerStyle,
+  },
 };

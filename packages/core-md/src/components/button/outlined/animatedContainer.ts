@@ -37,7 +37,9 @@ export const getAnimatedOutlinedButtonSurfaceTheme: ComponentThemeGetter<
   ButtonProps,
   SurfaceTheme
 > = () => ({
-  getComponent: () => AnimatedRippleView,
-  getProps: getAllVariantsButtonContainerProps,
-  getStyle: getAnimatedOutlinedButtonContainerStyle,
+  view: {
+    getComponent: () => AnimatedRippleView,
+    getProps: getAllVariantsButtonContainerProps,
+    getStyle: getAnimatedOutlinedButtonContainerStyle,
+  },
 });

@@ -42,15 +42,13 @@ const useTheme = (theme?: TouchableTheme): TouchableTheme => {
 
 let Touchable: React.ComponentType<TouchablePropsOptional> = forwardRef(
   (props: TouchablePropsOptional, ref: Ref<TouchableWithoutFeedback>) => {
-    const theme = useTheme(props.theme);
-
     let newProps: PropsWithChildren<TouchableProps> = useDefaultTouchableProps(
       props,
-      theme,
+      useTheme(props.theme),
     );
     newProps = { ...newProps, ...useInteraction(newProps) };
     newProps = processComponentProps(newProps);
-    newProps = processThemeAndStyleProps(newProps, newProps.theme);
+    newProps = processThemeAndStyleProps(newProps, newProps.theme.touchable);
 
     const newChildren = useMemo(() => {
       if (
@@ -77,10 +75,11 @@ let Touchable: React.ComponentType<TouchablePropsOptional> = forwardRef(
       newProps = { ...newProps, children: newChildren };
     }
 
+    const { theme } = newProps;
     const Component =
-      newProps.theme &&
-      newProps.theme.getComponent &&
-      newProps.theme.getComponent(newProps);
+      theme.touchable &&
+      theme.touchable.getComponent &&
+      theme.touchable.getComponent(newProps);
 
     return (
       <InteractionStateProvider value={newProps.interactionState}>

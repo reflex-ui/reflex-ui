@@ -24,5 +24,7 @@ export const getListContainerStyle: ViewStyleGetter<SurfaceProps> = props => {
 };
 
 export const listTheme: SurfaceTheme = {
-  getStyle: getListContainerStyle,
+  view: {
+    getStyle: getListContainerStyle,
+  },
 };

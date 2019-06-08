@@ -54,6 +54,8 @@ export const getListItemContainerStyle: ViewStyleGetter<
 };
 
 export const listItemTheme: SurfaceTheme = {
-  getProps: getSurfaceContainerProps,
-  getStyle: getListItemContainerStyle,
+  view: {
+    getProps: getSurfaceContainerProps,
+    getStyle: getListItemContainerStyle,
+  },
 };

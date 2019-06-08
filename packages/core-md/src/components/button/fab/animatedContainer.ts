@@ -57,7 +57,9 @@ export const getAnimatedFabButtonSurfaceTheme: ComponentThemeGetter<
   ButtonProps,
   SurfaceTheme
 > = () => ({
-  getComponent: props => createComponent(props.elevation),
-  getProps: getAllVariantsButtonContainerProps,
-  getStyle: getAnimatedFabButtonContainerStyle,
+  view: {
+    getComponent: props => createComponent(props.elevation),
+    getProps: getAllVariantsButtonContainerProps,
+    getStyle: getAnimatedFabButtonContainerStyle,
+  },
 });

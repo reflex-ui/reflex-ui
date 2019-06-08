@@ -6,6 +6,7 @@
  */
 
 export * from './ImageStyleGetter';
+export * from './ImageTheme';
 export * from './renderRfxImageComponent';
 export * from './RfxImage';
 export * from './RfxImageProps';

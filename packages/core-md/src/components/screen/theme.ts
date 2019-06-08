@@ -20,5 +20,7 @@ export const getScreenContainerStyle: ViewStyleGetter<
 });
 
 export const screenTheme: SurfaceTheme = {
-  getStyle: getScreenContainerStyle,
+  view: {
+    getStyle: getScreenContainerStyle,
+  },
 };

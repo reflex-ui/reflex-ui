@@ -36,9 +36,11 @@ export const getAnimatedAvatarOverlaySurfaceContainerStyle: ViewStyleGetter<
 
 export const animatedAvatarOverlaySurfaceTheme: OverlaySurfaceTheme = {
   surface: () => ({
-    getComponent: props =>
-      props.isTouchableHandler ? AnimatedRippleView : undefined,
-    getProps: getAvatarOverlaySurfaceContainerProps,
-    getStyle: getAnimatedAvatarOverlaySurfaceContainerStyle,
+    view: {
+      getComponent: props =>
+        props.isTouchableHandler ? AnimatedRippleView : undefined,
+      getProps: getAvatarOverlaySurfaceContainerProps,
+      getStyle: getAnimatedAvatarOverlaySurfaceContainerStyle,
+    },
   }),
 };

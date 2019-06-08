@@ -8,4 +8,6 @@
 import { RfxSvgProps } from './RfxSvgProps';
 import { SvgTheme } from './SvgTheme';
 
-export type RfxSvgTheme = SvgTheme<RfxSvgProps>;
+export interface RfxSvgTheme {
+  readonly svg?: SvgTheme<RfxSvgProps>;
+}

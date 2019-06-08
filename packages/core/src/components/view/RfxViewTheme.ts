@@ -8,4 +8,6 @@
 import { RfxViewProps } from './RfxViewProps';
 import { ViewTheme } from './ViewTheme';
 
-export type RfxViewTheme = ViewTheme<RfxViewProps>;
+export interface RfxViewTheme {
+  readonly view?: ViewTheme<RfxViewProps>;
+}

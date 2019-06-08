@@ -99,9 +99,7 @@ const useTheme = (theme?: AvatarTheme): AvatarTheme => {
 
 let Avatar: React.ComponentType<AvatarPropsOptional> = forwardRef(
   (props: AvatarPropsOptional, ref: Ref<View>) => {
-    const theme = useTheme(props.theme);
-
-    let newProps: AvatarProps = useDefaultAvatarProps(props, theme);
+    let newProps = useDefaultAvatarProps(props, useTheme(props.theme));
     newProps = { ...newProps, ...useOnLayout(newProps) };
     newProps = processComponentProps(newProps);
 

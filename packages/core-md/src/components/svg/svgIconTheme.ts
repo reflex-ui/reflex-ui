@@ -37,5 +37,7 @@ export const getSvgIconSvgProps: SvgPropsGetter<RfxSvgProps> = props => ({
 });
 
 export const svgIconTheme: RfxSvgTheme = {
-  getProps: getSvgIconSvgProps,
+  svg: {
+    getProps: getSvgIconSvgProps,
+  },
 };
