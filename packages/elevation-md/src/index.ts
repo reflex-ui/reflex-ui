@@ -7,6 +7,7 @@
 
 export * from './AnimatedElevationView';
 export * from './convertInteractionToElevation';
+export * from './createAnimatedElevationView';
 export * from './createElevationContainerStyle';
 export * from './createElevationShadowStyle';
 export * from './createMotionElevationShadowStyle';
