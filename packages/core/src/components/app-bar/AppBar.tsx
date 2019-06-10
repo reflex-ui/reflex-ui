@@ -145,7 +145,7 @@ let AppBar: React.ComponentType<AppBarPropsOptional> = forwardRef(
     if (Array.isArray(newProps.children) && newProps.children.length > 3) {
       throw new Error(
         [
-          'Rfx: SimpleAppBar.children cannot take more than 3 top-level nodes.',
+          'ReflexUI: AppBar.children cannot take more than 3 top-level nodes.',
           'You probably forgot to wrap some components into e.g. a <Row>.',
         ].join(' '),
       );
