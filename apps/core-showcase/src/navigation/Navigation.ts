@@ -270,7 +270,7 @@ export const AppNavigation = () => {
     Navigation.setRoot({
       root: {
         component: {
-          name: ModalNavigation.default,
+          name: SheetNavigation.modalSideSheet,
         },
       },
     });

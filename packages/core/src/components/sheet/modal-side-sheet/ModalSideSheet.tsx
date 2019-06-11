@@ -10,6 +10,7 @@ import { View } from 'react-native';
 
 import { MissingComponentThemeError } from '../../../errors';
 import { useOnLayout } from '../../../responsiveness/useOnLayout';
+import { useOpenCloseTransition } from '../../../transition';
 import { useComponentsTheme } from '../../ComponentsTheme';
 import { Modal } from '../../modal/Modal';
 import { ModalPropsOptional } from '../../modal/ModalProps';
@@ -98,20 +99,25 @@ let ModalSideSheet: React.ComponentType<
     useTheme(props.theme, props.variant),
   );
   newProps = { ...newProps, ...useOnLayout(newProps) };
+  /*
+   * We put useOpenCloseTransition() after processComponentProps()
+   * because we want props provided via ComponentTheme.getProps()
+   * to be passed to useOpenCloseTransition(), specially
+   * isOpenCloseTransitionAnimated, which gives themes full control
+   * over how components should behave.
+   */
   newProps = processComponentProps(newProps);
-
-  const renderedSurface = (
-    <Surface
-      {...extractSurfacePropsFromModalSideSheetProps(newProps)}
-      ref={ref}
-    >
-      {newProps.children}
-    </Surface>
-  );
+  newProps = { ...newProps, ...useOpenCloseTransition(newProps) };
+  /**/
 
   return (
     <Modal {...extractModalPropsFromModalSideSheetProps(newProps)}>
-      {renderedSurface}
+      <Surface
+        {...extractSurfacePropsFromModalSideSheetProps(newProps)}
+        ref={ref}
+      >
+        {newProps.children}
+      </Surface>
     </Modal>
   );
 });

@@ -6,6 +6,7 @@
  */
 
 export * from './coplanar-side-sheet';
+export * from './getCommonModalSheetSurfaceProps';
 export * from './getCommonSheetSurfaceStyle';
 export * from './getCommonSideSheetSurfaceStyle';
 export * from './modal-side-sheet';

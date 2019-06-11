@@ -9,29 +9,20 @@ import {
   ModalSideSheetTheme,
   ModalSideSheetVariantsTheme,
   SurfaceProps,
-  ViewPropsGetter,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import { getElevationStyles } from '@reflex-ui/elevation-md';
 
+// tslint:disable-next-line:max-line-length
+import { getCommonModalSheetSurfaceProps } from '../getCommonModalSheetSurfaceProps';
 import { getCommonSheetSurfaceStyle } from '../getCommonSheetSurfaceStyle';
 // tslint:disable-next-line:max-line-length
 import { getCommonSideSheetSurfaceStyle } from '../getCommonSideSheetSurfaceStyle';
 
-/*
- * Common
- */
-
-export const getCommonSheetSurfaceProps: ViewPropsGetter<
-  SurfaceProps
-> = () => ({
-  pointerEvents: 'auto',
-});
-
 export const getModalSideSheetStartSurfaceStyle: ViewStyleGetter<
   SurfaceProps
 > = props => ({
-  ...getCommonSheetSurfaceStyle(props),
+  ...getCommonSheetSurfaceStyle(),
   ...getCommonSideSheetSurfaceStyle(props),
   bottom: 0,
   height:
@@ -53,7 +44,7 @@ export const getModalSideSheetEndSurfaceStyle: ViewStyleGetter<
 export const modalSideSheetStartTheme: ModalSideSheetTheme = {
   surface: () => ({
     view: {
-      getProps: getCommonSheetSurfaceProps,
+      getProps: getCommonModalSheetSurfaceProps,
       getStyle: getModalSideSheetStartSurfaceStyle,
     },
   }),
@@ -62,7 +53,7 @@ export const modalSideSheetStartTheme: ModalSideSheetTheme = {
 export const modalSideSheetEndTheme: ModalSideSheetTheme = {
   surface: () => ({
     view: {
-      getProps: getCommonSheetSurfaceProps,
+      getProps: getCommonModalSheetSurfaceProps,
       getStyle: getModalSideSheetEndSurfaceStyle,
     },
   }),

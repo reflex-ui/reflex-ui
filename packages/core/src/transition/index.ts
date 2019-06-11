@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+export * from './extractOpenCloseTransitionProps';
 export * from './filterOutOpenCloseTransitionProps';
 export * from './OpenCloseTransitionProps';
 export * from './useOpenCloseTransition';

@@ -8,14 +8,9 @@
 import { SheetPropsBase } from '@reflex-ui/core';
 import { ViewStyle } from 'react-native';
 
-import { getSurfaceContainerStyle } from '../surface/theme';
-
 export const getCommonSheetSurfaceStyle = <
   Props extends SheetPropsBase<Props, Theme>,
   Theme
->(
-  props: Props,
-): ViewStyle => ({
-  ...getSurfaceContainerStyle(props),
+>(): ViewStyle => ({
   borderRadius: 0,
 });

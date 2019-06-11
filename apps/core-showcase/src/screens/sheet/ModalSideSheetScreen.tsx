@@ -73,6 +73,26 @@ const ModalSideSheetScreen: React.SFC<{}> = (): JSX.Element => {
     setIsShowingModalSideSheet(false);
   }, [isShowingModalSideSheet]);
 
+  const modalWillOpen = useCallback(() => {
+    // tslint:disable-next-line:no-console
+    console.log('ModalSideSheetScreen().modalWillOpen()');
+  }, []);
+
+  const modalDidOpen = useCallback(() => {
+    // tslint:disable-next-line:no-console
+    console.log('ModalSideSheetScreen().modalDidOpen()');
+  }, []);
+
+  const modalWillClose = useCallback(() => {
+    // tslint:disable-next-line:no-console
+    console.log('ModalSideSheetScreen().modalWillClose()');
+  }, []);
+
+  const modalDidClose = useCallback(() => {
+    // tslint:disable-next-line:no-console
+    console.log('ModalSideSheetScreen().modalDidClose()');
+  }, []);
+
   return (
     <Screen>
       <AppBar variant={AppBarVariant.Default}>
@@ -119,6 +139,10 @@ const ModalSideSheetScreen: React.SFC<{}> = (): JSX.Element => {
         </ScrollView>
       </Column>
       <ModalSideSheet
+        componentDidClose={modalDidClose}
+        componentDidOpen={modalDidOpen}
+        componentWillClose={modalWillClose}
+        componentWillOpen={modalWillOpen}
         isOpen={isShowingModalSideSheet}
         onBackdropPress={closeModalSideSheet}
         paddingEnd={0}
