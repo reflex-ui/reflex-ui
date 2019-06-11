@@ -6,7 +6,8 @@
  */
 
 import { ComponentTheme } from '../../ComponentTheme';
-import { ViewTheme } from '../../view/ViewTheme';
+import { ComponentThemeGetter } from '../../ComponentThemeGetter';
+import { SurfaceTheme } from '../../surface/SurfaceTheme';
 import {
   CoplanarSideSheetProps,
   CoplanarSideSheetPropsOptional,
@@ -17,5 +18,5 @@ export interface CoplanarSideSheetTheme
     CoplanarSideSheetProps,
     CoplanarSideSheetPropsOptional
   > {
-  readonly view?: ViewTheme<CoplanarSideSheetProps>;
+  readonly surface?: ComponentThemeGetter<CoplanarSideSheetProps, SurfaceTheme>;
 }

@@ -6,9 +6,9 @@
  */
 
 import {
-  CoplanarSideSheetProps,
   CoplanarSideSheetTheme,
   CoplanarSideSheetVariantsTheme,
+  SurfaceProps,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 
@@ -21,33 +21,37 @@ import { getCommonSideSheetSurfaceStyle } from '../getCommonSideSheetSurfaceStyl
  */
 
 export const getCoplanarSideSheetStartSurfaceStyle: ViewStyleGetter<
-  CoplanarSideSheetProps
+  SurfaceProps
 > = props => ({
-  ...getCommonSheetSurfaceStyle(props),
+  ...getCommonSheetSurfaceStyle(),
   ...getCommonSideSheetSurfaceStyle(props),
   borderEndColor: '#ccc',
   borderEndWidth: 1,
 });
 
 export const getCoplanarSideSheetEndSurfaceStyle: ViewStyleGetter<
-  CoplanarSideSheetProps
+  SurfaceProps
 > = props => ({
-  ...getCommonSheetSurfaceStyle(props),
+  ...getCommonSheetSurfaceStyle(),
   ...getCommonSideSheetSurfaceStyle(props),
   borderStartColor: '#ccc',
   borderStartWidth: 1,
 });
 
 export const coplanarSideSheetStartTheme: CoplanarSideSheetTheme = {
-  view: {
-    getStyle: getCoplanarSideSheetStartSurfaceStyle,
-  },
+  surface: () => ({
+    view: {
+      getStyle: getCoplanarSideSheetStartSurfaceStyle,
+    },
+  }),
 };
 
 export const coplanarSideSheetEndTheme: CoplanarSideSheetTheme = {
-  view: {
-    getStyle: getCoplanarSideSheetEndSurfaceStyle,
-  },
+  surface: () => ({
+    view: {
+      getStyle: getCoplanarSideSheetEndSurfaceStyle,
+    },
+  }),
 };
 
 /*

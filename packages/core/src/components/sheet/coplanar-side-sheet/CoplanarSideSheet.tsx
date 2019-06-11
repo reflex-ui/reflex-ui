@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { forwardRef, Ref } from 'react';
+import React, { forwardRef, Ref } from 'react';
 import { View } from 'react-native';
 
 import { MissingComponentThemeError } from '../../../errors';
@@ -14,9 +14,8 @@ import { useOpenCloseTransition } from '../../../transition';
 import { useComponentsTheme } from '../../ComponentsTheme';
 import { processComponent } from '../../processComponent';
 import { processComponentProps } from '../../processComponentProps';
-import { processThemeAndStyleProps } from '../../processThemeAndStyleProps';
-import { renderRfxViewComponent } from '../../view/renderRfxViewComponent';
-import { useShouldProvideColor } from '../../view/useShouldProvideColor';
+import { Surface } from '../../surface/Surface';
+import { SurfacePropsOptional } from '../../surface/SurfaceProps';
 import {
   CoplanarSideSheetProps,
   CoplanarSideSheetPropsOptional,
@@ -25,6 +24,24 @@ import { CoplanarSideSheetTheme } from './CoplanarSideSheetTheme';
 import { CoplanarSideSheetVariant } from './CoplanarSideSheetVariant';
 // tslint:disable-next-line:max-line-length
 import { useDefaultCoplanarSideSheetProps } from './useDefaultCoplanarSideSheetProps';
+
+export const extractSurfacePropsFromCoplanarSideSheetProps = (
+  props: CoplanarSideSheetProps,
+): SurfacePropsOptional => {
+  const { getPatchTheme, theme, variant, ...otherProps } = props;
+
+  let surfaceProps = otherProps as SurfacePropsOptional;
+  const surfaceTheme = props.theme.surface && props.theme.surface(props);
+
+  if (surfaceTheme !== undefined) {
+    surfaceProps = {
+      ...surfaceProps,
+      getPatchTheme: () => surfaceTheme,
+    };
+  }
+
+  return surfaceProps;
+};
 
 const useTheme = (
   theme?: CoplanarSideSheetTheme,
@@ -61,19 +78,15 @@ let CoplanarSideSheet: React.ComponentType<
   newProps = processComponentProps(newProps);
   newProps = { ...newProps, ...useOpenCloseTransition(newProps) };
   /**/
-  newProps = processThemeAndStyleProps(newProps, newProps.theme.view);
 
-  const { theme } = newProps;
-  const Component =
-    theme.view && theme.view.getComponent && theme.view.getComponent(newProps);
-  const shouldProvideColor = useShouldProvideColor(newProps.paletteColor);
-
-  return renderRfxViewComponent({
-    Component,
-    props: newProps,
-    ref,
-    shouldProvideColor,
-  });
+  return (
+    <Surface
+      {...extractSurfacePropsFromCoplanarSideSheetProps(newProps)}
+      ref={ref}
+    >
+      {newProps.children}
+    </Surface>
+  );
 });
 
 CoplanarSideSheet = processComponent<CoplanarSideSheetPropsOptional>(
