@@ -29,19 +29,24 @@ export const useOpenCloseTransition = <
   );
 
   /*
-   * We define a local shouldCallOpenCloseCallbacks that uses
-   * props.shouldCallOpenCloseCallbacks if !== undefined,
-   * or automatically set it to true if hasAnyCallback()
-   * (end users expecting callbacks to be called).
+   * We define a local shouldCallOpenCloseCallbacks variable that uses
+   * props.shouldCallOpenCloseCallbacks if that's !== undefined,
+   * or automatically set it to true if isOpenCloseTransitionAnimated === true
+   * (we need to call callbacks if it's animated, in order to set
+   * isOpening and isClosing), or we set it to the return of hasAnyCallback(),
+   * which is true if end users are expecting callbacks to be called.
    */
   const [
     shouldCallOpenCloseCallbacks,
     setShouldCallOpenCloseCallbacks,
-  ] = useState(() =>
-    props.shouldCallOpenCloseCallbacks !== undefined
-      ? props.shouldCallOpenCloseCallbacks
-      : hasAnyCallback(),
-  );
+  ] = useState(() => {
+    if (props.shouldCallOpenCloseCallbacks !== undefined) {
+      return props.shouldCallOpenCloseCallbacks;
+    }
+    return props.isOpenCloseTransitionAnimated
+      ? props.isOpenCloseTransitionAnimated
+      : hasAnyCallback();
+  });
   if (
     props.shouldCallOpenCloseCallbacks !== undefined &&
     props.shouldCallOpenCloseCallbacks !== shouldCallOpenCloseCallbacks
