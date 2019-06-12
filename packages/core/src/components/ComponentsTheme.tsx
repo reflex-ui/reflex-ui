@@ -16,7 +16,7 @@ import { ModalTheme } from './modal';
 import { OverlaySurfaceTheme } from './overlay-surface';
 import {
   CoplanarSideSheetVariantsTheme,
-  ModalSideSheetVariantsTheme,
+  ModalSheetVariantsTheme,
 } from './sheet';
 import { SurfaceTheme } from './surface';
 import { RfxSvgVariantsTheme } from './svg';
@@ -36,7 +36,7 @@ export interface ComponentsTheme {
   readonly list?: SurfaceTheme;
   readonly listItem?: SurfaceTheme;
   readonly modal?: ModalTheme;
-  readonly modalSideSheet?: ModalSideSheetVariantsTheme;
+  readonly modalSheet?: ModalSheetVariantsTheme;
   readonly overlaySurface?: OverlaySurfaceTheme;
   readonly screen?: SurfaceTheme;
   readonly surface?: SurfaceTheme;

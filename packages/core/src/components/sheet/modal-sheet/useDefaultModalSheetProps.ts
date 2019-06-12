@@ -7,20 +7,16 @@
 
 import { usePalette } from '../../../color/Palette';
 import { useDefaultSurfaceProps } from '../../surface/useDefaultSurfaceProps';
-import {
-  ModalSideSheetProps,
-  ModalSideSheetPropsOptional,
-} from './ModalSideSheetProps';
-import { ModalSideSheetTheme } from './ModalSideSheetTheme';
-import { ModalSideSheetVariant } from './ModalSideSheetVariant';
+import { ModalSheetProps, ModalSheetPropsOptional } from './ModalSheetProps';
+import { ModalSheetTheme } from './ModalSheetTheme';
+import { ModalSheetVariant } from './ModalSheetVariant';
 
-export const useDefaultModalSideSheetProps = (
-  props: ModalSideSheetPropsOptional,
-  theme: ModalSideSheetTheme,
-): ModalSideSheetProps => {
+export const useDefaultModalSheetProps = (
+  props: ModalSheetPropsOptional,
+  theme: ModalSheetTheme,
+): ModalSheetProps => {
   const { palette } = usePalette();
-  const variant: ModalSideSheetVariant =
-    props.variant || ModalSideSheetVariant.Start;
+  const variant: ModalSheetVariant = props.variant || ModalSheetVariant.Start;
   const paletteColor = props.paletteColor || palette.surface;
 
   return {

@@ -16,8 +16,8 @@ import {
   Headline3,
   Headline4,
   Headline6,
-  ModalSideSheet,
-  ModalSideSheetVariant,
+  ModalSheet,
+  ModalSheetVariant,
   Paragraph1,
   Screen,
   Size,
@@ -32,7 +32,7 @@ import { Filters } from '../../ui';
 
 const onButtonPress = () => {
   // tslint:disable-next-line:no-console
-  console.log('ModalSideSheetScreen().onButtonPress()');
+  console.log('ModalSheetScreen().onButtonPress()');
 };
 
 const loremCopy = [
@@ -53,44 +53,44 @@ const styles = StyleSheet.create({
   },
 });
 
-const ModalSideSheetScreen: React.SFC<{}> = (): JSX.Element => {
+const ModalSheetScreen: React.SFC<{}> = (): JSX.Element => {
   const { breakpoints, dimensions } = useResponsiveness();
   const isUpToSmallHandset =
     dimensions.window.width <= breakpoints.smallHandset ? true : false;
   const MainHeadlineComponent = isUpToSmallHandset ? Headline4 : Headline3;
 
-  const [isShowingModalSideSheet, setIsShowingModalSideSheet] = useState(false);
+  const [isShowingModalSheet, setIsShowingModalSheet] = useState(false);
 
-  const openModalSideSheet = useCallback(() => {
+  const openModalSheet = useCallback(() => {
     // tslint:disable-next-line:no-console
-    console.log('ModalSideSheetScreen().openModalSideSheet()');
-    setIsShowingModalSideSheet(true);
-  }, [isShowingModalSideSheet]);
+    console.log('ModalSheetScreen().openModalSheet()');
+    setIsShowingModalSheet(true);
+  }, [isShowingModalSheet]);
 
-  const closeModalSideSheet = useCallback(() => {
+  const closeModalSheet = useCallback(() => {
     // tslint:disable-next-line:no-console
-    console.log('ModalSideSheetScreen().closeModalSideSheet()');
-    setIsShowingModalSideSheet(false);
-  }, [isShowingModalSideSheet]);
+    console.log('ModalSheetScreen().closeModalSheet()');
+    setIsShowingModalSheet(false);
+  }, [isShowingModalSheet]);
 
   const modalWillOpen = useCallback(() => {
     // tslint:disable-next-line:no-console
-    console.log('ModalSideSheetScreen().modalWillOpen()');
+    console.log('ModalSheetScreen().modalWillOpen()');
   }, []);
 
   const modalDidOpen = useCallback(() => {
     // tslint:disable-next-line:no-console
-    console.log('ModalSideSheetScreen().modalDidOpen()');
+    console.log('ModalSheetScreen().modalDidOpen()');
   }, []);
 
   const modalWillClose = useCallback(() => {
     // tslint:disable-next-line:no-console
-    console.log('ModalSideSheetScreen().modalWillClose()');
+    console.log('ModalSheetScreen().modalWillClose()');
   }, []);
 
   const modalDidClose = useCallback(() => {
     // tslint:disable-next-line:no-console
-    console.log('ModalSideSheetScreen().modalDidClose()');
+    console.log('ModalSheetScreen().modalDidClose()');
   }, []);
 
   return (
@@ -99,8 +99,8 @@ const ModalSideSheetScreen: React.SFC<{}> = (): JSX.Element => {
         <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
           <MenuIcon />
         </Button>
-        <AppBarTitle numberOfLines={1}>ModalSideSheet: Start</AppBarTitle>
-        <Button onPress={openModalSideSheet} variant={ButtonVariant.Icon}>
+        <AppBarTitle numberOfLines={1}>ModalSheet: Start</AppBarTitle>
+        <Button onPress={openModalSheet} variant={ButtonVariant.Icon}>
           <FilterListIcon />
         </Button>
       </AppBar>
@@ -111,11 +111,11 @@ const ModalSideSheetScreen: React.SFC<{}> = (): JSX.Element => {
               alignSelf={AlignSelf.Center}
               marginBottom={isUpToSmallHandset ? Size.M : 36}
             >
-              {'<ModalSideSheet>'}
+              {'<ModalSheet>'}
             </MainHeadlineComponent>
             <Paragraph1 marginVertical={Size.S}>
-              This screen showcases{' <ModalSideSheet>'} component with
-              {' variant={ModalSideSheetVariant.Start}'}.
+              This screen showcases{' <ModalSheet>'} component with
+              {' variant={ModalSheetVariant.Start}'}.
             </Paragraph1>
             <Paragraph1 marginVertical={Size.M}>
               Let's drop a bunch of text here so we can also test scrolling.
@@ -138,33 +138,33 @@ const ModalSideSheetScreen: React.SFC<{}> = (): JSX.Element => {
           </Column>
         </ScrollView>
       </Column>
-      <ModalSideSheet
+      <ModalSheet
         componentDidClose={modalDidClose}
         componentDidOpen={modalDidOpen}
         componentWillClose={modalWillClose}
         componentWillOpen={modalWillOpen}
-        isOpen={isShowingModalSideSheet}
-        onBackdropPress={closeModalSideSheet}
+        isOpen={isShowingModalSheet}
+        onBackdropPress={closeModalSheet}
         paddingEnd={0}
         paddingTop={Size.XS}
-        variant={ModalSideSheetVariant.End}
+        variant={ModalSheetVariant.End}
       >
         <SpaceBetween>
           <Headline6>Filters</Headline6>
-          <Button onPress={closeModalSideSheet} variant={ButtonVariant.Icon}>
+          <Button onPress={closeModalSheet} variant={ButtonVariant.Icon}>
             <CloseIcon />
           </Button>
         </SpaceBetween>
         <Column flex={1}>
           <ScrollView contentContainerStyle={styles.filtersContentContainer}>
-            <Filters onClosePress={closeModalSideSheet} />
+            <Filters onClosePress={closeModalSheet} />
           </ScrollView>
         </Column>
-      </ModalSideSheet>
+      </ModalSheet>
     </Screen>
   );
 };
 
-ModalSideSheetScreen.displayName = 'ModalSideSheetScreen';
+ModalSheetScreen.displayName = 'ModalSheetScreen';
 
-export { ModalSideSheetScreen };
+export { ModalSheetScreen };

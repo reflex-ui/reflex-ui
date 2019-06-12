@@ -6,8 +6,8 @@
  */
 
 import {
-  ModalSideSheetTheme,
-  ModalSideSheetVariantsTheme,
+  ModalSheetTheme,
+  ModalSheetVariantsTheme,
   PrimitiveComponentProps,
   SurfaceProps,
   SurfaceTheme,
@@ -20,8 +20,8 @@ import { createAnimatedOpenCloseTransitionSurface } from '../../surface';
 // tslint:disable-next-line:max-line-length
 import { getCommonModalSheetSurfaceProps } from '../getCommonModalSheetSurfaceProps';
 import {
-  getModalSideSheetEndSurfaceStyle,
-  getModalSideSheetStartSurfaceStyle,
+  getModalSheetEndSurfaceStyle,
+  getModalSheetStartSurfaceStyle,
 } from './theme';
 
 /*
@@ -33,7 +33,7 @@ const animationConfig = { clamp: true, tension: 220, friction: 12 };
 /**/
 
 /*
- * Basic memoization implementation for CoplanarSideSheetVariant.Start
+ * Basic memoization implementation for ModalSheetVariant.Start
  */
 let currentStartMaxWidth: number | string;
 let currentStartComponent: ComponentType<PrimitiveComponentProps<SurfaceProps>>;
@@ -69,7 +69,7 @@ const createStartComponent = (maxWidth: number | string = 0) => {
 /**/
 
 /*
- * Basic memoization implementation for CoplanarSideSheetVariant.End
+ * Basic memoization implementation for ModalSheetVariant.End
  */
 let currentEndMaxWidth: number | string;
 let currentEndComponent: ComponentType<PrimitiveComponentProps<SurfaceProps>>;
@@ -101,58 +101,58 @@ const createEndComponent = (maxWidth: number | string = 0) => {
 };
 /**/
 
-export const getAnimatedModalSideSheetEndSurfaceStyle: ViewStyleGetter<
+export const getAnimatedModalSheetEndSurfaceStyle: ViewStyleGetter<
   SurfaceProps
 > = props => {
   return {
-    ...getModalSideSheetEndSurfaceStyle(props),
+    ...getModalSheetEndSurfaceStyle(props),
     display: 'flex',
   };
 };
 
-export const getAnimatedModalSideSheetStartSurfaceStyle: ViewStyleGetter<
+export const getAnimatedModalSheetStartSurfaceStyle: ViewStyleGetter<
   SurfaceProps
 > = props => {
   return {
-    ...getModalSideSheetStartSurfaceStyle(props),
+    ...getModalSheetStartSurfaceStyle(props),
     display: 'flex',
   };
 };
 
 /*
- * ModalSideSheetTheme.Start and ModalSideSheetTheme.End
+ * ModalSheetTheme.Start and ModalSheetTheme.End
  */
 
-export const animatedModalSideSheetStartTheme: ModalSideSheetTheme = {
+export const animatedModalSheetStartTheme: ModalSheetTheme = {
   getProps: () => ({ isOpenCloseTransitionAnimated: true }),
   surface: () => ({
     view: {
       getComponent: props =>
         createStartComponent(StyleSheet.flatten(props.style).maxWidth),
       getProps: getCommonModalSheetSurfaceProps,
-      getStyle: getAnimatedModalSideSheetStartSurfaceStyle,
+      getStyle: getAnimatedModalSheetStartSurfaceStyle,
     },
   }),
 };
 
-export const animatedModalSideSheetEndTheme: ModalSideSheetTheme = {
+export const animatedModalSheetEndTheme: ModalSheetTheme = {
   getProps: () => ({ isOpenCloseTransitionAnimated: true }),
   surface: () => ({
     view: {
       getComponent: props =>
         createEndComponent(StyleSheet.flatten(props.style).maxWidth),
       getProps: getCommonModalSheetSurfaceProps,
-      getStyle: getAnimatedModalSideSheetEndSurfaceStyle,
+      getStyle: getAnimatedModalSheetEndSurfaceStyle,
     },
   }),
 };
 
 /*
- * ModalSideSheetVariantsTheme
+ * ModalSheetVariantsTheme
  */
 
 // tslint:disable-next-line:max-line-length
-export const animatedModalSideSheetVariantsTheme: ModalSideSheetVariantsTheme = {
-  end: animatedModalSideSheetEndTheme,
-  start: animatedModalSideSheetStartTheme,
+export const animatedModalSheetVariantsTheme: ModalSheetVariantsTheme = {
+  end: animatedModalSheetEndTheme,
+  start: animatedModalSheetStartTheme,
 };

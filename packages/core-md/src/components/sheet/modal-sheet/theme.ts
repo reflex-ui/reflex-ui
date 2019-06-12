@@ -6,8 +6,8 @@
  */
 
 import {
-  ModalSideSheetTheme,
-  ModalSideSheetVariantsTheme,
+  ModalSheetTheme,
+  ModalSheetVariantsTheme,
   SurfaceProps,
   ViewStyleGetter,
 } from '@reflex-ui/core';
@@ -19,7 +19,7 @@ import { getCommonSheetSurfaceStyle } from '../getCommonSheetSurfaceStyle';
 // tslint:disable-next-line:max-line-length
 import { getCommonSideSheetSurfaceStyle } from '../getCommonSideSheetSurfaceStyle';
 
-export const getModalSideSheetStartSurfaceStyle: ViewStyleGetter<
+export const getModalSheetStartSurfaceStyle: ViewStyleGetter<
   SurfaceProps
 > = props => ({
   ...getCommonSheetSurfaceStyle(),
@@ -33,28 +33,28 @@ export const getModalSideSheetStartSurfaceStyle: ViewStyleGetter<
   ...(props.elevation === undefined && getElevationStyles(16)),
 });
 
-export const getModalSideSheetEndSurfaceStyle: ViewStyleGetter<
+export const getModalSheetEndSurfaceStyle: ViewStyleGetter<
   SurfaceProps
 > = props => ({
-  ...getModalSideSheetStartSurfaceStyle(props),
+  ...getModalSheetStartSurfaceStyle(props),
   left: 'auto',
   right: 0,
 });
 
-export const modalSideSheetStartTheme: ModalSideSheetTheme = {
+export const modalSheetStartTheme: ModalSheetTheme = {
   surface: () => ({
     view: {
       getProps: getCommonModalSheetSurfaceProps,
-      getStyle: getModalSideSheetStartSurfaceStyle,
+      getStyle: getModalSheetStartSurfaceStyle,
     },
   }),
 };
 
-export const modalSideSheetEndTheme: ModalSideSheetTheme = {
+export const modalSheetEndTheme: ModalSheetTheme = {
   surface: () => ({
     view: {
       getProps: getCommonModalSheetSurfaceProps,
-      getStyle: getModalSideSheetEndSurfaceStyle,
+      getStyle: getModalSheetEndSurfaceStyle,
     },
   }),
 };
@@ -63,7 +63,7 @@ export const modalSideSheetEndTheme: ModalSideSheetTheme = {
  * SheetVariantsTheme
  */
 
-export const modalSideSheetVariantsTheme: ModalSideSheetVariantsTheme = {
-  end: modalSideSheetEndTheme,
-  start: modalSideSheetStartTheme,
+export const modalSheetVariantsTheme: ModalSheetVariantsTheme = {
+  end: modalSheetEndTheme,
+  start: modalSheetStartTheme,
 };

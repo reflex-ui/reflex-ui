@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ModalSideSheetTheme } from './ModalSideSheetTheme';
+import { ModalSheetTheme } from './ModalSheetTheme';
 
-export interface ModalSideSheetVariantsTheme {
-  readonly end: ModalSideSheetTheme;
-  readonly start: ModalSideSheetTheme;
+export interface ModalSheetVariantsTheme {
+  readonly end: ModalSheetTheme;
+  readonly start: ModalSheetTheme;
 }

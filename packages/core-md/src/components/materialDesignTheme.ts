@@ -21,7 +21,7 @@ import { overlaySurfaceTheme } from './overlay-surface/theme';
 import { screenTheme } from './screen/theme';
 import {
   coplanarSideSheetVariantsTheme,
-  modalSideSheetVariantsTheme,
+  modalSheetVariantsTheme,
 } from './sheet';
 import { surfaceTheme } from './surface/theme';
 import { rfxSvgVariantsTheme } from './svg/theme';
@@ -41,7 +41,7 @@ export const materialDesignTheme: ComponentsTheme = {
   list: listTheme,
   listItem: listItemTheme,
   modal: modalTheme,
-  modalSideSheet: modalSideSheetVariantsTheme,
+  modalSheet: modalSheetVariantsTheme,
   overlaySurface: overlaySurfaceTheme,
   screen: screenTheme,
   surface: surfaceTheme,

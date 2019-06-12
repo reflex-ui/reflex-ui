@@ -6,5 +6,5 @@
  */
 
 export * from './coplanar-side-sheet';
-export * from './modal-side-sheet';
+export * from './modal-sheet';
 export * from './SheetPropsBase';
