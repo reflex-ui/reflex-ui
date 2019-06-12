@@ -22,7 +22,7 @@ import { animatedOverlaySurfaceTheme } from './overlay-surface/animatedTheme';
 import { screenTheme } from './screen/theme';
 import {
   animatedCoplanarSideSheetVariantsTheme,
-  animatedModalSideSheetVariantsTheme,
+  animatedModalSheetVariantsTheme,
 } from './sheet';
 import { animatedSurfaceTheme } from './surface/animatedTheme';
 import { rfxSvgVariantsTheme } from './svg/theme';
@@ -42,7 +42,7 @@ export const animatedMaterialDesignTheme: ComponentsTheme = {
   list: listTheme,
   listItem: animatedListItemTheme,
   modal: animatedModalTheme,
-  modalSideSheet: animatedModalSideSheetVariantsTheme,
+  modalSheet: animatedModalSheetVariantsTheme,
   overlaySurface: animatedOverlaySurfaceTheme,
   screen: screenTheme,
   surface: animatedSurfaceTheme,

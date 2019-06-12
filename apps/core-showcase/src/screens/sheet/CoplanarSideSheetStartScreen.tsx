@@ -151,7 +151,7 @@ const CoplanarSideSheetStartScreen: React.SFC<{}> = (): JSX.Element => {
               <Paragraph1 marginVertical={Size.M}>
                 Even though the {' <CoplanarSideSheet>'} component is
                 cross-platform and showcased here on mobile devices too, the
-                {' <ModalSideSheet>'} component is recommended on such devices
+                {' <ModalSheet>'} component is recommended on mobile devices
                 since it usually doesn't make much sense to push a screen
                 content if we can't interact with it anyway.
               </Paragraph1>

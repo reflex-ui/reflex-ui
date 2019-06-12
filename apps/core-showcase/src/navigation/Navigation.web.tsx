@@ -44,7 +44,7 @@ import { ModalScreen } from '../screens/modal';
 import {
   CoplanarSideSheetEndScreen,
   CoplanarSideSheetStartScreen,
-  ModalSideSheetScreen,
+  ModalSheetScreen,
 } from '../screens/sheet';
 import { SurfaceScreen } from '../screens/surface';
 import { SvgShowcaseScreen } from '../screens/svg';
@@ -158,7 +158,7 @@ const AppNavigation: React.SFC = () => (
       <Route
         exact
         path="/sheet/modal-side-sheet"
-        component={ModalSideSheetScreen}
+        component={ModalSheetScreen}
       />
       <Route exact path="/surface" component={SurfaceScreen} />
       <Route exact path="/svg" component={SvgShowcaseScreen} />

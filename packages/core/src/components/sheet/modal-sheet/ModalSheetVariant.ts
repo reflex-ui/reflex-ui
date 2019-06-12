@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export enum ModalSideSheetVariant {
+export enum ModalSheetVariant {
   End = 'end',
   Start = 'start',
 }
