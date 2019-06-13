@@ -8,6 +8,8 @@
 import { ModalSheetTheme } from './ModalSheetTheme';
 
 export interface ModalSheetVariantsTheme {
+  readonly bottom: ModalSheetTheme;
   readonly end: ModalSheetTheme;
   readonly start: ModalSheetTheme;
+  readonly top: ModalSheetTheme;
 }

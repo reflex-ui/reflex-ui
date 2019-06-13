@@ -15,24 +15,24 @@ import {
   Column,
   Headline3,
   Headline4,
-  Headline6,
   ModalSheet,
   ModalSheetVariant,
   Paragraph1,
+  Row,
   Screen,
   Size,
-  SpaceBetween,
+  usePalette,
   useResponsiveness,
 } from '@reflex-ui/core';
-import { CloseIcon, FilterListIcon, MenuIcon } from '@reflex-ui/icons-md';
+import { MenuIcon } from '@reflex-ui/icons-md';
 import React, { useCallback, useState } from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { ScrollView } from 'react-native';
 
-import { Filters } from '../../ui';
+import { FileMenu } from '../../ui';
 
 const onButtonPress = () => {
   // tslint:disable-next-line:no-console
-  console.log('ModalSheetScreen().onButtonPress()');
+  console.log('ModalSideSheetScreen().onButtonPress()');
 };
 
 const loremCopy = [
@@ -46,30 +46,27 @@ const loremCopy = [
   'deserunt mollit anim id est laborum.',
 ].join(' ');
 
-const styles = StyleSheet.create({
-  filtersContentContainer: {
-    paddingEnd: 16,
-    paddingVertical: 16,
-  },
-});
-
-const ModalSheetScreen: React.SFC<{}> = (): JSX.Element => {
+const ModalTopBottomSheetScreen: React.SFC<{}> = (): JSX.Element => {
+  const { palette } = usePalette();
   const { breakpoints, dimensions } = useResponsiveness();
   const isUpToSmallHandset =
     dimensions.window.width <= breakpoints.smallHandset ? true : false;
   const MainHeadlineComponent = isUpToSmallHandset ? Headline4 : Headline3;
 
+  const [currentModalSheetVariant, setCurrentModalSheetVariant] = useState(
+    ModalSheetVariant.Start,
+  );
   const [isShowingModalSheet, setIsShowingModalSheet] = useState(false);
 
-  const openModalSheet = useCallback(() => {
-    // tslint:disable-next-line:no-console
-    console.log('ModalSheetScreen().openModalSheet()');
-    setIsShowingModalSheet(true);
-  }, [isShowingModalSheet]);
+  const openModalSheet = useCallback(
+    (variant: ModalSheetVariant) => {
+      setCurrentModalSheetVariant(variant);
+      setIsShowingModalSheet(true);
+    },
+    [isShowingModalSheet],
+  );
 
   const closeModalSheet = useCallback(() => {
-    // tslint:disable-next-line:no-console
-    console.log('ModalSheetScreen().closeModalSheet()');
     setIsShowingModalSheet(false);
   }, [isShowingModalSheet]);
 
@@ -100,9 +97,6 @@ const ModalSheetScreen: React.SFC<{}> = (): JSX.Element => {
           <MenuIcon />
         </Button>
         <AppBarTitle numberOfLines={1}>ModalSheet: Start</AppBarTitle>
-        <Button onPress={openModalSheet} variant={ButtonVariant.Icon}>
-          <FilterListIcon />
-        </Button>
       </AppBar>
       <Column flex={1} height="100%">
         <ScrollView>
@@ -117,6 +111,20 @@ const ModalSheetScreen: React.SFC<{}> = (): JSX.Element => {
               This screen showcases{' <ModalSheet>'} component with
               {' variant={ModalSheetVariant.Start}'}.
             </Paragraph1>
+            <Row paletteColor={palette.primary}>
+              <Button
+                invertColor
+                onPress={() => openModalSheet(ModalSheetVariant.Top)}
+              >
+                Open Top
+              </Button>
+              <Button
+                invertColor
+                onPress={() => openModalSheet(ModalSheetVariant.Bottom)}
+              >
+                Open Bottom
+              </Button>
+            </Row>
             <Paragraph1 marginVertical={Size.M}>
               Let's drop a bunch of text here so we can also test scrolling.
             </Paragraph1>
@@ -145,26 +153,15 @@ const ModalSheetScreen: React.SFC<{}> = (): JSX.Element => {
         componentWillOpen={modalWillOpen}
         isOpen={isShowingModalSheet}
         onBackdropPress={closeModalSheet}
-        paddingEnd={0}
-        paddingTop={Size.XS}
-        variant={ModalSheetVariant.End}
+        paddingVertical={0}
+        variant={currentModalSheetVariant}
       >
-        <SpaceBetween>
-          <Headline6>Filters</Headline6>
-          <Button onPress={closeModalSheet} variant={ButtonVariant.Icon}>
-            <CloseIcon />
-          </Button>
-        </SpaceBetween>
-        <Column flex={1}>
-          <ScrollView contentContainerStyle={styles.filtersContentContainer}>
-            <Filters onClosePress={closeModalSheet} />
-          </ScrollView>
-        </Column>
+        <FileMenu onClosePress={closeModalSheet} />
       </ModalSheet>
     </Screen>
   );
 };
 
-ModalSheetScreen.displayName = 'ModalSheetScreen';
+ModalTopBottomSheetScreen.displayName = 'ModalTopBottomSheetScreen';
 
-export { ModalSheetScreen };
+export { ModalTopBottomSheetScreen };

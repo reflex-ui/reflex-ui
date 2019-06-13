@@ -6,6 +6,8 @@
  */
 
 export enum ModalSheetVariant {
+  Bottom = 'bottom',
   End = 'end',
   Start = 'start',
+  Top = 'top',
 }

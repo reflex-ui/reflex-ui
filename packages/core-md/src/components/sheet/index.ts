@@ -9,4 +9,5 @@ export * from './coplanar-side-sheet';
 export * from './getCommonModalSheetSurfaceProps';
 export * from './getCommonSheetSurfaceStyle';
 export * from './getCommonSideSheetSurfaceStyle';
+export * from './getCommonTopBottomSheetSurfaceStyle';
 export * from './modal-sheet';
