@@ -34,7 +34,8 @@ export const getCommonSideSheetSurfaceStyle = <
         : 320;
   }
   const maxWidth = props.maxWidth !== undefined ? props.maxWidth : width;
-  const height = props.height !== undefined ? props.height : '100%';
+  const height =
+    props.height !== undefined ? props.height : props.dimensions.window.height;
 
   return {
     display: props.isOpen ? 'flex' : 'none',

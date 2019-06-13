@@ -5,5 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+export * from './animatedSideSheetTheme';
 export * from './animatedTheme';
+export * from './animatedTopBottomSheetTheme';
+export * from './sideSheetTheme';
 export * from './theme';
+export * from './topBottomSheetTheme';
