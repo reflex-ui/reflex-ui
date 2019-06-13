@@ -19,8 +19,8 @@ import { createAnimatedOpenCloseTransitionSurface } from '../../surface';
 // tslint:disable-next-line:max-line-length
 import { getCommonModalSheetSurfaceProps } from '../getCommonModalSheetSurfaceProps';
 import {
-  getModalSheetBottomSurfaceStyle,
-  getModalSheetTopSurfaceStyle,
+  getModalBottomSheetSurfaceStyle,
+  getModalTopSheetSurfaceStyle,
 } from './topBottomSheetTheme';
 
 /*
@@ -102,44 +102,44 @@ const createBottomComponent = (maxHeight: number | string = 0) => {
 };
 /**/
 
-export const getAnimatedModalSheetTopSurfaceStyle: ViewStyleGetter<
+export const getAnimatedModalTopSheetSurfaceStyle: ViewStyleGetter<
   SurfaceProps
 > = props => {
   return {
-    ...getModalSheetTopSurfaceStyle(props),
+    ...getModalTopSheetSurfaceStyle(props),
     display: 'flex',
   };
 };
 
-export const getAnimatedModalSheetBottomSurfaceStyle: ViewStyleGetter<
+export const getAnimatedModalBottomSheetSurfaceStyle: ViewStyleGetter<
   SurfaceProps
 > = props => {
   return {
-    ...getModalSheetBottomSurfaceStyle(props),
+    ...getModalBottomSheetSurfaceStyle(props),
     display: 'flex',
   };
 };
 
-export const animatedModalSheetTopTheme: ModalSheetTheme = {
+export const animatedModalTopSheetTheme: ModalSheetTheme = {
   getProps: () => ({ isOpenCloseTransitionAnimated: true }),
   surface: () => ({
     view: {
       getComponent: props =>
         createTopComponent(StyleSheet.flatten(props.style).maxHeight),
       getProps: getCommonModalSheetSurfaceProps,
-      getStyle: getAnimatedModalSheetTopSurfaceStyle,
+      getStyle: getAnimatedModalTopSheetSurfaceStyle,
     },
   }),
 };
 
-export const animatedModalSheetBottomTheme: ModalSheetTheme = {
+export const animatedModalBottomSheetTheme: ModalSheetTheme = {
   getProps: () => ({ isOpenCloseTransitionAnimated: true }),
   surface: () => ({
     view: {
       getComponent: props =>
         createBottomComponent(StyleSheet.flatten(props.style).maxHeight),
       getProps: getCommonModalSheetSurfaceProps,
-      getStyle: getAnimatedModalSheetBottomSurfaceStyle,
+      getStyle: getAnimatedModalBottomSheetSurfaceStyle,
     },
   }),
 };

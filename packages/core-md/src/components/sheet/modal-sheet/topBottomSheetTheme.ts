@@ -18,7 +18,7 @@ import { getCommonSheetSurfaceStyle } from '../getCommonSheetSurfaceStyle';
 // tslint:disable-next-line:max-line-length
 import { getCommonTopBottomSheetSurfaceStyle } from '../getCommonTopBottomSheetSurfaceStyle';
 
-export const getCommonTopBottomModalSheetSurfaceStyle: ViewStyleGetter<
+export const getCommonModalTopBottomSheetSurfaceStyle: ViewStyleGetter<
   SurfaceProps
 > = props => ({
   ...getCommonSheetSurfaceStyle(),
@@ -29,36 +29,36 @@ export const getCommonTopBottomModalSheetSurfaceStyle: ViewStyleGetter<
   ...(props.elevation === undefined && getElevationStyles(16)),
 });
 
-export const getModalSheetTopSurfaceStyle: ViewStyleGetter<
+export const getModalTopSheetSurfaceStyle: ViewStyleGetter<
   SurfaceProps
 > = props => ({
-  ...getCommonTopBottomModalSheetSurfaceStyle(props),
+  ...getCommonModalTopBottomSheetSurfaceStyle(props),
   top: 0,
 });
 
-export const getModalSheetBottomSurfaceStyle: ViewStyleGetter<
+export const getModalBottomSheetSurfaceStyle: ViewStyleGetter<
   SurfaceProps
 > = props => ({
-  ...getCommonTopBottomModalSheetSurfaceStyle(props),
+  ...getCommonModalTopBottomSheetSurfaceStyle(props),
   bottom: 0,
 });
 
-export const modalSheetTopTheme: ModalSheetTheme = {
+export const modalTopSheetTheme: ModalSheetTheme = {
   getProps: () => ({ enableOnLayout: true }),
   surface: () => ({
     view: {
       getProps: getCommonModalSheetSurfaceProps,
-      getStyle: getModalSheetTopSurfaceStyle,
+      getStyle: getModalTopSheetSurfaceStyle,
     },
   }),
 };
 
-export const modalSheetBottomTheme: ModalSheetTheme = {
+export const modalBottomSheetTheme: ModalSheetTheme = {
   getProps: () => ({ enableOnLayout: true }),
   surface: () => ({
     view: {
       getProps: getCommonModalSheetSurfaceProps,
-      getStyle: getModalSheetBottomSurfaceStyle,
+      getStyle: getModalBottomSheetSurfaceStyle,
     },
   }),
 };

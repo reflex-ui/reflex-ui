@@ -19,8 +19,8 @@ import { createAnimatedOpenCloseTransitionSurface } from '../../surface';
 // tslint:disable-next-line:max-line-length
 import { getCommonModalSheetSurfaceProps } from '../getCommonModalSheetSurfaceProps';
 import {
-  getModalSheetEndSurfaceStyle,
-  getModalSheetStartSurfaceStyle,
+  getModalEndSheetSurfaceStyle,
+  getModalStartSheetSurfaceStyle,
 } from './sideSheetTheme';
 
 /*
@@ -100,20 +100,20 @@ const createEndComponent = (maxWidth: number | string = 0) => {
 };
 /**/
 
-export const getAnimatedModalSheetEndSurfaceStyle: ViewStyleGetter<
+export const getAnimatedModalEndSheetSurfaceStyle: ViewStyleGetter<
   SurfaceProps
 > = props => {
   return {
-    ...getModalSheetEndSurfaceStyle(props),
+    ...getModalEndSheetSurfaceStyle(props),
     display: 'flex',
   };
 };
 
-export const getAnimatedModalSheetStartSurfaceStyle: ViewStyleGetter<
+export const getAnimatedModalStartSheetSurfaceStyle: ViewStyleGetter<
   SurfaceProps
 > = props => {
   return {
-    ...getModalSheetStartSurfaceStyle(props),
+    ...getModalStartSheetSurfaceStyle(props),
     display: 'flex',
   };
 };
@@ -122,26 +122,26 @@ export const getAnimatedModalSheetStartSurfaceStyle: ViewStyleGetter<
  * ModalSheetTheme.Start and ModalSheetTheme.End
  */
 
-export const animatedModalSheetStartTheme: ModalSheetTheme = {
+export const animatedModalStartSheetTheme: ModalSheetTheme = {
   getProps: () => ({ isOpenCloseTransitionAnimated: true }),
   surface: () => ({
     view: {
       getComponent: props =>
         createStartComponent(StyleSheet.flatten(props.style).maxWidth),
       getProps: getCommonModalSheetSurfaceProps,
-      getStyle: getAnimatedModalSheetStartSurfaceStyle,
+      getStyle: getAnimatedModalStartSheetSurfaceStyle,
     },
   }),
 };
 
-export const animatedModalSheetEndTheme: ModalSheetTheme = {
+export const animatedModalEndSheetTheme: ModalSheetTheme = {
   getProps: () => ({ isOpenCloseTransitionAnimated: true }),
   surface: () => ({
     view: {
       getComponent: props =>
         createEndComponent(StyleSheet.flatten(props.style).maxWidth),
       getProps: getCommonModalSheetSurfaceProps,
-      getStyle: getAnimatedModalSheetEndSurfaceStyle,
+      getStyle: getAnimatedModalEndSheetSurfaceStyle,
     },
   }),
 };

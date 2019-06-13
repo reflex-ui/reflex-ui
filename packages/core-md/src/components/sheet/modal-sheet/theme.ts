@@ -7,15 +7,15 @@
 
 import { ModalSheetVariantsTheme } from '@reflex-ui/core';
 
-import { modalSheetEndTheme, modalSheetStartTheme } from './sideSheetTheme';
+import { modalEndSheetTheme, modalStartSheetTheme } from './sideSheetTheme';
 import {
-  modalSheetBottomTheme,
-  modalSheetTopTheme,
+  modalBottomSheetTheme,
+  modalTopSheetTheme,
 } from './topBottomSheetTheme';
 
 export const modalSheetVariantsTheme: ModalSheetVariantsTheme = {
-  bottom: modalSheetBottomTheme,
-  end: modalSheetEndTheme,
-  start: modalSheetStartTheme,
-  top: modalSheetTopTheme,
+  bottom: modalBottomSheetTheme,
+  end: modalEndSheetTheme,
+  start: modalStartSheetTheme,
+  top: modalTopSheetTheme,
 };

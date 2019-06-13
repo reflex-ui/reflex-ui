@@ -8,17 +8,17 @@
 import { ModalSheetVariantsTheme } from '@reflex-ui/core';
 
 import {
-  animatedModalSheetEndTheme,
-  animatedModalSheetStartTheme,
+  animatedModalEndSheetTheme,
+  animatedModalStartSheetTheme,
 } from './animatedSideSheetTheme';
 import {
-  animatedModalSheetBottomTheme,
-  animatedModalSheetTopTheme,
+  animatedModalBottomSheetTheme,
+  animatedModalTopSheetTheme,
 } from './animatedTopBottomSheetTheme';
 
 export const animatedModalSheetVariantsTheme: ModalSheetVariantsTheme = {
-  bottom: animatedModalSheetBottomTheme,
-  end: animatedModalSheetEndTheme,
-  start: animatedModalSheetStartTheme,
-  top: animatedModalSheetTopTheme,
+  bottom: animatedModalBottomSheetTheme,
+  end: animatedModalEndSheetTheme,
+  start: animatedModalStartSheetTheme,
+  top: animatedModalTopSheetTheme,
 };

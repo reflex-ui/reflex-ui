@@ -18,7 +18,7 @@ import { getCommonSheetSurfaceStyle } from '../getCommonSheetSurfaceStyle';
 // tslint:disable-next-line:max-line-length
 import { getCommonSideSheetSurfaceStyle } from '../getCommonSideSheetSurfaceStyle';
 
-export const getModalSheetStartSurfaceStyle: ViewStyleGetter<
+export const getModalStartSheetSurfaceStyle: ViewStyleGetter<
   SurfaceProps
 > = props => ({
   ...getCommonSheetSurfaceStyle(),
@@ -30,28 +30,28 @@ export const getModalSheetStartSurfaceStyle: ViewStyleGetter<
   ...(props.elevation === undefined && getElevationStyles(16)),
 });
 
-export const getModalSheetEndSurfaceStyle: ViewStyleGetter<
+export const getModalEndSheetSurfaceStyle: ViewStyleGetter<
   SurfaceProps
 > = props => ({
-  ...getModalSheetStartSurfaceStyle(props),
+  ...getModalStartSheetSurfaceStyle(props),
   left: 'auto',
   right: 0,
 });
 
-export const modalSheetStartTheme: ModalSheetTheme = {
+export const modalStartSheetTheme: ModalSheetTheme = {
   surface: () => ({
     view: {
       getProps: getCommonModalSheetSurfaceProps,
-      getStyle: getModalSheetStartSurfaceStyle,
+      getStyle: getModalStartSheetSurfaceStyle,
     },
   }),
 };
 
-export const modalSheetEndTheme: ModalSheetTheme = {
+export const modalEndSheetTheme: ModalSheetTheme = {
   surface: () => ({
     view: {
       getProps: getCommonModalSheetSurfaceProps,
-      getStyle: getModalSheetEndSurfaceStyle,
+      getStyle: getModalEndSheetSurfaceStyle,
     },
   }),
 };
