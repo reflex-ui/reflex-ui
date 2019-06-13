@@ -10,17 +10,12 @@ import { createPortal } from 'react-dom';
 import { View } from 'react-native';
 
 import { processComponent } from '../processComponent';
-import { modalStyles } from './modalStyles.web';
+import { ModalProps } from './ModalProps';
 import { useModalElement } from './useModalElement';
 
-modalStyles();
-
-let ModalRoot: React.ComponentType<{}> = forwardRef(
-  <Props extends { children?: React.ReactNode }>(
-    props: Props,
-    ref: Ref<View>,
-  ) => {
-    const [modalId] = useState(() => `my-modal-${Math.random()}`);
+let ModalRoot: React.ComponentType<ModalProps> = forwardRef(
+  (props: ModalProps, ref: Ref<View>) => {
+    const [modalContainerId] = useState(() => `my-modal-${Math.random()}`);
     // Needs to investigate how to fix this, adding support to Refs
     // in a cross-platform way.
     // @ts-ignore Conversion of type 'Ref<View>' to type
@@ -29,11 +24,26 @@ let ModalRoot: React.ComponentType<{}> = forwardRef(
     // convert the expression to 'unknown' first.
     const htmlElementRef = ref as RefObject<HTMLElement>;
 
+    let modalContainerStyle;
+    if (
+      props.theme.container &&
+      props.theme.container.webInlineStyle !== undefined
+    ) {
+      modalContainerStyle = props.theme.container.webInlineStyle;
+    }
+
+    let rootContainerStyle;
+    if (props.theme.root && props.theme.root.webInlineStyle !== undefined) {
+      rootContainerStyle = props.theme.root.webInlineStyle;
+    }
+
     return createPortal(
       props.children,
       useModalElement({
-        modalId,
+        modalContainerId,
+        modalContainerStyle,
         ref: htmlElementRef,
+        rootContainerStyle,
       }),
     );
   },

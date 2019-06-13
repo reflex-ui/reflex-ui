@@ -5,6 +5,17 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { ModalTheme } from '@reflex-ui/core';
+import { ModalElementTheme, ModalTheme } from '@reflex-ui/core';
 
-export const modalTheme: ModalTheme = {};
+export const getModalContainerTheme = (): ModalElementTheme => ({
+  webInlineStyle: 'display: flex;',
+});
+
+export const getModalRootTheme = (): ModalElementTheme => ({
+  webInlineStyle: 'z-index: 999;',
+});
+
+export const modalTheme: ModalTheme = {
+  container: getModalContainerTheme(),
+  root: getModalRootTheme(),
+};

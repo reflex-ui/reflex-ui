@@ -11,8 +11,9 @@ import { Modal, ModalProps } from 'react-native';
 import { processComponent } from '../processComponent';
 
 let ModalRoot: React.ComponentType<ModalProps> = forwardRef(
+  // @ts-ignore
   (props: ModalProps, ref: Ref<Modal>) => {
-    return <Modal ref={ref} transparent {...props} />;
+    return <Modal ref={ref} transparent />;
   },
 );
 

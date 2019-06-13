@@ -10,20 +10,31 @@ import { RefObject } from 'react';
 import { useDOMElement } from '../../utils/useDOMElement';
 
 export interface UseModalElementInput {
-  readonly containerId?: string;
-  readonly modalId: string;
+  readonly appContainerId?: string;
+  readonly modalContainerId: string;
+  readonly modalContainerStyle?: string;
   readonly modalRootId?: string;
   readonly ref?: RefObject<HTMLElement>;
+  readonly rootContainerStyle?: string;
 }
 
 export const useModalElement = ({
-  containerId = 'root',
-  modalId,
+  appContainerId = 'root',
+  modalContainerId,
+  modalContainerStyle,
   modalRootId = 'reflex-ui-modal-root',
   ref,
+  rootContainerStyle,
 }: UseModalElementInput): HTMLElement => {
   // ensure #reflex-ui-modal-root element
-  useDOMElement(modalRootId, containerId);
+  const rootContainer = useDOMElement(modalRootId, appContainerId);
+  if (rootContainerStyle) {
+    rootContainer.setAttribute('style', rootContainerStyle);
+  }
   // create modal element
-  return useDOMElement(modalId, modalRootId, ref);
+  const modalContainer = useDOMElement(modalContainerId, modalRootId, ref);
+  if (modalContainerStyle) {
+    modalContainer.setAttribute('style', modalContainerStyle);
+  }
+  return modalContainer;
 };
