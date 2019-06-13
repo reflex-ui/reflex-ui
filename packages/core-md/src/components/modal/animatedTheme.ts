@@ -7,6 +7,10 @@
 
 import { ModalTheme } from '@reflex-ui/core';
 
+import { getModalContainerTheme, getModalRootTheme } from './theme';
+
 export const animatedModalTheme: ModalTheme = {
+  container: getModalContainerTheme(),
   getProps: () => ({ isOpenCloseTransitionAnimated: true }),
+  root: getModalRootTheme(),
 };

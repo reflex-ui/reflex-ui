@@ -5,8 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './Modal';
-export * from './ModalElementTheme';
-export * from './ModalProps';
-export * from './ModalTheme';
-export * from './useDefaultModalProps';
+export interface ModalElementTheme {
+  readonly webInlineStyle?: string;
+}

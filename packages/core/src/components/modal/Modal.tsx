@@ -94,7 +94,7 @@ let Modal: React.ComponentType<ModalPropsOptional> = forwardRef(
     if (!newProps.isOpen && !newProps.isClosing) return null;
 
     return (
-      <ModalRoot>
+      <ModalRoot {...newProps}>
         {newProps.displayBackdrop && (
           <Backdrop
             isOpen={newProps.isOpen}
@@ -103,7 +103,7 @@ let Modal: React.ComponentType<ModalPropsOptional> = forwardRef(
             }
             componentDidClose={componentDidClose}
             componentDidOpen={componentDidOpen}
-            onPress={props.onBackdropPress}
+            onPress={newProps.onBackdropPress}
             ref={ref}
             {...extractBackdropPropsFromModalProps(newProps)}
           />
