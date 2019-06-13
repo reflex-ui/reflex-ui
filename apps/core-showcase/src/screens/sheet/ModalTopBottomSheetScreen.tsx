@@ -96,7 +96,7 @@ const ModalTopBottomSheetScreen: React.SFC<{}> = (): JSX.Element => {
         <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
           <MenuIcon />
         </Button>
-        <AppBarTitle numberOfLines={1}>ModalSheet: Start</AppBarTitle>
+        <AppBarTitle numberOfLines={1}>ModalSheet: Top & Bottom</AppBarTitle>
       </AppBar>
       <Column flex={1} height="100%">
         <ScrollView>
@@ -109,7 +109,8 @@ const ModalTopBottomSheetScreen: React.SFC<{}> = (): JSX.Element => {
             </MainHeadlineComponent>
             <Paragraph1 marginVertical={Size.S}>
               This screen showcases{' <ModalSheet>'} component with
-              {' variant={ModalSheetVariant.Start}'}.
+              {' variant={ModalSheetVariant.Top}'} and{' '}
+              {' variant={ModalSheetVariant.Bottom}'}.
             </Paragraph1>
             <Row paletteColor={palette.primary}>
               <Button
