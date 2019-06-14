@@ -7,6 +7,7 @@
 
 import { ModalSheetVariantsTheme } from '@reflex-ui/core';
 
+import { animatedModalDialogSheetTheme } from './animatedDialogSheetTheme';
 import {
   animatedModalEndSheetTheme,
   animatedModalStartSheetTheme,
@@ -18,6 +19,7 @@ import {
 
 export const animatedModalSheetVariantsTheme: ModalSheetVariantsTheme = {
   bottom: animatedModalBottomSheetTheme,
+  dialog: animatedModalDialogSheetTheme,
   end: animatedModalEndSheetTheme,
   start: animatedModalStartSheetTheme,
   top: animatedModalTopSheetTheme,

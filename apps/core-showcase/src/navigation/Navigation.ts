@@ -42,6 +42,7 @@ import { ModalScreen } from '../screens/modal';
 import {
   CoplanarSideSheetEndScreen,
   CoplanarSideSheetStartScreen,
+  ModalDialogSheetScreen,
   ModalSideSheetScreen,
   ModalTopBottomSheetScreen,
 } from '../screens/sheet';
@@ -116,6 +117,7 @@ const SheetNavigation = {
   coplanarSideSheetEnd: `${appNavigationPrefix}sheet.CoplanarSideSheetEndScreen`,
   // tslint:disable-next-line:max-line-length
   coplanarSideSheetStart: `${appNavigationPrefix}sheet.CoplanarSideSheetStartScreen`,
+  modalDialogSheet: `${appNavigationPrefix}sheet.ModalDialogSheetScreen`,
   modalSideSheet: `${appNavigationPrefix}sheet.ModalSideSheetScreen`,
   modalTopBottomSheet: `${appNavigationPrefix}sheet.ModalTopBottomSheetScreen`,
 };
@@ -240,6 +242,9 @@ const registerScreens = () => {
   Navigation.registerComponent(SheetNavigation.coplanarSideSheetStart, () =>
     withAppLogic(CoplanarSideSheetStartScreen),
   );
+  Navigation.registerComponent(SheetNavigation.modalDialogSheet, () =>
+    withAppLogic(ModalDialogSheetScreen),
+  );
   Navigation.registerComponent(SheetNavigation.modalSideSheet, () =>
     withAppLogic(ModalSideSheetScreen),
   );
@@ -275,7 +280,7 @@ export const AppNavigation = () => {
     Navigation.setRoot({
       root: {
         component: {
-          name: SheetNavigation.modalSideSheet,
+          name: SheetNavigation.modalDialogSheet,
         },
       },
     });
