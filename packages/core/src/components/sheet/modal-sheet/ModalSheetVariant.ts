@@ -9,6 +9,7 @@ export enum ModalSheetVariant {
   Bottom = 'bottom',
   Dialog = 'dialog',
   End = 'end',
+  FullscreenDialog = 'fullScreenDialog',
   Start = 'start',
   Top = 'top',
 }

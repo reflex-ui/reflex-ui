@@ -26,6 +26,7 @@ import { ScrollView } from 'react-native';
 
 import { AlertLongMsgExample } from './AlertLongMsgExample';
 import { AlertShortMsgExample } from './AlertShortMsgExample';
+import { FullscreenDialogExample } from './FullscreenDialogExample';
 import { SimpleDialogExample } from './SimpleDialogExample';
 import { SmallAlertShortMsgExample } from './SmallAlertShortMsgExample';
 
@@ -76,6 +77,7 @@ const ModalDialogSheetScreen: React.SFC<{}> = (): JSX.Element => {
             <SmallAlertShortMsgExample />
             <AlertLongMsgExample />
             <SimpleDialogExample />
+            <FullscreenDialogExample />
             <Paragraph1 marginVertical={Size.M}>
               Let's drop a bunch of text here so we can also test scrolling.
             </Paragraph1>

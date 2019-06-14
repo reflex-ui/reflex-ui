@@ -11,6 +11,7 @@ export interface ModalSheetVariantsTheme {
   readonly bottom: ModalSheetTheme;
   readonly dialog: ModalSheetTheme;
   readonly end: ModalSheetTheme;
+  readonly fullScreenDialog: ModalSheetTheme;
   readonly start: ModalSheetTheme;
   readonly top: ModalSheetTheme;
 }
