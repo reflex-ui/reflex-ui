@@ -7,5 +7,6 @@
 
 export * from './CoplanarSideSheetEndScreen';
 export * from './CoplanarSideSheetStartScreen';
+export * from './ModalDialogSheetScreen';
 export * from './ModalSideSheetScreen';
 export * from './ModalTopBottomSheetScreen';
