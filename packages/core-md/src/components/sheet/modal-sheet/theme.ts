@@ -8,6 +8,7 @@
 import { ModalSheetVariantsTheme } from '@reflex-ui/core';
 
 import { modalDialogSheetTheme } from './dialogSheetTheme';
+import { modalFullscreenDialogSheetTheme } from './fullscreenDialogSheetTheme';
 import { modalEndSheetTheme, modalStartSheetTheme } from './sideSheetTheme';
 import {
   modalBottomSheetTheme,
@@ -18,6 +19,7 @@ export const modalSheetVariantsTheme: ModalSheetVariantsTheme = {
   bottom: modalBottomSheetTheme,
   dialog: modalDialogSheetTheme,
   end: modalEndSheetTheme,
+  fullScreenDialog: modalFullscreenDialogSheetTheme,
   start: modalStartSheetTheme,
   top: modalTopSheetTheme,
 };

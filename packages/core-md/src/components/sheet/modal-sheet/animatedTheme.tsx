@@ -8,6 +8,8 @@
 import { ModalSheetVariantsTheme } from '@reflex-ui/core';
 
 import { animatedModalDialogSheetTheme } from './animatedDialogSheetTheme';
+// tslint:disable-next-line:max-line-length
+import { animatedModalFullscreenDialogSheetTheme } from './animatedFullscreenDialogSheetTheme';
 import {
   animatedModalEndSheetTheme,
   animatedModalStartSheetTheme,
@@ -21,6 +23,7 @@ export const animatedModalSheetVariantsTheme: ModalSheetVariantsTheme = {
   bottom: animatedModalBottomSheetTheme,
   dialog: animatedModalDialogSheetTheme,
   end: animatedModalEndSheetTheme,
+  fullScreenDialog: animatedModalFullscreenDialogSheetTheme,
   start: animatedModalStartSheetTheme,
   top: animatedModalTopSheetTheme,
 };
