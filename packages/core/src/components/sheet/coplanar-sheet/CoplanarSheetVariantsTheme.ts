@@ -5,5 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './animatedTheme';
-export * from './theme';
+import { CoplanarSheetTheme } from './CoplanarSheetTheme';
+
+export interface CoplanarSheetVariantsTheme {
+  readonly end: CoplanarSheetTheme;
+  readonly start: CoplanarSheetTheme;
+}

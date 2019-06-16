@@ -5,8 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './CoplanarSideSheetEndScreen';
-export * from './CoplanarSideSheetStartScreen';
+export * from './CoplanarEndSheetScreen';
+export * from './CoplanarStartSheetScreen';
 export * from './ModalDialogSheetScreen';
 export * from './ModalSideSheetScreen';
 export * from './ModalTopBottomSheetScreen';

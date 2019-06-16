@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './coplanar-side-sheet';
+export * from './coplanar-sheet';
 export * from './getCommonModalSheetSurfaceProps';
 export * from './getCommonSheetSurfaceStyle';
 export * from './getCommonSideSheetSurfaceStyle';

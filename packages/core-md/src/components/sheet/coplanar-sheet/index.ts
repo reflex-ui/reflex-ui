@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './coplanar-sheet';
-export * from './modal-sheet';
-export * from './SheetPropsBase';
+export * from './animatedSideSheetTheme';
+export * from './animatedTheme';
+export * from './sideSheetTheme';
+export * from './theme';

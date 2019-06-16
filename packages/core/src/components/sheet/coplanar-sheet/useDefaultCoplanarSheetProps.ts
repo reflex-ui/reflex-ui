@@ -8,19 +8,19 @@
 import { usePalette } from '../../../color/Palette';
 import { useDefaultSurfaceProps } from '../../surface/useDefaultSurfaceProps';
 import {
-  CoplanarSideSheetProps,
-  CoplanarSideSheetPropsOptional,
-} from './CoplanarSideSheetProps';
-import { CoplanarSideSheetTheme } from './CoplanarSideSheetTheme';
-import { CoplanarSideSheetVariant } from './CoplanarSideSheetVariant';
+  CoplanarSheetProps,
+  CoplanarSheetPropsOptional,
+} from './CoplanarSheetProps';
+import { CoplanarSheetTheme } from './CoplanarSheetTheme';
+import { CoplanarSheetVariant } from './CoplanarSheetVariant';
 
-export const useDefaultCoplanarSideSheetProps = (
-  props: CoplanarSideSheetPropsOptional,
-  theme: CoplanarSideSheetTheme,
-): CoplanarSideSheetProps => {
+export const useDefaultCoplanarSheetProps = (
+  props: CoplanarSheetPropsOptional,
+  theme: CoplanarSheetTheme,
+): CoplanarSheetProps => {
   const { palette } = usePalette();
-  const variant: CoplanarSideSheetVariant =
-    props.variant || CoplanarSideSheetVariant.Start;
+  const variant: CoplanarSheetVariant =
+    props.variant || CoplanarSheetVariant.Start;
   const paletteColor = props.paletteColor || palette.surface;
 
   return {

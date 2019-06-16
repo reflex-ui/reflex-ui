@@ -13,8 +13,8 @@ import {
   Button,
   ButtonVariant,
   Column,
-  CoplanarSideSheet,
-  CoplanarSideSheetVariant,
+  CoplanarSheet,
+  CoplanarSheetVariant,
   Headline3,
   Headline4,
   Headline6,
@@ -33,7 +33,7 @@ import { Filters } from '../../ui';
 
 const onButtonPress = () => {
   // tslint:disable-next-line:no-console
-  console.log('SurfaceScreen().onButtonPress()');
+  console.log('CoplanarStartSheetScreen().onButtonPress()');
 };
 
 const loremCopy = [
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const CoplanarSideSheetEndScreen: React.SFC<{}> = (): JSX.Element => {
+const CoplanarStartSheetScreen: React.SFC<{}> = (): JSX.Element => {
   const { breakpoints, dimensions } = useResponsiveness();
   const isUpToSmallHandset =
     dimensions.window.width <= breakpoints.smallHandset ? true : false;
@@ -62,21 +62,41 @@ const CoplanarSideSheetEndScreen: React.SFC<{}> = (): JSX.Element => {
     dimensions.window.width <= breakpoints.smallTablet ? true : false;
   const MainHeadlineComponent = isUpToSmallHandset ? Headline4 : Headline3;
 
-  const [isShowingCoplanarSideSheet, setIsShowingCoplanarSideSheet] = useState(
+  const [isShowingCoplanarSheet, setIsShowingCoplanarSheet] = useState(
     !isUpToSmallTablet,
   );
 
-  const openCoplanarSideSheet = useCallback(() => {
+  const openCoplanarSheet = useCallback(() => {
     // tslint:disable-next-line:no-console
-    console.log('SheetScreen().openCoplanarSideSheet()');
-    setIsShowingCoplanarSideSheet(true);
-  }, [isShowingCoplanarSideSheet]);
+    console.log('CoplanarStartSheetScreen().openCoplanarSheet()');
+    setIsShowingCoplanarSheet(true);
+  }, [isShowingCoplanarSheet]);
 
-  const closeCoplanarSideSheet = useCallback(() => {
+  const closeCoplanarSheet = useCallback(() => {
     // tslint:disable-next-line:no-console
-    console.log('SheetScreen().closeCoplanarSideSheet()');
-    setIsShowingCoplanarSideSheet(false);
-  }, [isShowingCoplanarSideSheet]);
+    console.log('CoplanarStartSheetScreen().closeCoplanarSheet()');
+    setIsShowingCoplanarSheet(false);
+  }, [isShowingCoplanarSheet]);
+
+  const coplanarSheetWillOpen = useCallback(() => {
+    // tslint:disable-next-line:no-console
+    console.log('CoplanarStartSheetScreen().coplanarSheetWillOpen()');
+  }, []);
+
+  const coplanarSheetDidOpen = useCallback(() => {
+    // tslint:disable-next-line:no-console
+    console.log('CoplanarStartSheetScreen().coplanarSheetDidOpen()');
+  }, []);
+
+  const coplanarSheetWillClose = useCallback(() => {
+    // tslint:disable-next-line:no-console
+    console.log('CoplanarStartSheetScreen().coplanarSheetWillClose()');
+  }, []);
+
+  const coplanarSheetDidClose = useCallback(() => {
+    // tslint:disable-next-line:no-console
+    console.log('CoplanarStartSheetScreen().coplanarSheetDidClose()');
+  }, []);
 
   return (
     <Screen>
@@ -84,12 +104,34 @@ const CoplanarSideSheetEndScreen: React.SFC<{}> = (): JSX.Element => {
         <Button onPress={onButtonPress} variant={ButtonVariant.Icon}>
           <MenuIcon />
         </Button>
-        <AppBarTitle numberOfLines={1}>CoplanarSideSheet: End</AppBarTitle>
-        <Button onPress={openCoplanarSideSheet} variant={ButtonVariant.Icon}>
+        <AppBarTitle numberOfLines={1}>CoplanarSheet: Start</AppBarTitle>
+        <Button onPress={openCoplanarSheet} variant={ButtonVariant.Icon}>
           <FilterListIcon />
         </Button>
       </AppBar>
       <Row flex={1}>
+        <CoplanarSheet
+          componentDidClose={coplanarSheetDidClose}
+          componentDidOpen={coplanarSheetDidOpen}
+          componentWillClose={coplanarSheetWillClose}
+          componentWillOpen={coplanarSheetWillOpen}
+          isOpen={isShowingCoplanarSheet}
+          paddingEnd={0}
+          paddingTop={Size.XS}
+          variant={CoplanarSheetVariant.Start}
+        >
+          <SpaceBetween>
+            <Headline6>Filters</Headline6>
+            <Button onPress={closeCoplanarSheet} variant={ButtonVariant.Icon}>
+              <CloseIcon />
+            </Button>
+          </SpaceBetween>
+          <Column flex={1}>
+            <ScrollView contentContainerStyle={styles.filtersContentContainer}>
+              <Filters onClosePress={closeCoplanarSheet} />
+            </ScrollView>
+          </Column>
+        </CoplanarSheet>
         <Column flex={1} height="100%">
           <ScrollView>
             <Column marginHorizontal={Size.M} marginVertical={Size.XL}>
@@ -97,15 +139,15 @@ const CoplanarSideSheetEndScreen: React.SFC<{}> = (): JSX.Element => {
                 alignSelf={AlignSelf.Center}
                 marginBottom={isUpToSmallHandset ? Size.M : 36}
               >
-                {'<CoplanarSideSheet>'}
+                {'<CoplanarSheet>'}
               </MainHeadlineComponent>
               <Paragraph1 marginVertical={Size.S}>
-                This screen showcases{' <CoplanarSideSheet>'} component with
-                {' variant={CoplanarSideSheetVariant.End}'}.
+                This screen showcases{' <CoplanarSheet>'} component with
+                {' variant={CoplanarSheetVariant.Start}'}.
               </Paragraph1>
               <Paragraph1 marginVertical={Size.M}>
-                Even though the {' <CoplanarSideSheet>'} component is
-                cross-platform and showcased on mobile devices too, the
+                Even though the {' <CoplanarSheet>'} component is cross-platform
+                and showcased here on mobile devices too, the
                 {' <ModalSheet>'} component is recommended on mobile devices
                 since it usually doesn't make much sense to push a screen
                 content if we can't interact with it anyway.
@@ -131,32 +173,11 @@ const CoplanarSideSheetEndScreen: React.SFC<{}> = (): JSX.Element => {
             </Column>
           </ScrollView>
         </Column>
-        <CoplanarSideSheet
-          isOpen={isShowingCoplanarSideSheet}
-          paddingEnd={0}
-          paddingTop={Size.XS}
-          variant={CoplanarSideSheetVariant.End}
-        >
-          <SpaceBetween>
-            <Headline6>Filters</Headline6>
-            <Button
-              onPress={closeCoplanarSideSheet}
-              variant={ButtonVariant.Icon}
-            >
-              <CloseIcon />
-            </Button>
-          </SpaceBetween>
-          <Column flex={1}>
-            <ScrollView contentContainerStyle={styles.filtersContentContainer}>
-              <Filters onClosePress={closeCoplanarSideSheet} />
-            </ScrollView>
-          </Column>
-        </CoplanarSideSheet>
       </Row>
     </Screen>
   );
 };
 
-CoplanarSideSheetEndScreen.displayName = 'CoplanarSideSheetEndScreen';
+CoplanarStartSheetScreen.displayName = 'CoplanarStartSheetScreen';
 
-export { CoplanarSideSheetEndScreen };
+export { CoplanarStartSheetScreen };

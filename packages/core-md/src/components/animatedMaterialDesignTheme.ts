@@ -21,7 +21,7 @@ import { animatedModalTheme } from './modal/animatedTheme';
 import { animatedOverlaySurfaceTheme } from './overlay-surface/animatedTheme';
 import { screenTheme } from './screen/theme';
 import {
-  animatedCoplanarSideSheetVariantsTheme,
+  animatedCoplanarSheetVariantsTheme,
   animatedModalSheetVariantsTheme,
 } from './sheet';
 import { animatedSurfaceTheme } from './surface/animatedTheme';
@@ -37,7 +37,7 @@ export const animatedMaterialDesignTheme: ComponentsTheme = {
   avatarOverlaySurface: animatedAvatarOverlaySurfaceTheme,
   backdrop: animatedBackdropTheme,
   button: animatedButtonTheme,
-  coplanarSideSheet: animatedCoplanarSideSheetVariantsTheme,
+  coplanarSheet: animatedCoplanarSheetVariantsTheme,
   image: imageTheme,
   list: listTheme,
   listItem: animatedListItemTheme,

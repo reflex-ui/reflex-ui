@@ -6,8 +6,7 @@
  */
 
 import {
-  CoplanarSideSheetTheme,
-  CoplanarSideSheetVariantsTheme,
+  CoplanarSheetTheme,
   PrimitiveComponentProps,
   SurfaceProps,
   SurfaceTheme,
@@ -19,9 +18,9 @@ import { StyleSheet } from 'react-native';
 import { createAnimatedOpenCloseTransitionSurfacePusher } from '../../surface';
 
 import {
-  getCoplanarSideSheetEndSurfaceStyle,
-  getCoplanarSideSheetStartSurfaceStyle,
-} from './theme';
+  getCoplanarEndSheetSurfaceStyle,
+  getCoplanarStartSheetSurfaceStyle,
+} from './sideSheetTheme';
 
 /*
  * TODO: We can try to improve the easing here to get close to
@@ -32,7 +31,7 @@ const animationConfig = { clamp: true, tension: 220, friction: 12 };
 /**/
 
 /*
- * Basic memoization implementation for CoplanarSideSheetVariant.Start
+ * Basic memoization implementation for CoplanarSheetVariant.Start
  */
 let currentStartMaxWidth: number | string;
 let currentStartComponent: ComponentType<PrimitiveComponentProps<SurfaceProps>>;
@@ -79,7 +78,7 @@ const createStartComponent = (maxWidth: number | string = 0) => {
 /**/
 
 /*
- * Basic memoization implementation for CoplanarSideSheetVariant.End
+ * Basic memoization implementation for CoplanarSheetVariant.End
  */
 let currentEndMaxWidth: number | string;
 let currentEndComponent: ComponentType<PrimitiveComponentProps<SurfaceProps>>;
@@ -122,52 +121,38 @@ const createEndComponent = (maxWidth: number | string = 0) => {
 };
 /**/
 
-export const getAnimatedCoplanarSideSheetStartSurfaceStyle: ViewStyleGetter<
+export const getAnimatedCoplanarStartSheetSurfaceStyle: ViewStyleGetter<
   SurfaceProps
 > = props => ({
-  ...getCoplanarSideSheetStartSurfaceStyle(props),
+  ...getCoplanarStartSheetSurfaceStyle(props),
   display: 'flex',
 });
 
-export const getAnimatedCoplanarSideSheetEndSurfaceStyle: ViewStyleGetter<
+export const getAnimatedCoplanarEndSheetSurfaceStyle: ViewStyleGetter<
   SurfaceProps
 > = props => ({
-  ...getCoplanarSideSheetEndSurfaceStyle(props),
+  ...getCoplanarEndSheetSurfaceStyle(props),
   display: 'flex',
 });
 
-/*
- * CoplanarSideSheetTheme.Start and CoplanarSideSheetTheme.End
- */
-
-export const animatedCoplanarSideSheetStartTheme: CoplanarSideSheetTheme = {
+export const animatedCoplanarStartSheetTheme: CoplanarSheetTheme = {
   getProps: () => ({ isOpenCloseTransitionAnimated: true }),
   surface: () => ({
     view: {
       getComponent: props =>
         createStartComponent(StyleSheet.flatten(props.style).maxWidth),
-      getStyle: getAnimatedCoplanarSideSheetStartSurfaceStyle,
+      getStyle: getAnimatedCoplanarStartSheetSurfaceStyle,
     },
   }),
 };
 
-export const animatedCoplanarSideSheetEndTheme: CoplanarSideSheetTheme = {
+export const animatedCoplanarEndSheetTheme: CoplanarSheetTheme = {
   getProps: () => ({ isOpenCloseTransitionAnimated: true }),
   surface: () => ({
     view: {
       getComponent: props =>
         createEndComponent(StyleSheet.flatten(props.style).maxWidth),
-      getStyle: getAnimatedCoplanarSideSheetEndSurfaceStyle,
+      getStyle: getAnimatedCoplanarEndSheetSurfaceStyle,
     },
   }),
-};
-
-/*
- * CoplanarSideSheetVariantsTheme
- */
-
-// tslint:disable-next-line:max-line-length
-export const animatedCoplanarSideSheetVariantsTheme: CoplanarSideSheetVariantsTheme = {
-  end: animatedCoplanarSideSheetEndTheme,
-  start: animatedCoplanarSideSheetStartTheme,
 };

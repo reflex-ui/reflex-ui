@@ -6,8 +6,7 @@
  */
 
 import {
-  CoplanarSideSheetTheme,
-  CoplanarSideSheetVariantsTheme,
+  CoplanarSheetTheme,
   SurfaceProps,
   ViewStyleGetter,
 } from '@reflex-ui/core';
@@ -16,11 +15,7 @@ import { getCommonSheetSurfaceStyle } from '../getCommonSheetSurfaceStyle';
 // tslint:disable-next-line:max-line-length
 import { getCommonSideSheetSurfaceStyle } from '../getCommonSideSheetSurfaceStyle';
 
-/*
- * CoplanarSideSheetTheme.Start & CoplanarSideSheetTheme.End
- */
-
-export const getCoplanarSideSheetStartSurfaceStyle: ViewStyleGetter<
+export const getCoplanarStartSheetSurfaceStyle: ViewStyleGetter<
   SurfaceProps
 > = props => ({
   ...getCommonSheetSurfaceStyle(),
@@ -29,7 +24,7 @@ export const getCoplanarSideSheetStartSurfaceStyle: ViewStyleGetter<
   borderEndWidth: 1,
 });
 
-export const getCoplanarSideSheetEndSurfaceStyle: ViewStyleGetter<
+export const getCoplanarEndSheetSurfaceStyle: ViewStyleGetter<
   SurfaceProps
 > = props => ({
   ...getCommonSheetSurfaceStyle(),
@@ -38,27 +33,18 @@ export const getCoplanarSideSheetEndSurfaceStyle: ViewStyleGetter<
   borderStartWidth: 1,
 });
 
-export const coplanarSideSheetStartTheme: CoplanarSideSheetTheme = {
+export const coplanarStartSheetTheme: CoplanarSheetTheme = {
   surface: () => ({
     view: {
-      getStyle: getCoplanarSideSheetStartSurfaceStyle,
+      getStyle: getCoplanarStartSheetSurfaceStyle,
     },
   }),
 };
 
-export const coplanarSideSheetEndTheme: CoplanarSideSheetTheme = {
+export const coplanarEndSheetTheme: CoplanarSheetTheme = {
   surface: () => ({
     view: {
-      getStyle: getCoplanarSideSheetEndSurfaceStyle,
+      getStyle: getCoplanarEndSheetSurfaceStyle,
     },
   }),
-};
-
-/*
- * CoplanarSideSheetVariantsTheme
- */
-
-export const coplanarSideSheetVariantsTheme: CoplanarSideSheetVariantsTheme = {
-  end: coplanarSideSheetEndTheme,
-  start: coplanarSideSheetStartTheme,
 };

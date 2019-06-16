@@ -9,14 +9,11 @@ import { ComponentTheme } from '../../ComponentTheme';
 import { ComponentThemeGetter } from '../../ComponentThemeGetter';
 import { SurfaceTheme } from '../../surface/SurfaceTheme';
 import {
-  CoplanarSideSheetProps,
-  CoplanarSideSheetPropsOptional,
-} from './CoplanarSideSheetProps';
+  CoplanarSheetProps,
+  CoplanarSheetPropsOptional,
+} from './CoplanarSheetProps';
 
-export interface CoplanarSideSheetTheme
-  extends ComponentTheme<
-    CoplanarSideSheetProps,
-    CoplanarSideSheetPropsOptional
-  > {
-  readonly surface?: ComponentThemeGetter<CoplanarSideSheetProps, SurfaceTheme>;
+export interface CoplanarSheetTheme
+  extends ComponentTheme<CoplanarSheetProps, CoplanarSheetPropsOptional> {
+  readonly surface?: ComponentThemeGetter<CoplanarSheetProps, SurfaceTheme>;
 }
