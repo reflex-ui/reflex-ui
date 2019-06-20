@@ -9,3 +9,4 @@ export * from './color';
 export * from './components';
 export * from './defaultBreakpoints';
 export * from './spacing';
+export * from './transition';

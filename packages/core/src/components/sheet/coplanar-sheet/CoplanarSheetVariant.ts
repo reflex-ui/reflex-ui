@@ -6,6 +6,8 @@
  */
 
 export enum CoplanarSheetVariant {
+  Bottom = 'bottom',
   End = 'end',
   Start = 'start',
+  Top = 'top',
 }

@@ -57,10 +57,14 @@ const ModalTopBottomSheetScreen: React.SFC<{}> = (): JSX.Element => {
     ModalSheetVariant.Start,
   );
   const [isShowingModalSheet, setIsShowingModalSheet] = useState(false);
+  const [isShowingScrollingContent, setIsShowingScrollingContent] = useState(
+    false,
+  );
 
   const openModalSheet = useCallback(
-    (variant: ModalSheetVariant) => {
+    (variant: ModalSheetVariant, scrollingContent: boolean = false) => {
       setCurrentModalSheetVariant(variant);
+      setIsShowingScrollingContent(scrollingContent);
       setIsShowingModalSheet(true);
     },
     [isShowingModalSheet],
@@ -69,26 +73,6 @@ const ModalTopBottomSheetScreen: React.SFC<{}> = (): JSX.Element => {
   const closeModalSheet = useCallback(() => {
     setIsShowingModalSheet(false);
   }, [isShowingModalSheet]);
-
-  const modalWillOpen = useCallback(() => {
-    // tslint:disable-next-line:no-console
-    console.log('ModalSheetScreen().modalWillOpen()');
-  }, []);
-
-  const modalDidOpen = useCallback(() => {
-    // tslint:disable-next-line:no-console
-    console.log('ModalSheetScreen().modalDidOpen()');
-  }, []);
-
-  const modalWillClose = useCallback(() => {
-    // tslint:disable-next-line:no-console
-    console.log('ModalSheetScreen().modalWillClose()');
-  }, []);
-
-  const modalDidClose = useCallback(() => {
-    // tslint:disable-next-line:no-console
-    console.log('ModalSheetScreen().modalDidClose()');
-  }, []);
 
   return (
     <Screen>
@@ -117,13 +101,27 @@ const ModalTopBottomSheetScreen: React.SFC<{}> = (): JSX.Element => {
                 invertColor
                 onPress={() => openModalSheet(ModalSheetVariant.Top)}
               >
-                Open Top
+                Modal Top Sheet
               </Button>
+              <Button
+                invertColor
+                onPress={() => openModalSheet(ModalSheetVariant.Top, true)}
+              >
+                Modal Top Sheet (scrolling)
+              </Button>
+            </Row>
+            <Row paletteColor={palette.primary}>
               <Button
                 invertColor
                 onPress={() => openModalSheet(ModalSheetVariant.Bottom)}
               >
-                Open Bottom
+                Modal Bottom Sheet
+              </Button>
+              <Button
+                invertColor
+                onPress={() => openModalSheet(ModalSheetVariant.Bottom, true)}
+              >
+                Modal Bottom Sheet (scrolling)
               </Button>
             </Row>
             <Paragraph1 marginVertical={Size.M}>
@@ -148,16 +146,19 @@ const ModalTopBottomSheetScreen: React.SFC<{}> = (): JSX.Element => {
         </ScrollView>
       </Column>
       <ModalSheet
-        componentDidClose={modalDidClose}
-        componentDidOpen={modalDidOpen}
-        componentWillClose={modalWillClose}
-        componentWillOpen={modalWillOpen}
         isOpen={isShowingModalSheet}
         onBackdropPress={closeModalSheet}
         paddingVertical={0}
         variant={currentModalSheetVariant}
       >
-        <FileMenu onClosePress={closeModalSheet} />
+        {isShowingScrollingContent && (
+          <ScrollView>
+            <FileMenu displayExtraItems onClosePress={closeModalSheet} />
+          </ScrollView>
+        )}
+        {!isShowingScrollingContent && (
+          <FileMenu onClosePress={closeModalSheet} />
+        )}
       </ModalSheet>
     </Screen>
   );

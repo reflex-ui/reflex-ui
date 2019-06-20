@@ -9,13 +9,15 @@ import {
   ModalSheetTheme,
   PrimitiveComponentProps,
   SurfaceProps,
-  SurfaceTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import { ComponentType } from 'react';
-import { StyleSheet } from 'react-native';
 
-import { createAnimatedOpenCloseTransitionSurface } from '../../surface';
+// tslint:disable-next-line:max-line-length
+import {
+  createAnimatedOpenCloseSliderTransitionSurface,
+  SliderPosition,
+} from '../../../transition';
 // tslint:disable-next-line:max-line-length
 import { getCommonModalSheetSurfaceProps } from '../getCommonModalSheetSurfaceProps';
 import {
@@ -24,16 +26,9 @@ import {
 } from './topBottomSheetTheme';
 
 /*
- * TODO: We can try to improve the easing here to get close to
- * Material Design's cubic-bezier:
- * https://material.io/design/motion/speed.html#easing
- */
-const animationConfig = { clamp: true, tension: 220, friction: 12 };
-/**/
-
-/*
  * Basic memoization implementation for ModalSheetVariant.Top
  */
+/*
 let currentTopMaxHeight: number | string;
 let currentTopComponent: ComponentType<PrimitiveComponentProps<SurfaceProps>>;
 const createTopComponent = (maxHeight: number | string = 0) => {
@@ -62,11 +57,25 @@ const createTopComponent = (maxHeight: number | string = 0) => {
   });
   return currentTopComponent;
 };
+*/
 /**/
+
+let currentTopComponent: ComponentType<PrimitiveComponentProps<SurfaceProps>>;
+const createTopComponent = (): ComponentType<
+  PrimitiveComponentProps<SurfaceProps>
+> => {
+  if (currentTopComponent === undefined) {
+    currentTopComponent = createAnimatedOpenCloseSliderTransitionSurface(
+      SliderPosition.Top,
+    );
+  }
+  return currentTopComponent;
+};
 
 /*
  * Basic memoization implementation for ModalSheetVariant.Bottom
  */
+/*
 let currentBottomMaxHeight: number | string;
 let currentBottomComponent: ComponentType<
   PrimitiveComponentProps<SurfaceProps>
@@ -100,6 +109,20 @@ const createBottomComponent = (maxHeight: number | string = 0) => {
   });
   return currentBottomComponent;
 };
+*/
+let currentBottomComponent: ComponentType<
+  PrimitiveComponentProps<SurfaceProps>
+>;
+const createBottomComponent = (): ComponentType<
+  PrimitiveComponentProps<SurfaceProps>
+> => {
+  if (currentBottomComponent === undefined) {
+    currentBottomComponent = createAnimatedOpenCloseSliderTransitionSurface(
+      SliderPosition.Bottom,
+    );
+  }
+  return currentBottomComponent;
+};
 /**/
 
 export const getAnimatedModalTopSheetSurfaceStyle: ViewStyleGetter<
@@ -121,11 +144,19 @@ export const getAnimatedModalBottomSheetSurfaceStyle: ViewStyleGetter<
 };
 
 export const animatedModalTopSheetTheme: ModalSheetTheme = {
-  getProps: () => ({ isOpenCloseTransitionAnimated: true }),
+  getProps: ({ isOpenCloseTransitionAnimated }) => ({
+    isOpenCloseTransitionAnimated:
+      isOpenCloseTransitionAnimated !== undefined
+        ? isOpenCloseTransitionAnimated
+        : true,
+  }),
   surface: () => ({
     view: {
+      /*
       getComponent: props =>
         createTopComponent(StyleSheet.flatten(props.style).maxHeight),
+      */
+      getComponent: () => createTopComponent(),
       getProps: getCommonModalSheetSurfaceProps,
       getStyle: getAnimatedModalTopSheetSurfaceStyle,
     },
@@ -133,11 +164,19 @@ export const animatedModalTopSheetTheme: ModalSheetTheme = {
 };
 
 export const animatedModalBottomSheetTheme: ModalSheetTheme = {
-  getProps: () => ({ isOpenCloseTransitionAnimated: true }),
+  getProps: ({ isOpenCloseTransitionAnimated }) => ({
+    isOpenCloseTransitionAnimated:
+      isOpenCloseTransitionAnimated !== undefined
+        ? isOpenCloseTransitionAnimated
+        : true,
+  }),
   surface: () => ({
     view: {
+      getComponent: () => createBottomComponent(),
+      /*
       getComponent: props =>
         createBottomComponent(StyleSheet.flatten(props.style).maxHeight),
+      */
       getProps: getCommonModalSheetSurfaceProps,
       getStyle: getAnimatedModalBottomSheetSurfaceStyle,
     },

@@ -57,9 +57,7 @@ export const useOpenCloseTransition = <
 
   const [isOpening, setIsOpening] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
-  const [prevIsOpen, setPrevIsOpen] = useState<boolean | undefined>(
-    props.isOpen,
-  );
+  const [prevIsOpen, setPrevIsOpen] = useState<boolean | undefined>(false);
 
   const componentWillOpen = useCallback(
     (componentProps: Props) => {

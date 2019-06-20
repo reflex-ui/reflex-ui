@@ -35,12 +35,16 @@ export const AnimatedOpenCloseTransitionSurfacePusher = forwardRef(
       children,
       complexComponentProps,
       closePusherAnimationProps,
-      // closeSurfaceAnimationProps,
       openPusherAnimationProps,
-      // openSurfaceAnimationProps,
       ...otherProps
     } = props;
-    const { isOpen } = complexComponentProps;
+    const {
+      componentDidClose,
+      componentDidOpen,
+      isClosing,
+      isOpen,
+      isOpening,
+    } = complexComponentProps;
 
     let viewRef: Ref<View> = useRef(null);
     if (ref) viewRef = ref;
@@ -50,20 +54,14 @@ export const AnimatedOpenCloseTransitionSurfacePusher = forwardRef(
     );
 
     const onOpenRest = useCallback(() => {
-      if (
-        complexComponentProps.componentDidOpen !== undefined &&
-        complexComponentProps.isOpening
-      ) {
-        complexComponentProps.componentDidOpen(complexComponentProps);
+      if (componentDidOpen !== undefined && isOpening) {
+        componentDidOpen(complexComponentProps);
       }
     }, [complexComponentProps]);
 
     const onCloseRest = useCallback(() => {
-      if (
-        complexComponentProps.componentDidClose !== undefined &&
-        complexComponentProps.isClosing
-      ) {
-        complexComponentProps.componentDidClose(complexComponentProps);
+      if (componentDidClose !== undefined && isClosing) {
+        componentDidClose(complexComponentProps);
       }
     }, [complexComponentProps]);
 
@@ -84,11 +82,9 @@ export const AnimatedOpenCloseTransitionSurfacePusher = forwardRef(
     } else if (openSurfaceAnimationProps.onRest === undefined) {
       openSurfaceAnimationProps = {
         ...openSurfaceAnimationProps,
-        // onRest: onOpenRest,
-        ...(complexComponentProps.componentDidOpen !== undefined && {
+        ...(componentDidOpen !== undefined && {
           onRest: onOpenRest,
         }),
-        // onStart: onOpenStart,
       };
     }
 
@@ -98,11 +94,9 @@ export const AnimatedOpenCloseTransitionSurfacePusher = forwardRef(
     } else if (closeSurfaceAnimationProps.onRest === undefined) {
       closeSurfaceAnimationProps = {
         ...closeSurfaceAnimationProps,
-        // onRest: onCloseRest,
-        ...(complexComponentProps.componentDidClose !== undefined && {
+        ...(componentDidClose !== undefined && {
           onRest: onCloseRest,
         }),
-        // onStart: onCloseStart,
       };
     }
 
@@ -128,6 +122,7 @@ export const AnimatedOpenCloseTransitionSurfacePusher = forwardRef(
         key="AnimatedOpenCloseTransitionSurfaceView"
         {...otherProps}
         ref={viewRef}
+        // @ts-ignore
         style={finalSurfaceStyle}
       >
         {children}
@@ -140,6 +135,7 @@ export const AnimatedOpenCloseTransitionSurfacePusher = forwardRef(
       <AnimatedView
         key="AnimatedOpenCloseTransitionSurfacePusherView"
         style={{
+          // display: isOpen || isClosing ? 'flex' : 'none',
           display: 'flex',
           height: '100%',
           overflow: 'hidden',

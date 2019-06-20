@@ -5,7 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './AccountList';
-export * from './FileMenu';
-export * from './Filters';
-export * from './loremIpsumString';
+export enum SliderPosition {
+  Bottom = 'bottom',
+  End = 'end',
+  Start = 'start',
+  Top = 'top',
+}

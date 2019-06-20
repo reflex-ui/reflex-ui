@@ -11,8 +11,14 @@ import {
   animatedCoplanarEndSheetTheme,
   animatedCoplanarStartSheetTheme,
 } from './animatedSideSheetTheme';
+import {
+  animatedCoplanarBottomSheetTheme,
+  animatedCoplanarTopSheetTheme,
+} from './animatedTopBottomSheetTheme';
 
 export const animatedCoplanarSheetVariantsTheme: CoplanarSheetVariantsTheme = {
+  bottom: animatedCoplanarBottomSheetTheme,
   end: animatedCoplanarEndSheetTheme,
   start: animatedCoplanarStartSheetTheme,
+  top: animatedCoplanarTopSheetTheme,
 };

@@ -8,6 +8,8 @@
 import { CoplanarSheetTheme } from './CoplanarSheetTheme';
 
 export interface CoplanarSheetVariantsTheme {
+  readonly bottom: CoplanarSheetTheme;
   readonly end: CoplanarSheetTheme;
   readonly start: CoplanarSheetTheme;
+  readonly top: CoplanarSheetTheme;
 }

@@ -44,7 +44,9 @@ export const getModalBottomSheetSurfaceStyle: ViewStyleGetter<
 });
 
 export const modalTopSheetTheme: ModalSheetTheme = {
-  getProps: () => ({ enableOnLayout: true }),
+  getProps: ({ enableOnLayout }) => ({
+    enableOnLayout: enableOnLayout !== undefined ? enableOnLayout : true,
+  }),
   surface: () => ({
     view: {
       getProps: getCommonModalSheetSurfaceProps,
@@ -54,7 +56,9 @@ export const modalTopSheetTheme: ModalSheetTheme = {
 };
 
 export const modalBottomSheetTheme: ModalSheetTheme = {
-  getProps: () => ({ enableOnLayout: true }),
+  getProps: ({ enableOnLayout }) => ({
+    enableOnLayout: enableOnLayout !== undefined ? enableOnLayout : true,
+  }),
   surface: () => ({
     view: {
       getProps: getCommonModalSheetSurfaceProps,

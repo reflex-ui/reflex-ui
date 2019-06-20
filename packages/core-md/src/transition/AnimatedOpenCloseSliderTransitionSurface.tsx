@@ -8,40 +8,35 @@
 import { PrimitiveComponentProps, SurfacePropsBase } from '@reflex-ui/core';
 import React, { forwardRef, Ref, useRef } from 'react';
 import { StyleSheet, View, ViewProps } from 'react-native';
-import { animated, UseSpringProps } from 'react-spring/native';
+import { animated } from 'react-spring/native';
 
-import { useOpenCloseTransitionAnimation } from '../../transition';
+import { SliderPosition } from './SliderPosition';
+// tslint:disable-next-line:max-line-length
+import { useOpenCloseSliderTransitionAnimation } from './useOpenCloseSliderTransitionAnimation';
 
-export interface AnimatedOpenCloseTransitionSurfaceProps<ComponentProps>
+export interface AnimatedOpenCloseSliderTransitionSurfaceProps<ComponentProps>
   extends PrimitiveComponentProps<ComponentProps>,
     ViewProps {
   readonly children?: React.ReactNode;
-  readonly closeAnimationProps?: UseSpringProps;
-  readonly openAnimationProps?: UseSpringProps;
+  readonly position: SliderPosition;
 }
 
 const AnimatedView = animated(View);
 
-export const AnimatedOpenCloseTransitionSurface = forwardRef(
+export const AnimatedOpenCloseSliderTransitionSurface = forwardRef(
   <ComponentProps extends SurfacePropsBase<ComponentProps, Theme>, Theme>(
-    props: AnimatedOpenCloseTransitionSurfaceProps<ComponentProps>,
+    props: AnimatedOpenCloseSliderTransitionSurfaceProps<ComponentProps>,
     ref: Ref<View>,
   ): JSX.Element => {
-    const {
-      children,
-      closeAnimationProps,
-      complexComponentProps,
-      openAnimationProps,
-      ...otherProps
-    } = props;
+    const { children, complexComponentProps, position, ...otherProps } = props;
 
     let viewRef: Ref<View> = useRef(null);
     if (ref) viewRef = ref;
 
-    const animatedStyle = useOpenCloseTransitionAnimation({
-      closeAnimationProps,
+    const animatedStyle = useOpenCloseSliderTransitionAnimation({
       complexComponentProps,
-      openAnimationProps,
+      position,
+      ref: viewRef,
     });
     const style = {
       ...StyleSheet.flatten(props.style),
@@ -52,10 +47,9 @@ export const AnimatedOpenCloseTransitionSurface = forwardRef(
       // @ts-ignore Type instantiation is excessively
       // deep and possibly infinite.ts(2589)
       <AnimatedView
-        key="AnimatedOpenCloseTransitionSurfaceView"
+        key="AnimatedOpenCloseSliderTransitionSurface"
         {...otherProps}
         ref={viewRef}
-        // @ts-ignore
         style={style}
       >
         {children}

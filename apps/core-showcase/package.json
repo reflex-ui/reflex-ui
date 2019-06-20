@@ -23,7 +23,7 @@
     "react-native-svg": "9.4.0",
     "react-native-web": "0.11.1",
     "react-router-dom": "5.0.0",
-    "react-spring": "9.0.0-beta.8",
+    "react-spring": "9.0.0-beta.22",
     "@reflex-ui/core": "0.1.0",
     "@reflex-ui/core-md": "0.1.0"
   },
