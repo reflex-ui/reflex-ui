@@ -7,6 +7,7 @@
 
 export * from './cloneElement';
 export * from './createComponentDisplayName';
+export * from './ElementMeasurement';
 export * from './getComponentDisplayName';
 export * from './isAndroid';
 export * from './isIOS';
@@ -14,4 +15,5 @@ export * from './isWeb';
 export * from './props';
 export * from './scrollable';
 export * from './useDOMElement';
+export * from './useMeasure';
 export * from './useTimeout';
