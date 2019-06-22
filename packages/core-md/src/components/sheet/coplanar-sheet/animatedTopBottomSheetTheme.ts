@@ -14,7 +14,7 @@ import {
 import { ComponentType } from 'react';
 
 import {
-  createAnimatedOpenCloseSliderTransitionPusherSurface,
+  createAnimatedOpenCloseSliderTransitionSurface,
   SliderPosition,
 } from '../../../transition';
 
@@ -31,7 +31,8 @@ const createTopComponent = (): ComponentType<
   PrimitiveComponentProps<SurfaceProps>
 > => {
   if (currentTopComponent === undefined) {
-    currentTopComponent = createAnimatedOpenCloseSliderTransitionPusherSurface({
+    currentTopComponent = createAnimatedOpenCloseSliderTransitionSurface({
+      hasPusher: true,
       position: SliderPosition.Top,
     });
   }
@@ -50,11 +51,10 @@ const createBottomComponent = (): ComponentType<
 > => {
   if (currentBottomComponent === undefined) {
     // tslint:disable-next-line:max-line-length
-    currentBottomComponent = createAnimatedOpenCloseSliderTransitionPusherSurface(
-      {
-        position: SliderPosition.Bottom,
-      },
-    );
+    currentBottomComponent = createAnimatedOpenCloseSliderTransitionSurface({
+      hasPusher: true,
+      position: SliderPosition.Bottom,
+    });
   }
   return currentBottomComponent;
 };

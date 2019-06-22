@@ -8,7 +8,8 @@
 import { OpenCloseAnimationConfig } from './OpenCloseAnimationConfig';
 import { SliderPosition } from './SliderPosition';
 
-export interface OpenCloseSliderTransitionFactoryInput
+export interface AnimatedOpenCloseSliderTransitionConfig
   extends OpenCloseAnimationConfig {
+  readonly hasPusher?: boolean;
   readonly position: SliderPosition;
 }

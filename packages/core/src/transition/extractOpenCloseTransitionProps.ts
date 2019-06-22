@@ -23,16 +23,20 @@ export const extractOpenCloseTransitionProps = <ComponentProps>(
   } = props;
 
   return {
-    ...((componentDidClose && { componentDidClose }) || {}),
-    ...((componentDidOpen && { componentDidOpen }) || {}),
-    ...((componentWillClose && { componentWillClose }) || {}),
-    ...((componentWillOpen && { componentWillOpen }) || {}),
-    ...((isClosing && { isClosing }) || {}),
-    ...((isOpen && { isOpen }) || {}),
-    ...((isOpenCloseTransitionAnimated && { isOpenCloseTransitionAnimated }) ||
+    ...((componentDidClose !== undefined && { componentDidClose }) || {}),
+    ...((componentDidOpen !== undefined && { componentDidOpen }) || {}),
+    ...((componentWillClose !== undefined && { componentWillClose }) || {}),
+    ...((componentWillOpen !== undefined && { componentWillOpen }) || {}),
+    ...((isClosing !== undefined && { isClosing }) || {}),
+    ...((isOpen !== undefined && { isOpen }) || {}),
+    ...((isOpenCloseTransitionAnimated !== undefined && {
+      isOpenCloseTransitionAnimated,
+    }) ||
       {}),
-    ...((isOpening && { isOpening }) || {}),
-    ...((shouldCallOpenCloseCallbacks && { shouldCallOpenCloseCallbacks }) ||
+    ...((isOpening !== undefined && { isOpening }) || {}),
+    ...((shouldCallOpenCloseCallbacks !== undefined && {
+      shouldCallOpenCloseCallbacks,
+    }) ||
       {}),
   };
 };

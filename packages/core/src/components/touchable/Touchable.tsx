@@ -52,7 +52,7 @@ let Touchable: React.ComponentType<TouchablePropsOptional> = forwardRef(
 
     const newChildren = useMemo(() => {
       if (
-        newProps.children == undefined ||
+        newProps.children === undefined ||
         newProps.children === null ||
         typeof newProps.children === 'string' ||
         typeof newProps.children === 'number' ||

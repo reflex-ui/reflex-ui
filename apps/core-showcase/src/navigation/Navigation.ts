@@ -288,7 +288,7 @@ export const AppNavigation = () => {
     Navigation.setRoot({
       root: {
         component: {
-          name: SheetNavigation.coplanarBottomSheet,
+          name: SheetNavigation.modalTopBottomSheet,
         },
       },
     });

@@ -7,23 +7,27 @@
 
 import {
   ElementMeasurement,
+  moveTransformPropsToTransformArray,
   PrimitiveComponentProps,
   SurfacePropsBase,
   useMeasure,
 } from '@reflex-ui/core';
 import { Ref, useCallback, useState } from 'react';
 import { View } from 'react-native';
-import { UseSpringProps } from 'react-spring';
+import {
+  SpringConfig,
+  SpringValue,
+  useSpring,
+  // UseSpringProps,
+} from 'react-spring/native';
 
 import { SliderPosition } from './SliderPosition';
-// tslint:disable-next-line:max-line-length
-import { useOpenCloseTransitionAnimation } from './useOpenCloseTransitionAnimation';
 
 export interface OpenCloseSliderTransitionAnimationInput<ComponentProps>
   extends PrimitiveComponentProps<ComponentProps> {
-  // TODO: add support to receive react-spring's AnimationProps
-  // readonly animationProps?: AnimationProps;
-  readonly isPusher?: boolean;
+  readonly closeAnimationConfig?: SpringConfig;
+  readonly hasPusher?: boolean;
+  readonly openAnimationConfig?: SpringConfig;
   readonly position: SliderPosition;
   readonly ref?: Ref<View>;
 }
@@ -31,279 +35,338 @@ export interface OpenCloseSliderTransitionAnimationInput<ComponentProps>
 export const getOpenSliderTransitionTo = (
   position: SliderPosition,
   value: number,
-  isPusher: boolean = false,
+  hasPusher: boolean = false,
 ) => {
   switch (position) {
     case SliderPosition.Top:
     case SliderPosition.Bottom:
-      return isPusher ? { height: value } : { translateY: 0 };
-    case SliderPosition.Start:
-    case SliderPosition.End:
-      return isPusher ? { width: value } : { translateX: 0 };
+      return { translateY: 0, ...(hasPusher && { height: value }) };
     default:
-      return isPusher ? { width: value } : { translateX: 0 };
+      // handles SliderPosition.Start and SliderPosition.End
+      return { translateX: 0, ...(hasPusher && { width: value }) };
   }
 };
 
 export const getCloseSliderTransitionTo = (
   position: SliderPosition,
   value: number,
-  isPusher: boolean = false,
+  hasPusher: boolean = false,
 ) => {
   switch (position) {
     case SliderPosition.Top:
-      return isPusher ? { height: 0 } : { translateY: -value };
+      return { translateY: -value, ...(hasPusher && { height: 0 }) };
     case SliderPosition.Bottom:
-      return isPusher ? { height: 0 } : { translateY: value };
-    case SliderPosition.Start:
-      return isPusher ? { width: 0 } : { translateX: -value };
+      return { translateY: value, ...(hasPusher && { height: 0 }) };
     case SliderPosition.End:
-      return isPusher ? { width: 0 } : { translateX: value };
+      return { translateX: value, ...(hasPusher && { width: 0 }) };
     default:
-      return isPusher ? { width: 0 } : { translateX: value };
+      // handles SliderPosition.Start
+      return { translateX: -value, ...(hasPusher && { width: 0 }) };
   }
 };
+
+export const splitAnimationProps = (
+  animationProps: {
+    [x: string]: SpringValue<unknown>;
+  },
+  position: SliderPosition,
+) => {
+  if (position === SliderPosition.Top || position === SliderPosition.Bottom) {
+    return {
+      pusher: {
+        height: animationProps.height,
+      },
+      slider: {
+        translateY: animationProps.translateY,
+      },
+    };
+  }
+
+  return {
+    pusher: {
+      height: animationProps.width,
+    },
+    slider: {
+      translateY: animationProps.translateX,
+    },
+  };
+};
+
+const defaultAnimationConfig = { clamp: true, tension: 220, friction: 12 };
+const closeSliderPusherStyle = {
+  pusher: {
+    height: '100%',
+    position: 'absolute',
+    transform: [{ translateY: -10000 }],
+  },
+  slider: {},
+};
+const closeSliderStyle = {
+  slider: {
+    position: 'absolute',
+    // transform: [{ translateY: -10000 }],
+    top: -10000,
+  },
+};
+const emptyMeasurement = {
+  height: 0,
+  pageX: 0,
+  pageY: 0,
+  width: 0,
+  x: 0,
+  y: 0,
+};
+/**
+ * We need to review this, ideally such a type should exist in react-spring
+ * itself, or we should move it to another module.
+ */
+export interface SpringViewStyle {
+  [index: string]:
+    | SpringValue
+    | number
+    | string
+    | {}
+    | [{ [index: string]: SpringValue | number | string }];
+}
+/**/
+
+export interface OpenCloseSliderTransitionAnimationOutput {
+  readonly pusher?: SpringViewStyle;
+  readonly slider: SpringViewStyle;
+}
 
 export const useOpenCloseSliderTransitionAnimation = <
   ComponentProps extends SurfacePropsBase<ComponentProps, Theme>,
   Theme
 >(
   input: OpenCloseSliderTransitionAnimationInput<ComponentProps>,
-) => {
-  const { complexComponentProps, isPusher, position, ref } = input;
-  const { isClosing, isOpen, isOpening } = complexComponentProps;
-  const animationConfig = { clamp: true, tension: 220, friction: 12 };
+): OpenCloseSliderTransitionAnimationOutput => {
+  const {
+    complexComponentProps,
+    closeAnimationConfig,
+    hasPusher,
+    openAnimationConfig,
+    position,
+    ref,
+  } = input;
+  const {
+    componentDidClose,
+    componentDidOpen,
+    isClosing,
+    isOpen,
+    isOpening,
+  } = complexComponentProps;
 
-  const [prevIsOpen, setPrevIsOpen] = useState(isOpen);
-  if (isOpen !== prevIsOpen) {
-    setPrevIsOpen(isOpen);
-  }
-
-  const [measurement, setMeasurement] = useState({
-    height: 0,
-    pageX: 0,
-    pageY: 0,
-    width: 0,
-    x: 0,
-    y: 0,
-  });
-  const { height, width } = measurement;
-
-  const setSize = useCallback(
-    (newMeasurement: ElementMeasurement) => {
-      // tslint:disable-next-line:no-console
-      console.log(
-        'useOpenCloseSliderTransitionAnimation().setSize() - newMeasurement: ',
-        newMeasurement,
-      );
-      if (!isOpen && !isOpening && !isClosing) {
-        // tslint:disable-next-line:no-console
-        console.log(
-          // tslint:disable-next-line:max-line-length
-          'useOpenCloseSliderTransitionAnimation().setSize() - RESET - newMeasurement: ',
-          newMeasurement,
-        );
-        if (width !== 0 && height !== 0) {
-          setMeasurement({
-            height: 0,
-            pageX: 0,
-            pageY: 0,
-            width: 0,
-            x: 0,
-            y: 0,
-          });
-        }
-        return;
-      }
-      if (newMeasurement.width !== width || newMeasurement.height !== height) {
-        setMeasurement(newMeasurement);
-      }
-    },
-    [isOpen, isOpening, isClosing, width, height],
+  // const [isAnimationReady, setIsAnimationReady] = useState(false);
+  const [measurement, setMeasurement] = useState<ElementMeasurement>(
+    emptyMeasurement,
   );
+  const { height, width } = measurement;
+  const isMeasured = height !== 0 || width !== 0;
 
-  // useMeasure({ onMeasure: setSize, ref, deps: [isOpen] });
+  useMeasure({ onMeasure: setMeasurement, ref, deps: [isOpen] });
+
+  /*
+   * This condition handles a point at which the component is measured
+   * but not animating, so it's either open or close.
+   * At this point we reset measurement so when we move to next state
+   * (open or close) the component will be measured again.
+   * That supports more flexibility, allowing components to change their sizes
+   * dynamically after open or close, while animation
+   * handles the new size when starting animating again.
+   */
+  if (isMeasured && !isOpening && !isClosing) setMeasurement(emptyMeasurement);
+  /**/
 
   const value =
     position === SliderPosition.Top || SliderPosition.Bottom ? height : width;
-  // if (!isOpen && !isOpening && !isClosing && prevIsOpen) value = 0;
 
-  const shouldHoldAnimation = value === 0 ? true : false;
-
-  if (!isOpen && !isOpening && !isClosing && prevIsOpen) {
+  const onOpenRest = useCallback(() => {
     // tslint:disable-next-line:no-console
     console.log(
       // tslint:disable-next-line:max-line-length
-      'useOpenCloseSliderTransitionAnimation() - WAS OPEN BUT CLOSED - RESET SIZE ',
+      `useOpenCloseSliderTransitionAnimation().onOpenRest() - isMeasured: ${isMeasured} | isOpen: ${isOpen} | isOpening: ${isOpening} | isClosing: ${isClosing} | p: ${position}`,
     );
-    setMeasurement({
-      height: 0,
-      pageX: 0,
-      pageY: 0,
-      width: 0,
-      x: 0,
-      y: 0,
-    });
-  }
-
-  useMeasure({ onMeasure: setSize, ref, deps: [isOpen] });
-
-  // tslint:disable-next-line:no-console
-  console.log(
-    // tslint:disable-next-line:max-line-length
-    `useOpenCloseSliderTransitionAnimation() - measurement.height: ${
-      measurement.height
-      // tslint:disable-next-line:max-line-length
-    } | shouldHoldAnimation: ${shouldHoldAnimation} | isOpen: ${isOpen} | isOpening: ${isOpening} | isClosing: ${isClosing} | prevIsOpen: ${prevIsOpen}`,
-  );
+    /*
+     * Due to the nature of hooks, we cannot conditionally call useSpring(),
+     * so we're always calling it and updating its animation values,
+     * so we have this check here to make sure we do not call
+     * componentDidOpen() if the component is not opening.
+     */
+    if (!isOpening || !isMeasured) return;
+    /**/
+    if (componentDidOpen !== undefined) componentDidOpen(complexComponentProps);
+  }, [complexComponentProps, isMeasured]);
 
   const onCloseRest = useCallback(() => {
     // tslint:disable-next-line:no-console
     console.log(
-      'useOpenCloseSliderTransitionAnimation().onCloseRest() RESET SIZE',
+      // tslint:disable-next-line:max-line-length
+      `useOpenCloseSliderTransitionAnimation().onCloseRest() - isMeasured: ${isMeasured} | isOpen: ${isOpen} | isOpening: ${isOpening} | isClosing: ${isClosing} | p: ${position}`,
     );
-    setSize({ height: 0, pageX: 0, pageY: 0, width: 0, x: 0, y: 0 });
-    // setWidth(0);
-    // setHeight(0);
-  }, []);
+    /*
+     * Due to the nature of hooks, we cannot conditionally call useSpring(),
+     * so we're always calling it and updating its animation values,
+     * so we have this check here to make sure we do not call
+     * componentDidClose() if the component is not closing.
+     */
+    if (!isClosing || !isMeasured) return;
+    /**/
+    if (componentDidClose !== undefined) {
+      componentDidClose(complexComponentProps);
+    }
+  }, [complexComponentProps, isMeasured]);
 
-  const closeAnimationProps: UseSpringProps = {
-    config: animationConfig,
-    // delay: shouldHoldAnimation ? 10000 : 0,
-    // from: getOpenSliderTransitionTo(position, value, isPusher),
-    onRest: onCloseRest,
-    // reset: true,
-    // to: getCloseSliderTransitionTo(position, value, isPusher),
-    ...(!shouldHoldAnimation && {
-      to: getCloseSliderTransitionTo(position, value, isPusher),
-    }),
-  };
+  /*
+  const getSliderAnimation = () =>
+    isOpen
+      ? {
+          config: openAnimationConfig || defaultAnimationConfig,
+          // from: getCloseSliderTransitionTo(position, value, hasPusher),
+          from: isMeasured
+            ? getCloseSliderTransitionTo(position, value, hasPusher)
+            : { translateY: -10000 },
+          onRest: onOpenRest,
+          to: getOpenSliderTransitionTo(position, value, hasPusher),
+        }
+      : {
+          config: closeAnimationConfig || defaultAnimationConfig,
+          onRest: onCloseRest,
+          to: getCloseSliderTransitionTo(position, value, hasPusher),
+        };
+        */
 
-  const onOpenRest = useCallback(() => {
+  const getSliderAnimation = () => {
     // tslint:disable-next-line:no-console
     console.log(
-      'useOpenCloseSliderTransitionAnimation().onOpenRest() RESET SIZE',
+      // tslint:disable-next-line:max-line-length
+      `useOpenCloseSliderTransitionAnimation().getSliderAnimation() - isMeasured: ${isMeasured} | isOpen: ${isOpen} | isOpening: ${isOpening} | isClosing: ${isClosing} | p: ${position}`,
     );
-    setSize({ height: 0, pageX: 0, pageY: 0, width: 0, x: 0, y: 0 });
-    // setWidth(0);
-    // setHeight(0);
-  }, []);
+    if (isOpen && !isOpening && !isMeasured) {
+      /*
+      return {
+        config: openAnimationConfig || defaultAnimationConfig,
+        from: getOpenSliderTransitionTo(position, 49, hasPusher),
+        // onRest: onOpenRest,
+        // ...(isMeasured && { onRest: onOpenRest }),
+        to: getOpenSliderTransitionTo(position, 49, hasPusher),
+      };
+      */
+      return {};
+    }
 
-  const openAnimationProps: UseSpringProps = {
-    config: animationConfig,
-    // delay: shouldHoldAnimation ? 10000 : 0,
-    // from: getCloseSliderTransitionTo(position, value, isPusher),
-    onRest: onOpenRest,
-    // reset: true,
-    // to: getOpenSliderTransitionTo(position, value, isPusher),
-    ...(!shouldHoldAnimation && {
-      from: getCloseSliderTransitionTo(position, value, isPusher),
-      to: getOpenSliderTransitionTo(position, value, isPusher),
-    }),
+    if (isOpen && isOpening && !isMeasured) {
+      return {
+        config: openAnimationConfig || defaultAnimationConfig,
+        from: { translateY: -1000 },
+        // onRest: onOpenRest,
+        // ...(isMeasured && { onRest: onOpenRest }),
+        to: { translateY: -1000 },
+      };
+    }
+
+    if (isOpen) {
+      console.log(
+        `useOpenCloseSliderTransitionAnimation().getSliderAnimation() - isOpen - from: `,
+        getCloseSliderTransitionTo(position, value, hasPusher),
+      );
+      console.log(
+        'useOpenCloseSliderTransitionAnimation().getSliderAnimation() - isOpen - to: ',
+        getOpenSliderTransitionTo(position, value, hasPusher),
+      );
+      return {
+        config: openAnimationConfig || defaultAnimationConfig,
+        from: getCloseSliderTransitionTo(position, value, hasPusher),
+        onRest: onOpenRest,
+        // ...(isMeasured && { onRest: onOpenRest }),
+        to: getOpenSliderTransitionTo(position, value, hasPusher),
+      };
+    }
+    console.log(
+      'useOpenCloseSliderTransitionAnimation().getSliderAnimation() - NOT isOpen - to: ',
+      getCloseSliderTransitionTo(position, value, hasPusher),
+    );
+    return {
+      config: closeAnimationConfig || defaultAnimationConfig,
+      onRest: onCloseRest,
+      to: getCloseSliderTransitionTo(position, value, hasPusher),
+    };
   };
 
-  const animation = useOpenCloseTransitionAnimation({
-    closeAnimationProps,
-    complexComponentProps,
-    openAnimationProps,
-  });
+  /**
+   * We need to start with default values, otherwise the first state transition
+   * (e.g. close -> open) is not animated.
+   */
+  /*
+  const [animationProps, setAnimationProps] = useState<UseSpringProps>(() =>
+    getSliderAnimation(),
+  );
+  */
+  /**/
 
-  if (shouldHoldAnimation || (!isOpen && !isOpening && !isClosing)) {
+  /**
+   * We only want to update animation values
+   * when isMeasured changes and is true.
+   */
+  /*
+  useEffect(() => {
+    if (!isMeasured) return;
+    setAnimationProps(getSliderAnimation());
+    if (!isAnimationReady) setIsAnimationReady(true);
+  }, [isMeasured]);
+  */
+  const animationProps = getSliderAnimation();
+  /**/
+
+  const springAnimationProps = useSpring(animationProps);
+
+  console.log(
+    'useOpenCloseSliderTransitionAnimation() - springAnimationProps: ',
+    springAnimationProps,
+  );
+
+  /**
+   * If component is close and not opening nor closing,
+   * or it's open and opening but not measured yet,
+   * we return close style, which is a style that keeps
+   * the open style of the component to allow proper measurement,
+   * but hides it from screen so users can't see it
+   * while waiting for measurement.
+   */
+  if (
+    (!isOpen && !isOpening && !isClosing) ||
+    (!isMeasured && isOpen && isOpening)
+  ) {
     // tslint:disable-next-line:no-console
-    console.log('useOpenCloseSliderTransitionAnimation() RETURN CLOSED STYLES');
+    console.log(
+      // tslint:disable-next-line:max-line-length
+      `useOpenCloseSliderTransitionAnimation() - RETURN close style - isMeasured: ${isMeasured} | isOpen: ${isOpen} | isOpening: ${isOpening} | isClosing: ${isClosing} | p: ${position}`,
+    );
+    // debugger;
+    return hasPusher ? closeSliderPusherStyle : closeSliderStyle;
+  }
+  /**/
+
+  // tslint:disable-next-line:no-console
+  console.log(
+    // tslint:disable-next-line:max-line-length
+    `useOpenCloseSliderTransitionAnimation() - RETURN motion style - isMeasured: ${isMeasured} | isOpen: ${isOpen} | isOpening: ${isOpening} | isClosing: ${isClosing} | p: ${position}`,
+  );
+
+  // debugger;
+
+  /**
+   * Component is animating (opening or closing)
+   * and we have measurement, so let's return animation style.
+   */
+  if (hasPusher) {
+    const splitProps = splitAnimationProps(springAnimationProps, position);
     return {
-      height: '100%',
-      position: 'absolute',
-      transform: [{ translateY: -10000 }],
+      pusher: moveTransformPropsToTransformArray(splitProps.pusher),
+      slider: moveTransformPropsToTransformArray(splitProps.slider),
     };
   }
 
-  return animation;
+  return { slider: moveTransformPropsToTransformArray(springAnimationProps) };
+  /**/
 };
-
-/*
-export const useOpenCloseSliderTransitionAnimation = <
-  ComponentProps extends SurfacePropsBase<ComponentProps, Theme>,
-  Theme
->(
-  input: OpenCloseSliderTransitionAnimationInput<ComponentProps>,
-) => {
-  const { complexComponentProps, isPusher, position } = input;
-  const { enableOnLayout, isOpen, layoutRectangle } = complexComponentProps;
-  const animationConfig = { clamp: true, tension: 220, friction: 12 };
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
-
-  if (enableOnLayout) {
-    if (
-      isOpen &&
-      layoutRectangle !== undefined &&
-      layoutRectangle.width !== 0 &&
-      layoutRectangle.height !== 0 &&
-      width === 0 &&
-      height === 0
-    ) {
-      console.log('useOpenCloseSliderTransitionAnimation() - set size');
-      if (layoutRectangle.width !== width) setWidth(layoutRectangle.width);
-      if (layoutRectangle.height !== height) setHeight(layoutRectangle.height);
-    }
-  } else {
-    if (width === 0) {
-      setWidth(complexComponentProps.dimensions.window.width / 2);
-    }
-    if (height === 0) {
-      setHeight(complexComponentProps.dimensions.window.height / 2);
-    }
-  }
-
-  const shouldHoldAnimation = width === 0 && height === 0 ? true : false;
-
-  const value =
-    position === SliderPosition.Top || SliderPosition.Bottom ? height : width;
-
-  const closeAnimationProps: UseSpringProps = {
-    config: animationConfig,
-    // delay: shouldHoldAnimation ? 10000 : 0,
-    to: getCloseSliderTransitionTo(position, value, isPusher),
-  };
-
-  const onOpenRest = useCallback(() => {
-    console.log('useOpenCloseSliderTransitionAnimation().onOpenRest()');
-    setWidth(0);
-    setHeight(0);
-  }, []);
-
-  const openAnimationProps: UseSpringProps = {
-    config: animationConfig,
-    // delay: shouldHoldAnimation ? 10000 : 0,
-    from: getCloseSliderTransitionTo(position, value, isPusher),
-    onRest: onOpenRest,
-    to: getOpenSliderTransitionTo(position, value, isPusher),
-  };
-
-  console.log(
-    `useOpenCloseSliderTransitionAnimation() - position: ${position} |
-    value: ${value} | shouldHoldAnimation: ${shouldHoldAnimation}`,
-  );
-  console.log(
-    'useOpenCloseSliderTransitionAnimation() - layoutRectangle: ',
-    layoutRectangle,
-  );
-
-  const animation = useOpenCloseTransitionAnimation({
-    closeAnimationProps,
-    complexComponentProps,
-    openAnimationProps,
-  });
-
-  if (shouldHoldAnimation) {
-    return {
-      height: '100%',
-      position: 'absolute',
-      transform: [{ translateY: -10000 }],
-    };
-  }
-
-  return animation;
-};
-*/

@@ -9,20 +9,27 @@ import { PrimitiveComponentProps, SurfacePropsBase } from '@reflex-ui/core';
 import React from 'react';
 
 // tslint:disable-next-line:max-line-length
+import { AnimatedOpenCloseSliderTransitionConfig } from './AnimatedOpenCloseSliderTransitionConfig';
+// tslint:disable-next-line:max-line-length
 import { AnimatedOpenCloseSliderTransitionSurface } from './AnimatedOpenCloseSliderTransitionSurface';
-import { SliderPosition } from './SliderPosition';
 
 export const createAnimatedOpenCloseSliderTransitionSurface = <
   Props extends SurfacePropsBase<Props, Theme>,
   Theme
->(
-  position: SliderPosition,
-) =>
-  function AnimatedOpenCloseTransitionSurfaceFactory(
+>({
+  closeAnimationConfig,
+  hasPusher = false,
+  openAnimationConfig,
+  position,
+}: AnimatedOpenCloseSliderTransitionConfig) =>
+  function AnimatedOpenCloseTransitionPusherSurfaceFactory(
     props: PrimitiveComponentProps<Props>,
   ) {
     return (
       <AnimatedOpenCloseSliderTransitionSurface
+        closeAnimationConfig={closeAnimationConfig}
+        hasPusher={hasPusher}
+        openAnimationConfig={openAnimationConfig}
         position={position}
         {...props}
       />

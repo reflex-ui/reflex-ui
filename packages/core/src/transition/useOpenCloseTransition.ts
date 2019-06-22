@@ -57,7 +57,7 @@ export const useOpenCloseTransition = <
 
   const [isOpening, setIsOpening] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
-  const [prevIsOpen, setPrevIsOpen] = useState<boolean | undefined>(false);
+  const [prevIsOpen, setPrevIsOpen] = useState(false);
 
   const componentWillOpen = useCallback(
     (componentProps: Props) => {
@@ -71,6 +71,10 @@ export const useOpenCloseTransition = <
 
   const componentDidOpen = useCallback(
     (componentProps: Props) => {
+      console.log(
+        'useOpenCloseTransition().componentDidOpen() - has props.componentDidOpen: ',
+        props.componentDidOpen !== undefined,
+      );
       setIsOpening(false);
       if (props.componentDidOpen !== undefined) {
         props.componentDidOpen(componentProps);
@@ -91,6 +95,10 @@ export const useOpenCloseTransition = <
 
   const componentDidClose = useCallback(
     (componentProps: Props) => {
+      console.log(
+        'useOpenCloseTransition().componentDidClose() - has props.componentDidClose: ',
+        props.componentDidClose !== undefined,
+      );
       setIsClosing(false);
       if (props.componentDidClose !== undefined) {
         props.componentDidClose(componentProps);
@@ -123,7 +131,7 @@ export const useOpenCloseTransition = <
       if (!props.isOpenCloseTransitionAnimated) componentDidClose(props);
     }
 
-    if (props.isOpen !== prevIsOpen) {
+    if (props.isOpen !== undefined && props.isOpen !== prevIsOpen) {
       setPrevIsOpen(props.isOpen);
     }
   }, [

@@ -10,7 +10,11 @@ import { View } from 'react-native';
 
 import { MissingComponentThemeError } from '../../../errors';
 import { useOnLayout } from '../../../responsiveness/useOnLayout';
-import { useOpenCloseTransition } from '../../../transition';
+import {
+  extractOpenCloseTransitionProps,
+  filterOutOpenCloseTransitionProps,
+  // useOpenCloseTransition,
+} from '../../../transition';
 import { useComponentsTheme } from '../../ComponentsTheme';
 import { Modal } from '../../modal/Modal';
 import { ModalPropsOptional } from '../../modal/ModalProps';
@@ -26,12 +30,19 @@ import { useDefaultModalSheetProps } from './useDefaultModalSheetProps';
 export const extractModalPropsFromModalSheetProps = (
   props: ModalSheetProps,
 ): ModalPropsOptional => {
-  const { displayBackdrop, isOpen, onBackdropPress } = props;
+  /*
+  const {
+    displayBackdrop,
+    onBackdropPress,
+  } = filterOutOpenCloseTransitionProps(props);
+  */
+  const { displayBackdrop, onBackdropPress } = props;
 
   let modalProps = {
     displayBackdrop,
-    isOpen,
+    // isOpen: props.isOpen,
     onBackdropPress,
+    ...extractOpenCloseTransitionProps(props),
   } as ModalPropsOptional;
   const modalTheme = props.theme.modal && props.theme.modal(props);
 
@@ -41,13 +52,13 @@ export const extractModalPropsFromModalSheetProps = (
       getPatchTheme: () => modalTheme,
     };
   }
-
   return modalProps;
 };
 
 export const extractSurfacePropsFromModalSheetProps = (
   props: ModalSheetProps,
 ): SurfacePropsOptional => {
+  /*
   const {
     children,
     displayBackdrop,
@@ -57,6 +68,16 @@ export const extractSurfacePropsFromModalSheetProps = (
     variant,
     ...otherProps
   } = props;
+  */
+  const {
+    children,
+    displayBackdrop,
+    getPatchTheme,
+    onBackdropPress,
+    theme,
+    variant,
+    ...otherProps
+  } = filterOutOpenCloseTransitionProps(props);
 
   let surfaceProps = otherProps as SurfacePropsOptional;
   const surfaceTheme = props.theme.surface && props.theme.surface(props);
@@ -103,7 +124,7 @@ let ModalSheet: React.ComponentType<ModalSheetPropsOptional> = forwardRef(
      * over how components should behave.
      */
     newProps = processComponentProps(newProps);
-    newProps = { ...newProps, ...useOpenCloseTransition(newProps) };
+    // newProps = { ...newProps, ...useOpenCloseTransition(newProps) };
     /**/
 
     return (

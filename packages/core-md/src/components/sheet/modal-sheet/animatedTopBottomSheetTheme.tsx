@@ -13,7 +13,6 @@ import {
 } from '@reflex-ui/core';
 import { ComponentType } from 'react';
 
-// tslint:disable-next-line:max-line-length
 import {
   createAnimatedOpenCloseSliderTransitionSurface,
   SliderPosition,
@@ -65,9 +64,9 @@ const createTopComponent = (): ComponentType<
   PrimitiveComponentProps<SurfaceProps>
 > => {
   if (currentTopComponent === undefined) {
-    currentTopComponent = createAnimatedOpenCloseSliderTransitionSurface(
-      SliderPosition.Top,
-    );
+    currentTopComponent = createAnimatedOpenCloseSliderTransitionSurface({
+      position: SliderPosition.Top,
+    });
   }
   return currentTopComponent;
 };
@@ -117,9 +116,9 @@ const createBottomComponent = (): ComponentType<
   PrimitiveComponentProps<SurfaceProps>
 > => {
   if (currentBottomComponent === undefined) {
-    currentBottomComponent = createAnimatedOpenCloseSliderTransitionSurface(
-      SliderPosition.Bottom,
-    );
+    currentBottomComponent = createAnimatedOpenCloseSliderTransitionSurface({
+      position: SliderPosition.Bottom,
+    });
   }
   return currentBottomComponent;
 };

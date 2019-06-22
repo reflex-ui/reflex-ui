@@ -5,9 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './AnimatedOpenCloseSliderTransitionPusherSurface';
+export * from './AnimatedOpenCloseSliderTransitionConfig';
 export * from './AnimatedOpenCloseSliderTransitionSurface';
-export * from './createAnimatedOpenCloseSliderTransitionPusherSurface';
 export * from './createAnimatedOpenCloseSliderTransitionSurface';
 export * from './defaultAnimationConfig';
 export * from './OpenCloseAnimationConfig';

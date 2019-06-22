@@ -5,15 +5,24 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { forwardRef, Ref, useCallback } from 'react';
+import React, {
+  cloneElement,
+  forwardRef,
+  ReactElement,
+  Ref,
+  useCallback,
+  useMemo,
+} from 'react';
 import { View } from 'react-native';
 
 import { MissingComponentThemeError } from '../../errors';
 import { useOnLayout } from '../../responsiveness/useOnLayout';
 import {
+  extractOpenCloseTransitionProps,
   filterOutOpenCloseTransitionProps,
   useOpenCloseTransition,
 } from '../../transition';
+// import { cloneElement } from '../../utils/cloneElement';
 import { Backdrop } from '../backdrop/Backdrop';
 import { BackdropPropsOptional } from '../backdrop/BackdropProps';
 import { useComponentsTheme } from '../ComponentsTheme';
@@ -53,6 +62,109 @@ export const extractBackdropPropsFromModalProps = (
   return backdropProps;
 };
 
+const useCloneChildren = (props: ModalProps) => {
+  const { children } = props;
+
+  /*
+  let childrenComponentDidClose: (childrenProps: unknown) => void | undefined;
+  let childrenComponentDidOpen: (childrenProps: unknown) => void | undefined;
+
+  if (
+    children !== undefined ||
+    children !== null ||
+    typeof children !== 'string' ||
+    typeof children !== 'number' ||
+    typeof children !== 'boolean' ||
+    typeof children !== 'function'
+  ) {
+    childrenComponentDidClose = (children as ReactElement).props
+      .componentDidClose;
+    childrenComponentDidOpen = (children as ReactElement).props
+      .componentDidOpen;
+  }
+
+
+  const componentDidOpen = useCallback(
+    (childrenProps: unknown) => {
+      console.log(
+        'Modal().useCloneChildren().componentDidOpen() - childrenProps: ',
+        childrenProps,
+      );
+      if (childrenComponentDidOpen !== undefined) {
+        childrenComponentDidOpen(childrenProps);
+      }
+      if (props.componentDidOpen !== undefined) {
+        props.componentDidOpen(props);
+      }
+    },
+    // It's initialized above, and if we try to assign to undefined we get:
+    // Unnecessary initialization to 'undefined'.
+    // tslint(no-unnecessary-initializer)
+    // @ts-ignore Variable 'childrenComponentDidOpen' is used
+    // before being assigned.ts(2454)
+    [props, childrenComponentDidOpen],
+  );
+
+  const componentDidClose = useCallback(
+    (childrenProps: unknown) => {
+      console.log(
+        'Modal().useCloneChildren().componentDidClose() - childrenProps: ',
+        childrenProps,
+      );
+      if (childrenComponentDidClose !== undefined) {
+        childrenComponentDidClose(childrenProps);
+      }
+      if (props.componentDidClose !== undefined) {
+        props.componentDidClose(props);
+      }
+    },
+    // It's initialized above, and if we try to assign to undefined we get:
+    // Unnecessary initialization to 'undefined'.
+    // tslint(no-unnecessary-initializer)
+    // @ts-ignore Variable 'childrenComponentDidClose' is used
+    // before being assigned.ts(2454)
+    [props, childrenComponentDidClose],
+  );
+  */
+
+  const componentDidOpen = useCallback(() => {
+    console.log('Modal().useCloneChildren().componentDidOpen()');
+    if (props.componentDidOpen !== undefined) {
+      props.componentDidOpen(props);
+    }
+  }, [props]);
+
+  const componentDidClose = useCallback(() => {
+    console.log('Modal().useCloneChildren().componentDidClose()');
+    if (props.componentDidClose !== undefined) {
+      props.componentDidClose(props);
+    }
+  }, [props]);
+
+  const openCloseProps = {
+    ...extractOpenCloseTransitionProps(props),
+    componentDidClose,
+    componentDidOpen,
+  };
+
+  return useMemo(() => {
+    if (
+      children === undefined ||
+      children === null ||
+      typeof children === 'string' ||
+      typeof children === 'number' ||
+      typeof children === 'boolean' ||
+      typeof children === 'function'
+    ) {
+      return children;
+    }
+
+    return cloneElement(children as ReactElement, {
+      ...openCloseProps,
+    });
+  }, [props]);
+};
+
 const useTheme = (theme?: ModalTheme): ModalTheme => {
   const { componentsTheme } = useComponentsTheme();
 
@@ -79,6 +191,7 @@ let Modal: React.ComponentType<ModalPropsOptional> = forwardRef(
     newProps = { ...newProps, ...useOpenCloseTransition(newProps) };
     /**/
 
+    /*
     const componentDidOpen = useCallback(() => {
       if (newProps.componentDidOpen !== undefined) {
         newProps.componentDidOpen(newProps);
@@ -91,6 +204,10 @@ let Modal: React.ComponentType<ModalPropsOptional> = forwardRef(
       }
     }, [newProps]);
 
+    newProps = { ...newProps, componentDidClose, componentDidOpen };
+    */
+
+    const children = useCloneChildren(newProps);
     if (!newProps.isOpen && !newProps.isClosing) return null;
 
     return (
@@ -101,14 +218,14 @@ let Modal: React.ComponentType<ModalPropsOptional> = forwardRef(
             isOpenCloseTransitionAnimated={
               newProps.isOpenCloseTransitionAnimated
             }
-            componentDidClose={componentDidClose}
-            componentDidOpen={componentDidOpen}
+            // componentDidClose={componentDidClose}
+            // componentDidOpen={componentDidOpen}
             onPress={newProps.onBackdropPress}
             ref={ref}
             {...extractBackdropPropsFromModalProps(newProps)}
           />
         )}
-        {newProps.children}
+        {children}
       </ModalRoot>
     );
   },
