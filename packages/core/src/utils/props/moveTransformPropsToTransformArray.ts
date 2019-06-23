@@ -8,7 +8,7 @@
 export const moveTransformPropsToTransformArray = <
   PropValue extends {}
 >(props: {
-  [index: string]: PropValue;
+  [index: string]: PropValue | undefined;
 }): { [index: string]: PropValue | [{ [index: string]: PropValue }] } | {} => {
   if (props === undefined || props === null) return {};
 

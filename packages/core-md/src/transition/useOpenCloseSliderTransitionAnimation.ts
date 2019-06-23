@@ -84,15 +84,16 @@ export const splitAnimationProps = (
 
   return {
     pusher: {
-      height: animationProps.width,
+      width: animationProps.width,
     },
     slider: {
-      translateY: animationProps.translateX,
+      translateX: animationProps.translateX,
     },
   };
 };
 
 const defaultAnimationConfig = { clamp: true, tension: 220, friction: 12 };
+/*
 const closeSliderPusherStyle = {
   pusher: {
     height: '100%',
@@ -101,6 +102,7 @@ const closeSliderPusherStyle = {
   },
   slider: {},
 };
+
 const closeSliderStyle = {
   slider: {
     position: 'absolute',
@@ -108,6 +110,54 @@ const closeSliderStyle = {
     top: -10000,
   },
 };
+*/
+
+const getCloseSliderPusherStyle = (
+  position: SliderPosition,
+): {
+  pusher: SpringViewStyle;
+  slider: SpringViewStyle;
+} =>
+  position === SliderPosition.Top || position === SliderPosition.Bottom
+    ? {
+        pusher: {
+          height: '100%',
+          position: 'absolute',
+          transform: [{ translateY: -10000 }],
+        },
+        slider: {},
+      }
+    : {
+        pusher: {
+          position: 'absolute',
+          transform: [{ translateX: -10000 }],
+          width: '100%',
+        },
+        slider: {},
+      };
+
+const getCloseSliderStyle = (
+  position: SliderPosition,
+): {
+  pusher: SpringViewStyle;
+  slider: SpringViewStyle;
+} =>
+  position === SliderPosition.Top || position === SliderPosition.Bottom
+    ? {
+        pusher: {},
+        slider: {
+          position: 'absolute',
+          top: -10000,
+        },
+      }
+    : {
+        pusher: {},
+        slider: {
+          left: -10000,
+          position: 'absolute',
+        },
+      };
+
 const emptyMeasurement = {
   height: 0,
   pageX: 0,
@@ -125,6 +175,7 @@ export interface SpringViewStyle {
     | SpringValue
     | number
     | string
+    | undefined
     | {}
     | [{ [index: string]: SpringValue | number | string }];
 }
@@ -163,6 +214,10 @@ export const useOpenCloseSliderTransitionAnimation = <
   );
   const { height, width } = measurement;
   const isMeasured = height !== 0 || width !== 0;
+  const [closeSliderPusherStyle] = useState(() =>
+    getCloseSliderPusherStyle(position),
+  );
+  const [closeSliderStyle] = useState(() => getCloseSliderStyle(position));
 
   useMeasure({ onMeasure: setMeasurement, ref, deps: [isOpen] });
 
@@ -179,13 +234,15 @@ export const useOpenCloseSliderTransitionAnimation = <
   /**/
 
   const value =
-    position === SliderPosition.Top || SliderPosition.Bottom ? height : width;
+    position === SliderPosition.Top || position === SliderPosition.Bottom
+      ? height
+      : width;
 
   const onOpenRest = useCallback(() => {
     // tslint:disable-next-line:no-console
     console.log(
       // tslint:disable-next-line:max-line-length
-      `useOpenCloseSliderTransitionAnimation().onOpenRest() - isMeasured: ${isMeasured} | isOpen: ${isOpen} | isOpening: ${isOpening} | isClosing: ${isClosing} | p: ${position}`,
+      `useOpenCloseSliderTransitionAnimation().onOpenRest() - isMeasured: ${isMeasured} | value: ${value} | isOpen: ${isOpen} | isOpening: ${isOpening} | isClosing: ${isClosing} | p: ${position}`,
     );
     /*
      * Due to the nature of hooks, we cannot conditionally call useSpring(),
@@ -202,7 +259,7 @@ export const useOpenCloseSliderTransitionAnimation = <
     // tslint:disable-next-line:no-console
     console.log(
       // tslint:disable-next-line:max-line-length
-      `useOpenCloseSliderTransitionAnimation().onCloseRest() - isMeasured: ${isMeasured} | isOpen: ${isOpen} | isOpening: ${isOpening} | isClosing: ${isClosing} | p: ${position}`,
+      `useOpenCloseSliderTransitionAnimation().onCloseRest() - isMeasured: ${isMeasured} | value: ${value} | isOpen: ${isOpen} | isOpening: ${isOpening} | isClosing: ${isClosing} | p: ${position}`,
     );
     /*
      * Due to the nature of hooks, we cannot conditionally call useSpring(),
@@ -240,28 +297,30 @@ export const useOpenCloseSliderTransitionAnimation = <
     // tslint:disable-next-line:no-console
     console.log(
       // tslint:disable-next-line:max-line-length
-      `useOpenCloseSliderTransitionAnimation().getSliderAnimation() - isMeasured: ${isMeasured} | isOpen: ${isOpen} | isOpening: ${isOpening} | isClosing: ${isClosing} | p: ${position}`,
+      `useOpenCloseSliderTransitionAnimation().getSliderAnimation() - isMeasured: ${isMeasured} | value: ${value} | isOpen: ${isOpen} | isOpening: ${isOpening} | isClosing: ${isClosing} | p: ${position}`,
     );
-    if (isOpen && !isOpening && !isMeasured) {
-      /*
-      return {
-        config: openAnimationConfig || defaultAnimationConfig,
-        from: getOpenSliderTransitionTo(position, 49, hasPusher),
-        // onRest: onOpenRest,
-        // ...(isMeasured && { onRest: onOpenRest }),
-        to: getOpenSliderTransitionTo(position, 49, hasPusher),
-      };
-      */
-      return {};
-    }
+    console.log(
+      'useOpenCloseSliderTransitionAnimation().getSliderAnimation() - measurement: ',
+      measurement,
+    );
+    /**
+     * This condition handles a point at which the component is open and
+     * already animated, but we have reset the measurement after open.
+     */
+    if (isOpen && !isOpening && !isMeasured) return {};
+    /**/
 
     if (isOpen && isOpening && !isMeasured) {
+      const hiddenProps =
+        position === SliderPosition.Top || position === SliderPosition.Bottom
+          ? { translateY: -1000 }
+          : { translateX: -1000 };
       return {
         config: openAnimationConfig || defaultAnimationConfig,
-        from: { translateY: -1000 },
+        from: hiddenProps,
         // onRest: onOpenRest,
         // ...(isMeasured && { onRest: onOpenRest }),
-        to: { translateY: -1000 },
+        to: hiddenProps,
       };
     }
 
@@ -340,7 +399,7 @@ export const useOpenCloseSliderTransitionAnimation = <
     // tslint:disable-next-line:no-console
     console.log(
       // tslint:disable-next-line:max-line-length
-      `useOpenCloseSliderTransitionAnimation() - RETURN close style - isMeasured: ${isMeasured} | isOpen: ${isOpen} | isOpening: ${isOpening} | isClosing: ${isClosing} | p: ${position}`,
+      `useOpenCloseSliderTransitionAnimation() - RETURN close style - isMeasured: ${isMeasured} | value: ${value} | isOpen: ${isOpen} | isOpening: ${isOpening} | isClosing: ${isClosing} | p: ${position}`,
     );
     // debugger;
     return hasPusher ? closeSliderPusherStyle : closeSliderStyle;
@@ -350,7 +409,7 @@ export const useOpenCloseSliderTransitionAnimation = <
   // tslint:disable-next-line:no-console
   console.log(
     // tslint:disable-next-line:max-line-length
-    `useOpenCloseSliderTransitionAnimation() - RETURN motion style - isMeasured: ${isMeasured} | isOpen: ${isOpen} | isOpening: ${isOpening} | isClosing: ${isClosing} | p: ${position}`,
+    `useOpenCloseSliderTransitionAnimation() - RETURN motion style - isMeasured: ${isMeasured} | value: ${value} | isOpen: ${isOpen} | isOpening: ${isOpening} | isClosing: ${isClosing} | p: ${position}`,
   );
 
   // debugger;

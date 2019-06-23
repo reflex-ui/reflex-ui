@@ -9,13 +9,19 @@ import {
   CoplanarSheetTheme,
   PrimitiveComponentProps,
   SurfaceProps,
-  SurfaceTheme,
+  // SurfaceTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import { ComponentType } from 'react';
-import { StyleSheet } from 'react-native';
+// import { StyleSheet } from 'react-native';
 
+/*
 import { createAnimatedOpenCloseTransitionSurfacePusher } from '../../surface';
+*/
+import {
+  createAnimatedOpenCloseSliderTransitionSurface,
+  SliderPosition,
+} from '../../../transition';
 
 import {
   getCoplanarEndSheetSurfaceStyle,
@@ -27,52 +33,22 @@ import {
  * Material Design's cubic-bezier:
  * https://material.io/design/motion/speed.html#easing
  */
-const animationConfig = { clamp: true, tension: 220, friction: 12 };
+// const animationConfig = { clamp: true, tension: 220, friction: 12 };
 /**/
 
 /*
  * Basic memoization implementation for CoplanarSheetVariant.Start
  */
-let currentStartMaxWidth: number | string;
 let currentStartComponent: ComponentType<PrimitiveComponentProps<SurfaceProps>>;
-const createStartComponent = (maxWidth: number | string = 0) => {
-  if (
-    maxWidth === currentStartMaxWidth &&
-    currentStartComponent !== undefined
-  ) {
-    return currentStartComponent;
+const createStartComponent = (): ComponentType<
+  PrimitiveComponentProps<SurfaceProps>
+> => {
+  if (currentStartComponent === undefined) {
+    currentStartComponent = createAnimatedOpenCloseSliderTransitionSurface({
+      hasPusher: true,
+      position: SliderPosition.Start,
+    });
   }
-
-  const closePusherAnimationProps = {
-    config: animationConfig,
-    to: { maxWidth: 0, width: 0 },
-  };
-
-  const openPusherAnimationProps = {
-    config: animationConfig,
-    to: { maxWidth, width: maxWidth },
-  };
-
-  const closeSurfaceAnimationProps = {
-    config: animationConfig,
-    to: { translateX: -maxWidth },
-  };
-
-  const openSurfaceAnimationProps = {
-    config: animationConfig,
-    to: { translateX: 0 },
-  };
-
-  currentStartMaxWidth = maxWidth;
-  currentStartComponent = createAnimatedOpenCloseTransitionSurfacePusher<
-    SurfaceProps,
-    SurfaceTheme
-  >({
-    closePusherAnimationProps,
-    closeSurfaceAnimationProps,
-    openPusherAnimationProps,
-    openSurfaceAnimationProps,
-  });
   return currentStartComponent;
 };
 /**/
@@ -80,43 +56,16 @@ const createStartComponent = (maxWidth: number | string = 0) => {
 /*
  * Basic memoization implementation for CoplanarSheetVariant.End
  */
-let currentEndMaxWidth: number | string;
 let currentEndComponent: ComponentType<PrimitiveComponentProps<SurfaceProps>>;
-const createEndComponent = (maxWidth: number | string = 0) => {
-  if (maxWidth === currentEndMaxWidth && currentEndComponent !== undefined) {
-    return currentEndComponent;
+const createEndComponent = (): ComponentType<
+  PrimitiveComponentProps<SurfaceProps>
+> => {
+  if (currentEndComponent === undefined) {
+    currentEndComponent = createAnimatedOpenCloseSliderTransitionSurface({
+      hasPusher: true,
+      position: SliderPosition.End,
+    });
   }
-
-  const closePusherAnimationProps = {
-    config: animationConfig,
-    to: { maxWidth: 0, width: 0 },
-  };
-
-  const openPusherAnimationProps = {
-    config: animationConfig,
-    to: { maxWidth, width: maxWidth },
-  };
-
-  const closeSurfaceAnimationProps = {
-    config: animationConfig,
-    to: { translateX: maxWidth },
-  };
-
-  const openSurfaceAnimationProps = {
-    config: animationConfig,
-    to: { translateX: 0 },
-  };
-
-  currentEndMaxWidth = maxWidth;
-  currentEndComponent = createAnimatedOpenCloseTransitionSurfacePusher<
-    SurfaceProps,
-    SurfaceTheme
-  >({
-    closePusherAnimationProps,
-    closeSurfaceAnimationProps,
-    openPusherAnimationProps,
-    openSurfaceAnimationProps,
-  });
   return currentEndComponent;
 };
 /**/
@@ -139,8 +88,11 @@ export const animatedCoplanarStartSheetTheme: CoplanarSheetTheme = {
   getProps: () => ({ isOpenCloseTransitionAnimated: true }),
   surface: () => ({
     view: {
+      /*
       getComponent: props =>
         createStartComponent(StyleSheet.flatten(props.style).maxWidth),
+        */
+      getComponent: () => createStartComponent(),
       getStyle: getAnimatedCoplanarStartSheetSurfaceStyle,
     },
   }),
@@ -150,8 +102,11 @@ export const animatedCoplanarEndSheetTheme: CoplanarSheetTheme = {
   getProps: () => ({ isOpenCloseTransitionAnimated: true }),
   surface: () => ({
     view: {
+      /*
       getComponent: props =>
         createEndComponent(StyleSheet.flatten(props.style).maxWidth),
+        */
+      getComponent: () => createEndComponent(),
       getStyle: getAnimatedCoplanarEndSheetSurfaceStyle,
     },
   }),
