@@ -311,14 +311,29 @@ export const useOpenCloseSliderTransitionAnimation = <
      * This condition handles a point at which the component is open and
      * already animated, but we have reset the measurement after open.
      */
-    if (isOpen && !isOpening && !isMeasured) return {};
+    if (isOpen && !isOpening && !isMeasured) {
+      console.log(
+        `useOpenCloseSliderTransitionAnimation().getSliderAnimation() - isOpen - RETURN EMPTY STYLE `,
+      );
+      return {};
+    }
     /**/
 
-    if (isOpen && isOpening && !isMeasured) {
+    // if (isOpen && isOpening && !isMeasured) {
+    if (((isOpen && isOpening) || (!isOpen && !isClosing)) && !isMeasured) {
+      console.log(
+        `useOpenCloseSliderTransitionAnimation().getSliderAnimation() - RETURN HIDDEN STYLE `,
+      );
       const hiddenProps =
         position === SliderPosition.Top || position === SliderPosition.Bottom
-          ? { translateY: position === SliderPosition.Top ? -3000 : 3000 }
-          : { translateX: position === SliderPosition.Start ? -3000 : 3000 };
+          ? {
+              height: 0,
+              translateY: position === SliderPosition.Top ? -3000 : 3000,
+            }
+          : {
+              translateX: position === SliderPosition.Start ? -3000 : 3000,
+              width: 0,
+            };
       return {
         config: openAnimationConfig || defaultAnimationConfig,
         from: hiddenProps,
@@ -418,18 +433,19 @@ export const useOpenCloseSliderTransitionAnimation = <
 
   // debugger;
 
+  const splitProps = splitAnimationProps(springAnimationProps, position);
+
   /**
    * Component is animating (opening or closing)
    * and we have measurement, so let's return animation style.
    */
   if (hasPusher) {
-    const splitProps = splitAnimationProps(springAnimationProps, position);
     return {
       pusher: moveTransformPropsToTransformArray(splitProps.pusher),
       slider: moveTransformPropsToTransformArray(splitProps.slider),
     };
   }
 
-  return { slider: moveTransformPropsToTransformArray(springAnimationProps) };
+  return { slider: moveTransformPropsToTransformArray(splitProps.slider) };
   /**/
 };
