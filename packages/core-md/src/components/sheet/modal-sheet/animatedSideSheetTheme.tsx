@@ -9,13 +9,17 @@ import {
   ModalSheetTheme,
   PrimitiveComponentProps,
   SurfaceProps,
-  SurfaceTheme,
+  // SurfaceTheme,
   ViewStyleGetter,
 } from '@reflex-ui/core';
 import { ComponentType } from 'react';
-import { StyleSheet } from 'react-native';
+// import { StyleSheet } from 'react-native';
 
-import { createAnimatedOpenCloseTransitionSurface } from '../../surface';
+// import { createAnimatedOpenCloseTransitionSurface } from '../../surface';
+import {
+  createAnimatedOpenCloseSliderTransitionSurface,
+  SliderPosition,
+} from '../../../transition';
 // tslint:disable-next-line:max-line-length
 import { getCommonModalSheetSurfaceProps } from '../getCommonModalSheetSurfaceProps';
 import {
@@ -28,12 +32,13 @@ import {
  * Material Design's cubic-bezier:
  * https://material.io/design/motion/speed.html#easing
  */
-const animationConfig = { clamp: true, tension: 220, friction: 12 };
+// const animationConfig = { clamp: true, tension: 220, friction: 12 };
 /**/
 
 /*
  * Basic memoization implementation for ModalSheetVariant.Start
  */
+/*
 let currentStartMaxWidth: number | string;
 let currentStartComponent: ComponentType<PrimitiveComponentProps<SurfaceProps>>;
 const createStartComponent = (maxWidth: number | string = 0) => {
@@ -65,11 +70,24 @@ const createStartComponent = (maxWidth: number | string = 0) => {
   });
   return currentStartComponent;
 };
+*/
+let currentStartComponent: ComponentType<PrimitiveComponentProps<SurfaceProps>>;
+const createStartComponent = (): ComponentType<
+  PrimitiveComponentProps<SurfaceProps>
+> => {
+  if (currentStartComponent === undefined) {
+    currentStartComponent = createAnimatedOpenCloseSliderTransitionSurface({
+      position: SliderPosition.Start,
+    });
+  }
+  return currentStartComponent;
+};
 /**/
 
 /*
  * Basic memoization implementation for ModalSheetVariant.End
  */
+/*
 let currentEndMaxWidth: number | string;
 let currentEndComponent: ComponentType<PrimitiveComponentProps<SurfaceProps>>;
 const createEndComponent = (maxWidth: number | string = 0) => {
@@ -96,6 +114,18 @@ const createEndComponent = (maxWidth: number | string = 0) => {
     closeAnimationProps,
     openAnimationProps,
   });
+  return currentEndComponent;
+};
+*/
+let currentEndComponent: ComponentType<PrimitiveComponentProps<SurfaceProps>>;
+const createEndComponent = (): ComponentType<
+  PrimitiveComponentProps<SurfaceProps>
+> => {
+  if (currentEndComponent === undefined) {
+    currentEndComponent = createAnimatedOpenCloseSliderTransitionSurface({
+      position: SliderPosition.End,
+    });
+  }
   return currentEndComponent;
 };
 /**/
@@ -126,8 +156,7 @@ export const animatedModalStartSheetTheme: ModalSheetTheme = {
   getProps: () => ({ isOpenCloseTransitionAnimated: true }),
   surface: () => ({
     view: {
-      getComponent: props =>
-        createStartComponent(StyleSheet.flatten(props.style).maxWidth),
+      getComponent: () => createStartComponent(),
       getProps: getCommonModalSheetSurfaceProps,
       getStyle: getAnimatedModalStartSheetSurfaceStyle,
     },
@@ -138,8 +167,7 @@ export const animatedModalEndSheetTheme: ModalSheetTheme = {
   getProps: () => ({ isOpenCloseTransitionAnimated: true }),
   surface: () => ({
     view: {
-      getComponent: props =>
-        createEndComponent(StyleSheet.flatten(props.style).maxWidth),
+      getComponent: () => createEndComponent(),
       getProps: getCommonModalSheetSurfaceProps,
       getStyle: getAnimatedModalEndSheetSurfaceStyle,
     },

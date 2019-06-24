@@ -123,14 +123,14 @@ const getCloseSliderPusherStyle = (
         pusher: {
           height: '100%',
           position: 'absolute',
-          transform: [{ translateY: -10000 }],
+          transform: [{ translateY: 3000 }],
         },
         slider: {},
       }
     : {
         pusher: {
           position: 'absolute',
-          transform: [{ translateX: -10000 }],
+          transform: [{ translateX: 3000 }],
           width: '100%',
         },
         slider: {},
@@ -147,13 +147,17 @@ const getCloseSliderStyle = (
         pusher: {},
         slider: {
           position: 'absolute',
-          top: -10000,
+          ...(position === SliderPosition.Top
+            ? { top: 3000 }
+            : { bottom: 3000 }),
         },
       }
     : {
         pusher: {},
         slider: {
-          left: -10000,
+          ...(position === SliderPosition.Start
+            ? { left: -3000 }
+            : { right: 3000 }),
           position: 'absolute',
         },
       };
@@ -313,8 +317,8 @@ export const useOpenCloseSliderTransitionAnimation = <
     if (isOpen && isOpening && !isMeasured) {
       const hiddenProps =
         position === SliderPosition.Top || position === SliderPosition.Bottom
-          ? { translateY: -1000 }
-          : { translateX: -1000 };
+          ? { translateY: position === SliderPosition.Top ? -3000 : 3000 }
+          : { translateX: position === SliderPosition.Start ? -3000 : 3000 };
       return {
         config: openAnimationConfig || defaultAnimationConfig,
         from: hiddenProps,
