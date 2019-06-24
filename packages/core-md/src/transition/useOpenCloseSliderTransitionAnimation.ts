@@ -32,6 +32,8 @@ export interface OpenCloseSliderTransitionAnimationInput<ComponentProps>
   readonly ref?: Ref<View>;
 }
 
+const defaultAnimationConfig = { clamp: true, tension: 220, friction: 12 };
+
 export const getOpenSliderTransitionTo = (
   position: SliderPosition,
   value: number,
@@ -92,7 +94,6 @@ export const splitAnimationProps = (
   };
 };
 
-const defaultAnimationConfig = { clamp: true, tension: 220, friction: 12 };
 /*
 const closeSliderPusherStyle = {
   pusher: {
@@ -345,6 +346,7 @@ export const useOpenCloseSliderTransitionAnimation = <
       return {
         config: openAnimationConfig || defaultAnimationConfig,
         from: hiddenProps,
+        reset: true,
         // onRest: onOpenRest,
         // ...(isMeasured && { onRest: onOpenRest }),
         to: hiddenProps,
@@ -364,6 +366,7 @@ export const useOpenCloseSliderTransitionAnimation = <
         config: openAnimationConfig || defaultAnimationConfig,
         from: getCloseSliderTransitionTo(position, value, hasPusher),
         onRest: onOpenRest,
+        reset: true,
         // ...(isMeasured && { onRest: onOpenRest }),
         to: getOpenSliderTransitionTo(position, value, hasPusher),
       };
@@ -374,6 +377,7 @@ export const useOpenCloseSliderTransitionAnimation = <
     );
     return {
       config: closeAnimationConfig || defaultAnimationConfig,
+      from: getOpenSliderTransitionTo(position, value, hasPusher),
       onRest: onCloseRest,
       to: getCloseSliderTransitionTo(position, value, hasPusher),
     };
@@ -410,6 +414,33 @@ export const useOpenCloseSliderTransitionAnimation = <
     'useOpenCloseSliderTransitionAnimation() - springAnimationProps: ',
     springAnimationProps,
   );
+  if (springAnimationProps.translateY) {
+    console.log(
+      `useOpenCloseSliderTransitionAnimation() - springAnimationProps.translateY - startPosition: ${
+        // @ts-ignore
+        springAnimationProps.translateY.startPosition
+      } | lastPosition: ${
+        // @ts-ignore
+        springAnimationProps.translateY.lastPosition
+        // @ts-ignore
+      } | value: ${springAnimationProps.translateY.value}`,
+      springAnimationProps,
+    );
+  }
+
+  if (springAnimationProps.height) {
+    console.log(
+      `useOpenCloseSliderTransitionAnimation() - springAnimationProps.height - startPosition: ${
+        // @ts-ignore
+        springAnimationProps.height.startPosition
+      } | lastPosition: ${
+        // @ts-ignore
+        springAnimationProps.height.lastPosition
+        // @ts-ignore
+      } | value: ${springAnimationProps.height.value}`,
+      springAnimationProps,
+    );
+  }
 
   /**
    * If component is close and not opening nor closing,
