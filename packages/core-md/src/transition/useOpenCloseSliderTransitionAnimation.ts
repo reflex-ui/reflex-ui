@@ -311,7 +311,11 @@ export const useOpenCloseSliderTransitionAnimation = <
      * This condition handles a point at which the component is open and
      * already animated, but we have reset the measurement after open.
      */
-    if (isOpen && !isOpening && !isMeasured) {
+    // if (isOpen && !isOpening && !isMeasured) {
+    if (
+      (!isMeasured && isOpen && !isOpening) ||
+      (!isMeasured && !isOpen && isClosing)
+    ) {
       console.log(
         `useOpenCloseSliderTransitionAnimation().getSliderAnimation() - isOpen - RETURN EMPTY STYLE `,
       );
@@ -320,7 +324,11 @@ export const useOpenCloseSliderTransitionAnimation = <
     /**/
 
     // if (isOpen && isOpening && !isMeasured) {
-    if (((isOpen && isOpening) || (!isOpen && !isClosing)) && !isMeasured) {
+    // if (((isOpen && isOpening) || (!isOpen && !isClosing)) && !isMeasured) {
+    if (
+      (!isMeasured && ((isOpen && isOpening) || (!isOpen && !isClosing))) ||
+      (isMeasured && !isOpen && !isOpening && !isClosing)
+    ) {
       console.log(
         `useOpenCloseSliderTransitionAnimation().getSliderAnimation() - RETURN HIDDEN STYLE `,
       );
