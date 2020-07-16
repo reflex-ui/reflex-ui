@@ -43,7 +43,7 @@
   "dependencies": {
     "color": "^3.0.1",
     "delay": "^4.0.0",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.19"
   },
   "devDependencies": {
     "@types/color": "^3.0.0"

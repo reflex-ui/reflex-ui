@@ -39,7 +39,7 @@
     "build/dist"
   ],
   "dependencies": {
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "react-is": "^16.7.0"
   },
   "devDependencies": {
